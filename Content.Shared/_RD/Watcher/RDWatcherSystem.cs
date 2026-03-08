@@ -9,13 +9,19 @@ namespace Content.Shared._RD.Watcher;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class RDWatcherSystemSingletonComponent : Component
 {
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float GroupRadius = 10f;
 
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public TimeSpan PositionInterval = TimeSpan.FromSeconds(3);
+
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public TimeSpan PositionNext;
+
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public TimeSpan GroupInterval = TimeSpan.FromMinutes(1);
 
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public TimeSpan GroupNext;
 }
 
@@ -46,6 +52,14 @@ public sealed partial class RDWatcherSystem : RDEntitySystemSingleton<RDWatcherS
             DirtyField(nameof(RDWatcherSystemSingletonComponent.GroupNext));
 
             UpdateWatchers();
+        }
+
+        if (Inst.Comp.PositionInterval < _timing.CurTime)
+        {
+            Inst.Comp.PositionNext = _timing.CurTime + Inst.Comp.PositionInterval;
+            DirtyField(nameof(RDWatcherSystemSingletonComponent.PositionNext));
+
+            UpdateWatcherPositions();
         }
     }
 }

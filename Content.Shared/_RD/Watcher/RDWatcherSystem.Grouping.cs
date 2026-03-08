@@ -11,7 +11,21 @@ public sealed partial class RDWatcherSystem
 
     private void InitializeGrouping()
     {
+        SubscribeLocalEvent<RDWatcherTargetComponent, ComponentRemove>(OnTargetRemove);
+    }
 
+    private void OnTargetRemove(EntityUid uid, RDWatcherTargetComponent component, ComponentRemove args)
+    {
+        if (component.Watcher is not { } watcherUid)
+            return;
+
+        if (!TryComp<RDWatcherComponent>(watcherUid, out var watcher))
+            return;
+
+        watcher.Entities.Remove(uid);
+
+        if (watcher.Entities.Count == 0)
+            QueueDel(watcherUid);
     }
 
     private void UpdateWatchers()

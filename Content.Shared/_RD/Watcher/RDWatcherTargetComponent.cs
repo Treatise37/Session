@@ -2,5 +2,9 @@
 
 namespace Content.Shared._RD.Watcher;
 
-[RegisterComponent, NetworkedComponent]
-public sealed partial class RDWatcherTargetComponent : Component;
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+public sealed partial class RDWatcherTargetComponent : Component
+{
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? Watcher;
+}

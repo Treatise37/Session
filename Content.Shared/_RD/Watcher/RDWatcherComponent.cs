@@ -1,4 +1,6 @@
-﻿using Robust.Shared.GameStates;
+﻿using System.Numerics;
+using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._RD.Watcher;
@@ -11,4 +13,10 @@ public sealed partial class RDWatcherComponent : Component
 
     [DataField, AutoNetworkedField]
     public List<EntProtoId> VirtualStorage = new();
+
+    [DataField, AutoNetworkedField]
+    public Vector2 Position;
+
+    [DataField, AutoNetworkedField]
+    public MapId MapId;
 }
