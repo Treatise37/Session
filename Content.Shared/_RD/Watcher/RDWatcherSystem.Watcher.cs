@@ -2,6 +2,7 @@
 using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._RD.Watcher;
 
@@ -50,21 +51,27 @@ public sealed partial class RDWatcherSystem
         Dirty(watcher);
     }
 
-    private Entity<RDWatcherComponent> CreateWatcher(List<EntityUid> entities) =>
-        CreateWatcher(entities.ToHashSet());
+    private Entity<RDWatcherComponent> CreateWatcher(List<EntityUid> entities)
+    {
+        return CreateWatcher(entities.ToHashSet());
+    }
 
     private Entity<RDWatcherComponent> CreateWatcher(HashSet<EntityUid> entities)
     {
         var uid = Spawn(null, MapCoordinates.Nullspace);
         var comp = EnsureComp<RDWatcherComponent>(uid);
+        var watcher = (uid, comp);
+
+        if (entities.Count == 0)
+            return watcher;
 
         comp.Entities = entities;
-        DirtyField(uid, comp, nameof(RDWatcherComponent.Entities));
-
-        var watcher = (uid, comp);
+        comp.GroupId = Comp<RDWatcherTargetComponent>(entities.First()).GroupId;
+        DirtyFields(uid, comp, null, nameof(RDWatcherComponent.Entities), nameof(RDWatcherComponent.GroupId));
 
         UpdateWatcherPosition(watcher);
 
+        // Just for client debug (Do PVS only for showed overlay entities later)
         _pvsOverride.AddGlobalOverride(uid);
 
         return watcher;

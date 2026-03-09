@@ -8,15 +8,30 @@ namespace Content.Shared._RD.Watcher;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class RDWatcherComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public HashSet<EntityUid> Entities = new();
 
-    [DataField, AutoNetworkedField]
+    #region Storage
+
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public List<EntProtoId> VirtualStorage = new();
 
-    [DataField, AutoNetworkedField]
+    #endregion
+
+    #region Meta
+
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    public string GroupId = string.Empty;
+
+    #endregion
+
+    #region Transform
+
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public Vector2 Position;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public MapId MapId;
+
+    #endregion
 }

@@ -32,7 +32,6 @@ public sealed partial class RDWatcherSystem
             QueueDel(watcherUid);
     }
 
-
     private void UpdateWatchers()
     {
         _targets.Clear();
@@ -40,15 +39,7 @@ public sealed partial class RDWatcherSystem
 
         var radiusSq = Inst.Comp.GroupRadius * Inst.Comp.GroupRadius;
 
-        var query = EntityQueryEnumerator<RDWatcherTargetComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out _, out var transform))
-        {
-            _targets.Add(new TargetEntity(
-                uid,
-                _transform.GetWorldPosition(transform),
-                _transform.GetMapId((uid, transform))
-            ));
-        }
+        FillTargets();
 
         var groups = new List<List<EntityUid>>();
 
@@ -59,8 +50,10 @@ public sealed partial class RDWatcherSystem
                 continue;
 
             var group = new List<EntityUid>();
+
             var queue = new Queue<int>();
             queue.Enqueue(i);
+
             _visited.Add(start.Uid);
 
             while (queue.Count > 0)
@@ -78,10 +71,14 @@ public sealed partial class RDWatcherSystem
                     if (other.MapId != current.MapId)
                         continue;
 
+                    if (other.GroupId != current.GroupId)
+                        continue;
+
                     if (Vector2.DistanceSquared(other.Position, current.Position) > radiusSq)
                         continue;
 
                     _visited.Add(other.Uid);
+
                     queue.Enqueue(j);
                 }
             }
@@ -93,6 +90,22 @@ public sealed partial class RDWatcherSystem
         {
             SyncGroupWithWatchers(group);
         }
+    }
+
+    private void FillTargets()
+    {
+        var query = EntityQueryEnumerator<RDWatcherTargetComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var targetComponent, out var transform))
+        {
+            _targets.Add(new TargetEntity(
+                    uid,
+                    _transform.GetWorldPosition(transform),
+                    _transform.GetMapId((uid, transform)),
+                    targetComponent.GroupId
+                )
+            );
+        }
+
     }
 
     private void SyncGroupWithWatchers(List<EntityUid> group)
@@ -139,6 +152,7 @@ public sealed partial class RDWatcherSystem
     private readonly record struct TargetEntity(
         EntityUid Uid,
         Vector2 Position,
-        MapId MapId
+        MapId MapId,
+        string GroupId
     );
 }
