@@ -2,80 +2,100 @@
   id: MercShopPreset
   itemsForSale:
     # Thermal group - 1
-    ZoneArtifactFireball: 0
-    ZoneArtifactEye: 0
-    ZoneArtifactFlame: 0
+    ZoneArtifactFireball: 720
+    ZoneArtifactEye: 960
+    ZoneArtifactFlame: 1440
     # Thermal group - 2
-    ZoneArtifactCristall: 0
-    ZoneArtifactLithosphere: 0
+    ZoneArtifactCristall: 2880
+    ZoneArtifactLithosphere: 5760
     # Electrical group - 1
-    ZoneArtifactSparkler: 0
-    ZoneArtifactBattery: 0
-    ZoneArtifactFlash: 0
-    ArtMoon: 0
-    ZoneArtifactTesla: 0
-    ZoneArtifactIce: 0
+    ZoneArtifactSparkler: 660
+    ZoneArtifactBattery: 840
+    ZoneArtifactFlash: 1440
+    ArtMoon: 2880
+    ZoneArtifactTesla: 4320
+    ZoneArtifactIce: 5760
     # Gravity group - 1
-    ArtMedusa: 0
-    ZoneArtifactFlower: 0
-    ZoneArtifactNightStar: 0
+    ArtMedusa: 660
+    ZoneArtifactFlower: 900
+    ZoneArtifactNightStar: 2880
     # Gravity group - 2
-    ZoneArtifactVyvert: 0
-    ZoneArtifactAmoeba: 0
-    ZoneArtifactGravi: 0
-    ZoneArtifactGoldfish: 0
-    ZoneArtifactSpring: 0
-    ZoneArtifactFocus: 0
-    ZoneArtifactStuntman: 0
-    ZoneArtifactDistorter: 0
-    ZoneArtifactSoul: 0
+    ZoneArtifactVyvert: 780
+    ZoneArtifactAmoeba: 1020
+    ZoneArtifactFloodlight: 972
+    ZoneArtifactGravi: 1440
+    ZoneArtifactGoldfish: 5760
+    ZoneArtifactSpring: 4320
+    ZoneArtifactFocus: 4320
+    ZoneArtifactStuntman: 5760
+    ZoneArtifactDistorter: 5760
+    ZoneArtifactSoul: 4320
+    # Food
+    FoodMeatDogCooked: 84
+    STFoodMeatSpiderCooked: 42
+    FoodMeatBoarCooked: 132
+
     # Acidic group - 1
-    ZoneArtifactBlood: 0
-    ZoneArtifactMeat: 0
-    ZoneArtifactKolobok: 0
+    ZoneArtifactBlood: 1440
+    ZoneArtifactMeat: 2880
+    ZoneArtifactKolobok: 4320
     # Acidic group - 2
-    ZoneArtifactPellicle: 0
-    ZoneArtifactBaloon: 0
+    ZoneArtifactPellicle: 660
+    ZoneArtifactBaloon: 4320
 
+    # New
 
-     # Mutant parts
+    ZoneArtifactAccumulator: 840
+    ZoneArtifactDiamond: 2880
+    ZoneArtifactCharger: 2880
+    ZoneArtifactToxic: 840
+    ZoneArtifactCytoplasm: 720
+    ZoneArtifactCompass: 2880
+    ZoneArtifactCrucifix: 5760
+    ZoneArtifactThorn: 1140
+    ZoneArtifactArf: 840
+    ZoneArtifactDarkCube: 5760
+    ZoneArtifactBunch: 1140
+    ZoneArtifactRock: 1140
+    ZoneArtifactSun: 2880
+    ZoneArtifactRoot: 2880
+    ZoneArtifactConflagration: 1140
+    # Mutant parts
 
-  #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 0 # T1
-    MutantPartSeasonedBoarHoof: 0 # T2
-    MutantPartOldBoarHoof: 0 # T3
+    #Boars -------- Health * T * 0.45
+    MutantPartBoarHoof: 264 # T1
+    MutantPartSeasonedBoarHoof: 528 # T2
+    MutantPartOldBoarHoof: 780 # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 0
-    MutantPartFleshEye: 0
-    FoodMeatSpiderLeg: 0
+    MutantPartBlindDogTail: 108
+    MutantPartFleshEye: 198
+    FoodMeatSpiderLeg: 72
 
     #T2 -------- Health * 1.8
-    MutantPartLeshiyRoot: 0
-    MutantPartPseudodogTail: 0
-    MutantPartSnorkFoot: 0
+    MutantPartLeshiyRoot: 840
+    MutantPartPseudodogTail: 360
+    MutantPartSnorkFoot: 540
 
     #T3 -------- Health * 3
-    MutantPartBloodsuckerTentacles: 0
-    MutantPartOraculeEye: 0
-    MutantPartPseudogiantHeart: 0
-    MutantPartZombieHand: 0
+    MutantPartBloodsuckerTentacles: 1200
+    MutantPartOraculeEye: 1560
+    MutantPartPseudogiantHeart: 9360
+    MutantPartZombieHand: 660
 
   categories:
     - name: shop-category-weapons
       priority: 1
       items:
-        STCombatKnife: 10
-        STWeaponShotgunSPAS: 2200
+        STWeaponShotgunSPAS: 1500
         WeaponPistolStalkerGlock: 200
-        STWeaponSMGMP5: 2200
-        STWeaponRifleM4: 3300
+        STWeaponSMGMP5: 2400
+        STWeaponRifleM4: 3800
         STWeaponRifleSCARH: 5200
-        STWeaponRifleL85: 2200
+        STWeaponRifleL85: 1500
         STWeaponRevolverRugerRedhawk: 200
         STWeaponRevolverSWPC325TR: 450
-        STWeaponRifleG36: 6000
-        STWeaponLauncherRG6: 50000
+        STWeaponRifleG36: 5800
     - name: shop-category-magazines
       priority: 2
       items:
@@ -94,41 +114,40 @@
       items:
         6mmBuckshotBox: 115
         7mmBuckshotBox: 45
-        8mmBuckshotBox: 200
         # 9.19
         919PSOGJBox: 75
         919PSTBox: 250
-        919PBMBox: 300
-        919RIPBox: 200
+        919PBMBox: 800
+        919RIPBox: 300
         918PGJBox: 80
         918PSTBox: 250
-        918PBMBox: 300
-        918SP7Box: 200
+        918PBMBox: 800
+        918SP7Box: 300
         # 5.56
-        556FMJBox: 500
-        556WarmagBox: 250
-        556M855Box: 850
+        556FMJBox: 200
+        556WarmagBox: 150
+        556M855Box: 1100
+        556M856Box: 1800
         # 7.51
-        751M80Box: 1000
-        751UNBox: 500
+        751M80Box: 1500
+        751UNBox: 700
         # 7.54
-        754FMJBox: 700
+        754FMJBox: 1200
         # .45
         45ACPLFMJBox: 100
         45ACPMFMJBox: 550
-        45ACPAPBox: 700
+        45ACPAPBox: 1000
         45ACPRIPBox: 400
-        GrenadeVOG25: 2500
     - name: shop-category-armor
       priority: 4
       items:
         STSkinsKitMercenary: 500
-        ClothingHeadAssaultHelmetMerc: 2300
-        SetMercBuyableCrate: 6700
-        SetMerc2BuyableCrate: 6500
+        ClothingHeadAssaultHelmetMerc: 3000
+        SetMercBuyableCrate: 4800
+        SetMerc2BuyableCrate: 4800
         ClothingOuterArmorSevaMerc: 5000
-        STClothingOuterArmorLightPlateVestBaseMerc: 500
-        ClothingHeadHelmetInfantryMerc: 400
+        STClothingOuterArmorLightPlateVestBaseMerc: 900
+        ClothingHeadHelmetInfantryMerc: 600
         STClothingOuterArmorIOTVMerc: 10000
     - name:  Хранилища и Контейнеры
       priority: 5
@@ -196,19 +215,17 @@
       priority: 10
       items:
           # Cheap
-        PillDexalin: 20
-        PillDexalinPlusStalker: 45
-        STOintment: 20
-        STGauze: 25
-        STBrutepack: 20
+        STOintment: 75
+        STGauze: 65
+        STBrutepack: 65
           # Expensive
-        antiradpill: 100
-        radioprotectpill: 150
-        Bloodpack: 250
-        psyblock: 350
-        MedkitAI2: 200
+        STPillboxAntirad: 350
+        Bloodpack: 550
+        MedkitAI2: 150
         MedkitMilitary: 400
+        MedkitScience: 450
         Defibrillator: 1000
+        STPillboxProbud: 500
     - name: shop-category-modules
       priority: 11
       items:
@@ -236,7 +253,7 @@
     - name: shop-category-customization
       priority: 13
       items:
-        ClothingBandageStalkerGreen: 5
+        ClothingBandageStalkerMerc: 5
         ClothingHeadHatBeaniehat: 10
         ClothingMaskNeckFacemask: 10
         ClothingMaskNeckBalaklava1: 10
