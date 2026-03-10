@@ -22,9 +22,6 @@
         Blunt: 0.99
         Slash: 0.99
         Piercing: 0.99
-  - type: HideLayerClothing
-    slots:
-    - Hair
 
 - type: entity
   parent: ClothingMaskXoma
