@@ -1,4 +1,5 @@
 using Content.Shared.Movement.Systems;
+using Content.Shared.Xenoarchaeology.Equipment.Components;
 
 namespace Content.Shared._Stalker.Weight;
 
@@ -51,8 +52,13 @@ public sealed partial class STWeightSystem : EntitySystem
 
         var newInside = 0f;
         var enumerator = transform.ChildEnumerator;
+        var suppressArtifacts = HasComp<SuppressArtifactContainerComponent>(weight);
+
         while (enumerator.MoveNext(out var uid))
         {
+            if (suppressArtifacts && HasComp<STWeightComponent>(uid))
+                continue;
+
             if (!TryGetWeight(uid, out var childWeight))
                 continue;
 
