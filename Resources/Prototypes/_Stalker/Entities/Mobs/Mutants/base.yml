@@ -9,6 +9,10 @@
   abstract: true
   suffix: Stalker, Mutant
   components:
+  # RD Components
+  - type: RDWatcherTarget
+    groupId: RDMutant
+  # RD End
   - type: ZoneAnomalyActivator
   - type: LagCompensation
   - type: Tag

@@ -95,3 +95,8 @@
 - Flags: ADMINCHAT
   Commands:
     - achatwindow
+
+# RD Commands
+- Flags: HOST
+  Commands:
+  - rd_watcher_show_debug_overlay
