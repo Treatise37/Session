@@ -41,7 +41,10 @@
     pullTime: 2
   - type: HideLayerClothing
     slots:
+    - Hair
     - Snout
+    - HeadTop
+    - HeadSide
     - FacialHair
 
 - type: entity
