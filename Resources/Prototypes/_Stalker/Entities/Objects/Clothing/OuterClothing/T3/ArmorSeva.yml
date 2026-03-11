@@ -18,7 +18,7 @@
     clothingPrototype: STClothingHeadHardsuitSevaHelmBase
     slot: head
   - type: Storage
-    maxItemSize: Large
+    maxItemSize: Huge
     grid:
       - 0,0,5,3
       - 7,0,12,3
