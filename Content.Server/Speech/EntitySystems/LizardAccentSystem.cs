@@ -15,14 +15,14 @@ public sealed class LizardAccentSystem : EntitySystem
     private static readonly Regex RegexLowerEndX = new(@"\bx([\-|r|R]|\b)");
     private static readonly Regex RegexUpperEndX = new(@"\bX([\-|r|R]|\b)");
     // stalker local
-    private static readonly Regex RegexRusS = new("[сзц]+");
-    private static readonly Regex RegexRusCapsS = new("[СЗЦ]+");
-    private static readonly Regex RegexRusSh = new("[шж]+");
-    private static readonly Regex RegexRusCapsSh = new("[ШЖ]+");
+    private static readonly Regex RegexRusS = new("[сз]+");
+    private static readonly Regex RegexRusCapsS = new("[СЗ]+");
+    private static readonly Regex RegexRusC = new("ц+");
+    private static readonly Regex RegexRusCapsC = new("Ц+");
     private static readonly Regex RegexRusCh = new("ч+");
     private static readonly Regex RegexRusCapsCh = new("Ч+");
-    private static readonly Regex RegexRusSch = new("щ+");
-    private static readonly Regex RegexRusCapsSch = new("Щ+");
+    private static readonly Regex RegexRusSh = new("[шж]+");
+    private static readonly Regex RegexRusCapsSh = new("[ШЖ]+");
     //
 
     public override void Initialize()
@@ -47,17 +47,18 @@ public sealed class LizardAccentSystem : EntitySystem
         message = RegexUpperEndX.Replace(message, "ECKS$1");
 
         // stalker local
-        message = RegexRusS.Replace(message, _ => _random.Pick(new[] { "сс", "ссс" }));
-        message = RegexRusCapsS.Replace(message, _ => _random.Pick(new[] { "СС", "ССС" }));
+        message = RegexRusS.Replace(message, "ф");
+        message = RegexRusCapsS.Replace(message, "Ф");
+
+        message = RegexRusC.Replace(message, _ => _random.Pick(new[] { "сс", "ссс" }));
+        message = RegexRusCapsC.Replace(message, _ => _random.Pick(new[] { "СС", "ССС" }));
         
-        message = RegexRusSh.Replace(message, _ => _random.Pick(new[] { "шш", "шшш" }));
-        message = RegexRusCapsSh.Replace(message, _ => _random.Pick(new[] { "ШШ", "ШШШ" }));
+        message = RegexRusSh.Replace(message, _ => _random.Pick(new[] { "щ", "щщ" }));
+        message = RegexRusCapsSh.Replace(message, _ => _random.Pick(new[] { "Щ", "ЩЩЩ" }));
         
-        message = RegexRusCh.Replace(message, _ => _random.Pick(new[] { "щщ", "щщщ" }));
-        message = RegexRusCapsCh.Replace(message, _ => _random.Pick(new[] { "ЩЩ", "ЩЩЩ" }));
+        message = RegexRusCh.Replace(message, "т");
+        message = RegexRusCapsCh.Replace(message, "Т");
         
-        message = RegexRusSch.Replace(message, _ => _random.Pick(new[] { "щщ", "щщщ" }));
-        message = RegexRusCapsSch.Replace(message, _ => _random.Pick(new[] { "ЩЩ", "ЩЩЩ" }));
         //
 
         args.Message = message;
