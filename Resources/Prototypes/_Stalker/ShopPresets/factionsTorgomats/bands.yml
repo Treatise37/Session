@@ -79,6 +79,7 @@
     MutantPartSnorkFoot: 450
 
     #T3 -------- Health * 3
+    MutantPartPsiDogTail: 564
     MutantPartBloodsuckerTentacles: 1000
     MutantPartOraculeEye: 1300
     MutantPartPseudogiantHeart: 7800
