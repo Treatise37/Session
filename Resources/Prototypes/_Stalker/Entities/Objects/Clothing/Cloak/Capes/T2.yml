@@ -232,7 +232,7 @@
 - type: entity
   parent: STClothingCapeT2Base
   id: STClothingCapeT2SerafimPrestige
-  name: престижный плащ серафимов
+  name: Плащ Херувима
   suffix: ST, T2, Скин
   description: Выполнен в тёмно-зелёной цветовой гамме с металлическими вставками
   components:

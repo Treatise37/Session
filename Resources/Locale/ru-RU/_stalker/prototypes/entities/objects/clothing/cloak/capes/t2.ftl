@@ -29,6 +29,6 @@ ent-STClothingOuterCoatHimera = камуфляжный плащ «Химера»
     .suffix = ST, Skin
 ent-STClothingHeadHelmetHimera = камуфляжный капюшон
     .desc = Покрывает вашу голову.
-ent-STClothingCapeT2SerafimPrestige = престижный плащ серафимов
+ent-STClothingCapeT2SerafimPrestige = Плащ Херувима
     .desc = Выполнен в тёмно-зелёной цветовой гамме с металлическими вставками
     .suffix = ST, T2, Скин
