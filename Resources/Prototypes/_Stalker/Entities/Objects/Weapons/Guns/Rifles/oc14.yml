@@ -128,3 +128,42 @@
     falloffMultiplier: 0.6
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.44
+
+- type: entity
+  parent: STBaseWeaponRifleOC14
+  id: STWeaponRifleOC14Liturgia
+  name: OC-14 «Liturgia»
+  description: An assault rifle-grenade launcher system, 70% unified with AK-type assault rifles (the main differences are the 9 x 39 mm caliber, the bullpup layout, and greater opportunities for modernization). Designed to arm rapid response units. Highly valued by the military and stalkers for its ability to reliably hit an enemy protected by a bulletproof vest or located in cover.
+  components:
+  - type: STWeight
+    self: 4
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/groza_liturgia.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/groza_liturgia.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/groza_liturgia.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/val_shoot.ogg
+  - type: FarGunshot
+    sound: /Audio/_DZ/Effects/FarGunshots/supressed1.ogg
+    silencerDecrease: 0.2
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Base739Mag10
+        insertSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagIn/rifle_magin.ogg
+        ejectSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagOut/rifle_magout.ogg
+        priority: 4
+        whitelist:
+          tags:
+          - Magazine739
+      gun_chamber:
+        name: Chamber
+        startingItem:
+        priority: 1
+        whitelist:
+          tags:
+          - STCartridge739
