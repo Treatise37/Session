@@ -22,16 +22,20 @@
         Blunt: 4
         Slash: 4
         Piercing: 3
-        Heat: 6
-        Radiation: 6
-        Caustic: 6
-        Shock: 6
+        Heat: 5
+        Radiation: 5
+        Caustic: 5
+        Shock: 5
+        Compression: 1
+        Psy: 1
       coefficients:
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.8
-        Heat: 0.35
-        Radiation: 0.5
-        Caustic: 0.35
-        Shock: 0.45
-        Compression: 0.6
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8

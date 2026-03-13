@@ -60,10 +60,48 @@
     layers:
       - state: green
   - type: SpawnOnTrigger
-    proto: BoxCrate
+    proto: RandomBoxDrawerSpawner
   - type: TriggerOnSignal
   - type: DeviceLinkSink
     ports:
     - Trigger
+
+- type: entityTable
+  id: RandomBoxDrawerTable
+  table: !type:GroupSelector
+    children:
+    - id: BoxCrate
+    - id: WoodenBox0
+    - id: WoodenBox1
+    - id: WoodenBox1a2
+    - id: WoodenBox2
+    - id: WoodenBox3
+    - id: WoodenBox4
+    - id: WoodenBox5
+    - id: WoodenBox6
+    - id: WoodenBox7
+    - id: WoodenBox8
+    - id: WoodenBox9
+    - id: WoodenYaschik1
+    - id: WoodenYaschik2
+    - id: WoodenYaschik3
+    - id: WoodenYaschik4
+    - id: WoodenYaschik5
+    - id: WoodenBoxWithLoot
+    - id: CartonBoxWithLoot1
+    - id: CartonBoxWithLoot2
+    - id: CartonBoxWithLoot3
+
+- type: entity
+  id: RandomBoxDrawerSpawner
+  name: random box drawer spawner
+  parent: MarkerBase
+  suffix: ST
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: RandomBoxDrawerTable
+    offset: 0.0
 
 # Shon`s spawners - End

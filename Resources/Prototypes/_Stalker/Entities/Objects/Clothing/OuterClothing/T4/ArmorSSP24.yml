@@ -109,6 +109,8 @@
         Caustic: 1
         Radiation: 2
         Shock: 1
+        Compression: 2
+        Cold: 2
         Psy: 1
       coefficients:
         Blunt: 0.55
@@ -149,8 +151,29 @@
   description: Он представляет собой высококачественную модификацию базового костюма эколога SSP-99. Единственное внешнее различие между ними заключается только в цвете — стандартный SSP-99 тёмно-оранжевый, а SSP-99M представлен в светло-зелёном цвете.
   components:
   - type: Armor
-    armorLevels:
-      radiation: 6
+    armorClass: 2
+    modifiers:
+      flatReductions:
+        Blunt: 3
+        Slash: 3
+        Piercing: 3
+        Heat: 3
+        Caustic: 1
+        Radiation: 3
+        Shock: 1
+        Compression: 2
+        Cold: 2
+        Psy: 1
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.90
+        Heat: 0.60
+        Caustic: 0.7
+        Shock: 0.6
+        Psy: 0.8
+        Radiation: 0.8
+        Compression: 0.90
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/topaz.rsi
     state: icon-suit
@@ -180,9 +203,29 @@
   description: Высококачественный модифицированный комбинезон ССП-24М, в котором была улучшена защита от пуль и осколков, предназначенный для экипировки охраны научных экспедиций для работы под напряжением.
   components:
   - type: Armor
-    armorLevels:
-      shock: 6
-      psy: 6
+    armorClass: 2
+    modifiers:
+      flatReductions:
+        Blunt: 3
+        Slash: 3
+        Piercing: 3
+        Heat: 3
+        Caustic: 1
+        Radiation: 3
+        Shock: 6
+        Compression: 2
+        Cold: 2
+        Psy: 6
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.6
+        Caustic: 0.7
+        Shock: 0.6
+        Psy: 0.8
+        Radiation: 0.8
+        Compression: 0.90
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/sapfire.rsi
     state: icon-suit

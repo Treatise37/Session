@@ -5,7 +5,6 @@ using Content.Shared.Chat;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Robust.Server.Console;
 using Robust.Shared.Player;
 using Content.Shared.Speech.Muting;
 
@@ -18,7 +17,6 @@ public sealed class CritMobActionsSystem : EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DeathgaspSystem _deathgasp = default!;
-    [Dependency] private readonly IServerConsoleHost _host = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
@@ -36,10 +34,9 @@ public sealed class CritMobActionsSystem : EntitySystem
 
     private void OnSuccumb(EntityUid uid, MobStateActionsComponent component, CritSuccumbEvent args)
     {
-        if (!TryComp<ActorComponent>(uid, out var actor) || !_mobState.IsCritical(uid))
+        if (!_mobState.IsCritical(uid))
             return;
 
-        _host.ExecuteCommand(actor.PlayerSession, "suicide"); // Stalker-Changes
         args.Handled = true;
     }
 
@@ -57,7 +54,7 @@ public sealed class CritMobActionsSystem : EntitySystem
         args.Handled = _deathgasp.Deathgasp(uid);
     }
 
-    private void OnLastWords(EntityUid uid, MobStateActionsComponent component, CritLastWordsEvent args)
+    private void OnLastWords(EntityUid uid, MobStateActionsComponent component, CritLastWordsEvent args) // Stalker
     {
         if (!TryComp<ActorComponent>(uid, out var actor))
             return;
@@ -65,11 +62,9 @@ public sealed class CritMobActionsSystem : EntitySystem
         _quickDialog.OpenDialog(actor.PlayerSession, Loc.GetString("action-name-crit-last-words"), "",
             (string lastWords) =>
             {
-                // if a person is gibbed/deleted, they can't say last words
                 if (Deleted(uid))
                     return;
 
-                // Intentionally does not check for muteness
                 if (actor.PlayerSession.AttachedEntity != uid
                     || !_mobState.IsCritical(uid))
                     return;
@@ -78,10 +73,16 @@ public sealed class CritMobActionsSystem : EntitySystem
                 {
                     lastWords = lastWords.Substring(0, MaxLastWordsLength);
                 }
+
                 lastWords += "...";
 
-                _chat.TrySendInGameICMessage(uid, lastWords, InGameICChatType.Whisper, ChatTransmitRange.Normal, checkRadioPrefix: false, ignoreActionBlocker: true);
-                _host.ExecuteCommand(actor.PlayerSession, "suicide"); // Stalker-Changes
+                _chat.TrySendInGameICMessage(
+                    uid,
+                    lastWords,
+                    InGameICChatType.Whisper,
+                    ChatTransmitRange.Normal,
+                    checkRadioPrefix: false,
+                    ignoreActionBlocker: true);
             });
 
         args.Handled = true;

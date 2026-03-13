@@ -29,8 +29,8 @@
         Slash: 3
         Piercing: 6
       coefficients:
-        Blunt: 0.8
-        Slash: 0.8
+        Blunt: 0.85
+        Slash: 0.85
         Piercing: 0.7
   - type: ExplosionResistance
     damageCoefficient: 0.80

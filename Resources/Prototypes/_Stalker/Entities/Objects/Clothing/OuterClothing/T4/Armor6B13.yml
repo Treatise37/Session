@@ -11,9 +11,9 @@
     armorClass: 4
     modifiers:
       flatReductions:
-        Blunt: 5
-        Slash: 5
-        Piercing: 6
+        Blunt: 3
+        Slash: 3
+        Piercing: 8
       coefficients:
         Blunt: 0.70
         Slash: 0.70
@@ -80,19 +80,18 @@
       armorClass: 4
       modifiers:
        flatReductions:
-         Blunt: 5
+         Blunt: 6
          Slash: 6
-         Piercing: 6
+         Piercing: 7
+         Heat: 1
          Radiation: 1
+         Shock: 1
        coefficients:
          Blunt: 0.7
-         Slash: 0.8
-         Piercing: 0.75
-         Heat: 0.7
-         Radiation: 0.8
-         Caustic: 0.75
-         Shock: 0.8
-         Compression: 0.65
+         Slash: 0.7
+         Piercing: 0.7
+    - type: ExplosionResistance
+      damageCoefficient: 0.65
 
 - type: entity
   parent: STClothingOuterArmor6B13Base

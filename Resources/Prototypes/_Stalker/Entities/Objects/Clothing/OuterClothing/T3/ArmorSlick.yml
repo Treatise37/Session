@@ -23,7 +23,7 @@
         Slash: 0.9
         Piercing: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.80
+    damageCoefficient: 0.75
 
 - type: entity
   parent: STClothingOuterSlickBlack

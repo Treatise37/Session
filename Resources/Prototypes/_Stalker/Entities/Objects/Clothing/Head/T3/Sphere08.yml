@@ -16,8 +16,6 @@
         Slash: 0.70
         Piercing: 0.95
         Psy:   0.90
-  - type: ExplosionResistance
-    damageCoefficient: 0.90
   - type: Reflect
     reflectProb: 0.08
     spread: 360

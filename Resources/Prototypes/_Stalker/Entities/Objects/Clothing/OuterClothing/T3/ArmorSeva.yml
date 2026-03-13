@@ -34,17 +34,20 @@
         Piercing: 3
         Heat: 4
         Radiation: 4
-        Caustic: 4
-        Shock: 4
+        Caustic: 3
+        Shock: 2
       coefficients:
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.8
-        Heat: 0.50
-        Radiation: 0.6
-        Caustic: 0.50
+        Heat: 0.6
+        Radiation: 0.7
+        Caustic: 0.55
         Shock: 0.60
-        Compression: 0.7
+        Compression: 0.65
+        Psy: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
   - type: Tag
     tags:
     - BlockBack
@@ -123,6 +126,32 @@
   name: белый костюм "Сева" Учёных
   description: "Разработанный Киевским НИИ костюм замкнутого цикла, предназначенный специально для работы в условиях Зоны со старым дизайном"
   components:
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+          Blunt: 2
+          Slash: 2
+          Piercing: 2
+          Heat: 2
+          Radiation: 4
+          Caustic: 4
+          Shock: 4
+          Compression: 4
+          Cold: 4
+          Psy: 2
+        coefficients:
+          Blunt: 0.75
+          Slash: 0.7
+          Piercing: 0.8
+          Heat: 0.5
+          Radiation: 0.7
+          Caustic: 0.5
+          Shock: 0.6
+          Compression: 0.7
+          Psy: 0.6
+    - type: ExplosionResistance
+      damageCoefficient: 0.9
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/outerClothing/seva_sci.rsi
     - type: Clothing
@@ -164,6 +193,28 @@
       - 8,2,8,3
       - 9,0,9,0
       - 10,2,10,3
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 3
+        Slash: 3
+        Piercing: 5
+        Heat: 2
+        Radiation: 4
+        Caustic: 2
+        Shock: 2
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.8
+        Piercing: 0.7
+        Heat: 0.55
+        Radiation: 0.65
+        Caustic: 0.55
+        Shock: 0.65
+        Compression: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_military.rsi
   - type: Clothing
@@ -197,6 +248,28 @@
   name: костюм "Сева" монолита
   description: Научный костюм, вариант «СЕВЫ», производимый монолитовцами.
   components:
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 4
+        Slash: 4
+        Piercing: 3
+        Heat: 4
+        Radiation: 4
+        Caustic: 4
+        Shock: 4
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_monolith.rsi
   - type: Clothing
@@ -229,6 +302,28 @@
   name: костюм "Сева" Чистого Неба
   description: "Разработанный Киевским НИИ костюм замкнутого цикла, предназначенный специально для работы в условиях Зоны. Имеет встроенный бронежилет. Имеет встроенный бронежилет и усиленную защиту по всем параметрам."
   components:
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 4
+        Slash: 4
+        Piercing: 3
+        Heat: 4
+        Radiation: 4
+        Caustic: 4
+        Shock: 4
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_cn.rsi
   - type: Clothing
@@ -242,6 +337,28 @@
   name: костюм "Сева" Наёмников
   description: Научный костюм наёмников действующих в ЧЗО, вариант «СЕВЫ», производимый по заказу наёмников.
   components:
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 4
+        Slash: 4
+        Piercing: 3
+        Heat: 4
+        Radiation: 4
+        Caustic: 4
+        Shock: 4
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_merc.rsi
   - type: Clothing
@@ -274,6 +391,28 @@
   name: костюм «Сева» группы поиск
   description: Модифицированный костюм замкнутого цикла, разработанный с учетом специфики работы в условиях Зоны для членов группировки "Поиск".
   components:
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 4
+        Slash: 4
+        Piercing: 3
+        Heat: 4
+        Radiation: 4
+        Caustic: 4
+        Shock: 4
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_poisk.rsi
   - type: Clothing
@@ -303,6 +442,28 @@
   name: костюм "Сева" Нейтралов
   description: "Разработанный Киевским НИИ костюм замкнутого цикла, был перекрашен членами группировки Нейтралов. Предназначен специально для работы в условиях Зоны."
   components:
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+          Blunt: 4
+          Slash: 4
+          Piercing: 3
+          Heat: 4
+          Radiation: 4
+          Caustic: 4
+          Shock: 4
+        coefficients:
+          Blunt: 0.8
+          Slash: 0.8
+          Piercing: 0.8
+          Heat: 0.5
+          Radiation: 0.6
+          Caustic: 0.5
+          Shock: 0.6
+          Compression: 0.7
+    - type: ExplosionResistance
+      damageCoefficient: 0.8
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/outerClothing/seva_neutral.rsi
     - type: Clothing
@@ -344,6 +505,28 @@
   name: костюм "Сева" Серафимов
   description: "Разработанный Киевским НИИ костюм замкнутого цикла, предназначенный специально для работы в условиях Зоны. Имеет встроенный бронежилет. Имеет встроенный бронежилет и усиленную защиту по всем параметрам."
   components:
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+        Blunt: 5
+        Slash: 5
+        Piercing: 3
+        Heat: 3
+        Radiation: 4
+        Caustic: 3
+        Shock: 3
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.7
+        Piercing: 0.8
+        Heat: 0.55
+        Radiation: 0.6
+        Caustic: 0.56
+        Shock: 0.6
+        Compression: 0.7
+    - type: ExplosionResistance
+      amageCoefficient: 0.8
     - type: STWeight
       self: 12
     - type: Sprite
@@ -377,6 +560,28 @@
   name: костюм «Сева GROM-9»
   description: "Модифицированный костюм Сева версии «GROM-9» был разработан «Проектом» как надежный бронекостюм, обеспечивающий отличную защиту от пси-излучений и электрических разрядов."
   components:
+  - type: Armor
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Blunt: 4
+        Slash: 4
+        Piercing: 3
+        Heat: 3
+        Radiation: 4
+        Caustic: 3
+        Shock: 5
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.5
+        Radiation: 0.6
+        Caustic: 0.5
+        Shock: 0.6
+        Compression: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/seva_project.rsi
   - type: Clothing
@@ -416,22 +621,24 @@
       armorClass: 2
       modifiers:
        flatReductions:
-         Blunt: 4
-         Slash: 4
+         Blunt: 5
+         Slash: 5
          Piercing: 5
-         Heat: 4
-         Radiation: 4
+         Heat: 2
+         Radiation: 3
          Caustic: 4
-         Shock: 4
+         Shock: 3
        coefficients:
-         Blunt: 0.8
-         Slash: 0.8
+         Blunt: 0.7
+         Slash: 0.75
          Piercing: 0.7
-         Heat: 0.50
-         Radiation: 0.6
-         Caustic: 0.50
-         Shock: 0.60
+         Heat: 0.6
+         Radiation: 0.7
+         Caustic: 0.6
+         Shock: 0.7
          Compression: 0.7
+    - type: ExplosionResistance
+      damageCoefficient: 0.7
 
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
@@ -453,6 +660,31 @@
   name: костюм "Сева" 'Свободы'
   description: "Разработанный Киевским НИИ костюм замкнутого цикла, предназначенный специально для работы в условиях Зоны."
   components:
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+          Blunt: 4
+          Slash: 4
+          Piercing: 4
+          Heat: 4
+          Radiation: 4
+          Caustic: 4
+          Shock: 4
+          Compression: 2
+          Cold: 2
+          Psy: 2
+        coefficients:
+          Blunt: 0.75
+          Slash: 0.75
+          Piercing: 0.75
+          Heat: 0.5
+          Radiation: 0.6
+          Caustic: 0.5
+          Shock: 0.6
+          Compression: 0.7
+    - type: ExplosionResistance
+      damageCoefficient: 0.8
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/outerClothing/seva_freedom.rsi
     - type: Clothing
@@ -484,6 +716,28 @@
   components:
     - type: STWeight
       self: 12
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+          Blunt: 2
+          Slash: 3
+          Piercing: 5
+          Heat: 4
+          Radiation: 4
+          Caustic: 4
+          Shock: 4
+        coefficients:
+          Blunt: 0.8
+          Slash: 0.8
+          Piercing: 0.8
+          Heat: 0.55
+          Radiation: 0.65
+          Caustic: 0.55
+          Shock: 0.65
+          Compression: 0.75
+    - type: ExplosionResistance
+      damageCoefficient: 0.7
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/outerClothing/seva_renegat.rsi
     - type: Clothing

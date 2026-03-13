@@ -23,9 +23,9 @@
     armorClass: 4
     modifiers:
       flatReductions:
-        Blunt: 5
-        Slash: 5
-        Piercing: 6
+        Blunt: 2
+        Slash: 2
+        Piercing: 8
       coefficients:
         Blunt: 0.60
         Slash: 0.60
@@ -81,10 +81,10 @@
     armorClass: 4
     modifiers:
       flatReductions:
-        Blunt: 2
-        Slash: 2
+        Blunt: 6
+        Slash: 6
         Piercing: 6
       coefficients:
-        Blunt: 0.80
-        Slash: 0.80
+        Blunt: 0.75
+        Slash: 0.75
         Piercing: 0.55

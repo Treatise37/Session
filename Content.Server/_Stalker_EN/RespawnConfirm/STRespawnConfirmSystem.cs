@@ -90,7 +90,7 @@ public sealed class STRespawnConfirmSystem : EntitySystem
     /// <summary>
     /// Audio path for the death screen sound effect.
     /// </summary>
-    private const string DeathScreenAudioPath = "/Audio/_RD/DeathScreen/controller.ogg";
+    private const string DeathScreenAudioPath = "";
 
     public override void Initialize()
     {

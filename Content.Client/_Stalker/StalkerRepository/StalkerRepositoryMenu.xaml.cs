@@ -67,10 +67,10 @@ public sealed partial class StalkerRepositoryMenu : DefaultWindow
         Clear();
         PopulateCurrentCategory(_curItems, SearchLine.Text);
     }
+
     public void UpdateAll(List<RepositoryItemInfo> items, List<RepositoryItemInfo> userItems, float maxWeight)
     {
         Clear();
-
 
         // Preserve current category selection
         var previousCategory = _currentCategory;
@@ -78,8 +78,10 @@ public sealed partial class StalkerRepositoryMenu : DefaultWindow
         ResetCategories();
         PopulateCategorySelector(items);
         SetupWeight(items, maxWeight);
-        items.AddRange(userItems);
-        _curItems = items;
+
+        var allItems = new List<RepositoryItemInfo>(items);
+        allItems.AddRange(userItems);
+        _curItems = allItems;
 
         // Restore previous category if it still exists
         var matchingCategory = _categories.FirstOrDefault(c => c.Item1 == previousCategory.Item1);
@@ -89,11 +91,7 @@ public sealed partial class StalkerRepositoryMenu : DefaultWindow
             CategorySelector.SelectId(matchingCategory.Item2);
         }
 
-        PopulateCategorySelector(items);
-        SetupWeight(items, maxWeight);
-        items.AddRange(userItems);
-        _curItems = items;
-        PopulateCurrentCategory(items, SearchLine.Text);
+        PopulateCurrentCategory(allItems, SearchLine.Text);
     }
 
     private void ResetCategories()

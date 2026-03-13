@@ -3,7 +3,7 @@
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorHazmatRf
   name: Бронированный ХАЗМАТ
-  suffix: ST, T5, Env
+  suffix: ST, T4, Env
   description: Кустарно улучшенный ХАЗМАТ с применением аномальных материалов, обеспечивающий хорошую защиту по всем фронтам. Следует использовать с встроенным шлемом.
   components:
     - type: STWeight
@@ -18,19 +18,21 @@
       armorClass: 3
       modifiers:
         flatReductions:
-          Blunt: 5
-          Slash: 5
-          Piercing: 4
+          Blunt: 7
+          Slash: 7
+          Piercing: 6
           Radiation: 6
           Caustic: 6
+          Psy: 5
         coefficients:
           Blunt: 0.7
           Slash: 0.7
           Piercing: 0.7
-          Heat: 0.5
-          Caustic: 0.5
-          Shock: 0.5
-          Compression: 0.5
+          Heat: 0.65
+          Caustic: 0.65
+          Shock: 0.65
+          Compression: 0.65
+          Psy: 0.6
 
 - type: entity
   parent: STClothingHeadHatBase

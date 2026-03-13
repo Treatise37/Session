@@ -52,19 +52,28 @@ public sealed class RDDeathScreenSystem : EntitySystem
         _remove = false;
     }
 
-    private void OnDeath(RDDeathScreenShowEvent ev)
+    private void OnDeath(RDDeathScreenShowEvent ev)  // Stalker 
     {
         _source = null;
 
-        //Log.Debug($"Start death screen \"{ev}\"");
+        // Log.Debug($"Start death screen \"{ev}\"");
 
-        if (ev.AudioPath != string.Empty)
+        if (!string.IsNullOrWhiteSpace(ev.AudioPath))
         {
-            _source = _audio.CreateAudioSource(_resourceCache.GetResource<AudioResource>(ev.AudioPath));
-            if (_source is not null)
+            try
             {
-                _source.Global = true;
-                _source.Restart();
+                var audio = _resourceCache.GetResource<AudioResource>(ev.AudioPath);
+                _source = _audio.CreateAudioSource(audio);
+
+                if (_source is not null)
+                {
+                    _source.Global = true;
+                    _source.Restart();
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Failed to load death screen audio '{ev.AudioPath}': {e}");
             }
         }
 

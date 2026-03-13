@@ -12,11 +12,11 @@
     armorClass: 3
     modifiers:
       coefficients:
-        Blunt: 0.80
+        Blunt: 0.8
         Slash: 0.85
-        Piercing: 0.80
+        Piercing: 0.8
   - type: ExplosionResistance
-    damageCoefficient: 0.95
+    damageCoefficient: 0.9
   - type: Reflect
     reflectProb: 0.12
     spread: 360

@@ -1,6 +1,6 @@
 - type: entity
   id: RDArea
-  categories: [ RDArea ]
+#  categories: [ RDArea ] Stalker
   abstract: true
   placement:
     mode: SnapgridCenter

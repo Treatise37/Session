@@ -30,6 +30,8 @@
         Caustic: 4
         Radiation: 4
         Shock: 3
+        Cold: 2
+        Compression: 2
       coefficients:
         Blunt: 0.9
         Slash: 0.9
@@ -39,6 +41,7 @@
         Shock: 0.70
         Radiation: 0.60
         Compression: 0.60
+        Cold: 0.8
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
@@ -181,9 +184,25 @@
   description: Один из тех костюмов НИИ «ЧаЗ», которые можно назвать удачными.
   components:
   - type: Armor
-    armorLevels:
-      shock: 3
-      psy: 3
+    armorClass: 1
+    modifiers:
+      flatReductions:
+        Heat: 4
+        Caustic: 4
+        Radiation: 4
+        Shock: 3
+        Compression: 2
+        Cold: 2
+        Psy: 3
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.5
+        Caustic: 0.4
+        Shock: 0.7
+        Radiation: 0.6
+        Compression: 0.6
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/ssp99white.rsi
   - type: Clothing
