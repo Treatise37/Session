@@ -3,11 +3,16 @@
   - MobAnomalyTarget
   - MobWeight
   - MobStaminaDamageable
+  - MobFirePat # stalker-changes - fire patting
   id: BaseMobMutant
   save: false
   abstract: true
   suffix: Stalker, Mutant
   components:
+  # RD Components
+  - type: RDWatcherTarget
+    groupId: RDMutant
+  # RD End
   - type: ZoneAnomalyActivator
   - type: LagCompensation
   - type: Tag
@@ -184,6 +189,7 @@
     - MobAnomalyTarget
     - MobWeight
     - MobStaminaDamageable
+    - MobFirePat # stalker-changes - fire patting
   id: STBaseMobMutant
   save: false
   abstract: true

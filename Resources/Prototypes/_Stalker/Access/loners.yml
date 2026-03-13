@@ -23,3 +23,12 @@
   id: Guide
   tags:
   - Guide
+
+- type: accessLevel
+  id: Atom
+  name: Атом
+
+- type: accessGroup
+  id: Atom
+  tags:
+  - Atom

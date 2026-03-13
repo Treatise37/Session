@@ -590,3 +590,47 @@
       portalName: Lobby-Kordon-SciBase
     - type: AccessReader
       access: [["SciBase"]]
+
+###Серафимы
+
+- type: entity
+  parent: MapTeleportBase
+  id: LimaLohina
+  name: Lima-LohiaSer
+  components:
+    - type: NewMapTeleport
+      allowAll: false
+      portalName: Lima-LohiaSer
+    - type: AccessReader
+      access: [["Seraphims"]]
+
+- type: entity
+  parent: MapTeleportBaseUncollide
+  id: LimaLohinaUncollide
+  name: LimaLohinaUncollide
+  components:
+    - type: NewMapTeleport
+      allowAll: false
+      portalName: Lima-LohiaSer
+
+- type: entity
+  parent: MapTeleportBase
+  id: Svalka-BarSvalka
+  name: Svalka-BarSvalka
+  components:
+  - type: NewMapTeleport
+    allowAll: false
+    portalName: Svalka-BarSvalka
+  - type: AccessReader
+    access: [["Military"], ["SciBase"]]
+
+- type: entity
+  parent: MapTeleportBase
+  id: BarSvalka-Svalka
+  name: BarSvalka-Svalka
+  components:
+  - type: NewMapTeleport
+    allowAll: false
+    portalName: Svalka-BarSvalka
+  - type: AccessReader
+    access: [["Bandit"], ["Freedom"], ["Renegat"]]

@@ -69,7 +69,7 @@
 - type: entity
   parent: ClothingOuterArmorStalkerCombatCN
   id: ClothingOuterArmorCN3b
-  name: бронекомбез «ЧН-3б
+  name: бронекомбез «ЧН-3б»
   description: Штатная экипировка штурмовых отрядов «Чистого неба». Бронежилет способен остановить пистолетную пулю, а встроенный брезентовый комбинезон с особой пропиткой обеспечивают хорошую защиту от аномальных воздействий. 3 класс
   components:
   - type: Sprite

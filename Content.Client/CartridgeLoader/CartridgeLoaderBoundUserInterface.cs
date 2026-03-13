@@ -47,7 +47,9 @@ public abstract class CartridgeLoaderBoundUserInterface : BoundUserInterface
         var control = ui?.GetUIFragmentRoot();
 
         //Prevent the same UI fragment from getting disposed and attached multiple times
-        if (_activeUiFragment?.GetType() == control?.GetType())
+        // stalker-changes: compare UIFragment instances, not root control types,
+        // so cartridges with the same root Control type (e.g. BoxContainer) can switch properly
+        if (_activeCartridgeUI == ui)
             return;
 
         if (_activeUiFragment is not null)

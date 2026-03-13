@@ -17,21 +17,21 @@
     armorClass: 2
     modifiers:
       flatReductions:
-        Blunt: 3
-        Slash: 3
-        Piercing: 6
-        Radiation: 1.5
+        Blunt: 2
+        Slash: 2
+        Piercing: 5
+        Radiation: 1
       coefficients:
-        Blunt: 0.8
-        Slash: 0.8
-        Piercing: 0.5
+        Blunt: 0.75
+        Slash: 0.7
+        Piercing: 0.8
         Heat: 0.65
-        Caustic: 0.95
-        Shock: 0.65
+        Caustic: 0.9
+        Shock: 0.75
         Psy: 0.8
         Compression: 0.8
   - type: ExplosionResistance
-    damageCoefficient: 0.90
+    damageCoefficient: 0.8
   # bonus
   - type: Storage
     maxItemSize: Large
@@ -63,12 +63,10 @@
       armorClass: 1
       modifiers:
         coefficients:
-          Piercing: 0.85
-          Heat: 0.98
+          Piercing: 0.95
+          Slash: 0.85
+          Heat: 0.95
           Shock: 0.98
-          Radiation: 0.98
-    - type: ExplosionResistance
-      damageCoefficient: 0.90
     - type: Reflect
       reflectProb: 0.02
       spread: 360

@@ -1173,3 +1173,13 @@
   components:
     - type: AccessReader
       access: [["Guide"]]
+
+- type: entity
+  id: MetalAltDoorFalloutAtomClosed
+  name: стальная дверь
+  parent: MetalAltDoorFallout
+  description: Крепкая стальная дверь с надёжным замком.
+  suffix: ST, mapping, Атом
+  components:
+    - type: AccessReader
+      access: [["Atom"]]

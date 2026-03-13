@@ -28,8 +28,8 @@ public sealed partial class PdaSettingsButton : ContainerButton
     }
     public string? Description
     {
-        get => OptionDescription.Text;
-        set => OptionDescription.Text = value;
+        get => OptionDescription.GetMessage();
+        set => OptionDescription.SetMessage(value ?? string.Empty);
     }
 
     public Color BackgroundColor
@@ -45,7 +45,7 @@ public sealed partial class PdaSettingsButton : ContainerButton
         set
         {
             OptionName.FontColorOverride = value;
-            OptionDescription.FontColorOverride = value;
+            OptionDescription.ModulateSelfOverride = value;
         }
     }
 

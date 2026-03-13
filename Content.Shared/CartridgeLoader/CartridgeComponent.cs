@@ -21,6 +21,11 @@ public sealed partial class CartridgeComponent : Component
 
     [AutoNetworkedField]
     public InstallationStatus InstallationStatus = InstallationStatus.Cartridge;
+
+
+    /// <summary>Whether to show a notification indicator on the program list.</summary>
+    [DataField, AutoNetworkedField]
+    public bool HasNotification; // stalker-changes
 }
 
 [Serializable, NetSerializable]

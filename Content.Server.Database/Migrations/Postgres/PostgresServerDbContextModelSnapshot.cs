@@ -1450,6 +1450,107 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("stalker_faction_relations", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.StalkerFactionRelationProposal", b =>
+                {
+                    b.Property<string>("InitiatingFaction")
+                        .HasColumnType("text")
+                        .HasColumnName("initiating_faction");
+
+                    b.Property<string>("TargetFaction")
+                        .HasColumnType("text")
+                        .HasColumnName("target_faction");
+
+                    b.Property<bool>("Broadcast")
+                        .HasColumnType("boolean")
+                        .HasColumnName("broadcast");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("CustomMessage")
+                        .HasColumnType("text")
+                        .HasColumnName("custom_message");
+
+                    b.Property<int>("ProposedRelationType")
+                        .HasColumnType("integer")
+                        .HasColumnName("proposed_relation_type");
+
+                    b.HasKey("InitiatingFaction", "TargetFaction")
+                        .HasName("PK_stalker_faction_relation_proposals");
+
+                    b.ToTable("stalker_faction_relation_proposals", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.StalkerMessengerContact", b =>
+                {
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<string>("OwnerCharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("owner_character_name");
+
+                    b.Property<Guid>("ContactUserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("contact_user_id");
+
+                    b.Property<string>("ContactCharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("contact_character_name");
+
+                    b.Property<string>("FactionName")
+                        .HasColumnType("text")
+                        .HasColumnName("faction_name");
+
+                    b.HasKey("OwnerUserId", "OwnerCharacterName", "ContactUserId", "ContactCharacterName")
+                        .HasName("PK_stalker_messenger_contacts");
+
+                    b.ToTable("stalker_messenger_contacts", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.StalkerMessengerId", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("character_name");
+
+                    b.Property<string>("MessengerId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("messenger_id");
+
+                    b.HasKey("UserId", "CharacterName")
+                        .HasName("PK_stalker_messenger_ids");
+
+                    b.HasIndex("MessengerId")
+                        .IsUnique();
+
+                    b.ToTable("stalker_messenger_ids", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.StalkerPdaPassword", b =>
+                {
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("character_name");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("password");
+
+                    b.HasKey("CharacterName")
+                        .HasName("PK_stalker_pda_passwords");
+
+                    b.ToTable("stalker_pda_passwords", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.StalkerStats", b =>
                 {
                     b.Property<int>("Id")

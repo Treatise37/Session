@@ -1,5 +1,6 @@
 using Content.Server.Administration;
 using Content.Server.GameTicking;
+using Content.Server.Mobs;
 using Content.Server.Popups;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
@@ -9,7 +10,7 @@ using Robust.Shared.Enums;
 
 namespace Content.Server.Chat.Commands
 {
-    [AdminCommand(AdminFlags.Admin)] // stalker-changes
+    [AnyCommand]
     internal sealed class SuicideCommand : IConsoleCommand
     {
         [Dependency] private readonly IEntityManager _e = default!;

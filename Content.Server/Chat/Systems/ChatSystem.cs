@@ -23,6 +23,7 @@ using Content.Shared.Players.RateLimiting;
 using Content.Shared.Radio;
 using Content.Shared.Station.Components;
 using Content.Shared.Whitelist;
+using Content.Shared._Stalker_EN.SoftCrit;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -59,6 +60,13 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+
+public new const int VoiceRange = 15; // how far voice goes in world units
+    public new const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
+    public new const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
+
+    // Some builds might not include ChatChannel.Narration, so we treat it as a bitflag constant.
+    private const ChatChannel NarrationChannel = (ChatChannel) (1 << 15);
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -217,6 +225,15 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker);
                 return;
             }
+        }
+
+        // stalker-en-changes: soft crit forces speech to whisper
+        var softCritEv = new STSoftCritSpeechEvent(source);
+        RaiseLocalEvent(source, ref softCritEv);
+        if (softCritEv.Override)
+        {
+            desiredType = InGameICChatType.Whisper;
+            ignoreActionBlocker = true;
         }
 
         // Otherwise, send whatever type.
@@ -566,6 +583,31 @@ public sealed partial class ChatSystem : SharedChatSystem
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {source}: {action}");
     }
 
+    /// <summary>
+    ///     Sends a narration message to players within voice range.
+    ///     Unlike emotes, this does NOT include the entity name - it's a pure scene description.
+    /// </summary>
+    public void SendNarration(EntityUid source, string message, IConsoleShell? shell = null, ICommonSession? player = null)
+    {
+        if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
+            return;
+
+        message = FormattedMessage.EscapeText(message.Trim());
+
+        if (string.IsNullOrEmpty(message))
+            return;
+
+        var wrappedMessage = Loc.GetString("chat-manager-narration-wrap-message",
+            ("message", message));
+
+        SendInVoiceRange(NarrationChannel, message, wrappedMessage, source, ChatTransmitRange.Normal);
+
+        if (player != null)
+            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Narration from {player:Player}: {message}");
+        else
+            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Narration from {ToPrettyString(source):user}: {message}");
+    }
+
     // ReSharper disable once InconsistentNaming
     private void SendLOOC(EntityUid source, ICommonSession player, string message, bool hideChat)
     {
@@ -677,9 +719,15 @@ public sealed partial class ChatSystem : SharedChatSystem
             var entHideChat = entRange == MessageRangeCheckResult.HideChat;
 
             // Stalker-chat-start
-            var ev = new STChatMessageOverrideInVoiceRangeEvent(session, channel, source, message, wrappedMessage, entHideChat);
+            // stalker-en-changes-start: voice occlusion support
+            var ev = new STChatMessageOverrideInVoiceRangeEvent(
+                session, channel, source, message, wrappedMessage, entHideChat,
+                data.Range, data.Observer, data.HideChatOverride);
             RaiseLocalEvent(session.AttachedEntity ?? source, ref ev);
+            if (ev.Cancelled)
+                continue;
             _chatManager.ChatMessageToOne(channel, ev.Message, ev.WrappedMessage, source, ev.EntHideChat, session.Channel, author: author);
+            // stalker-en-changes-end
             // Stalker-chat-end
         }
 
@@ -778,7 +826,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         return message;
     }
 
-    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "STchatsanitize"; // Stalker-Chat-Sanitazion
+    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {

@@ -40,10 +40,7 @@
   id: StalkerMercenaryGear
   equipment:
     id: BandPDA
-    torso: STClothingTorsoJacketGray
-    legs: STClothingLegsPantsGray
-    shoes: ClothingShoesSwat
-
+    dogtag: ClothingNeckDogtagMercenary
 
 - type: job
   id: StalkerHeadMercenary
@@ -88,12 +85,8 @@
   id: StalkerHeadMercenaryGear
   equipment:
     id: BandPDA
-    neck: ClothingNeckDogtagBrigand
-    eyes: ClothingEyesGlassesSunglasses
-    torso: STClothingTorsoJacketGray
-    legs: STClothingLegsPantsGray
-    shoes: ClothingShoesSwat
-    back: ClothingBackpackDuffelBlackStalker
+    dogtag: ClothingNeckDogtagMercenaryCommander
+
 - type: stBand
   id: STMercenariesBand
   name: Mercenaries

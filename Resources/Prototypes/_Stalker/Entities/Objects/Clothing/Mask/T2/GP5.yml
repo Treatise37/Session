@@ -18,9 +18,6 @@
       coefficients:
         Caustic: 0.85
         Radiation: 0.9
-  - type: HideLayerClothing
-    slots:
-    - Hair
 
 # скины
 - type: entity
@@ -41,6 +38,3 @@
       coefficients:
         Caustic: 0.85
         Radiation: 0.9
-  - type: HideLayerClothing
-    slots:
-    - Hair

@@ -201,7 +201,7 @@ namespace Content.Client.PDA
             SilentModeButton.Text = state.SilentModeEnabled
                 ? Loc.GetString("comp-pda-ui-silent-mode-button-on")
                 : Loc.GetString("comp-pda-ui-silent-mode-button-off");
-            // stalker-changes-end            
+            // stalker-changes-end
         }
 
         public void UpdateAvailablePrograms(List<(EntityUid, CartridgeComponent)> programs)
@@ -256,6 +256,17 @@ namespace Content.Client.PDA
                 }
 
                 item.ProgramName.Text = Loc.GetString(component.ProgramName);
+
+                // stalker-changes: notification badge
+                item.NotificationDot.Visible = component.HasNotification;
+                if (component.HasNotification)
+                {
+                    item.NotificationDot.PanelOverride = new StyleBoxFlat
+                    {
+                        BackgroundColor = Color.FromHex("#CC4444"),
+                    };
+                }
+
                 item.SetHeight = 20;
                 row.AddChild(item);
 

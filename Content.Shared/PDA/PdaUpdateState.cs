@@ -52,5 +52,6 @@ namespace Content.Shared.PDA
         public string? JobTitle;
         public string? StationAlertLevel;
         public Color StationAlertColor;
+        public NetEntity? PdaOwnerEntity; // stalker-en-changes
     }
 }

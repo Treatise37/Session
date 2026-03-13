@@ -1,9 +1,9 @@
 using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing;
-using Content.Shared.Inventory;
 using Content.Shared.Containers.ItemSlots;
-using Robust.Shared.Player;
+using Content.Shared.Inventory;
 using Robust.Shared.Containers;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -55,11 +55,13 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
     private void OnGotEquipped(Entity<TypingIndicatorClothingComponent> entity, ref ClothingGotEquippedEvent args)
     {
         entity.Comp.GotEquippedTime = _timing.CurTime;
+        Dirty(entity);
     }
 
     private void OnGotUnequipped(Entity<TypingIndicatorClothingComponent> entity, ref ClothingGotUnequippedEvent args)
     {
         entity.Comp.GotEquippedTime = null;
+        Dirty(entity);
     }
 
     private void OnMapInit(Entity<TypingIndicatorClothingComponent> entity, ref MapInitEvent args)

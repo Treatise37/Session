@@ -41,6 +41,9 @@
     maxItemSize: Normal
     grid:
     - 0,0,1,1
+    whitelist:
+      tags:
+        - STArtifact
   - type: Clothing
     quickEquip: true
     slots:
@@ -52,6 +55,8 @@
     sprite: _Stalker/Objects/Misc/artcontainers.rsi
     state: old
     scale: 0.5, 0.5
+  - type: STWeight
+    self: 0.1
 
 - type: entity
   name: продвинутый контейнер для артефактов
@@ -77,6 +82,8 @@
   - type: Sprite
     sprite: _Stalker/Objects/Misc/artcontainers.rsi
     state: new
+  - type: STWeight
+    self: 0.25
 
 
 # Артефакты 32x32

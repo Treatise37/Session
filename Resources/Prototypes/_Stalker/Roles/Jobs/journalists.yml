@@ -40,10 +40,8 @@
   id: JurGear
   equipment:
     id: StalkerPDA
-    torso: ClothingTorsoSweaterStalkerGreen
-    legs: ClothingLegsJeansBlue
-    shoes: STClothingShoesBootsCombatFilled
-    back: ClothingBackpackDuffelGreenStalker
+    dogtag: ClothingNeckDogtagJournalist
+    
 - type: stBand
   id: STJournalistsBand
   name: Journalists

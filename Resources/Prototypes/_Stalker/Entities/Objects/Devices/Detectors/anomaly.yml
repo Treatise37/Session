@@ -24,7 +24,7 @@
       level: 0
       distance: 7
     - type: Item
-      size: Normal
+      size: Small
 
 - type: entity
   parent: ZoneAnomalyBaseDetector

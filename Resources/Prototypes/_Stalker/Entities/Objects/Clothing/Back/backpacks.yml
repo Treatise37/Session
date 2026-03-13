@@ -8,6 +8,8 @@
   components:
     - type: STWeight
       self: 1.7
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/backpacks/Duffels/duffel.rsi
     - type: Storage # 6 клеток подряд + доп 1 клетка отдельно (всего 7)
@@ -146,6 +148,9 @@
     areaInsert: true
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/backpacks/stalker.rsi
+  - type: STWeightInsideReduction
+    reductionFraction: 0.50
+
 
 - type: entity
   parent: ClothingBackpackStalkerZaryaGreen
