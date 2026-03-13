@@ -1,0 +1,37 @@
+- type: shopPreset
+  id: ZealotTrader
+  # minSellPrice: 0
+  # itemsForSale:
+  categories:
+  - name: shop-category-weapons
+    priority: 1
+    items:
+      # 5,45x39
+      STWeaponRifleAKS74U: 3
+  - name: shop-category-magazines
+    priority: 2
+    items:
+      739Mag30: 1
+  - name: shop-category-ammunition
+    priority: 3
+    items:
+      # .45
+      45ACPAPBox: 4 # T3
+  - name: shop-category-medicine
+    priority: 4
+    items:
+      MedkitElite: 15
+  - name: shop-category-armor
+    priority: 6
+    items:
+      # ARMOR
+      STClothingOuterArmorLightPlateVestBasePSZ7rene: 22
+  # - name: shop-category-storage-and-containers
+  #   priority: 7
+  #   items:
+
+
+
+
+
+

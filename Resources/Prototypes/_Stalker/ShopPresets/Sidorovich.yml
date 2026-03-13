@@ -78,6 +78,7 @@
     MutantPartSnorkFoot: 540
 
     #T3 -------- Health * 3
+    MutantPartPsiDogTail: 564
     MutantPartBloodsuckerTentacles: 1200
     MutantPartOraculeEye: 1560
     MutantPartPseudogiantHeart: 9360
@@ -214,6 +215,7 @@
       ClothingOuterArmorZaryaStalkerModifedType2: 2000
       ClothingOuterArmorZaryaStalkerModifedType1: 3500
       ClothingOuterArmorZaryaHunter: 2000
+      ClothingOuterArmorZaryaTourist: 3200
       ClothingHeadHelmetVityaz1C: 3500
       ClothingOuterArmorAborigineStalker: 6000
       ClothingOuterArmorStalker: 7500

@@ -2,6 +2,9 @@
                     xmlns:pda="clr-namespace:Content.Client.PDA"
                     xmlns="https://spacestation14.io">
     <PanelContainer Name="Panel"/>
+    <!-- stalker-changes: notification dot -->
+    <PanelContainer Name="NotificationDot" Access="Public" SetSize="8 8" Visible="False"
+                    HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 2 2 0"/>
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" VerticalExpand="True" MinWidth="60">
             <AnimatedTextureRect HorizontalAlignment="Center" VerticalAlignment="Center" VerticalExpand="True" Name="Icon" Access="Public"/>

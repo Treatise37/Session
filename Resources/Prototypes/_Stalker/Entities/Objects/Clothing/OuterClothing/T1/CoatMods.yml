@@ -18,13 +18,14 @@
     armorClass: 2
     modifiers:
       flatReductions:
-        Blunt: 3
-        Slash: 4
-        Piercing: 3
+        Blunt: 1
+        Slash: 3
+        Piercing: 5
+        Caustic: 1
       coefficients:
         Blunt: 0.75
         Slash: 0.50
-        Piercing: 0.65
+        Piercing: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.7
   - type: ContainerContainer

@@ -6,6 +6,6 @@
 <PanelContainer Name="Panel"/>
 <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8 4 0 4">
     <Label Name="OptionName"/>
-    <Label Name="OptionDescription"/>
+    <RichTextLabel Name="OptionDescription"/>
 </BoxContainer>
 </pda:PdaSettingsButton>

@@ -14,8 +14,6 @@
         Blunt: 0.85
         Slash: 0.85
         Piercing: 0.90
-  - type: ExplosionResistance
-    damageCoefficient: 0.95
   - type: Craftable
   - type: Reflect
     reflectProb: 0.03

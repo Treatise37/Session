@@ -11,6 +11,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.ContentPack;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -26,6 +27,7 @@ public sealed class ActionButton : Control, IEntityControl
 
     private IEntityManager _entities;
     private IPlayerManager _player;
+    private IResourceManager _resourceManager;
     private SpriteSystem? _spriteSys;
     private ActionUIController? _controller;
     private bool _beingHovered;
@@ -70,6 +72,7 @@ public sealed class ActionButton : Control, IEntityControl
 
         _entities = entities;
         _player = IoCManager.Resolve<IPlayerManager>();
+        _resourceManager = IoCManager.Resolve<IResourceManager>();
         _spriteSys = spriteSys;
         _controller = controller;
 
@@ -169,6 +172,7 @@ public sealed class ActionButton : Control, IEntityControl
         base.OnThemeUpdated();
         _buttonBackgroundTexture = Theme.ResolveTexture("ActionsSlotBackground");
         Label.FontColorOverride = Theme.ResolveColorOrSpecified("whiteText");
+        UpdateIcons();
     }
 
     private void OnPressed(GUIBoundKeyEventArgs args)
@@ -306,6 +310,9 @@ public sealed class ActionButton : Control, IEntityControl
         {
             _buttonBackgroundTexture = Theme.ResolveTexture("ActionsSlotBackground");
         }
+
+        if (icon != null)
+            icon = ThemedSpriteResolver.Resolve(icon, Theme.Path, _resourceManager);
 
         SetActionIcon(icon != null ? _spriteSys.Frame0(icon) : null);
     }

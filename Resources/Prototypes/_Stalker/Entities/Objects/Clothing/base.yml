@@ -41,7 +41,10 @@
     pullTime: 2
   - type: HideLayerClothing
     slots:
+    - Hair
     - Snout
+    - HeadTop
+    - HeadSide
     - FacialHair
 
 - type: entity
@@ -287,6 +290,9 @@
   components:
   - type: Storage
     maxItemSize: Tiny
+    blacklist:
+      tags:
+        - STArtifact
     grid:
       - 0,1,0,2
       - 2,1,2,2

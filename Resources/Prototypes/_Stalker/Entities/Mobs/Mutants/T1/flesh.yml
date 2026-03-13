@@ -76,7 +76,12 @@
       damage: 7.5
     - type: STWeight
       self: 120
+      overload: 204
+      maximum: 300
     # Stalker-EN start
+    - type: Tag # ST14-EN: Ritual chasm
+      tags:
+      - STFleshRelated
     - type: STMobVariantConfig
       variants:
       - chance: 0.08
@@ -196,7 +201,12 @@
       damage: 5
     - type: STWeight
       self: 120
+      overload: 204
+      maximum: 300
     # Stalker-EN start
+    - type: Tag # ST14-EN: Ritual chasm
+      tags:
+      - STFleshRelated
     - type: STMobVariantConfig
       variants:
       - chance: 0.08

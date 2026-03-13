@@ -12,12 +12,16 @@ namespace Content.Client.UserInterface.Systems.Chat.Controls;
 [GenerateTypedNameReferences]
 public sealed partial class ChannelFilterPopup : Popup
 {
+    // Some builds might not include ChatChannel.Narration, so we treat it as a bitflag constant.
+    private const ChatChannel NarrationChannel = (ChatChannel) (1 << 15);
+
     // order in which the available channel filters show up when available
     private static readonly ChatChannel[] ChannelFilterOrder =
     {
         ChatChannel.Local,
         ChatChannel.Whisper,
         ChatChannel.Emotes,
+        NarrationChannel,
         ChatChannel.Radio,
         ChatChannel.Notifications,
         ChatChannel.LOOC,

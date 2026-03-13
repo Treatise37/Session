@@ -6,6 +6,22 @@ namespace Content.Shared.Armor;
 [DataDefinition, Serializable, NetSerializable, Virtual]
 public partial class STArmorLevels
 {
+
+    // stalker-en-changes-start
+    private static readonly string[] NonPvPPhysicalTypes = ["Blunt", "Slash"];
+    private static readonly string[] PiercingTypes = ["Piercing"];
+    private static readonly string[] RadiationTypes = ["Radiation"];
+    private static readonly string[] EnvironmentTypes = ["Heat", "Caustic", "Shock", "Compression", "Psy"];
+    private static readonly string[] HeatTypes = ["Heat"];
+    private static readonly string[] CausticTypes = ["Caustic"];
+    private static readonly string[] ShockTypes = ["Shock"];
+    private static readonly string[] PsyTypes = ["Psy"];
+
+    private const float CoefficientAdjustPerLevel = -0.025f;
+    private const float FlatReductionScalePerLevel = 0.5f;
+    // stalker-en-changes-end
+
+
     // Generic
     [DataField("nonPvPPhysical")]
     public int NonPvPPhysicalAdjust = 0;

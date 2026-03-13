@@ -223,14 +223,14 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         if (!TryComp(inputItem, out BallisticAmmoProviderComponent? ammoProvider))
             return returnList;
 
-        // Set Proto from first contained entity if not already set          
+        // Set Proto from first contained entity if not already set
         if (ammoProvider.Container.ContainedEntities.Count != 0)
         {
             var ent = ammoProvider.Container.ContainedEntities.First();
             var entProto = GetPrototypeName(ent);
             ammoProvider.Proto ??= entProto;
         }
-        
+
         // Convert EntProtoId list to strings for JSON serialization compatibility.
         // EntProtoId is a readonly record struct that System.Text.Json cannot reliably deserialize.
         var completeEntProtos = ammoProvider.EntProtos.Select(e => (string)e).ToList();
@@ -245,6 +245,15 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                 completeEntProtos.Insert(0, (string)ammoProvider.Proto.Value);
             }
         }
+
+        // stalker-en-changes-start
+        // Clamp to actual ammo count — prevents persisting stale entries from TakeAmmo desync
+        if (completeEntProtos.Count > ammoProvider.Count)
+        {
+            completeEntProtos.RemoveRange(0, completeEntProtos.Count - ammoProvider.Count);
+        }
+        // stalker-en-changes-end
+
 
         returnList.Add(new AmmoContainerStalker(
             GetPrototypeName(inputItem),

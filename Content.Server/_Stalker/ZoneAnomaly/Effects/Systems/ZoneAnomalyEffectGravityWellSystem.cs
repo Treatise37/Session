@@ -1,6 +1,8 @@
 using Content.Shared._Stalker.ZoneAnomaly;
 using Content.Shared._Stalker.ZoneAnomaly.Components;
 using Content.Shared._Stalker.ZoneAnomaly.Effects.Components;
+using Content.Shared._Stalker_EN.ZoneAnomaly.Effects.Components;
+using Content.Shared.Standing;
 using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
@@ -51,23 +53,29 @@ public sealed class ZoneAnomalyEffectGravityWellSystem : EntitySystem
     {
         var epicenter = _transform.GetMapCoordinates(effect);
         var targets = _lookup.GetEntitiesInRange(epicenter, effect.Comp.Distance);
-        var bodyQuery = GetEntityQuery<PhysicsComponent>();
-        var xformQuery = GetEntityQuery<TransformComponent>();
 
+        // stalker-en-changes: use cached queries instead of recreating per GravPulse call
         foreach (var entity in targets)
         {
             if (effect.Comp.Whitelist is { } whitelist && !_whitelistSystem.IsWhitelistPass(whitelist, entity))
                 continue;
 
-            if (!bodyQuery.TryGetComponent(entity, out var physics) || physics.BodyType == BodyType.Static)
+            if (!_physicsQuery.TryGetComponent(entity, out var physics) || physics.BodyType == BodyType.Static)
                 continue;
 
-            var entityPosition = _transform.GetWorldPosition(entity, xformQuery);
+            var entityPosition = _transform.GetWorldPosition(entity, _transformQuery);
             var displacement = epicenter.Position - entityPosition;
             var distance = displacement.Length();
 
             if (distance == 0)
                 continue; // Avoid division by zero
+
+            // Skip pulling entities already in gib core radius
+            if (TryComp<ZoneAnomalyEffectGibComponent>(effect.Owner, out var gib) &&
+                distance <= gib.CoreRadius)
+            {
+                continue;
+            }
 
             // Normalized vector pointing towards the epicenter
             var radialDirection = displacement / distance;
@@ -89,8 +97,15 @@ public sealed class ZoneAnomalyEffectGravityWellSystem : EntitySystem
             var radialForce = radialDirection * effect.Comp.Radial * scaling;
             var tangentialForce = tangentialDirection * effect.Comp.Tangential * scaling;
 
+            // Reduce force for prone entities
+            var forceMultiplier = 1.0f;
+            if (TryComp<StandingStateComponent>(entity, out var standing) && !standing.Standing)
+            {
+                forceMultiplier = 0.5f;
+            }
+
             // Total force
-            var totalForce = (radialForce + tangentialForce) * physics.Mass;
+            var totalForce = (radialForce + tangentialForce) * physics.Mass * forceMultiplier;
 
             // Apply the impulse to the entity
             _physics.ApplyLinearImpulse(entity, totalForce, body: physics);
@@ -117,5 +132,4 @@ public sealed class ZoneAnomalyEffectGravityWellSystem : EntitySystem
                 return 1f;
         }
     }
-
 }

@@ -2,8 +2,8 @@
 - type: entity
   parent: STBaseWeaponGameRevolver
   id: STWeaponRevolverRugerRedhawk
-  name: Ruger Redhawk .45 ACP
-  description: Шестизарядный надежный револьвер на калибре .45 ACP. Имеет хорошую точность и малую отдачу, является популярным среди различных группировок.
+  name: Ruger Redhawk .44 Magnum
+  description: Шестизарядный надежный револьвер на калибре .44 Magnum. Имеет хорошую точность и малую отдачу, является популярным среди различных группировок.
   components:
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Revolvers/ruger_redhawk_45acp.rsi

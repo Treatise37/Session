@@ -199,7 +199,7 @@
       slots:
         - Back
     - type: MeleeWeapon
-      attackRate: 0.3
+      attackRate: 1
       range: 2.2
       damage:
         types:

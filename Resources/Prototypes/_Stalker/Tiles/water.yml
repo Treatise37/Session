@@ -116,6 +116,7 @@
     fishDefaultTimer: 25.0
     fishTimerVariety: 15.0
   # Goobstation - fishing
+  
 - type: entity
   parent: FloorWaterEntityStalker1
   id: FloorWaterEntityStalker3
@@ -164,6 +165,7 @@
     fishDefaultTimer: 25.0
     fishTimerVariety: 15.0
   # Goobstation - fishing
+
 - type: entity
   parent: FloorWaterEntityStalker1
   name: химические отходы

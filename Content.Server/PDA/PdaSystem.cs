@@ -17,6 +17,7 @@ using Content.Shared.Light;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
+using Content.Shared.Store.Components;
 using Content.Shared._Stalker_EN.PDA.Ringer; // stalker-changes
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
@@ -218,14 +219,15 @@ namespace Content.Server.PDA
                     IdOwner = id?.FullName,
                     JobTitle = id?.LocalizedJobTitle,
                     StationAlertLevel = pda.StationAlertLevel,
-                    StationAlertColor = pda.StationAlertColor
+                    StationAlertColor = pda.StationAlertColor,
+                    PdaOwnerEntity = GetNetEntity(pda.PdaOwner), // stalker-en-changes
                 },
                 pda.StationName,
                 showUplink,
                 hasInstrument,
                 address,
                 silentModeEnabled); // stalker-changes
-                
+
             _ui.SetUiState(uid, PdaUiKey.Key, state);
         }
 

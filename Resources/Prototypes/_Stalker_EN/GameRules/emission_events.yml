@@ -16,7 +16,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
-    earliestStart: 120
+    earliestStart: 60
     reoccurrenceDelay: 0
     duration: 360  # Total event duration (must be >= damageEndDelay + buffer)
   - type: EmissionEventRule
@@ -32,7 +32,7 @@
     # Damage configuration
     damage:
       types:
-        Psy: 5
+        Psy: 50
 
     # Visual effects
     shakeStrength: 50

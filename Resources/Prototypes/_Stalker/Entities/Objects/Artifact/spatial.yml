@@ -279,7 +279,7 @@
         Psy: 3
 
 - type: entity
-  parent: BaseArtifact
+  parent: BaseArtifactStorage
   id: ZoneArtifactDarkCube
   suffix: Stalker, Тёмный куб
   components:
@@ -308,4 +308,3 @@
     sprintModifier: 0.85
   - type: STWeight
     self: 15
-  - type: Dumpable

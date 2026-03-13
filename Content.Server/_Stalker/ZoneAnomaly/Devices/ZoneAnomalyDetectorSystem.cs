@@ -7,6 +7,8 @@ using Content.Shared.Verbs;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
+using Robust.Shared.Audio;      // AudioParams
+using Robust.Shared.Player;  // Filter
 
 namespace Content.Server._Stalker.ZoneAnomaly.Devices;
 
@@ -25,6 +27,7 @@ public sealed class ZoneAnomalyDetectorSystem : SharedZoneAnomalyDetectorSystem
         base.Initialize();
 
         SubscribeLocalEvent<ZoneAnomalyDetectorComponent, UseInHandEvent>(OnUseInHand);
+        SubscribeLocalEvent<ZoneAnomalyDetectorComponent, GetVerbsEvent<AlternativeVerb>>(OnGetDetectorVerbs); // stalker-changes
         SubscribeLocalEvent<ZoneAnomalyDetectorActivatorComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
     }
 
@@ -46,12 +49,31 @@ public sealed class ZoneAnomalyDetectorSystem : SharedZoneAnomalyDetectorSystem
     }
 
 
+    // stalker-changes: check ToggleOnInteract to avoid consuming the event
+    // when an ActivatableUI also needs to handle it (e.g. Svarog radar)
     private void OnUseInHand(Entity<ZoneAnomalyDetectorComponent> detector, ref UseInHandEvent args)
     {
         if (args.Handled)
             return;
 
+        if (!detector.Comp.ToggleOnInteract)
+            return;
+
         args.Handled = TryToggle(detector, args.User);
+    }
+
+    // stalker-changes: alt-verb for toggling detectors that have ToggleOnInteract disabled
+    private void OnGetDetectorVerbs(Entity<ZoneAnomalyDetectorComponent> detector, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (detector.Comp.ToggleOnInteract)
+            return;
+
+        var det = detector;
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Text = Loc.GetString("artifact-radar-verb-toggle-anomaly-detector"),
+            Act = () => TryToggle(det),
+        });
     }
 
     private bool TryToggle(Entity<ZoneAnomalyDetectorComponent> detector, EntityUid? user = null)
@@ -116,7 +138,19 @@ public sealed class ZoneAnomalyDetectorSystem : SharedZoneAnomalyDetectorSystem
             return;
 
         if (playBeep)
-            _audio.PlayPvs(detector.Comp.BeepSound, detector);
+        {
+            const float hearRange = 10f; // hardcoded limit
+            var mapCoords = _transform.GetMapCoordinates(xform);
+            _audio.PlayEntity(
+                detector.Comp.BeepSound,
+                Filter.Empty().AddInRange(mapCoords, hearRange),
+                detector,
+                true,
+                AudioParams.Default
+                    .WithMaxDistance(hearRange)
+                    .WithReferenceDistance(1f)
+                    .WithRolloffFactor(1f));
+        }
 
         var scalingFactor = distance / detector.Comp.Distance;
         var interval = (detector.Comp.MaxBeepInterval - detector.Comp.MinBeepInterval) * scalingFactor + detector.Comp.MinBeepInterval;

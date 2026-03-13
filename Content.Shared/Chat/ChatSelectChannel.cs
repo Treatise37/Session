@@ -51,6 +51,11 @@
         /// </summary>
         Admin = ChatChannel.AdminChat,
 
-        Console = ChatChannel.Unspecified
+        Console = ChatChannel.Unspecified,
+
+        /// <summary>
+        ///     Narration - Admin/GM scene descriptions
+        /// </summary>
+        Narration = (ushort) (1 << 15)
     }
 }
