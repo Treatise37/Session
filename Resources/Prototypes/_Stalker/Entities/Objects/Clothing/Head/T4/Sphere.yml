@@ -22,8 +22,6 @@
         Piercing: 0.85
         Psy:   0.60
         Radiation: 0.70
-  - type: ExplosionResistance
-    damageCoefficient: 0.70
   - type: Reflect
     reflectProb: 0.10
     spread: 360
