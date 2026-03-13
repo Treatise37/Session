@@ -72,7 +72,7 @@
         STWeaponRifleM4: 4000
         STWeaponRifleSCARL: 4800
         STWeaponRifleL85: 1600
-        STBaseWeaponSMGFNP90: 8000
+        STWeaponSMGFNP90: 8000
     - name: shop-category-magazines
       priority: 2
       items:

@@ -1,10 +1,10 @@
 {
   "version": 1,
   "license": "CC-BY 4.0",
-  "copyright": "sprited by leopadro (Github) for Space Station 14. contacts:https://github.com/Leopadro/my-sprites-with-my-meta/tree/main  discord: leopadro",
+  "copyright": "Stalker14 CLA, author: sprited by leopadro (Github) contacts:https://github.com/Leopadro/my-sprites-with-my-meta/tree/main  discord: leopadro",
   "size": {
-    "x": 96,
-    "y": 96
+    "x": 48,
+    "y": 48
   },
   "states": [
     {
