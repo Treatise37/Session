@@ -622,7 +622,7 @@
     allowAll: false
     portalName: Svalka-BarSvalka
   - type: AccessReader
-    access: [["Military"], ["SciBase"]]
+    access: [["Bandit"], ["Freedom"], ["Renegat"]]
 
 - type: entity
   parent: MapTeleportBase
