@@ -241,7 +241,7 @@
   parent: NPCDoll
   id: NPCGunmithAdvanced
   name: Натаниэль Гросман [→   ←]
-  description: Приходя к Натаниэлю вы уйдете либо с отличным оружием, либо с деньгами. Но не вместе. Требует разрешение на боевое оружие.
+  description: Приходя к Натаниэлю вы уйдете либо с отличным оружием, либо с деньгами. Но не вместе.
   components:
   - type: Sprite
     sprite: _Stalker/NPC/BarahloSimp.rsi
@@ -257,10 +257,9 @@
     interfaces:
       enum.ShopUiKey.Key:
         type: ShopBoundUserInterface
-  # - type: Shop  #Commented, shop-preset wiped
-    # moneyId: Roubles
-    # permitId: militaryLicense
-    # shopPresetId: GunsmithAdvanced  #If you uncomment it - CHANGE SHOP PRESET
+  - type: Shop  #Commented, shop-preset wiped
+    moneyId: Roubles
+    shopPresetId: STNPCBarmenPreset
   - type: TypingIndicator
     proto: robot
   - type: TTS # Corvax-TTS

@@ -169,6 +169,7 @@
       - type: Access
         tags:
           - Stalker
+          - Atom
       - type: Bands
         band: Stalker
         bandIcon: atom

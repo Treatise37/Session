@@ -612,3 +612,25 @@
     - type: NewMapTeleport
       allowAll: false
       portalName: Lima-LohiaSer
+
+- type: entity
+  parent: MapTeleportBase
+  id: Svalka-BarSvalka
+  name: Svalka-BarSvalka
+  components:
+  - type: NewMapTeleport
+    allowAll: false
+    portalName: Svalka-BarSvalka
+  - type: AccessReader
+    access: [["Military"], ["SciBase"]]
+
+- type: entity
+  parent: MapTeleportBase
+  id: BarSvalka-Svalka
+  name: BarSvalka-Svalka
+  components:
+  - type: NewMapTeleport
+    allowAll: false
+    portalName: Svalka-BarSvalka
+  - type: AccessReader
+    access: [["Bandit"], ["Freedom"], ["Renegat"]]

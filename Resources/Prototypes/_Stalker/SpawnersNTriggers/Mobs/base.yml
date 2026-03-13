@@ -57,6 +57,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.2
 
 - type: entity
@@ -78,6 +79,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.2
 
 - type: entity
@@ -99,6 +101,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.2
 
 - type: entity
@@ -120,6 +123,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.1
 
 - type: entity
@@ -141,6 +145,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.1
 
 - type: entity
@@ -162,6 +167,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -183,6 +189,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -204,6 +211,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.5
 
 - type: entity
@@ -225,6 +233,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.5
 
 - type: entity
@@ -246,6 +255,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -267,6 +277,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -288,6 +299,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 1
 
 - type: entity
@@ -309,6 +321,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 1
 
 - type: entity
@@ -330,6 +343,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.10
 
 - type: entity
@@ -351,6 +365,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.10
 
 - type: entity
@@ -372,6 +387,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -393,6 +409,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -414,6 +431,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.50
 
 - type: entity
@@ -435,6 +453,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.50
 
 - type: entity
@@ -456,6 +475,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -477,6 +497,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -498,6 +519,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.5
 
 - type: entity
@@ -519,6 +541,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 1
 
 - type: entity
@@ -540,6 +563,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.10
 
 - type: entity
@@ -561,6 +585,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.10
 
 - type: entity
@@ -582,6 +607,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -603,6 +629,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -624,6 +651,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.5
 
 - type: entity
@@ -645,6 +673,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.5
 
 - type: entity
@@ -666,6 +695,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -687,6 +717,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.75
 
 - type: entity
@@ -708,6 +739,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1200
+      timeoutOnRoll: true
       chance: 1
 
 - type: entity
@@ -729,6 +761,7 @@
       maxOffset: 8
       minOffset: 7
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 1
 
 
@@ -751,6 +784,7 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 1800
+      timeoutOnRoll: true
       chance: 0.25
 
 - type: entity
@@ -772,4 +806,5 @@
       maxOffset: 1
       minOffset: 0
       cooldown: 3600
+      timeoutOnRoll: true
       chance: 1

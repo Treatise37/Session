@@ -105,6 +105,7 @@
     legs: ClothingLegsJeansMonolithCamouflage
     shoes: STClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesFingerless
+    dogtag: ClothingNeckDogtagMonolith
 
 - type: stBand
   id: STMonolithBand
