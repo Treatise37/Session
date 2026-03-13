@@ -39,7 +39,7 @@
 - type: job
   id: StalkerClearSkyHead
   name: job-clearsky-head
-  icon: cn
+  icon: lcn
   description: job-clearsky-desc
   playTimeTracker: StalkerClearSkyHead
   whitelisted: true
@@ -64,7 +64,7 @@
         band: Stalker
         altBand: stalker
         canChange: true
-        bandIcon: cn
+        bandIcon: lcn
         bandProto: STClearSkyBand
         bandRankId: 2
       - type: BlockTackingHolyItems

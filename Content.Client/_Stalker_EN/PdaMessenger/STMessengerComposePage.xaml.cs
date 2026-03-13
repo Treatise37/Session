@@ -46,7 +46,7 @@ public sealed partial class STMessengerComposePage : BoxContainer
             var content = Rope.Collapse(ContentInput.TextRope).Trim();
             if (!string.IsNullOrEmpty(content))
             {
-                OnSend?.Invoke(_chatId, content, AnonymousToggle.Pressed);
+                //OnSend?.Invoke(_chatId, content, AnonymousToggle.Pressed);
                 ContentInput.TextRope = Rope.Leaf.Empty;
             }
         };
@@ -73,8 +73,8 @@ public sealed partial class STMessengerComposePage : BoxContainer
         _chatId = chatId;
         _isDmChat = chatId.StartsWith(STMessengerChat.DmChatPrefix, StringComparison.Ordinal);
         ContentInput.TextRope = initialContent is not null ? new Rope.Leaf(initialContent) : Rope.Leaf.Empty;
-        AnonymousToggle.Pressed = false;
-        AnonymousToggle.Visible = !_isDmChat;
+        //AnonymousToggle.Pressed = false;
+        //AnonymousToggle.Visible = !_isDmChat;
 
         _maxLength = _config.GetCVar(STCCVars.MessengerMaxMessageLength);
         var initialLength = initialContent?.Length ?? 0;

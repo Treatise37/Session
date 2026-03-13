@@ -102,7 +102,7 @@
     modifiers:
       coefficients:
         Shock: 1.4
-        Piercing: 0.85
+        Piercing: 0.9
   - type: STWeight
     self: -40
   - type: Reflect
@@ -202,16 +202,16 @@
   - type: PersonalDamage
     damage:
       types:
-        Psy: 1.5
+        Psy: 0.5
     interval: 1
   - type: Armor
     hiddenExamine: true
     armorClass: 2
     modifiers:
       flatReductions:
-        Piercing: 2
+        Piercing: 1
       coefficients:
-        Piercing: 0.85
+        Piercing: 0.9
         Slash: 0.7
         Blunt: 0.7
         Compression: 0.5

@@ -22,7 +22,7 @@
     </BoxContainer>
 
     <!-- Anonymous toggle (channels only) -->
-    <CheckBox Name="AnonymousToggle" Text="{Loc 'st-messenger-compose-anonymous'}" Margin="0 2 0 2"/>
+    <!-- <CheckBox Name="AnonymousToggle" Text="{Loc 'st-messenger-compose-anonymous'}" Margin="0 2 0 2"/> -->
 
     <!-- Reply context (optional) -->
     <PanelContainer Name="ReplyContext" Visible="False" Margin="0 0 0 4">

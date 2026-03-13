@@ -380,8 +380,8 @@
 - type: vendingMachineInventory
   id: MilitaryPSZInventory
   startingInventory:
-    ArmyAKCUCrate: 10
-    ArmyAKCCrate: 5
+    ArmyAKCUCrate: 5
+    ArmyAKCCrate: 3
     ArmyProvisionCrate: 5
     ArmyMedkitMilitaryCrate: 5
     Army545Mag30Crate: 5

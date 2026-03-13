@@ -194,6 +194,30 @@
     },
     {
       "name": "atom"
+    },
+    {
+      "name": "1band"
+    },
+    {
+      "name": "1dolg"
+    },
+    {
+      "name": "1freedom"
+    },
+    {
+      "name": "1sci"
+    },
+    {
+      "name": "lband"
+    },
+    {
+      "name": "lcn"
+    },
+    {
+      "name": "ldolg"
+    },
+    {
+      "name": "lfreedom"
     }
   ]
 }

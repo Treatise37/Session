@@ -67,6 +67,24 @@
     sprintModifier: 0.95
 
 - type: entity
+  parent: ClothingShoesPVH
+  id: ClothingShoesPVHCastom
+  name: сапоги с лягушками
+  description: Надежная защита от влаги, грязи, токсичных отдоходов и в самых неприятных погодных условиях. Изготовленные из прочного и гибкого поливинилхлорида не дающий реагентам проникнуть внутрь ваших ног.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/shoes/boots_army.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/shoes/boots_army.rsi
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0001
+    sprintModifier: 1.0001
+
+- type: entity
   parent: ClothingShoesBase
   id: ClothingShoesBootsLeather
   name: кожанные сапоги

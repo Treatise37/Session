@@ -95,7 +95,8 @@
       items:
         STWeaponSniperVeprGrass: 8000
         STWeaponShotgunShizoToz34: 800
-
+        ClothingShoesPVHCastom: 400
+        
 - type: personalShop
   id: PersonalRet4Shop
   username: Ret4

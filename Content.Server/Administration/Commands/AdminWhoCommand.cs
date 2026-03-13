@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Administration.Commands;
 
-[AnyCommand] // Stalker-Changes: [AdminCommand(AdminFlags.AdminWho)] replaced by [AnyCommand]
+[AdminCommand(AdminFlags.Admin)]
 public sealed class AdminWhoCommand : LocalizedCommands
 {
     [Dependency] private readonly IAfkManager _afkManager = default!;

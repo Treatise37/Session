@@ -15,6 +15,9 @@
     sprite: _Stalker/Objects/Clothing/mask/m51.rsi
   - type: Armor
     modifiers:
+      flatReductions:
+       Radiation: 2
+       Caustic: 2
       coefficients:
         Radiation: 0.8
         Caustic: 0.75

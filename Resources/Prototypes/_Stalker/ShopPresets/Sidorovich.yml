@@ -217,6 +217,7 @@
       ClothingOuterArmorZaryaHunter: 2000
       ClothingOuterArmorZaryaTourist: 3200
       ClothingHeadHelmetVityaz1C: 3500
+      ClothingHeadHelmetAborigine: 3500
       ClothingOuterArmorAborigineStalker: 6000
       ClothingOuterArmorStalker: 7500
   - name: shop-category-storage-and-containers

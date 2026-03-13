@@ -523,3 +523,67 @@
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
     state: atom
+
+- type: jobIcon
+  id: 1band
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: 1band
+
+- type: jobIcon
+  id: 1dolg
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: 1dolg
+
+- type: jobIcon
+  id: 1freedom
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: 1freedom
+
+- type: jobIcon
+  id: 1sci
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: 1sci
+
+- type: jobIcon
+  id: lband
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: lband
+
+- type: jobIcon
+  id: lcn
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: lcn
+
+- type: jobIcon
+  id: ldolg
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: ldolg
+
+- type: jobIcon
+  id: lfreedom
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: lfreedom

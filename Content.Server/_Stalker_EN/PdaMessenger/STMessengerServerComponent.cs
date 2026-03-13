@@ -1,3 +1,4 @@
+using Content.Shared._Stalker.Bands;
 using Content.Shared._Stalker_EN.PdaMessenger;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -87,6 +88,14 @@ public sealed partial class STMessengerServerComponent : Component
     /// </summary>
     [ViewVariables]
     public string? PendingDraftMessage;
+
+    /// <summary>
+    /// The PDA owner's band prototype ID (e.g. "STDolgBand", "STFreedomBand").
+    /// Set once at initialization from the owner's BandsComponent.
+    /// Used to determine which band-restricted channels this PDA can access.
+    /// </summary>
+    [ViewVariables]
+    public ProtoId<STBandPrototype>? OwnerBand;
 }
 
 /// <summary>

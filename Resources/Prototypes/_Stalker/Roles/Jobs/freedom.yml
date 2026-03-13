@@ -41,7 +41,7 @@
 - type: job
   id: StalkerHeadFreedom
   name: job-head-freedom
-  icon: freedom
+  icon: lfreedom
   description: job-head-freedom-desc
   playTimeTracker: JobHeadFreedom
   whitelisted: true
@@ -70,7 +70,7 @@
             - FreedomHead
         - type: Bands
           band: Stalker
-          bandIcon: freedom
+          bandIcon: lfreedom
           bandProto: STFreedomBand
           bandRankId: 2
         - type: BlockTackingHolyItems
@@ -106,7 +106,7 @@
 - type: job
   id: StalkerNoviceFreedom
   name: job-novice-freedom
-  icon: freedom
+  icon: 1freedom
   description: job-freedom-desc
   playTimeTracker: JobNoviceFreedom
   whitelisted: false
@@ -150,7 +150,7 @@
       - Stalker
     - type: Bands
       band: Stalker
-      bandIcon: freedom
+      bandIcon: 1freedom
       bandProto: STFreedomBand
       bandRankId: 2
     - type: BlockTackingHolyItems

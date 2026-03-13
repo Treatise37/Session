@@ -16,6 +16,9 @@
   - type: IdentityBlocker
   - type: Armor
     modifiers:
+      flatReductions:
+       Radiation: 1
+       Caustic: 1
       coefficients:
         Radiation: 0.85
         Caustic: 0.9

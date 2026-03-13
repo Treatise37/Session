@@ -1,7 +1,7 @@
 - type: job
   id: StalkerBandit
   name: job-bandit
-  icon: band
+  icon: lband
   description: job-bandit-desc
   playTimeTracker: JobBandit
   whitelisted: true
@@ -25,7 +25,7 @@
             - BanditHead
         - type: Bands
           band: Stalker
-          bandIcon: band
+          bandIcon: lband
           bandProto: STBanditsBand
           bandRankId: 2
         - type: BlockTackingHolyItems

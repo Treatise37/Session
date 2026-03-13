@@ -6,6 +6,17 @@ st-messenger-program-name = Мессенджер
 # Channel names
 st-messenger-channel-general = Общий
 st-messenger-channel-rookie = Новичкам
+st-messenger-channel-loners = Одиночки
+st-messenger-channel-neutrals = Нейтралы
+st-messenger-channel-duty = Долг
+st-messenger-channel-freedom = Свобода
+st-messenger-channel-bandits = Бандиты
+st-messenger-channel-ecologist = Экологи
+st-messenger-channel-mercenaries = Наёмники
+st-messenger-channel-military = Военные
+st-messenger-channel-monolith = Монолит
+st-messenger-channel-clearsky = Чистое Небо
+st-messenger-channel-renegades = Ренегаты
 
 # Main page
 st-messenger-header-title = STALKER MESSENGER

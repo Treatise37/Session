@@ -40,7 +40,7 @@
 - type: job
   id: StalkerHeadDolg
   name: job-head-dolg
-  icon: Dolg
+  icon: ldolg
   description: job-head-dolg-desc
   playTimeTracker: JobHeadDolg
   whitelisted: true
@@ -68,7 +68,7 @@
             - Stalker
         - type: Bands
           band: Stalker
-          bandIcon: Dolg
+          bandIcon: ldolg
           bandProto: STDolgBand
           bandRankId: 2
         - type: BlockTackingHolyItems
@@ -106,7 +106,7 @@
 - type: job
   id: StalkerNoviceDolg
   name: job-novice-dolg
-  icon: Dolg
+  icon: 1dolg
   description: job-dolg-desc
   playTimeTracker: JobNoviceDolg
   whitelisted: false
@@ -149,7 +149,7 @@
       - Stalker
     - type: Bands
       band: Stalker
-      bandIcon: Dolg
+      bandIcon: 1dolg
       bandProto: STDolgBand
       bandRankId: 2
     - type: BlockTackingHolyItems

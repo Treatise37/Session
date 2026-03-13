@@ -38,6 +38,8 @@
   components:
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/backpacks/town_black.rsi
+  - type: STWeightInsideReduction
+    reductionFraction: 0.25
   - type: Storage #14 клеток
     grid:
         - 0,0,1,0
@@ -53,6 +55,8 @@
   name: белый городской рюкзак
   description: Удобный, однако невместительный рюкзак за копейки.
   components:
+  - type: STWeightInsideReduction
+    reductionFraction: 0.25
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/backpacks/town_white.rsi
 
@@ -65,6 +69,8 @@
   parent: ClothingBackpackDuffelGreenStalker
   suffix: ST
   components:
+  - type: STWeightInsideReduction
+    reductionFraction: 0.35
   - type: Craftable
   - type: Storage
     grid:
@@ -159,6 +165,8 @@
   description: Вместительный сталкерский рюкзак чёрного цвета из комплекта «Заря», частенько используется в качестве заначки.
   suffix: ST
   components:
+  - type: STWeightInsideReduction
+    reductionFraction: 0.50
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/backpacks/stalker_black.rsi
 
@@ -169,6 +177,8 @@
   description: Вместительный рюкзак, обычно берут в походы, но в зоне самый раз!
   suffix: ST
   components:
+  - type: STWeightInsideReduction
+    reductionFraction: 0.60
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/backpacks/Other/backpack1.rsi
   - type: Storage #40  клеток (способен носить 2 втомата внутри, доступен только гп)
@@ -199,6 +209,8 @@
     - 0,8,1,8
     quickInsert: true
     areaInsert: true
+  - type: STWeightInsideReduction
+    reductionFraction: 0.40
   - type: Sprite
     sprite: Clothing/Back/Backpacks/merc.rsi
 
@@ -243,6 +255,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.40
 
 - type: entity
   parent: STClothingBackBase
@@ -269,6 +283,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.40
 
 - type: entity
   parent: ClothingBackpackDuffelHikingVSRF
@@ -299,6 +315,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.55
 
 - type: entity
   parent: STClothingBackBase
@@ -316,6 +334,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.55
 
 - type: entity
   parent: STClothingBackBase
@@ -333,6 +353,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.55
 
 - type: entity
   parent: STClothingBackBase
@@ -350,6 +372,8 @@
     tags:
     - STClothingBackpackT4
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.55
 
 # Tier - 5
 
@@ -385,6 +409,8 @@
     tags:
     - STClothingBackpackT5
     - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.60
 
 - type: entity
   parent: STClothingBackBase
@@ -402,7 +428,8 @@
     tags:
     - STClothingBackpackT5
     - BlockBack
-
+  - type: STWeightInsideReduction
+    reductionFraction: 0.60
 # Tier - 6
 
 - type: entity
@@ -417,7 +444,8 @@
   - type: Storage
     grid:
     - 0,0,8,7 #72 Клеткок
-
+  - type: STWeightInsideReduction
+    reductionFraction: 0.60
 # Аномальные
 
 

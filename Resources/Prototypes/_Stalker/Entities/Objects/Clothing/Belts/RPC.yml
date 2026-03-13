@@ -7,6 +7,8 @@
   components:
   - type: STWeight
     self: 1
+  - type: STWeightInsideReduction
+    reductionFraction: 0.20
   - type: Storage
     maxItemSize: Normal
     quickInsert: true
@@ -61,6 +63,8 @@
   components:
     - type: STWeight
       self: 0.5
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/belt/belt_novice.rsi
     - type: Clothing
@@ -83,6 +87,8 @@
   name: портупея
   description: Позволяет удобно хранить и быстро доставать ножи
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 0.5
     - type: Sprite
@@ -116,6 +122,8 @@
   description: Набор подсумков и поясная сумка старого зелёного варианта комплекта персональной системы защиты, не предназаченного для местности ЧЗО.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -138,6 +146,8 @@
   description: Набор подсумков и поясная сумка офицерского комплекта персональной системы защиты в раскраске вудланд, имеющий пистолетную кобуру.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -162,6 +172,8 @@
   description: Поясной сумка из комплекта «Заря» с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -183,6 +195,8 @@
   description: Поясной сумка из комплекта «Заря» со второй маленькой сумкой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 5
     - type: Storage
@@ -203,6 +217,8 @@
   description: Набор подсумков и поясная сумка комплекта 'Берилл-5М' в раскраске вудланд, имеющий пистолетную кобуру.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 4
     - type: Storage
@@ -227,6 +243,8 @@
   description: Поясной сумка из комплекта наёмника с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -248,6 +266,8 @@
   description: Поясной сумка из комплекта берёзки наёмника с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -269,6 +289,8 @@
   description: Поясной сумка из бандитского комплекта «Валет» с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -290,6 +312,8 @@
   description: Поясной сумка из комплекта наёмного сталкера с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -311,6 +335,8 @@
   description: Поясной сумка из комплекта ПС5-М «Универсальная защита» с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -332,6 +358,8 @@
   description: Поясной сумка из комплекта «Страж свободы» с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage
@@ -353,6 +381,8 @@
   description: Поясной сумка из комплекта «Ветер свободы» со второй маленькой сумкой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 5
     - type: Storage
@@ -373,6 +403,8 @@
   description: Поясной сумка из комплекта «Монолита» с пистолетной кобурой.
   suffix: ST
   components:
+    - type: STWeightInsideReduction
+      reductionFraction: 0.20
     - type: STWeight
       self: 3
     - type: Storage

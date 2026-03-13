@@ -14,6 +14,9 @@
     sprite: _Stalker/Objects/Clothing/mask/ppm_88.rsi
   - type: Armor
     modifiers:
+      flatReductions:
+        Radiation: 0.5
+        Caustic: 0.5
       coefficients:
         Radiation: 0.85
         Caustic: 0.82

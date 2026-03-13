@@ -218,7 +218,7 @@ public sealed class STBulletinBoardSystem : EntitySystem
         storage[offer.Id] = offer;
         _globalOfferIndex[offer.Id] = board.BoardTypeId;
 
-        _adminLogger.Add(LogType.Action, LogImpact.Low,
+        _adminLogger.Add(LogType.STBulletinBoard, LogImpact.Low,
             $"{ToPrettyString(args.Actor):player} posted bulletin board [{board.BoardTypeId}] {post.Category}: " +
             $"desc=\"{description}\"");
 
@@ -248,7 +248,7 @@ public sealed class STBulletinBoardSystem : EntitySystem
         storage.Remove(withdraw.OfferId);
         _globalOfferIndex.Remove(withdraw.OfferId);
 
-        _adminLogger.Add(LogType.Action, LogImpact.Low,
+        _adminLogger.Add(LogType.STBulletinBoard, LogImpact.Low,
             $"{ToPrettyString(args.Actor):player} withdrew bulletin board [{boardTypeId}] offer #{withdraw.OfferId}");
 
         BroadcastUiUpdate(boardTypeId);
@@ -285,7 +285,7 @@ public sealed class STBulletinBoardSystem : EntitySystem
         var draftMessage = STBulletinOffer.FormatRef(draftPrefix, contact.OfferId);
         _messenger.OpenDm(loaderUid, messengerUid.Value, contact.PosterMessengerId, draftMessage);
 
-        _adminLogger.Add(LogType.Action, LogImpact.Low,
+        _adminLogger.Add(LogType.STBulletinBoard, LogImpact.Low,
             $"{ToPrettyString(args.Actor):player} opened DM from bulletin board with: " +
             $"{contact.PosterMessengerId} (offer #{contact.OfferId})");
     }

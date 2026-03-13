@@ -1,3 +1,4 @@
+using Content.Shared._Stalker.Bands;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager.Attributes;
 
@@ -31,4 +32,17 @@ public sealed class STMessengerChannelPrototype : IPrototype
     /// </summary>
     [DataField]
     public int SortOrder { get; } = 0;
+
+    /// <summary>
+    /// Band prototype IDs that grant access to this channel.
+    /// Empty list = open to all players.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<STBandPrototype>> RequiredBands { get; } = new();
+
+    /// <summary>
+    /// Whether messages in this channel are forwarded to the Discord webhook.
+    /// </summary>
+    [DataField]
+    public bool BroadcastToDiscord { get; } = false;
 }

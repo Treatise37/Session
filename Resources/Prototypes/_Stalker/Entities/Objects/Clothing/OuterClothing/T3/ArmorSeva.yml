@@ -508,23 +508,23 @@
     - type: Armor
       armorClass: 1
       modifiers:
-        flatReductions:
-        Blunt: 5
-        Slash: 5
-        Piercing: 3
-        Heat: 3
-        Radiation: 4
-        Caustic: 3
-        Shock: 3
-      coefficients:
-        Blunt: 0.75
-        Slash: 0.7
-        Piercing: 0.8
-        Heat: 0.55
-        Radiation: 0.6
-        Caustic: 0.56
-        Shock: 0.6
-        Compression: 0.7
+       flatReductions:
+         Blunt: 5
+         Slash: 5
+         Piercing: 3
+         Heat: 3
+         Radiation: 4
+         Caustic: 3
+         Shock: 3
+       coefficients:
+         Blunt: 0.75
+         Slash: 0.7
+         Piercing: 0.8
+         Heat: 0.55
+         Radiation: 0.6
+         Caustic: 0.56
+         Shock: 0.6
+         Compression: 0.7
     - type: ExplosionResistance
       amageCoefficient: 0.8
     - type: STWeight
@@ -779,7 +779,7 @@
        flatReductions:
          Blunt: 5
          Slash: 5
-         Piercing: 5 
+         Piercing: 5
        coefficients:
          Slash: 0.6
          Piercing: 0.55

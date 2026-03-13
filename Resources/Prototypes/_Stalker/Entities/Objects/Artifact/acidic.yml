@@ -141,7 +141,7 @@
     color: "#7fff00"
     castShadows: false
   - type: STWeight
-    self: 5
+    self: 2
   - type: PersonalDamage
     damage:
       types:
@@ -175,7 +175,7 @@
     color: "#7fff00"
     castShadows: false
   - type: STWeight
-    self: 5
+    self: 2
   - type: PersonalDamage
     damage:
       types:

@@ -4,11 +4,11 @@
   id: STBaseWeaponShotgunSawedOf
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/sawn.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/sawn.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
   - type: Item
-    sprite: Objects/Weapons/Guns/Shotguns/sawn.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
     size: Small
     heldPrefix: sawn
   - type: STWeight
@@ -31,7 +31,7 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.15
-    
+
 - type: entity
   parent: STBaseWeaponShotgunSawedOf
   id: STWeaponShotgunSawedOf

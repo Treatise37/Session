@@ -1,7 +1,7 @@
 - type: job
   id: MilitaryStalker
   name: job-military-stalker
-  icon: voen
+  icon: army
   description: job-military-stalker-desc
   playTimeTracker: JobMilitaryStalker
   whitelisted: true
@@ -26,7 +26,7 @@
         altBand: stalker
         canChange: true
         band: Stalker
-        bandIcon: voen
+        bandIcon: army
       - type: BlockTackingHolyItems
       - type: TeethPull
         teethProto: ToothStalker
@@ -41,14 +41,17 @@
 - type: job
   id: Military
   name: job-military
-  icon: voen1
+  icon: army
   description: job-military-desc
   playTimeTracker: JobMilitary
-  whitelisted: true
+  whitelisted: false
   requirements:
     # - !type:RoleTimeRequirement
     #   role: JobMilitary
     #   time: 1
+    - !type:DepartmentTimeRequirement
+      department: Stalker
+      time: 15h
     - !type:SpeciesRequirement
       species:
       - Human
@@ -64,7 +67,7 @@
           - Military
       - type: Bands
         band: Stalker
-        bandIcon: voen1
+        bandIcon: army
         bandProto: STMilitaryBand
         bandRankId: 1
       - type: BlockTackingHolyItems
@@ -81,7 +84,7 @@
 - type: job
   id: MilitaryHead
   name: job-military-head
-  icon: voen2
+  icon: army
   description: job-military-head-desc
   playTimeTracker: JobHeadMilitary
   whitelisted: true
@@ -104,7 +107,7 @@
             - MilitaryHead
         - type: Bands
           band: Stalker
-          bandIcon: voen2
+          bandIcon: army
           bandProto: STMilitaryBand
           bandRankId: 3
         - type: BlockTackingHolyItems
@@ -122,14 +125,17 @@
 - type: job
   id: MilitaryOfficer
   name: job-military-officer
-  icon: voen3
+  icon: army
   description: job-military-officer-desc
   playTimeTracker: JobOfficerMilitary
-  whitelisted: true
+  whitelisted: false
   requirements:
     # - !type:RoleTimeRequirement
     #   role: JobOfficerMilitary
     #   time: 1
+    - !type:DepartmentTimeRequirement
+      department: StalkerOfficials
+      time: 15h
     - !type:SpeciesRequirement
       species:
       - Human
@@ -145,7 +151,7 @@
             - MilitaryOfficer
         - type: Bands
           band: Stalker
-          bandIcon: voen3
+          bandIcon: army
           bandProto: STMilitaryBand
           bandRankId: 2
         - type: BlockTackingHolyItems
@@ -160,6 +166,7 @@
     torso: ClothingTorsoTurtlenecksUa
     shoes: STClothingShoesBootsCombatFilled
     id: MilitaryPDA
+    dogtag: ClothingNeckDogtagMilitary
 
 - type: startingGear
   id: MilitaryGearOfficer
@@ -168,6 +175,7 @@
     torso: ClothingTorsoTurtlenecksUa
     shoes: STClothingShoesBootsCombatFilled
     id: MilitaryPDA
+    dogtag: ClothingNeckDogtagMilitary
 
 - type: startingGear
   id: MilitaryGearHead
@@ -176,6 +184,7 @@
     torso: ClothingTorsoTurtlenecksUa
     shoes: STClothingShoesBootsCombatFilled
     id: MilitaryPDA
+    dogtag: ClothingNeckDogtagMilitaryCommander
 
 - type: startingGear
   id: MilitarySpecGear
@@ -184,6 +193,7 @@
     legs: ClothingLegsJeansGreenCargo
     torso: ClothingTorsoTurtlenecksMilitary
     shoes: STClothingShoesBootsCombatFilled
+    dogtag: ClothingNeckDogtagMilitary
 
 - type: startingGear
   id: OksopSpecOps

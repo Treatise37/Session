@@ -14,6 +14,9 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/mask/gp7.rsi
   - type: Armor
+    flatReductions:
+      Radiation: 1
+      Caustic: 1
     modifiers:
       coefficients:
         Radiation: 0.85
