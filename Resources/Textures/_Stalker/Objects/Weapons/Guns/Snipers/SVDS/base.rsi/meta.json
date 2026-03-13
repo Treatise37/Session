@@ -10,12 +10,10 @@
       "name": "base"
     },
     {
-      "name": "base-scope",
-      "directions": 4
+      "name": "base-scope"
     },
     {
-      "name": "bolt-open",
-      "directions": 4
+      "name": "bolt-open"
     },
     {
       "name": "equipped-BACKPACK",
@@ -34,8 +32,7 @@
       "directions": 4
     },
     {
-      "name": "icon",
-      "directions": 4
+      "name": "icon"
     },
     {
       "name": "inhand-left",
@@ -54,8 +51,7 @@
       "directions": 4
     },
     {
-      "name": "mag-0",
-      "directions": 4
+      "name": "mag-0"
     },
     {
       "name": "wielded-inhand-left",

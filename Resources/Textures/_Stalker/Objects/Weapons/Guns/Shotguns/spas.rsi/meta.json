@@ -10,16 +10,13 @@
       "name": "base"
     },
     {
-      "name": "bolt-open",
-      "directions": 4
+      "name": "bolt-open"
     },
     {
-      "name": "butt-close",
-      "directions": 4
+      "name": "butt-close"
     },
     {
-      "name": "butt-open",
-      "directions": 4
+      "name": "butt-open"
     },
     {
       "name": "equipped-BACKPACK",
@@ -38,8 +35,7 @@
       "directions": 4
     },
     {
-      "name": "icon",
-      "directions": 4
+      "name": "icon"
     },
     {
       "name": "inhand-left",
