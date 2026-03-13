@@ -26,6 +26,10 @@
     items:
       # ARMOR
       STClothingOuterArmorLightPlateVestBasePSZ7rene: 22
+      ClothingHeadHelmetVityazSkull1: 2 #rueco
+      ClothingHeadHelmetVityazSkull2: 2 #rueco
+      ClothingHeadHelmetVityazSkull3: 2 #rueco
+      ClothingHeadHelmetVityazSkull4: 2 #rueco
   # - name: shop-category-storage-and-containers
   #   priority: 7
   #   items:
