@@ -36,6 +36,24 @@
   - STGlasses
 
 - type: roleLoadout
+  id: JobStalkerHeadMercenary
+  groups:
+  - STTrinketsGroupOne
+  - STTrinketsGroupTwo
+  - STBackpackGroup
+  - STStorageTrinkets
+  - STShoesGroup
+  - STOuterClothingStalkerGroup
+  - STMaskStalkerGroup
+  - STBeltStalkerGroup
+  - STlegsGroup
+  - STTorsoGroup
+  - STSuitstorageGroup
+  - STStorage
+  - STStorageAmmunition
+  - STGlasses
+
+- type: roleLoadout
   id: JobStalkerJournalist
   groups:
   - STTrinketsGroupOne
