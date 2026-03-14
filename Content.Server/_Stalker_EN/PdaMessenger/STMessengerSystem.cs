@@ -280,8 +280,11 @@ public sealed partial class STMessengerSystem : EntitySystem
         var chatId = send.TargetChatId;
         var isDm = chatId.StartsWith(STMessengerChat.DmChatPrefix, StringComparison.Ordinal);
 
+        // Effective anonymous flag: only allowed for non-DM channels that explicitly permit it
+        var isAnonymous = send.IsAnonymous && !isDm;
+
         // Determine display name: anonymous pseudonym for channels, real name for DMs
-        var displayName = (send.IsAnonymous && !isDm)
+        var displayName = isAnonymous
             ? GetOrCreatePseudonym(senderKey)
             : senderName;
 
@@ -324,8 +327,17 @@ public sealed partial class STMessengerSystem : EntitySystem
             if (!_protoManager.TryIndex(chatId, out channelProto))
                 return;
 
+            // Re-resolve the holder's band before access check (band may have changed)
+
             if (!HasChannelAccess(channelProto, server))
                 return;
+
+            // Enforce per-channel anonymous setting
+            if (isAnonymous && !channelProto.AllowAnonymous)
+            {
+                isAnonymous = false;
+                displayName = senderName;
+            }
 
             storageKey = chatId;
             chatMessages = _channelChats.GetOrNew(storageKey);
@@ -335,8 +347,8 @@ public sealed partial class STMessengerSystem : EntitySystem
         _nextMessageId.TryAdd(storageKey, 0);
         var msgId = ++_nextMessageId[storageKey];
 
-        // Resolve faction for non-anonymous messages; null hides faction on anonymous messages
-        string? senderFaction = !send.IsAnonymous
+        // Resolve faction and rank for non-anonymous messages; null hides them on anonymous messages
+        string? senderFaction = !isAnonymous
             ? ResolveContactFaction(senderKey)
             : null;
 
@@ -362,7 +374,7 @@ public sealed partial class STMessengerSystem : EntitySystem
             ? $" (reply to #{rid}: \"{replySnippet}\")"
             : "";
 
-        if (send.IsAnonymous && !isDm)
+        if (isAnonymous)
         {
             _adminLogger.Add(LogType.STMessenger, LogImpact.Medium,
                 $"{ToPrettyString(args.Actor):player} sent anonymous message " +
@@ -941,6 +953,11 @@ public sealed partial class STMessengerSystem : EntitySystem
     #endregion
 
     #region Helpers
+
+    /// <summary>
+    /// Resolves the current rank icon of an online contact by looking up their PDA holder's STCharacterRankComponent.
+    /// Returns null if the contact is offline, PDA is not equipped, or has no rank.
+    /// </summary>
 
     /// <summary>
     /// Resolves the current faction of an online contact by looking up their PDA holder's BandsComponent.
