@@ -324,13 +324,6 @@ public sealed partial class STMessengerSystem : EntitySystem
             if (!_protoManager.TryIndex(chatId, out channelProto))
                 return;
 
-            if (TryComp<TransformComponent>(loaderUid, out var pdaXform))
-            {
-                var holder = pdaXform.ParentUid;
-                if (holder.IsValid())
-                    server.OwnerBand = ResolveMobBand(holder);
-            }
-
             if (!HasChannelAccess(channelProto, server))
                 return;
 
@@ -470,13 +463,6 @@ public sealed partial class STMessengerSystem : EntitySystem
         {
             if (!TryComp<STMessengerServerComponent>(cartridgeUid, out var server))
                 continue;
-
-            if (TryComp<TransformComponent>(pdaUid, out var pdaXform))
-            {
-                var holder = pdaXform.ParentUid;
-                if (holder.IsValid())
-                    server.OwnerBand = ResolveMobBand(holder);
-            }
 
             if (!HasChannelAccess(channelProto, server))
                 continue;
