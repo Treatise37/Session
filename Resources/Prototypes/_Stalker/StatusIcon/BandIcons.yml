@@ -511,6 +511,7 @@
 - type: jobIcon
   id: monolithfree
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -519,6 +520,7 @@
 - type: jobIcon
   id: atom
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -526,6 +528,7 @@
 
 - type: jobIcon
   id: 1band
+  isShaded: true
   locationPreference: Right
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
@@ -535,6 +538,7 @@
 - type: jobIcon
   id: 1dolg
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -543,6 +547,7 @@
 - type: jobIcon
   id: 1freedom
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -551,6 +556,7 @@
 - type: jobIcon
   id: 1sci
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -559,6 +565,7 @@
 - type: jobIcon
   id: lband
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -567,6 +574,7 @@
 - type: jobIcon
   id: lcn
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -575,6 +583,7 @@
 - type: jobIcon
   id: ldolg
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
@@ -583,6 +592,7 @@
 - type: jobIcon
   id: lfreedom
   locationPreference: Right
+  isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true

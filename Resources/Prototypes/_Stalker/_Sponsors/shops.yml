@@ -95,8 +95,9 @@
       items:
         STWeaponSniperVeprGrass: 8000
         STWeaponShotgunShizoToz34: 800
+        754Mag10: 200
         ClothingShoesPVHCastom: 400
-        
+
 - type: personalShop
   id: PersonalRet4Shop
   username: Ret4
@@ -207,6 +208,7 @@
   - name: Персональная категория
     items:
       STWeaponRifleSCARL: 3000
+      STWeaponRifleOC14AltSkin1: 5000
 
 - type: personalShop
   id: PersonalHLoRka_202Shop
@@ -247,3 +249,11 @@
   - name: Персональная категория
     items:
       STWeaponSniperSKSpersecutor: 3500
+
+- type: personalShop
+  id: PersonalK981vzShop
+  username: K981vz
+  categories:
+  - name: Персональная категория
+    items:
+      CasseteSixtyTwoDonateRadio: 500

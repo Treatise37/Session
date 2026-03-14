@@ -12,6 +12,9 @@
     size: Large
     shape:
     - 0,0,3,3
+    blacklist:
+      tags:
+      - STArtifact
   - type: Storage
     maxItemSize: Normal
     grid:

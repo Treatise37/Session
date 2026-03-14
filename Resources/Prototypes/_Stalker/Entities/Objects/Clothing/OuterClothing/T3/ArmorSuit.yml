@@ -20,6 +20,9 @@
     grid:
       - 0,0,0,0
       - 2,0,2,0
+    blacklist:
+      tags:
+      - STArtifact
   - type: Armor
     armorClass: 3
     modifiers:
@@ -768,7 +771,7 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/strash_limaphim.rsi
   - type: Armor
-    armorClass: 3
+    armorClass: 4
     modifiers:
       flatReductions:
         Blunt: 5
