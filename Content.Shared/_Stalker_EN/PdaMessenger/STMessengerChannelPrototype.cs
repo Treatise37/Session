@@ -41,6 +41,12 @@ public sealed class STMessengerChannelPrototype : IPrototype
     public List<ProtoId<STBandPrototype>> RequiredBands { get; } = new();
 
     /// <summary>
+    /// Whether users can send anonymous messages in this channel.
+    /// </summary>
+    [DataField]
+    public bool AllowAnonymous { get; } = false;
+
+    /// <summary>
     /// Whether messages in this channel are forwarded to the Discord webhook.
     /// </summary>
     [DataField]
