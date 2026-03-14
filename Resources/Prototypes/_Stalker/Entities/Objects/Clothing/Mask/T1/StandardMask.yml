@@ -17,6 +17,9 @@
   - type: Craftable
   - type: Armor
     modifiers:
+      flatReductions:
+        Radiation: 0.5
+        Caustic: 0.5
       coefficients:
         Radiation: 0.85
   - type: HideLayerClothing

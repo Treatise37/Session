@@ -16,8 +16,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Radiation: 2.75
-        Caustic: 2.65
+        Radiation: 0.75
+        Caustic: 0.65
         Piercing: 0.97
       flatReductions:
-        Piercing: 1
+        Radiation: 2.5
+        Caustic: 2.5

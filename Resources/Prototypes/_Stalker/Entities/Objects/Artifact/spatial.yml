@@ -137,6 +137,9 @@
     - type: Storage
       grid:
         - 0,0,3,3
+      blacklist:
+        tags:
+        - STArtifact
     - type: STWeight
       self: 3
     - type: Armor

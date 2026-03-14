@@ -38,6 +38,9 @@
     sprite: _Stalker/Objects/Clothing/mask/gp5_green.rsi
   - type: Armor
     modifiers:
+      flatReductions:
+        Radiation: 0.5
+        Caustic: 0.5
       coefficients:
         Caustic: 0.85
         Radiation: 0.9

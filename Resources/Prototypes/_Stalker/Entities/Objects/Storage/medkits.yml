@@ -40,7 +40,9 @@
           - Pill
           - Healing
           - Defibrillator
-
+        blacklist:
+          tags:
+          - STArtifact
 - type: entity
   parent: ClothingBeltStorageStalkerBase
   id: ClothingBeltMedicalStalker

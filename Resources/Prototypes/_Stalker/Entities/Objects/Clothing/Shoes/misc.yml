@@ -67,15 +67,15 @@
     sprintModifier: 0.95
 
 - type: entity
-  parent: ClothingShoesPVH
+  parent: STClothingShoesBootsCombat
   id: ClothingShoesPVHCastom
   name: сапоги с лягушками
   description: Надежная защита от влаги, грязи, токсичных отдоходов и в самых неприятных погодных условиях. Изготовленные из прочного и гибкого поливинилхлорида не дающий реагентам проникнуть внутрь ваших ног.
   components:
   - type: Sprite
-    sprite: _Stalker/Objects/Clothing/shoes/boots_army.rsi
+    sprite: _Stalker/Objects/Clothing/shoes/boots_farforik.rsi
   - type: Clothing
-    sprite: _Stalker/Objects/Clothing/shoes/boots_army.rsi
+    sprite: _Stalker/Objects/Clothing/shoes/boots_farforik.rsi
   - type: ContainerFill
     containers:
       item:
@@ -83,6 +83,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0001
     sprintModifier: 1.0001
+  - type: Armor
+    armorClass: 0
+    modifiers:
+      flatReductions:
+        Caustic: 1
 
 - type: entity
   parent: ClothingShoesBase

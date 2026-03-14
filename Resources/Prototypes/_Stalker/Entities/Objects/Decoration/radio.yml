@@ -1544,6 +1544,24 @@
     sprite: _Stalker/Objects/Misc/casete.rsi
     state: c5
 
+- type: entity
+  parent: BaseItem
+  id: CasseteSixtyTwoDonateRadio
+  suffix: Stalker, кассета, (анимация)
+  name: кассета "анимация"
+  description: Старая потрёпанная кассета. Предположительно, на неё записана какая-то песня. На передней части кассеты имеется неразборчивая надпись. Сделано на заказ для Ret4.
+  components:
+  - type: STWeight
+    self: 0.15
+  - type: Cassete
+    sound: /Audio/_Stalker/Music/Radio/Donate/AnimaciYA.ogg
+  - type: Tag
+    tags:
+      - Cassete
+  - type: Sprite
+    sprite: _Stalker/Objects/Misc/casete.rsi
+    state: c5
+
 # Groups Donate Cassets
 
 # Bandits
