@@ -364,7 +364,6 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
-    - map: [ "cloak" ] # stalker-changes
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "cloak" ] # stalker-changes
