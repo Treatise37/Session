@@ -1,0 +1,13 @@
+- type: shopPreset
+  id: JournalistShopPreset
+  categories:
+  - name: shop-category-utilities
+    priority: 1
+    items:
+      Paper: 1
+      PaperOffice: 5
+      Pen: 5
+      LuxuryPen: 50
+      BoxFolderYellow: 30
+      BoxFolderClipboard: 50
+      BriefcaseBrown: 250

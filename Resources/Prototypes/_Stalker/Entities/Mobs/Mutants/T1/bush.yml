@@ -84,3 +84,8 @@
       damage: 3
     - type: STWeight
       self: 25
+    - type: Bloodstream
+      bloodReagents:
+        reagents:
+        - ReagentId: Water
+          Quantity: 1

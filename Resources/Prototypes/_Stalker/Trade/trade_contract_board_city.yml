@@ -1,0 +1,45 @@
+﻿- type: entity
+  id: TradeContractBoardCity
+  parent: Trademachine
+  name: доска контрактов города
+  description: доска с заказами на поставки, охоту, ремонт и особые цели
+  suffix: contracts
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: Structures/Wallmounts/noticeboard.rsi
+    layers:
+    - state: noticeboard
+  - type: NcStore
+    contractPresets:
+    - TradeContractsCityPreset
+
+- type: Tag
+  id: TradeContractHuntSpawn
+
+- type: Tag
+  id: TradeContractMineSpawn
+
+- type: Tag
+  id: TradeContractStoreSpawn
+
+- type: Tag
+  id: TradeContractRoadSpawn
+
+- type: Tag
+  id: TradeContractWarehouseSpawn
+
+- type: Tag
+  id: TradeContractDeliverySpawn
+
+- type: Tag
+  id: TradeContractStructureSpawn
+
+- type: Tag
+  id: TradeContractRepairSpawn
+
+- type: Tag
+  id: TradeContractGhostSpawn
+
+- type: Tag
+  id: TradeContractStructureDropoff
