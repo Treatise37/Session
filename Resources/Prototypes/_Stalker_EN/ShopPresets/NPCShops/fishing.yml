@@ -32,6 +32,9 @@
     STCraftCottonFabricT1: 50
     STCraftPinePlankT1: 50
     STCraftSheetCopperT1: 50
+    STCraftGlassT1: 50
+    STCraftPlasticFittingT1: 50
+    STCraftBasicPCBT1: 50
   categories:
     - name: shop-category-utilities
       priority: 0
