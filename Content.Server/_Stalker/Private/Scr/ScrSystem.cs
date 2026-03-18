@@ -33,7 +33,7 @@ public sealed partial class ScrSystem : EntitySystem
         var isValid = true;
         var (userComment, software) = _ReadExifTags(message.Data);
 
-        if (userComment != $"{message.MsgChannel.UserId}" || software != "CorvaxSS14")
+        if (userComment != $"{message.MsgChannel.UserId}" || software != "StalkerSS14")
         {
             isValid = false;
             _logger.Warning($"Player {message.MsgChannel.UserId} sent an invalid EXIF tag. UserComment: {userComment}, Software: {software}");

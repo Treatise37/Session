@@ -24,7 +24,7 @@ public sealed partial class ScrManager
         WriteBe16(ms, 42);
         WriteBe32(ms, 8);
 
-        var softwareBytes = System.Text.Encoding.ASCII.GetBytes("CorvaxSS14\0");
+        var softwareBytes = System.Text.Encoding.ASCII.GetBytes("StalkerSS14\0");
         var ifd0DataOffset = 8 + 2 + 2 * 12 + 4;
 
         WriteBe16(ms, 2);
