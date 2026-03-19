@@ -27,23 +27,15 @@ public sealed class STWeightAlertSystem : EntitySystem
 
     private void RefreshAlert(EntityUid uid, float total, float max)
     {
-        if (max <= 0f)
+        if (total >= 100f)
         {
-            _alerts.ClearAlert(uid, WeightAlert);
+            _alerts.ShowAlert(uid, WeightAlert, 2); // красный
             return;
         }
 
-        var percent = total / max;
-
-        if (percent >= 0.75f)
+        if (total >= 50f)
         {
-            _alerts.ShowAlert(uid, WeightAlert, 2);
-            return;
-        }
-
-        if (percent >= 0.5f)
-        {
-            _alerts.ShowAlert(uid, WeightAlert, 1);
+            _alerts.ShowAlert(uid, WeightAlert, 1); // желтый
             return;
         }
 
