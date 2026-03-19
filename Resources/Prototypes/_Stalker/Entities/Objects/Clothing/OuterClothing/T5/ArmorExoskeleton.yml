@@ -126,8 +126,9 @@
 - type: entity
   parent: ClothingOuterArmorExoskelet
   id: ClothingOuterArmorExoSevaProject
-  name: "экзокостюм «Сева OM-360»"
-  description: "Эксперимент «OM-360» был проведён, в связи с усовершенстованными технологиями, «Проект» заполучил массивный экзо-костюм способный практически защищать валдельца от разлиных излучений «Матрицы», благодрая лучшим материалам и высокотехнологичным материалам «Проектом» был создан костюм экзоскелет «Сева» версии OM-360"
+  name: Экзокостюм «Сева OM-360»
+  suffix: ST, T5, UNIVERSAL, Project
+  description: Массивный экзо-костюм способный практически защищать валдельца от разлиных излучений, благодрая лучшим высокотехнологичным материалам.
   components:
   - type: STWeight
     self: 22
@@ -143,8 +144,8 @@
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetExoSevaProject
   categories: [ HideSpawnMenu ]
-  name: "шлем экзо-cевы «OM-360»"
-  description: В отличие от самого экзача, можно сказать вполне обычный шлем.
+  name: Шлем экзокостюма «Сева OM-360»
+  description: В отличие от самого экзокостюма, можно сказать вполне обычный шлем.
   components:
   - type: ExplosionResistance
     damageCoefficient: 0.90

@@ -227,8 +227,9 @@
 - type: entity
   parent: STClothingOuterArmorSSP99Base
   id: STClothingOuterArmorSSP99Project
-  name: костюм «ССП NJ-1»"
-  description: "Специальный электрозащитный костюм, разработанный «Проектом» версии NJ-1, в особом понимании изолирует слабые электрические воздействия как на костюм, так и на его носителя."
+  name: Костюм «ССП NJ-1»
+  suffix: ST, T4, Env, Project
+  description: Специальный электрозащитный костюм версии NJ-1, в особом понимании изолирует слабые электрические воздействия как на костюм, так и на его носителя.
   components:
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/ssp_nj1.rsi
@@ -241,7 +242,7 @@
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHardsuitSevaHelmNJ1
-  name: "шлем ССП «NJ-1»"
+  name: Шлем ССП «NJ-1»
   description: Несмотря, на преимущественно стеклянную состовляющую, довольно прочный.
   suffix: Stalker
   categories: [ HideSpawnMenu ]

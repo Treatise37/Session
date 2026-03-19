@@ -282,7 +282,8 @@
 - type: entity
   parent: STClothingOuterArmorLightPlateVestBase
   id: STClothingOuterArmorLightPlateVestBaseProject
-  name: бронежилет «Щиток-2» сделанный по непонятному проекту
+  name: Модифицированный бронежилет «Щиток-2»
+  suffix: ST, T2, PvP, Project
   description: Лёгкий бронежилет второго класса защиты, основа основ.
   components:
   - type: Sprite
