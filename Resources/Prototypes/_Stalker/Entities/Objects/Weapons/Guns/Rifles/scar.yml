@@ -139,13 +139,6 @@
   - type: GunWieldBonus
     minAngle: -50
     maxAngle: -50
-  - type: Clothing
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
-  - type: Item
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
-  - type: Sprite
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
-    scale: 0.75, 0.75
   - type: Gun
     minAngle: 45
     maxAngle: 90
