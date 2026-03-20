@@ -126,3 +126,29 @@
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetBerill5MMilitary
+  id: ClothingHeadHelmetBerill5MProject
+  suffix: ST, T3, Env, Project
+  name: Модифицированный шлем «Сфера-08»
+  description: Модифицированная версия шлема «Сфера-08» с улучшенными защитными характеристиками. Её кто-то выкрасил в фиолетовый. Является шлемом от «Берилл-5М». Класс брони - 3.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/hats/berill5m_helm_project.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/hats/berill5m_helm_project.rsi
+  - type: Armor
+    armorClass: 3
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.85
+  - type: Reflect
+    reflectProb: 0.12
+    spread: 360
+    reflects:
+      - NonEnergy
+    soundOnReflect: /Audio/_Stalker/Effects/sear.ogg
+  

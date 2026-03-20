@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "license": "Stalker14",
-  "copyright": "By Ignxre",
+  "license": "CC-BY-SA-3.0",
+  "copyright": "author: gr0x / neki5h and belay5, resprited by Ignxre",
   "size": {
     "x": 32,
     "y": 32
@@ -11,7 +11,7 @@
       "name": "icon"
     },
     {
-      "name": "equipped-HELMET",
+      "name": "equipped-OUTERCLOTHING",
       "directions": 4
     },
     {
