@@ -150,3 +150,12 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.57
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/SCAR-SSR.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/SCAR-SSR.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/SCAR-SSR.rsi
+  - type: Scope
+    zoom: 1.65
+    offset: 14
