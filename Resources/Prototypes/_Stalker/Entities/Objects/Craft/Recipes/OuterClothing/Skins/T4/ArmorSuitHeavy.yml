@@ -7,3 +7,13 @@
     secondIngredient: STClothingOuterArmorVeryHeavy
     keepFirst: true
     time: 5
+
+- type: lightCraftingRecipe
+  id: STCraftSkinClothingHeadHelmetUlachFreedomFreedom
+  results:
+    - ClothingHeadHelmetUlachFreedom
+  steps:
+    firstIngredient: STSkinsKitFreedom
+    secondIngredient: ClothingHeadHelmetUlach
+    keepFirst: true
+    time: 5

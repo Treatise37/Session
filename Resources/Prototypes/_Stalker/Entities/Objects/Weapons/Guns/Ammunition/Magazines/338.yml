@@ -1,0 +1,41 @@
+- type: entity
+  id: 338Mag10
+  name: магазин .338 Lapua Magnum (10)
+  description: Магазин .338 Lapua Magnum для снайперских винтовок. Вместимость пуль 10. Продают пустым.
+  parent: Base545Mag10
+  suffix: Stalker
+  components:
+    - type: STWeight
+      self: 1
+    - type: Tag
+      tags:
+        - Magazine338
+    - type: BallisticAmmoProvider
+      mayTransfer: true
+      whitelist:
+        tags:
+          - STCartridge338
+      capacity: 10
+    - type: Item
+      size: Small
+      shape:
+        - 0,0,0,1
+    - type: Sprite
+      scale: 0.8, 0.8
+      sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/338.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-1
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: MagazineVisuals
+      magState: mag
+      steps: 2
+      zeroVisible: false
+    - type: Appearance
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+        storagebase: !type:Container
+          ents: [ ]
+        item_slot: !type:ContainerSlot { }

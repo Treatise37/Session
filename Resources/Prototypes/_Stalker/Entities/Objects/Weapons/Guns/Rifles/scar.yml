@@ -124,3 +124,36 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.57
+
+- type: entity
+  parent: STBaseWeaponRifleSCARH
+  id: STWeaponRifleSCARSSR
+  name: SCAR-SSR
+  suffix: ST, Кастомка
+  description: Belgian battle rifle chambered in 7.62x51mm NATO. Rare in the Zone, mostly used by western mercenaries. Powerful but maintenance-heavy weapon.
+  components:
+  - type: STWeight
+    self: 4.5
+  - type: PullDoAfter
+    pullTime: 4
+  - type: GunWieldBonus
+    minAngle: -50
+    maxAngle: -50
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ARX160.rsi
+    scale: 0.75, 0.75
+  - type: Gun
+    minAngle: 45
+    maxAngle: 90
+    fireRate: 4.5
+    angleIncrease: 1.1
+    angleDecay: 5.5
+    projectileSpeed: 70
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.8
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 1.57

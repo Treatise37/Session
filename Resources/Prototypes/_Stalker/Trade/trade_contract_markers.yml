@@ -4,7 +4,7 @@
   id: MarkerTradeContractBounty
   parent: MarkerBase
   name: контракт, охота
-  suffix: contracts, bounty
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -14,7 +14,7 @@
   id: MarkerTradeContractMine
   parent: MarkerBase
   name: контракт, шахта
-  suffix: contracts, mine
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -24,7 +24,7 @@
   id: MarkerTradeContractStore
   parent: MarkerBase
   name: контракт, магазин
-  suffix: contracts, store
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -34,7 +34,7 @@
   id: MarkerTradeContractRoad
   parent: MarkerBase
   name: контракт, дорога
-  suffix: contracts, road
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -44,7 +44,7 @@
   id: MarkerTradeContractWarehouse
   parent: MarkerBase
   name: контракт, склад
-  suffix: contracts, warehouse
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -54,7 +54,7 @@
   id: MarkerTradeContractDelivery
   parent: MarkerBase
   name: контракт, адресная доставка
-  suffix: contracts, delivery
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -64,7 +64,7 @@
   id: MarkerTradeContractStructure
   parent: MarkerBase
   name: контракт, крупный груз
-  suffix: contracts, structure
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -74,7 +74,7 @@
   id: MarkerTradeContractRepair
   parent: MarkerBase
   name: контракт, ремонт
-  suffix: contracts, repair
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -84,7 +84,7 @@
   id: MarkerTradeContractSpecialTarget
   parent: MarkerBase
   name: контракт, особая цель
-  suffix: contracts, special-target
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
@@ -94,7 +94,7 @@
   id: MarkerTradeContractDropoff
   parent: MarkerBase
   name: контракт, точка выгрузки
-  suffix: contracts, dropoff
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:

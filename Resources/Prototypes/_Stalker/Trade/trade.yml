@@ -30,13 +30,8 @@
         layer:
         - MachineLayer
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/ammo.rsi
-    layers:
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "normal-unshaded"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
+    sprite: _Stalker/NPC/CustomRadioPlayer.rsi
+    state: daniil
   - type: PointLight
     radius: 2.5
     energy: 1
@@ -47,18 +42,16 @@
 - type: entity
   id: TrademachineCity
   parent: Trademachine
-  name: Торговый автомат Города
-  description: Нужно срочно — он рядом. Выбирай, плати, забирай.
-  suffix: vendor, normal
+  name: Кайот
+  description: Выдаёт задания сталкерам.
+  suffix: ST, КВЕСТЫ
   components:
   - type: NcStore
-    buyPresets:
-    - stalker_buy
-    sellPresets:
-    - stalker_sell
     contractPresets:
     - PresetBazar
-
+  - type: Sprite
+    sprite: _Stalker/NPC/CustomRadioPlayer.rsi
+    state: daniil
 # ----------------------------
 # stalker_buy categories
 # ----------------------------

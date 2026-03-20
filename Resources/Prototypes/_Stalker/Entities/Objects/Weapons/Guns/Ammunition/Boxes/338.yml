@@ -1,0 +1,54 @@
+- type: entity
+  parent: BaseAmmoBoxStalker
+  id: 338FMJBox
+  name: Коробка патронов (.338 Lapua Magnum) FMJ
+  description: Для снайперских винтовок, в коробке 10 штук. Обеспечивает пробитие 4 класса брони.
+  suffix: Stalker
+  components:
+    - type: MagazineVisuals
+      magState: 76239ammo
+    - type: BallisticAmmoProvider
+      capacity: 10
+      proto: STCartridge338FMJ
+      whitelist:
+        tags:
+          - STCartridge338
+    - type: Sprite
+      layers:
+        - state: 338
+          map: ["enum.GunVisualLayers.Base"]
+        - state: 76239ammo-1
+          map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: 338FMJBox
+  id: 338PartitionBox
+  name: Коробка патронов (.338 Lapua Magnum) Partition
+  description: Для снайперских винтовок, в коробке 10 штук. Бесполезно против брони.
+  suffix: Stalker
+  components:
+    - type: BallisticAmmoProvider
+      proto: STCartridge338Partition
+    - type: Sprite
+      layers:
+        - state: 338
+          map: ["enum.GunVisualLayers.Base"]
+        - state: 76239ammo-1
+          map: ["enum.GunVisualLayers.Mag"]
+        - state: t3
+
+- type: entity
+  parent: 338FMJBox
+  id: 338FMJBTBox
+  name: Коробка патронов (.338 Lapua Magnum) FMJ BT
+  description: Для снайперских винтовок, в коробке 10 штук. Обеспечивает пробитие 5 класса брони.
+  suffix: Stalker
+  components:
+    - type: BallisticAmmoProvider
+      proto: STCartridge338FMJBT
+    - type: Sprite
+      layers:
+        - state: 338
+          map: ["enum.GunVisualLayers.Base"]
+        - state: 76239ammo-1
+          map: ["enum.GunVisualLayers.Mag"]

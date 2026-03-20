@@ -1,9 +1,9 @@
 ﻿- type: entity
   id: TradeContractBoardCity
   parent: Trademachine
-  name: доска контрактов города
+  name: доска контрактов
   description: доска с заказами на поставки, охоту, ремонт и особые цели
-  suffix: contracts
+  suffix: ST, КВЕСТЫ
   components:
   - type: Sprite
     drawdepth: WallMountedItems

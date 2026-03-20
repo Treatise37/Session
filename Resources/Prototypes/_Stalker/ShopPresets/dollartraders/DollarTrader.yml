@@ -74,10 +74,12 @@
       STWeaponRifleAK103: 300
       STWeaponSniperSVDS: 250
       STWeaponSniperVSS: 600
+      STBaseWeaponRifleSV98: 350
       STWeaponMachineGunRPD: 2000
   - name: shop-category-magazines
     priority: 2
     items:
+      338Mag10: 5
       BaseTommyGunMag: 5
       TommyGunDrum2: 10
       Saiga1270Mag10: 5
@@ -90,6 +92,9 @@
   - name: shop-category-ammunition
     priority: 3
     items:
+      338FMJBox: 20
+      338PartitionBox: 5
+      338FMJBTBox: 40
       918PBMBoxCink: 20
       939SP5BoxCink: 30
       939BPBoxCink: 55

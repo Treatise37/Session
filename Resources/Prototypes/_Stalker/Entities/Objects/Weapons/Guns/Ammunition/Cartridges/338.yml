@@ -1,0 +1,48 @@
+# .338
+
+- type: entity
+  id: BaseSTCartridge338
+  name: cartridge (.338 Lapua Magnum)
+  parent: BaseCartridge
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - STCartridge338
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: "base"
+  - type: STWeight
+    self: 0.02
+
+- type: entity
+  id: STCartridge338FMJ
+  name: Патрон (.338 Lapua Magnum)FMJ
+  parent: BaseSTCartridge338
+  components:
+    - type: CartridgeAmmo
+      proto: Bullet338FMJ
+
+- type: entity
+  id: STCartridge338Partition
+  name: Патрон (.338 Lapua Magnum)Partition
+  parent: BaseSTCartridge338
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet338Partition
+
+- type: entity
+  id: STCartridge338FMJBT
+  name: Патрон (.338 Lapua Magnum)FMJBT
+  parent: BaseSTCartridge338
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet338FMJBT

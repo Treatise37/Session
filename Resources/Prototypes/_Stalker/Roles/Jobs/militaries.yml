@@ -43,6 +43,7 @@
   name: job-military
   icon: army
   description: job-military-desc
+  rules: job-military-rules
   playTimeTracker: JobMilitary
   whitelisted: false
   requirements:
@@ -87,6 +88,7 @@
   icon: army
   description: job-military-head-desc
   playTimeTracker: JobHeadMilitary
+  rules: job-military-rules
   whitelisted: true
   requirements:
     # - !type:RoleTimeRequirement
