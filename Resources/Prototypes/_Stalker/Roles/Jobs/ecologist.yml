@@ -36,6 +36,11 @@
       - type: NpcFactionMember
         factions:
         - Sci
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanEcologists
+          Female: FemaleHumanEcologists
+          Unsexed: MaleHumanEcologists # stalker EN change end
 
 - type: job
   id: StalkerHeadEcologist
@@ -75,4 +80,9 @@
         - type: NpcFactionMember
           factions:
           - Sci
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanEcologists
+            Female: FemaleHumanEcologists
+            Unsexed: MaleHumanEcologists # stalker EN change end
 
