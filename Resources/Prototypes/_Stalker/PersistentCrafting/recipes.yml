@@ -1,0 +1,2015 @@
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1
+  name: persistent-craft-recipe-weapon-t1-name
+  description: persistent-craft-recipe-weapon-t1-desc
+  displayProto: 556FMJBox
+  branch: Weapon
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT1S1
+  craftTime: 4
+  experienceReward: 999
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+  results:
+    - proto: 556FMJBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545FMJBox
+  branch: Weapon
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT1S4
+  craftTime: 4
+  experienceReward: 25
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 2
+    - proto: STCraftSheetIronT2
+      amount: 1
+  results:
+    - proto: 545FMJBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2
+  name: persistent-craft-recipe-weapon-t2-name
+  description: persistent-craft-recipe-weapon-t2-desc
+  displayProto: 556M855Box
+  branch: Weapon
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT2S1
+  craftTime: 5
+  experienceReward: 50
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 3
+    - proto: STCraftSheetBrassT3
+      amount: 1
+  results:
+    - proto: 556M855Box
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545PCBox
+  branch: Weapon
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT2S4
+  craftTime: 5
+  experienceReward: 50
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 3
+    - proto: STCraftSheetBrassT3
+      amount: 1
+  results:
+    - proto: 545PCBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3
+  name: persistent-craft-recipe-weapon-t3-name
+  description: persistent-craft-recipe-weapon-t3-desc
+  displayProto: 556M856Box
+  branch: Weapon
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT3S1
+  craftTime: 6
+  experienceReward: 75
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 4
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+  results:
+    - proto: 556M856Box
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545BPBox
+  branch: Weapon
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT3S4
+  craftTime: 6
+  experienceReward: 75
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 4
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+  results:
+    - proto: 545BPBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4
+  name: persistent-craft-recipe-weapon-t4-name
+  description: persistent-craft-recipe-weapon-t4-desc
+  displayProto: 556WarmagBox
+  branch: Weapon
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT4S1
+  craftTime: 7
+  experienceReward: 100
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 5
+    - proto: STCraftSheetSteelT5
+      amount: 1
+  results:
+    - proto: 556WarmagBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545BSBox
+  branch: Weapon
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT4S4
+  craftTime: 7
+  experienceReward: 100
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 5
+    - proto: STCraftSheetSteelT5
+      amount: 1
+  results:
+    - proto: 545BSBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5
+  name: persistent-craft-recipe-weapon-t5-name
+  description: persistent-craft-recipe-weapon-t5-desc
+  displayProto: 556SSAAPBox
+  branch: Weapon
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT5S1
+  craftTime: 8
+  experienceReward: 125
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 6
+    - proto: STCraftSheetSteelT5
+      amount: 2
+  results:
+    - proto: 556SSAAPBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545NCBox
+  branch: Weapon
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT5S4
+  craftTime: 8
+  experienceReward: 125
+  ingredients:
+    - proto: CraftMaterialGunpowder
+      amount: 6
+    - proto: STCraftSheetSteelT5
+      amount: 2
+  results:
+    - proto: 545NCBox
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1Mag556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 556Mag20
+  branch: Weapon
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT1S1
+  craftTime: 3
+  experienceReward: 15
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: 556Mag20
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1Gun556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleM16
+  branch: Weapon
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT1S1
+  craftTime: 5
+  experienceReward: 25
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleM16
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1Mag545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545Mag20
+  branch: Weapon
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT1S4
+  craftTime: 3
+  experienceReward: 15
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: 545Mag20
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT1Gun545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleAKS74U
+  branch: Weapon
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT1S4
+  craftTime: 5
+  experienceReward: 25
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleAKS74U
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2Mag556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 556Mag30
+  branch: Weapon
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT2S1
+  craftTime: 3
+  experienceReward: 20
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftSheetBrassT3
+      amount: 1
+  results:
+    - proto: 556Mag30
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2Gun556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleM4
+  branch: Weapon
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT2S1
+  craftTime: 6
+  experienceReward: 35
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 2
+    - proto: STCraftSheetBrassT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleM4
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2Mag545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545Mag30
+  branch: Weapon
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT2S4
+  craftTime: 3
+  experienceReward: 20
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftSheetBrassT3
+      amount: 1
+  results:
+    - proto: 545Mag30
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT2Gun545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleAKS74
+  branch: Weapon
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT2S4
+  craftTime: 6
+  experienceReward: 35
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 2
+    - proto: STCraftSheetBrassT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleAKS74
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3Mag556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 556Mag45
+  branch: Weapon
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT3S1
+  craftTime: 4
+  experienceReward: 25
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: 556Mag45
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3Gun556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleG36
+  branch: Weapon
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT3S1
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftSturdyHideT3
+      amount: 1
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleG36
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3Mag545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545Mag45
+  branch: Weapon
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT3S4
+  craftTime: 4
+  experienceReward: 25
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: 545Mag45
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT3Gun545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleAK74M
+  branch: Weapon
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT3S4
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftSturdyHideT3
+      amount: 1
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: STWeaponRifleAK74M
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4Mag556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 556Mag60
+  branch: Weapon
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT4S1
+  craftTime: 4
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+  results:
+    - proto: 556Mag60
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4Gun556
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleHK416
+  branch: Weapon
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT4S1
+  craftTime: 8
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: STWeaponRifleHK416
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4Mag545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545Mag60
+  branch: Weapon
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT4S4
+  craftTime: 4
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+  results:
+    - proto: 545Mag60
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT4Gun545
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleA545
+  branch: Weapon
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT4S4
+  craftTime: 8
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: STWeaponRifleA545
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5Gun556A
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleSCARL
+  branch: Weapon
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT5S1
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STWeaponRifleSCARL
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5Gun556B
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleF2000
+  branch: Weapon
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftWeaponT5S1
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STWeaponRifleF2000
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5Gun545A
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleStalkerAK12
+  branch: Weapon
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT5S4
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STWeaponRifleStalkerAK12
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeT5Gun545B
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponRifleStalkerRPK16
+  branch: Weapon
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftWeaponT5S4
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STWeaponRifleStalkerRPK16
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1
+  name: persistent-craft-recipe-armor-t1-name
+  description: persistent-craft-recipe-armor-t1-desc
+  displayProto: ClothingOuterCoatBanditBlack
+  branch: Armor
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftArmorT1S1
+  craftTime: 5
+  experienceReward: 999
+  ingredients:
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+  results:
+    - proto: ClothingOuterCoatBanditBlack
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterArmorRCBZ
+  branch: Armor
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftArmorT1S4
+  craftTime: 5
+  experienceReward: 25
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 2
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+    - proto: STCraftSheetCopperT1
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+  results:
+    - proto: STClothingOuterArmorRCBZ
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2
+  name: persistent-craft-recipe-armor-t2-name
+  description: persistent-craft-recipe-armor-t2-desc
+  displayProto: ClothingOuterArmorZaryaStalker
+  branch: Armor
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftArmorT2S1
+  craftTime: 6
+  experienceReward: 50
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorZaryaStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorSpark
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 6
+  experienceReward: 50
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorSpark
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3
+  name: persistent-craft-recipe-armor-t3-name
+  description: persistent-craft-recipe-armor-t3-desc
+  displayProto: ClothingOuterArmorSevaStalker
+  branch: Armor
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftArmorT3S1
+  craftTime: 7
+  experienceReward: 75
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorSevaStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorStalker
+  branch: Armor
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftArmorT3S4
+  craftTime: 7
+  experienceReward: 75
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4
+  name: persistent-craft-recipe-armor-t4-name
+  description: persistent-craft-recipe-armor-t4-desc
+  displayProto: ClothingOuterArmorStalkerCombat
+  branch: Armor
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftArmorT4S1
+  craftTime: 8
+  experienceReward: 100
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorStalkerCombat
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorSSP99
+  branch: Armor
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftArmorT4S4
+  craftTime: 8
+  experienceReward: 100
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorSSP99
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5
+  name: persistent-craft-recipe-armor-t5-name
+  description: persistent-craft-recipe-armor-t5-desc
+  displayProto: STClothingOuterHeavyRedut
+  branch: Armor
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftArmorT5S1
+  craftTime: 10
+  experienceReward: 125
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 2
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STClothingOuterHeavyRedut
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorReingerElite
+  branch: Armor
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftArmorT5S4
+  craftTime: 10
+  experienceReward: 125
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 2
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorReingerElite
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1Medkit
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitAI2
+  branch: Armor
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftArmorT1S1
+  craftTime: 3
+  experienceReward: 15
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 1
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+  results:
+    - proto: MedkitAI2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1Backpack
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingBackpackTownBlackStalker
+  branch: Armor
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftArmorT1S4
+  craftTime: 4
+  experienceReward: 20
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 2
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+  results:
+    - proto: ClothingBackpackTownBlackStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Medkit
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitMilitary
+  branch: Armor
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftArmorT2S1
+  craftTime: 4
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftHideT2
+      amount: 1
+    - proto: STCraftTapeKitT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: MedkitMilitary
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Backpack
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingBackpackTacticBeigeStalker
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 5
+  experienceReward: 35
+  ingredients:
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftTapeKitT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingBackpackTacticBeigeStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Medkit
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitScience
+  branch: Armor
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftArmorT3S1
+  craftTime: 5
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 1
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: MedkitScience
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Backpack
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingBackpackDuffelMedicalStalker
+  branch: Armor
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftArmorT3S4
+  craftTime: 6
+  experienceReward: 50
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingBackpackDuffelMedicalStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4Backpack
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingBackpackMercStalker
+  branch: Armor
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftArmorT4S4
+  craftTime: 7
+  experienceReward: 60
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+  results:
+    - proto: ClothingBackpackMercStalker
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5Backpack
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingBackpackStalkerZaryaBlack
+  branch: Armor
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftArmorT5S4
+  craftTime: 8
+  experienceReward: 75
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 1
+    - proto: STCraftCompositeMaterialT5
+      amount: 2
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ClothingBackpackStalkerZaryaBlack
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1BanditBrown
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterCoatBanditBrown
+  branch: Armor
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftArmorT1S1
+  craftTime: 4
+  experienceReward: 18
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 2
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+    - proto: STCraftSheetCopperT1
+      amount: 1
+  results:
+    - proto: ClothingOuterCoatBanditBrown
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1Poisk
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterCoatPoisk
+  branch: Armor
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftArmorT1S1
+  craftTime: 4
+  experienceReward: 18
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 2
+    - proto: STCraftBasicThreadKitT1
+      amount: 1
+  results:
+    - proto: ClothingOuterCoatPoisk
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1HelmetSH68
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetSH68
+  branch: Armor
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftArmorT1S4
+  craftTime: 4
+  experienceReward: 18
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftCottonFabricT1
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetSH68
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1HelmetLight
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetLight
+  branch: Armor
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftArmorT1S4
+  craftTime: 4
+  experienceReward: 18
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftCottonFabricT1
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetLight
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT1SoftPlate
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterSoftPlate
+  branch: Armor
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftArmorT1S4
+  craftTime: 5
+  experienceReward: 22
+  ingredients:
+    - proto: STCraftCottonFabricT1
+      amount: 2
+    - proto: STCraftSheetIronT2
+      amount: 1
+  results:
+    - proto: STClothingOuterSoftPlate
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Armor6B2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmor6B2
+  branch: Armor
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftArmorT2S1
+  craftTime: 5
+  experienceReward: 28
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmor6B2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Kirasa
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterKirasa
+  branch: Armor
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftArmorT2S1
+  craftTime: 5
+  experienceReward: 28
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftTapeKitT2
+      amount: 1
+  results:
+    - proto: STClothingOuterKirasa
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2MaskM40
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingMaskGasM40
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 4
+  experienceReward: 24
+  ingredients:
+    - proto: STCraftHideT2
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingMaskGasM40
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2ArmorCN1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorCN1
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorCN1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2ArmorZN1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorZN1
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorZN1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2Interceptor
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterInterceptorOTV
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 2
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: STClothingOuterInterceptorOTV
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT2HelmetInfantry
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetInfantry
+  branch: Armor
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftArmorT2S4
+  craftTime: 4
+  experienceReward: 24
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftHideT2
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetInfantry
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Merc
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorMerc
+  branch: Armor
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftArmorT3S1
+  craftTime: 6
+  experienceReward: 40
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorMerc
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3SevaMerc
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorSevaMerc
+  branch: Armor
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftArmorT3S1
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorSevaMerc
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3IOTV
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterIOTV
+  branch: Armor
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftArmorT3S1
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: STClothingOuterIOTV
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Korynd
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterKorynd
+  branch: Armor
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftArmorT3S4
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: STClothingOuterKorynd
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3CN3a
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorCN3a
+  branch: Armor
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftArmorT3S4
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorCN3a
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT3Researcher
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterArmorCN-4aResearcher
+  branch: Armor
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftArmorT3S4
+  craftTime: 7
+  experienceReward: 45
+  ingredients:
+    - proto: STCraftSturdyHideT3
+      amount: 2
+    - proto: STCraftGlueKitT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: STClothingOuterArmorCN-4aResearcher
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4PSZ9D
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorPSZ9D
+  branch: Armor
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftArmorT4S1
+  craftTime: 8
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorPSZ9D
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4Hazmat
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorHazmatRf
+  branch: Armor
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftArmorT4S1
+  craftTime: 8
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorHazmatRf
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4HelmetUlach
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetUlach
+  branch: Armor
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftArmorT4S1
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetUlach
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4CN3b
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorCN3b
+  branch: Armor
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftArmorT4S4
+  craftTime: 8
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftPolymerFabricT4
+      amount: 2
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorCN3b
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT4HelmetBerill
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetBerill5MCN
+  branch: Armor
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftArmorT4S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftPlasticFittingT4
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetBerill5MCN
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5Ratnik
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STClothingOuterArmorRatnik
+  branch: Armor
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftArmorT5S1
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: STClothingOuterArmorRatnik
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5Bulat
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorBulatMilitary
+  branch: Armor
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftArmorT5S1
+  craftTime: 9
+  experienceReward: 70
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorBulatMilitary
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5Exoskeleton
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingOuterArmorExoskelet
+  branch: Armor
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftArmorT5S4
+  craftTime: 10
+  experienceReward: 80
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 2
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ClothingOuterArmorExoskelet
+
+- type: persistentCraftRecipe
+  id: PersistentCraftArmorRecipeT5ExoHelmet
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ClothingHeadHelmetExoskelet
+  branch: Armor
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftArmorT5S4
+  craftTime: 6
+  experienceReward: 35
+  ingredients:
+    - proto: STCraftSheetSteelT5
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ClothingHeadHelmetExoskelet
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT1
+  name: persistent-craft-recipe-anomaly-t1-name
+  description: persistent-craft-recipe-anomaly-t1-desc
+  displayProto: ZoneAnomalyDetectorAD1
+  branch: Anomaly
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT1S1
+  craftTime: 5
+  experienceReward: 999
+  ingredients:
+    - proto: STCraftBasicPCBT1
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorAD1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT1Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorUpgradeAD1
+  branch: Anomaly
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT1S4
+  craftTime: 5
+  experienceReward: 25
+  ingredients:
+    - proto: ZoneAnomalyDetectorAD1
+      amount: 1
+    - proto: STCraftCapacitor
+      amount: 1
+    - proto: STCraftBattery
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorUpgradeAD1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2
+  name: persistent-craft-recipe-anomaly-t2-name
+  description: persistent-craft-recipe-anomaly-t2-desc
+  displayProto: ZoneAnomalyDetectorAD2
+  branch: Anomaly
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT2S1
+  craftTime: 6
+  experienceReward: 50
+  ingredients:
+    - proto: ZoneAnomalyDetectorAD1
+      amount: 1
+    - proto: STCraftStandardPCBT2
+      amount: 1
+    - proto: STCraftCoil
+      amount: 1
+    - proto: STCraftTransformer
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorAD2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorUpgradeAD2
+  branch: Anomaly
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT2S4
+  craftTime: 6
+  experienceReward: 50
+  ingredients:
+    - proto: ZoneAnomalyDetectorUpgradeAD1
+      amount: 1
+    - proto: STCraftStandardPCBT2
+      amount: 1
+    - proto: STCraftCoil
+      amount: 1
+    - proto: STCraftTransformer
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorUpgradeAD2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT3
+  name: persistent-craft-recipe-anomaly-t3-name
+  description: persistent-craft-recipe-anomaly-t3-desc
+  displayProto: ZoneArtifactDetectorSpruce
+  branch: Anomaly
+  tier: 3
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT3S1
+  craftTime: 7
+  experienceReward: 75
+  ingredients:
+    - proto: ZoneAnomalyDetectorAD2
+      amount: 1
+    - proto: STCraftMultilayerPCBT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+    - proto: STCraftGlueKitT3
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorSpruce
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT3Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorBMT12
+  branch: Anomaly
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT3S4
+  craftTime: 7
+  experienceReward: 75
+  ingredients:
+    - proto: ZoneAnomalyDetectorUpgradeAD2
+      amount: 1
+    - proto: STCraftMultilayerPCBT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+    - proto: STCraftGlueKitT3
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorBMT12
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT4
+  name: persistent-craft-recipe-anomaly-t4-name
+  description: persistent-craft-recipe-anomaly-t4-desc
+  displayProto: ZoneArtifactDetectorBear
+  branch: Anomaly
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT4S1
+  craftTime: 8
+  experienceReward: 100
+  ingredients:
+    - proto: ZoneArtifactDetectorSpruce
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftTransformer
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorBear
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT4Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorUAD14A
+  branch: Anomaly
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT4S4
+  craftTime: 8
+  experienceReward: 100
+  ingredients:
+    - proto: ZoneAnomalyDetectorBMT12
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftSheetAluminumT4
+      amount: 1
+    - proto: STCraftTransformer
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorUAD14A
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT5
+  name: persistent-craft-recipe-anomaly-t5-name
+  description: persistent-craft-recipe-anomaly-t5-desc
+  displayProto: ZoneArtifactDetectorWolfhound
+  branch: Anomaly
+  tier: 5
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT5S1
+  craftTime: 10
+  experienceReward: 125
+  ingredients:
+    - proto: ZoneArtifactDetectorBear
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftSheetSteelT5
+      amount: 1
+    - proto: ZoneArtifactNightStar
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorWolfhound
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT5Alt
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorUAAL7B
+  branch: Anomaly
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT5S4
+  craftTime: 10
+  experienceReward: 125
+  ingredients:
+    - proto: ZoneAnomalyDetectorUAD14A
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorUAAL7B
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT1Pulse
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorPulse
+  branch: Anomaly
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT1S1
+  craftTime: 4
+  experienceReward: 20
+  ingredients:
+    - proto: STCraftBasicPCBT1
+      amount: 1
+    - proto: STCraftCapacitor
+      amount: 1
+    - proto: STCraftBattery
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorPulse
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT1Hunter
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorHunter
+  branch: Anomaly
+  tier: 1
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT1S1
+  craftTime: 4
+  experienceReward: 20
+  ingredients:
+    - proto: STCraftBasicPCBT1
+      amount: 1
+    - proto: STCraftCapacitor
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorHunter
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT1Bush
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorBush
+  branch: Anomaly
+  tier: 1
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT1S4
+  craftTime: 4
+  experienceReward: 20
+  ingredients:
+    - proto: ZoneArtifactDetectorPulse
+      amount: 1
+    - proto: STCraftCapacitor
+      amount: 1
+    - proto: STCraftBattery
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorBush
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2Response
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorResponse
+  branch: Anomaly
+  tier: 2
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT2S1
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: ZoneArtifactDetectorHunter
+      amount: 1
+    - proto: STCraftStandardPCBT2
+      amount: 1
+    - proto: STCraftCoil
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorResponse
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2ModifiedHunter
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorModifiedHunter
+  branch: Anomaly
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: ZoneArtifactDetectorHunter
+      amount: 1
+    - proto: STCraftStandardPCBT2
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorModifiedHunter
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2ResponseCvoboda
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorResponseCvoboda
+  branch: Anomaly
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: ZoneArtifactDetectorResponse
+      amount: 1
+    - proto: STCraftStandardPCBT2
+      amount: 1
+    - proto: STCraftCoil
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorResponseCvoboda
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT2HandheldContainer
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: HandheldArtifactContainer
+  branch: Anomaly
+  tier: 2
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT2S4
+  craftTime: 5
+  experienceReward: 30
+  ingredients:
+    - proto: STCraftSheetIronT2
+      amount: 1
+    - proto: STCraftGlassT2
+      amount: 1
+    - proto: STCraftPlasticFittingT2
+      amount: 1
+  results:
+    - proto: HandheldArtifactContainer
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT3Barracuda
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorBarracuda
+  branch: Anomaly
+  tier: 3
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT3S4
+  craftTime: 6
+  experienceReward: 45
+  ingredients:
+    - proto: ZoneArtifactDetectorResponse
+      amount: 1
+    - proto: STCraftMultilayerPCBT3
+      amount: 1
+    - proto: STCraftQuartzCrystalT3
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorBarracuda
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT4SeaDevil
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneArtifactDetectorSeaDevil
+  branch: Anomaly
+  tier: 4
+  subTier: 1
+  requiredNode: PersistentCraftAnomalyT4S1
+  craftTime: 7
+  experienceReward: 55
+  ingredients:
+    - proto: ZoneArtifactDetectorBarracuda
+      amount: 1
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+    - proto: STCraftTransformer
+      amount: 1
+  results:
+    - proto: ZoneArtifactDetectorSeaDevil
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT4CrateContainer
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: CrateArtifactContainer
+  branch: Anomaly
+  tier: 4
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT4S4
+  craftTime: 7
+  experienceReward: 55
+  ingredients:
+    - proto: STCraftSheetAluminumT4
+      amount: 2
+    - proto: STCraftGlassT2
+      amount: 2
+    - proto: STCraftHighPerformanceChipT4
+      amount: 1
+  results:
+    - proto: CrateArtifactContainer
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyRecipeT5AD3
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ZoneAnomalyDetectorAD3
+  branch: Anomaly
+  tier: 5
+  subTier: 4
+  requiredNode: PersistentCraftAnomalyT5S4
+  craftTime: 8
+  experienceReward: 70
+  ingredients:
+    - proto: ZoneAnomalyDetectorUAAL7B
+      amount: 1
+    - proto: STCraftNanoChipT5
+      amount: 1
+    - proto: STCraftCompositeMaterialT5
+      amount: 1
+    - proto: STCraftHighStrengthKitT5
+      amount: 1
+  results:
+    - proto: ZoneAnomalyDetectorAD3

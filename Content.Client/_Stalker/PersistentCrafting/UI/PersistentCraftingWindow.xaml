@@ -1,0 +1,46 @@
+<windows:PersistentCraftingWindow
+    xmlns="https://spacestation14.io"
+    xmlns:windows="clr-namespace:Content.Client._Stalker.PersistentCrafting.UI"
+    Title="{Loc 'persistent-craft-window-title'}"
+    MinWidth="1100"
+    MinHeight="760">
+    <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
+        <Label Name="PointsLabel" Access="Public" HorizontalExpand="True" />
+        <RichTextLabel Name="SummaryLabel" Access="Public" Margin="0 4 0 8" />
+        <TabContainer Name="Branches" Access="Public" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="8">
+                <ScrollContainer MinSize="300 0" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="WeaponTierHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="320 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                    <BoxContainer Name="WeaponSubNodeHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="400 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="WeaponDetailHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="8">
+                <ScrollContainer MinSize="300 0" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="ArmorTierHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="320 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                    <BoxContainer Name="ArmorSubNodeHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="400 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="ArmorDetailHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="8">
+                <ScrollContainer MinSize="300 0" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="AnomalyTierHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="320 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                    <BoxContainer Name="AnomalySubNodeHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+                <ScrollContainer MinSize="400 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
+                    <BoxContainer Name="AnomalyDetailHost" Access="Public" Orientation="Vertical" Margin="8 8 8 8" />
+                </ScrollContainer>
+            </BoxContainer>
+        </TabContainer>
+    </BoxContainer>
+</windows:PersistentCraftingWindow>

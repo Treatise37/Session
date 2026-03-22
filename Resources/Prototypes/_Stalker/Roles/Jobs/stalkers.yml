@@ -191,6 +191,7 @@
         pullingItemTag: PliersStalker
         teethCount: 3
         initialTeeth: 3
+      - type: PersistentCraftAccess
       - type: Vocal # stalker EN change start
         sounds:
           Male: MaleHumanLoner

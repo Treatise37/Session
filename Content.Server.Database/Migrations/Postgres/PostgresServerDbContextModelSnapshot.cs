@@ -1685,6 +1685,39 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("stalker_pda_passwords", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.StalkerPersistentCraftProfile", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("text")
+                        .HasColumnName("character_name");
+
+                    b.Property<int>("AvailablePoints")
+                        .HasColumnType("integer")
+                        .HasColumnName("available_points");
+
+                    b.Property<int>("LastRewardedRoundId")
+                        .HasColumnType("integer")
+                        .HasColumnName("last_rewarded_round_id");
+
+                    b.Property<int>("SpentPoints")
+                        .HasColumnType("integer")
+                        .HasColumnName("spent_points");
+
+                    b.Property<string>("UnlockedNodesJson")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("unlocked_nodes_json");
+
+                    b.HasKey("UserId", "CharacterName")
+                        .HasName("PK_stalker_persistent_craft_profiles");
+
+                    b.ToTable("stalker_persistent_craft_profiles", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.StalkerStats", b =>
                 {
                     b.Property<int>("Id")

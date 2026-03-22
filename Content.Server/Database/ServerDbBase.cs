@@ -2318,6 +2318,49 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             }
         }
 
+        public async Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+        }
+
+        public async Task SetStalkerPersistentCraftProfileAsync(
+            Guid userId,
+            string characterName,
+            int availablePoints,
+            int spentPoints,
+            int lastRewardedRoundId,
+            string unlockedNodesJson)
+        {
+            await using var db = await GetDb();
+
+            var record = await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+
+            if (record is null)
+            {
+                db.DbContext.StalkerPersistentCraftProfiles.Add(new StalkerPersistentCraftProfile
+                {
+                    UserId = userId,
+                    CharacterName = characterName,
+                    AvailablePoints = availablePoints,
+                    SpentPoints = spentPoints,
+                    LastRewardedRoundId = lastRewardedRoundId,
+                    UnlockedNodesJson = unlockedNodesJson,
+                });
+            }
+            else
+            {
+                record.AvailablePoints = availablePoints;
+                record.SpentPoints = spentPoints;
+                record.LastRewardedRoundId = lastRewardedRoundId;
+                record.UnlockedNodesJson = unlockedNodesJson;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
         // stalker-en-changes: News articles
         public async Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit)
         {

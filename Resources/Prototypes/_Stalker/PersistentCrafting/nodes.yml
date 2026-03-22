@@ -1,0 +1,1094 @@
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT1
+  name: persistent-craft-node-weapon-t1-name
+  description: persistent-craft-node-weapon-t1-desc
+  branch: Weapon
+  nodeType: MainTier
+  tier: 1
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 1
+  displayLabel: I
+  displayProto: 556FMJBox
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT1S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 1
+  cost: 0
+  displayLabel: 1.1
+  displayProto: 556FMJBox
+  prerequisites:
+  - PersistentCraftWeaponT1
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT1S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Weapon
+  nodeType: MaterialEfficiency
+  tier: 1
+  subTier: 2
+  cost: 1
+  affectedTier: 1
+  materialCostReductionPercent: 10
+  displayLabel: 1.2
+  displayProto: 556FMJBox
+  prerequisites:
+  - PersistentCraftWeaponT1
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT1S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Weapon
+  nodeType: CraftSpeed
+  tier: 1
+  subTier: 3
+  cost: 1
+  affectedTier: 1
+  craftTimeReductionPercent: 15
+  displayLabel: 1.3
+  displayProto: 556FMJBox
+  prerequisites:
+  - PersistentCraftWeaponT1
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT1S4
+  name: persistent-craft-node-weapon-alt-name
+  description: persistent-craft-node-weapon-alt-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 4
+  cost: 1
+  displayLabel: 1.4
+  displayProto: 545FMJBox
+  prerequisites:
+  - PersistentCraftWeaponT1
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT2
+  name: persistent-craft-node-weapon-t2-name
+  description: persistent-craft-node-weapon-t2-desc
+  branch: Weapon
+  nodeType: MainTier
+  tier: 2
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 2
+  displayLabel: II
+  displayProto: 556M855Box
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT2S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 1
+  cost: 1
+  displayLabel: 2.1
+  displayProto: 556M855Box
+  prerequisites:
+  - PersistentCraftWeaponT2
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT2S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Weapon
+  nodeType: MaterialEfficiency
+  tier: 2
+  subTier: 2
+  cost: 1
+  affectedTier: 2
+  materialCostReductionPercent: 10
+  displayLabel: 2.2
+  displayProto: 556M855Box
+  prerequisites:
+  - PersistentCraftWeaponT2
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT2S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Weapon
+  nodeType: CraftSpeed
+  tier: 2
+  subTier: 3
+  cost: 1
+  affectedTier: 2
+  craftTimeReductionPercent: 15
+  displayLabel: 2.3
+  displayProto: 556M855Box
+  prerequisites:
+  - PersistentCraftWeaponT2
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT2S4
+  name: persistent-craft-node-weapon-alt-name
+  description: persistent-craft-node-weapon-alt-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 4
+  cost: 1
+  displayLabel: 2.4
+  displayProto: 545PCBox
+  prerequisites:
+  - PersistentCraftWeaponT2
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT3
+  name: persistent-craft-node-weapon-t3-name
+  description: persistent-craft-node-weapon-t3-desc
+  branch: Weapon
+  nodeType: MainTier
+  tier: 3
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 3
+  displayLabel: III
+  displayProto: 556M856Box
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT3S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 1
+  cost: 1
+  displayLabel: 3.1
+  displayProto: 556M856Box
+  prerequisites:
+  - PersistentCraftWeaponT3
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT3S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Weapon
+  nodeType: MaterialEfficiency
+  tier: 3
+  subTier: 2
+  cost: 1
+  affectedTier: 3
+  materialCostReductionPercent: 10
+  displayLabel: 3.2
+  displayProto: 556M856Box
+  prerequisites:
+  - PersistentCraftWeaponT3
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT3S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Weapon
+  nodeType: CraftSpeed
+  tier: 3
+  subTier: 3
+  cost: 1
+  affectedTier: 3
+  craftTimeReductionPercent: 15
+  displayLabel: 3.3
+  displayProto: 556M856Box
+  prerequisites:
+  - PersistentCraftWeaponT3
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT3S4
+  name: persistent-craft-node-weapon-alt-name
+  description: persistent-craft-node-weapon-alt-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 4
+  cost: 1
+  displayLabel: 3.4
+  displayProto: 545BPBox
+  prerequisites:
+  - PersistentCraftWeaponT3
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT4
+  name: persistent-craft-node-weapon-t4-name
+  description: persistent-craft-node-weapon-t4-desc
+  branch: Weapon
+  nodeType: MainTier
+  tier: 4
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 4
+  displayLabel: IV
+  displayProto: 556WarmagBox
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT4S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 1
+  cost: 1
+  displayLabel: 4.1
+  displayProto: 556WarmagBox
+  prerequisites:
+  - PersistentCraftWeaponT4
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT4S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Weapon
+  nodeType: MaterialEfficiency
+  tier: 4
+  subTier: 2
+  cost: 1
+  affectedTier: 4
+  materialCostReductionPercent: 10
+  displayLabel: 4.2
+  displayProto: 556WarmagBox
+  prerequisites:
+  - PersistentCraftWeaponT4
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT4S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Weapon
+  nodeType: CraftSpeed
+  tier: 4
+  subTier: 3
+  cost: 1
+  affectedTier: 4
+  craftTimeReductionPercent: 15
+  displayLabel: 4.3
+  displayProto: 556WarmagBox
+  prerequisites:
+  - PersistentCraftWeaponT4
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT4S4
+  name: persistent-craft-node-weapon-alt-name
+  description: persistent-craft-node-weapon-alt-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 4
+  cost: 1
+  displayLabel: 4.4
+  displayProto: 545BSBox
+  prerequisites:
+  - PersistentCraftWeaponT4
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT5
+  name: persistent-craft-node-weapon-t5-name
+  description: persistent-craft-node-weapon-t5-desc
+  branch: Weapon
+  nodeType: MainTier
+  tier: 5
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 5
+  displayLabel: V
+  displayProto: 556SSAAPBox
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT5S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 1
+  cost: 1
+  displayLabel: 5.1
+  displayProto: 556SSAAPBox
+  prerequisites:
+  - PersistentCraftWeaponT5
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT5S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Weapon
+  nodeType: MaterialEfficiency
+  tier: 5
+  subTier: 2
+  cost: 1
+  affectedTier: 5
+  materialCostReductionPercent: 10
+  displayLabel: 5.2
+  displayProto: 556SSAAPBox
+  prerequisites:
+  - PersistentCraftWeaponT5
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT5S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Weapon
+  nodeType: CraftSpeed
+  tier: 5
+  subTier: 3
+  cost: 1
+  affectedTier: 5
+  craftTimeReductionPercent: 15
+  displayLabel: 5.3
+  displayProto: 556SSAAPBox
+  prerequisites:
+  - PersistentCraftWeaponT5
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponT5S4
+  name: persistent-craft-node-weapon-alt-name
+  description: persistent-craft-node-weapon-alt-desc
+  branch: Weapon
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 4
+  cost: 1
+  displayLabel: 5.4
+  displayProto: 545NCBox
+  prerequisites:
+  - PersistentCraftWeaponT5
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT1
+  name: persistent-craft-node-armor-t1-name
+  description: persistent-craft-node-armor-t1-desc
+  branch: Armor
+  nodeType: MainTier
+  tier: 1
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 1
+  displayLabel: I
+  displayProto: ClothingOuterCoatBanditBlack
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT1S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 1
+  cost: 0
+  displayLabel: 1.1
+  displayProto: ClothingOuterCoatBanditBlack
+  prerequisites:
+  - PersistentCraftArmorT1
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT1S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Armor
+  nodeType: MaterialEfficiency
+  tier: 1
+  subTier: 2
+  cost: 1
+  affectedTier: 1
+  materialCostReductionPercent: 10
+  displayLabel: 1.2
+  displayProto: ClothingOuterCoatBanditBlack
+  prerequisites:
+  - PersistentCraftArmorT1
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT1S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Armor
+  nodeType: CraftSpeed
+  tier: 1
+  subTier: 3
+  cost: 1
+  affectedTier: 1
+  craftTimeReductionPercent: 15
+  displayLabel: 1.3
+  displayProto: ClothingOuterCoatBanditBlack
+  prerequisites:
+  - PersistentCraftArmorT1
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT1S4
+  name: persistent-craft-node-armor-alt-name
+  description: persistent-craft-node-armor-alt-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 4
+  cost: 1
+  displayLabel: 1.4
+  displayProto: STClothingOuterArmorRCBZ
+  prerequisites:
+  - PersistentCraftArmorT1
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT2
+  name: persistent-craft-node-armor-t2-name
+  description: persistent-craft-node-armor-t2-desc
+  branch: Armor
+  nodeType: MainTier
+  tier: 2
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 2
+  displayLabel: II
+  displayProto: ClothingOuterArmorZaryaStalker
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT2S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 1
+  cost: 1
+  displayLabel: 2.1
+  displayProto: ClothingOuterArmorZaryaStalker
+  prerequisites:
+  - PersistentCraftArmorT2
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT2S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Armor
+  nodeType: MaterialEfficiency
+  tier: 2
+  subTier: 2
+  cost: 1
+  affectedTier: 2
+  materialCostReductionPercent: 10
+  displayLabel: 2.2
+  displayProto: ClothingOuterArmorZaryaStalker
+  prerequisites:
+  - PersistentCraftArmorT2
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT2S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Armor
+  nodeType: CraftSpeed
+  tier: 2
+  subTier: 3
+  cost: 1
+  affectedTier: 2
+  craftTimeReductionPercent: 15
+  displayLabel: 2.3
+  displayProto: ClothingOuterArmorZaryaStalker
+  prerequisites:
+  - PersistentCraftArmorT2
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT2S4
+  name: persistent-craft-node-armor-alt-name
+  description: persistent-craft-node-armor-alt-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 4
+  cost: 1
+  displayLabel: 2.4
+  displayProto: ClothingOuterArmorSpark
+  prerequisites:
+  - PersistentCraftArmorT2
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT3
+  name: persistent-craft-node-armor-t3-name
+  description: persistent-craft-node-armor-t3-desc
+  branch: Armor
+  nodeType: MainTier
+  tier: 3
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 3
+  displayLabel: III
+  displayProto: ClothingOuterArmorSevaStalker
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT3S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 1
+  cost: 1
+  displayLabel: 3.1
+  displayProto: ClothingOuterArmorSevaStalker
+  prerequisites:
+  - PersistentCraftArmorT3
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT3S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Armor
+  nodeType: MaterialEfficiency
+  tier: 3
+  subTier: 2
+  cost: 1
+  affectedTier: 3
+  materialCostReductionPercent: 10
+  displayLabel: 3.2
+  displayProto: ClothingOuterArmorSevaStalker
+  prerequisites:
+  - PersistentCraftArmorT3
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT3S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Armor
+  nodeType: CraftSpeed
+  tier: 3
+  subTier: 3
+  cost: 1
+  affectedTier: 3
+  craftTimeReductionPercent: 15
+  displayLabel: 3.3
+  displayProto: ClothingOuterArmorSevaStalker
+  prerequisites:
+  - PersistentCraftArmorT3
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT3S4
+  name: persistent-craft-node-armor-alt-name
+  description: persistent-craft-node-armor-alt-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 4
+  cost: 1
+  displayLabel: 3.4
+  displayProto: ClothingOuterArmorStalker
+  prerequisites:
+  - PersistentCraftArmorT3
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT4
+  name: persistent-craft-node-armor-t4-name
+  description: persistent-craft-node-armor-t4-desc
+  branch: Armor
+  nodeType: MainTier
+  tier: 4
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 4
+  displayLabel: IV
+  displayProto: ClothingOuterArmorStalkerCombat
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT4S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 1
+  cost: 1
+  displayLabel: 4.1
+  displayProto: ClothingOuterArmorStalkerCombat
+  prerequisites:
+  - PersistentCraftArmorT4
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT4S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Armor
+  nodeType: MaterialEfficiency
+  tier: 4
+  subTier: 2
+  cost: 1
+  affectedTier: 4
+  materialCostReductionPercent: 10
+  displayLabel: 4.2
+  displayProto: ClothingOuterArmorStalkerCombat
+  prerequisites:
+  - PersistentCraftArmorT4
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT4S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Armor
+  nodeType: CraftSpeed
+  tier: 4
+  subTier: 3
+  cost: 1
+  affectedTier: 4
+  craftTimeReductionPercent: 15
+  displayLabel: 4.3
+  displayProto: ClothingOuterArmorStalkerCombat
+  prerequisites:
+  - PersistentCraftArmorT4
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT4S4
+  name: persistent-craft-node-armor-alt-name
+  description: persistent-craft-node-armor-alt-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 4
+  cost: 1
+  displayLabel: 4.4
+  displayProto: ClothingOuterArmorSSP99
+  prerequisites:
+  - PersistentCraftArmorT4
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT5
+  name: persistent-craft-node-armor-t5-name
+  description: persistent-craft-node-armor-t5-desc
+  branch: Armor
+  nodeType: MainTier
+  tier: 5
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 5
+  displayLabel: V
+  displayProto: STClothingOuterHeavyRedut
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT5S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 1
+  cost: 1
+  displayLabel: 5.1
+  displayProto: STClothingOuterHeavyRedut
+  prerequisites:
+  - PersistentCraftArmorT5
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT5S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Armor
+  nodeType: MaterialEfficiency
+  tier: 5
+  subTier: 2
+  cost: 1
+  affectedTier: 5
+  materialCostReductionPercent: 10
+  displayLabel: 5.2
+  displayProto: STClothingOuterHeavyRedut
+  prerequisites:
+  - PersistentCraftArmorT5
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT5S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Armor
+  nodeType: CraftSpeed
+  tier: 5
+  subTier: 3
+  cost: 1
+  affectedTier: 5
+  craftTimeReductionPercent: 15
+  displayLabel: 5.3
+  displayProto: STClothingOuterHeavyRedut
+  prerequisites:
+  - PersistentCraftArmorT5
+
+- type: persistentCraftNode
+  id: PersistentCraftArmorT5S4
+  name: persistent-craft-node-armor-alt-name
+  description: persistent-craft-node-armor-alt-desc
+  branch: Armor
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 4
+  cost: 1
+  displayLabel: 5.4
+  displayProto: ClothingOuterArmorReingerElite
+  prerequisites:
+  - PersistentCraftArmorT5
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT1
+  name: persistent-craft-node-anomaly-t1-name
+  description: persistent-craft-node-anomaly-t1-desc
+  branch: Anomaly
+  nodeType: MainTier
+  tier: 1
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 1
+  displayLabel: I
+  displayProto: ZoneAnomalyDetectorAD1
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT1S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 1
+  cost: 0
+  displayLabel: 1.1
+  displayProto: ZoneAnomalyDetectorAD1
+  prerequisites:
+  - PersistentCraftAnomalyT1
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT1S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Anomaly
+  nodeType: MaterialEfficiency
+  tier: 1
+  subTier: 2
+  cost: 1
+  affectedTier: 1
+  materialCostReductionPercent: 10
+  displayLabel: 1.2
+  displayProto: ZoneAnomalyDetectorAD1
+  prerequisites:
+  - PersistentCraftAnomalyT1
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT1S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Anomaly
+  nodeType: CraftSpeed
+  tier: 1
+  subTier: 3
+  cost: 1
+  affectedTier: 1
+  craftTimeReductionPercent: 15
+  displayLabel: 1.3
+  displayProto: ZoneAnomalyDetectorAD1
+  prerequisites:
+  - PersistentCraftAnomalyT1
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT1S4
+  name: persistent-craft-node-anomaly-alt-name
+  description: persistent-craft-node-anomaly-alt-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 1
+  subTier: 4
+  cost: 1
+  displayLabel: 1.4
+  displayProto: ZoneAnomalyDetectorUpgradeAD1
+  prerequisites:
+  - PersistentCraftAnomalyT1
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT2
+  name: persistent-craft-node-anomaly-t2-name
+  description: persistent-craft-node-anomaly-t2-desc
+  branch: Anomaly
+  nodeType: MainTier
+  tier: 2
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 2
+  displayLabel: II
+  displayProto: ZoneAnomalyDetectorAD2
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT2S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 1
+  cost: 1
+  displayLabel: 2.1
+  displayProto: ZoneAnomalyDetectorAD2
+  prerequisites:
+  - PersistentCraftAnomalyT2
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT2S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Anomaly
+  nodeType: MaterialEfficiency
+  tier: 2
+  subTier: 2
+  cost: 1
+  affectedTier: 2
+  materialCostReductionPercent: 10
+  displayLabel: 2.2
+  displayProto: ZoneAnomalyDetectorAD2
+  prerequisites:
+  - PersistentCraftAnomalyT2
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT2S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Anomaly
+  nodeType: CraftSpeed
+  tier: 2
+  subTier: 3
+  cost: 1
+  affectedTier: 2
+  craftTimeReductionPercent: 15
+  displayLabel: 2.3
+  displayProto: ZoneAnomalyDetectorAD2
+  prerequisites:
+  - PersistentCraftAnomalyT2
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT2S4
+  name: persistent-craft-node-anomaly-alt-name
+  description: persistent-craft-node-anomaly-alt-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 2
+  subTier: 4
+  cost: 1
+  displayLabel: 2.4
+  displayProto: ZoneAnomalyDetectorUpgradeAD2
+  prerequisites:
+  - PersistentCraftAnomalyT2
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT3
+  name: persistent-craft-node-anomaly-t3-name
+  description: persistent-craft-node-anomaly-t3-desc
+  branch: Anomaly
+  nodeType: MainTier
+  tier: 3
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 3
+  displayLabel: III
+  displayProto: ZoneArtifactDetectorSpruce
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT3S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 1
+  cost: 1
+  displayLabel: 3.1
+  displayProto: ZoneArtifactDetectorSpruce
+  prerequisites:
+  - PersistentCraftAnomalyT3
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT3S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Anomaly
+  nodeType: MaterialEfficiency
+  tier: 3
+  subTier: 2
+  cost: 1
+  affectedTier: 3
+  materialCostReductionPercent: 10
+  displayLabel: 3.2
+  displayProto: ZoneArtifactDetectorSpruce
+  prerequisites:
+  - PersistentCraftAnomalyT3
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT3S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Anomaly
+  nodeType: CraftSpeed
+  tier: 3
+  subTier: 3
+  cost: 1
+  affectedTier: 3
+  craftTimeReductionPercent: 15
+  displayLabel: 3.3
+  displayProto: ZoneArtifactDetectorSpruce
+  prerequisites:
+  - PersistentCraftAnomalyT3
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT3S4
+  name: persistent-craft-node-anomaly-alt-name
+  description: persistent-craft-node-anomaly-alt-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 3
+  subTier: 4
+  cost: 1
+  displayLabel: 3.4
+  displayProto: ZoneAnomalyDetectorBMT12
+  prerequisites:
+  - PersistentCraftAnomalyT3
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT4
+  name: persistent-craft-node-anomaly-t4-name
+  description: persistent-craft-node-anomaly-t4-desc
+  branch: Anomaly
+  nodeType: MainTier
+  tier: 4
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 4
+  displayLabel: IV
+  displayProto: ZoneArtifactDetectorBear
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT4S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 1
+  cost: 1
+  displayLabel: 4.1
+  displayProto: ZoneArtifactDetectorBear
+  prerequisites:
+  - PersistentCraftAnomalyT4
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT4S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Anomaly
+  nodeType: MaterialEfficiency
+  tier: 4
+  subTier: 2
+  cost: 1
+  affectedTier: 4
+  materialCostReductionPercent: 10
+  displayLabel: 4.2
+  displayProto: ZoneArtifactDetectorBear
+  prerequisites:
+  - PersistentCraftAnomalyT4
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT4S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Anomaly
+  nodeType: CraftSpeed
+  tier: 4
+  subTier: 3
+  cost: 1
+  affectedTier: 4
+  craftTimeReductionPercent: 15
+  displayLabel: 4.3
+  displayProto: ZoneArtifactDetectorBear
+  prerequisites:
+  - PersistentCraftAnomalyT4
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT4S4
+  name: persistent-craft-node-anomaly-alt-name
+  description: persistent-craft-node-anomaly-alt-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 4
+  subTier: 4
+  cost: 1
+  displayLabel: 4.4
+  displayProto: ZoneAnomalyDetectorUAD14A
+  prerequisites:
+  - PersistentCraftAnomalyT4
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT5
+  name: persistent-craft-node-anomaly-t5-name
+  description: persistent-craft-node-anomaly-t5-desc
+  branch: Anomaly
+  nodeType: MainTier
+  tier: 5
+  subTier: 0
+  cost: 0
+  requiredBranchLevel: 5
+  displayLabel: V
+  displayProto: ZoneArtifactDetectorWolfhound
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT5S1
+  name: persistent-craft-node-sub-recipe-name
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 1
+  cost: 1
+  displayLabel: 5.1
+  displayProto: ZoneArtifactDetectorWolfhound
+  prerequisites:
+  - PersistentCraftAnomalyT5
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT5S2
+  name: persistent-craft-node-sub-material-name
+  description: persistent-craft-node-sub-material-desc
+  branch: Anomaly
+  nodeType: MaterialEfficiency
+  tier: 5
+  subTier: 2
+  cost: 1
+  affectedTier: 5
+  materialCostReductionPercent: 10
+  displayLabel: 5.2
+  displayProto: ZoneArtifactDetectorWolfhound
+  prerequisites:
+  - PersistentCraftAnomalyT5
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT5S3
+  name: persistent-craft-node-sub-speed-name
+  description: persistent-craft-node-sub-speed-desc
+  branch: Anomaly
+  nodeType: CraftSpeed
+  tier: 5
+  subTier: 3
+  cost: 1
+  affectedTier: 5
+  craftTimeReductionPercent: 15
+  displayLabel: 5.3
+  displayProto: ZoneArtifactDetectorWolfhound
+  prerequisites:
+  - PersistentCraftAnomalyT5
+
+- type: persistentCraftNode
+  id: PersistentCraftAnomalyT5S4
+  name: persistent-craft-node-anomaly-alt-name
+  description: persistent-craft-node-anomaly-alt-desc
+  branch: Anomaly
+  nodeType: RecipeUnlock
+  tier: 5
+  subTier: 4
+  cost: 1
+  displayLabel: 5.4
+  displayProto: ZoneAnomalyDetectorUAAL7B
+  prerequisites:
+  - PersistentCraftAnomalyT5
