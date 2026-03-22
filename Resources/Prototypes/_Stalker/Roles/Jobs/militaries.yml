@@ -37,6 +37,11 @@
         factions:
         - MilitaryStalker
       - type: STAnomalyTipsViewing
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanMilitary
+          Female: FemaleHumanMilitary
+          Unsexed: MaleHumanMilitary # stalker EN change end
 
 - type: job
   id: Military
@@ -80,6 +85,11 @@
       - type: NpcFactionMember
         factions:
         - Military
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanMilitary
+          Female: FemaleHumanMilitary
+          Unsexed: MaleHumanMilitary # stalker EN change end
 
 
 - type: job
@@ -160,6 +170,11 @@
         - type: NpcFactionMember
           factions:
           - Military
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanMilitary
+            Female: FemaleHumanMilitary
+            Unsexed: MaleHumanMilitary # stalker EN change end
 
 - type: startingGear
   id: MilitaryGear

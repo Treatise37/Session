@@ -40,6 +40,12 @@
         pullingItemTag: PliersStalker
         teethCount: 3
         initialTeeth: 3
+      - type: Vocal
+        sounds:
+          Male: MaleHumanMonolith
+          Female: FemaleHumanMonolith
+          Unsexed: MaleHumanMonolith
+      - type: PsyVoiceEmote # stalker EN change end
 
 - type: job
   id: StalkerMonolithFree
@@ -85,6 +91,12 @@
         teethCount: 3
         initialTeeth: 3
       - type: STAnomalyTipsViewing
+      - type: Vocal
+        sounds:
+          Male: MaleHumanMonolith
+          Female: FemaleHumanMonolith
+          Unsexed: MaleHumanMonolith
+      - type: PsyVoiceEmote # stalker EN change end
 
 - type: startingGear
   id: MonolithGear

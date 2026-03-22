@@ -38,6 +38,13 @@
           factions:
           - BandsUnion
           - Bandit
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanBandit
+            Female: FemaleHumanBandit
+            Unsexed: MaleHumanBandit
+        - type: CheekiBreeki # stalker EN change end
+          
 
 - type: job
   id: StalkerHeadBandit
@@ -79,6 +86,12 @@
           factions:
           - BandsUnion
           - Bandit
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanBandit
+            Female: FemaleHumanBandit
+            Unsexed: MaleHumanBandit
+        - type: CheekiBreeki # stalker EN change end
 
 - type: startingGear
   id: BandGear
