@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseStructure
+  id: STItemUpgradeBench
+  name: верстак модификаций
+  description: Верстак для модификации и ремонта оружия и снаряжения.
+  suffix: ST, TEST
+
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Devices/workbench.rsi
+    state: icon
+  - type: Transform
+    noRot: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: STItemUpgradeBench
