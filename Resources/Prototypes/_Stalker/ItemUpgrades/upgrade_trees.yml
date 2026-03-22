@@ -1,0 +1,146 @@
+# ОРУЖИЕ
+
+- type: stUpgradeTree # Это для теста.
+  id: STAK104UpgradeTree
+  upgrades:
+  - id: firerate_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      Steel: 2
+    requiredTools:
+    - Welder
+    weightMultiplier: 0.95
+    gun:
+      fireRateMultiplier: 1.2
+
+  - id: recoil_1
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredUpgrades:
+    - firerate_1
+    requiredMaterials:
+      Steel: 1
+      Glass: 1
+    requiredTools:
+    - Welder
+    weightMultiplier: 0.95
+    gun:
+      angleIncreaseMultiplier: 0.7
+      maxAngleMultiplier: 0.85
+
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      Glass: 2
+    requiredTools:
+    - Screwdriver
+    weightMultiplier: 1.05
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredUpgrades:
+    - precision_1
+    requiredMaterials:
+      Steel: 1
+    requiredTools:
+    - Screwdriver
+    weightMultiplier: 1.05
+    gun:
+      angleDecayMultiplier: 1.2
+      minAngleMultiplier: 0.9
+
+
+# ШЛЕМЫ
+
+- type: stUpgradeTree # Это для теста.
+  id: STHelmetUpgradeTree
+  upgrades:
+  - id: armor_kevlar
+    name: Усиленный кевлар
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      Cloth: 2
+    requiredTools:
+    - Sewing
+    weightMultiplier: 1.1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.85
+
+  - id: armor_plate
+    name: Вставка бронепластины
+    branchId: protection
+    branchName: Защита
+    requiredUpgrades:
+    - armor_kevlar
+    requiredMaterials:
+      Steel: 2
+    requiredTools:
+    - Welder
+    weightMultiplier: 1.2
+    armor:
+      coefficients:
+      - damageType: Piercing
+        multiplier: 0.7
+
+
+# БРОНЕЖИЛЕТЫ
+
+- type: stUpgradeTree # Это для теста.
+  id: STKorundUpgradeTree
+  upgrades:
+  - id: kevlar_layer
+    name: Дополнительный слой кевлара
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      Cloth: 3
+    requiredTools:
+    - Sewing
+    weightMultiplier: 1.15
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+
+  - id: ceramic_plate
+    name: Керамическая бронеплита
+    branchId: protection
+    branchName: Защита
+    requiredUpgrades:
+    - kevlar_layer
+    requiredMaterials:
+      Steel: 2
+    requiredTools:
+    - Welder
+    weightMultiplier: 1.25
+    armor:
+      coefficients:
+      - damageType: Piercing
+        multiplier: 0.6
+
+  - id: anomaly_resist
+    name: Аномальная пропитка
+    branchId: anomaly
+    branchName: Аномалии
+    requiredMaterials:
+      Glass: 2
+    requiredTools:
+    - Analyzer
+    weightMultiplier: 1.05
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.7
