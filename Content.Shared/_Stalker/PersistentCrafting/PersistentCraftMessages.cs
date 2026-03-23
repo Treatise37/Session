@@ -6,6 +6,7 @@ namespace Content.Shared._Stalker.PersistentCrafting;
 public sealed class PersistentCraftBranchState
 {
     public PersistentCraftBranch Branch;
+    public int MaxLevel;
     public int AvailablePoints;
     public int SpentPoints;
     public int Level;
@@ -15,6 +16,7 @@ public sealed class PersistentCraftBranchState
 
     public PersistentCraftBranchState(
         PersistentCraftBranch branch,
+        int maxLevel,
         int availablePoints,
         int spentPoints,
         int level,
@@ -23,6 +25,7 @@ public sealed class PersistentCraftBranchState
         int experienceForNextLevel)
     {
         Branch = branch;
+        MaxLevel = maxLevel;
         AvailablePoints = availablePoints;
         SpentPoints = spentPoints;
         Level = level;
@@ -33,21 +36,33 @@ public sealed class PersistentCraftBranchState
 }
 
 [Serializable, NetSerializable]
-public sealed class PersistentCraftNodeState
+public sealed class PersistentCraftTierState
 {
-    public string NodeId;
-    public int MasteryLevel;
+    public PersistentCraftBranch Branch;
+    public int Tier;
+    public int ProgressLevel;
+    public int MaxProgressLevel;
+    public int AvailablePoints;
+    public int SpentPoints;
     public int Experience;
     public int ExperienceForNextLevel;
 
-    public PersistentCraftNodeState(
-        string nodeId,
-        int masteryLevel,
+    public PersistentCraftTierState(
+        PersistentCraftBranch branch,
+        int tier,
+        int progressLevel,
+        int maxProgressLevel,
+        int availablePoints,
+        int spentPoints,
         int experience,
         int experienceForNextLevel)
     {
-        NodeId = nodeId;
-        MasteryLevel = masteryLevel;
+        Branch = branch;
+        Tier = tier;
+        ProgressLevel = progressLevel;
+        MaxProgressLevel = maxProgressLevel;
+        AvailablePoints = availablePoints;
+        SpentPoints = spentPoints;
         Experience = experience;
         ExperienceForNextLevel = experienceForNextLevel;
     }
@@ -58,18 +73,18 @@ public sealed class PersistentCraftState
 {
     public bool Loaded;
     public List<PersistentCraftBranchState> BranchStates;
-    public List<PersistentCraftNodeState> NodeStates;
+    public List<PersistentCraftTierState> TierStates;
     public List<string> UnlockedNodes;
 
     public PersistentCraftState(
         bool loaded,
         List<PersistentCraftBranchState> branchStates,
-        List<PersistentCraftNodeState> nodeStates,
+        List<PersistentCraftTierState> tierStates,
         List<string> unlockedNodes)
     {
         Loaded = loaded;
         BranchStates = branchStates;
-        NodeStates = nodeStates;
+        TierStates = tierStates;
         UnlockedNodes = unlockedNodes;
     }
 }

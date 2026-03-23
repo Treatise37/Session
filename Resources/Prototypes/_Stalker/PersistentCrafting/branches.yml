@@ -1,0 +1,14 @@
+- type: persistentCraftBranch
+  id: PersistentCraftWeaponBranch
+  branch: Weapon
+  maxLevel: 5
+
+- type: persistentCraftBranch
+  id: PersistentCraftArmorBranch
+  branch: Armor
+  maxLevel: 5
+
+- type: persistentCraftBranch
+  id: PersistentCraftAnomalyBranch
+  branch: Anomaly
+  maxLevel: 5

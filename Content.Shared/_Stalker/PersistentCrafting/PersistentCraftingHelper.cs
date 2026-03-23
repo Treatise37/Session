@@ -8,8 +8,9 @@ public static class PersistentCraftingHelper
     public const int InitialLevel = 1;
     public const int InitialSubLevel = 1;
     public const int MainTierSubLevel = 0;
-    public const int InitialNodeMasteryLevel = 1;
-    public const int MaxNodeMasteryLevel = 3;
+    public const int InitialTierProgressLevel = 1;
+    public const int DefaultMaxTierProgressLevel = 4;
+    public const int MaxTierProgressLevel = DefaultMaxTierProgressLevel;
     private static readonly PersistentCraftBranch[] Branches =
     {
         PersistentCraftBranch.Weapon,
@@ -47,9 +48,22 @@ public static class PersistentCraftingHelper
         return node.NodeType == PersistentCraftNodeType.MainTier || node.SubTier <= MainTierSubLevel;
     }
 
+    public static bool IsStarterSubTierNode(PersistentCraftNodePrototype node)
+    {
+        return !IsMainTierNode(node) && node.SubTier == InitialSubLevel;
+    }
+
     public static int GetNodeRequiredBranchLevel(PersistentCraftNodePrototype node)
     {
         return node.RequiredBranchLevel > 0 ? node.RequiredBranchLevel : node.Tier;
+    }
+
+    public static int GetNodeRequiredTierProgressLevel(PersistentCraftNodePrototype node)
+    {
+        if (IsMainTierNode(node) || IsStarterSubTierNode(node))
+            return InitialTierProgressLevel;
+
+        return Math.Max(InitialTierProgressLevel, node.SubTier);
     }
 
     public static int GetAffectedTier(PersistentCraftNodePrototype node)
@@ -88,17 +102,30 @@ public static class PersistentCraftingHelper
         return Math.Max(100, level * 100);
     }
 
-    public static int GetNodeExperienceReward(PersistentCraftRecipePrototype recipe)
+    public static float GetProgressRatio(int currentValue, int nextValue)
+    {
+        if (nextValue <= 0)
+            return 1f;
+
+        return Math.Clamp(currentValue / (float) nextValue, 0f, 1f);
+    }
+
+    public static int GetTierExperienceReward(PersistentCraftRecipePrototype recipe)
     {
         return Math.Max(10, GetExperienceReward(recipe) / 2);
     }
 
-    public static int GetNodeExperienceForNextLevel(PersistentCraftNodePrototype node, int masteryLevel)
+    public static int GetTierExperienceForNextLevel(int tier, int progressLevel)
     {
-        if (masteryLevel >= MaxNodeMasteryLevel)
+        return GetTierExperienceForNextLevel(tier, progressLevel, MaxTierProgressLevel);
+    }
+
+    public static int GetTierExperienceForNextLevel(int tier, int progressLevel, int maxProgressLevel)
+    {
+        if (progressLevel >= maxProgressLevel)
             return 0;
 
-        return 30 + node.Tier * 20 + Math.Max(0, masteryLevel - InitialNodeMasteryLevel) * 25;
+        return 40 + tier * 25 + Math.Max(0, progressLevel - InitialTierProgressLevel) * 35;
     }
 
     public static string FormatLevel(int level, int subLevel = MainTierSubLevel)
@@ -108,6 +135,13 @@ public static class PersistentCraftingHelper
             return normalizedLevel.ToString();
 
         return $"{normalizedLevel}.{Math.Max(InitialSubLevel, subLevel)}";
+    }
+
+    public static string FormatCappedLevel(int level, int maxLevel)
+    {
+        var normalizedMax = Math.Max(InitialLevel, maxLevel);
+        var normalizedLevel = Math.Clamp(level, InitialLevel, normalizedMax);
+        return $"{normalizedLevel}/{normalizedMax}";
     }
 
     public static string GetTierDisplayLabel(int tier)
@@ -121,6 +155,13 @@ public static class PersistentCraftingHelper
             5 => "V",
             _ => tier.ToString(),
         };
+    }
+
+    public static string FormatTierProgressSubLevel(int tier, int progressLevel)
+    {
+        var normalizedTier = Math.Max(InitialLevel, tier);
+        var normalizedProgress = Math.Max(InitialTierProgressLevel, progressLevel);
+        return $"{normalizedTier}.{normalizedProgress}";
     }
 
     public static string GetNodeLevelText(PersistentCraftNodePrototype node)

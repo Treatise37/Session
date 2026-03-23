@@ -9,11 +9,11 @@ public sealed class PersistentCraftBranchProfile
     public int Level = PersistentCraftingHelper.InitialLevel;
     public int SubLevel = PersistentCraftingHelper.MainTierSubLevel;
     public int Experience;
-    public Dictionary<string, PersistentCraftNodeProfile> NodeProgress = new();
+    public Dictionary<int, PersistentCraftTierProfile> TierProgress = new();
 }
 
-public sealed class PersistentCraftNodeProfile
+public sealed class PersistentCraftTierProfile
 {
-    public int MasteryLevel = PersistentCraftingHelper.InitialNodeMasteryLevel;
+    public int ProgressLevel = PersistentCraftingHelper.InitialTierProgressLevel;
     public int Experience;
 }
