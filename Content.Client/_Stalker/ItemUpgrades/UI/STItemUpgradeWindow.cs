@@ -9,6 +9,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
+using Robust.Shared.Localization;
 
 namespace Content.Client._Stalker.ItemUpgrades.UI;
 
@@ -914,7 +915,7 @@ public sealed class STItemUpgradeWindow : FancyWindow
             {
                 box.AddChild(new Label
                 {
-                    Text = $"{coef.DamageType} x{coef.Multiplier}",
+                    Text = $"{ResolveDamageTypeName(coef.DamageType)} x{coef.Multiplier}",
                     HorizontalAlignment = HAlignment.Left
                 });
             }
@@ -923,7 +924,7 @@ public sealed class STItemUpgradeWindow : FancyWindow
             {
                 box.AddChild(new Label
                 {
-                    Text = $"{flat.DamageType} +{flat.Add}",
+                    Text = $"{ResolveDamageTypeName(flat.DamageType)} +{flat.Add}",
                     HorizontalAlignment = HAlignment.Left
                 });
             }
@@ -963,6 +964,11 @@ public sealed class STItemUpgradeWindow : FancyWindow
             return entry.BranchName!;
 
         return entry.BranchId ?? "default";
+    }
+
+    private static string ResolveDamageTypeName(string damageType)
+    {
+        return Loc.GetString($"damage-type-{damageType.ToLowerInvariant()}");
     }
 
     private Control CreateEntitySprite(NetEntity entity, Vector2 size)
@@ -1009,6 +1015,7 @@ public sealed class STItemUpgradeWindow : FancyWindow
 
         var systems = IoCManager.Resolve<IEntitySystemManager>();
         var upgradeSystem = systems.GetEntitySystem<Content.Client._Stalker.ItemUpgrades.STItemUpgradeSystem>();
+
         upgradeSystem.RequestInstallUpgrade(_selected.Entity, _selectedUpgrade.Id);
     }
 

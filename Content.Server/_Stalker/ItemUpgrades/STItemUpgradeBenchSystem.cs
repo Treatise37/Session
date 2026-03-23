@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Content.Shared._Stalker.Armor;
 using Content.Shared._Stalker.ItemUpgrades;
 using Content.Shared._Stalker.Weapon;
 using Content.Shared.Interaction;
-using Content.Shared.Prototypes;
 using Content.Shared.Stacks;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Localization;
 
 namespace Content.Server._Stalker.ItemUpgrades;
 
@@ -20,6 +21,7 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
     [Dependency] private readonly STItemUpgradeSystem _upgradeSystem = default!;
+    [Dependency] private readonly STArmorDurabilitySystem _armorDurability = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     public override void Initialize()
@@ -92,13 +94,10 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
         if (user == EntityUid.Invalid || item == EntityUid.Invalid)
             return;
 
-        if (!TryComp<STWeaponDurabilityComponent>(item, out var durability))
+        if (!TryGetRepairData(item, out var steelRequired, out _, out var needsRepair))
             return;
 
-        var percent = STWeaponDurabilitySystem.GetDurabilityPercent(durability);
-        var steelRequired = STWeaponDurabilitySystem.GetRepairSteelRequired(percent);
-
-        if (steelRequired <= 0)
+        if (!needsRepair || steelRequired <= 0)
             return;
 
         if (!HasPrototypeSomewhere(user, RepairToolProto))
@@ -110,7 +109,15 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
         if (!ConsumeStackTypeSomewhere(user, RepairSteelStackType, steelRequired))
             return;
 
-        durability.CurrentDurability = durability.MaxDurability;
+        if (TryComp<STWeaponDurabilityComponent>(item, out var weaponDurability))
+        {
+            weaponDurability.CurrentDurability = weaponDurability.MaxDurability;
+        }
+
+        if (TryComp<STArmorDurabilityComponent>(item, out var armorDurability))
+        {
+            _armorDurability.RestoreDurability(item, armorDurability);
+        }
 
         SendUpdatedState(user);
     }
@@ -133,18 +140,12 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
         {
             var name = MetaData(uid).EntityName;
 
-            var durabilityPercent = 100;
-            string? durabilityState = null;
+            var durabilityState = string.Empty;
             var repairSteelRequired = 0;
             var repairTools = new List<STToolRequirementView>();
 
-            if (TryComp<STWeaponDurabilityComponent>(uid, out var durability))
-            {
-                durabilityPercent = STWeaponDurabilitySystem.GetDurabilityPercent(durability);
-                durabilityState = STWeaponDurabilitySystem.GetDurabilityStateText(durabilityPercent);
-                repairSteelRequired = STWeaponDurabilitySystem.GetRepairSteelRequired(durabilityPercent);
+            if (TryGetRepairData(uid, out repairSteelRequired, out durabilityState, out _))
                 repairTools = BuildRepairToolViews();
-            }
 
             result.Add(new STItemUpgradeItemEntry(
                 GetNetEntity(uid),
@@ -152,7 +153,7 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
                 BuildUpgradeViews(upgrades),
                 new HashSet<string>(upgrades.InstalledUpgrades),
                 upgrades.SelectedBranch,
-                durabilityPercent,
+                0,
                 durabilityState,
                 repairSteelRequired,
                 repairTools));
@@ -168,6 +169,71 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
                 CollectUpgradeableItems(ent, result, visited);
             }
         }
+    }
+
+    private bool TryGetRepairData(
+        EntityUid uid,
+        out int steelRequired,
+        out string durabilityState,
+        out bool needsRepair)
+    {
+        steelRequired = 0;
+        durabilityState = string.Empty;
+        needsRepair = false;
+
+        if (TryComp<STWeaponDurabilityComponent>(uid, out var weaponDurability))
+        {
+            var fraction = weaponDurability.MaxDurability <= 0f
+                ? 0f
+                : Math.Clamp(weaponDurability.CurrentDurability / weaponDurability.MaxDurability, 0f, 1f);
+
+            durabilityState = GetDurabilityState(fraction);
+            steelRequired = GetRepairSteelRequired(fraction);
+            needsRepair = fraction < 0.999f;
+            return true;
+        }
+
+        if (TryComp<STArmorDurabilityComponent>(uid, out var armorDurability))
+        {
+            var fraction = _armorDurability.GetDurabilityFraction(armorDurability);
+            durabilityState = _armorDurability.GetDurabilityState(armorDurability);
+            steelRequired = GetRepairSteelRequired(fraction);
+            needsRepair = fraction < 0.999f;
+            return true;
+        }
+
+        return false;
+    }
+
+    private static string GetDurabilityState(float fraction)
+    {
+        if (fraction <= 0.2f)
+            return "сильно поношенное";
+
+        if (fraction <= 0.4f)
+            return "поношенное";
+
+        if (fraction <= 0.7f)
+            return "слегка поношенное";
+
+        return "исправное";
+    }
+
+    private static int GetRepairSteelRequired(float fraction)
+    {
+        if (fraction <= 0.2f)
+            return 4;
+
+        if (fraction <= 0.4f)
+            return 3;
+
+        if (fraction <= 0.6f)
+            return 2;
+
+        if (fraction < 1f)
+            return 1;
+
+        return 0;
     }
 
     private bool HasRequiredTools(EntityUid user, STItemUpgradeEntry upgrade)
@@ -374,7 +440,7 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
     private string ResolvePrototypeName(string prototypeId)
     {
         if (_prototype.TryIndex<EntityPrototype>(prototypeId, out var proto))
-            return proto.Name;
+            return Loc.GetString(proto.Name);
 
         return prototypeId;
     }
@@ -389,6 +455,12 @@ public sealed class STItemUpgradeBenchSystem : EntitySystem
             "Plasma" => "Плазма",
             "Plastic" => "Пластик",
             "Wood" => "Дерево",
+            "SheetSteel1" => "Сталь",
+            "SheetSteel10" => "Сталь",
+            "SheetGlass1" => "Стекло",
+            "SheetGlass10" => "Стекло",
+            "SheetCloth1" => "Ткань",
+            "SheetCloth10" => "Ткань",
             _ => stackTypeId
         };
     }

@@ -7,3 +7,13 @@
   components:
   - type: STItemUpgrades
     tree: STKorundUpgradeTree
+
+  - type: STArmorDurability
+    maxDurability: 100
+    currentDurability: 100
+    durabilityLossPerDamage: 0.08
+    minProtectionFactor: 0.4
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
