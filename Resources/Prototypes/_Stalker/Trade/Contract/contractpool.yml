@@ -2,65 +2,99 @@
   id: caravan_easy
   entries:
   - type: Item
-    id: STBrutepack
+    id: MedkitAI2
+    amount: { min: 3, max: 6 }
+    weight: 3
+  - type: Item
+    id: MedkitMilitary
+    amount: { min: 2, max: 5 }
+    weight: 2
+  - type: Item
+    id: MedkitScience
     amount: { min: 1, max: 2 }
-    weight: 3
+    weight: 1
   - type: Item
-    id: antirad
-    weight: 2
+    id: ClothingOuterArmorZaryaStalkerModifedType2
+    weight: 1
   - type: Item
-    id: STGauze
-    amount: { min: 2, max: 4 }
-    weight: 3
+    id: ClothingOuterArmorZaryaStalkerModifedType1
+    weight: 1
   - type: Item
-    id: 545FMJBox
-    weight: 2
+    id: ClothingOuterArmorZaryaStalker
+    weight: 1
   - type: Item
-    id: 739FMJBox
-    weight: 2
+    id: SetZaryaStalkerBuyableCrate
+    weight: 1
   - type: Item
-    id: STCraftSheetCopperT1
-    amount: { min: 3, max: 6 }
-    weight: 3
+    id: ClothingBeltWebbingHolsterStalkerZarya
+    weight: 1
   - type: Item
-    id: STCraftCottonFabricT1
-    amount: { min: 3, max: 6 }
-    weight: 2
+    id: ClothingBackpackStalkerZaryaGreen
+    weight: 1
   - type: Item
-    id: WeaponPistolStalkerPM
+    id: ClothingBackpackStalkerZaryaBlack
+    weight: 1
+  - type: Item
+    id: STWeaponShotgunMP133
+    weight: 1
+  - type: Item
+    id: STWeaponShotgunMossbergM88
+    weight: 1
+  - type: Item
+    id: ZoneArtifactDetectorResponse
+    weight: 1
+  - type: Item
+    id: LgbtKnife
     weight: 1
 
 - type: ncContractRewardPool
   id: caravan_medium
   entries:
   - type: Item
-    id: STBrutepack
-    amount: { min: 2, max: 4 }
+    id: MedkitAI2
+    amount: { min: 3, max: 6 }
     weight: 3
   - type: Item
-    id: BattleMedipenStalker
+    id: MedkitMilitary
+    amount: { min: 3, max: 6 }
     weight: 2
   - type: Item
-    id: antirad
-    amount: { min: 1, max: 2 }
-    weight: 2
-  - type: Item
-    id: 545PCBox
-    weight: 2
-  - type: Item
-    id: 739PCBox
-    weight: 2
-  - type: Item
-    id: STWeaponRifleAKS74
+    id: MedkitScience
+    amount: { min: 2, max: 3 }
     weight: 1
   - type: Item
-    id: STCraftSheetIronT2
-    amount: { min: 3, max: 5 }
-    weight: 3
+    id: ZoneArtifactDetectorBarracuda
+    weight: 1
   - type: Item
-    id: STCraftHideT2
-    amount: { min: 3, max: 5 }
+    id: ZoneArtifactDetectorSpruce
+    weight: 1
+  - type: Item
+    id: BoxArtcont
+    amount: { min: 1, max: 3 }
     weight: 2
+  - type: Item
+    id: ClothingBackpackDuffelBlackTacticStalker
+    weight: 1
+  - type: Item
+    id: STWeaponRifleRPK74
+    weight: 1
+  - type: Item
+    id: STWeaponRifleSaiga739
+    weight: 1
+  - type: Item
+    id: STWeaponRifleGalatz
+    weight: 1
+  - type: Item
+    id: 6mmBuckshotBoxCink
+    amount: { min: 1, max: 3 }
+    weight: 2
+  - type: Item
+    id: LgbtKnife
+    weight: 1
+  - type: Item
+    id: STWeaponSMGMP5
+    weight: 1
+
 
 - type: ncContractRewardPool
   id: caravan_hard
@@ -88,26 +122,3 @@
     id: STCraftSheetBrassT3
     amount: { min: 3, max: 5 }
     weight: 2
-
-- type: ncContractRewardPool
-  id: caravan_easy_nonweapons
-  entries:
-  - type: Item
-    id: STBrutepack
-    amount: { min: 1, max: 2 }
-    weight: 3
-  - type: Item
-    id: antirad
-    weight: 2
-  - type: Item
-    id: STGauze
-    amount: { min: 2, max: 4 }
-    weight: 3
-  - type: Item
-    id: STCraftSheetCopperT1
-    amount: { min: 3, max: 6 }
-    weight: 3
-  - type: Item
-    id: STCraftCottonFabricT1
-    amount: { min: 3, max: 6 }
-    weight: 3

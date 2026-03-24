@@ -1,5 +1,3 @@
-# Shared contract ghost-role definitions.
-
 - type: storeContractGhostRole
   id: nc_contract_ghost_role_raider
   entityPrototype: STMobStalkerT4

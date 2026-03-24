@@ -3,29 +3,23 @@
 - type: storeContractPack
   id: TradeContractsCityPack
   contracts:
-  - id: trade_contract_delivery_basic_copper
+  - id: trade_contract_ZoneArtifactVyvert
     weight: 100
-  - id: trade_contract_delivery_tracked_copper
+  - id: trade_contract_ArtMedusa
     weight: 100
-  - id: trade_contract_delivery_structure_to_store_crate
+  - id: trade_contract_MutantPartFleshEye
     weight: 100
-  - id: trade_contract_delivery_structure_to_dropoff_crate
+  - id: trade_contract_MutantPartBlindDogTail
     weight: 100
-  - id: trade_contract_hunt_ghoul
-    weight: 100
-  - id: trade_contract_repair_generator
-    weight: 100
-  - id: trade_contract_ghost_raider
-    weight: 100
-  - id: trade_contract_repair_generator_legacy_store
-    weight: 100
-  - id: trade_contract_ghost_raider_legacy_store
+  - id: trade_contract_delivery_BoxCrate
     weight: 100
 
 - type: storeContractsPreset
   id: TradeContractsCityPreset
   limits:
-    Easy: 9
+    Easy: 3
+    Medium: 2
+    Hard: 1
   packs:
   - id: TradeContractsCityPack
     weight: 1
@@ -33,31 +27,106 @@
 # ----------------------------
 # Regular delivery
 # ----------------------------
+
 - type: storeContract
-  id: trade_contract_delivery_basic_copper
-  name: "Поставка медного слитка"
-  description: "Заказ на медь. Слиток для наводки может появиться на шахтной точке или на складе, но для сдачи подойдёт любой такой же слиток."
+  id: trade_contract_ZoneArtifactVyvert
+  name: "Добудь Выверт"
+  description: "Нужен выверт для мази. А то спина болит у уважаемого Жабы."
   difficulty: Easy
-  repeatable: true
-  objectiveType: Delivery
-  runtime:
-    spawnPointTags:
-    - tag: TradeContractMineSpawn
-      weight: 4
-    - tag: TradeContractStoreSpawn
-      weight: 1
-    deliverySpawnPrototype: STCraftSheetCopperT1
   targets:
-  - id: STCraftSheetCopperT1
+  - id: ZoneArtifactVyvert
     required: 1
   rewards:
   - type: Currency
     id: Roubles
-    amount: { min: 20, max: 35 }
+    amount: { min: 1000, max: 1500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
 
-# ----------------------------
-# Tracked delivery
-# ----------------------------
+- type: storeContract
+  id: trade_contract_ArtMedusa
+  name: "Добудь Медузу"
+  description: "Нужна медуза для ожерелья. Зарю не забудь одеть."
+  difficulty: Easy
+  targets:
+  - id: ArtMedusa
+    required: 1
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 1000, max: 1500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: trade_contract_MutantPartFleshEye
+  name: "Глаз Плоти"
+  description: "Глаза Плоти для борща. Вкусно пальчики оближешь."
+  difficulty: Easy
+  targets:
+  - id: MutantPartFleshEye
+    required: 1
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 1000, max: 1500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: trade_contract_MutantPartBlindDogTail
+  name: "Глаз Плоти"
+  description: "Хвосты собак на лекарство."
+  difficulty: Easy
+  targets:
+  - id: MutantPartBlindDogTail
+    required: 3
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 1000, max: 1500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: trade_contract_delivery_BoxCrate
+  name: "Доставить ящик на шахту"
+  description: "Нужно донести ящик к покупателю. Не задавай вопросов."
+  difficulty: Easy
+  repeatable: true
+  objectiveType: Delivery
+  runtime:
+    targetPrototype: BoxCrateQests
+    proofPrototype: NcTradeContractProofDeliveryReceipt
+    spawnAtStore: true
+    dropoffPointTag: TradeContractDeliveryBolotoEasy
+    givePinpointer: true
+    pinpointerPrototype: PinpointerUniversal
+  targets:
+  - id: BoxCrateQests
+    required: 1
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 1000, max: 1500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
 - type: storeContract
   id: trade_contract_delivery_tracked_copper
   name: "Помеченный медный слиток"
@@ -82,7 +151,7 @@
   rewards:
   - type: Currency
     id: Roubles
-    amount: { min: 35, max: 60 }
+    amount: { min: 1000, max: 1500 }
 
 # ----------------------------
 # Structure delivery to store
