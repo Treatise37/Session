@@ -35,6 +35,11 @@
           pullingItemTag: PliersStalker
           teethCount: 3
           initialTeeth: 3
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanMerc
+            Female: FemaleHumanMerc
+            Unsexed: MaleHumanMerc # stalker EN change end
 
 - type: startingGear
   id: StalkerMercenaryGear
@@ -80,6 +85,11 @@
           pullingItemTag: PliersStalker
           teethCount: 3
           initialTeeth: 3
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanMerc
+            Female: FemaleHumanMerc
+            Unsexed: MaleHumanMerc # stalker EN change end
 
 - type: startingGear
   id: StalkerHeadMercenaryGear

@@ -66,6 +66,48 @@
       sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/939/elastic_rubber.rsi
 
 - type: entity
+  id: Base939MagVSK
+  name: магазин ВСК-94
+  description: Магазин 9x39 для ВСК-94. Вместимость пуль 20. Продают пустым.
+  parent: Base545Mag10
+  suffix: Stalker
+  components:
+    - type: STWeight
+      self: 0.2
+    - type: Tag
+      tags:
+        - MagazineVSK
+    - type: BallisticAmmoProvider
+      mayTransfer: true
+      whitelist:
+        tags:
+          - STCartridge939
+      capacity: 20
+    - type: Item
+      size: Small
+      shape:
+        - 0,0,0,0
+    - type: ContainerContainer
+      containers:
+        ballistic-ammo: !type:Container
+        storagebase: !type:Container
+          ents: [ ]
+        item_slot: !type:ContainerSlot { }
+    - type: Sprite
+      scale: 0.8, 0.8
+      sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/vsk.rsi
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-1
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: MagazineVisuals
+      magState: mag
+      steps: 2
+      zeroVisible: false
+    - type: Appearance
+
+- type: entity
   id: 939Mag20
   name: магазин 9x39 (20)
   description: Магазин 9x39 для автоматов и специальных снайперских виннтовок. Вместимость пуль 20. Продают пустым.

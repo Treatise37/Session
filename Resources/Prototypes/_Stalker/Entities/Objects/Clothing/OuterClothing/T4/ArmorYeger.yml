@@ -20,18 +20,18 @@
       flatReductions:
         Blunt: 7
         Slash: 7
-        Piercing: 6
+        Piercing: 5
         Radiation: 1
       coefficients:
-        Blunt: 0.7
+        Blunt: 0.8
         Slash: 0.7
         Piercing: 0.7
-        Heat: 0.4
-        Radiation: 0.4
+        Heat: 0.65
+        Radiation: 0.65
         Caustic: 0.8
         Shock: 0.75
-        Psy: 0.55
-        Compression: 0.65
+        Psy: 0.7
+        Compression: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.9
 
@@ -47,10 +47,10 @@
     armorClass: 1
     modifiers:
       coefficients:
-        Heat: 0.5
-        Shock: 0.5
-        Radiation: 0.2
-        Psy: 0.2
+        Heat: 0.85
+        Shock: 0.85
+        Radiation: 0.85
+        Psy: 0.85
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/hats/yeger_helm.rsi
   - type: Clothing

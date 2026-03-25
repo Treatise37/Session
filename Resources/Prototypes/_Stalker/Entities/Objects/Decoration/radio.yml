@@ -1546,7 +1546,7 @@
 
 - type: entity
   parent: BaseItem
-  id: CasseteSixtyTwoDonateRadio
+  id: CasseteSixtyTwoDonateRadioAnimaciya
   suffix: Stalker, кассета, (анимация)
   name: кассета "анимация"
   description: Старая потрёпанная кассета. Предположительно, на неё записана какая-то песня. На передней части кассеты имеется неразборчивая надпись. Сделано на заказ для Ret4.

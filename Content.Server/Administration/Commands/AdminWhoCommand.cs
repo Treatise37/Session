@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.Admin)]
+[AnyCommand]
 public sealed class AdminWhoCommand : LocalizedCommands
 {
     [Dependency] private readonly IAfkManager _afkManager = default!;

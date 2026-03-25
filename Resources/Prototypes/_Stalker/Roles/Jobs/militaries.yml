@@ -37,12 +37,18 @@
         factions:
         - MilitaryStalker
       - type: STAnomalyTipsViewing
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanMilitary
+          Female: FemaleHumanMilitary
+          Unsexed: MaleHumanMilitary # stalker EN change end
 
 - type: job
   id: Military
   name: job-military
   icon: army
   description: job-military-desc
+  rules: job-military-rules
   playTimeTracker: JobMilitary
   whitelisted: false
   requirements:
@@ -79,6 +85,11 @@
       - type: NpcFactionMember
         factions:
         - Military
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanMilitary
+          Female: FemaleHumanMilitary
+          Unsexed: MaleHumanMilitary # stalker EN change end
 
 
 - type: job
@@ -87,6 +98,7 @@
   icon: army
   description: job-military-head-desc
   playTimeTracker: JobHeadMilitary
+  rules: job-military-rules
   whitelisted: true
   requirements:
     # - !type:RoleTimeRequirement
@@ -158,6 +170,11 @@
         - type: NpcFactionMember
           factions:
           - Military
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanMilitary
+            Female: FemaleHumanMilitary
+            Unsexed: MaleHumanMilitary # stalker EN change end
 
 - type: startingGear
   id: MilitaryGear

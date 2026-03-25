@@ -39,7 +39,7 @@
     ZoneArtifactBaloon: 4752
 
     # New
-    
+
     ZoneArtifactAccumulator: 864
     ZoneArtifactDiamond: 3168
     ZoneArtifactCharger: 3168
@@ -111,10 +111,14 @@
         STWeaponSMGPP91: 1500
         STWeaponSMGPPSh41: 2000
         WeaponGameRevolverMateba: 4000
+        STWeaponSMGPP2000: 3500
+        STWeaponRifleRPK74: 4500
     - name: shop-category-magazines
       priority: 1
       items:
+        BasePP2000Mag: 200
         TTMag: 120
+        Base545MagRPK: 450
         BaseGlockMag10: 135
         BaseGSH-18Mag10: 135
         BaseAPSMag: 225
@@ -176,7 +180,7 @@
       items:
         # body
         SetArmourJacketNoviceBrezentBuyableCrate: 1500 # T2 - PvP
-
+        ClothingOuterArmorYeger: 20000 # T2 - PvP
     - name: shop-category-utilities
       priority: 4
       items:

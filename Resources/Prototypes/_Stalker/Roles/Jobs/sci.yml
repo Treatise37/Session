@@ -36,6 +36,11 @@
       - type: NpcFactionMember
         factions:
         - Sci
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanEcologists
+          Female: FemaleHumanEcologists
+          Unsexed: MaleHumanEcologists # stalker EN change end
 
 - type: job
   id: sci
@@ -75,6 +80,11 @@
       - type: NpcFactionMember
         factions:
         - Sci
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanEcologists
+          Female: FemaleHumanEcologists
+          Unsexed: MaleHumanEcologists # stalker EN change end
 
 - type: job
   id: sci_decan
@@ -114,6 +124,11 @@
       - type: NpcFactionMember
         factions:
         - Sci
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanEcologists
+          Female: FemaleHumanEcologists
+          Unsexed: MaleHumanEcologists # stalker EN change end
 
 - type: job
   id: sci_rector
@@ -154,6 +169,11 @@
         - type: NpcFactionMember
           factions:
           - Sci
+        - type: Vocal # stalker EN change start
+          sounds:
+            Male: MaleHumanEcologists
+            Female: FemaleHumanEcologists
+            Unsexed: MaleHumanEcologists # stalker EN change end
 
 - type: startingGear
   id: SciGear

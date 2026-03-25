@@ -179,7 +179,7 @@
   - type: STWeight
     self: -15
   - type: Reflect
-    reflectProb: 0.1
+    reflectProb: 0.03
     spread: 340
 
 - type: entity

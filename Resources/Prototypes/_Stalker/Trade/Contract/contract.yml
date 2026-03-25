@@ -1,0 +1,243 @@
+- type: storeContractPack
+  id: PackBazar
+  contracts:
+  - id: caravan_contract_stalker_fabric
+    weight: 50
+  - id: caravan_contract_stalker_planks
+    weight: 50
+  - id: caravan_contract_stalker_copper
+    weight: 50
+  - id: caravan_contract_stalker_hide
+    weight: 50
+  - id: caravan_contract_stalker_berries
+    weight: 50
+  - id: caravan_contract_stalker_pistol
+    weight: 50
+  - id: caravan_contract_stalker_snork
+    weight: 50
+  - id: caravan_contract_stalker_flesh
+    weight: 50
+  - id: caravan_contract_stalker_bloodsucker
+    weight: 50
+  - id: caravan_contract_stalker_pseudogiant
+    weight: 50
+
+- type: storeContractsPreset
+  id: PresetBazar
+  limits:
+    Easy: 3
+    Medium: 2
+    Hard: 1
+  packs:
+  - id: PackBazar
+    weight: 1
+
+# ----------------------------
+# Easy contracts
+# ----------------------------
+- type: storeContract
+  id: caravan_contract_stalker_fabric
+  name: "Нужна ткань"
+  description: "Для пошива снаряжения нужна хлопчатобумажная ткань."
+  difficulty: Easy
+  targets:
+  - id: STCraftCottonFabricT1
+    required: { min: 5, max: 10 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 300, max: 500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: caravan_contract_stalker_planks
+  name: "Нужны доски"
+  description: "Для строительства нужны сосновые доски."
+  difficulty: Easy
+  targets:
+  - id: STCraftPinePlankT1
+    required: { min: 8, max: 15 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 250, max: 450 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: caravan_contract_stalker_copper
+  name: "Медные листы"
+  description: "Нужны медные листы для мастерской."
+  difficulty: Easy
+  targets:
+  - id: STCraftSheetCopperT1
+    required: { min: 5, max: 10 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 300, max: 550 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: caravan_contract_stalker_berries
+  name: "Ягоды"
+  description: "Нужны свежие ягоды для нашего повара."
+  difficulty: Easy
+  targetCount: 1
+  targets:
+  - id: StalkerFoodBarbaris
+    required: { min: 3, max: 6 }
+    weight: 50
+  - id: StalkerFoodMalina
+    required: { min: 3, max: 6 }
+    weight: 50
+  - id: StalkerFoodGoji
+    required: { min: 3, max: 6 }
+    weight: 50
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 200, max: 350 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy
+
+- type: storeContract
+  id: caravan_contract_stalker_pistol
+  name: "Пистолет для охраны"
+  description: "Нужен табельный пистолет для нашего охранника."
+  difficulty: Easy
+  targetCount: 1
+  targets:
+  - id: WeaponPistolStalkerPM
+    required: 1
+    weight: 60
+  - id: WeaponPistolStalkerGlock
+    required: 1
+    weight: 40
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 500, max: 800 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_easy_nonweapons
+
+# ----------------------------
+# Medium contracts
+# ----------------------------
+- type: storeContract
+  id: caravan_contract_stalker_hide
+  name: "Кожа мутантов"
+  description: "Нужна кожа с мутантов для крафта снаряжения."
+  difficulty: Medium
+  targets:
+  - id: STCraftHideT2
+    required: { min: 4, max: 8 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 600, max: 900 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_medium
+
+- type: storeContract
+  id: caravan_contract_stalker_snork
+  name: "Снорки"
+  description: "Стая снорков мешает работе. Устрани угрозу и принеси трупы."
+  difficulty: Medium
+  runtime:
+    allowStoreWorldTurnIn: true
+  targets:
+  - id: MobMutantSnork
+    required: { min: 2, max: 4 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 700, max: 1100 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_medium
+
+- type: storeContract
+  id: caravan_contract_stalker_flesh
+  name: "Плоти"
+  description: "Плоти портят жизнь в округе. Нужно несколько трупов для изучения."
+  difficulty: Medium
+  runtime:
+    allowStoreWorldTurnIn: true
+  targets:
+  - id: MobMutantFleshAgressive
+    required: { min: 2, max: 4 }
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 600, max: 1000 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_medium
+
+# ----------------------------
+# Hard contracts
+# ----------------------------
+- type: storeContract
+  id: caravan_contract_stalker_bloodsucker
+  name: "Кровосос"
+  description: "Кровосос объявился в округе. Найди и убей его."
+  difficulty: Hard
+  runtime:
+    allowStoreWorldTurnIn: true
+  targets:
+  - id: MobMutantBloodsucker
+    required: 1
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 2000, max: 3500 }
+  - type: Pool
+    amount: { min: 1, max: 2 }
+    options:
+    - type: Pool
+      id: caravan_hard
+
+- type: storeContract
+  id: caravan_contract_stalker_pseudogiant
+  name: "Псевдогигант"
+  description: "Псевдогигант угрожает всему живому в округе. Это работа не для слабых."
+  difficulty: Hard
+  runtime:
+    allowStoreWorldTurnIn: true
+  targets:
+  - id: MobMutantPseudogiant
+    required: 1
+  rewards:
+  - type: Currency
+    id: Roubles
+    amount: { min: 3000, max: 5000 }
+  - type: Pool
+    amount: { min: 2, max: 3 }
+    options:
+    - type: Pool
+      id: caravan_hard
