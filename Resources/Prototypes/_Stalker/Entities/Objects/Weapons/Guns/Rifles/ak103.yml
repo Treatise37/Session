@@ -123,6 +123,12 @@
     self: 3.2
   - type: PullDoAfter
     pullTime: 3
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/akm.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/akm.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/akm.rsi
   - type: GunWieldBonus
     minAngle: -40
     maxAngle: -40
