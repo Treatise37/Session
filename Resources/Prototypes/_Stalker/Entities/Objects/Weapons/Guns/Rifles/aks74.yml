@@ -174,11 +174,11 @@
   - type: PullDoAfter
     pullTime: 3
   - type: Clothing
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/saiga545.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak74m.rsi
   - type: Item
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/saiga545.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak74m.rsi
   - type: Sprite
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/saiga545.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak74m.rsi
   - type: Gun
     minAngle: 45
     maxAngle: 90
