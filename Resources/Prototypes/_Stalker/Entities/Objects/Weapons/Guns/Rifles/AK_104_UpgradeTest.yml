@@ -1,0 +1,16 @@
+- type: entity
+  name: АК-104 (модифицированный)
+  suffix: ST, TEST
+  parent: STWeaponRifleStalkerAK104
+  id: STWeaponRifleStalkerAK104_UpgradeTest
+  description: Тестовое оружие для системы модификаций.
+
+  components:
+  - type: STItemUpgrades
+    tree: STAK104UpgradeTree
+
+  - type: STWeaponDurability
+    maxDurability: 100
+    currentDurability: 20
+    durabilityLossPerShot: 5
+    canJam: true
