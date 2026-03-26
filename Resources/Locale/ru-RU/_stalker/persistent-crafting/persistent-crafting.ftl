@@ -119,4 +119,5 @@ persistent-craft-tree-label = Дерево ветки
 persistent-craft-tier-unlocked-summary = Открыто в тире: {$unlocked}/{$total}
 persistent-craft-tier-progress-required = Прогресс тира: {$subLevel}
 persistent-craft-auto-unlock-label = Автоматическое открытие
+persistent-craft-load-failed = Профиль крафта поврежден или не читается. Загружен временный профиль без сохранения. Обратитесь к администратору.
 persistent-craft-save-failed = Ошибка сохранения профиля крафта. Обратитесь к администратору.

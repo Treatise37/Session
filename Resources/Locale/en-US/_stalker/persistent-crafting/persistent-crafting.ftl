@@ -119,4 +119,5 @@ persistent-craft-tree-label = Branch Tree
 persistent-craft-tier-unlocked-summary = Unlocked in tier: {$unlocked}/{$total}
 persistent-craft-tier-progress-required = Tier progress: {$subLevel}
 persistent-craft-auto-unlock-label = Auto Unlock
+persistent-craft-load-failed = The crafting profile is corrupted or unreadable. A temporary profile was loaded without saving. Contact an administrator.
 persistent-craft-save-failed = Profile save failed. Contact an administrator.

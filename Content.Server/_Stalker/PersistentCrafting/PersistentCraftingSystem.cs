@@ -19,6 +19,8 @@ namespace Content.Server._Stalker.PersistentCrafting;
 
 public sealed class PersistentCraftingSystem : EntitySystem
 {
+    private const int CurrentSaveDataVersion = 1;
+
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
@@ -87,6 +89,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         EnsureAutoTierNodesUnlocked(profile);
         NormalizeBranchPoints(profile);
         profile.Loaded = true;
+        profile.PersistenceDisabled = false;
 
         await SaveProfileAsync(uid, profile);
         SendStateToAttachedActor(uid);
@@ -138,6 +141,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         EnsureAutoTierNodesUnlocked(profile);
         NormalizeBranchPoints(profile);
         profile.Loaded = false;
+        profile.PersistenceDisabled = false;
 
         _ = LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName);
     }
@@ -350,21 +354,38 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
             profile.BranchProgress = CreateDefaultBranchProfiles();
             profile.UnlockedNodes.Clear();
+            profile.PersistenceDisabled = false;
             var shouldResaveProfile = false;
 
             if (saved is not null)
             {
-                var saveData = DeserializeSaveData(saved.ProfileJson, characterName);
-                profile.BranchProgress = BuildBranchProfiles(saveData.Branches);
-                profile.UnlockedNodes = SanitizeUnlockedNodes(saveData.UnlockedNodes, characterName);
-                shouldResaveProfile = profile.UnlockedNodes.Count != saveData.UnlockedNodes.Count;
+                if (!TryDeserializeSaveData(saved.ProfileJson, characterName, out var saveData, out var saveDataChanged))
+                {
+                    profile.PersistenceDisabled = true;
+                    Log.Error($"[PersistentCraft] Persistent craft profile for '{characterName}' ({userId}) is unreadable. Using a temporary in-memory profile without persistence.");
+
+                    if (TryComp(uid, out ActorComponent? popupActor))
+                    {
+                        _popup.PopupEntity(
+                            Loc.GetString("persistent-craft-load-failed"),
+                            uid,
+                            popupActor.PlayerSession,
+                            PopupType.MediumCaution);
+                    }
+                }
+                else
+                {
+                    profile.BranchProgress = BuildBranchProfiles(saveData.Branches);
+                    profile.UnlockedNodes = SanitizeUnlockedNodes(saveData.UnlockedNodes, characterName);
+                    shouldResaveProfile = saveDataChanged || profile.UnlockedNodes.Count != saveData.UnlockedNodes.Count;
+                }
             }
 
             EnsureAutoTierNodesUnlocked(profile);
             NormalizeBranchPoints(profile);
             profile.Loaded = true;
 
-            if (shouldResaveProfile)
+            if (shouldResaveProfile && !profile.PersistenceDisabled)
                 await SaveProfileAsync(uid, profile);
 
             if (TryComp(uid, out ActorComponent? actor))
@@ -401,6 +422,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         try
         {
+            if (profile.PersistenceDisabled)
+                return;
+
             profile.UnlockedNodes = SanitizeUnlockedNodes(profile.UnlockedNodes, profile.CharacterName);
             EnsureAutoTierNodesUnlocked(profile);
             NormalizeBranchPoints(profile);
@@ -422,6 +446,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         return JsonSerializer.Serialize(new PersistentCraftSaveData
         {
+            Version = CurrentSaveDataVersion,
             Branches = profile.BranchProgress
                 .OrderBy(pair => pair.Key)
                 .Select(pair => new PersistentCraftBranchSaveData
@@ -436,40 +461,122 @@ public sealed class PersistentCraftingSystem : EntitySystem
         });
     }
 
-    private PersistentCraftSaveData DeserializeSaveData(string json, string characterName)
+    private bool TryDeserializeSaveData(
+        string json,
+        string characterName,
+        out PersistentCraftSaveData saveData,
+        out bool changed)
     {
+        saveData = default!;
+        changed = false;
+
         try
         {
             var data = JsonSerializer.Deserialize<PersistentCraftSaveData>(json);
-            return NormalizeSaveData(data ?? CreateDefaultSaveData());
+            if (data is null)
+            {
+                Log.Error($"[PersistentCraft] Save data for '{characterName}' deserialized to null.");
+                return false;
+            }
+
+            if (!TryMigrateSaveData(data, characterName, out var migrated, out var migratedChanged))
+                return false;
+
+            saveData = NormalizeSaveData(migrated, out var normalizedChanged);
+            changed = migratedChanged || normalizedChanged;
+            return true;
         }
         catch (Exception ex)
         {
-            Log.Warning($"[PersistentCraft] Save parse failed for '{characterName}': {ex.Message}");
-            return CreateDefaultSaveData();
+            Log.Error($"[PersistentCraft] Save parse failed for '{characterName}': {ex}");
+            return false;
         }
     }
 
-    private static PersistentCraftSaveData NormalizeSaveData(PersistentCraftSaveData data)
+    private bool TryMigrateSaveData(
+        PersistentCraftSaveData data,
+        string characterName,
+        out PersistentCraftSaveData migrated,
+        out bool changed)
     {
+        migrated = data;
+        changed = false;
+
+        if (data.Version < 0)
+        {
+            Log.Error($"[PersistentCraft] Save data for '{characterName}' has invalid version {data.Version}.");
+            return false;
+        }
+
+        if (data.Version > CurrentSaveDataVersion)
+        {
+            Log.Error($"[PersistentCraft] Save data for '{characterName}' uses unsupported version {data.Version}. Current version is {CurrentSaveDataVersion}.");
+            return false;
+        }
+
+        while (migrated.Version < CurrentSaveDataVersion)
+        {
+            switch (migrated.Version)
+            {
+                case 0:
+                    migrated.Version = 1;
+                    changed = true;
+                    break;
+                default:
+                    Log.Error($"[PersistentCraft] Save data for '{characterName}' uses unknown legacy version {migrated.Version}.");
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static PersistentCraftSaveData NormalizeSaveData(PersistentCraftSaveData data, out bool changed)
+    {
+        changed = data.Branches == null || data.UnlockedNodes == null;
+
         var normalized = CreateDefaultSaveData();
+        normalized.Version = data.Version;
+
+        var sourceUnlockedNodes = data.UnlockedNodes ?? new List<string>();
         normalized.UnlockedNodes = (data.UnlockedNodes ?? new List<string>())
             .Where(id => !string.IsNullOrWhiteSpace(id))
             .Distinct()
             .OrderBy(id => id)
             .ToList();
 
+        if (!sourceUnlockedNodes.SequenceEqual(normalized.UnlockedNodes))
+            changed = true;
+
         if (data.Branches == null)
             return normalized;
 
+        var seenBranches = new HashSet<PersistentCraftBranch>();
+
         foreach (var branchData in data.Branches)
         {
-            if (!normalized.Branches.Any(branch => branch.Branch == branchData.Branch))
+            if (!seenBranches.Add(branchData.Branch))
+            {
+                changed = true;
                 continue;
+            }
+
+            if (!normalized.Branches.Any(branch => branch.Branch == branchData.Branch))
+            {
+                changed = true;
+                continue;
+            }
 
             var target = normalized.Branches.First(branch => branch.Branch == branchData.Branch);
-            target.AvailablePoints = Math.Max(0, branchData.AvailablePoints);
+            var availablePoints = Math.Max(0, branchData.AvailablePoints);
+            if (availablePoints != branchData.AvailablePoints)
+                changed = true;
+
+            target.AvailablePoints = availablePoints;
         }
+
+        if (seenBranches.Count != normalized.Branches.Count)
+            changed = true;
 
         return normalized;
     }
@@ -478,6 +585,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         return new PersistentCraftSaveData
         {
+            Version = CurrentSaveDataVersion,
             Branches = PersistentCraftingHelper.EnumerateBranches()
                 .Select(branch => new PersistentCraftBranchSaveData
                 {
@@ -759,6 +867,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private sealed class PersistentCraftSaveData
     {
+        public int Version { get; set; }
         public List<PersistentCraftBranchSaveData> Branches { get; set; } = new();
         public List<string> UnlockedNodes { get; set; } = new();
     }

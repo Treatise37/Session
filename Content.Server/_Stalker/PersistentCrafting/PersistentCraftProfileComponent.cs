@@ -15,4 +15,5 @@ public sealed partial class PersistentCraftProfileComponent : Component
     };
     public HashSet<string> UnlockedNodes = new();
     public bool Loaded;
+    public bool PersistenceDisabled;
 }
