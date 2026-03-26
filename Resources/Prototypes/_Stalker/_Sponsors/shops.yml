@@ -50,6 +50,12 @@
         13x108FMJBox: 2500
         13x108HPBox: 1200
         13x108PCBox: 5000
+        STBaseWeaponRifleAKM-PSO1M: 4500
+        739FMJBox: 2200
+        739PCBox: 3700
+        739HPBox: 1500
+        739Mag30: 500
+
 
 - type: personalShop
   id: PersonalQEWAEWA2Shop

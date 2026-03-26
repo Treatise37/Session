@@ -13,3 +13,19 @@
     enabled: true
     sound:
       path: /Audio/_Stalker/Music/Radio/rupor.ogg
+
+- type: entity
+  parent: RadioBaseStalker
+  id: STRuporProject
+  suffix: ST, Проект
+  name: Рупор Проекта
+  description: Труба в форме усечённого конуса, предназначенная для направленной передачи звука.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Other/rupor.rsi
+    state: base
+  - type: AmbientSound
+    volume: 1
+    enabled: true
+    sound:
+      collection: AudioProjectSounds
