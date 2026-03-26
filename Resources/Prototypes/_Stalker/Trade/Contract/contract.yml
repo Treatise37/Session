@@ -1,26 +1,20 @@
 - type: storeContractPack
-  id: PackBazar
+  id: TradeContractsCityPack
   contracts:
-  - id: caravan_contract_stalker_fabric
-    weight: 50
-  - id: caravan_contract_stalker_planks
-    weight: 50
-  - id: caravan_contract_stalker_copper
-    weight: 50
-  - id: caravan_contract_stalker_hide
-    weight: 50
-  - id: caravan_contract_stalker_berries
-    weight: 50
-  - id: caravan_contract_stalker_pistol
-    weight: 50
-  - id: caravan_contract_stalker_snork
-    weight: 50
-  - id: caravan_contract_stalker_flesh
-    weight: 50
-  - id: caravan_contract_stalker_bloodsucker
-    weight: 50
-  - id: caravan_contract_stalker_pseudogiant
-    weight: 50
+  - id: trade_contract_ZoneArtifactVyvert
+    weight: 100
+  - id: trade_contract_ArtMedusa
+    weight: 100
+  - id: trade_contract_MutantPartFleshEye
+    weight: 100
+  - id: trade_contract_MutantPartBlindDogTail
+    weight: 100
+  - id: trade_contract_delivery_BoxCrate
+    weight: 100
+  - id: trade_contract_recovery_BoxCrate
+    weight: 100
+  - id: trade_contract_hunt_old_boar
+    weight: 100
 
 - type: storeContractsPreset
   id: PresetBazar

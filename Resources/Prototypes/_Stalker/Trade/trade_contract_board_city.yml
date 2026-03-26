@@ -12,7 +12,7 @@
     - state: noticeboard
   - type: NcStore
     contractPresets:
-    - TradeContractsCityPreset
+    - PresetBazar
 
 - type: Tag
   id: TradeContractDeliveryBolotoEasy
