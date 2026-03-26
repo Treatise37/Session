@@ -1,4 +1,6 @@
 using System;
+using Content.Server.Database;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,6 +8,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Content.Server.Database.Migrations.Sqlite
 {
     /// <inheritdoc />
+    [DbContext(typeof(SqliteServerDbContext))]
+    [Migration("20260327100000_StalkerENAddPersistentCraftProfiles")]
     public partial class StalkerENAddPersistentCraftProfiles : Migration
     {
         /// <inheritdoc />
