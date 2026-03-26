@@ -1662,16 +1662,7 @@ namespace Content.Server.Database
         public string CharacterName { get; set; } = default!;
 
         [Required]
-        public int AvailablePoints { get; set; }
-
-        [Required]
-        public int SpentPoints { get; set; }
-
-        [Required]
-        public int LastRewardedRoundId { get; set; }
-
-        [Required]
-        public string UnlockedNodesJson { get; set; } = "[]";
+        public string ProfileJson { get; set; } = "{}";
     }
 
     /// <summary>

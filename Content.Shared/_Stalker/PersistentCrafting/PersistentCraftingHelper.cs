@@ -1,15 +1,9 @@
-using System;
 using System.Linq;
 
 namespace Content.Shared._Stalker.PersistentCrafting;
 
 public static class PersistentCraftingHelper
 {
-    public const int InitialLevel = 1;
-    public const int DefaultSubLevel = 0;
-    public const int InitialTierProgressLevel = 1;
-    public const int DefaultMaxTierProgressLevel = 4;
-    public const int MaxTierProgressLevel = DefaultMaxTierProgressLevel;
     private static readonly PersistentCraftBranch[] Branches =
     {
         PersistentCraftBranch.Weapon,
@@ -60,13 +54,6 @@ public static class PersistentCraftingHelper
             5 => "V",
             _ => tier.ToString(),
         };
-    }
-
-    public static string FormatTierProgressSubLevel(int tier, int progressLevel)
-    {
-        var normalizedTier = Math.Max(InitialLevel, tier);
-        var normalizedProgress = Math.Max(InitialTierProgressLevel, progressLevel);
-        return $"{normalizedTier}.{normalizedProgress}";
     }
 
 }

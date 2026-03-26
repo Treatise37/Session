@@ -60,14 +60,12 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return new PersistentCraftState(
                 false,
                 BuildBranchStates(defaultProfile),
-                new List<PersistentCraftTierState>(),
                 new List<string>());
         }
 
         return new PersistentCraftState(
             profile.Loaded,
             BuildBranchStates(profile),
-            BuildTierStates(profile),
             profile.UnlockedNodes.OrderBy(id => id).ToList());
     }
 
@@ -87,7 +85,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         profile.BranchProgress = CreateDefaultBranchProfiles();
         profile.UnlockedNodes.Clear();
         EnsureAutoTierNodesUnlocked(profile);
-        RecalculateBranchPoints(profile);
+        NormalizeBranchPoints(profile);
         profile.Loaded = true;
 
         await SaveProfileAsync(uid, profile);
@@ -137,10 +135,10 @@ public sealed class PersistentCraftingSystem : EntitySystem
         profile.BranchProgress = CreateDefaultBranchProfiles();
         profile.UnlockedNodes.Clear();
         EnsureAutoTierNodesUnlocked(profile);
-        RecalculateBranchPoints(profile);
+        NormalizeBranchPoints(profile);
         profile.Loaded = false;
 
-        LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName);
+        _ = LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName);
     }
 
     private void OnOpenCraftMenu(EntityUid uid, PersistentCraftAccessComponent component, OpenPersistentCraftMenuActionEvent args)
@@ -259,7 +257,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
         branchProfile.AvailablePoints = Math.Max(0, branchProfile.AvailablePoints - node.Cost);
         profile.UnlockedNodes.Add(node.ID);
-        RecalculateBranchPoints(profile);
+        NormalizeBranchPoints(profile);
 
         _ = SaveProfileAsync(user, profile);
 
@@ -340,7 +338,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         SendState(actor.PlayerSession, uid);
     }
 
-    private async void LoadProfileAsync(EntityUid uid, Guid userId, string characterName)
+    private async Task LoadProfileAsync(EntityUid uid, Guid userId, string characterName)
     {
         try
         {
@@ -354,14 +352,13 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
             if (saved is not null)
             {
-                var saveData = DeserializeSaveData(saved.UnlockedNodesJson, saved.AvailablePoints, saved.SpentPoints, characterName);
+                var saveData = DeserializeSaveData(saved.ProfileJson, characterName);
                 profile.BranchProgress = BuildBranchProfiles(saveData.Branches);
                 profile.UnlockedNodes = new HashSet<string>(saveData.UnlockedNodes);
-                ApplyTierProgress(profile.BranchProgress, saveData.Tiers, saveData.Nodes);
             }
 
             EnsureAutoTierNodesUnlocked(profile);
-            RecalculateBranchPoints(profile);
+            NormalizeBranchPoints(profile);
             profile.Loaded = true;
 
             if (TryComp(uid, out ActorComponent? actor))
@@ -398,45 +395,10 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         try
         {
-            var totalAvailablePoints = PersistentCraftingHelper.EnumerateBranches()
-                .Sum(branch => GetTotalAvailableTierPoints(profile, branch));
-            var totalSpentPoints = PersistentCraftingHelper.EnumerateBranches()
-                .Sum(branch => GetTotalSpentTierPoints(profile, branch));
-
             await _db.SetStalkerPersistentCraftProfileAsync(
                 profile.UserId,
                 profile.CharacterName,
-                totalAvailablePoints,
-                totalSpentPoints,
-                0,
-                JsonSerializer.Serialize(new PersistentCraftSaveData
-                {
-                    Branches = profile.BranchProgress
-                        .OrderBy(pair => pair.Key)
-                        .Select(pair => new PersistentCraftBranchSaveData
-                        {
-                            Branch = pair.Key,
-                            AvailablePoints = GetTotalAvailableTierPoints(profile, pair.Key),
-                            SpentPoints = GetTotalSpentTierPoints(profile, pair.Key),
-                            Level = Math.Max(PersistentCraftingHelper.InitialLevel, pair.Value.Level),
-                            SubLevel = PersistentCraftingHelper.DefaultSubLevel,
-                            Experience = Math.Max(0, pair.Value.Experience),
-                        })
-                        .ToList(),
-                    Tiers = profile.BranchProgress
-                        .OrderBy(pair => pair.Key)
-                        .SelectMany(pair => pair.Value.TierProgress
-                            .OrderBy(tier => tier.Key)
-                            .Select(tier => new PersistentCraftTierSaveData
-                            {
-                                Branch = pair.Key,
-                                Tier = tier.Key,
-                                ProgressLevel = Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, tier.Value.ProgressLevel),
-                                Experience = Math.Max(0, tier.Value.Experience),
-                            }))
-                        .ToList(),
-                    UnlockedNodes = profile.UnlockedNodes.OrderBy(id => id).ToList(),
-                }));
+                SerializeSaveData(profile));
         }
         catch (Exception ex)
         {
@@ -446,43 +408,34 @@ public sealed class PersistentCraftingSystem : EntitySystem
         }
     }
 
-    private PersistentCraftSaveData DeserializeSaveData(string json, int legacyAvailablePoints, int legacySpentPoints, string characterName)
+    private string SerializeSaveData(PersistentCraftProfileComponent profile)
+    {
+        return JsonSerializer.Serialize(new PersistentCraftSaveData
+        {
+            Branches = profile.BranchProgress
+                .OrderBy(pair => pair.Key)
+                .Select(pair => new PersistentCraftBranchSaveData
+                {
+                    Branch = pair.Key,
+                    AvailablePoints = GetAvailableBranchPoints(profile, pair.Key),
+                })
+                .ToList(),
+            UnlockedNodes = profile.UnlockedNodes
+                .OrderBy(id => id)
+                .ToList(),
+        });
+    }
+
+    private PersistentCraftSaveData DeserializeSaveData(string json, string characterName)
     {
         try
         {
             var data = JsonSerializer.Deserialize<PersistentCraftSaveData>(json);
-            if (data?.UnlockedNodes != null || data?.Branches != null)
-                return NormalizeSaveData(data ?? CreateDefaultSaveData());
+            return NormalizeSaveData(data ?? CreateDefaultSaveData());
         }
         catch (Exception ex)
         {
-            Log.Warning($"[PersistentCraft] New-format parse failed for '{characterName}': {ex.Message}");
-        }
-
-        try
-        {
-            var legacyData = JsonSerializer.Deserialize<LegacyPersistentCraftSaveData>(json);
-            if (legacyData?.UnlockedNodes != null)
-            {
-                return ConvertLegacySaveData(
-                    legacyData.UnlockedNodes,
-                    legacyAvailablePoints,
-                    legacySpentPoints);
-            }
-        }
-        catch (Exception ex)
-        {
-            Log.Warning($"[PersistentCraft] Legacy-format parse failed for '{characterName}': {ex.Message}");
-        }
-
-        try
-        {
-            var unlockedNodes = JsonSerializer.Deserialize<HashSet<string>>(json) ?? new HashSet<string>();
-            return ConvertLegacySaveData(unlockedNodes, legacyAvailablePoints, legacySpentPoints);
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"[PersistentCraft] All parse attempts failed for '{characterName}', resetting to defaults: {ex.Message}");
+            Log.Warning($"[PersistentCraft] Save parse failed for '{characterName}': {ex.Message}");
             return CreateDefaultSaveData();
         }
     }
@@ -491,21 +444,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         var normalized = CreateDefaultSaveData();
         normalized.UnlockedNodes = (data.UnlockedNodes ?? new List<string>())
+            .Where(id => !string.IsNullOrWhiteSpace(id))
             .Distinct()
             .OrderBy(id => id)
-            .ToList();
-        normalized.Nodes = (data.Nodes ?? new List<PersistentCraftNodeSaveData>())
-            .Where(node => !string.IsNullOrWhiteSpace(node.NodeId))
-            .GroupBy(node => node.NodeId)
-            .Select(group => group.Last())
-            .OrderBy(node => node.NodeId)
-            .ToList();
-        normalized.Tiers = (data.Tiers ?? new List<PersistentCraftTierSaveData>())
-            .Where(tier => tier.Tier > 0)
-            .GroupBy(tier => (tier.Branch, tier.Tier))
-            .Select(group => group.Last())
-            .OrderBy(tier => tier.Branch)
-            .ThenBy(tier => tier.Tier)
             .ToList();
 
         if (data.Branches == null)
@@ -513,108 +454,14 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
         foreach (var branchData in data.Branches)
         {
-            var existing = normalized.Branches.FirstOrDefault(branch => branch.Branch == branchData.Branch);
-            if (existing == null)
+            if (!normalized.Branches.Any(branch => branch.Branch == branchData.Branch))
                 continue;
 
-            existing.AvailablePoints = Math.Max(0, branchData.AvailablePoints);
-            existing.SpentPoints = Math.Max(0, branchData.SpentPoints);
-            existing.Level = Math.Max(PersistentCraftingHelper.InitialLevel, branchData.Level);
-            existing.SubLevel = PersistentCraftingHelper.DefaultSubLevel;
-            existing.Experience = Math.Max(0, branchData.Experience);
+            var target = normalized.Branches.First(branch => branch.Branch == branchData.Branch);
+            target.AvailablePoints = Math.Max(0, branchData.AvailablePoints);
         }
 
         return normalized;
-    }
-
-    private static PersistentCraftSaveData ConvertLegacySaveData(
-        IEnumerable<string> unlockedNodes,
-        int legacyAvailablePoints,
-        int legacySpentPoints)
-    {
-        var converted = CreateDefaultSaveData();
-        converted.UnlockedNodes = unlockedNodes
-            .Distinct()
-            .OrderBy(id => id)
-            .ToList();
-
-        foreach (var branchData in converted.Branches)
-        {
-            branchData.Level = Math.Max(
-                PersistentCraftingHelper.InitialLevel,
-                GetHighestUnlockedTier(branchData.Branch, converted.UnlockedNodes));
-        }
-
-        var branchCount = converted.Branches.Count;
-        var availableBase = Math.Max(0, legacyAvailablePoints) / branchCount;
-        var availableRemainder = Math.Max(0, legacyAvailablePoints) % branchCount;
-        var spentBase = Math.Max(0, legacySpentPoints) / branchCount;
-        var spentRemainder = Math.Max(0, legacySpentPoints) % branchCount;
-
-        for (var i = 0; i < branchCount; i++)
-        {
-            converted.Branches[i].AvailablePoints += availableBase + (i < availableRemainder ? 1 : 0);
-            converted.Branches[i].SpentPoints += spentBase + (i < spentRemainder ? 1 : 0);
-        }
-
-        return converted;
-    }
-
-    private static int GetHighestUnlockedTier(PersistentCraftBranch branch, IEnumerable<string> unlockedNodes)
-    {
-        var highestTier = PersistentCraftingHelper.InitialLevel;
-
-        foreach (var nodeId in unlockedNodes)
-        {
-            if (!TryGetBranchFromNodeId(nodeId, out var nodeBranch) || nodeBranch != branch)
-                continue;
-
-            if (TryGetTierFromNodeId(nodeId, out var tier))
-                highestTier = Math.Max(highestTier, tier);
-        }
-
-        return highestTier;
-    }
-
-    private static bool TryGetBranchFromNodeId(string nodeId, out PersistentCraftBranch branch)
-    {
-        if (nodeId.StartsWith("PersistentCraftWeapon", StringComparison.Ordinal))
-        {
-            branch = PersistentCraftBranch.Weapon;
-            return true;
-        }
-
-        if (nodeId.StartsWith("PersistentCraftArmor", StringComparison.Ordinal))
-        {
-            branch = PersistentCraftBranch.Armor;
-            return true;
-        }
-
-        if (nodeId.StartsWith("PersistentCraftAnomaly", StringComparison.Ordinal))
-        {
-            branch = PersistentCraftBranch.Anomaly;
-            return true;
-        }
-
-        branch = PersistentCraftBranch.Weapon;
-        return false;
-    }
-
-    private static bool TryGetTierFromNodeId(string nodeId, out int tier)
-    {
-        var tierIndex = nodeId.LastIndexOf('T');
-        if (tierIndex < 0 || tierIndex >= nodeId.Length - 1)
-        {
-            tier = 0;
-            return false;
-        }
-
-        var digits = new string(nodeId
-            .Skip(tierIndex + 1)
-            .TakeWhile(char.IsDigit)
-            .ToArray());
-
-        return int.TryParse(digits, out tier);
     }
 
     private static PersistentCraftSaveData CreateDefaultSaveData()
@@ -625,11 +472,8 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 .Select(branch => new PersistentCraftBranchSaveData
                 {
                     Branch = branch,
-                    Level = PersistentCraftingHelper.InitialLevel,
-                    SubLevel = PersistentCraftingHelper.DefaultSubLevel,
                 })
                 .ToList(),
-            Tiers = new List<PersistentCraftTierSaveData>(),
             UnlockedNodes = new List<string>(),
         };
     }
@@ -650,98 +494,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             result[branch.Branch] = new PersistentCraftBranchProfile
             {
                 AvailablePoints = Math.Max(0, branch.AvailablePoints),
-                SpentPoints = Math.Max(0, branch.SpentPoints),
-                Level = Math.Max(PersistentCraftingHelper.InitialLevel, branch.Level),
-                SubLevel = PersistentCraftingHelper.DefaultSubLevel,
-                Experience = Math.Max(0, branch.Experience),
             };
-        }
-
-        return result;
-    }
-
-    private void ApplyTierProgress(
-        Dictionary<PersistentCraftBranch, PersistentCraftBranchProfile> branches,
-        IEnumerable<PersistentCraftTierSaveData> tiers,
-        IEnumerable<PersistentCraftNodeSaveData> nodes)
-    {
-        var appliedTierProgress = false;
-
-        foreach (var tier in tiers)
-        {
-            if (tier.Tier <= 0)
-                continue;
-
-            var branchProfile = GetOrCreateBranchProfile(branches, tier.Branch);
-            var maxProgressLevel = GetTierMaxProgressLevel(tier.Branch, tier.Tier);
-            branchProfile.TierProgress[tier.Tier] = new PersistentCraftTierProfile
-            {
-                ProgressLevel = Math.Clamp(tier.ProgressLevel, PersistentCraftingHelper.InitialTierProgressLevel, maxProgressLevel),
-                Experience = Math.Max(0, tier.Experience),
-            };
-            appliedTierProgress = true;
-        }
-
-        if (appliedTierProgress)
-            return;
-
-        var legacyTierGroups = nodes
-            .Where(node => !string.IsNullOrWhiteSpace(node.NodeId) &&
-                           TryGetBranchFromNodeId(node.NodeId, out _) &&
-                           TryGetTierFromNodeId(node.NodeId, out _))
-            .GroupBy(node =>
-            {
-                TryGetBranchFromNodeId(node.NodeId, out var branch);
-                TryGetTierFromNodeId(node.NodeId, out var tier);
-                return (branch, tier);
-            });
-
-        foreach (var group in legacyTierGroups)
-        {
-            var maxProgressLevel = GetTierMaxProgressLevel(group.Key.branch, group.Key.tier);
-            var progressLevel = Math.Clamp(
-                group.Max(node => node.MasteryLevel),
-                PersistentCraftingHelper.InitialTierProgressLevel,
-                maxProgressLevel);
-            var experience = group
-                .Where(node => node.MasteryLevel == progressLevel)
-                .Select(node => node.Experience)
-                .DefaultIfEmpty(0)
-                .Max();
-
-            var branchProfile = GetOrCreateBranchProfile(branches, group.Key.branch);
-            branchProfile.TierProgress[group.Key.tier] = new PersistentCraftTierProfile
-            {
-                ProgressLevel = progressLevel,
-                Experience = Math.Max(0, experience),
-            };
-        }
-    }
-
-    private List<PersistentCraftTierState> BuildTierStates(
-        PersistentCraftProfileComponent profile)
-    {
-        var result = new List<PersistentCraftTierState>();
-        var branches = profile.BranchProgress;
-
-        foreach (var branch in PersistentCraftingHelper.EnumerateBranches())
-        {
-            var branchProfile = GetOrCreateBranchProfile(branches, branch);
-
-            foreach (var tier in GetKnownTierIds(branch, branchProfile))
-            {
-                var maxProgressLevel = GetTierMaxProgressLevel(branch, tier);
-
-                result.Add(new PersistentCraftTierState(
-                    branch,
-                    tier,
-                    PersistentCraftingHelper.InitialTierProgressLevel,
-                    maxProgressLevel,
-                    GetAvailableTierPoints(profile, branch, tier),
-                    GetSpentTierPoints(profile, branch, tier),
-                    0,
-                    0));
-            }
         }
 
         return result;
@@ -751,21 +504,13 @@ public sealed class PersistentCraftingSystem : EntitySystem
         PersistentCraftProfileComponent profile)
     {
         var result = new List<PersistentCraftBranchState>();
-        var branches = profile.BranchProgress;
 
         foreach (var branch in PersistentCraftingHelper.EnumerateBranches())
         {
-            var branchProfile = GetOrCreateBranchProfile(branches, branch);
-            NormalizeBranchProfile(branch, branchProfile);
             result.Add(new PersistentCraftBranchState(
                 branch,
-                1,
-                GetTotalAvailableTierPoints(profile, branch),
-                GetTotalSpentTierPoints(profile, branch),
-                PersistentCraftingHelper.InitialLevel,
-                PersistentCraftingHelper.DefaultSubLevel,
-                0,
-                0));
+                GetAvailableBranchPoints(profile, branch),
+                GetSpentBranchPoints(profile, branch)));
         }
 
         return result;
@@ -909,7 +654,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         branchProfile.AvailablePoints += PersistentCraftingHelper.GetPointReward(recipe);
 
         EnsureAutoTierNodesUnlocked(profile);
-        RecalculateBranchPoints(profile);
+        NormalizeBranchPoints(profile);
     }
 
     private float GetEffectiveCraftTime(EntityUid user, PersistentCraftRecipePrototype recipe)
@@ -948,61 +693,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
         return profile;
     }
 
-    private PersistentCraftTierProfile GetOrCreateTierProfile(
-        PersistentCraftProfileComponent profile,
-        PersistentCraftBranch branch,
-        int tier)
-    {
-        var branchProfile = GetOrCreateBranchProfile(profile, branch);
-        return GetOrCreateTierProfile(branchProfile, branch, tier);
-    }
-
-    private PersistentCraftTierProfile GetOrCreateTierProfile(
-        PersistentCraftBranchProfile branchProfile,
-        PersistentCraftBranch branch,
-        int tier)
-    {
-        if (!branchProfile.TierProgress.TryGetValue(tier, out var profile))
-        {
-            profile = new PersistentCraftTierProfile();
-            branchProfile.TierProgress[tier] = profile;
-        }
-
-        var maxProgressLevel = GetTierMaxProgressLevel(branch, tier);
-        profile.ProgressLevel = Math.Clamp(
-            profile.ProgressLevel,
-            PersistentCraftingHelper.InitialTierProgressLevel,
-            maxProgressLevel);
-        profile.Experience = Math.Max(0, profile.Experience);
-        return profile;
-    }
-
-    private IEnumerable<int> GetKnownTierIds(PersistentCraftBranch branch, PersistentCraftBranchProfile branchProfile)
-    {
-        var maxLevel = GetBranchMaxLevel(branch);
-        return _recipeCache
-            .Where(recipe => recipe.Branch == branch && recipe.Tier > 0)
-            .Select(recipe => recipe.Tier)
-            .Concat(branchProfile.TierProgress.Keys)
-            .Distinct()
-            .Where(tier => tier <= maxLevel)
-            .OrderBy(tier => tier);
-    }
-
-    private int GetTierMaxProgressLevel(PersistentCraftBranch branch, int tier)
-    {
-        var tierNodes = _recipeCache
-            .Where(recipe => recipe.Branch == branch && recipe.Tier == tier)
-            .Select(recipe => recipe.RequiredNode)
-            .Where(nodeId => !string.IsNullOrWhiteSpace(nodeId))
-            .Distinct()
-            .Count();
-
-        var maxProgressLevel = Math.Max(PersistentCraftingHelper.DefaultMaxTierProgressLevel, tierNodes);
-
-        return Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, maxProgressLevel);
-    }
-
     private static bool IsAutoUnlockedNode(PersistentCraftNodePrototype node)
     {
         return node.Cost <= 0;
@@ -1013,41 +703,12 @@ public sealed class PersistentCraftingSystem : EntitySystem
         return node.Prerequisites.All(prerequisite => HasNodeUnlockedOrAutoAvailable(profile, prerequisite));
     }
 
-    private int GetSpentTierPoints(
-        PersistentCraftProfileComponent profile,
-        PersistentCraftBranch branch,
-        int tier)
-    {
-        var tierNodeIds = _recipeCache
-            .Where(recipe => recipe.Branch == branch && recipe.Tier == tier)
-            .Select(recipe => recipe.RequiredNode)
-            .Where(nodeId => !string.IsNullOrWhiteSpace(nodeId))
-            .Distinct()
-            .ToHashSet();
-
-        return _nodeCache
-            .Where(node => node.Branch == branch &&
-                           tierNodeIds.Contains(node.ID) &&
-                           node.Cost > 0 &&
-                           profile.UnlockedNodes.Contains(node.ID))
-            .Sum(node => node.Cost);
-    }
-
-    private int GetAvailableTierPoints(
-        PersistentCraftProfileComponent profile,
-        PersistentCraftBranch branch,
-        int tier)
-    {
-        var branchProfile = GetOrCreateBranchProfile(profile, branch);
-        return Math.Max(0, branchProfile.AvailablePoints);
-    }
-
-    private int GetTotalAvailableTierPoints(PersistentCraftProfileComponent profile, PersistentCraftBranch branch)
+    private int GetAvailableBranchPoints(PersistentCraftProfileComponent profile, PersistentCraftBranch branch)
     {
         return Math.Max(0, GetOrCreateBranchProfile(profile, branch).AvailablePoints);
     }
 
-    private int GetTotalSpentTierPoints(PersistentCraftProfileComponent profile, PersistentCraftBranch branch)
+    private int GetSpentBranchPoints(PersistentCraftProfileComponent profile, PersistentCraftBranch branch)
     {
         return _nodeCache
             .Where(node => node.Branch == branch &&
@@ -1056,42 +717,18 @@ public sealed class PersistentCraftingSystem : EntitySystem
             .Sum(node => node.Cost);
     }
 
-    private void RecalculateBranchPoints(PersistentCraftProfileComponent profile)
+    private void NormalizeBranchPoints(PersistentCraftProfileComponent profile)
     {
         foreach (var branch in PersistentCraftingHelper.EnumerateBranches())
         {
             var branchProfile = GetOrCreateBranchProfile(profile, branch);
-            NormalizeBranchProfile(branch, branchProfile);
             branchProfile.AvailablePoints = Math.Max(0, branchProfile.AvailablePoints);
-
-            branchProfile.SpentPoints = GetTotalSpentTierPoints(profile, branch);
         }
-    }
-
-    private int GetBranchMaxLevel(PersistentCraftBranch branch)
-    {
-        var maxTier = _recipeCache
-            .Where(recipe => recipe.Branch == branch && recipe.Tier > 0)
-            .Select(recipe => recipe.Tier)
-            .DefaultIfEmpty(PersistentCraftingHelper.InitialLevel)
-            .Max();
-
-        return Math.Max(PersistentCraftingHelper.InitialLevel, maxTier);
-    }
-
-    private void NormalizeBranchProfile(PersistentCraftBranch branch, PersistentCraftBranchProfile branchProfile)
-    {
-        _ = branch;
-        branchProfile.Level = PersistentCraftingHelper.InitialLevel;
-        branchProfile.SubLevel = PersistentCraftingHelper.DefaultSubLevel;
-        branchProfile.Experience = 0;
     }
 
     private sealed class PersistentCraftSaveData
     {
         public List<PersistentCraftBranchSaveData> Branches { get; set; } = new();
-        public List<PersistentCraftTierSaveData> Tiers { get; set; } = new();
-        public List<PersistentCraftNodeSaveData> Nodes { get; set; } = new();
         public List<string> UnlockedNodes { get; set; } = new();
     }
 
@@ -1099,32 +736,5 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         public PersistentCraftBranch Branch { get; set; }
         public int AvailablePoints { get; set; }
-        public int SpentPoints { get; set; }
-        public int Level { get; set; } = PersistentCraftingHelper.InitialLevel;
-        public int SubLevel { get; set; } = PersistentCraftingHelper.DefaultSubLevel;
-        public int Experience { get; set; }
     }
-
-    private sealed class LegacyPersistentCraftSaveData
-    {
-        public int Level { get; set; } = PersistentCraftingHelper.InitialLevel;
-        public int Experience { get; set; }
-        public List<string> UnlockedNodes { get; set; } = new();
-    }
-
-    private sealed class PersistentCraftNodeSaveData
-    {
-        public string NodeId { get; set; } = string.Empty;
-        public int MasteryLevel { get; set; } = PersistentCraftingHelper.InitialTierProgressLevel;
-        public int Experience { get; set; }
-    }
-
-    private sealed class PersistentCraftTierSaveData
-    {
-        public PersistentCraftBranch Branch { get; set; }
-        public int Tier { get; set; }
-        public int ProgressLevel { get; set; } = PersistentCraftingHelper.InitialTierProgressLevel;
-        public int Experience { get; set; }
-    }
-
 }

@@ -916,11 +916,6 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         return state.BranchStates.FirstOrDefault(item => item.Branch == branch) ??
                new PersistentCraftBranchState(
                    branch,
-                   1,
-                   0,
-                   0,
-                   PersistentCraftingHelper.InitialLevel,
-                   PersistentCraftingHelper.DefaultSubLevel,
                    0,
                    0);
     }

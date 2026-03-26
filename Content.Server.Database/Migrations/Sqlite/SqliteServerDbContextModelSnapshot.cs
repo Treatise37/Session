@@ -1610,22 +1610,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("character_name");
 
-                    b.Property<int>("AvailablePoints")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("available_points");
-
-                    b.Property<int>("LastRewardedRoundId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("last_rewarded_round_id");
-
-                    b.Property<int>("SpentPoints")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("spent_points");
-
-                    b.Property<string>("UnlockedNodesJson")
+                    b.Property<string>("ProfileJson")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasColumnName("unlocked_nodes_json");
+                        .HasColumnName("profile_json");
 
                     b.HasKey("UserId", "CharacterName")
                         .HasName("PK_stalker_persistent_craft_profiles");

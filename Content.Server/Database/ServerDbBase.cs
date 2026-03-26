@@ -2328,10 +2328,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         public async Task SetStalkerPersistentCraftProfileAsync(
             Guid userId,
             string characterName,
-            int availablePoints,
-            int spentPoints,
-            int lastRewardedRoundId,
-            string unlockedNodesJson)
+            string profileJson)
         {
             await using var db = await GetDb();
 
@@ -2344,18 +2341,12 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 {
                     UserId = userId,
                     CharacterName = characterName,
-                    AvailablePoints = availablePoints,
-                    SpentPoints = spentPoints,
-                    LastRewardedRoundId = lastRewardedRoundId,
-                    UnlockedNodesJson = unlockedNodesJson,
+                    ProfileJson = profileJson,
                 });
             }
             else
             {
-                record.AvailablePoints = availablePoints;
-                record.SpentPoints = spentPoints;
-                record.LastRewardedRoundId = lastRewardedRoundId;
-                record.UnlockedNodesJson = unlockedNodesJson;
+                record.ProfileJson = profileJson;
             }
 
             await db.DbContext.SaveChangesAsync();

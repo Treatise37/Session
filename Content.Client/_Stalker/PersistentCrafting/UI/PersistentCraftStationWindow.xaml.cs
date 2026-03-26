@@ -949,7 +949,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             preferredTier = recipes
                 .Where(recipe => HasRequirement(_state, recipe))
                 .Select(recipe => recipe.Tier)
-                .DefaultIfEmpty(Math.Min(branchState.Level, recipes.Max(recipe => recipe.Tier)))
+                .DefaultIfEmpty(recipes.Max(recipe => recipe.Tier))
                 .Max();
         }
 
@@ -1121,36 +1121,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return $"[color={DescriptionText.ToHex()}]- {FormattedMessage.EscapeText(GetRequirementText(recipe))}[/color]";
     }
 
-    private string BuildTierProgressText(PersistentCraftBranch branch, int tier)
-    {
-        var tierState = GetTierState(branch, tier);
-        if (tierState == null)
-        {
-            return Loc.GetString(
-                "persistent-craft-node-mastery-short",
-                ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(
-                    tier,
-                    PersistentCraftingHelper.InitialTierProgressLevel)),
-                ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(
-                    tier,
-                    PersistentCraftingHelper.DefaultMaxTierProgressLevel)));
-        }
-
-        if (tierState.ExperienceForNextLevel <= 0)
-        {
-            return Loc.GetString(
-                "persistent-craft-node-mastery-max",
-                ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, tierState.ProgressLevel)),
-                ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, tierState.MaxProgressLevel)));
-        }
-
-        return Loc.GetString(
-            "persistent-craft-node-mastery-progress",
-            ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, tierState.ProgressLevel)),
-            ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, tierState.MaxProgressLevel)),
-            ("experience", tierState.Experience),
-            ("next", tierState.ExperienceForNextLevel));
-    }
 
     private bool TryResolveRequirementNode(PersistentCraftRecipePrototype recipe, out PersistentCraftNodePrototype node)
     {
@@ -1478,19 +1448,10 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return state.BranchStates.FirstOrDefault(item => item.Branch == branch) ??
                new PersistentCraftBranchState(
                    branch,
-                   1,
-                   0,
-                   0,
-                   PersistentCraftingHelper.InitialLevel,
-                   PersistentCraftingHelper.DefaultSubLevel,
                    0,
                    0);
     }
 
-    private PersistentCraftTierState? GetTierState(PersistentCraftBranch branch, int tier)
-    {
-        return _state?.TierStates.FirstOrDefault(item => item.Branch == branch && item.Tier == tier);
-    }
 
     private static string GetStatusKey(bool loaded, bool requirementMet, bool hasMaterials)
     {

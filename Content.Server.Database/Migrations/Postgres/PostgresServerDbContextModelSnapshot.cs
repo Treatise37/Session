@@ -1695,22 +1695,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("character_name");
 
-                    b.Property<int>("AvailablePoints")
-                        .HasColumnType("integer")
-                        .HasColumnName("available_points");
-
-                    b.Property<int>("LastRewardedRoundId")
-                        .HasColumnType("integer")
-                        .HasColumnName("last_rewarded_round_id");
-
-                    b.Property<int>("SpentPoints")
-                        .HasColumnType("integer")
-                        .HasColumnName("spent_points");
-
-                    b.Property<string>("UnlockedNodesJson")
+                    b.Property<string>("ProfileJson")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("unlocked_nodes_json");
+                        .HasColumnName("profile_json");
 
                     b.HasKey("UserId", "CharacterName")
                         .HasName("PK_stalker_persistent_craft_profiles");

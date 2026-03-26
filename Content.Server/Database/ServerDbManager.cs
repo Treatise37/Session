@@ -431,10 +431,7 @@ namespace Content.Server.Database
         Task SetStalkerPersistentCraftProfileAsync(
             Guid userId,
             string characterName,
-            int availablePoints,
-            int spentPoints,
-            int lastRewardedRoundId,
-            string unlockedNodesJson);
+            string profileJson);
 
         // stalker-en-changes: News articles
         Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit);
@@ -1309,19 +1306,13 @@ namespace Content.Server.Database
         public Task SetStalkerPersistentCraftProfileAsync(
             Guid userId,
             string characterName,
-            int availablePoints,
-            int spentPoints,
-            int lastRewardedRoundId,
-            string unlockedNodesJson)
+            string profileJson)
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SetStalkerPersistentCraftProfileAsync(
                 userId,
                 characterName,
-                availablePoints,
-                spentPoints,
-                lastRewardedRoundId,
-                unlockedNodesJson));
+                profileJson));
         }
 
         // stalker-en-changes: News articles
