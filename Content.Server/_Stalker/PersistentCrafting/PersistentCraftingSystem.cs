@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Shared._Stalker.PersistentCrafting;
@@ -33,8 +32,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private List<PersistentCraftNodePrototype> _nodeCache = new();
     private List<PersistentCraftRecipePrototype> _recipeCache = new();
-    private readonly Dictionary<(Guid UserId, string CharacterName), SemaphoreSlim> _saveLocks = new();
-    private readonly object _saveLocksSync = new();
 
     public override void Initialize()
     {
@@ -139,24 +136,14 @@ public sealed class PersistentCraftingSystem : EntitySystem
         var profile = EnsureComp<PersistentCraftProfileComponent>(args.Mob);
         profile.UserId = args.Player.UserId.UserId;
         profile.CharacterName = args.Profile.Name;
-        InitializeDefaultRuntimeProfile(profile, persistenceDisabled: false, loaded: false);
-
-        _ = LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName);
-    }
-
-    private void InitializeDefaultRuntimeProfile(
-        PersistentCraftProfileComponent profile,
-        bool persistenceDisabled,
-        bool loaded = true)
-    {
         profile.BranchProgress = CreateDefaultBranchProfiles();
         profile.UnlockedNodes.Clear();
-        profile.PersistenceDisabled = persistenceDisabled;
-
         EnsureAutoTierNodesUnlocked(profile);
         NormalizeBranchPoints(profile);
+        profile.Loaded = false;
+        profile.PersistenceDisabled = false;
 
-        profile.Loaded = loaded;
+        _ = LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName);
     }
 
     private void OnOpenCraftMenu(EntityUid uid, PersistentCraftAccessComponent component, OpenPersistentCraftMenuActionEvent args)
@@ -242,8 +229,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!profile.Loaded)
         {
             _popup.PopupEntity(Loc.GetString("persistent-craft-popup-loading"), user, user);
-
-            SendState(args.SenderSession, user);
             return;
         }
 
@@ -409,22 +394,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
         catch (Exception ex)
         {
             Log.Error($"Failed to load persistent craft profile for {characterName}: {ex}");
-
-            if (Deleted(uid) || !TryComp(uid, out PersistentCraftProfileComponent? profile))
-                return;
-
-            InitializeDefaultRuntimeProfile(profile, persistenceDisabled: true);
-
-            if (TryComp(uid, out ActorComponent? actor))
-            {
-                _popup.PopupEntity(
-                    Loc.GetString("persistent-craft-load-failed"),
-                    uid,
-                    actor.PlayerSession,
-                    PopupType.MediumCaution);
-
-                SendState(actor.PlayerSession, uid);
-            }
         }
     }
 
@@ -449,25 +418,8 @@ public sealed class PersistentCraftingSystem : EntitySystem
         }
     }
 
-    private SemaphoreSlim GetProfileSaveLock(Guid userId, string characterName)
-    {
-        lock (_saveLocksSync)
-        {
-            var key = (userId, characterName);
-            if (_saveLocks.TryGetValue(key, out var saveLock))
-                return saveLock;
-
-            saveLock = new SemaphoreSlim(1, 1);
-            _saveLocks[key] = saveLock;
-            return saveLock;
-        }
-    }
-
     private async Task SaveProfileAsync(EntityUid uid, PersistentCraftProfileComponent profile)
     {
-        var saveLock = GetProfileSaveLock(profile.UserId, profile.CharacterName);
-        await saveLock.WaitAsync();
-
         try
         {
             if (profile.PersistenceDisabled)
@@ -487,10 +439,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
             Log.Error($"Failed to save persistent craft profile for {profile.CharacterName}: {ex}");
             if (!Deleted(uid) && TryComp(uid, out ActorComponent? actor))
                 _popup.PopupEntity(Loc.GetString("persistent-craft-save-failed"), uid, actor.PlayerSession, PopupType.MediumCaution);
-        }
-        finally
-        {
-            saveLock.Release();
         }
     }
 

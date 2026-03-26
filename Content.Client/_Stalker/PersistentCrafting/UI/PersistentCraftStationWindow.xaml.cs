@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -41,6 +41,9 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private static readonly Color IconBackground = PersistentCraftUiTheme.SurfaceInset;
     private static readonly Color MutedText = PersistentCraftUiTheme.TextSecondary;
     private static readonly Color DescriptionText = PersistentCraftUiTheme.TextPrimary;
+    private static readonly Color AccentWeapon = PersistentCraftUiTheme.WeaponAccent;
+    private static readonly Color AccentArmor = PersistentCraftUiTheme.ArmorAccent;
+    private static readonly Color AccentAnomaly = PersistentCraftUiTheme.AnomalyAccent;
     private static readonly Color SelectedBorder = PersistentCraftUiTheme.Selection;
     private static readonly Color EnoughColor = PersistentCraftUiTheme.Success;
     private static readonly Color MissingColor = PersistentCraftUiTheme.Danger;
@@ -57,7 +60,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private readonly Dictionary<PersistentCraftBranch, Dictionary<string, RecipeEntryControls>> _recipeEntryControlsByBranch = new();
     private readonly Dictionary<PersistentCraftBranch, BoxContainer> _detailContentHostsByBranch = new();
     private readonly Dictionary<PersistentCraftBranch, PersistentCraftBranchState> _visibleBranchStatesByBranch = new();
-    private readonly BoxContainer[] _branchContainers;
     private readonly HashSet<string> _collapsedCategoryKeys = new();
     private readonly HashSet<string> _collapsedSubCategoryKeys = new();
     private readonly HashSet<string> _initializedCategoryKeys = new();
@@ -79,24 +81,9 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
         RobustXamlLoader.Load(this);
 
-        _branchContainers =
-            new[]
-            {
-            WeaponBranch,
-            ArmorBranch,
-            AnomalyBranch,
-            };
-
-        const int expectedBranchCount = 3;
-        if (_branchContainers.Length != expectedBranchCount)
-            throw new InvalidOperationException("Persistent craft station window branch containers are out of sync with configured branches.");
-
-        for (var index = 0; index < _branchContainers.Length; index++)
-        {
-            var branch = GetBranchByTabIndex(index);
-            Branches.SetTabTitle(index, Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(branch)));
-        }
-
+        Branches.SetTabTitle(0, Loc.GetString("persistent-craft-branch-weapon"));
+        Branches.SetTabTitle(1, Loc.GetString("persistent-craft-branch-armor"));
+        Branches.SetTabTitle(2, Loc.GetString("persistent-craft-branch-anomaly"));
         PersistentCraftUiTheme.ApplyTabTheme(Branches, "persistent-craft-menu-tabs", PersistentCraftUiTheme.Selection, _uiManager);
 
         OpenSkillsButton.OnPressed += _ => OnOpenSkillsPressed?.Invoke();
@@ -913,9 +900,19 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
                ResolveRecipeDescription(recipe).ToLowerInvariant().Contains(query);
     }
 
-    private BoxContainer GetBranchContainer(PersistentCraftBranch branch) => _branchContainers[GetBranchTabIndex(branch)];
+    private BoxContainer GetBranchContainer(PersistentCraftBranch branch) => branch switch
+    {
+        PersistentCraftBranch.Armor => ArmorBranch,
+        PersistentCraftBranch.Anomaly => AnomalyBranch,
+        _ => WeaponBranch,
+    };
 
-    private PersistentCraftBranch GetCurrentBranch() => GetBranchByTabIndex(Branches.CurrentTab);
+    private PersistentCraftBranch GetCurrentBranch() => Branches.CurrentTab switch
+    {
+        1 => PersistentCraftBranch.Armor,
+        2 => PersistentCraftBranch.Anomaly,
+        _ => PersistentCraftBranch.Weapon,
+    };
 
     private PersistentCraftRecipePrototype ResolveSelectedRecipe(
         PersistentCraftBranch branch,
@@ -1171,37 +1168,16 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         };
     }
 
-    private static PersistentCraftBranch GetBranchByTabIndex(int tabIndex)
-    {
-        return tabIndex switch
-        {
-            1 => PersistentCraftBranch.Armor,
-            2 => PersistentCraftBranch.Anomaly,
-            _ => PersistentCraftBranch.Weapon,
-        };
-    }
-
     private string GetRecipeCategoryId(PersistentCraftRecipePrototype recipe)
     {
         if (!string.IsNullOrWhiteSpace(recipe.Category))
             return recipe.Category!;
 
-        var displayProto = PersistentCraftingHelper.GetDisplayPrototypeId(recipe) ?? string.Empty;
-
         return recipe.Branch switch
         {
-            PersistentCraftBranch.Weapon when displayProto.Contains("Mag") => "magazines",
-            PersistentCraftBranch.Weapon when displayProto.Contains("Box") => "ammo",
             PersistentCraftBranch.Weapon => "weapons",
-
-            PersistentCraftBranch.Armor when displayProto.StartsWith("Medkit") => "medicine",
-            PersistentCraftBranch.Armor when displayProto.StartsWith("ClothingBackpack") => "bags",
-            PersistentCraftBranch.Armor when displayProto.StartsWith("ClothingHeadHelmet") || displayProto.StartsWith("ClothingMask") => "headgear",
             PersistentCraftBranch.Armor => "armor",
-
-            PersistentCraftBranch.Anomaly when displayProto.Contains("ArtifactContainer") => "containers",
-            PersistentCraftBranch.Anomaly when displayProto.StartsWith("ZoneAnomalyDetector") => "anomaly-detectors",
-            PersistentCraftBranch.Anomaly when displayProto.StartsWith("ZoneArtifactDetector") => "artifact-detectors",
+            PersistentCraftBranch.Anomaly => "anomaly",
             _ => "special",
         };
     }
@@ -1211,48 +1187,15 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (!string.IsNullOrWhiteSpace(recipe.SubCategory))
             return recipe.SubCategory!;
 
-        var displayProto = PersistentCraftingHelper.GetDisplayPrototypeId(recipe) ?? string.Empty;
-        var category = GetRecipeCategoryId(recipe);
-
-        if (recipe.Branch == PersistentCraftBranch.Weapon)
-        {
-            if (displayProto.Contains("545") || displayProto.Contains("AKS74") || displayProto.Contains("AK74") || displayProto.Contains("A545") || displayProto.Contains("AK12") || displayProto.Contains("RPK16"))
-                return "caliber-545";
-
-            if (displayProto.Contains("556") || displayProto.Contains("M16") || displayProto.Contains("M4") || displayProto.Contains("G36") || displayProto.Contains("HK416") || displayProto.Contains("SCARL") || displayProto.Contains("F2000"))
-                return "caliber-556";
-        }
-
-        if (recipe.Branch == PersistentCraftBranch.Armor)
-        {
-            if (category == "headgear")
-                return displayProto.StartsWith("ClothingMask") ? "masks" : "helmets";
-
-            if (category == "bags")
-                return "backpacks";
-
-            if (category == "medicine")
-                return "medkits";
-        }
-
-        if (recipe.Branch == PersistentCraftBranch.Anomaly)
-        {
-            return category switch
-            {
-                "anomaly-detectors" => "scanner-line",
-                "artifact-detectors" => "artifact-line",
-                "containers" => "containers-line",
-                _ => $"tier-{recipe.Tier}",
-            };
-        }
-
-        return string.Empty;
+        return recipe.Branch == PersistentCraftBranch.Anomaly
+            ? $"tier-{recipe.Tier}"
+            : string.Empty;
     }
 
     private string GetCategoryName(string categoryId)
     {
         var locKey = $"persistent-craft-category-{categoryId}";
-        return TryLoc(locKey) ?? categoryId;
+        return TryLoc(locKey) ?? HumanizeIdentifier(categoryId);
     }
 
     private string GetSubCategoryName(string subCategoryId)
@@ -1264,23 +1207,19 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             return $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(tier)}";
 
         var locKey = $"persistent-craft-subcategory-{subCategoryId}";
-        return TryLoc(locKey) ?? subCategoryId;
+        return TryLoc(locKey) ?? HumanizeIdentifier(subCategoryId);
     }
 
     private static int GetCategoryOrder(string categoryId)
     {
         return categoryId switch
         {
-            "ammo" => 0,
-            "magazines" => 1,
-            "weapons" => 2,
-            "armor" => 0,
-            "headgear" => 1,
-            "bags" => 2,
-            "medicine" => 3,
+            "weapons" => 0,
+            "armor" => 1,
+            "anomaly" => 2,
             "anomaly-detectors" => 0,
             "artifact-detectors" => 1,
-            "containers" => 2,
+            "upgrades" => 2,
             _ => 99,
         };
     }
@@ -1289,15 +1228,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     {
         return subCategoryId switch
         {
-            "caliber-545" => 0,
-            "caliber-556" => 1,
-            "helmets" => 0,
-            "masks" => 1,
-            "backpacks" => 0,
-            "medkits" => 1,
-            "scanner-line" => 0,
-            "artifact-line" => 1,
-            "containers-line" => 2,
+            _ when subCategoryId.StartsWith("tier-") && int.TryParse(subCategoryId["tier-".Length..], out var tier) => tier,
+            "starter" => 0,
+            "upgrades" => 1,
+            "advanced" => 2,
+            "elite" => 3,
             _ => 99,
         };
     }
@@ -1312,6 +1247,15 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         {
             return null;
         }
+    }
+
+    private static string HumanizeIdentifier(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return string.Empty;
+
+        var spaced = value.Replace('-', ' ').Replace('_', ' ').Trim();
+        return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(spaced);
     }
 
     private string GetRecipeCategoryPath(PersistentCraftRecipePrototype recipe)
@@ -1482,7 +1426,13 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private static Color GetAccent(PersistentCraftBranch branch)
     {
-        return PersistentCraftUiTheme.Accent(branch);
+        return branch switch
+        {
+            PersistentCraftBranch.Weapon => AccentWeapon,
+            PersistentCraftBranch.Armor => AccentArmor,
+            PersistentCraftBranch.Anomaly => AccentAnomaly,
+            _ => CardBorder,
+        };
     }
 
     private static string GetIngredientCacheKey(PersistentCraftIngredient ingredient)

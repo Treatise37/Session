@@ -1,52 +1,54 @@
+using System;
 using System.Linq;
 
 namespace Content.Shared._Stalker.PersistentCrafting;
 
 public static class PersistentCraftingHelper
 {
-    private static readonly BranchDefinition[] BranchDefinitions =
+    private static readonly PersistentCraftBranch[] Branches =
     {
-        new(PersistentCraftBranch.Weapon, "persistent-craft-branch-weapon"),
-        new(PersistentCraftBranch.Armor, "persistent-craft-branch-armor"),
-        new(PersistentCraftBranch.Anomaly, "persistent-craft-branch-anomaly"),
+        PersistentCraftBranch.Weapon,
+        PersistentCraftBranch.Armor,
+        PersistentCraftBranch.Anomaly,
     };
-
-    private static readonly IReadOnlyList<PersistentCraftBranch> Branches = BranchDefinitions
-        .Select(definition => definition.Branch)
-        .ToArray();
 
     public static IReadOnlyList<PersistentCraftBranch> EnumerateBranches()
     {
         return Branches;
     }
 
-    public static int GetBranchCount()
-    {
-        return BranchDefinitions.Length;
-    }
 
     public static int GetBranchIndex(PersistentCraftBranch branch)
     {
-        for (var i = 0; i < BranchDefinitions.Length; i++)
+        var index = Array.IndexOf(Branches, branch);
+        if (index >= 0)
+            return index;
+
+        throw new ArgumentOutOfRangeException(nameof(branch), branch, "Unknown persistent craft branch.");
+    }
+
+    public static bool TryGetBranchByIndex(int index, out PersistentCraftBranch branch)
+    {
+        if ((uint) index < (uint) Branches.Length)
         {
-            if (BranchDefinitions[i].Branch == branch)
-                return i;
+            branch = Branches[index];
+            return true;
         }
 
-        return 0;
+        branch = default;
+        return false;
     }
 
-    public static PersistentCraftBranch GetBranchByIndex(int index)
-    {
-        if (index >= 0 && index < BranchDefinitions.Length)
-            return BranchDefinitions[index].Branch;
-
-        return BranchDefinitions[0].Branch;
-    }
 
     public static string GetBranchLocKey(PersistentCraftBranch branch)
     {
-        return BranchDefinitions[GetBranchIndex(branch)].LocKey;
+        return branch switch
+        {
+            PersistentCraftBranch.Weapon => "persistent-craft-branch-weapon",
+            PersistentCraftBranch.Armor => "persistent-craft-branch-armor",
+            PersistentCraftBranch.Anomaly => "persistent-craft-branch-anomaly",
+            _ => throw new ArgumentOutOfRangeException(nameof(branch), branch, "Unknown persistent craft branch."),
+        };
     }
 
     public static string? GetDisplayPrototypeId(PersistentCraftRecipePrototype recipe)
@@ -55,6 +57,12 @@ public static class PersistentCraftingHelper
             return recipe.DisplayProto;
 
         return recipe.Results.FirstOrDefault()?.Proto;
+    }
+
+
+    public static bool IsAutoUnlockedNode(PersistentCraftNodePrototype node)
+    {
+        return node.Cost <= 0;
     }
 
     public static int GetPointReward(PersistentCraftRecipePrototype recipe)
@@ -77,17 +85,4 @@ public static class PersistentCraftingHelper
             _ => tier.ToString(),
         };
     }
-
-    private sealed class BranchDefinition
-    {
-        public PersistentCraftBranch Branch { get; }
-        public string LocKey { get; }
-
-        public BranchDefinition(PersistentCraftBranch branch, string locKey)
-        {
-            Branch = branch;
-            LocKey = locKey;
-        }
-    }
-
 }

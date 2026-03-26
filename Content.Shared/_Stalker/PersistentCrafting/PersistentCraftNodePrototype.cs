@@ -19,9 +19,6 @@ public sealed partial class PersistentCraftNodePrototype : IPrototype
     [DataField("branch", required: true)]
     public PersistentCraftBranch Branch;
 
-    [DataField("nodeType")]
-    public PersistentCraftNodeType NodeType = PersistentCraftNodeType.RecipeUnlock;
-
     [DataField("cost")]
     public int Cost = 1;
 

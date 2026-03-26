@@ -7,12 +7,14 @@
   tier: 1
   requiredNode: PersistentCraftAnomalyNodeAD1
   craftTime: 5
-  pointReward: 999
+  pointReward: 25
   ingredients:
-    - proto: STCraftBasicPCBT1
-      amount: 1
+  - proto: STCraftBasicPCBT1
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorAD1
+  - proto: ZoneAnomalyDetectorAD1
+  category: anomaly-detectors
+  subCategory: tier-1
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT1Alt
@@ -25,16 +27,18 @@
   craftTime: 5
   pointReward: 25
   ingredients:
-    - proto: ZoneAnomalyDetectorAD1
-      amount: 1
-    - proto: STCraftCapacitor
-      amount: 1
-    - proto: STCraftBattery
-      amount: 1
-    - proto: STCraftGlassT2
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD1
+    amount: 1
+  - proto: STCraftCapacitor
+    amount: 1
+  - proto: STCraftBattery
+    amount: 1
+  - proto: STCraftGlassT2
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorUpgradeAD1
+  - proto: ZoneAnomalyDetectorUpgradeAD1
+  category: anomaly-detectors
+  subCategory: tier-1
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2
@@ -47,16 +51,18 @@
   craftTime: 6
   pointReward: 50
   ingredients:
-    - proto: ZoneAnomalyDetectorAD1
-      amount: 1
-    - proto: STCraftStandardPCBT2
-      amount: 1
-    - proto: STCraftCoil
-      amount: 1
-    - proto: STCraftTransformer
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD1
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftCoil
+    amount: 1
+  - proto: STCraftTransformer
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorAD2
+  - proto: ZoneAnomalyDetectorAD2
+  category: anomaly-detectors
+  subCategory: tier-2
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2Alt
@@ -69,16 +75,18 @@
   craftTime: 6
   pointReward: 50
   ingredients:
-    - proto: ZoneAnomalyDetectorAD2
-      amount: 1
-    - proto: STCraftStandardPCBT2
-      amount: 1
-    - proto: STCraftCoil
-      amount: 1
-    - proto: STCraftTransformer
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD2
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftCoil
+    amount: 1
+  - proto: STCraftTransformer
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorUpgradeAD2
+  - proto: ZoneAnomalyDetectorUpgradeAD2
+  category: anomaly-detectors
+  subCategory: tier-2
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT3
@@ -91,16 +99,18 @@
   craftTime: 7
   pointReward: 75
   ingredients:
-    - proto: ZoneAnomalyDetectorAD2
-      amount: 1
-    - proto: STCraftMultilayerPCBT3
-      amount: 1
-    - proto: STCraftQuartzCrystalT3
-      amount: 1
-    - proto: STCraftGlueKitT3
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD2
+    amount: 1
+  - proto: STCraftMultilayerPCBT3
+    amount: 1
+  - proto: STCraftQuartzCrystalT3
+    amount: 1
+  - proto: STCraftGlueKitT3
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorSpruce
+  - proto: ZoneArtifactDetectorSpruce
+  category: artifact-detectors
+  subCategory: tier-3
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT3Alt
@@ -108,21 +118,23 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: ZoneAnomalyDetectorBMT12
   branch: Anomaly
-  tier: 2
+  tier: 3
   requiredNode: PersistentCraftAnomalyNodeBMT12
   craftTime: 7
   pointReward: 75
   ingredients:
-    - proto: ZoneAnomalyDetectorAD2
-      amount: 1
-    - proto: STCraftMultilayerPCBT3
-      amount: 1
-    - proto: STCraftQuartzCrystalT3
-      amount: 1
-    - proto: STCraftGlueKitT3
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD2
+    amount: 1
+  - proto: STCraftMultilayerPCBT3
+    amount: 1
+  - proto: STCraftQuartzCrystalT3
+    amount: 1
+  - proto: STCraftGlueKitT3
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorBMT12
+  - proto: ZoneAnomalyDetectorBMT12
+  category: anomaly-detectors
+  subCategory: tier-3
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT4
@@ -135,16 +147,18 @@
   craftTime: 8
   pointReward: 100
   ingredients:
-    - proto: ZoneArtifactDetectorSpruce
-      amount: 1
-    - proto: STCraftHighPerformanceChipT4
-      amount: 1
-    - proto: STCraftSheetAluminumT4
-      amount: 1
-    - proto: STCraftTransformer
-      amount: 1
+  - proto: ZoneArtifactDetectorSpruce
+    amount: 1
+  - proto: STCraftHighPerformanceChipT4
+    amount: 1
+  - proto: STCraftSheetAluminumT4
+    amount: 1
+  - proto: STCraftTransformer
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorBear
+  - proto: ZoneArtifactDetectorBear
+  category: artifact-detectors
+  subCategory: tier-4
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT4Alt
@@ -157,18 +171,20 @@
   craftTime: 8
   pointReward: 100
   ingredients:
-    - proto: ZoneArtifactDetectorBarracuda
-      amount: 1
-    - proto: STCraftMultilayerPCBT3
-      amount: 1
-    - proto: STCraftGlassT2
-      amount: 1
-    - proto: STCraftSheetIronT2
-      amount: 1
-    - proto: STCraftPlasticFittingT2
-      amount: 1
+  - proto: ZoneArtifactDetectorBarracuda
+    amount: 1
+  - proto: STCraftMultilayerPCBT3
+    amount: 1
+  - proto: STCraftGlassT2
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 1
+  - proto: STCraftPlasticFittingT2
+    amount: 1
   results:
-    - proto: Veles
+  - proto: Veles
+  category: artifact-detectors
+  subCategory: tier-4
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT5
@@ -181,16 +197,18 @@
   craftTime: 10
   pointReward: 125
   ingredients:
-    - proto: ZoneArtifactDetectorBear
-      amount: 1
-    - proto: STCraftNanoChipT5
-      amount: 1
-    - proto: STCraftSheetSteelT5
-      amount: 1
-    - proto: ZoneArtifactNightStar
-      amount: 1
+  - proto: ZoneArtifactDetectorBear
+    amount: 1
+  - proto: STCraftNanoChipT5
+    amount: 1
+  - proto: STCraftSheetSteelT5
+    amount: 1
+  - proto: ZoneArtifactNightStar
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorWolfhound
+  - proto: ZoneArtifactDetectorWolfhound
+  category: artifact-detectors
+  subCategory: tier-5
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT5Alt
@@ -203,18 +221,20 @@
   craftTime: 10
   pointReward: 125
   ingredients:
-    - proto: Veles
-      amount: 1
-    - proto: STCraftHighPerformanceChipT4
-      amount: 1
-    - proto: STCraftQuartzCrystalT3
-      amount: 1
-    - proto: STCraftPlasticFittingT3
-      amount: 1
-    - proto: STCraftCoil
-      amount: 1
+  - proto: Veles
+    amount: 1
+  - proto: STCraftHighPerformanceChipT4
+    amount: 1
+  - proto: STCraftQuartzCrystalT3
+    amount: 1
+  - proto: STCraftPlasticFittingT3
+    amount: 1
+  - proto: STCraftCoil
+    amount: 1
   results:
-    - proto: Svarog
+  - proto: Svarog
+  category: artifact-detectors
+  subCategory: tier-5
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT1Pulse
@@ -227,14 +247,16 @@
   craftTime: 4
   pointReward: 20
   ingredients:
-    - proto: STCraftBasicPCBT1
-      amount: 1
-    - proto: STCraftCapacitor
-      amount: 1
-    - proto: STCraftBattery
-      amount: 1
+  - proto: STCraftBasicPCBT1
+    amount: 1
+  - proto: STCraftCapacitor
+    amount: 1
+  - proto: STCraftBattery
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorPulse
+  - proto: ZoneArtifactDetectorPulse
+  category: artifact-detectors
+  subCategory: tier-1
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT1Hunter
@@ -247,14 +269,16 @@
   craftTime: 4
   pointReward: 20
   ingredients:
-    - proto: STCraftBasicPCBT1
-      amount: 1
-    - proto: STCraftCapacitor
-      amount: 1
-    - proto: STCraftGlassT2
-      amount: 1
+  - proto: STCraftBasicPCBT1
+    amount: 1
+  - proto: STCraftCapacitor
+    amount: 1
+  - proto: STCraftGlassT2
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorHunter
+  - proto: ZoneArtifactDetectorHunter
+  category: artifact-detectors
+  subCategory: tier-1
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT1Bush
@@ -267,14 +291,16 @@
   craftTime: 4
   pointReward: 20
   ingredients:
-    - proto: ZoneArtifactDetectorPulse
-      amount: 1
-    - proto: STCraftCapacitor
-      amount: 1
-    - proto: STCraftBattery
-      amount: 1
+  - proto: ZoneArtifactDetectorPulse
+    amount: 1
+  - proto: STCraftCapacitor
+    amount: 1
+  - proto: STCraftBattery
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorBush
+  - proto: ZoneArtifactDetectorBush
+  category: artifact-detectors
+  subCategory: tier-1
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2Response
@@ -287,14 +313,16 @@
   craftTime: 5
   pointReward: 30
   ingredients:
-    - proto: ZoneArtifactDetectorHunter
-      amount: 1
-    - proto: STCraftStandardPCBT2
-      amount: 1
-    - proto: STCraftCoil
-      amount: 1
+  - proto: ZoneArtifactDetectorHunter
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftCoil
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorResponse
+  - proto: ZoneArtifactDetectorResponse
+  category: artifact-detectors
+  subCategory: tier-2
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2ModifiedHunter
@@ -307,14 +335,16 @@
   craftTime: 5
   pointReward: 30
   ingredients:
-    - proto: ZoneArtifactDetectorHunter
-      amount: 1
-    - proto: STCraftStandardPCBT2
-      amount: 1
-    - proto: STCraftGlassT2
-      amount: 1
+  - proto: ZoneArtifactDetectorHunter
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftGlassT2
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorModifiedHunter
+  - proto: ZoneArtifactDetectorModifiedHunter
+  category: upgrades
+  subCategory: tier-2
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2ResponseCvoboda
@@ -327,15 +357,16 @@
   craftTime: 5
   pointReward: 30
   ingredients:
-    - proto: ZoneArtifactDetectorResponse
-      amount: 1
-    - proto: STCraftStandardPCBT2
-      amount: 1
-    - proto: STCraftCoil
-      amount: 1
+  - proto: ZoneArtifactDetectorResponse
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftCoil
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorResponseCvoboda
-
+  - proto: ZoneArtifactDetectorResponseCvoboda
+  category: upgrades
+  subCategory: tier-2
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT3Barracuda
@@ -348,14 +379,16 @@
   craftTime: 6
   pointReward: 45
   ingredients:
-    - proto: ZoneArtifactDetectorResponse
-      amount: 1
-    - proto: STCraftMultilayerPCBT3
-      amount: 1
-    - proto: STCraftQuartzCrystalT3
-      amount: 1
+  - proto: ZoneArtifactDetectorResponse
+    amount: 1
+  - proto: STCraftMultilayerPCBT3
+    amount: 1
+  - proto: STCraftQuartzCrystalT3
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorBarracuda
+  - proto: ZoneArtifactDetectorBarracuda
+  category: artifact-detectors
+  subCategory: tier-3
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT4SeaDevil
@@ -368,14 +401,16 @@
   craftTime: 7
   pointReward: 55
   ingredients:
-    - proto: ZoneArtifactDetectorBarracuda
-      amount: 1
-    - proto: STCraftHighPerformanceChipT4
-      amount: 1
-    - proto: STCraftTransformer
-      amount: 1
+  - proto: ZoneArtifactDetectorBarracuda
+    amount: 1
+  - proto: STCraftHighPerformanceChipT4
+    amount: 1
+  - proto: STCraftTransformer
+    amount: 1
   results:
-    - proto: ZoneArtifactDetectorSeaDevil
+  - proto: ZoneArtifactDetectorSeaDevil
+  category: artifact-detectors
+  subCategory: tier-4
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT5AD3
@@ -388,13 +423,15 @@
   craftTime: 8
   pointReward: 70
   ingredients:
-    - proto: ZoneAnomalyDetectorAD2
-      amount: 1
-    - proto: STCraftHighPerformanceChipT4
-      amount: 1
-    - proto: STCraftSheetAluminumT4
-      amount: 1
-    - proto: STCraftTransformer
-      amount: 1
+  - proto: ZoneAnomalyDetectorAD2
+    amount: 1
+  - proto: STCraftHighPerformanceChipT4
+    amount: 1
+  - proto: STCraftSheetAluminumT4
+    amount: 1
+  - proto: STCraftTransformer
+    amount: 1
   results:
-    - proto: ZoneAnomalyDetectorAD3
+  - proto: ZoneAnomalyDetectorAD3
+  category: anomaly-detectors
+  subCategory: tier-4
