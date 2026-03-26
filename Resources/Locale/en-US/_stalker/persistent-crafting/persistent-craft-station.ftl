@@ -20,6 +20,7 @@ persistent-craft-recipe-results = Result
 persistent-craft-recipe-time = Time
 persistent-craft-recipe-seconds = sec
 persistent-craft-recipe-experience = Experience
+persistent-craft-recipe-points = Points
 persistent-craft-recipe-requirement = Requirement
 persistent-craft-recipe-status = Status
 persistent-craft-recipes-short = Recipes

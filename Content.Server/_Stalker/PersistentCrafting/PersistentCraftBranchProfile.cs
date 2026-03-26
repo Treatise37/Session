@@ -7,7 +7,7 @@ public sealed class PersistentCraftBranchProfile
     public int AvailablePoints;
     public int SpentPoints;
     public int Level = PersistentCraftingHelper.InitialLevel;
-    public int SubLevel = PersistentCraftingHelper.MainTierSubLevel;
+    public int SubLevel = PersistentCraftingHelper.DefaultSubLevel;
     public int Experience;
     public Dictionary<int, PersistentCraftTierProfile> TierProgress = new();
 }

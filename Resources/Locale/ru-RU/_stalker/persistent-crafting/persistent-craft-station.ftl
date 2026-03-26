@@ -20,6 +20,7 @@ persistent-craft-recipe-results = Результат
 persistent-craft-recipe-time = Время
 persistent-craft-recipe-seconds = сек
 persistent-craft-recipe-experience = Опыт
+persistent-craft-recipe-points = Очки
 persistent-craft-recipe-requirement = Требование
 persistent-craft-recipe-status = Статус
 persistent-craft-recipes-short = Рецепты

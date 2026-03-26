@@ -22,29 +22,8 @@ public sealed partial class PersistentCraftNodePrototype : IPrototype
     [DataField("nodeType")]
     public PersistentCraftNodeType NodeType = PersistentCraftNodeType.RecipeUnlock;
 
-    [DataField("tier", required: true)]
-    public int Tier = 1;
-
-    [DataField("subTier")]
-    public int SubTier;
-
     [DataField("cost")]
     public int Cost = 1;
-
-    [DataField("requiredBranchLevel")]
-    public int RequiredBranchLevel;
-
-    [DataField("affectedTier")]
-    public int AffectedTier;
-
-    [DataField("materialCostReductionPercent")]
-    public int MaterialCostReductionPercent;
-
-    [DataField("craftTimeReductionPercent")]
-    public int CraftTimeReductionPercent;
-
-    [DataField("displayLabel")]
-    public string? DisplayLabel;
 
     [DataField("displayProto")]
     public string? DisplayProto;

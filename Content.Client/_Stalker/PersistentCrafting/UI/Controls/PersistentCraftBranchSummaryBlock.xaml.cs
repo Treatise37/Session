@@ -43,7 +43,7 @@ public sealed partial class PersistentCraftBranchSummaryBlock : Control
 
         SummaryLabel.Text = summary;
         SummaryLabel.FontColorOverride = TitleColor;
-        SummaryLabel.ClipText = true;
+        SummaryLabel.ClipText = false;
 
         ProgressBar.SetAsRatio(Math.Clamp(progressValue, 0f, 1f));
         ProgressBar.BackgroundStyleBoxOverride = PersistentCraftUiTheme.ProgressBackground();
@@ -53,14 +53,14 @@ public sealed partial class PersistentCraftBranchSummaryBlock : Control
 
         ProgressTextLabel.Text = progressText;
         ProgressTextLabel.FontColorOverride = MutedTextColor;
-        ProgressTextLabel.ClipText = true;
+        ProgressTextLabel.ClipText = false;
 
         var hasFooter = !string.IsNullOrWhiteSpace(footerText);
         FooterSpacer.Visible = hasFooter;
         FooterLabel.Visible = hasFooter;
         FooterLabel.Text = footerText ?? string.Empty;
         FooterLabel.FontColorOverride = MutedTextColor;
-        FooterLabel.ClipText = true;
+        FooterLabel.ClipText = false;
 
         VerticalExpand = false;
         MinSize = new Vector2(0, hasFooter ? 114 : 96);

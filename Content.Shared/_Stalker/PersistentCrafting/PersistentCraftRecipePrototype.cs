@@ -25,11 +25,8 @@ public sealed partial class PersistentCraftRecipePrototype : IPrototype
     [DataField("tier", required: true)]
     public int Tier = 1;
 
-    [DataField("subTier")]
-    public int SubTier = PersistentCraftingHelper.InitialSubLevel;
-
-    [DataField("requiredNode")]
-    public string? RequiredNode;
+    [DataField("requiredNode", required: true)]
+    public string RequiredNode = string.Empty;
 
     [DataField("category")]
     public string? Category;
@@ -40,8 +37,8 @@ public sealed partial class PersistentCraftRecipePrototype : IPrototype
     [DataField("craftTime")]
     public float CraftTime = 2f;
 
-    [DataField("experienceReward")]
-    public int ExperienceReward;
+    [DataField("pointReward")]
+    public int PointReward;
 
     [DataField("ingredients", required: true)]
     public List<PersistentCraftIngredient> Ingredients = new();

@@ -26,6 +26,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private readonly IClyde _clyde = default!;
 
     private static readonly Color WeaponAccent = PersistentCraftUiTheme.WeaponAccent;
     private static readonly Color ArmorAccent = PersistentCraftUiTheme.ArmorAccent;
@@ -43,14 +44,18 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private static readonly Color MutedTextColor = PersistentCraftUiTheme.TextSecondary;
     private static readonly Color DescriptionTextColor = PersistentCraftUiTheme.TextPrimary;
     private static readonly Color IconBackground = PersistentCraftUiTheme.SurfaceInset;
-    private const float TierTreeNodeWidth = 156f;
-    private const float TierTreeNodeHeight = 118f;
-    private const float TierTreeHorizontalGap = 28f;
-    private const float TierTreeVerticalGap = 22f;
-    private const float TierTreePadding = 18f;
+    private const float TierTreeNodeWidth = 176f;
+    private const float TierTreeNodeHeight = 178f;
+    private const float TierTreeHorizontalGap = 56f;
+    private const float TierTreeVerticalGap = 36f;
+    private const float TierTreePadding = 24f;
     private const float TierTreeLineThickness = 3f;
+    private const float NodeDetailsWindowWidth = 860f;
+    private const float NodeDetailsWindowHeight = 720f;
+    private const float NodeDetailsWindowMinWidth = 700f;
+    private const float NodeDetailsWindowMinHeight = 560f;
+    private const float NodeDetailsWindowMargin = 16f;
 
-    private readonly Dictionary<PersistentCraftBranch, string> _selectedTierByBranch = new();
     private readonly Dictionary<PersistentCraftBranch, string> _selectedNodeByBranch = new();
     private bool _selectPreferredBranchOnNextUpdate = true;
 
@@ -58,6 +63,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private List<PersistentCraftNodePrototype> _nodes = new();
     private List<PersistentCraftRecipePrototype> _recipes = new();
     private Action<string>? _onUnlock;
+    private DefaultWindow? _nodeDetailsWindow;
 
     public PersistentCraftingWindow()
     {
@@ -70,7 +76,17 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         Branches.SetTabTitle(2, Loc.GetString("persistent-craft-branch-anomaly"));
         PersistentCraftUiTheme.ApplyTabTheme(Branches, "persistent-craft-skill-tabs", PersistentCraftUiTheme.Selection, _uiManager);
 
-        Branches.OnTabChanged += _ => RenderBranch(GetCurrentBranch());
+        Branches.OnTabChanged += _ =>
+        {
+            CloseNodeDetailsWindow();
+            RenderBranch(GetCurrentBranch());
+        };
+    }
+
+    public override void Close()
+    {
+        CloseNodeDetailsWindow();
+        base.Close();
     }
 
     public void UpdateState(
@@ -82,14 +98,13 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         _state = state;
         _nodes = nodes
             .OrderBy(node => node.Branch)
-            .ThenBy(node => node.Tier)
-            .ThenBy(node => node.SubTier)
+            .ThenBy(node => node.TreeRow >= 0 ? node.TreeRow : int.MaxValue)
+            .ThenBy(node => node.TreeColumn >= 0 ? node.TreeColumn : int.MaxValue)
             .ThenBy(node => node.ID)
             .ToList();
         _recipes = recipes
             .OrderBy(recipe => recipe.Branch)
             .ThenBy(recipe => recipe.Tier)
-            .ThenBy(recipe => recipe.SubTier)
             .ThenBy(recipe => recipe.ID)
             .ToList();
         _onUnlock = onUnlock;
@@ -118,43 +133,36 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
     private void RenderBranch(PersistentCraftBranch branch)
     {
-        var (tierHost, subNodeHost, detailHost) = GetBranchHosts(branch);
-        tierHost.RemoveAllChildren();
+        var subNodeHost = GetBranchHost(branch);
         subNodeHost.RemoveAllChildren();
-        detailHost.RemoveAllChildren();
 
         if (_state == null)
             return;
 
         var branchNodes = _nodes.Where(node => node.Branch == branch).ToList();
-        var mainTiers = branchNodes
-            .Where(PersistentCraftingHelper.IsMainTierNode)
-            .OrderBy(node => node.Tier)
+        var branchSubNodes = branchNodes
+            .OrderBy(node => node.TreeRow >= 0 ? node.TreeRow : int.MaxValue)
+            .ThenBy(node => node.TreeColumn >= 0 ? node.TreeColumn : int.MaxValue)
+            .ThenBy(node => node.ID)
             .ToList();
 
-        if (mainTiers.Count == 0)
+        if (branchSubNodes.Count == 0)
+        {
+            CloseNodeDetailsWindow();
             return;
+        }
 
         var branchState = GetBranchState(_state, branch);
-        var selectedTier = ResolveSelectedTier(branch, mainTiers);
-        var subNodes = branchNodes
-            .Where(node => !PersistentCraftingHelper.IsMainTierNode(node) && node.Tier == selectedTier.Tier)
-            .OrderBy(node => node.SubTier)
-            .ToList();
-        var selectedNode = ResolveSelectedNode(branch, selectedTier, subNodes);
+        var selectedNode = ResolveSelectedNode(branch, branchSubNodes);
 
-        tierHost.AddChild(CreateBranchSummary(branch, branchState));
-        tierHost.AddChild(new Control { MinSize = new Vector2(1, 10) });
-        tierHost.AddChild(CreateSectionHeader(Loc.GetString("persistent-craft-main-tier-label")));
-        tierHost.AddChild(new Control { MinSize = new Vector2(1, 8) });
-        tierHost.AddChild(CreateMainTierList(branch, mainTiers, selectedTier));
-
-        subNodeHost.AddChild(CreateTierSummary(branchState, selectedTier, subNodes));
-        subNodeHost.AddChild(new Control { MinSize = new Vector2(1, 10) });
-        subNodeHost.AddChild(CreateSectionHeader(
-            $"{Loc.GetString("persistent-craft-subnodes-label")} {PersistentCraftingHelper.GetTierDisplayLabel(selectedTier.Tier)}"));
+        subNodeHost.AddChild(CreateSectionHeader(Loc.GetString("persistent-craft-tree-label")));
+        subNodeHost.AddChild(new Label
+        {
+            Text = $"{Loc.GetString("persistent-craft-branch-points-label")}: {branchState.AvailablePoints}",
+            FontColorOverride = GetBranchAccent(branch),
+        });
         subNodeHost.AddChild(new Control { MinSize = new Vector2(1, 8) });
-        if (subNodes.Count == 0)
+        if (branchSubNodes.Count == 0)
         {
             subNodeHost.AddChild(new Label
             {
@@ -164,49 +172,21 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         }
         else
         {
-            subNodeHost.AddChild(CreateSubNodeTree(branch, subNodes, selectedNode));
+            subNodeHost.AddChild(CreateSubNodeTree(branch, branchSubNodes, selectedNode?.ID));
         }
 
-        detailHost.AddChild(CreateDetailsPanel(branchState, selectedNode, subNodes));
-    }
+        if (selectedNode == null)
+        {
+            CloseNodeDetailsWindow();
+            return;
+        }
 
-    private Control CreateBranchSummary(PersistentCraftBranch branch, PersistentCraftBranchState branchState)
-    {
-        var accent = GetBranchAccent(branch);
-        var xpProgress = PersistentCraftingHelper.GetProgressRatio(
-            branchState.Experience,
-            branchState.ExperienceForNextLevel);
-        var control = new PersistentCraftBranchSummaryBlock();
-        control.SetData(
-            Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(branch)),
-            $"{Loc.GetString("persistent-craft-branch-level-label")}: {FormatBranchLevel(branchState)}",
-            $"{Loc.GetString("persistent-craft-experience-label")}: {FormatBranchExperience(branchState)}",
-            xpProgress,
-            accent,
-            null);
-        return control;
-    }
-
-    private Control CreateTierSummary(
-        PersistentCraftBranchState branchState,
-        PersistentCraftNodePrototype selectedTier,
-        IReadOnlyList<PersistentCraftNodePrototype> subNodes)
-    {
-        var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-        var accent = GetBranchAccent(selectedTier.Branch);
-        var tierState = GetTierState(state, selectedTier.Branch, selectedTier.Tier) ??
-                        CreateDefaultTierState(selectedTier.Branch, selectedTier.Tier);
-        var unlockedSubNodes = subNodes.Count(node => HasNodeUnlockedOrAutoAvailable(node.ID));
-        var completed = IsTierDisplayComplete(subNodes);
-
-        var control = new PersistentCraftProgressBlock();
-        control.SetData(
-            $"{ResolveNodeName(selectedTier)} [{PersistentCraftingHelper.GetTierDisplayLabel(selectedTier.Tier)}]",
-            BuildTierProgressCompactText(selectedTier.Branch, selectedTier.Tier, tierState, completed),
-            GetTierProgress(tierState, completed),
-            accent,
-            $"{Loc.GetString("persistent-craft-tier-unlocked-summary", ("unlocked", unlockedSubNodes), ("total", subNodes.Count))} | {Loc.GetString("persistent-craft-tier-points-label")}: {tierState.AvailablePoints}");
-        return control;
+        if (_nodeDetailsWindow != null &&
+            !_nodeDetailsWindow.Disposed &&
+            _nodeDetailsWindow.IsOpen)
+        {
+            ShowNodeDetailsWindow(branchState, selectedNode);
+        }
     }
 
     private static Label CreateSectionHeader(string text)
@@ -218,86 +198,10 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         };
     }
 
-    private BoxContainer CreateMainTierList(
-        PersistentCraftBranch branch,
-        IReadOnlyList<PersistentCraftNodePrototype> tierNodes,
-        PersistentCraftNodePrototype selectedTier)
-    {
-        var list = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalExpand = true,
-        };
-
-        foreach (var node in tierNodes)
-        {
-            list.AddChild(CreateMainTierEntry(branch, node, selectedTier.ID == node.ID));
-        }
-
-        return list;
-    }
-
-    private ContainerButton CreateMainTierEntry(PersistentCraftBranch branch, PersistentCraftNodePrototype node, bool selected)
-    {
-        var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-        var branchState = GetBranchState(state, branch);
-        var unlocked = HasNodeUnlockedOrAutoAvailable(node.ID);
-        var branchLevelMet = branchState.Level >= PersistentCraftingHelper.GetNodeRequiredBranchLevel(node);
-        var accent = GetBranchAccent(branch);
-
-        var button = new ContainerButton
-        {
-            HorizontalExpand = true,
-            MinSize = new Vector2(0, 88),
-            Margin = new Thickness(0, 0, 0, 8),
-            StyleBoxOverride = new StyleBoxFlat
-            {
-                BackgroundColor = unlocked ? CardUnlockedBackground : branchLevelMet ? CardAvailableBackground : CardLockedBackground,
-                BorderColor = selected ? SelectedBorder : unlocked ? UnlockedBorder : branchLevelMet ? accent.WithAlpha(0.55f) : CardBorder,
-                BorderThickness = new Thickness(selected ? 2 : 1),
-                ContentMarginLeftOverride = 14,
-                ContentMarginRightOverride = 14,
-                ContentMarginTopOverride = 13,
-                ContentMarginBottomOverride = 13,
-            }
-        };
-        button.OnPressed += _ => SelectTier(branch, node.ID);
-
-        var row = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Horizontal,
-            HorizontalExpand = true,
-        };
-
-        row.AddChild(CreateNodeIcon(node, selected ? SelectedBorder : accent, new Vector2(60, 60)));
-        row.AddChild(new Control { MinSize = new Vector2(12, 1) });
-
-        var textColumn = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalExpand = true,
-        };
-
-        textColumn.AddChild(new Label
-        {
-            Text = $"{ResolveNodeName(node)} [{PersistentCraftingHelper.GetNodeLevelText(node)}]",
-            FontColorOverride = HeaderTextColor,
-        });
-        textColumn.AddChild(new Label
-        {
-            Text = $"{Loc.GetString("persistent-craft-level-label")}: {PersistentCraftingHelper.GetNodeRequiredBranchLevel(node)} | {Loc.GetString(GetMainTierStatusKey(unlocked, branchLevelMet))}",
-            FontColorOverride = unlocked ? UnlockedBorder : branchLevelMet ? accent : MutedTextColor,
-        });
-
-        row.AddChild(textColumn);
-        button.AddChild(row);
-        return button;
-    }
-
     private BoxContainer CreateSubNodeTree(
         PersistentCraftBranch branch,
         IReadOnlyList<PersistentCraftNodePrototype> subNodes,
-        PersistentCraftNodePrototype selectedNode)
+        string? selectedNodeId)
     {
         var accent = GetBranchAccent(branch);
         var positions = subNodes.ToDictionary(node => node.ID, GetNodeTreePosition);
@@ -317,7 +221,10 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             var childPosition = GetNodeCanvasPosition(positions[node.ID]);
             var childCenter = GetNodeCenter(childPosition);
 
-            var visualParents = GetVisualPrerequisiteIds(node, subNodes).ToList();
+            var visualParents = GetVisualPrerequisiteIds(
+                node,
+                subNodes,
+                allowImplicitFallback: node.TreeColumn < 0 || node.TreeRow < 0).ToList();
             foreach (var prerequisiteId in visualParents)
             {
                 if (!positions.TryGetValue(prerequisiteId, out var parentGridPosition))
@@ -332,8 +239,9 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         foreach (var node in subNodes)
         {
-            var control = CreateSubNodeEntry(branch, node, selectedNode.ID == node.ID);
+            var control = CreateSubNodeEntry(branch, node, selectedNodeId == node.ID);
             control.MinSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight);
+            control.MaxSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight);
             LayoutContainer.SetPosition(control, GetNodeCanvasPosition(positions[node.ID]));
             layout.AddChild(control);
         }
@@ -353,63 +261,21 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         if (node.TreeColumn >= 0 && node.TreeRow >= 0)
             return new Vector2i(node.TreeColumn, node.TreeRow);
 
-        return node.SubTier switch
-        {
-            1 => new Vector2i(1, 0),
-            2 => new Vector2i(0, 1),
-            3 => new Vector2i(2, 1),
-            4 => new Vector2i(1, 2),
-            5 => new Vector2i(0, 2),
-            6 => new Vector2i(2, 2),
-            7 => new Vector2i(1, 3),
-            _ => new Vector2i((node.SubTier - 1) % 3, 1 + (node.SubTier - 1) / 3),
-        };
+        // Fallback placement for legacy nodes without explicit tree coordinates.
+        var hashSeed = node.ID.Aggregate(0, (acc, ch) => acc + ch);
+        var localColumn = Math.Abs(hashSeed % 8);
+        var localRow = Math.Abs((hashSeed / 3) % 3);
+        return new Vector2i(localColumn, localRow);
     }
 
     private static IEnumerable<string> GetVisualPrerequisiteIds(
         PersistentCraftNodePrototype node,
-        IReadOnlyList<PersistentCraftNodePrototype> subNodes)
+        IReadOnlyList<PersistentCraftNodePrototype> subNodes,
+        bool allowImplicitFallback = true)
     {
         var subNodeIds = subNodes.Select(item => item.ID).ToHashSet();
-        var explicitParents = node.Prerequisites.Where(subNodeIds.Contains).ToList();
-        if (explicitParents.Count > 0)
-            return explicitParents;
-
-        string? TierNode(int subTier) => subNodes.FirstOrDefault(item => item.SubTier == subTier)?.ID;
-        var visualParents = new List<string>();
-
-        void AddParent(int subTier)
-        {
-            var parentId = TierNode(subTier);
-            if (!string.IsNullOrWhiteSpace(parentId))
-                visualParents.Add(parentId);
-        }
-
-        switch (node.SubTier)
-        {
-            case 2:
-            case 3:
-                AddParent(1);
-                break;
-            case 4:
-                AddParent(2);
-                AddParent(3);
-                break;
-            case 5:
-                AddParent(2);
-                AddParent(4);
-                break;
-            case 6:
-                AddParent(3);
-                AddParent(4);
-                break;
-            case 7:
-                AddParent(5);
-                AddParent(6);
-                break;
-        }
-
-        return visualParents;
+        _ = allowImplicitFallback;
+        return node.Prerequisites.Where(subNodeIds.Contains).ToList();
     }
 
     private static Vector2 GetNodeCanvasPosition(Vector2i gridPosition)
@@ -471,18 +337,17 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
         var branchState = GetBranchState(state, branch);
-        var tierState = GetTierState(state, branch, node.Tier) ?? CreateDefaultTierState(branch, node.Tier);
         var unlocked = HasNodeUnlockedOrAutoAvailable(node.ID);
         var prerequisitesMet = node.Prerequisites.All(HasNodeUnlockedOrAutoAvailable);
-        var branchLevelMet = branchState.Level >= PersistentCraftingHelper.GetNodeRequiredBranchLevel(node);
-        var tierProgressMet = IsTierProgressRequirementMet(node, tierState);
-        var canUnlock = state.Loaded && !unlocked && prerequisitesMet && branchLevelMet && tierProgressMet && tierState.AvailablePoints >= node.Cost;
+        var canUnlock = state.Loaded && !unlocked && prerequisitesMet && branchState.AvailablePoints >= node.Cost;
         var accent = GetBranchAccent(branch);
 
         var button = new ContainerButton
         {
-            MinSize = new Vector2(0, 132),
-            HorizontalExpand = true,
+            MinSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight),
+            MaxSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight),
+            HorizontalExpand = false,
+            VerticalExpand = false,
             StyleBoxOverride = new StyleBoxFlat
             {
                 BackgroundColor = unlocked ? CardUnlockedBackground : canUnlock ? CardAvailableBackground : CardLockedBackground,
@@ -505,27 +370,32 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         body.AddChild(CreateNodeIcon(node, selected ? SelectedBorder : accent, new Vector2(64, 64)));
         body.AddChild(new Control { MinSize = new Vector2(1, 8) });
-        body.AddChild(new Label
+
+        var namePlate = new PanelContainer
         {
-            Text = PersistentCraftingHelper.GetNodeLevelText(node),
-            FontColorOverride = accent,
-            HorizontalAlignment = HAlignment.Center,
-        });
-        body.AddChild(new Label
+            HorizontalExpand = true,
+            MinSize = new Vector2(0, 26),
+            PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = IconBackground.WithAlpha(0.45f),
+                BorderColor = CardBorder.WithAlpha(0.55f),
+                BorderThickness = new Thickness(1),
+                ContentMarginLeftOverride = 4,
+                ContentMarginRightOverride = 4,
+                ContentMarginTopOverride = 2,
+                ContentMarginBottomOverride = 2,
+            }
+        };
+
+        var nameLabel = new RichTextLabel
         {
-            Text = BuildNodeCardTitle(node),
-            FontColorOverride = HeaderTextColor,
-            HorizontalAlignment = HAlignment.Center,
-            ClipText = true,
-        });
+            HorizontalExpand = true,
+            VerticalAlignment = VAlignment.Center,
+        };
+        nameLabel.SetMarkup($"[color={HeaderTextColor.ToHex()}]{FormattedMessage.EscapeText(ResolveNodeCardCaption(node))}[/color]");
+        namePlate.AddChild(nameLabel);
+        body.AddChild(namePlate);
         body.AddChild(new Control { VerticalExpand = true });
-        body.AddChild(new Label
-        {
-            Text = BuildNodeCardFooter(node, tierState, unlocked, canUnlock, branchLevelMet, prerequisitesMet, tierProgressMet),
-            FontColorOverride = unlocked ? UnlockedBorder : canUnlock ? accent : MutedTextColor,
-            HorizontalAlignment = HAlignment.Center,
-            ClipText = true,
-        });
 
         button.AddChild(body);
         return button;
@@ -533,28 +403,21 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
     private PanelContainer CreateDetailsPanel(
         PersistentCraftBranchState branchState,
-        PersistentCraftNodePrototype node,
-        IReadOnlyList<PersistentCraftNodePrototype> tierSubNodes)
+        PersistentCraftNodePrototype node)
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-        var tierState = GetTierState(state, node.Branch, node.Tier) ?? CreateDefaultTierState(node.Branch, node.Tier);
         var unlocked = HasNodeUnlockedOrAutoAvailable(node.ID);
         var prerequisitesMet = node.Prerequisites.All(HasNodeUnlockedOrAutoAvailable);
-        var branchLevelMet = branchState.Level >= PersistentCraftingHelper.GetNodeRequiredBranchLevel(node);
-        var tierProgressMet = IsTierProgressRequirementMet(node, tierState);
         var canUnlock = state.Loaded &&
-                        !PersistentCraftingHelper.IsMainTierNode(node) &&
                         !unlocked &&
                         prerequisitesMet &&
-                        branchLevelMet &&
-                        tierProgressMet &&
-                        tierState.AvailablePoints >= node.Cost;
+                        branchState.AvailablePoints >= node.Cost;
         var accent = GetBranchAccent(node.Branch);
 
         var panel = new PanelContainer
         {
             HorizontalExpand = true,
-            VerticalExpand = true,
+            VerticalExpand = false,
             PanelOverride = new StyleBoxFlat
             {
                 BackgroundColor = PanelBackground,
@@ -580,7 +443,35 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             HorizontalExpand = true,
         };
 
-        headerRow.AddChild(CreateNodeIcon(node, accent, new Vector2(120, 120)));
+        var canAttemptUnlock = state.Loaded && !unlocked;
+
+        var headerLeft = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            MinSize = new Vector2(136, 0),
+        };
+
+        headerLeft.AddChild(CreateNodeIcon(node, accent, new Vector2(120, 120)));
+        headerLeft.AddChild(new Control { MinSize = new Vector2(1, 8) });
+        headerLeft.AddChild(new Label
+        {
+            Text = Loc.GetString("persistent-craft-node-branch-points", ("points", branchState.AvailablePoints)),
+            FontColorOverride = MutedTextColor,
+            HorizontalAlignment = HAlignment.Center,
+        });
+        headerLeft.AddChild(new Control { MinSize = new Vector2(1, 8) });
+
+        var unlockButton = new Button
+        {
+            Text = GetActionText(unlocked),
+            Disabled = !canAttemptUnlock,
+            MinSize = new Vector2(0, 42),
+            HorizontalExpand = true,
+        };
+        unlockButton.OnPressed += _ => _onUnlock?.Invoke(node.ID);
+        headerLeft.AddChild(unlockButton);
+
+        headerRow.AddChild(headerLeft);
         headerRow.AddChild(new Control { MinSize = new Vector2(18, 1) });
 
         var headerText = new BoxContainer
@@ -591,7 +482,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         headerText.AddChild(new Label
         {
-            Text = $"{ResolveNodeName(node)} [{PersistentCraftingHelper.GetNodeLevelText(node)}]",
+            Text = ResolveNodeName(node),
             FontColorOverride = HeaderTextColor,
             ClipText = true,
         });
@@ -603,54 +494,87 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         };
         meta.SetMarkup(
             $"[color={MutedTextColor.ToHex()}]{Loc.GetString("persistent-craft-selected-branch", ("branch", Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(node.Branch))))}\n" +
-            $"{Loc.GetString("persistent-craft-branch-level-label")}: {FormatBranchLevel(branchState)} | " +
-            $"{Loc.GetString("persistent-craft-tier-points-label")}: {tierState.AvailablePoints}\n" +
+            $"{Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints}\n" +
             $"{Loc.GetString("persistent-craft-node-cost", ("cost", node.Cost))} | " +
-            $"{Loc.GetString(GetDetailStatusKey(node, unlocked, branchLevelMet, prerequisitesMet, canUnlock))}[/color]");
+            $"{Loc.GetString(GetDetailStatusKey(unlocked, prerequisitesMet, canUnlock))}[/color]");
         headerText.AddChild(meta);
         headerRow.AddChild(headerText);
 
         body.AddChild(headerRow);
         body.AddChild(new Control { MinSize = new Vector2(1, 10) });
 
-        var description = new PersistentCraftTextSection();
-        description.SetData(
-            Loc.GetString("persistent-craft-description-label"),
-            $"[color={DescriptionTextColor.ToHex()}]{FormattedMessage.EscapeText(ResolveNodeDescription(node))}[/color]",
-            CardBorder,
-            12);
-        body.AddChild(description);
-        body.AddChild(new Control { MinSize = new Vector2(1, 12) });
-
-        body.AddChild(CreateDetailSection(
-            Loc.GetString("persistent-craft-node-mastery-label"),
-            BuildTierProgressMarkup(node.Branch, node.Tier, tierState, unlocked, IsTierDisplayComplete(tierSubNodes))));
-        body.AddChild(new Control { MinSize = new Vector2(1, 10) });
         body.AddChild(CreateDetailSection(
             Loc.GetString("persistent-craft-rewards-label"),
-            BuildRewardMarkup(node, tierState, tierSubNodes)));
+            BuildRewardMarkup(node)));
         body.AddChild(new Control { MinSize = new Vector2(1, 10) });
         body.AddChild(CreateDetailSection(
             Loc.GetString("persistent-craft-requirements-label"),
             BuildRequirementMarkup(node)));
-        body.AddChild(new Control { VerticalExpand = true });
-
-        var canAttemptUnlock = state.Loaded &&
-                               !PersistentCraftingHelper.IsMainTierNode(node) &&
-                               !unlocked;
-
-        var unlockButton = new Button
-        {
-            Text = GetActionText(node, unlocked, canUnlock),
-            Disabled = !canAttemptUnlock,
-            MinSize = new Vector2(0, 46),
-            HorizontalExpand = true,
-        };
-        unlockButton.OnPressed += _ => _onUnlock?.Invoke(node.ID);
-
-        body.AddChild(unlockButton);
         panel.AddChild(body);
         return panel;
+    }
+
+    private void ShowNodeDetailsWindow(PersistentCraftBranchState branchState, PersistentCraftNodePrototype node)
+    {
+        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
+        {
+            _nodeDetailsWindow = new DefaultWindow
+            {
+                SetSize = new Vector2(NodeDetailsWindowWidth, NodeDetailsWindowHeight),
+                MinSize = new Vector2(NodeDetailsWindowMinWidth, NodeDetailsWindowMinHeight),
+                Resizable = true,
+            };
+            _nodeDetailsWindow.OnClose += () => _nodeDetailsWindow = null;
+        }
+
+        _nodeDetailsWindow.Title = ResolveNodeName(node);
+        _nodeDetailsWindow.RemoveAllChildren();
+
+        var root = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            Margin = new Thickness(10),
+            HorizontalExpand = true,
+            VerticalExpand = false,
+        };
+        root.AddChild(CreateDetailsPanel(branchState, node));
+
+        var scroll = new ScrollContainer
+        {
+            HorizontalExpand = true,
+            VerticalExpand = true,
+            HScrollEnabled = false,
+            VScrollEnabled = true,
+        };
+        scroll.AddChild(root);
+
+        _nodeDetailsWindow.AddChild(scroll);
+        if (!_nodeDetailsWindow.IsOpen)
+            _nodeDetailsWindow.Open();
+
+        PositionNodeDetailsWindowTopRight();
+        _nodeDetailsWindow.MoveToFront();
+    }
+
+    private void PositionNodeDetailsWindowTopRight()
+    {
+        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
+            return;
+
+        var screen = _clyde.ScreenSize;
+        var windowWidth = _nodeDetailsWindow.Width > 0 ? _nodeDetailsWindow.Width : (int)NodeDetailsWindowWidth;
+        var x = Math.Max(NodeDetailsWindowMargin, screen.X - windowWidth - NodeDetailsWindowMargin);
+        var y = NodeDetailsWindowMargin;
+        LayoutContainer.SetPosition(_nodeDetailsWindow, new Vector2(x, y));
+    }
+
+    private void CloseNodeDetailsWindow()
+    {
+        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
+            return;
+
+        _nodeDetailsWindow.Close();
+        _nodeDetailsWindow = null;
     }
 
     private Control CreateDetailSection(string title, string contentMarkup)
@@ -660,68 +584,14 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         return section;
     }
 
-    private string BuildNodeCardTitle(PersistentCraftNodePrototype node)
-    {
-        if (PersistentCraftingHelper.IsStarterSubTierNode(node))
-            return Loc.GetString("persistent-craft-node-sub-starter-name");
-
-        return node.NodeType switch
-        {
-            PersistentCraftNodeType.RecipeUnlock => Loc.GetString("persistent-craft-node-sub-recipe-name"),
-            PersistentCraftNodeType.MaterialEfficiency => Loc.GetString("persistent-craft-node-sub-material-name"),
-            PersistentCraftNodeType.CraftSpeed => Loc.GetString("persistent-craft-node-sub-speed-name"),
-            _ => ResolveNodeName(node),
-        };
-    }
-
-    private string BuildNodeCardFooter(
-        PersistentCraftNodePrototype node,
-        PersistentCraftTierState tierState,
-        bool unlocked,
-        bool canUnlock,
-        bool branchLevelMet,
-        bool prerequisitesMet,
-        bool tierProgressMet)
-    {
-        if (PersistentCraftingHelper.IsStarterSubTierNode(node))
-            return Loc.GetString("persistent-craft-auto-unlock-label");
-
-        if (unlocked)
-            return Loc.GetString("persistent-craft-node-status-unlocked");
-
-        if (!branchLevelMet)
-        {
-            return Loc.GetString(
-                "persistent-craft-node-status-branch-level",
-                ("level", PersistentCraftingHelper.GetNodeRequiredBranchLevel(node)));
-        }
-
-        if (!prerequisitesMet)
-            return Loc.GetString("persistent-craft-node-status-chain");
-
-        if (!tierProgressMet)
-        {
-            return Loc.GetString(
-                "persistent-craft-node-status-tier-progress",
-                ("subLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(node.Tier, PersistentCraftingHelper.GetNodeRequiredTierProgressLevel(node))));
-        }
-
-        var status = Loc.GetString(canUnlock
-            ? "persistent-craft-node-status-available"
-            : "persistent-craft-node-status-locked");
-
-        if (node.Cost <= 0)
-            return status;
-
-        return $"{Loc.GetString("persistent-craft-tier-points-short")}: {tierState.AvailablePoints} | {Loc.GetString("persistent-craft-node-cost", ("cost", node.Cost))}";
-    }
-
     private PanelContainer CreateNodeIcon(PersistentCraftNodePrototype node, Color accent, Vector2 size)
     {
         var panel = new PanelContainer
         {
             MinSize = size,
+            VerticalExpand = false,
             HorizontalAlignment = HAlignment.Center,
+            VerticalAlignment = VAlignment.Top,
             PanelOverride = new StyleBoxFlat
             {
                 BackgroundColor = IconBackground,
@@ -749,66 +619,30 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         {
             panel.AddChild(new Label
             {
-                Text = PersistentCraftingHelper.GetNodeLevelText(node),
+                Text = ResolveNodeName(node),
                 FontColorOverride = HeaderTextColor,
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,
+                ClipText = true,
             });
         }
 
         return panel;
     }
 
-    private string BuildRewardMarkup(
-        PersistentCraftNodePrototype node,
-        PersistentCraftTierState? tierState,
-        IReadOnlyList<PersistentCraftNodePrototype> tierSubNodes)
+    private string BuildRewardMarkup(PersistentCraftNodePrototype node)
     {
-        var lines = new List<string>();
+        var recipes = FindRecipesForNode(node).ToList();
+        if (recipes.Count == 0)
+            return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-none")}[/color]";
 
-        if (PersistentCraftingHelper.IsMainTierNode(node))
-        {
-            lines.Add($"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-effect-main-tier", ("tier", node.Tier))}[/color]");
-
-            foreach (var subNode in tierSubNodes.OrderBy(item => item.SubTier))
-            {
-                lines.Add($"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveNodeName(subNode))} ({PersistentCraftingHelper.GetNodeLevelText(subNode)})[/color]");
-            }
-
-            return string.Join("\n", lines);
-        }
-
-        if (node.NodeType == PersistentCraftNodeType.RecipeUnlock)
-        {
-            var recipes = FindRecipesForNode(node).ToList();
-            if (recipes.Count == 0)
-                return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-none")}[/color]";
-
-            return string.Join("\n", recipes.Select(recipe =>
-                $"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveRecipeName(recipe))} ({PersistentCraftingHelper.GetRecipeLevelText(recipe)})[/color]"));
-        }
-
-        if (node.NodeType == PersistentCraftNodeType.MaterialEfficiency)
-        {
-            return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-effect-materials", ("tier", PersistentCraftingHelper.GetAffectedTier(node)), ("percent", GetCurrentTierEffectValue(tierState, node.MaterialCostReductionPercent)))}[/color]";
-        }
-
-        if (node.NodeType == PersistentCraftNodeType.CraftSpeed)
-        {
-            return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-effect-speed", ("tier", PersistentCraftingHelper.GetAffectedTier(node)), ("percent", GetCurrentTierEffectValue(tierState, node.CraftTimeReductionPercent)))}[/color]";
-        }
-
-        return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-none")}[/color]";
+        return string.Join("\n", recipes.Select(recipe =>
+            $"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveRecipeName(recipe))}[/color]"));
     }
 
     private string BuildRequirementMarkup(PersistentCraftNodePrototype node)
     {
         var lines = new List<string>();
-
-        if (PersistentCraftingHelper.GetNodeRequiredBranchLevel(node) > 1)
-        {
-            lines.Add($"[color={DescriptionTextColor.ToHex()}]- {Loc.GetString("persistent-craft-level-label")}: {PersistentCraftingHelper.GetNodeRequiredBranchLevel(node)}[/color]");
-        }
 
         foreach (var prerequisiteId in node.Prerequisites)
         {
@@ -819,14 +653,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
                 continue;
             }
 
-            lines.Add($"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveNodeName(prerequisite))} ({PersistentCraftingHelper.GetNodeLevelText(prerequisite)})[/color]");
-        }
-
-        var requiredTierProgress = PersistentCraftingHelper.GetNodeRequiredTierProgressLevel(node);
-        if (!PersistentCraftingHelper.IsMainTierNode(node) &&
-            requiredTierProgress > PersistentCraftingHelper.InitialTierProgressLevel)
-        {
-            lines.Add($"[color={DescriptionTextColor.ToHex()}]- {Loc.GetString("persistent-craft-tier-progress-required", ("subLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(node.Tier, requiredTierProgress)))}[/color]");
+            lines.Add($"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveNodeName(prerequisite))}[/color]");
         }
 
         if (lines.Count == 0)
@@ -835,134 +662,51 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         return string.Join("\n", lines);
     }
 
-    private string BuildTierProgressMarkup(
+    private PersistentCraftNodePrototype? ResolveSelectedNode(
         PersistentCraftBranch branch,
-        int tier,
-        PersistentCraftTierState? tierState,
-        bool unlocked,
-        bool completed)
-    {
-        if (!unlocked)
-        {
-            return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-mastery-locked")}[/color]";
-        }
-
-        var state = tierState ?? CreateDefaultTierState(branch, tier);
-        var maxProgressLevel = Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, state.MaxProgressLevel);
-        var level = completed
-            ? maxProgressLevel
-            : Math.Clamp(state.ProgressLevel, PersistentCraftingHelper.InitialTierProgressLevel, maxProgressLevel);
-        var next = completed ? 0 : state.ExperienceForNextLevel;
-
-        if (next <= 0 || level >= maxProgressLevel)
-        {
-            return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-mastery-max", ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, level)), ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, maxProgressLevel)))}[/color]";
-        }
-
-        return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-node-mastery-progress", ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, level)), ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, maxProgressLevel)), ("experience", state.Experience), ("next", next))}[/color]";
-    }
-
-    private PersistentCraftNodePrototype ResolveSelectedTier(
-        PersistentCraftBranch branch,
-        IReadOnlyList<PersistentCraftNodePrototype> tierNodes)
-    {
-        if (_selectedTierByBranch.TryGetValue(branch, out var selectedId))
-        {
-            var existing = tierNodes.FirstOrDefault(node => node.ID == selectedId);
-            if (existing != null)
-                return existing;
-        }
-
-        var fallback = tierNodes
-                           .Where(node => HasNodeUnlockedOrAutoAvailable(node.ID))
-                           .OrderByDescending(node => node.Tier)
-                           .FirstOrDefault()
-                       ?? tierNodes[0];
-
-        _selectedTierByBranch[branch] = fallback.ID;
-        return fallback;
-    }
-
-    private PersistentCraftNodePrototype ResolveSelectedNode(
-        PersistentCraftBranch branch,
-        PersistentCraftNodePrototype selectedTier,
         IReadOnlyList<PersistentCraftNodePrototype> subNodes)
     {
-        var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-
         if (_selectedNodeByBranch.TryGetValue(branch, out var selectedId))
         {
-            var existing = subNodes.FirstOrDefault(node => node.ID == selectedId) ??
-                           (selectedTier.ID == selectedId ? selectedTier : null);
+            var existing = subNodes.FirstOrDefault(node => node.ID == selectedId);
             if (existing != null)
                 return existing;
+
+            _selectedNodeByBranch.Remove(branch);
         }
 
-        var branchState = GetBranchState(state, branch);
-        var fallback = subNodes
-                           .Where(node => !state.UnlockedNodes.Contains(node.ID) &&
-                                          node.Prerequisites.All(HasNodeUnlockedOrAutoAvailable) &&
-                                          branchState.Level >= PersistentCraftingHelper.GetNodeRequiredBranchLevel(node) &&
-                                          IsTierProgressRequirementMet(node, GetTierState(state, branch, node.Tier) ?? CreateDefaultTierState(branch, node.Tier)) &&
-                                          (GetTierState(state, branch, node.Tier)?.AvailablePoints ?? 0) >= node.Cost)
-                           .OrderBy(node => node.SubTier)
-                           .FirstOrDefault()
-                       ?? subNodes
-                           .Where(node => HasNodeUnlockedOrAutoAvailable(node.ID))
-                           .OrderByDescending(node => node.SubTier)
-                           .FirstOrDefault()
-                       ?? subNodes.FirstOrDefault()
-                       ?? selectedTier;
-
-        _selectedNodeByBranch[branch] = fallback.ID;
-        return fallback;
-    }
-
-    private void SelectTier(PersistentCraftBranch branch, string nodeId)
-    {
-        _selectedTierByBranch[branch] = nodeId;
-
-        var tierNode = _nodes.FirstOrDefault(item => item.ID == nodeId);
-        if (tierNode == null)
-        {
-            _selectedNodeByBranch[branch] = nodeId;
-            RenderBranch(branch);
-            return;
-        }
-
-        var subNodes = _nodes
-            .Where(item => item.Branch == branch &&
-                           !PersistentCraftingHelper.IsMainTierNode(item) &&
-                           item.Tier == tierNode.Tier)
-            .OrderBy(item => item.SubTier)
-            .ToList();
-
-        _selectedNodeByBranch[branch] = ResolveSelectedNode(branch, tierNode, subNodes).ID;
-        RenderBranch(branch);
+        return null;
     }
 
     private void SelectNode(PersistentCraftBranch branch, string nodeId)
     {
+        if (_selectedNodeByBranch.TryGetValue(branch, out var selectedId) &&
+            selectedId == nodeId &&
+            _nodeDetailsWindow != null &&
+            !_nodeDetailsWindow.Disposed &&
+            _nodeDetailsWindow.IsOpen)
+        {
+            _selectedNodeByBranch.Remove(branch);
+            CloseNodeDetailsWindow();
+            return;
+        }
+
         _selectedNodeByBranch[branch] = nodeId;
 
-        var node = _nodes.FirstOrDefault(item => item.ID == nodeId);
-        if (node != null)
-            _selectedTierByBranch[branch] = PersistentCraftingHelper.BuildMainTierNodeId(node.Branch, node.Tier);
+        if (_state == null)
+            return;
 
-        RenderBranch(branch);
+        var node = _nodes.FirstOrDefault(item => item.Branch == branch && item.ID == nodeId);
+        if (node == null)
+            return;
+
+        var branchState = GetBranchState(_state, branch);
+        ShowNodeDetailsWindow(branchState, node);
     }
 
     private IEnumerable<PersistentCraftRecipePrototype> FindRecipesForNode(PersistentCraftNodePrototype node)
     {
-        return _recipes.Where(recipe =>
-        {
-            if (!string.IsNullOrWhiteSpace(recipe.RequiredNode))
-                return recipe.RequiredNode == node.ID;
-
-            return recipe.Branch == node.Branch &&
-                   recipe.Tier == node.Tier &&
-                   recipe.SubTier == node.SubTier;
-        });
+        return _recipes.Where(recipe => recipe.RequiredNode == node.ID);
     }
 
     private bool TryGetNodeTexture(PersistentCraftNodePrototype node, out Texture? texture)
@@ -1007,60 +751,59 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private string ResolveNodeName(PersistentCraftNodePrototype node)
     {
         if (!string.IsNullOrWhiteSpace(node.Name))
-            return Loc.GetString(node.Name);
-
-        return node.NodeType switch
         {
-            PersistentCraftNodeType.MainTier =>
-                $"{Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(node.Branch))} {PersistentCraftingHelper.GetTierDisplayLabel(node.Tier)}",
-            PersistentCraftNodeType.RecipeUnlock => Loc.GetString("persistent-craft-node-sub-recipe-name"),
-            PersistentCraftNodeType.MaterialEfficiency => Loc.GetString("persistent-craft-node-sub-material-name"),
-            PersistentCraftNodeType.CraftSpeed => Loc.GetString("persistent-craft-node-sub-speed-name"),
-            _ => PersistentCraftingHelper.GetNodeLevelText(node),
-        };
+            if (Loc.TryGetString(node.Name, out var localizedNodeName) &&
+                !string.IsNullOrWhiteSpace(localizedNodeName))
+            {
+                return localizedNodeName;
+            }
+
+            if (!string.IsNullOrWhiteSpace(node.Name))
+                return node.Name;
+        }
+
+        if (!string.IsNullOrWhiteSpace(node.DisplayProto) &&
+            _prototype.TryIndex<EntityPrototype>(node.DisplayProto, out var prototype))
+        {
+            if (!string.IsNullOrWhiteSpace(prototype.Name))
+            {
+                return prototype.Name;
+            }
+
+            if (Loc.TryGetString($"ent-{prototype.ID}", out var localizedPrototypeName) &&
+                !string.IsNullOrWhiteSpace(localizedPrototypeName))
+            {
+                return localizedPrototypeName;
+            }
+
+            return prototype.ID;
+        }
+
+        if (!string.IsNullOrWhiteSpace(node.DisplayProto))
+            return node.DisplayProto;
+
+        return node.ID;
     }
 
-    private string ResolveNodeDescription(PersistentCraftNodePrototype node)
+    private string ResolveNodeCardCaption(PersistentCraftNodePrototype node)
     {
-        if (!string.IsNullOrWhiteSpace(node.Description))
-            return Loc.GetString(node.Description);
+        var resolved = ResolveNodeName(node).Trim();
+        if (!string.IsNullOrWhiteSpace(resolved))
+            return resolved;
 
-        return node.NodeType switch
-        {
-            PersistentCraftNodeType.MainTier =>
-                Loc.GetString("persistent-craft-node-effect-main-tier", ("tier", node.Tier)),
-            PersistentCraftNodeType.RecipeUnlock => Loc.GetString("persistent-craft-node-sub-recipe-desc"),
-            PersistentCraftNodeType.MaterialEfficiency => Loc.GetString("persistent-craft-node-sub-material-desc"),
-            PersistentCraftNodeType.CraftSpeed => Loc.GetString("persistent-craft-node-sub-speed-desc"),
-            _ => PersistentCraftingHelper.GetNodeLevelText(node),
-        };
-    }
+        if (!string.IsNullOrWhiteSpace(node.DisplayProto))
+            return node.DisplayProto;
 
-    private string GetMainTierStatusKey(bool unlocked, bool branchLevelMet)
-    {
-        if (_state?.Loaded != true)
-            return "persistent-craft-node-status-loading";
-
-        if (unlocked)
-            return "persistent-craft-node-status-unlocked";
-
-        return branchLevelMet
-            ? "persistent-craft-auto-unlock-label"
-            : "persistent-craft-node-status-locked";
+        return node.ID;
     }
 
     private string GetDetailStatusKey(
-        PersistentCraftNodePrototype node,
         bool unlocked,
-        bool branchLevelMet,
         bool prerequisitesMet,
         bool canUnlock)
     {
         if (_state?.Loaded != true)
             return "persistent-craft-node-status-loading";
-
-        if (PersistentCraftingHelper.IsMainTierNode(node))
-            return GetMainTierStatusKey(unlocked, branchLevelMet);
 
         if (unlocked)
             return "persistent-craft-node-status-unlocked";
@@ -1068,19 +811,16 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         if (canUnlock)
             return "persistent-craft-node-status-available";
 
-        if (!branchLevelMet || !prerequisitesMet)
+        if (!prerequisitesMet)
             return "persistent-craft-node-status-locked";
 
         return "persistent-craft-node-status-locked";
     }
 
-    private string GetActionText(PersistentCraftNodePrototype node, bool unlocked, bool canUnlock)
+    private string GetActionText(bool unlocked)
     {
         if (_state?.Loaded != true)
             return Loc.GetString("persistent-craft-node-status-loading");
-
-        if (PersistentCraftingHelper.IsMainTierNode(node))
-            return Loc.GetString("persistent-craft-auto-unlock-label");
 
         if (unlocked)
             return Loc.GetString("persistent-craft-node-status-unlocked");
@@ -1144,11 +884,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
             return false;
 
-        if (!PersistentCraftingHelper.IsStarterSubTierNode(node) && node.Cost > 0)
-            return false;
-
-        var branchState = GetBranchState(state, node.Branch);
-        if (branchState.Level < PersistentCraftingHelper.GetNodeRequiredBranchLevel(node))
+        if (node.Cost > 0)
             return false;
 
         if (!path.Add(nodeId))
@@ -1164,14 +900,14 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         }
     }
 
-    private (BoxContainer tierHost, BoxContainer subNodeHost, BoxContainer detailHost) GetBranchHosts(PersistentCraftBranch branch)
+    private BoxContainer GetBranchHost(PersistentCraftBranch branch)
     {
         return branch switch
         {
-            PersistentCraftBranch.Weapon => (WeaponTierHost, WeaponSubNodeHost, WeaponDetailHost),
-            PersistentCraftBranch.Armor => (ArmorTierHost, ArmorSubNodeHost, ArmorDetailHost),
-            PersistentCraftBranch.Anomaly => (AnomalyTierHost, AnomalySubNodeHost, AnomalyDetailHost),
-            _ => (WeaponTierHost, WeaponSubNodeHost, WeaponDetailHost),
+            PersistentCraftBranch.Weapon => WeaponSubNodeHost,
+            PersistentCraftBranch.Armor => ArmorSubNodeHost,
+            PersistentCraftBranch.Anomaly => AnomalySubNodeHost,
+            _ => WeaponSubNodeHost,
         };
     }
 
@@ -1180,133 +916,13 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         return state.BranchStates.FirstOrDefault(item => item.Branch == branch) ??
                new PersistentCraftBranchState(
                    branch,
-                   GetBranchMaxLevel(branch),
+                   1,
                    0,
                    0,
                    PersistentCraftingHelper.InitialLevel,
-                   PersistentCraftingHelper.MainTierSubLevel,
+                   PersistentCraftingHelper.DefaultSubLevel,
                    0,
-                   PersistentCraftingHelper.GetExperienceForNextLevel(PersistentCraftingHelper.InitialLevel));
-    }
-
-    private int GetBranchMaxLevel(PersistentCraftBranch branch)
-    {
-        return _nodes
-            .Where(node => node.Branch == branch && PersistentCraftingHelper.IsMainTierNode(node))
-            .Select(node => node.Tier)
-            .DefaultIfEmpty(PersistentCraftingHelper.InitialLevel)
-            .Max();
-    }
-
-    private static string FormatBranchLevel(PersistentCraftBranchState branchState)
-    {
-        return PersistentCraftingHelper.FormatCappedLevel(branchState.Level, branchState.MaxLevel);
-    }
-
-    private static string FormatBranchExperience(PersistentCraftBranchState branchState)
-    {
-        return branchState.ExperienceForNextLevel <= 0
-            ? Loc.GetString("persistent-craft-max-label")
-            : $"{branchState.Experience}/{branchState.ExperienceForNextLevel}";
-    }
-
-    private static PersistentCraftTierState? GetTierState(PersistentCraftState state, PersistentCraftBranch branch, int tier)
-    {
-        return state.TierStates.FirstOrDefault(item => item.Branch == branch && item.Tier == tier);
-    }
-
-    private int GetTierMaxProgressLevel(PersistentCraftBranch branch, int tier)
-    {
-        var maxSubTier = _nodes
-            .Where(node => node.Branch == branch &&
-                           node.Tier == tier &&
-                           !PersistentCraftingHelper.IsMainTierNode(node) &&
-                           node.SubTier > PersistentCraftingHelper.MainTierSubLevel)
-            .Select(node => node.SubTier)
-            .DefaultIfEmpty(PersistentCraftingHelper.DefaultMaxTierProgressLevel)
-            .Max();
-
-        return Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, maxSubTier);
-    }
-
-    private PersistentCraftTierState CreateDefaultTierState(PersistentCraftBranch branch, int tier)
-    {
-        var maxProgressLevel = GetTierMaxProgressLevel(branch, tier);
-        return new PersistentCraftTierState(
-            branch,
-            tier,
-            PersistentCraftingHelper.InitialTierProgressLevel,
-            maxProgressLevel,
-            0,
-            0,
-            0,
-            PersistentCraftingHelper.GetTierExperienceForNextLevel(
-                tier,
-                PersistentCraftingHelper.InitialTierProgressLevel,
-                maxProgressLevel));
-    }
-
-    private static bool IsTierProgressRequirementMet(PersistentCraftNodePrototype node, PersistentCraftTierState tierState)
-    {
-        var requiredProgress = PersistentCraftingHelper.GetNodeRequiredTierProgressLevel(node);
-        return tierState.ProgressLevel >= requiredProgress;
-    }
-
-    private static float GetTierProgress(PersistentCraftTierState? tierState, bool completed = false)
-    {
-        if (completed)
-            return 1f;
-
-        var state = tierState;
-        if (state == null)
-            return 0f;
-
-        if (state.ExperienceForNextLevel <= 0)
-            return 1f;
-
-        return Math.Clamp(state.Experience / (float) state.ExperienceForNextLevel, 0f, 1f);
-    }
-
-    private string BuildTierProgressCompactText(PersistentCraftBranch branch, int tier, PersistentCraftTierState? tierState, bool completed = false)
-    {
-        var state = tierState ?? CreateDefaultTierState(branch, tier);
-        var maxProgressLevel = Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, state.MaxProgressLevel);
-
-        if (completed)
-        {
-            return Loc.GetString(
-                "persistent-craft-node-mastery-max",
-                ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, maxProgressLevel)),
-                ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, maxProgressLevel)));
-        }
-
-        return Loc.GetString(
-            "persistent-craft-node-mastery-short",
-            ("currentSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, state.ProgressLevel)),
-            ("targetSubLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(tier, maxProgressLevel)));
-    }
-
-    private bool IsTierDisplayComplete(IReadOnlyList<PersistentCraftNodePrototype> subNodes)
-    {
-        return subNodes.Count > 0 && subNodes.All(node => HasNodeUnlockedOrAutoAvailable(node.ID));
-    }
-
-    private int GetCurrentTierEffectValue(
-        PersistentCraftTierState? tierState,
-        int baseValue)
-    {
-        if (baseValue <= 0)
-            return 0;
-
-        var state = tierState ?? CreateDefaultTierState(PersistentCraftBranch.Weapon, 1);
-        var max = Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, state.MaxProgressLevel);
-        var normalized = Math.Clamp(
-            (state.ProgressLevel - PersistentCraftingHelper.InitialTierProgressLevel) /
-            (float) Math.Max(1, max - PersistentCraftingHelper.InitialTierProgressLevel),
-            0f,
-            1f);
-        var multiplier = 0.5f + normalized * 0.5f;
-        return Math.Max(1, (int) MathF.Round(baseValue * multiplier));
+                   0);
     }
 
     private static Color GetBranchAccent(PersistentCraftBranch branch)

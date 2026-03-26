@@ -2,51 +2,21 @@
     xmlns="https://spacestation14.io"
     xmlns:windows="clr-namespace:Content.Client._Stalker.PersistentCrafting.UI"
     Title="{Loc 'persistent-craft-window-title'}"
-    SetSize="1720 1040"
+    SetSize="1860 1080"
     Resizable="True"
-    MinWidth="1480"
+    MinWidth="1620"
     MinHeight="940">
     <BoxContainer Orientation="Vertical" Margin="12 12 12 12">
         <TabContainer Name="Branches" Access="Public" HorizontalExpand="True" VerticalExpand="True">
-            <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                <ScrollContainer MinSize="340 0" HScrollEnabled="False" VerticalExpand="True">
-                    <BoxContainer Name="WeaponTierHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                </ScrollContainer>
-                <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                    <ScrollContainer MinSize="560 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                        <BoxContainer Name="WeaponSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                    <ScrollContainer MinSize="680 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
-                        <BoxContainer Name="WeaponDetailHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                </SplitContainer>
-            </SplitContainer>
-            <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                <ScrollContainer MinSize="340 0" HScrollEnabled="False" VerticalExpand="True">
-                    <BoxContainer Name="ArmorTierHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                </ScrollContainer>
-                <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                    <ScrollContainer MinSize="560 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                        <BoxContainer Name="ArmorSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                    <ScrollContainer MinSize="680 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
-                        <BoxContainer Name="ArmorDetailHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                </SplitContainer>
-            </SplitContainer>
-            <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                <ScrollContainer MinSize="340 0" HScrollEnabled="False" VerticalExpand="True">
-                    <BoxContainer Name="AnomalyTierHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                </ScrollContainer>
-                <SplitContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" ResizeMode="RespectChildrenMinSize">
-                    <ScrollContainer MinSize="560 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                        <BoxContainer Name="AnomalySubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                    <ScrollContainer MinSize="680 0" HorizontalExpand="True" HScrollEnabled="False" VerticalExpand="True">
-                        <BoxContainer Name="AnomalyDetailHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-                    </ScrollContainer>
-                </SplitContainer>
-            </SplitContainer>
+            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                <BoxContainer Name="WeaponSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
+            </ScrollContainer>
+            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                <BoxContainer Name="ArmorSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
+            </ScrollContainer>
+            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
+                <BoxContainer Name="AnomalySubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
+            </ScrollContainer>
         </TabContainer>
     </BoxContainer>
 </windows:PersistentCraftingWindow>

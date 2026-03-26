@@ -105,7 +105,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         _recipes = recipes
             .OrderBy(recipe => recipe.Branch)
             .ThenBy(recipe => recipe.Tier)
-            .ThenBy(recipe => recipe.SubTier)
             .ThenBy(recipe => recipe.ID)
             .ToList();
         _ownedAmountCache.Clear();
@@ -316,16 +315,16 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         int totalRecipes)
     {
         var accent = GetAccent(branch);
-        var xpProgress = PersistentCraftingHelper.GetProgressRatio(
-            branchState.Experience,
-            branchState.ExperienceForNextLevel);
+        var unlockProgress = totalRecipes == 0
+            ? 0f
+            : unlockedRecipes / (float) totalRecipes;
         var control = new PersistentCraftBranchSummaryBlock();
         control.SetData(
             Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(branch)),
-            $"{Loc.GetString("persistent-craft-branch-level-label")}: {FormatBranchLevel(branchState)} | " +
+            $"{Loc.GetString("persistent-craft-branch-points-label")}: {branchState.AvailablePoints} | {Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints} | " +
             $"{Loc.GetString("persistent-craft-recipes-short")}: {unlockedRecipes}/{totalRecipes}",
-            $"{Loc.GetString("persistent-craft-experience-label")}: {FormatBranchExperience(branchState)}",
-            xpProgress,
+            Loc.GetString("persistent-craft-unlocked-summary", ("unlocked", unlockedRecipes)),
+            unlockProgress,
             accent,
             null);
         return control;
@@ -460,7 +459,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
                             continue;
                     }
 
-                    foreach (var recipe in subCategoryGroup.OrderBy(item => item.Tier).ThenBy(item => item.SubTier).ThenBy(item => item.ID))
+                    foreach (var recipe in subCategoryGroup.OrderBy(item => item.Tier).ThenBy(item => item.ID))
                     {
                         list.AddChild(CreateRecipeListEntry(branch, recipe, selected.ID == recipe.ID));
                     }
@@ -621,12 +620,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         header.IconHost.AddChild(CreateRecipeIconContent(recipe, new Vector2(116, 116)));
 
         header.MetaContainer.AddChild(CreateMetaBadge(
-            $"{Loc.GetString("persistent-craft-branch-level-label")}: {FormatBranchLevel(branchState)}",
+            $"{Loc.GetString("persistent-craft-branch-points-label")}: {branchState.AvailablePoints} | {Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints}",
             PersistentCraftUiTheme.SurfacePanelAlt,
             PersistentCraftUiTheme.TextPrimary));
         header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
         header.MetaContainer.AddChild(CreateMetaBadge(
-            $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)} | {PersistentCraftingHelper.GetRecipeLevelText(recipe)}",
+            $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)}",
             PersistentCraftUiTheme.SurfacePanelAlt,
             accent));
         header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
@@ -636,7 +635,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             PersistentCraftUiTheme.TextMuted));
         header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
         header.MetaContainer.AddChild(CreateMetaBadge(
-            $"{Loc.GetString("persistent-craft-recipe-experience")}: +{PersistentCraftingHelper.GetExperienceReward(recipe)}",
+            $"{Loc.GetString("persistent-craft-recipe-points")}: +{PersistentCraftingHelper.GetPointReward(recipe)}",
             PersistentCraftUiTheme.SurfacePanelAlt,
             accent));
 
@@ -682,7 +681,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
         return new Label
         {
-            Text = PersistentCraftingHelper.GetRecipeLevelText(recipe),
+            Text = PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier),
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center,
         };
@@ -895,7 +894,8 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
         return ResolveRecipeName(recipe).ToLowerInvariant().Contains(query) ||
                GetRecipeCategoryPath(recipe).ToLowerInvariant().Contains(query) ||
-               PersistentCraftingHelper.GetRecipeLevelText(recipe).ToLowerInvariant().Contains(query) ||
+               recipe.Tier.ToString().Contains(query) ||
+               PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier).ToLowerInvariant().Contains(query) ||
                ResolveRecipeDescription(recipe).ToLowerInvariant().Contains(query);
     }
 
@@ -979,21 +979,17 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private bool HasRequirement(PersistentCraftState state, PersistentCraftRecipePrototype recipe)
     {
-        var requiredNode = string.IsNullOrWhiteSpace(recipe.RequiredNode)
-            ? PersistentCraftingHelper.BuildNodeId(recipe.Branch, recipe.Tier, recipe.SubTier)
-            : recipe.RequiredNode;
-
-        return !string.IsNullOrWhiteSpace(requiredNode) && HasNodeUnlockedOrAutoAvailable(state, requiredNode);
+        return HasNodeUnlockedOrAutoAvailable(state, recipe.RequiredNode);
     }
 
     private string GetRequirementText(PersistentCraftRecipePrototype recipe)
     {
         if (TryResolveRequirementNode(recipe, out var node))
         {
-            return $"{ResolveNodeName(node)} [{PersistentCraftingHelper.GetNodeLevelText(node)}]";
+            return ResolveNodeName(node);
         }
 
-        return $"{Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(recipe.Branch))} {PersistentCraftingHelper.GetRecipeLevelText(recipe)}";
+        return $"{Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(recipe.Branch))} {PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)}";
     }
 
     private bool CanViewRecipe(PersistentCraftRecipePrototype recipe)
@@ -1024,7 +1020,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (string.IsNullOrWhiteSpace(category))
             category = GetCategoryName(GetRecipeCategoryId(recipe));
 
-        return $"{PersistentCraftingHelper.GetRecipeLevelText(recipe)} | {category}";
+        return $"{PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)} | {category}";
     }
 
     private Control CreateRecipeStatusBadge(PersistentCraftRecipePrototype recipe)
@@ -1092,7 +1088,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private string BuildRecipeMasteryBadge(PersistentCraftRecipePrototype recipe)
     {
-        return BuildTierProgressText(recipe.Branch, recipe.Tier);
+        if (_state == null)
+            return Loc.GetString("persistent-craft-node-branch-points", ("points", 0));
+
+        var branchState = GetBranchState(_state, recipe.Branch);
+        return Loc.GetString("persistent-craft-node-branch-points", ("points", branchState.AvailablePoints));
     }
 
     private string BuildHeaderInfoMarkup(PersistentCraftRecipePrototype recipe)
@@ -1110,19 +1110,10 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     {
         if (TryResolveRequirementNode(recipe, out var node))
         {
-            var mastery = BuildTierProgressText(node.Branch, node.Tier);
             var lines = new List<string>
             {
-                $"[color={DescriptionText.ToHex()}]- {FormattedMessage.EscapeText(ResolveNodeName(node))} ({FormattedMessage.EscapeText(PersistentCraftingHelper.GetNodeLevelText(node))})[/color]",
-                $"[color={MutedText.ToHex()}]- {FormattedMessage.EscapeText(mastery)}[/color]"
+                $"[color={DescriptionText.ToHex()}]- {FormattedMessage.EscapeText(ResolveNodeName(node))}[/color]"
             };
-
-            var requiredProgress = PersistentCraftingHelper.GetNodeRequiredTierProgressLevel(node);
-            if (!PersistentCraftingHelper.IsMainTierNode(node) &&
-                requiredProgress > PersistentCraftingHelper.InitialTierProgressLevel)
-            {
-                lines.Add($"[color={MutedText.ToHex()}]- {Loc.GetString("persistent-craft-tier-progress-required", ("subLevel", PersistentCraftingHelper.FormatTierProgressSubLevel(node.Tier, requiredProgress)))}[/color]");
-            }
 
             return string.Join("\n", lines);
         }
@@ -1163,13 +1154,8 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private bool TryResolveRequirementNode(PersistentCraftRecipePrototype recipe, out PersistentCraftNodePrototype node)
     {
-        var requiredNode = string.IsNullOrWhiteSpace(recipe.RequiredNode)
-            ? PersistentCraftingHelper.BuildNodeId(recipe.Branch, recipe.Tier, recipe.SubTier)
-            : recipe.RequiredNode;
-
         PersistentCraftNodePrototype? resolvedNode;
-        if (!string.IsNullOrWhiteSpace(requiredNode) &&
-            _prototype.TryIndex<PersistentCraftNodePrototype>(requiredNode, out resolvedNode) &&
+        if (_prototype.TryIndex<PersistentCraftNodePrototype>(recipe.RequiredNode, out resolvedNode) &&
             resolvedNode != null)
         {
             node = resolvedNode;
@@ -1367,11 +1353,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
             return false;
 
-        if (!PersistentCraftingHelper.IsStarterSubTierNode(node) && node.Cost > 0)
-            return false;
-
-        var branchState = GetBranchState(state, node.Branch);
-        if (branchState.Level < PersistentCraftingHelper.GetNodeRequiredBranchLevel(node))
+        if (node.Cost > 0)
             return false;
 
         if (!path.Add(nodeId))
@@ -1479,9 +1461,16 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private string ResolveNodeName(PersistentCraftNodePrototype node)
     {
-        return string.IsNullOrWhiteSpace(node.Name)
-            ? PersistentCraftingHelper.GetNodeLevelText(node)
-            : Loc.GetString(node.Name);
+        if (!string.IsNullOrWhiteSpace(node.Name))
+            return Loc.GetString(node.Name);
+
+        if (!string.IsNullOrWhiteSpace(node.DisplayProto) &&
+            _prototype.TryIndex<EntityPrototype>(node.DisplayProto, out var prototype))
+        {
+            return prototype.Name;
+        }
+
+        return Loc.GetString("persistent-craft-node-sub-recipe-name");
     }
 
     private PersistentCraftBranchState GetBranchState(PersistentCraftState state, PersistentCraftBranch branch)
@@ -1489,34 +1478,13 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return state.BranchStates.FirstOrDefault(item => item.Branch == branch) ??
                new PersistentCraftBranchState(
                    branch,
-                   GetBranchMaxLevel(branch),
+                   1,
                    0,
                    0,
                    PersistentCraftingHelper.InitialLevel,
-                   PersistentCraftingHelper.MainTierSubLevel,
+                   PersistentCraftingHelper.DefaultSubLevel,
                    0,
-                   PersistentCraftingHelper.GetExperienceForNextLevel(PersistentCraftingHelper.InitialLevel));
-    }
-
-    private int GetBranchMaxLevel(PersistentCraftBranch branch)
-    {
-        return _recipes
-            .Where(recipe => recipe.Branch == branch)
-            .Select(recipe => recipe.Tier)
-            .DefaultIfEmpty(PersistentCraftingHelper.InitialLevel)
-            .Max();
-    }
-
-    private static string FormatBranchLevel(PersistentCraftBranchState branchState)
-    {
-        return PersistentCraftingHelper.FormatCappedLevel(branchState.Level, branchState.MaxLevel);
-    }
-
-    private static string FormatBranchExperience(PersistentCraftBranchState branchState)
-    {
-        return branchState.ExperienceForNextLevel <= 0
-            ? Loc.GetString("persistent-craft-max-label")
-            : $"{branchState.Experience}/{branchState.ExperienceForNextLevel}";
+                   0);
     }
 
     private PersistentCraftTierState? GetTierState(PersistentCraftBranch branch, int tier)
@@ -1575,58 +1543,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private float GetEffectiveCraftTime(PersistentCraftRecipePrototype recipe)
     {
-        var reduction = GetUnlockedNodeEffects(recipe)
-            .Where(entry => entry.Node.CraftTimeReductionPercent > 0)
-            .Sum(entry => entry.Node.CraftTimeReductionPercent * GetTierEffectMultiplier(entry.TierState));
-
-        var multiplier = Math.Max(0.25f, 1f - reduction / 100f);
-        return MathF.Max(0.25f, recipe.CraftTime * multiplier);
+        return MathF.Max(0.25f, recipe.CraftTime);
     }
 
     private int GetEffectiveIngredientAmount(PersistentCraftRecipePrototype recipe, PersistentCraftIngredient ingredient)
     {
-        var reduction = GetUnlockedNodeEffects(recipe)
-            .Where(entry => entry.Node.MaterialCostReductionPercent > 0)
-            .Sum(entry => entry.Node.MaterialCostReductionPercent * GetTierEffectMultiplier(entry.TierState));
-
-        var multiplier = Math.Max(0.25f, 1f - reduction / 100f);
-        return Math.Max(1, (int) MathF.Ceiling(ingredient.Amount * multiplier));
-    }
-
-    private IEnumerable<(PersistentCraftNodePrototype Node, PersistentCraftTierState? TierState)> GetUnlockedNodeEffects(PersistentCraftRecipePrototype recipe)
-    {
-        if (_state == null)
-            yield break;
-
-        var tierState = GetTierState(recipe.Branch, recipe.Tier);
-
-        foreach (var nodeId in _state.UnlockedNodes)
-        {
-            if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
-                continue;
-
-            if (node.Branch != recipe.Branch)
-                continue;
-
-            if (PersistentCraftingHelper.GetAffectedTier(node) != recipe.Tier)
-                continue;
-
-            yield return (node, tierState);
-        }
-    }
-
-    private static float GetTierEffectMultiplier(PersistentCraftTierState? tierState)
-    {
-        if (tierState == null)
-            return 0.5f;
-
-        var max = Math.Max(PersistentCraftingHelper.InitialTierProgressLevel, tierState.MaxProgressLevel);
-        var level = Math.Clamp(tierState.ProgressLevel, PersistentCraftingHelper.InitialTierProgressLevel, max);
-        if (max <= PersistentCraftingHelper.InitialTierProgressLevel)
-            return 1f;
-
-        var normalized = (level - PersistentCraftingHelper.InitialTierProgressLevel) /
-                         (float) (max - PersistentCraftingHelper.InitialTierProgressLevel);
-        return 0.5f + normalized * 0.5f;
+        _ = recipe;
+        return Math.Max(1, ingredient.Amount);
     }
 }
