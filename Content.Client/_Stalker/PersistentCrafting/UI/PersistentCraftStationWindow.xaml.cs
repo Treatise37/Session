@@ -1317,11 +1317,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private bool HasNodeUnlockedOrAutoAvailable(PersistentCraftState state, string nodeId, HashSet<string> path)
     {
-        if (state.UnlockedNodes.Contains(nodeId))
-            return true;
-
         if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
             return false;
+
+        if (state.UnlockedNodes.Contains(nodeId))
+            return true;
 
         if (node.Cost > 0)
             return false;

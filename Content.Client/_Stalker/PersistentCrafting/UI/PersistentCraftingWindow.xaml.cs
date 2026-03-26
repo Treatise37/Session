@@ -878,11 +878,11 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
 
-        if (state.UnlockedNodes.Contains(nodeId))
-            return true;
-
         if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
             return false;
+
+        if (state.UnlockedNodes.Contains(nodeId))
+            return true;
 
         if (node.Cost > 0)
             return false;
