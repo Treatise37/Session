@@ -213,6 +213,8 @@
       path: /Audio/_Stalker/Effects/Guns/203_Sound.ogg
     minAngle: 48
     maxAngle: 93
+    angleIncrease: 1.2
+    angleDecay: 5
   - type: ItemSlots
     slots:
       gun_magazine:
