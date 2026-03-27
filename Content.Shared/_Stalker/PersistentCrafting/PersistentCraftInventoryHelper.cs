@@ -8,13 +8,13 @@ namespace Content.Shared._Stalker.PersistentCrafting;
 
 public static class PersistentCraftInventoryHelper
 {
-    private const string IgnoredContainerId = "toggleable-clothing";
+    private static readonly PersistentCraftAccessibleInventoryPolicy DefaultPolicy = PersistentCraftAccessibleInventoryPolicy.Default;
 
     public static List<EntityUid> CollectAccessibleEntities(IEntityManager entityManager, EntityUid root)
     {
         var result = new List<EntityUid>();
         var seen = new HashSet<EntityUid>();
-        CollectAccessibleEntitiesRecursive(entityManager, root, result, seen);
+        CollectAccessibleEntitiesRecursive(entityManager, root, result, seen, DefaultPolicy);
         return result;
     }
 
@@ -27,7 +27,8 @@ public static class PersistentCraftInventoryHelper
     {
         var total = 0;
         var seen = new HashSet<EntityUid>();
-        CountIngredientAmountRecursive(entityManager, prototypeManager, tagSystem, root, ingredient, ref total, seen);
+        var matcher = new PersistentCraftIngredientMatcher(entityManager, prototypeManager, tagSystem);
+        CountIngredientAmountRecursive(entityManager, matcher, root, ingredient, ref total, seen, DefaultPolicy);
         return total;
     }
 
@@ -59,7 +60,9 @@ public static class PersistentCraftInventoryHelper
 
     public static int GetUsableAmount(IEntityManager entityManager, EntityUid entity)
     {
-        return entityManager.TryGetComponent(entity, out StackComponent? stack) ? stack.Count : 1;
+        return entityManager.TryGetComponent(entity, out StackComponent? stack)
+            ? stack.Count
+            : 1;
     }
 
     private static void CollectAccessibleEntitiesRecursive(
@@ -67,6 +70,7 @@ public static class PersistentCraftInventoryHelper
         EntityUid entity,
         List<EntityUid> result,
         HashSet<EntityUid> seen,
+        PersistentCraftAccessibleInventoryPolicy policy,
         ContainerManagerComponent? manager = null)
     {
         if (manager == null && !entityManager.TryGetComponent(entity, out manager))
@@ -74,28 +78,28 @@ public static class PersistentCraftInventoryHelper
 
         foreach (var (containerId, container) in manager.Containers)
         {
-            if (containerId == IgnoredContainerId)
+            if (!policy.ShouldIncludeContainer(containerId))
                 continue;
 
             foreach (var contained in container.ContainedEntities)
             {
-                if (!entityManager.EntityExists(contained) || !seen.Add(contained))
+                if (!policy.ShouldVisitEntity(entityManager, contained, seen))
                     continue;
 
                 result.Add(contained);
-                CollectAccessibleEntitiesRecursive(entityManager, contained, result, seen);
+                CollectAccessibleEntitiesRecursive(entityManager, contained, result, seen, policy);
             }
         }
     }
 
     private static void CountIngredientAmountRecursive(
         IEntityManager entityManager,
-        IPrototypeManager prototypeManager,
-        TagSystem tagSystem,
+        PersistentCraftIngredientMatcher matcher,
         EntityUid entity,
         PersistentCraftIngredient ingredient,
         ref int total,
         HashSet<EntityUid> seen,
+        PersistentCraftAccessibleInventoryPolicy policy,
         ContainerManagerComponent? manager = null)
     {
         if (manager == null && !entityManager.TryGetComponent(entity, out manager))
@@ -103,25 +107,25 @@ public static class PersistentCraftInventoryHelper
 
         foreach (var (containerId, container) in manager.Containers)
         {
-            if (containerId == IgnoredContainerId)
+            if (!policy.ShouldIncludeContainer(containerId))
                 continue;
 
             foreach (var contained in container.ContainedEntities)
             {
-                if (!entityManager.EntityExists(contained) || !seen.Add(contained))
+                if (!policy.ShouldVisitEntity(entityManager, contained, seen))
                     continue;
 
-                if (MatchesIngredient(entityManager, prototypeManager, tagSystem, contained, ingredient))
-                    total += GetUsableAmount(entityManager, contained);
+                if (matcher.Matches(contained, ingredient))
+                    total += matcher.GetUsableAmount(contained);
 
                 CountIngredientAmountRecursive(
                     entityManager,
-                    prototypeManager,
-                    tagSystem,
+                    matcher,
                     contained,
                     ingredient,
                     ref total,
-                    seen);
+                    seen,
+                    policy);
             }
         }
     }

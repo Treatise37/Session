@@ -34,12 +34,12 @@ public sealed class PersistentCraftBranchRegistry
     {
         var orderedBranches = prototype.EnumeratePrototypes<PersistentCraftBranchPrototype>()
             .OrderBy(branch => branch.Order)
-            .ThenBy(branch => branch.ID, StringComparer.Ordinal)
+            .ThenBy(branch => branch.ID)
             .ToList();
 
         var orderedBranchIds = new List<string>(orderedBranches.Count);
-        var byId = new Dictionary<string, PersistentCraftBranchPrototype>(orderedBranches.Count, StringComparer.Ordinal);
-        var indexById = new Dictionary<string, int>(orderedBranches.Count, StringComparer.Ordinal);
+        var byId = new Dictionary<string, PersistentCraftBranchPrototype>(orderedBranches.Count);
+        var indexById = new Dictionary<string, int>(orderedBranches.Count);
 
         for (var i = 0; i < orderedBranches.Count; i++)
         {

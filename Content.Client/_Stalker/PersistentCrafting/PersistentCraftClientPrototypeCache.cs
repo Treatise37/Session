@@ -42,17 +42,17 @@ public sealed class PersistentCraftClientPrototypeCache
         var allRecipes = prototype.EnumeratePrototypes<PersistentCraftRecipePrototype>()
             .OrderBy(recipe => GetBranchOrder(branchRegistry, recipe.Branch))
             .ThenBy(recipe => recipe.Tier)
-            .ThenBy(recipe => recipe.ID, StringComparer.Ordinal)
+            .ThenBy(recipe => recipe.ID)
             .ToList();
 
         var allNodes = prototype.EnumeratePrototypes<PersistentCraftNodePrototype>()
             .OrderBy(node => GetBranchOrder(branchRegistry, node.Branch))
             .ThenBy(node => node.TreeRow >= 0 ? node.TreeRow : int.MaxValue)
             .ThenBy(node => node.TreeColumn >= 0 ? node.TreeColumn : int.MaxValue)
-            .ThenBy(node => node.ID, StringComparer.Ordinal)
+            .ThenBy(node => node.ID)
             .ToList();
 
-        var nodeById = allNodes.ToDictionary(node => node.ID, StringComparer.Ordinal);
+        var nodeById = allNodes.ToDictionary(node => node.ID);
         var recipesByBranch = BuildRecipesByBranch(allRecipes, branchRegistry);
         var recipesByNode = BuildRecipesByNode(allRecipes);
         var nodesByBranch = BuildNodesByBranch(allNodes, branchRegistry);
@@ -90,8 +90,8 @@ public sealed class PersistentCraftClientPrototypeCache
         PersistentCraftBranchRegistry registry)
     {
         var grouped = allRecipes
-            .GroupBy(recipe => recipe.Branch, StringComparer.Ordinal)
-            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftRecipePrototype>) group.ToList(), StringComparer.Ordinal);
+            .GroupBy(recipe => recipe.Branch)
+            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftRecipePrototype>) group.ToList());
 
         foreach (var branch in registry.OrderedBranchIds)
         {
@@ -106,8 +106,8 @@ public sealed class PersistentCraftClientPrototypeCache
         List<PersistentCraftRecipePrototype> allRecipes)
     {
         return allRecipes
-            .GroupBy(recipe => recipe.RequiredNode, StringComparer.Ordinal)
-            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftRecipePrototype>) group.ToList(), StringComparer.Ordinal);
+            .GroupBy(recipe => recipe.RequiredNode)
+            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftRecipePrototype>) group.ToList());
     }
 
     private static Dictionary<string, IReadOnlyList<PersistentCraftNodePrototype>> BuildNodesByBranch(
@@ -115,8 +115,8 @@ public sealed class PersistentCraftClientPrototypeCache
         PersistentCraftBranchRegistry registry)
     {
         var grouped = allNodes
-            .GroupBy(node => node.Branch, StringComparer.Ordinal)
-            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftNodePrototype>) group.ToList(), StringComparer.Ordinal);
+            .GroupBy(node => node.Branch)
+            .ToDictionary(group => group.Key, group => (IReadOnlyList<PersistentCraftNodePrototype>) group.ToList());
 
         foreach (var branch in registry.OrderedBranchIds)
         {

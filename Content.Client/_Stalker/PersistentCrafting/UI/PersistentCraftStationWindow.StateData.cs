@@ -1,0 +1,380 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+using Content.Client._Stalker.PersistentCrafting;
+using Content.Shared._Stalker.PersistentCrafting;
+using Robust.Client.UserInterface.Controls;
+
+namespace Content.Client._Stalker.PersistentCrafting.UI;
+
+public sealed partial class PersistentCraftStationWindow
+{
+    private void SelectRecipe(string branch, string recipeId)
+    {
+        RememberListScroll(branch);
+        _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
+
+        _viewModel.SelectedRecipes.TryGetValue(branch, out var previousRecipeId);
+        _viewModel.SelectedRecipes[branch] = recipeId;
+
+        if (branch == GetCurrentBranch() &&
+            _recipeEntryControlsByBranch.TryGetValue(branch, out var entries) &&
+            _detailContentHostsByBranch.ContainsKey(branch) &&
+            _visibleBranchStatesByBranch.ContainsKey(branch))
+        {
+            if (!string.IsNullOrWhiteSpace(previousRecipeId) &&
+                entries.TryGetValue(previousRecipeId, out var previousControls) &&
+                TryGetRecipeById(previousRecipeId, out var previousRecipe))
+            {
+                ApplyRecipeEntryVisuals(previousControls.Button, previousControls.IconPanel, previousRecipe, false);
+            }
+
+            if (entries.TryGetValue(recipeId, out var selectedControls) &&
+                TryGetRecipeById(recipeId, out var selectedRecipe))
+            {
+                ApplyRecipeEntryVisuals(selectedControls.Button, selectedControls.IconPanel, selectedRecipe, true);
+                UpdateRecipeDetails(branch, selectedRecipe);
+                return;
+            }
+        }
+
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void SelectTierFilter(string branch, int tier)
+    {
+        RememberListScroll(branch);
+        _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
+        _viewModel.SelectedTierFilters[branch] = tier;
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void UpdateSearch(string branch, string text)
+    {
+        var normalized = text.Trim();
+        if (GetSearchText(branch) == normalized)
+            return;
+
+        _viewModel.SearchTextByBranch[branch] = normalized;
+        _viewModel.ListScrollByBranch[branch] = Vector2.Zero;
+        _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void ToggleCraftableOnly(string branch)
+    {
+        _viewModel.CraftableOnlyByBranch[branch] = !GetCraftableOnly(branch);
+        _viewModel.ListScrollByBranch[branch] = Vector2.Zero;
+        _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void ToggleCategoryCollapse(string categoryKey)
+    {
+        var branch = GetCurrentBranch();
+        RememberListScroll(branch);
+
+        if (!_viewModel.CollapsedCategoryKeys.Add(categoryKey))
+            _viewModel.CollapsedCategoryKeys.Remove(categoryKey);
+
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void ToggleSubCategoryCollapse(string subCategoryKey)
+    {
+        var branch = GetCurrentBranch();
+        RememberListScroll(branch);
+
+        if (!_viewModel.CollapsedSubCategoryKeys.Add(subCategoryKey))
+            _viewModel.CollapsedSubCategoryKeys.Remove(subCategoryKey);
+
+        PopulateBranch(GetBranchContainer(branch), branch);
+    }
+
+    private void EnsureCategoryCollapsedByDefault(string categoryKey)
+    {
+        if (_viewModel.InitializedCategoryKeys.Add(categoryKey))
+            _viewModel.CollapsedCategoryKeys.Add(categoryKey);
+    }
+
+    private void EnsureSubCategoryCollapsedByDefault(string subCategoryKey)
+    {
+        if (_viewModel.InitializedSubCategoryKeys.Add(subCategoryKey))
+            _viewModel.CollapsedSubCategoryKeys.Add(subCategoryKey);
+    }
+
+    private void RememberBranchScroll(string branch)
+    {
+        RememberListScroll(branch);
+
+        if (_activeDetailScrollByBranch.TryGetValue(branch, out var detailScroll))
+            _viewModel.DetailScrollByBranch[branch] = detailScroll.GetScrollValue(true);
+    }
+
+    private void RememberListScroll(string branch)
+    {
+        if (_activeListScrollByBranch.TryGetValue(branch, out var listScroll))
+            _viewModel.ListScrollByBranch[branch] = listScroll.GetScrollValue(true);
+    }
+
+    private void RestoreBranchScroll(string branch, ScrollContainer listScroll, ScrollContainer detailScroll)
+    {
+        if (_viewModel.ListScrollByBranch.TryGetValue(branch, out var listScrollValue))
+            listScroll.SetScrollValue(listScrollValue);
+
+        if (_viewModel.DetailScrollByBranch.TryGetValue(branch, out var detailScrollValue))
+            detailScroll.SetScrollValue(detailScrollValue);
+    }
+
+    private void UpdateRecipeDetails(string branch, PersistentCraftRecipePrototype recipe)
+    {
+        if (!_detailContentHostsByBranch.TryGetValue(branch, out var detailHost) ||
+            !_visibleBranchStatesByBranch.TryGetValue(branch, out var branchState))
+        {
+            PopulateBranch(GetBranchContainer(branch), branch);
+            return;
+        }
+
+        detailHost.RemoveAllChildren();
+        detailHost.AddChild(CreateRecipeDetailsPanel(recipe, branchState));
+
+        if (_activeDetailScrollByBranch.TryGetValue(branch, out var detailScroll))
+            detailScroll.SetScrollValue(Vector2.Zero);
+    }
+
+    private static string BuildCategoryGroupKey(string branch, int tier, string categoryId)
+    {
+        return $"{branch}|{tier}|{categoryId}";
+    }
+
+    private static string BuildSubCategoryGroupKey(string branch, int tier, string categoryId, string subCategoryId)
+    {
+        return $"{branch}|{tier}|{categoryId}|{subCategoryId}";
+    }
+
+    private string GetSearchText(string branch)
+    {
+        return _viewModel.SearchTextByBranch.TryGetValue(branch, out var text) ? text : string.Empty;
+    }
+
+    private bool GetCraftableOnly(string branch)
+    {
+        return _viewModel.CraftableOnlyByBranch.TryGetValue(branch, out var value) && value;
+    }
+
+    private List<PersistentCraftRecipePrototype> FilterUnlockedRecipes(
+        PersistentCraftState state,
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes)
+    {
+        var unlocked = new List<PersistentCraftRecipePrototype>(recipes.Count);
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            var recipe = recipes[i];
+            if (HasRequirement(state, recipe))
+                unlocked.Add(recipe);
+        }
+
+        return unlocked;
+    }
+
+    private static List<PersistentCraftRecipePrototype> FilterRecipesByTier(
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes,
+        int tier)
+    {
+        var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            var recipe = recipes[i];
+            if (recipe.Tier == tier)
+                filtered.Add(recipe);
+        }
+
+        return filtered;
+    }
+
+    private List<PersistentCraftRecipePrototype> ApplyRecipeSearch(
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes,
+        string searchText)
+    {
+        var query = searchText.Trim().ToLowerInvariant();
+        if (string.IsNullOrWhiteSpace(query))
+            return CopyRecipes(recipes);
+
+        var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            var recipe = recipes[i];
+            if (MatchesSearch(recipe, query))
+                filtered.Add(recipe);
+        }
+
+        return filtered;
+    }
+
+    private int IndexRecipeCraftability(IReadOnlyList<PersistentCraftRecipePrototype> recipes)
+    {
+        var craftableCount = 0;
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            var recipe = recipes[i];
+            var hasMaterials = HasLocalMaterials(recipe);
+            _recipeCraftabilityById[recipe.ID] = hasMaterials;
+
+            if (hasMaterials)
+                craftableCount++;
+        }
+
+        return craftableCount;
+    }
+
+    private List<PersistentCraftRecipePrototype> ApplyCraftableFilter(
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes,
+        bool craftableOnly,
+        IReadOnlyDictionary<string, bool> craftabilityByRecipeId)
+    {
+        if (!craftableOnly)
+            return CopyRecipes(recipes);
+
+        var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            var recipe = recipes[i];
+            if (craftabilityByRecipeId.TryGetValue(recipe.ID, out var hasMaterials) &&
+                hasMaterials)
+            {
+                filtered.Add(recipe);
+            }
+        }
+
+        return filtered;
+    }
+
+    private static List<PersistentCraftRecipePrototype> CopyRecipes(IReadOnlyList<PersistentCraftRecipePrototype> recipes)
+    {
+        var copied = new List<PersistentCraftRecipePrototype>(recipes.Count);
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            copied.Add(recipes[i]);
+        }
+
+        return copied;
+    }
+
+    private bool MatchesSearch(PersistentCraftRecipePrototype recipe, string normalizedQuery)
+    {
+        if (string.IsNullOrWhiteSpace(normalizedQuery))
+            return true;
+
+        return ResolveRecipeName(recipe).ToLowerInvariant().Contains(normalizedQuery) ||
+               GetRecipeCategoryPath(recipe).ToLowerInvariant().Contains(normalizedQuery) ||
+               recipe.Tier.ToString().Contains(normalizedQuery) ||
+               PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier).ToLowerInvariant().Contains(normalizedQuery) ||
+               ResolveRecipeDescription(recipe).ToLowerInvariant().Contains(normalizedQuery);
+    }
+
+    private BoxContainer GetBranchContainer(string branch)
+    {
+        if (_branchContainers.TryGetValue(branch, out var container))
+            return container;
+
+        foreach (var existing in _branchContainers.Values)
+        {
+            return existing;
+        }
+
+        throw new InvalidOperationException("Persistent craft station branches are not initialized.");
+    }
+
+    private string GetCurrentBranch()
+    {
+        return _branchRegistry.TryGetBranchByIndex(Branches.CurrentTab, out var branch)
+            ? branch
+            : (_branchRegistry.FirstBranchId is { Length: > 0 } first ? first : GetAnyBranchId());
+    }
+
+    private string GetAnyBranchId()
+    {
+        foreach (var key in _branchContainers.Keys)
+        {
+            return key;
+        }
+
+        return string.Empty;
+    }
+
+    private PersistentCraftRecipePrototype ResolveSelectedRecipe(
+        string branch,
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes)
+    {
+        if (_viewModel.SelectedRecipes.TryGetValue(branch, out var selectedId))
+        {
+            for (var i = 0; i < recipes.Count; i++)
+            {
+                var recipe = recipes[i];
+                if (recipe.ID == selectedId)
+                    return recipe;
+            }
+        }
+
+        var fallback = recipes[0];
+        if (_state != null)
+        {
+            for (var i = 0; i < recipes.Count; i++)
+            {
+                var recipe = recipes[i];
+                if (HasRequirement(_state, recipe))
+                {
+                    fallback = recipe;
+                    break;
+                }
+            }
+        }
+
+        _viewModel.SelectedRecipes[branch] = fallback.ID;
+        return fallback;
+    }
+
+    private int GetSelectedTierFilter(
+        string branch,
+        IReadOnlyList<PersistentCraftRecipePrototype> recipes)
+    {
+        if (_viewModel.SelectedTierFilters.TryGetValue(branch, out var selectedTier))
+        {
+            if (selectedTier == 0)
+                return selectedTier;
+
+            for (var i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].Tier == selectedTier)
+                    return selectedTier;
+            }
+        }
+
+        var preferredTier = 0;
+        if (_state?.Loaded == true)
+        {
+            var maxTier = int.MinValue;
+            var maxUnlockedTier = int.MinValue;
+
+            for (var i = 0; i < recipes.Count; i++)
+            {
+                var recipe = recipes[i];
+                if (recipe.Tier > maxTier)
+                    maxTier = recipe.Tier;
+
+                if (HasRequirement(_state, recipe) &&
+                    recipe.Tier > maxUnlockedTier)
+                {
+                    maxUnlockedTier = recipe.Tier;
+                }
+            }
+
+            preferredTier = maxUnlockedTier > int.MinValue
+                ? maxUnlockedTier
+                : (maxTier > int.MinValue ? maxTier : 0);
+        }
+
+        _viewModel.SelectedTierFilters[branch] = preferredTier;
+        return preferredTier;
+    }
+}

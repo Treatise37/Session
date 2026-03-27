@@ -15,7 +15,7 @@ public sealed class PersistentCraftResetCommand : IConsoleCommand
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     public string Command => "st_pcraft_reset";
-    public string Description => "Resets persistent crafting progress for an in-game player.";
+    public string Description => "Resets persistent crafting progress for an in-game player (by account username).";
     public string Help => "st_pcraft_reset <username>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
