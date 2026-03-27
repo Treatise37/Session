@@ -1,4 +1,5 @@
 nc-store-contract-proof-generation-failed = Proof of completion could not be created. The contract has failed.
+nc-store-contract-proof-lost = The proof item was destroyed. The contract has failed.
 nc-store-contract-turn-in-header = Turn in at the machine:
 nc-store-contract-turn-in-note = After completion: { $item }
 nc-store-contract-action-can-claim-proof = Ready, proof must be turned in

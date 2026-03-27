@@ -11,6 +11,9 @@ public sealed partial class NcContractSystem : EntitySystem
         if (_objectiveRuntimeByTarget.TryGetValue(args.Entity, out var targetKey))
             OnObjectiveTrackedTargetResolved(targetKey, args.Entity);
 
+        if (TryComp(args.Entity, out NcContractProofComponent? proofComp))
+            OnObjectiveProofTerminating(args.Entity, proofComp);
+
         if (_objectiveRuntimeByPinpointer.TryGetValue(args.Entity, out var pinpointerKey))
             UnregisterIssuedPinpointer(args.Entity, pinpointerKey);
 
@@ -19,6 +22,39 @@ public sealed partial class NcContractSystem : EntitySystem
         {
             guardState.GuardEntities.Remove(args.Entity);
         }
+    }
+
+    private void OnObjectiveProofTerminating(EntityUid proof, NcContractProofComponent proofComp)
+    {
+        var key = (proofComp.Store, proofComp.ContractId);
+        if (key.Store == EntityUid.Invalid || string.IsNullOrWhiteSpace(key.ContractId))
+            return;
+
+        if (!_objectiveRuntimeByContract.TryGetValue(key, out var state))
+            return;
+
+        if (state.ProofEntity != proof)
+            return;
+
+        state.ProofEntity = null;
+        state.ProofSpawned = false;
+
+        if (!TryGetObjectiveContract(key, out var comp, out var contract))
+            return;
+
+        if (!contract.Taken || !TryGetObjectiveProofPrototype(contract, out _))
+            return;
+
+        EnsureObjectiveRuntimeDefaults(contract);
+        if (EnsureContractRuntime(contract).Failed)
+            return;
+
+        FinalizeObjectiveFailure(
+            key,
+            comp,
+            contract,
+            Loc.GetString("nc-store-contract-proof-lost"),
+            deleteGuards: false);
     }
 
     private void OnObjectiveTrackedTargetResolved((EntityUid Store, string ContractId) key, EntityUid target)
@@ -217,12 +253,13 @@ public sealed partial class NcContractSystem : EntitySystem
             state.GuardEntities.Clear();
         }
 
-        if (state.ProofEntity is { } proof && !TerminatingOrDeleted(proof))
-            Del(proof);
-
+        var proof = state.ProofEntity;
         state.ProofEntity = null;
         state.ProofSpawned = false;
         state.ProofToken = string.Empty;
+
+        if (proof is { } proofEntity && !TerminatingOrDeleted(proofEntity))
+            Del(proofEntity);
         _objectiveRuntimeByContract.Remove(key);
     }
 
