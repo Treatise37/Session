@@ -159,3 +159,42 @@
   - type: Scope
     zoom: 1.65
     offset: 14
+
+- type: entity
+  parent: STBaseWeaponRifleSCARH
+  id: STWeaponRifleAK308
+  name: АК-308 "Валькирия"
+  suffix: ST, Кастомка
+  description: Разработка Концерна «Калашников» под требования иностранных заказчиков, испытывающих потребность в мощном и надёжном ручном автоматическом оружии под патрон 7,62x51. В зону попадает исключительно лишь через специальные заказы.
+  components:
+  - type: STWeight
+    self: 4.5
+  - type: PullDoAfter
+    pullTime: 4
+  - type: GunWieldBonus
+    minAngle: -50
+    maxAngle: -60
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/103_shoot.ogg
+      params:
+        volume: -2
+    minAngle: 50
+    maxAngle: 90
+    fireRate: 5.5
+    angleIncrease: 0.7
+    angleDecay: 3.5
+    projectileSpeed: 70
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.8
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 1.57
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak308.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak308.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ak308.rsi
+  - type: Scope
+    zoom: 1.65
+    offset: 14

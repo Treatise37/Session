@@ -239,7 +239,7 @@
   - name: Персональная категория
     items:
       claymoreBattle: 3500
-
+      STClothingOuterArmorPeresvet: 8500
 - type: personalShop
   id: PersonalDasiusWLShop
   username: DasiusWL
@@ -295,3 +295,14 @@
       STWeaponSniperPP2000Pearl: 4500
       BasePP2000PearlMag: 200
       BasePP2000PearlMag20: 400
+
+- type: personalShop
+  id: PersonalkravaShop
+  username: krava
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponRifleAK308: 4500
+      751M80Box: 2200
+      751M61Box: 3700
+      751Mag30: 500
