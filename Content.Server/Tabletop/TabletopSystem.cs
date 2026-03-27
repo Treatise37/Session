@@ -131,20 +131,14 @@ namespace Content.Server.Tabletop
             if (!TryComp(args.User, out ActorComponent? actor))
                 return;
 
-            if (!component.IsMap)
-                args.Verbs.Add(new()
-                {
-                    Text = Loc.GetString("tabletop-verb-play-game"),
-                    Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/die.svg.192dpi.png")),
-                    Act = () => OpenSessionFor(actor.PlayerSession, uid)
-                });
-            else
-                args.Verbs.Add(new()
-                {
-                    Text = "Развернуть карту",
-                    Icon = new SpriteSpecifier.Texture(new ("/Textures/_Stalker/Interface/VerbIcons/openmap.png")),
-                    Act = () => OpenSessionFor(actor.PlayerSession, uid)
-                });
+            var playVerb = new ActivationVerb()
+            {
+                Text = Loc.GetString("tabletop-verb-play-game"),
+                Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/die.svg.192dpi.png")),
+                Act = () => OpenSessionFor(actor.PlayerSession, uid)
+            };
+
+            args.Verbs.Add(playVerb);
         }
 
         private void OnTabletopActivate(EntityUid uid, TabletopGameComponent component, ActivateInWorldEvent args)
