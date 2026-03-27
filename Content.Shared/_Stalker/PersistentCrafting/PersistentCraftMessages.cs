@@ -5,12 +5,12 @@ namespace Content.Shared._Stalker.PersistentCrafting;
 [Serializable, NetSerializable]
 public sealed class PersistentCraftBranchState
 {
-    public PersistentCraftBranch Branch;
+    public string Branch;
     public int AvailablePoints;
     public int SpentPoints;
 
     public PersistentCraftBranchState(
-        PersistentCraftBranch branch,
+        string branch,
         int availablePoints,
         int spentPoints)
     {

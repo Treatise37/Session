@@ -1,54 +1,119 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Robust.Shared.Maths;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Stalker.PersistentCrafting;
 
 public static class PersistentCraftingHelper
 {
-    private static readonly PersistentCraftBranch[] Branches =
+    public static IReadOnlyList<PersistentCraftBranchPrototype> EnumerateBranchDefinitions(IPrototypeManager prototype)
     {
-        PersistentCraftBranch.Weapon,
-        PersistentCraftBranch.Armor,
-        PersistentCraftBranch.Anomaly,
-    };
-
-    public static IReadOnlyList<PersistentCraftBranch> EnumerateBranches()
-    {
-        return Branches;
+        return prototype.EnumeratePrototypes<PersistentCraftBranchPrototype>()
+            .OrderBy(branch => branch.Order)
+            .ThenBy(branch => branch.ID)
+            .ToList();
     }
 
-
-    public static int GetBranchIndex(PersistentCraftBranch branch)
+    public static IReadOnlyList<string> EnumerateBranches(IPrototypeManager prototype)
     {
-        var index = Array.IndexOf(Branches, branch);
-        if (index >= 0)
-            return index;
-
-        throw new ArgumentOutOfRangeException(nameof(branch), branch, "Unknown persistent craft branch.");
+        return EnumerateBranchDefinitions(prototype)
+            .Select(branch => branch.ID)
+            .ToList();
     }
 
-    public static bool TryGetBranchByIndex(int index, out PersistentCraftBranch branch)
+    public static string GetFirstBranch(IPrototypeManager prototype)
     {
-        if ((uint) index < (uint) Branches.Length)
+        return EnumerateBranchDefinitions(prototype).FirstOrDefault()?.ID ?? string.Empty;
+    }
+
+    public static bool TryGetBranchDefinition(
+        IPrototypeManager prototype,
+        string branchId,
+        out PersistentCraftBranchPrototype definition)
+    {
+        if (!string.IsNullOrWhiteSpace(branchId) &&
+            prototype.TryIndex<PersistentCraftBranchPrototype>(branchId, out var found) &&
+            found != null)
         {
-            branch = Branches[index];
+            definition = found;
             return true;
         }
 
-        branch = default;
+        definition = default!;
         return false;
     }
 
-
-    public static string GetBranchLocKey(PersistentCraftBranch branch)
+    public static int GetBranchIndex(IPrototypeManager prototype, string branchId)
     {
-        return branch switch
+        var branches = EnumerateBranchDefinitions(prototype);
+        for (var i = 0; i < branches.Count; i++)
         {
-            PersistentCraftBranch.Weapon => "persistent-craft-branch-weapon",
-            PersistentCraftBranch.Armor => "persistent-craft-branch-armor",
-            PersistentCraftBranch.Anomaly => "persistent-craft-branch-anomaly",
-            _ => throw new ArgumentOutOfRangeException(nameof(branch), branch, "Unknown persistent craft branch."),
-        };
+            if (string.Equals(branches[i].ID, branchId, StringComparison.Ordinal))
+                return i;
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(branchId), branchId, "Unknown persistent craft branch.");
+    }
+
+    public static bool TryGetBranchByIndex(IPrototypeManager prototype, int index, out string branchId)
+    {
+        var branches = EnumerateBranchDefinitions(prototype);
+        if ((uint) index < (uint) branches.Count)
+        {
+            branchId = branches[index].ID;
+            return true;
+        }
+
+        branchId = string.Empty;
+        return false;
+    }
+
+    public static string GetBranchName(IPrototypeManager prototype, string branchId)
+    {
+        return TryGetBranchDefinition(prototype, branchId, out var definition)
+            ? definition.Name
+            : branchId;
+    }
+
+    public static string GetDefaultCategoryId(IPrototypeManager prototype, string branchId)
+    {
+        return TryGetBranchDefinition(prototype, branchId, out var definition)
+            ? definition.DefaultCategory
+            : string.Empty;
+    }
+
+    public static Color GetBranchAccent(IPrototypeManager prototype, string branchId)
+    {
+        return TryGetBranchDefinition(prototype, branchId, out var definition)
+            ? definition.AccentColor
+            : Color.White;
+    }
+
+    public static bool UsesTierSubcategories(IPrototypeManager prototype, string branchId)
+    {
+        return TryGetBranchDefinition(prototype, branchId, out var definition) && definition.UseTierSubcategories;
+    }
+
+    public static int CompareBranches(IPrototypeManager prototype, string? left, string? right)
+    {
+        var leftOrder = GetBranchOrder(prototype, left);
+        var rightOrder = GetBranchOrder(prototype, right);
+        return leftOrder != rightOrder
+            ? leftOrder.CompareTo(rightOrder)
+            : string.Compare(left, right, StringComparison.Ordinal);
+    }
+
+    private static int GetBranchOrder(IPrototypeManager prototype, string? branchId)
+    {
+        if (string.IsNullOrWhiteSpace(branchId))
+            return int.MaxValue;
+
+        return TryGetBranchDefinition(prototype, branchId, out var definition)
+            ? definition.Order
+            : int.MaxValue;
     }
 
     public static string? GetDisplayPrototypeId(PersistentCraftRecipePrototype recipe)
@@ -59,7 +124,6 @@ public static class PersistentCraftingHelper
         return recipe.Results.FirstOrDefault()?.Proto;
     }
 
-
     public static bool IsAutoUnlockedNode(PersistentCraftNodePrototype node)
     {
         return node.Cost <= 0;
@@ -67,22 +131,43 @@ public static class PersistentCraftingHelper
 
     public static int GetPointReward(PersistentCraftRecipePrototype recipe)
     {
-        if (recipe.PointReward > 0)
-            return recipe.PointReward;
-
-        return 1;
+        return recipe.PointReward > 0 ? recipe.PointReward : 1;
     }
 
     public static string GetTierDisplayLabel(int tier)
     {
-        return tier switch
+        return tier > 0 ? ToRoman(tier) : tier.ToString();
+    }
+
+    private static string ToRoman(int number)
+    {
+        var map = new (int Value, string Symbol)[]
         {
-            1 => "I",
-            2 => "II",
-            3 => "III",
-            4 => "IV",
-            5 => "V",
-            _ => tier.ToString(),
+            (1000, "M"),
+            (900, "CM"),
+            (500, "D"),
+            (400, "CD"),
+            (100, "C"),
+            (90, "XC"),
+            (50, "L"),
+            (40, "XL"),
+            (10, "X"),
+            (9, "IX"),
+            (5, "V"),
+            (4, "IV"),
+            (1, "I"),
         };
+
+        var result = new StringBuilder();
+        foreach (var (value, symbol) in map)
+        {
+            while (number >= value)
+            {
+                result.Append(symbol);
+                number -= value;
+            }
+        }
+
+        return result.ToString();
     }
 }

@@ -20,7 +20,7 @@ public sealed partial class PersistentCraftRecipePrototype : IPrototype
     public string? DisplayProto;
 
     [DataField("branch", required: true)]
-    public PersistentCraftBranch Branch;
+    public string Branch = string.Empty;
 
     [DataField("tier", required: true)]
     public int Tier = 1;

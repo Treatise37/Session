@@ -17,7 +17,7 @@ public sealed partial class PersistentCraftNodePrototype : IPrototype
     public string Description = string.Empty;
 
     [DataField("branch", required: true)]
-    public PersistentCraftBranch Branch;
+    public string Branch = string.Empty;
 
     [DataField("cost")]
     public int Cost = 1;

@@ -56,7 +56,8 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private const float NodeDetailsWindowMinHeight = 560f;
     private const float NodeDetailsWindowMargin = 16f;
 
-    private readonly Dictionary<PersistentCraftBranch, string> _selectedNodeByBranch = new();
+    private readonly Dictionary<string, string> _selectedNodeByBranch = new();
+    private readonly Dictionary<string, BoxContainer> _branchHosts = new();
     private bool _selectPreferredBranchOnNextUpdate = true;
 
     private PersistentCraftState? _state;
@@ -71,9 +72,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         RobustXamlLoader.Load(this);
 
-        Branches.SetTabTitle(0, Loc.GetString("persistent-craft-branch-weapon"));
-        Branches.SetTabTitle(1, Loc.GetString("persistent-craft-branch-armor"));
-        Branches.SetTabTitle(2, Loc.GetString("persistent-craft-branch-anomaly"));
+        InitializeBranchHosts();
         PersistentCraftUiTheme.ApplyTabTheme(Branches, "persistent-craft-skill-tabs", PersistentCraftUiTheme.Selection, _uiManager);
 
         Branches.OnTabChanged += _ =>
@@ -81,6 +80,36 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             CloseNodeDetailsWindow();
             RenderBranch(GetCurrentBranch());
         };
+    }
+
+    private void InitializeBranchHosts()
+    {
+        Branches.RemoveAllChildren();
+        _branchHosts.Clear();
+
+        foreach (var definition in PersistentCraftingHelper.EnumerateBranchDefinitions(_prototype))
+        {
+            var host = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Margin = new Thickness(12, 12, 12, 12),
+            };
+
+            var scroll = new ScrollContainer
+            {
+                MinSize = new Vector2(980, 0),
+                HorizontalExpand = true,
+                HScrollEnabled = true,
+                VerticalExpand = true,
+            };
+            scroll.AddChild(host);
+            Branches.AddChild(scroll);
+
+            _branchHosts[definition.ID] = host;
+            Branches.SetTabTitle(
+                PersistentCraftingHelper.GetBranchIndex(_prototype, definition.ID),
+                ResolveBranchTitle(definition));
+        }
     }
 
     public override void Close()
@@ -97,13 +126,13 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     {
         _state = state;
         _nodes = nodes
-            .OrderBy(node => node.Branch)
+            .OrderBy(node => PersistentCraftingHelper.GetBranchIndex(_prototype, node.Branch))
             .ThenBy(node => node.TreeRow >= 0 ? node.TreeRow : int.MaxValue)
             .ThenBy(node => node.TreeColumn >= 0 ? node.TreeColumn : int.MaxValue)
             .ThenBy(node => node.ID)
             .ToList();
         _recipes = recipes
-            .OrderBy(recipe => recipe.Branch)
+            .OrderBy(recipe => PersistentCraftingHelper.GetBranchIndex(_prototype, recipe.Branch))
             .ThenBy(recipe => recipe.Tier)
             .ThenBy(recipe => recipe.ID)
             .ToList();
@@ -131,7 +160,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         RenderBranch(GetCurrentBranch());
     }
 
-    private void RenderBranch(PersistentCraftBranch branch)
+    private void RenderBranch(string branch)
     {
         var subNodeHost = GetBranchHost(branch);
         subNodeHost.RemoveAllChildren();
@@ -199,7 +228,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     }
 
     private BoxContainer CreateSubNodeTree(
-        PersistentCraftBranch branch,
+        string branch,
         IReadOnlyList<PersistentCraftNodePrototype> subNodes,
         string? selectedNodeId)
     {
@@ -223,8 +252,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
             var visualParents = GetVisualPrerequisiteIds(
                 node,
-                subNodes,
-                allowImplicitFallback: node.TreeColumn < 0 || node.TreeRow < 0).ToList();
+                subNodes).ToList();
             foreach (var prerequisiteId in visualParents)
             {
                 if (!positions.TryGetValue(prerequisiteId, out var parentGridPosition))
@@ -270,11 +298,9 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
     private static IEnumerable<string> GetVisualPrerequisiteIds(
         PersistentCraftNodePrototype node,
-        IReadOnlyList<PersistentCraftNodePrototype> subNodes,
-        bool allowImplicitFallback = true)
+        IReadOnlyList<PersistentCraftNodePrototype> subNodes)
     {
         var subNodeIds = subNodes.Select(item => item.ID).ToHashSet();
-        _ = allowImplicitFallback;
         return node.Prerequisites.Where(subNodeIds.Contains).ToList();
     }
 
@@ -333,7 +359,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         layout.AddChild(line);
     }
 
-    private ContainerButton CreateSubNodeEntry(PersistentCraftBranch branch, PersistentCraftNodePrototype node, bool selected)
+    private ContainerButton CreateSubNodeEntry(string branch, PersistentCraftNodePrototype node, bool selected)
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
         var branchState = GetBranchState(state, branch);
@@ -493,7 +519,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             HorizontalExpand = true,
         };
         meta.SetMarkup(
-            $"[color={MutedTextColor.ToHex()}]{Loc.GetString("persistent-craft-selected-branch", ("branch", Loc.GetString(PersistentCraftingHelper.GetBranchLocKey(node.Branch))))}\n" +
+            $"[color={MutedTextColor.ToHex()}]{Loc.GetString("persistent-craft-selected-branch", ("branch", ResolveBranchTitle(node.Branch)))}\n" +
             $"{Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints}\n" +
             $"{Loc.GetString("persistent-craft-node-cost", ("cost", node.Cost))} | " +
             $"{Loc.GetString(GetDetailStatusKey(unlocked, prerequisitesMet, canUnlock))}[/color]");
@@ -663,7 +689,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     }
 
     private PersistentCraftNodePrototype? ResolveSelectedNode(
-        PersistentCraftBranch branch,
+        string branch,
         IReadOnlyList<PersistentCraftNodePrototype> subNodes)
     {
         if (_selectedNodeByBranch.TryGetValue(branch, out var selectedId))
@@ -678,7 +704,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         return null;
     }
 
-    private void SelectNode(PersistentCraftBranch branch, string nodeId)
+    private void SelectNode(string branch, string nodeId)
     {
         if (_selectedNodeByBranch.TryGetValue(branch, out var selectedId) &&
             selectedId == nodeId &&
@@ -832,7 +858,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
 
-        var preferred = PersistentCraftingHelper.EnumerateBranches()
+        var preferred = PersistentCraftingHelper.EnumerateBranches(_prototype)
             .Select(branch => new
             {
                 Branch = branch,
@@ -842,28 +868,14 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             .FirstOrDefault(entry => entry.Points > 0);
 
         if (preferred != null)
-            Branches.CurrentTab = GetBranchTabIndex(preferred.Branch);
+            Branches.CurrentTab = PersistentCraftingHelper.GetBranchIndex(_prototype, preferred.Branch);
     }
 
-    private static int GetBranchTabIndex(PersistentCraftBranch branch)
+    private string GetCurrentBranch()
     {
-        return branch switch
-        {
-            PersistentCraftBranch.Weapon => 0,
-            PersistentCraftBranch.Armor => 1,
-            PersistentCraftBranch.Anomaly => 2,
-            _ => 0,
-        };
-    }
-
-    private PersistentCraftBranch GetCurrentBranch()
-    {
-        return Branches.CurrentTab switch
-        {
-            1 => PersistentCraftBranch.Armor,
-            2 => PersistentCraftBranch.Anomaly,
-            _ => PersistentCraftBranch.Weapon,
-        };
+        return PersistentCraftingHelper.TryGetBranchByIndex(_prototype, Branches.CurrentTab, out var branch)
+            ? branch
+            : (PersistentCraftingHelper.GetFirstBranch(_prototype) is { Length: > 0 } first ? first : _branchHosts.Keys.FirstOrDefault() ?? string.Empty);
     }
 
     private bool HasNodeUnlockedOrAutoAvailable(string nodeId)
@@ -900,18 +912,18 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         }
     }
 
-    private BoxContainer GetBranchHost(PersistentCraftBranch branch)
+    private BoxContainer GetBranchHost(string branch)
     {
-        return branch switch
-        {
-            PersistentCraftBranch.Weapon => WeaponSubNodeHost,
-            PersistentCraftBranch.Armor => ArmorSubNodeHost,
-            PersistentCraftBranch.Anomaly => AnomalySubNodeHost,
-            _ => WeaponSubNodeHost,
-        };
+        if (_branchHosts.TryGetValue(branch, out var host))
+            return host;
+
+        if (_branchHosts.Count > 0)
+            return _branchHosts.Values.First();
+
+        throw new InvalidOperationException("Persistent craft skill branches are not initialized.");
     }
 
-    private PersistentCraftBranchState GetBranchState(PersistentCraftState state, PersistentCraftBranch branch)
+    private PersistentCraftBranchState GetBranchState(PersistentCraftState state, string branch)
     {
         return state.BranchStates.FirstOrDefault(item => item.Branch == branch) ??
                new PersistentCraftBranchState(
@@ -920,14 +932,27 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
                    0);
     }
 
-    private static Color GetBranchAccent(PersistentCraftBranch branch)
+    private Color GetBranchAccent(string branch)
     {
-        return branch switch
+        return PersistentCraftingHelper.GetBranchAccent(_prototype, branch);
+    }
+
+    private string ResolveBranchTitle(string branchId)
+    {
+        return PersistentCraftingHelper.TryGetBranchDefinition(_prototype, branchId, out var definition)
+            ? ResolveBranchTitle(definition)
+            : branchId;
+    }
+
+    private static string ResolveBranchTitle(PersistentCraftBranchPrototype definition)
+    {
+        try
         {
-            PersistentCraftBranch.Weapon => WeaponAccent,
-            PersistentCraftBranch.Armor => ArmorAccent,
-            PersistentCraftBranch.Anomaly => AnomalyAccent,
-            _ => CardBorder,
-        };
+            return Loc.GetString(definition.Name);
+        }
+        catch
+        {
+            return definition.Name;
+        }
     }
 }

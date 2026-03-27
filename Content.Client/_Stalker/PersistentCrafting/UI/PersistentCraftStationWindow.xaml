@@ -11,10 +11,6 @@
             <Control HorizontalExpand="True" />
             <Button Name="OpenSkillsButton" Access="Public" Text="{Loc 'persistent-craft-station-open-skills'}" />
         </BoxContainer>
-        <TabContainer Name="Branches" Access="Public" VerticalExpand="True">
-            <BoxContainer Name="WeaponBranch" Access="Public" Orientation="Vertical" Margin="12 12 12 12" HorizontalExpand="True" VerticalExpand="True" />
-            <BoxContainer Name="ArmorBranch" Access="Public" Orientation="Vertical" Margin="12 12 12 12" HorizontalExpand="True" VerticalExpand="True" />
-            <BoxContainer Name="AnomalyBranch" Access="Public" Orientation="Vertical" Margin="12 12 12 12" HorizontalExpand="True" VerticalExpand="True" />
-        </TabContainer>
+        <TabContainer Name="Branches" Access="Public" VerticalExpand="True" />
     </BoxContainer>
 </windows:PersistentCraftStationWindow>

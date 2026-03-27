@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Content.Shared._Stalker.PersistentCrafting;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -27,17 +26,6 @@ internal static class PersistentCraftUiTheme
     public static readonly Color Success = Color.FromHex("#8daa77");
     public static readonly Color Danger = Color.FromHex("#c9776f");
     public static readonly Color Selection = Color.FromHex("#d7c08f");
-
-    public static Color Accent(PersistentCraftBranch branch)
-    {
-        return branch switch
-        {
-            PersistentCraftBranch.Weapon => WeaponAccent,
-            PersistentCraftBranch.Armor => ArmorAccent,
-            PersistentCraftBranch.Anomaly => AnomalyAccent,
-            _ => BorderStrong,
-        };
-    }
 
     public static StyleBoxFlat Panel(
         Color background,

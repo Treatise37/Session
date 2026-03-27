@@ -7,16 +7,6 @@
     MinWidth="1620"
     MinHeight="940">
     <BoxContainer Orientation="Vertical" Margin="12 12 12 12">
-        <TabContainer Name="Branches" Access="Public" HorizontalExpand="True" VerticalExpand="True">
-            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                <BoxContainer Name="WeaponSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-            </ScrollContainer>
-            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                <BoxContainer Name="ArmorSubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-            </ScrollContainer>
-            <ScrollContainer MinSize="980 0" HorizontalExpand="True" HScrollEnabled="True" VerticalExpand="True">
-                <BoxContainer Name="AnomalySubNodeHost" Access="Public" Orientation="Vertical" Margin="12 12 12 12" />
-            </ScrollContainer>
-        </TabContainer>
+        <TabContainer Name="Branches" Access="Public" HorizontalExpand="True" VerticalExpand="True" />
     </BoxContainer>
 </windows:PersistentCraftingWindow>

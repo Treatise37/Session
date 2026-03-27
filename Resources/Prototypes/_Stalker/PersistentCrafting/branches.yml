@@ -1,0 +1,23 @@
+- type: persistentCraftBranch
+  id: Weapon
+  name: persistent-craft-branch-weapon
+  order: 0
+  defaultCategory: weapons
+  accentColor: "#b98558"
+  useTierSubcategories: false
+
+- type: persistentCraftBranch
+  id: Armor
+  name: persistent-craft-branch-armor
+  order: 1
+  defaultCategory: armor
+  accentColor: "#6a928d"
+  useTierSubcategories: false
+
+- type: persistentCraftBranch
+  id: Anomaly
+  name: persistent-craft-branch-anomaly
+  order: 2
+  defaultCategory: anomaly
+  accentColor: "#83955f"
+  useTierSubcategories: true
