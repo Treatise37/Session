@@ -1194,6 +1194,9 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private string GetCategoryName(string categoryId)
     {
+        if (_prototype.TryIndex<PersistentCraftCategoryPrototype>(categoryId, out var category))
+            return ResolvePrototypeDisplayName(category.Name, categoryId);
+
         var locKey = $"persistent-craft-category-{categoryId}";
         return TryLoc(locKey) ?? HumanizeIdentifier(categoryId);
     }
@@ -1203,38 +1206,36 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (string.IsNullOrWhiteSpace(subCategoryId))
             return string.Empty;
 
-        if (subCategoryId.StartsWith("tier-") && int.TryParse(subCategoryId["tier-".Length..], out var tier))
-            return $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(tier)}";
+        if (_prototype.TryIndex<PersistentCraftSubCategoryPrototype>(subCategoryId, out var subCategory))
+            return ResolvePrototypeDisplayName(subCategory.Name, subCategoryId);
 
         var locKey = $"persistent-craft-subcategory-{subCategoryId}";
         return TryLoc(locKey) ?? HumanizeIdentifier(subCategoryId);
     }
 
-    private static int GetCategoryOrder(string categoryId)
+    private int GetCategoryOrder(string categoryId)
     {
-        return categoryId switch
-        {
-            "weapons" => 0,
-            "armor" => 1,
-            "anomaly" => 2,
-            "anomaly-detectors" => 0,
-            "artifact-detectors" => 1,
-            "upgrades" => 2,
-            _ => 99,
-        };
+        return _prototype.TryIndex<PersistentCraftCategoryPrototype>(categoryId, out var category)
+            ? category.Order
+            : 99;
     }
 
-    private static int GetSubCategoryOrder(string subCategoryId)
+    private int GetSubCategoryOrder(string subCategoryId)
     {
-        return subCategoryId switch
-        {
-            _ when subCategoryId.StartsWith("tier-") && int.TryParse(subCategoryId["tier-".Length..], out var tier) => tier,
-            "starter" => 0,
-            "upgrades" => 1,
-            "advanced" => 2,
-            "elite" => 3,
-            _ => 99,
-        };
+        if (string.IsNullOrWhiteSpace(subCategoryId))
+            return int.MaxValue;
+
+        return _prototype.TryIndex<PersistentCraftSubCategoryPrototype>(subCategoryId, out var subCategory)
+            ? subCategory.Order
+            : 99;
+    }
+
+    private static string ResolvePrototypeDisplayName(string value, string fallbackId)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return HumanizeIdentifier(fallbackId);
+
+        return TryLoc(value) ?? value;
     }
 
     private static string? TryLoc(string locKey)
