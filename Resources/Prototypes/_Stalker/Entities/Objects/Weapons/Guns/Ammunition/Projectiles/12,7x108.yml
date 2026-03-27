@@ -8,7 +8,7 @@
     projectileClass: 0
     damage:
       types:
-        Mutant: 300
+        Mutant: 420
         Piercing: 20
         Blunt: 20
         Slash: 20
