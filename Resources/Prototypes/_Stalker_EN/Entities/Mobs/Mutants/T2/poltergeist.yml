@@ -62,6 +62,7 @@
     self: 0
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 3
+    rechargeSound: null
   - type: BasicEntityAmmoProvider
     proto: STBulletFireball
     capacity: 3

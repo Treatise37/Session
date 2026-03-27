@@ -43,6 +43,10 @@
         - trigger:
             !type:DamageTrigger
             damage: 110
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                collection: STZombieDeath # stalker EN change
     - type: MovementSpeedModifier
       baseWalkSpeed: 0.7
       baseSprintSpeed: 1.3
@@ -53,7 +57,7 @@
     - type: DatasetVocalizer
       dataset: SayStalkerZombie
     - type: Speech
-      speechSounds: Alto
+      speechSounds: STZombie # stalker EN change
     - type: Vocal
       sounds:
         Male: MaleHuman
@@ -85,6 +89,7 @@
           true
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1.2
+      rechargeSound: null
     - type: BasicEntityAmmoProvider
       proto: Bullet545PC
       capacity: 8
@@ -124,7 +129,11 @@
         - id: MutantPartZombieHand
           maxAmount: 1
           prob: 1
-
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: STZombieSpotted
+       params:
+         variation: 0.125
 - type: entity
   name: зомбированный
   suffix: Stalker, Т3

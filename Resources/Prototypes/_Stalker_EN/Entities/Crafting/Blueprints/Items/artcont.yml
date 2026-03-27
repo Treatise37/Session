@@ -1,0 +1,6 @@
+﻿- type: entity
+  parent: STBaseBlueprint
+  id: MakeshiftArtContBlueprint
+  components:
+  - type: STBlueprint
+    blueprint: recipeMakeshiftArtifactContainer

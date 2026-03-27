@@ -9,6 +9,9 @@ using Robust.Shared.Utility;
 using System.Linq;
 using Robust.Shared.Containers; // stalker-changes
 using Content.Shared.Tag; // stalker-changes
+using Content.Shared._Stalker_EN.Clothing;
+using Content.Shared._Stalker_EN.Clothing.Components; // stalker-changes
+using Content.Shared.Clothing.EntitySystems; // stalker-changes
 
 namespace Content.Shared.Armor;
 
@@ -32,6 +35,7 @@ public abstract partial class SharedArmorSystem : EntitySystem
         SubscribeLocalEvent<ArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamageModify);
         SubscribeLocalEvent<ArmorComponent, BorgModuleRelayedEvent<DamageModifyEvent>>(OnBorgDamageModify);
         SubscribeLocalEvent<ArmorComponent, GetVerbsEvent<ExamineVerb>>(OnArmorVerbExamine);
+        SubscribeLocalEvent<ArmorComponent, VisorToggledEvent>(OnVisorToggled);
     }
 
     /// <summary>
@@ -197,6 +201,15 @@ public abstract partial class SharedArmorSystem : EntitySystem
 
         var name = slotDef.Name;
         return name == "artifact1" || name == "artifact2" || name == "artifact3" || name == "artifact4";
+    }
+
+    private void OnVisorToggled(Entity<ArmorComponent> ent, ref VisorToggledEvent args)
+    {
+        if (!TryComp<HelmetVisorComponent>(ent, out var visor) || visor.VisorUpModifiers == null)
+            return;
+
+        ent.Comp.Modifiers = args.IsUp ? visor.VisorUpModifiers : visor.DefaultModifiers;
+        Dirty(ent);
     }
 }
   // stalker-changes-end

@@ -4,11 +4,11 @@
   id: STBaseWeaponShotgunSawedOf
   components:
   - type: Sprite
-    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
+    sprite: _Stalker_EN/Objects/Weapons/Guns/Shotguns/SawnOff_TOZ_34.rsi
   - type: Clothing
-    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
+    sprite: _Stalker_EN/Objects/Weapons/Guns/Shotguns/SawnOff_TOZ_34.rsi
   - type: Item
-    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/sawed_off.rsi
+    sprite: _Stalker_EN/Objects/Weapons/Guns/Shotguns/SawnOff_TOZ_34.rsi
     size: Small
     heldPrefix: sawn
   - type: STWeight

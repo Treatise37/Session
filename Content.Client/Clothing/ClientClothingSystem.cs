@@ -34,7 +34,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"ears", "EARS"},
         {"mask", "MASK"},
         {"outerClothing", "OUTERCLOTHING"},
-        {Jumpsuit, "INNERCLOTHING"},
+        {"Jumpsuit", "INNERCLOTHING"},
         {"neck", "NECK"},
         {"back", "BACKPACK"},
         {"belt", "BELT"},
@@ -48,7 +48,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"legs", "LEGS"},
         {"cloak", "CLOAK"},
         {"torso", "TORSO" },
-        {"dopweapon", "BACKPACK"},
+        {"back2", "BACKPACK"},
         {"dogtag", "NECK"},
         // stalke-changes-ends
     };

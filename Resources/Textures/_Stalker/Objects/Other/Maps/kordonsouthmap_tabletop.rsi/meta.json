@@ -1,0 +1,15 @@
+﻿{
+    "version": 1,
+    "license": "Stalker14",
+    "copyright": "Made by Boekot for Stalker 14",
+    "size": {
+        "x": 2790,
+        "y": 2790
+    },
+    "metaAtlas": false,
+    "states": [
+        {
+            "name": "kordonsouthmap_tabletop"
+        }
+    ]
+}
