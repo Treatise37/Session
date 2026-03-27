@@ -1,0 +1,9 @@
+action-name-toggle-visor = Открыть/Закрыть забрало
+action-description-toggle-visor = Toggles the helmet visor position.
+action-helmet-visor-up-popup-message = Вы подняли забрало.
+action-helmet-visor-down-popup-message = Вы опустили забрало.
+action-helmet-visor-cooldown = Wait { $time } seconds before toggling again.
+helmet-visor-up = Зарабло поднято.
+helmet-visor-down = Забрало опущено.
+helmet-visor-raise = Поднять забрало.
+helmet-visor-lower = Опустить забрало.
