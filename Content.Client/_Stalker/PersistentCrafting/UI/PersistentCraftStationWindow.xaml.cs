@@ -1192,10 +1192,24 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             : string.Empty;
     }
 
+    private PersistentCraftCategoryPrototype? GetCategoryPrototype(string categoryId)
+    {
+        return _prototype.TryIndex<PersistentCraftCategoryPrototype>(categoryId, out var prototype)
+            ? prototype
+            : null;
+    }
+
+    private PersistentCraftSubCategoryPrototype? GetSubCategoryPrototype(string subCategoryId)
+    {
+        return _prototype.TryIndex<PersistentCraftSubCategoryPrototype>(subCategoryId, out var prototype)
+            ? prototype
+            : null;
+    }
+
     private string GetCategoryName(string categoryId)
     {
-        if (_prototype.TryIndex<PersistentCraftCategoryPrototype>(categoryId, out var category))
-            return ResolvePrototypeDisplayName(category.Name, categoryId);
+        if (GetCategoryPrototype(categoryId) is { } category)
+            return category.Name;
 
         var locKey = $"persistent-craft-category-{categoryId}";
         return TryLoc(locKey) ?? HumanizeIdentifier(categoryId);
@@ -1206,8 +1220,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (string.IsNullOrWhiteSpace(subCategoryId))
             return string.Empty;
 
-        if (_prototype.TryIndex<PersistentCraftSubCategoryPrototype>(subCategoryId, out var subCategory))
-            return ResolvePrototypeDisplayName(subCategory.Name, subCategoryId);
+        if (GetSubCategoryPrototype(subCategoryId) is { } subCategory)
+            return subCategory.Name;
+
+        if (subCategoryId.StartsWith("tier-") && int.TryParse(subCategoryId["tier-".Length..], out var tier))
+            return $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(tier)}";
 
         var locKey = $"persistent-craft-subcategory-{subCategoryId}";
         return TryLoc(locKey) ?? HumanizeIdentifier(subCategoryId);
@@ -1215,27 +1232,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private int GetCategoryOrder(string categoryId)
     {
-        return _prototype.TryIndex<PersistentCraftCategoryPrototype>(categoryId, out var category)
-            ? category.Order
-            : 99;
+        return GetCategoryPrototype(categoryId)?.Order ?? 99;
     }
 
     private int GetSubCategoryOrder(string subCategoryId)
     {
-        if (string.IsNullOrWhiteSpace(subCategoryId))
-            return int.MaxValue;
-
-        return _prototype.TryIndex<PersistentCraftSubCategoryPrototype>(subCategoryId, out var subCategory)
-            ? subCategory.Order
-            : 99;
-    }
-
-    private static string ResolvePrototypeDisplayName(string value, string fallbackId)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return HumanizeIdentifier(fallbackId);
-
-        return TryLoc(value) ?? value;
+        return GetSubCategoryPrototype(subCategoryId)?.Order ?? 99;
     }
 
     private static string? TryLoc(string locKey)

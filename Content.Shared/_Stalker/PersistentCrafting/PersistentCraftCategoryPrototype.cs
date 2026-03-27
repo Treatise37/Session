@@ -1,10 +1,12 @@
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Stalker.PersistentCrafting;
 
-[Prototype("persistentCraftCategory")]
-public sealed class PersistentCraftCategoryPrototype : IPrototype
+[Prototype("persistentCraftCategory"), Serializable, NetSerializable]
+public sealed partial class PersistentCraftCategoryPrototype : IPrototype
 {
+    [ViewVariables]
     [IdDataField]
     public string ID { get; private set; } = default!;
 
@@ -15,11 +17,15 @@ public sealed class PersistentCraftCategoryPrototype : IPrototype
     public int Order = 99;
 }
 
-[Prototype("persistentCraftSubCategory")]
-public sealed class PersistentCraftSubCategoryPrototype : IPrototype
+[Prototype("persistentCraftSubCategory"), Serializable, NetSerializable]
+public sealed partial class PersistentCraftSubCategoryPrototype : IPrototype
 {
+    [ViewVariables]
     [IdDataField]
     public string ID { get; private set; } = default!;
+
+    [DataField("category")]
+    public string? Category;
 
     [DataField("name", required: true)]
     public string Name = string.Empty;

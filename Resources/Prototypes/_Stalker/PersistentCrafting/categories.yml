@@ -16,59 +16,68 @@
 - type: persistentCraftCategory
   id: anomaly-detectors
   name: Детекторы аномалий
-  order: 10
+  order: 0
 
 - type: persistentCraftCategory
   id: artifact-detectors
   name: Детекторы артефактов
-  order: 20
+  order: 1
 
 - type: persistentCraftCategory
   id: upgrades
   name: Улучшения
-  order: 30
+  order: 2
+
+- type: persistentCraftCategory
+  id: special
+  name: Прочее
+  order: 99
+
+- type: persistentCraftSubCategory
+  id: starter
+  category: weapons
+  name: Базовое
+  order: 0
+
+- type: persistentCraftSubCategory
+  id: upgrades
+  category: anomaly-detectors
+  name: Улучшения
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: advanced
+  category: weapons
+  name: Продвинутое
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: elite
+  category: weapons
+  name: Элита
+  order: 3
 
 - type: persistentCraftSubCategory
   id: tier-1
   name: Уровень I
-  order: 10
+  order: 1
 
 - type: persistentCraftSubCategory
   id: tier-2
   name: Уровень II
-  order: 20
+  order: 2
 
 - type: persistentCraftSubCategory
   id: tier-3
   name: Уровень III
-  order: 30
+  order: 3
 
 - type: persistentCraftSubCategory
   id: tier-4
   name: Уровень IV
-  order: 40
+  order: 4
 
 - type: persistentCraftSubCategory
   id: tier-5
   name: Уровень V
-  order: 50
-
-- type: persistentCraftSubCategory
-  id: starter
-  name: Базовое
-  order: 10
-
-- type: persistentCraftSubCategory
-  id: advanced
-  name: Продвинутое
-  order: 20
-
-- type: persistentCraftSubCategory
-  id: upgrades
-  name: Улучшения
-  order: 30
-
-- type: persistentCraftSubCategory
-  id: elite
-  name: Элитное
-  order: 40
+  order: 5
