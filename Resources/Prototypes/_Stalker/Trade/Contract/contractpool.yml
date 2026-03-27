@@ -57,7 +57,7 @@
     id: GrenadeVOG25gvozd # Граната ВОГ-25 «Гвоздь»
     weight: 1
   - type: Item
-    id: BulletGrenadeVOG25P # Граната ВОГ-25П
+    id: GrenadeVOG25P # Граната ВОГ-25П
     weight: 1
   - type: Item
     id: ClothingOuterArmorSpark # Броня «Искра»
@@ -151,7 +151,7 @@
     id: GrenadeVOG25gvozd # Граната ВОГ-25 «Гвоздь»
     weight: 1
   - type: Item
-    id: BulletGrenadeVOG25P # Граната ВОГ-25П
+    id: GrenadeVOG25P # Граната ВОГ-25П
     weight: 1
   - type: Item
     id: ClothingOuterArmorSpark # Броня «Искра»
