@@ -1400,3 +1400,21 @@
   components:
     - type: NewMapTeleport
       portalName: Dolina-RedForest
+
+### Чн - база на долине
+
+- type: entity
+  parent: MapTeleportBase
+  id: Cn-Dolina
+  name: Cn-Dolina
+  components:
+    - type: NewMapTeleport
+      portalName: Cn-Dolina
+
+- type: entity
+  parent: MapTeleportBase
+  id: Dolina-Cn
+  name: Dolina-Cn
+  components:
+    - type: NewMapTeleport
+      portalName: Cn-Dolina

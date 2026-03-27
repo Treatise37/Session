@@ -249,6 +249,19 @@
       portalName: _PortalBandClearskyRepository
       repositoryWeight: 200
 
+- type: entity
+  parent: BandRepositoryBase
+  id: PortalBandClearskyRepositoryDolina
+  suffix: 200
+  name: Band-Clearsky-Repository-Dolina
+  description: Band-Clearsky-Repository-desc
+  components:
+    - type: AccessReader
+      access: [["CN"]]
+    - type: StalkerBandTeleport
+      portalName: _PortalBandClearskyRepositoryDolina
+      repositoryWeight: 200
+
 # Repository for Clearsky - End
 
 # Repository for Mercenaries - Start
@@ -390,6 +403,8 @@
     - "_PortalBandMercenariesRepository"
 
     - "_PortalBandClearskyRepository"
+
+    - "_PortalBandClearskyRepositoryDolina"
 
     - "_PortalBandSinRepository"
 
