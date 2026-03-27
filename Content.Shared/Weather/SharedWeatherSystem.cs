@@ -21,11 +21,13 @@ public abstract class SharedWeatherSystem : EntitySystem
     [Dependency] private readonly SharedRoofSystem _roof = default!;
 
     private EntityQuery<BlockWeatherComponent> _blockQuery;
+    private EntityQuery<DisableMapWeatherComponent> _disableMapWeatherQuery;
 
     public override void Initialize()
     {
         base.Initialize();
         _blockQuery = GetEntityQuery<BlockWeatherComponent>();
+        _disableMapWeatherQuery = GetEntityQuery<DisableMapWeatherComponent>();
         SubscribeLocalEvent<WeatherComponent, EntityUnpausedEvent>(OnWeatherUnpaused);
     }
 
@@ -48,7 +50,7 @@ public abstract class SharedWeatherSystem : EntitySystem
         if (Resolve(uid, ref roofComp, false) && _roof.IsRooved((uid, grid, roofComp), tileRef.GridIndices))
             return false;
 
-        var tileDef = (ContentTileDefinition) _tileDefManager[tileRef.Tile.TypeId];
+        var tileDef = (ContentTileDefinition)_tileDefManager[tileRef.Tile.TypeId];
 
         if (!tileDef.Weather)
             return false;
@@ -62,7 +64,6 @@ public abstract class SharedWeatherSystem : EntitySystem
         }
 
         return true;
-
     }
 
     public float GetPercent(WeatherData component, EntityUid mapUid)
@@ -75,11 +76,11 @@ public abstract class SharedWeatherSystem : EntitySystem
 
         if (remaining < WeatherComponent.ShutdownTime)
         {
-            alpha = (float) (remaining / WeatherComponent.ShutdownTime);
+            alpha = (float)(remaining / WeatherComponent.ShutdownTime);
         }
         else if (elapsed < WeatherComponent.StartupTime)
         {
-            alpha = (float) (elapsed / WeatherComponent.StartupTime);
+            alpha = (float)(elapsed / WeatherComponent.StartupTime);
         }
         else
         {
@@ -88,7 +89,6 @@ public abstract class SharedWeatherSystem : EntitySystem
 
         return alpha;
     }
-
 
     public override void Update(float frameTime)
     {
@@ -143,7 +143,6 @@ public abstract class SharedWeatherSystem : EntitySystem
                     }
                 }
 
-                // Run whatever code we need.
                 Run(uid, weather, weatherProto, frameTime);
             }
         }
@@ -156,6 +155,26 @@ public abstract class SharedWeatherSystem : EntitySystem
     {
         if (!_mapSystem.TryGetMap(mapId, out var mapUid))
             return;
+
+        // On maps with DisableMapWeatherComponent, weather may only be turned off, never started.
+        if (_disableMapWeatherQuery.HasComponent(mapUid.Value) && proto != null)
+        {
+            var existingWeather = CompOrNull<WeatherComponent>(mapUid.Value);
+            if (existingWeather != null)
+            {
+                var shutdownEndTime = Timing.CurTime + WeatherComponent.ShutdownTime;
+
+                foreach (var (_, weather) in existingWeather.Weather)
+                {
+                    if (weather.EndTime == null || weather.EndTime > shutdownEndTime)
+                        weather.EndTime = shutdownEndTime;
+                }
+
+                Dirty(mapUid.Value, existingWeather);
+            }
+
+            return;
+        }
 
         var weatherComp = EnsureComp<WeatherComponent>(mapUid.Value);
 

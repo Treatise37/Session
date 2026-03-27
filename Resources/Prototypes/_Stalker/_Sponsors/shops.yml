@@ -256,4 +256,36 @@
   categories:
   - name: Персональная категория
     items:
-      CasseteSixtyTwoDonateRadio: 500
+      CasseteSixtyTwoDonateRadioAnimaciya: 500
+
+- type: personalShop
+  id: Personalde21_Shop
+  username: de21_
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponSniperVSK94: 4500
+      Base939MagVSK: 300
+      STBox9x39PAB9: 2300
+      STBox9x39SP6: 4300
+
+- type: personalShop
+  id: Personalnikita2282288Shop
+  username: nikita2282288
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponRifleSCARSSR: 4500
+      751M80Box: 2200
+      751M61Box: 3700
+      751Mag30: 500
+
+- type: personalShop
+  id: PersonalPearllovekaShop
+  username: Pearlloveka
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponSniperPP2000Pearl: 4500
+      BasePP2000PearlMag: 200
+      BasePP2000PearlMag20: 400

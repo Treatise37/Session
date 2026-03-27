@@ -11,11 +11,11 @@
     minAngle: -45
     maxAngle: -45
   - type: Item
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/m16.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/inhands/M16.rsi
   - type: Sprite
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/m16.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/m_16.rsi
   - type: Clothing
-    sprite: _Stalker/Objects/Weapons/Guns/Rifles/m16.rsi
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/inhands/M16.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/m4.ogg

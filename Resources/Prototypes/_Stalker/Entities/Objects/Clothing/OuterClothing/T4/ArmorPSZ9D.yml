@@ -21,7 +21,7 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.5
-        Heat: 8.5
+        Heat: 0.85
         Piercing: 0.7
         Compression: 0.85
 

@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Content.Server.Chat.Managers;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
@@ -56,7 +56,6 @@ public sealed class JobSystem : SharedJobSystem
 
         _chat.DispatchServerMessage(session, Loc.GetString("job-greet-supervisors-warning", ("jobName", prototype.LocalizedName), ("supervisors", Loc.GetString(prototype.Supervisors))));
     }
-
     public void MindAddJob(EntityUid mindId, string jobPrototypeId)
     {
         if (MindHasJobWithId(mindId, jobPrototypeId))

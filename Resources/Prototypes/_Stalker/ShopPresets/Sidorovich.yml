@@ -206,7 +206,10 @@
       751M80Box: 1600
       # 7.39
       739HPBox: 300
-      739FMJBox: 1600
+      739FMJBox: 1475
+      # 7.54
+      754FMJBox: 1675
+      754HPBox: 1015
 
   - name: shop-category-armor
     priority: 4

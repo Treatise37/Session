@@ -224,6 +224,7 @@
       STWeaponSMGPPSh41: 2200
       STWeaponSMGMP40: 600
       STWeaponSMGPP19: 1500
+      STWeaponSMGPP2000: 2500
       # Other
       WeaponPistolStalkerGlock: 200
       WeaponStalkerPistolTec9: 200
@@ -242,6 +243,7 @@
       545Mag20: 220 #T2
       545Mag30: 300 #T3
       # Smg
+      BasePP2000Mag: 200
       MP40Mag: 100
       BaseMP5Mag: 200
       PPSHDrum: 600

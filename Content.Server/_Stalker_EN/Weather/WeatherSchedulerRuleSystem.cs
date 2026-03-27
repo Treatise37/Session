@@ -75,6 +75,13 @@ public sealed class WeatherSchedulerRuleSystem : GameRuleSystem<WeatherScheduler
         var query = EntityQueryEnumerator<MapComponent>();
         while (query.MoveNext(out var mapUid, out var mapComp))
         {
+            // Полное отключение погоды на карте отдельным компонентом
+            if (HasComp<DisableMapWeatherComponent>(mapUid))
+            {
+                _weather.SetWeather(mapComp.MapId, null, _timing.CurTime + WeatherComponent.ShutdownTime);
+                continue;
+            }
+
             // Try to get STMapKey for this map
             string? mapKey = null;
             if (TryComp<STMapKeyComponent>(mapUid, out var keyComp))
@@ -85,12 +92,18 @@ public sealed class WeatherSchedulerRuleSystem : GameRuleSystem<WeatherScheduler
             if (mapKey != null && component.MapOverrides.TryGetValue(mapKey, out mapOverride))
             {
                 if (!mapOverride.WeatherEnabled)
-                    continue; // Skip this map entirely
+                {
+                    _weather.SetWeather(mapComp.MapId, null, _timing.CurTime + WeatherComponent.ShutdownTime);
+                    continue;
+                }
             }
 
             // Fallback: Skip safe zones (underground maps without STMapKey override)
             if (mapOverride == null && HasComp<StalkerSafeZoneComponent>(mapUid))
+            {
+                _weather.SetWeather(mapComp.MapId, null, _timing.CurTime + WeatherComponent.ShutdownTime);
                 continue;
+            }
 
             // Pick weather using override pool or default
             var weatherProto = PickWeatherForMap(component, mapOverride);

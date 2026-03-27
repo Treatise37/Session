@@ -1,0 +1,13 @@
+# stalker-changes
+# Action that shows the current job's rules (from JobPrototype.Rules).
+- type: entity
+  parent: BaseAction
+  id: ActionShowJobRules
+  name: action-show-job-rules-name
+  description: action-show-job-rules-desc
+  components:
+  - type: Action
+    icon: Interface/Actions/eyeopen.png
+  - type: InstantAction
+    event: !type:ShowJobRulesActionEvent
+# stalker-changes-end

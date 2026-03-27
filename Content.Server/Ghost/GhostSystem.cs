@@ -610,31 +610,31 @@ namespace Content.Server.Ghost
             //   (If the mob survives, that's a bug. Ghosting is kept regardless.)
             var canReturn = canReturnGlobal && _mind.IsCharacterDeadPhysically(mind);
 
-            if (_configurationManager.GetCVar(CCVars.GhostKillCrit) &&
-                canReturnGlobal &&
-                TryComp(playerEntity, out MobStateComponent? mobState))
-            {
-                if (_mobState.IsCritical(playerEntity.Value, mobState))
-                {
-                    canReturn = true;
+            // if (_configurationManager.GetCVar(CCVars.GhostKillCrit) &&
+            //     canReturnGlobal &&
+            //     TryComp(playerEntity, out MobStateComponent? mobState))
+            // {
+            //     if (_mobState.IsCritical(playerEntity.Value, mobState))
+            //     {
+            //         canReturn = true;
 
-                    //todo: what if they dont breathe lol
-                    //cry deeply
+            //         //todo: what if they dont breathe lol
+            //         //cry deeply
 
-                    FixedPoint2 dealtDamage = 200;
+            //         FixedPoint2 dealtDamage = 200;
 
-                    if (TryComp<DamageableComponent>(playerEntity, out var damageable)
-                        && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
-                    {
-                        var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
-                        dealtDamage = playerDeadThreshold - damageable.TotalDamage;
-                    }
+            //         if (TryComp<DamageableComponent>(playerEntity, out var damageable)
+            //             && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
+            //         {
+            //             var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
+            //             dealtDamage = playerDeadThreshold - damageable.TotalDamage;
+            //         }
 
-                    DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
+            //         DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
 
-                    _damageable.ChangeDamage(playerEntity.Value, damage, true);
-                }
-            }
+            //         _damageable.ChangeDamage(playerEntity.Value, damage, true);
+            //     }
+            // }
 
             if (playerEntity != null)
                 _adminLog.Add(LogType.Mind, $"{ToPrettyString(playerEntity.Value):player} ghosted{(!canReturn ? " (non-returnable)" : "")}");
