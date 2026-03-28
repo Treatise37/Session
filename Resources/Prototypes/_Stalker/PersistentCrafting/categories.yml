@@ -24,9 +24,14 @@
   order: 1
 
 - type: persistentCraftCategory
+  id: artifact-breakdown
+  name: Разбор артефактов
+  order: 2
+
+- type: persistentCraftCategory
   id: upgrades
   name: Улучшения
-  order: 2
+  order: 3
 
 - type: persistentCraftCategory
   id: special

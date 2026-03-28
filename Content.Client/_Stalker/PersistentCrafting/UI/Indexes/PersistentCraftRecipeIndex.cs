@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Content.Client._Stalker.PersistentCrafting;
 using Content.Shared._Stalker.PersistentCrafting;
 
@@ -26,8 +25,12 @@ public sealed class PersistentCraftRecipeIndex
 
     public static PersistentCraftRecipeIndex Create(PersistentCraftClientPrototypeCache prototypeCache)
     {
-        var recipesById = prototypeCache.AllRecipes
-            .ToDictionary(recipe => recipe.ID);
+        var recipesById = new Dictionary<string, PersistentCraftRecipePrototype>(prototypeCache.AllRecipes.Count);
+        for (var i = 0; i < prototypeCache.AllRecipes.Count; i++)
+        {
+            var recipe = prototypeCache.AllRecipes[i];
+            recipesById[recipe.ID] = recipe;
+        }
 
         return new PersistentCraftRecipeIndex(
             prototypeCache.RecipesByBranch,

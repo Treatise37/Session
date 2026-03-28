@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
+using System.Text;
 using Content.Client._Stalker.PersistentCrafting.UI.Controls;
 using Content.Client.Message;
 using Content.Shared._Stalker.PersistentCrafting;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Maths;
 using Robust.Shared.Utility;
 
@@ -22,7 +21,7 @@ public sealed partial class PersistentCraftingWindow
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
         var unlocked = HasNodeUnlockedOrAutoAvailable(node.ID);
-        var prerequisitesMet = node.Prerequisites.All(HasNodeUnlockedOrAutoAvailable);
+        var prerequisitesMet = ArePrerequisitesMet(node);
         var canUnlock = state.Loaded &&
                         !unlocked &&
                         prerequisitesMet &&
@@ -129,65 +128,14 @@ public sealed partial class PersistentCraftingWindow
 
     private void ShowNodeDetailsWindow(PersistentCraftBranchState branchState, PersistentCraftNodePrototype node)
     {
-        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
-        {
-            _nodeDetailsWindow = new DefaultWindow
-            {
-                SetSize = new Vector2(NodeDetailsWindowWidth, NodeDetailsWindowHeight),
-                MinSize = new Vector2(NodeDetailsWindowMinWidth, NodeDetailsWindowMinHeight),
-                Resizable = true,
-            };
-            _nodeDetailsWindow.OnClose += () => _nodeDetailsWindow = null;
-        }
-
-        _nodeDetailsWindow.Title = ResolveNodeName(node);
-        _nodeDetailsWindow.RemoveAllChildren();
-
-        var root = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            Margin = new Thickness(10),
-            HorizontalExpand = true,
-            VerticalExpand = false,
-        };
-        root.AddChild(CreateDetailsPanel(branchState, node));
-
-        var scroll = new ScrollContainer
-        {
-            HorizontalExpand = true,
-            VerticalExpand = true,
-            HScrollEnabled = false,
-            VScrollEnabled = true,
-        };
-        scroll.AddChild(root);
-
-        _nodeDetailsWindow.AddChild(scroll);
-        if (!_nodeDetailsWindow.IsOpen)
-            _nodeDetailsWindow.Open();
-
-        PositionNodeDetailsWindowTopRight();
-        _nodeDetailsWindow.MoveToFront();
-    }
-
-    private void PositionNodeDetailsWindowTopRight()
-    {
-        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
-            return;
-
-        var screen = _clyde.ScreenSize;
-        var windowWidth = _nodeDetailsWindow.Width > 0 ? _nodeDetailsWindow.Width : (int)NodeDetailsWindowWidth;
-        var x = Math.Max(NodeDetailsWindowMargin, screen.X - windowWidth - NodeDetailsWindowMargin);
-        var y = NodeDetailsWindowMargin;
-        LayoutContainer.SetPosition(_nodeDetailsWindow, new Vector2(x, y));
+        _detailsCoordinator.Show(
+            ResolveNodeName(node),
+            CreateDetailsPanel(branchState, node));
     }
 
     private void CloseNodeDetailsWindow()
     {
-        if (_nodeDetailsWindow == null || _nodeDetailsWindow.Disposed)
-            return;
-
-        _nodeDetailsWindow.Close();
-        _nodeDetailsWindow = null;
+        _detailsCoordinator.Close();
     }
 
     private Control CreateDetailSection(string title, string contentMarkup)
@@ -249,8 +197,16 @@ public sealed partial class PersistentCraftingWindow
         if (recipes.Count == 0)
             return $"[color={DescriptionTextColor.ToHex()}]{Loc.GetString("persistent-craft-none")}[/color]";
 
-        return string.Join("\n", recipes.Select(recipe =>
-            $"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveRecipeName(recipe))}[/color]"));
+        var builder = new StringBuilder();
+        for (var i = 0; i < recipes.Count; i++)
+        {
+            if (i > 0)
+                builder.Append('\n');
+
+            builder.Append($"[color={DescriptionTextColor.ToHex()}]- {FormattedMessage.EscapeText(ResolveRecipeName(recipes[i]))}[/color]");
+        }
+
+        return builder.ToString();
     }
 
     private string BuildRequirementMarkup(PersistentCraftNodePrototype node)

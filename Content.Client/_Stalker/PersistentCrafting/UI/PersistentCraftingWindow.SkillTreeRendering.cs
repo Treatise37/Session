@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
+using Content.Client._Stalker.PersistentCrafting;
+using Content.Client._Stalker.PersistentCrafting.UI.Indexes;
 using Content.Client.Message;
 using Content.Shared._Stalker.PersistentCrafting;
 using Robust.Client.Graphics;
@@ -20,16 +21,14 @@ public sealed partial class PersistentCraftingWindow
         string? selectedNodeId)
     {
         var accent = GetBranchAccent(branch);
-        var positions = subNodes.ToDictionary(node => node.ID, GetNodeTreePosition);
-        var subNodeIds = new HashSet<string>(positions.Keys);
-        var maxColumn = positions.Values.Max(position => position.X);
-        var maxRow = positions.Values.Max(position => position.Y);
+        var layoutData = PersistentCraftNodeTreeLayoutBuilder.Build(subNodes);
+        var positions = layoutData.Positions;
 
         var layout = new LayoutContainer
         {
             MinSize = new Vector2(
-                TierTreePadding * 2 + (maxColumn + 1) * TierTreeNodeWidth + maxColumn * TierTreeHorizontalGap,
-                TierTreePadding * 2 + (maxRow + 1) * TierTreeNodeHeight + maxRow * TierTreeVerticalGap + 20),
+                TierTreePadding * 2 + (layoutData.MaxColumn + 1) * TierTreeNodeWidth + layoutData.MaxColumn * TierTreeHorizontalGap,
+                TierTreePadding * 2 + (layoutData.MaxRow + 1) * TierTreeNodeHeight + layoutData.MaxRow * TierTreeVerticalGap + 20),
             HorizontalAlignment = HAlignment.Center,
         };
 
@@ -40,7 +39,7 @@ public sealed partial class PersistentCraftingWindow
 
             foreach (var prerequisiteId in node.Prerequisites)
             {
-                if (!subNodeIds.Contains(prerequisiteId))
+                if (!layoutData.ContainsNode(prerequisiteId))
                     continue;
 
                 if (!positions.TryGetValue(prerequisiteId, out var parentGridPosition))
@@ -69,18 +68,6 @@ public sealed partial class PersistentCraftingWindow
         };
         wrapper.AddChild(layout);
         return wrapper;
-    }
-
-    private Vector2i GetNodeTreePosition(PersistentCraftNodePrototype node)
-    {
-        if (node.TreeColumn >= 0 && node.TreeRow >= 0)
-            return new Vector2i(node.TreeColumn, node.TreeRow);
-
-        // Fallback placement for legacy nodes without explicit tree coordinates.
-        var hashSeed = node.ID.Aggregate(0, (acc, ch) => acc + ch);
-        var localColumn = Math.Abs(hashSeed % 8);
-        var localRow = Math.Abs((hashSeed / 3) % 3);
-        return new Vector2i(localColumn, localRow);
     }
 
     private static Vector2 GetNodeCanvasPosition(Vector2i gridPosition)
@@ -141,9 +128,9 @@ public sealed partial class PersistentCraftingWindow
     private ContainerButton CreateSubNodeEntry(string branch, PersistentCraftNodePrototype node, bool selected)
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-        var branchState = GetBranchState(state, branch);
+        var branchState = _branchCoordinator.GetBranchState(branch);
         var unlocked = HasNodeUnlockedOrAutoAvailable(node.ID);
-        var prerequisitesMet = node.Prerequisites.All(HasNodeUnlockedOrAutoAvailable);
+        var prerequisitesMet = ArePrerequisitesMet(node);
         var canUnlock = state.Loaded && !unlocked && prerequisitesMet && branchState.AvailablePoints >= node.Cost;
         var accent = GetBranchAccent(branch);
 
@@ -204,5 +191,11 @@ public sealed partial class PersistentCraftingWindow
 
         button.AddChild(body);
         return button;
+    }
+
+    private bool ArePrerequisitesMet(PersistentCraftNodePrototype node)
+    {
+        var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
+        return PersistentCraftNodeAvailabilityResolver.ArePrerequisitesMet(state, node, ResolveNodePrototypeOrNull);
     }
 }

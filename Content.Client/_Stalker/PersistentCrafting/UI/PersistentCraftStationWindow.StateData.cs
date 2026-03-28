@@ -14,8 +14,8 @@ public sealed partial class PersistentCraftStationWindow
         RememberListScroll(branch);
         _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
 
-        _viewModel.SelectedRecipes.TryGetValue(branch, out var previousRecipeId);
-        _viewModel.SelectedRecipes[branch] = recipeId;
+        _viewModel.TryGetSelectedRecipe(branch, out var previousRecipeId);
+        _viewModel.SetSelectedRecipe(branch, recipeId);
 
         if (branch == GetCurrentBranch() &&
             _recipeEntryControlsByBranch.TryGetValue(branch, out var entries) &&
@@ -45,17 +45,15 @@ public sealed partial class PersistentCraftStationWindow
     {
         RememberListScroll(branch);
         _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
-        _viewModel.SelectedTierFilters[branch] = tier;
+        _viewModel.SetSelectedTierFilter(branch, tier);
         PopulateBranch(GetBranchContainer(branch), branch);
     }
 
     private void UpdateSearch(string branch, string text)
     {
-        var normalized = text.Trim();
-        if (GetSearchText(branch) == normalized)
+        if (!_viewModel.SetSearchText(branch, text))
             return;
 
-        _viewModel.SearchTextByBranch[branch] = normalized;
         _viewModel.ListScrollByBranch[branch] = Vector2.Zero;
         _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
         PopulateBranch(GetBranchContainer(branch), branch);
@@ -63,7 +61,7 @@ public sealed partial class PersistentCraftStationWindow
 
     private void ToggleCraftableOnly(string branch)
     {
-        _viewModel.CraftableOnlyByBranch[branch] = !GetCraftableOnly(branch);
+        _viewModel.ToggleCraftableOnly(branch);
         _viewModel.ListScrollByBranch[branch] = Vector2.Zero;
         _viewModel.DetailScrollByBranch[branch] = Vector2.Zero;
         PopulateBranch(GetBranchContainer(branch), branch);
@@ -154,12 +152,12 @@ public sealed partial class PersistentCraftStationWindow
 
     private string GetSearchText(string branch)
     {
-        return _viewModel.SearchTextByBranch.TryGetValue(branch, out var text) ? text : string.Empty;
+        return _viewModel.GetSearchText(branch);
     }
 
     private bool GetCraftableOnly(string branch)
     {
-        return _viewModel.CraftableOnlyByBranch.TryGetValue(branch, out var value) && value;
+        return _viewModel.GetCraftableOnly(branch);
     }
 
     private List<PersistentCraftRecipePrototype> FilterUnlockedRecipes(
@@ -265,48 +263,29 @@ public sealed partial class PersistentCraftStationWindow
         if (string.IsNullOrWhiteSpace(normalizedQuery))
             return true;
 
-        return ResolveRecipeName(recipe).ToLowerInvariant().Contains(normalizedQuery) ||
-               GetRecipeCategoryPath(recipe).ToLowerInvariant().Contains(normalizedQuery) ||
-               recipe.Tier.ToString().Contains(normalizedQuery) ||
-               PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier).ToLowerInvariant().Contains(normalizedQuery) ||
-               ResolveRecipeDescription(recipe).ToLowerInvariant().Contains(normalizedQuery);
+        if (_recipeMetadataIndex.MatchesSearch(recipe.ID, normalizedQuery))
+            return true;
+
+        var fallback = $"{ResolveRecipeName(recipe)} {GetRecipeCategoryPath(recipe)} {recipe.Tier} {PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)} {ResolveRecipeDescription(recipe)}"
+            .ToLowerInvariant();
+        return fallback.Contains(normalizedQuery);
     }
 
     private BoxContainer GetBranchContainer(string branch)
     {
-        if (_branchContainers.TryGetValue(branch, out var container))
-            return container;
-
-        foreach (var existing in _branchContainers.Values)
-        {
-            return existing;
-        }
-
-        throw new InvalidOperationException("Persistent craft station branches are not initialized.");
+        return _branchCoordinator.GetBranchContainer(branch);
     }
 
     private string GetCurrentBranch()
     {
-        return _branchRegistry.TryGetBranchByIndex(Branches.CurrentTab, out var branch)
-            ? branch
-            : (_branchRegistry.FirstBranchId is { Length: > 0 } first ? first : GetAnyBranchId());
-    }
-
-    private string GetAnyBranchId()
-    {
-        foreach (var key in _branchContainers.Keys)
-        {
-            return key;
-        }
-
-        return string.Empty;
+        return _branchCoordinator.GetCurrentBranch(Branches);
     }
 
     private PersistentCraftRecipePrototype ResolveSelectedRecipe(
         string branch,
         IReadOnlyList<PersistentCraftRecipePrototype> recipes)
     {
-        if (_viewModel.SelectedRecipes.TryGetValue(branch, out var selectedId))
+        if (_viewModel.TryGetSelectedRecipe(branch, out var selectedId))
         {
             for (var i = 0; i < recipes.Count; i++)
             {
@@ -330,7 +309,7 @@ public sealed partial class PersistentCraftStationWindow
             }
         }
 
-        _viewModel.SelectedRecipes[branch] = fallback.ID;
+        _viewModel.SetSelectedRecipe(branch, fallback.ID);
         return fallback;
     }
 
@@ -338,7 +317,7 @@ public sealed partial class PersistentCraftStationWindow
         string branch,
         IReadOnlyList<PersistentCraftRecipePrototype> recipes)
     {
-        if (_viewModel.SelectedTierFilters.TryGetValue(branch, out var selectedTier))
+        if (_viewModel.TryGetSelectedTierFilter(branch, out var selectedTier))
         {
             if (selectedTier == 0)
                 return selectedTier;
@@ -374,7 +353,7 @@ public sealed partial class PersistentCraftStationWindow
                 : (maxTier > int.MinValue ? maxTier : 0);
         }
 
-        _viewModel.SelectedTierFilters[branch] = preferredTier;
+        _viewModel.SetSelectedTierFilter(branch, preferredTier);
         return preferredTier;
     }
 }

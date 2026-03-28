@@ -53,11 +53,75 @@ public sealed partial class PersistentCraftIngredient
     [DataField("proto")]
     public string? Proto;
 
+    [DataField("stackType")]
+    public string? StackType;
+
     [DataField("tag")]
     public string? Tag;
 
+    [DataField("artifactTier")]
+    public int? ArtifactTier;
+
     [DataField("amount")]
     public int Amount = 1;
+
+    public PersistentCraftIngredientSelectorKind GetSelectorKind()
+    {
+        var hasProto = !string.IsNullOrWhiteSpace(Proto);
+        var hasStackType = !string.IsNullOrWhiteSpace(StackType);
+        var hasTag = !string.IsNullOrWhiteSpace(Tag);
+        var hasArtifactTier = ArtifactTier.HasValue && ArtifactTier.Value > 0;
+
+        var selectorCount = 0;
+        if (hasProto)
+            selectorCount++;
+        if (hasStackType)
+            selectorCount++;
+        if (hasTag)
+            selectorCount++;
+        if (hasArtifactTier)
+            selectorCount++;
+
+        if (selectorCount == 0)
+            return PersistentCraftIngredientSelectorKind.None;
+
+        if (selectorCount > 1)
+            return PersistentCraftIngredientSelectorKind.InvalidMultiple;
+
+        if (hasProto)
+            return PersistentCraftIngredientSelectorKind.Proto;
+
+        if (hasStackType)
+            return PersistentCraftIngredientSelectorKind.StackType;
+
+        if (hasArtifactTier)
+            return PersistentCraftIngredientSelectorKind.ArtifactTier;
+
+        return PersistentCraftIngredientSelectorKind.Tag;
+    }
+
+    public string GetSelectorValue()
+    {
+        return GetSelectorKind() switch
+        {
+            PersistentCraftIngredientSelectorKind.Proto => Proto ?? string.Empty,
+            PersistentCraftIngredientSelectorKind.StackType => StackType ?? string.Empty,
+            PersistentCraftIngredientSelectorKind.Tag => Tag ?? string.Empty,
+            PersistentCraftIngredientSelectorKind.ArtifactTier => ArtifactTier?.ToString() ?? string.Empty,
+            _ => string.Empty,
+        };
+    }
+}
+
+[Serializable, NetSerializable]
+public enum PersistentCraftIngredientSelectorKind : byte
+{
+    None = 0,
+    Proto = 1,
+    StackType = 2,
+    Tag = 3,
+    ArtifactTier = 4,
+    InvalidMultiple = 5,
 }
 
 [DataDefinition, Serializable, NetSerializable]

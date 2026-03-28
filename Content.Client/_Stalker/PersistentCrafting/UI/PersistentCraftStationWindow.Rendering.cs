@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
+using Content.Client._Stalker.PersistentCrafting.UI.Indexes;
 using Content.Client._Stalker.PersistentCrafting.UI.Controls;
 using Content.Client.Message;
 using Content.Shared._Stalker.PersistentCrafting;
@@ -29,8 +29,10 @@ public sealed partial class PersistentCraftStationWindow
 
         row.AddChild(CreateTierFilterButton(branch, 0, Loc.GetString("persistent-craft-filter-all"), selectedTier == 0, accent));
 
-        foreach (var tier in recipes.Select(recipe => recipe.Tier).Distinct().OrderBy(tier => tier))
+        var tiers = PersistentCraftRecipeLayoutBuilder.CollectSortedTiers(recipes);
+        for (var i = 0; i < tiers.Count; i++)
         {
+            var tier = tiers[i];
             row.AddChild(new Control { MinSize = new Vector2(6, 1) });
             row.AddChild(CreateTierFilterButton(
                 branch,
@@ -187,43 +189,59 @@ public sealed partial class PersistentCraftStationWindow
             HorizontalExpand = true,
         };
 
-        foreach (var tierGroup in recipes.GroupBy(recipe => recipe.Tier).OrderBy(group => group.Key))
+        var tierGroups = PersistentCraftRecipeLayoutBuilder.BuildLayout(
+            recipes,
+            GetRecipeCategoryId,
+            GetCategoryOrder,
+            GetRecipeSubCategoryId,
+            GetSubCategoryOrder);
+
+        for (var tierIndex = 0; tierIndex < tierGroups.Count; tierIndex++)
         {
-            list.AddChild(CreateTierHeader(tierGroup.Key, accent));
+            var tierGroup = tierGroups[tierIndex];
+            list.AddChild(CreateTierHeader(tierGroup.Tier, accent));
             list.AddChild(new Control { MinSize = new Vector2(1, 6) });
 
-            foreach (var categoryGroup in tierGroup
-                         .GroupBy(GetRecipeCategoryId)
-                         .OrderBy(group => GetCategoryOrder(group.Key)))
+            for (var categoryIndex = 0; categoryIndex < tierGroup.Categories.Count; categoryIndex++)
             {
-                var categoryKey = BuildCategoryGroupKey(branch, tierGroup.Key, categoryGroup.Key);
+                var categoryGroup = tierGroup.Categories[categoryIndex];
+                var categoryKey = BuildCategoryGroupKey(branch, tierGroup.Tier, categoryGroup.CategoryId);
                 EnsureCategoryCollapsedByDefault(categoryKey);
                 var categoryCollapsed = _viewModel.CollapsedCategoryKeys.Contains(categoryKey);
-                list.AddChild(CreateCategoryHeader(GetCategoryName(categoryGroup.Key), accent, categoryGroup.Count(), categoryCollapsed, categoryKey));
+                list.AddChild(CreateCategoryHeader(
+                    GetCategoryName(categoryGroup.CategoryId),
+                    accent,
+                    CountCategoryRecipes(categoryGroup),
+                    categoryCollapsed,
+                    categoryKey));
                 list.AddChild(new Control { MinSize = new Vector2(1, 4) });
 
                 if (categoryCollapsed)
                     continue;
 
-                foreach (var subCategoryGroup in categoryGroup
-                             .GroupBy(GetRecipeSubCategoryId)
-                             .OrderBy(group => GetSubCategoryOrder(group.Key)))
+                for (var subCategoryIndex = 0; subCategoryIndex < categoryGroup.SubCategories.Count; subCategoryIndex++)
                 {
-                    var subCategoryId = subCategoryGroup.Key;
+                    var subCategoryGroup = categoryGroup.SubCategories[subCategoryIndex];
+                    var subCategoryId = subCategoryGroup.SubCategoryId;
                     if (!string.IsNullOrWhiteSpace(subCategoryId))
                     {
-                        var subCategoryKey = BuildSubCategoryGroupKey(branch, tierGroup.Key, categoryGroup.Key, subCategoryId);
+                        var subCategoryKey = BuildSubCategoryGroupKey(branch, tierGroup.Tier, categoryGroup.CategoryId, subCategoryId);
                         EnsureSubCategoryCollapsedByDefault(subCategoryKey);
                         var subCategoryCollapsed = _viewModel.CollapsedSubCategoryKeys.Contains(subCategoryKey);
-                        list.AddChild(CreateSubCategoryHeader(GetSubCategoryName(subCategoryId), subCategoryGroup.Count(), subCategoryCollapsed, subCategoryKey));
+                        list.AddChild(CreateSubCategoryHeader(
+                            GetSubCategoryName(subCategoryId),
+                            subCategoryGroup.Recipes.Count,
+                            subCategoryCollapsed,
+                            subCategoryKey));
                         list.AddChild(new Control { MinSize = new Vector2(1, 4) });
 
                         if (subCategoryCollapsed)
                             continue;
                     }
 
-                    foreach (var recipe in subCategoryGroup.OrderBy(item => item.Tier).ThenBy(item => item.ID))
+                    for (var recipeIndex = 0; recipeIndex < subCategoryGroup.Recipes.Count; recipeIndex++)
                     {
+                        var recipe = subCategoryGroup.Recipes[recipeIndex];
                         list.AddChild(CreateRecipeListEntry(branch, recipe, selected.ID == recipe.ID));
                     }
                 }
@@ -231,6 +249,17 @@ public sealed partial class PersistentCraftStationWindow
         }
 
         return list;
+    }
+
+    private static int CountCategoryRecipes(PersistentCraftRecipeCategoryGroup categoryGroup)
+    {
+        var count = 0;
+        for (var i = 0; i < categoryGroup.SubCategories.Count; i++)
+        {
+            count += categoryGroup.SubCategories[i].Recipes.Count;
+        }
+
+        return count;
     }
 
     private Control CreateTierHeader(int tier, Color accent)

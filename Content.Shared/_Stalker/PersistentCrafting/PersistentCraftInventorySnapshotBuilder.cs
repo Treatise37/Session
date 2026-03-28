@@ -4,7 +4,6 @@ using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Stalker.PersistentCrafting;
 
@@ -17,14 +16,13 @@ public sealed class PersistentCraftInventorySnapshotBuilder
 
     public PersistentCraftInventorySnapshotBuilder(
         IEntityManager entityManager,
-        IPrototypeManager prototypeManager,
         TagSystem tagSystem,
         PersistentCraftAccessibleInventoryPolicy? policy = null)
     {
         _entityManager = entityManager;
         _tagSystem = tagSystem;
         _policy = policy ?? PersistentCraftAccessibleInventoryPolicy.Default;
-        _matcher = new PersistentCraftIngredientMatcher(entityManager, prototypeManager, tagSystem);
+        _matcher = new PersistentCraftIngredientMatcher(entityManager, tagSystem);
     }
 
     public PersistentCraftInventorySnapshot Build(
@@ -35,23 +33,32 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             return PersistentCraftInventorySnapshot.Empty;
 
         var trackedTags = new HashSet<string>();
+        var trackedStackTypes = new HashSet<string>();
         var trackedIngredientPrototypes = new HashSet<string>();
 
         for (var i = 0; i < trackedIngredients.Count; i++)
         {
             var ingredient = trackedIngredients[i];
-            if (!string.IsNullOrWhiteSpace(ingredient.Proto))
-                trackedIngredientPrototypes.Add(ingredient.Proto);
+            switch (ingredient.GetSelectorKind())
+            {
+                case PersistentCraftIngredientSelectorKind.Proto:
+                    trackedIngredientPrototypes.Add(ingredient.Proto!);
+                    break;
 
-            if (!string.IsNullOrWhiteSpace(ingredient.Tag))
-                trackedTags.Add(ingredient.Tag);
+                case PersistentCraftIngredientSelectorKind.StackType:
+                    trackedStackTypes.Add(ingredient.StackType!);
+                    break;
+
+                case PersistentCraftIngredientSelectorKind.Tag:
+                    trackedTags.Add(ingredient.Tag!);
+                    break;
+            }
         }
 
-        var ingredientStackTypeByProto = ResolveIngredientStackTypes(trackedIngredientPrototypes);
         var amountByProto = new Dictionary<string, int>();
-        var nonStackAmountByProto = new Dictionary<string, int>();
         var amountByStackType = new Dictionary<string, int>();
         var amountByTag = new Dictionary<string, int>();
+        var amountByArtifactTier = new Dictionary<int, int>();
         var signatureBuilder = new StringBuilder();
 
         var accessibleEntities = CollectAccessibleEntities(root);
@@ -69,21 +76,18 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             signatureBuilder.Append(amount);
             signatureBuilder.Append(';');
 
-            var hasStack = false;
             if (_entityManager.TryGetComponent(entity, out StackComponent? stack))
             {
-                hasStack = true;
-                AddAmount(amountByStackType, stack.StackTypeId, amount);
+                if (trackedStackTypes.Contains(stack.StackTypeId))
+                    AddAmount(amountByStackType, stack.StackTypeId, amount);
             }
 
             if (_entityManager.TryGetComponent(entity, out MetaDataComponent? meta) &&
                 meta.EntityPrototype != null)
             {
                 var prototypeId = meta.EntityPrototype.ID;
-                AddAmount(amountByProto, prototypeId, amount);
-
-                if (!hasStack)
-                    AddAmount(nonStackAmountByProto, prototypeId, amount);
+                if (trackedIngredientPrototypes.Contains(prototypeId))
+                    AddAmount(amountByProto, prototypeId, amount);
             }
 
             foreach (var tag in trackedTags)
@@ -96,10 +100,9 @@ public sealed class PersistentCraftInventorySnapshotBuilder
         return new PersistentCraftInventorySnapshot(
             signatureBuilder.ToString(),
             amountByProto,
-            nonStackAmountByProto,
             amountByStackType,
             amountByTag,
-            ingredientStackTypeByProto);
+            amountByArtifactTier);
     }
 
     private List<EntityUid> CollectAccessibleEntities(EntityUid root)
@@ -135,21 +138,15 @@ public sealed class PersistentCraftInventorySnapshotBuilder
         }
     }
 
-    private Dictionary<string, string?> ResolveIngredientStackTypes(HashSet<string> trackedIngredientPrototypes)
+    private static void AddAmount(Dictionary<string, int> dictionary, string key, int amount)
     {
-        var result = new Dictionary<string, string?>(trackedIngredientPrototypes.Count);
-
-        foreach (var prototypeId in trackedIngredientPrototypes)
-        {
-            result[prototypeId] = _matcher.TryGetIngredientStackType(prototypeId, out var stackType)
-                ? stackType
-                : null;
-        }
-
-        return result;
+        if (dictionary.TryGetValue(key, out var existing))
+            dictionary[key] = existing + amount;
+        else
+            dictionary[key] = amount;
     }
 
-    private static void AddAmount(Dictionary<string, int> dictionary, string key, int amount)
+    private static void AddAmount(Dictionary<int, int> dictionary, int key, int amount)
     {
         if (dictionary.TryGetValue(key, out var existing))
             dictionary[key] = existing + amount;

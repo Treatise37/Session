@@ -2,7 +2,11 @@ using Content.Shared._Stalker.PersistentCrafting;
 
 namespace Content.Server._Stalker.PersistentCrafting;
 
-[RegisterComponent, Access(typeof(PersistentCraftingSystem))]
+[RegisterComponent, Access(
+    typeof(PersistentCraftingSystem),
+    typeof(PersistentCraftProfileService),
+    typeof(PersistentCraftProfileRepository),
+    typeof(PersistentCraftUnlockService))]
 public sealed partial class PersistentCraftProfileComponent : Component
 {
     public Guid UserId;

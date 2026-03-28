@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
+using System.Text;
 using Content.Client._Stalker.PersistentCrafting;
+using Content.Client._Stalker.PersistentCrafting.UI.Coordinators;
 using Content.Client._Stalker.PersistentCrafting.UI.Indexes;
 using Content.Client._Stalker.PersistentCrafting.UI.Controls;
 using Content.Client._Stalker.PersistentCrafting.UI.ViewModels;
@@ -37,15 +38,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private readonly TagSystem _tag;
 
     private static readonly Color WindowBackground = PersistentCraftUiTheme.SurfaceWindow;
-    private static readonly Color CardBackground = PersistentCraftUiTheme.SurfacePanel;
     private static readonly Color CardBorder = PersistentCraftUiTheme.Border;
     private static readonly Color CardMutedBorder = PersistentCraftUiTheme.BorderSoft;
     private static readonly Color IconBackground = PersistentCraftUiTheme.SurfaceInset;
     private static readonly Color MutedText = PersistentCraftUiTheme.TextSecondary;
     private static readonly Color DescriptionText = PersistentCraftUiTheme.TextPrimary;
-    private static readonly Color AccentWeapon = PersistentCraftUiTheme.WeaponAccent;
-    private static readonly Color AccentArmor = PersistentCraftUiTheme.ArmorAccent;
-    private static readonly Color AccentAnomaly = PersistentCraftUiTheme.AnomalyAccent;
     private static readonly Color SelectedBorder = PersistentCraftUiTheme.Selection;
     private static readonly Color EnoughColor = PersistentCraftUiTheme.Success;
     private static readonly Color MissingColor = PersistentCraftUiTheme.Danger;
@@ -56,11 +53,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private readonly Dictionary<string, Dictionary<string, RecipeEntryControls>> _recipeEntryControlsByBranch = new();
     private readonly Dictionary<string, BoxContainer> _detailContentHostsByBranch = new();
     private readonly Dictionary<string, PersistentCraftBranchState> _visibleBranchStatesByBranch = new();
-    private readonly Dictionary<string, PersistentCraftBranchState> _branchStateById = new();
     private readonly Dictionary<string, bool> _recipeCraftabilityById = new();
     private readonly PersistentCraftStationViewModel _viewModel = new();
+    private readonly PersistentCraftStationBranchCoordinator _branchCoordinator;
 
     private PersistentCraftRecipeIndex? _recipeIndex;
+    private PersistentCraftRecipeMetadataIndex _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Empty;
     private PersistentCraftInventorySnapshot _inventorySnapshot = PersistentCraftInventorySnapshot.Empty;
     private PersistentCraftBranchRegistry _branchRegistry;
     private PersistentCraftClientPrototypeCache? _prototypeCache;
@@ -75,6 +73,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         IoCManager.InjectDependencies(this);
         _tag = _entityManager.EntitySysManager.GetEntitySystem<TagSystem>();
         _branchRegistry = PersistentCraftBranchRegistry.Create(_prototype);
+        _branchCoordinator = new PersistentCraftStationBranchCoordinator(_branchRegistry, _branchContainers);
 
         RobustXamlLoader.Load(this);
 
@@ -101,17 +100,26 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             _prototypeCache = prototypeCache;
             _recipeIndex = PersistentCraftRecipeIndex.Create(prototypeCache);
             _branchRegistry = prototypeCache.BranchRegistry;
+            _branchCoordinator.SetBranchRegistry(_branchRegistry);
+            _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Build(
+                prototypeCache.AllRecipes,
+                ResolveRecipeNameCore,
+                ResolveRecipeDescriptionCore,
+                ComputeRecipeCategoryId,
+                ComputeRecipeSubCategoryId,
+                ResolveCategoryPath,
+                PersistentCraftingHelper.GetTierDisplayLabel);
             InitializeBranchContainers();
         }
 
         _state = state;
         _recipes = prototypeCache.AllRecipes;
-        RebuildBranchStateIndex(state);
+        _branchCoordinator.RebuildBranchStateIndex(state);
         _inventorySnapshot = BuildInventorySnapshot(_recipes);
 
         if (state.Loaded && _viewModel.SelectPreferredBranchOnNextUpdate)
         {
-            SelectPreferredBranchTab();
+            _branchCoordinator.SelectPreferredBranchTab(Branches, branch => GetAvailableRecipeCount(state, branch));
             _viewModel.SelectPreferredBranchOnNextUpdate = false;
         }
 
@@ -121,16 +129,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     public void ResetInitialTabSelection()
     {
         _viewModel.SelectPreferredBranchOnNextUpdate = true;
-    }
-
-    private void RebuildBranchStateIndex(PersistentCraftState state)
-    {
-        _branchStateById.Clear();
-        for (var i = 0; i < state.BranchStates.Count; i++)
-        {
-            var branchState = state.BranchStates[i];
-            _branchStateById[branchState.Branch] = branchState;
-        }
     }
 
     public void RefreshLocalInventory()
@@ -180,7 +178,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             return;
         }
 
-        var branchState = GetBranchState(_state, branch);
+        var branchState = GetBranchState(branch);
         _visibleBranchStatesByBranch[branch] = branchState;
         _recipeEntryControlsByBranch[branch] = new Dictionary<string, RecipeEntryControls>();
         var unlockedRecipes = _state.Loaded
@@ -393,7 +391,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         if (_state == null)
             return Loc.GetString("persistent-craft-node-branch-points", ("points", 0));
 
-        var branchState = GetBranchState(_state, recipe.Branch);
+        var branchState = GetBranchState(recipe.Branch);
         return Loc.GetString("persistent-craft-node-branch-points", ("points", branchState.AvailablePoints));
     }
 
@@ -435,48 +433,37 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return false;
     }
 
-    private void SelectPreferredBranchTab()
+    private int GetAvailableRecipeCount(PersistentCraftState state, string branch)
     {
-        if (_state == null)
-            return;
+        var recipes = GetRecipesForBranch(branch);
+        var availableRecipeCount = 0;
 
-        var preferredBranch = string.Empty;
-        var bestRecipeCount = -1;
-        var bestPointCount = -1;
-
-        for (var i = 0; i < _branchRegistry.OrderedBranchIds.Count; i++)
+        for (var i = 0; i < recipes.Count; i++)
         {
-            var branch = _branchRegistry.OrderedBranchIds[i];
-            var recipes = GetRecipesForBranch(branch);
-
-            var availableRecipeCount = 0;
-            for (var recipeIndex = 0; recipeIndex < recipes.Count; recipeIndex++)
-            {
-                if (HasRequirement(_state, recipes[recipeIndex]))
-                    availableRecipeCount++;
-            }
-
-            var points = GetBranchState(_state, branch).AvailablePoints;
-            if (availableRecipeCount <= 0 && points <= 0)
-                continue;
-
-            if (availableRecipeCount > bestRecipeCount ||
-                (availableRecipeCount == bestRecipeCount && points > bestPointCount))
-            {
-                preferredBranch = branch;
-                bestRecipeCount = availableRecipeCount;
-                bestPointCount = points;
-            }
+            if (HasRequirement(state, recipes[i]))
+                availableRecipeCount++;
         }
 
-        if (!string.IsNullOrWhiteSpace(preferredBranch) &&
-            _branchRegistry.TryGetBranchIndex(preferredBranch, out var branchIndex))
-        {
-            Branches.CurrentTab = branchIndex;
-        }
+        return availableRecipeCount;
     }
 
     private string GetRecipeCategoryId(PersistentCraftRecipePrototype recipe)
+    {
+        if (_recipeMetadataIndex.TryGetCategoryId(recipe.ID, out var categoryId))
+            return categoryId;
+
+        return ComputeRecipeCategoryId(recipe);
+    }
+
+    private string GetRecipeSubCategoryId(PersistentCraftRecipePrototype recipe)
+    {
+        if (_recipeMetadataIndex.TryGetSubCategoryId(recipe.ID, out var subCategoryId))
+            return subCategoryId;
+
+        return ComputeRecipeSubCategoryId(recipe);
+    }
+
+    private string ComputeRecipeCategoryId(PersistentCraftRecipePrototype recipe)
     {
         if (!string.IsNullOrWhiteSpace(recipe.Category))
             return recipe.Category!;
@@ -486,7 +473,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             : string.Empty;
     }
 
-    private string GetRecipeSubCategoryId(PersistentCraftRecipePrototype recipe)
+    private string ComputeRecipeSubCategoryId(PersistentCraftRecipePrototype recipe)
     {
         if (!string.IsNullOrWhiteSpace(recipe.SubCategory))
             return recipe.SubCategory!;
@@ -495,6 +482,15 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
                definition.UseTierSubcategories
             ? $"tier-{recipe.Tier}"
             : string.Empty;
+    }
+
+    private string ResolveCategoryPath(string categoryId, string subCategoryId)
+    {
+        var categoryName = GetCategoryName(categoryId);
+        var subCategoryName = GetSubCategoryName(subCategoryId);
+        return string.IsNullOrWhiteSpace(subCategoryName)
+            ? categoryName
+            : $"{categoryName} / {subCategoryName}";
     }
 
     private PersistentCraftCategoryPrototype? GetCategoryPrototype(string categoryId)
@@ -578,59 +574,59 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private string GetRecipeCategoryPath(PersistentCraftRecipePrototype recipe)
     {
-        var category = GetCategoryName(GetRecipeCategoryId(recipe));
-        var subCategory = GetSubCategoryName(GetRecipeSubCategoryId(recipe));
+        if (_recipeMetadataIndex.TryGetCategoryPath(recipe.ID, out var categoryPath))
+            return categoryPath;
 
-        return string.IsNullOrWhiteSpace(subCategory)
-            ? category
-            : $"{category} / {subCategory}";
+        return ResolveCategoryPath(GetRecipeCategoryId(recipe), GetRecipeSubCategoryId(recipe));
     }
 
     private bool HasNodeUnlockedOrAutoAvailable(PersistentCraftState state, string nodeId)
     {
-        return HasNodeUnlockedOrAutoAvailable(state, nodeId, new HashSet<string>());
-    }
-
-    private bool HasNodeUnlockedOrAutoAvailable(PersistentCraftState state, string nodeId, HashSet<string> path)
-    {
-        if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
-            return false;
-
-        if (state.UnlockedNodes.Contains(nodeId))
-            return true;
-
-        if (node.Cost > 0)
-            return false;
-
-        if (!path.Add(nodeId))
-            return false;
-
-        try
-        {
-            return node.Prerequisites.All(prerequisite => HasNodeUnlockedOrAutoAvailable(state, prerequisite, path));
-        }
-        finally
-        {
-            path.Remove(nodeId);
-        }
+        return PersistentCraftNodeAvailabilityResolver.HasNodeUnlockedOrAutoAvailable(
+            state,
+            nodeId,
+            ResolveNodePrototypeOrNull);
     }
 
     private string BuildIngredientMarkup(PersistentCraftRecipePrototype recipe)
     {
-        return string.Join("\n", recipe.Ingredients.Select(ingredient => FormatIngredientLine(recipe, ingredient)));
+        var builder = new StringBuilder();
+        for (var i = 0; i < recipe.Ingredients.Count; i++)
+        {
+            if (i > 0)
+                builder.Append('\n');
+
+            builder.Append(FormatIngredientLine(recipe, recipe.Ingredients[i]));
+        }
+
+        return builder.ToString();
     }
 
     private string BuildResultMarkup(PersistentCraftRecipePrototype recipe)
     {
-        return string.Join("\n", recipe.Results.Select(result =>
-            $"[color={DescriptionText.ToHex()}]- {FormattedMessage.EscapeText(FormatResult(result))}[/color]"));
+        var builder = new StringBuilder();
+        for (var i = 0; i < recipe.Results.Count; i++)
+        {
+            if (i > 0)
+                builder.Append('\n');
+
+            var result = recipe.Results[i];
+            builder.Append($"[color={DescriptionText.ToHex()}]- {FormattedMessage.EscapeText(FormatResult(result))}[/color]");
+        }
+
+        return builder.ToString();
     }
 
     private string FormatIngredient(PersistentCraftIngredient ingredient)
     {
-        var name = !string.IsNullOrWhiteSpace(ingredient.Proto)
-            ? ResolveEntityName(ingredient.Proto)
-            : $"#{ingredient.Tag}";
+        var name = ingredient.GetSelectorKind() switch
+        {
+            PersistentCraftIngredientSelectorKind.Proto => ResolveEntityName(ingredient.Proto!),
+            PersistentCraftIngredientSelectorKind.StackType => ingredient.StackType!,
+            PersistentCraftIngredientSelectorKind.Tag => $"#{ingredient.Tag!}",
+            PersistentCraftIngredientSelectorKind.ArtifactTier => $"Артефакт T{ingredient.ArtifactTier ?? 0}",
+            _ => "?",
+        };
 
         return $"{name} x{ingredient.Amount}";
     }
@@ -643,6 +639,11 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private string FormatIngredientLine(PersistentCraftRecipePrototype recipe, PersistentCraftIngredient ingredient)
     {
         var requiredAmount = GetEffectiveIngredientAmount(recipe, ingredient);
+        if (!IsLocallyVerifiableIngredient(ingredient))
+        {
+            return $"[color={MutedText.ToHex()}]- {FormattedMessage.EscapeText(FormatIngredient(ingredient))} (?/{requiredAmount})[/color]";
+        }
+
         var owned = GetOwnedAmount(ingredient);
         var enough = owned >= requiredAmount;
         var color = enough ? EnoughColor : MissingColor;
@@ -661,7 +662,22 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private bool HasLocalMaterials(PersistentCraftRecipePrototype recipe)
     {
-        return recipe.Ingredients.All(ingredient => GetOwnedAmount(ingredient) >= GetEffectiveIngredientAmount(recipe, ingredient));
+        for (var i = 0; i < recipe.Ingredients.Count; i++)
+        {
+            var ingredient = recipe.Ingredients[i];
+            if (!IsLocallyVerifiableIngredient(ingredient))
+                continue;
+
+            if (GetOwnedAmount(ingredient) < GetEffectiveIngredientAmount(recipe, ingredient))
+                return false;
+        }
+
+        return true;
+    }
+
+    private static bool IsLocallyVerifiableIngredient(PersistentCraftIngredient ingredient)
+    {
+        return ingredient.GetSelectorKind() != PersistentCraftIngredientSelectorKind.ArtifactTier;
     }
 
     private int GetOwnedAmount(PersistentCraftIngredient ingredient)
@@ -678,6 +694,14 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private string ResolveRecipeName(PersistentCraftRecipePrototype recipe)
     {
+        if (_recipeMetadataIndex.TryGetName(recipe.ID, out var cached))
+            return cached;
+
+        return ResolveRecipeNameCore(recipe);
+    }
+
+    private string ResolveRecipeNameCore(PersistentCraftRecipePrototype recipe)
+    {
         var displayProto = PersistentCraftingHelper.GetDisplayPrototypeId(recipe);
         if (!string.IsNullOrWhiteSpace(displayProto) &&
             _prototype.TryIndex<EntityPrototype>(displayProto, out var prototype) &&
@@ -690,6 +714,14 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     }
 
     private string ResolveRecipeDescription(PersistentCraftRecipePrototype recipe)
+    {
+        if (_recipeMetadataIndex.TryGetDescription(recipe.ID, out var cached))
+            return cached;
+
+        return ResolveRecipeDescriptionCore(recipe);
+    }
+
+    private string ResolveRecipeDescriptionCore(PersistentCraftRecipePrototype recipe)
     {
         var displayProto = PersistentCraftingHelper.GetDisplayPrototypeId(recipe);
         if (!string.IsNullOrWhiteSpace(displayProto) &&
@@ -717,15 +749,9 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return TryLoc("persistent-craft-node-sub-recipe-name") ?? node.ID;
     }
 
-    private PersistentCraftBranchState GetBranchState(PersistentCraftState state, string branch)
+    private PersistentCraftBranchState GetBranchState(string branch)
     {
-        if (_branchStateById.TryGetValue(branch, out var branchState))
-            return branchState;
-
-        return new PersistentCraftBranchState(
-            branch,
-            0,
-            0);
+        return _branchCoordinator.GetBranchState(branch);
     }
 
 
@@ -844,6 +870,13 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return false;
     }
 
+    private PersistentCraftNodePrototype? ResolveNodePrototypeOrNull(string nodeId)
+    {
+        return TryGetNodePrototype(nodeId, out var node)
+            ? node
+            : null;
+    }
+
     private PersistentCraftInventorySnapshot BuildInventorySnapshot(IReadOnlyList<PersistentCraftRecipePrototype> recipes)
     {
         if (_player.LocalEntity is not { Valid: true } user || !_entityManager.EntityExists(user))
@@ -852,7 +885,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         var trackedIngredients = CollectTrackedIngredients(recipes);
         return PersistentCraftInventorySnapshot.Build(
             _entityManager,
-            _prototype,
             _tag,
             user,
             trackedIngredients);
@@ -869,7 +901,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             for (var j = 0; j < recipe.Ingredients.Count; j++)
             {
                 var ingredient = recipe.Ingredients[j];
-                var key = $"{ingredient.Proto ?? string.Empty}|{ingredient.Tag ?? string.Empty}";
+                var key = $"{(int) ingredient.GetSelectorKind()}|{ingredient.GetSelectorValue()}";
                 if (seen.Add(key))
                     tracked.Add(ingredient);
             }
