@@ -14,11 +14,9 @@ public sealed class OpenPersistentCraftMenuEvent : EntityEventArgs
 public sealed class RequestPersistentCraftRecipeEvent : EntityEventArgs
 {
     public string RecipeId { get; }
-    public int Amount { get; }
 
-    public RequestPersistentCraftRecipeEvent(string recipeId, int amount = 1)
+    public RequestPersistentCraftRecipeEvent(string recipeId)
     {
         RecipeId = recipeId;
-        Amount = amount;
     }
 }

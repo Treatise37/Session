@@ -37,7 +37,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     public void RequestCraft(string recipeId)
     {
-        RaiseNetworkEvent(new RequestPersistentCraftRecipeEvent(recipeId, 1));
+        RaiseNetworkEvent(new RequestPersistentCraftRecipeEvent(recipeId));
     }
 
     public void OpenSkillsWindow()
@@ -91,12 +91,18 @@ public sealed class PersistentCraftingSystem : EntitySystem
     private void OnOpenMenuEvent(OpenPersistentCraftMenuEvent ev, EntitySessionEventArgs args)
     {
         EnsureCraftWindow();
-        _craftWindow!.ResetInitialTabSelection();
+        if (_craftWindow!.IsOpen)
+        {
+            _craftWindow.Close();
 
-        if (!_craftWindow!.IsOpen)
-            _craftWindow.OpenCentered();
-        else
-            _craftWindow.MoveToFront();
+            if (_skillsWindow is { IsOpen: true })
+                _skillsWindow.Close();
+
+            return;
+        }
+
+        _craftWindow.ResetInitialTabSelection();
+        _craftWindow.OpenCentered();
 
         RefreshCraftWindow();
         RequestState();

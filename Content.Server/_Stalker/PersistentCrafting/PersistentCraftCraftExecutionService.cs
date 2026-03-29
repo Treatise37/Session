@@ -11,7 +11,6 @@ namespace Content.Server._Stalker.PersistentCrafting;
 public sealed class PersistentCraftCraftExecutionService
 {
     private readonly IEntityManager _entityManager;
-    private readonly PersistentCraftInventorySnapshotBuilder _inventorySnapshotBuilder;
     private readonly PersistentCraftIngredientConsumptionPlanner _ingredientPlanner;
     private readonly SharedStackSystem _stackSystem;
     private readonly SharedHandsSystem _handsSystem;
@@ -25,7 +24,6 @@ public sealed class PersistentCraftCraftExecutionService
         PersistentCraftProfileService profileService)
     {
         _entityManager = entityManager;
-        _inventorySnapshotBuilder = new PersistentCraftInventorySnapshotBuilder(entityManager, tagSystem);
         _ingredientPlanner = new PersistentCraftIngredientConsumptionPlanner(entityManager, tagSystem);
         _stackSystem = stackSystem;
         _handsSystem = handsSystem;
@@ -50,33 +48,6 @@ public sealed class PersistentCraftCraftExecutionService
             recipe,
             ingredient => GetEffectiveIngredientAmount(user, recipe, ingredient),
             out plan);
-    }
-
-    public int GetMaxCraftCount(EntityUid user, PersistentCraftRecipePrototype recipe)
-    {
-        if (!_entityManager.EntityExists(user))
-            return 0;
-
-        var snapshot = _inventorySnapshotBuilder.Build(user, recipe.Ingredients);
-        var maxCount = int.MaxValue;
-
-        for (var i = 0; i < recipe.Ingredients.Count; i++)
-        {
-            var ingredient = recipe.Ingredients[i];
-            var requiredAmount = GetEffectiveIngredientAmount(user, recipe, ingredient);
-            if (requiredAmount <= 0)
-                continue;
-
-            var ownedAmount = snapshot.GetAmount(ingredient);
-            var craftsByIngredient = ownedAmount / requiredAmount;
-            if (craftsByIngredient < maxCount)
-                maxCount = craftsByIngredient;
-        }
-
-        if (maxCount == int.MaxValue)
-            return 1;
-
-        return Math.Max(0, maxCount);
     }
 
     public void ConsumeIngredientPlan(Dictionary<EntityUid, int> plan)
