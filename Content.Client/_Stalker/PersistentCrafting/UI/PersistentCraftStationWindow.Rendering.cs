@@ -411,9 +411,22 @@ public sealed partial class PersistentCraftStationWindow
         {
             header.BatchCountInput.IsValid = value => value >= 2 && value <= maxBatchCount;
             header.BatchCountInput.OverrideValue(Math.Clamp(Math.Min(maxBatchCount, 5), 2, maxBatchCount));
-            header.BatchActionButton.Text = $"{Loc.GetString("persistent-craft-recipe-action")} xN";
             header.BatchActionButton.Disabled = false;
-            header.BatchActionButton.OnPressed += _ => OnCraftBatchPressed?.Invoke(recipe.ID, header.BatchCountInput.Value);
+
+            void UpdateBatchActionButton()
+            {
+                var count = Math.Clamp(header.BatchCountInput.Value, 2, maxBatchCount);
+                header.BatchActionButton.Text = Loc.GetString("persistent-craft-recipe-batch-action", ("count", count));
+            }
+
+            UpdateBatchActionButton();
+            header.BatchCountInput.ValueChanged += _ => UpdateBatchActionButton();
+            header.BatchActionButton.OnPressed += _ =>
+            {
+                var selectedCount = Math.Clamp(header.BatchCountInput.Value, 2, maxBatchCount);
+                header.BatchCountInput.OverrideValue(selectedCount);
+                OnCraftBatchPressed?.Invoke(recipe.ID, selectedCount);
+            };
         }
 
         header.InfoText.SetMessage(FormattedMessage.FromMarkupPermissive(BuildHeaderInfoMarkup(recipe)));

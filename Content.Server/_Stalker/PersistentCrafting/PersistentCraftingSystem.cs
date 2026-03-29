@@ -220,8 +220,15 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!TryStartCraftDoAfter(user, recipe, requestedCount, requestedCount))
             return;
 
+        var startedText = requestedCount > 1
+            ? Loc.GetString(
+                "persistent-craft-station-popup-batch-started",
+                ("recipe", ResolveRecipeName(recipe)),
+                ("count", requestedCount))
+            : Loc.GetString("persistent-craft-station-popup-started", ("recipe", ResolveRecipeName(recipe)));
+
         _popup.PopupEntity(
-            Loc.GetString("persistent-craft-station-popup-started", ("recipe", ResolveRecipeName(recipe))),
+            startedText,
             user,
             user);
     }
@@ -276,16 +283,41 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private void OnCraftDoAfter(EntityUid uid, PersistentCraftAccessComponent component, PersistentCraftDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled)
+        if (args.Handled)
             return;
-
-        args.Handled = true;
 
         if (!_proto.TryIndex<PersistentCraftRecipePrototype>(args.RecipeId, out var recipe))
             return;
 
         if (!Exists(args.User) || args.User != uid)
             return;
+
+        if (args.Cancelled)
+        {
+            args.Handled = true;
+
+            var isBatchCraft = args.RequestedCount > 1;
+            if (isBatchCraft)
+            {
+                var craftedCount = Math.Clamp(args.RequestedCount - args.RemainingCount, 0, args.RequestedCount);
+                var cancelledText = craftedCount > 0
+                    ? Loc.GetString(
+                        "persistent-craft-station-popup-batch-cancelled-progress",
+                        ("recipe", ResolveRecipeName(recipe)),
+                        ("crafted", craftedCount),
+                        ("requested", args.RequestedCount))
+                    : Loc.GetString(
+                        "persistent-craft-station-popup-batch-cancelled",
+                        ("recipe", ResolveRecipeName(recipe)));
+
+                _popup.PopupEntity(cancelledText, args.User, args.User);
+            }
+
+            SendStateToAttachedActor(args.User);
+            return;
+        }
+
+        args.Handled = true;
 
         if (!IsLoaded(args.User))
         {
@@ -319,7 +351,11 @@ public sealed class PersistentCraftingSystem : EntitySystem
         {
             var craftedText = !isBatchCraft
                 ? Loc.GetString("persistent-craft-station-popup-crafted", ("recipe", ResolveRecipeName(recipe)))
-                : $"{Loc.GetString("persistent-craft-station-popup-crafted", ("recipe", ResolveRecipeName(recipe)))} ({craftedCount}/{args.RequestedCount})";
+                : Loc.GetString(
+                    "persistent-craft-station-popup-crafted-batch",
+                    ("recipe", ResolveRecipeName(recipe)),
+                    ("crafted", craftedCount),
+                    ("requested", args.RequestedCount));
 
             _popup.PopupEntity(
                 craftedText,
@@ -343,7 +379,11 @@ public sealed class PersistentCraftingSystem : EntitySystem
             !TryStartCraftDoAfter(args.User, recipe, args.RemainingCount - 1, args.RequestedCount))
         {
             _popup.PopupEntity(
-                $"{ResolveRecipeName(recipe)} batch stopped ({craftedCount}/{args.RequestedCount})",
+                Loc.GetString(
+                    "persistent-craft-station-popup-batch-stopped",
+                    ("recipe", ResolveRecipeName(recipe)),
+                    ("crafted", craftedCount),
+                    ("requested", args.RequestedCount)),
                 args.User,
                 args.User);
         }

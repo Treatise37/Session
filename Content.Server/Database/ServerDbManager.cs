@@ -432,6 +432,7 @@ namespace Content.Server.Database
             Guid userId,
             string characterName,
             string profileJson);
+        Task DeleteAllStalkerPersistentCraftProfilesAsync();
 
         // stalker-en-changes: News articles
         Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit);
@@ -1313,6 +1314,12 @@ namespace Content.Server.Database
                 userId,
                 characterName,
                 profileJson));
+        }
+
+        public Task DeleteAllStalkerPersistentCraftProfilesAsync()
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.DeleteAllStalkerPersistentCraftProfilesAsync());
         }
 
         // stalker-en-changes: News articles

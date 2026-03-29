@@ -2352,6 +2352,14 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             await db.DbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteAllStalkerPersistentCraftProfilesAsync()
+        {
+            await using var db = await GetDb();
+            var all = await db.DbContext.StalkerPersistentCraftProfiles.ToListAsync();
+            db.DbContext.StalkerPersistentCraftProfiles.RemoveRange(all);
+            await db.DbContext.SaveChangesAsync();
+        }
+
         // stalker-en-changes: News articles
         public async Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit)
         {
