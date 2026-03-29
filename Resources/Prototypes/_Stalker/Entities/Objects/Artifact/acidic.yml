@@ -11,6 +11,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -48,6 +53,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -92,6 +102,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 3
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier3
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -135,6 +150,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -169,6 +189,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -207,6 +232,11 @@
     anomaly: ZoneAnomalyKissel
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 2.5
@@ -274,3 +304,8 @@
         Caustic: 2
         Cold: 1
         Psy: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4

@@ -1,0 +1,135 @@
+# Material assemble recipes (tier 2)
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftSheetIronT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftSheetIronT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftSheetIronT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftBirchPlankT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftBirchPlankT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftBirchPlankT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftStandardPCBT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftStandardPCBT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftPlasticFittingT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftPlasticFittingT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftPlasticFittingT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftGlassT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftGlassT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftGlassT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftHideT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftHideT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftHideT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftTapeKitT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftTapeKitT2
+  branch: Materials
+  tier: 2
+  requiredNode: PersistentCraftMaterialsNodeT2
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 2
+  results:
+  - proto: STCraftTapeKitT2
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+

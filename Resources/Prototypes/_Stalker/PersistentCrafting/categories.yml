@@ -4,14 +4,19 @@
   order: 0
 
 - type: persistentCraftCategory
+  id: ammo
+  name: Боеприпасы
+  order: 1
+
+- type: persistentCraftCategory
   id: armor
   name: Броня
-  order: 1
+  order: 2
 
 - type: persistentCraftCategory
   id: anomaly
   name: Аномалии
-  order: 2
+  order: 3
 
 - type: persistentCraftCategory
   id: anomaly-detectors
@@ -29,9 +34,14 @@
   order: 2
 
 - type: persistentCraftCategory
+  id: anomaly-dust
+  name: Конвертация материалов
+  order: 3
+
+- type: persistentCraftCategory
   id: upgrades
   name: Улучшения
-  order: 3
+  order: 4
 
 - type: persistentCraftCategory
   id: special
@@ -49,6 +59,18 @@
   category: anomaly-detectors
   name: Улучшения
   order: 1
+
+- type: persistentCraftSubCategory
+  id: material-assemble
+  category: anomaly-dust
+  name: Сборка
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: material-disassemble
+  category: anomaly-dust
+  name: Разбор
+  order: 2
 
 - type: persistentCraftSubCategory
   id: advanced

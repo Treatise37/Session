@@ -1,0 +1,135 @@
+# Material assemble recipes (tier 5)
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftSheetSteelT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftSheetSteelT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftSheetSteelT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftRedWoodPlankT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftRedWoodPlankT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftRedWoodPlankT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftNanoChipT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftNanoChipT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftNanoChipT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftPlasticFittingT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftPlasticFittingT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftPlasticFittingT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftAluminumOxideT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftAluminumOxideT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftAluminumOxideT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftCompositeMaterialT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftCompositeMaterialT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftCompositeMaterialT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAnomalyDustAssembleSTCraftHighStrengthKitT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STCraftHighStrengthKitT5
+  branch: Materials
+  tier: 5
+  requiredNode: PersistentCraftMaterialsNodeT5
+  craftTime: 2
+  pointReward: 0
+  ingredients:
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STCraftHighStrengthKitT5
+    amount: 1
+  category: anomaly-dust
+  subCategory: material-assemble
+

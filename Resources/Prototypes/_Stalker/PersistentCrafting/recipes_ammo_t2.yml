@@ -1,0 +1,313 @@
+# Persistent ammo recipes - tier 2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipeShotgunBulletUnlethalBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ShotgunBulletUnlethalBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: ShotgunBulletUnlethalBox
+    amount: 6
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipeShotgunBulletBoxRIPCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: ShotgunBulletBoxRIP
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: ShotgunBulletBoxRIP
+    amount: 6
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe545FMJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 545FMJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 545FMJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe918PGJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 918PGJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 918PGJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe918PSTBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 918PSTBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 918PSTBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe919PSOGJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 919PSOGJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 919PSOGJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe919PSTBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 919PSTBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 919PSTBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe556FMJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 556FMJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 556FMJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe725PBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 725PBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 725PBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe725PTBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 725PTBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 725PTBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe45ACPLFMJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 45ACPLFMJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 45ACPLFMJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe45ACPMFMJBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 45ACPMFMJBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 45ACPMFMJBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe45ACPHydroshockBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 45ACPHydroshockBox
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: 45ACPHydroshockBox
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe939SP5BoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STBox9x39SP5
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: STBox9x39SP5
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe1255TPCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: Ammobox1255TP
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  results:
+  - proto: Ammobox1255TP
+    amount: 4
+  category: ammo
+  subCategory: tier-2
+

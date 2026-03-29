@@ -43,14 +43,14 @@ public sealed class PersistentCraftNodeSelectionCoordinator
         {
             _viewModel.ClearSelectedNode(branch);
             return new PersistentCraftNodeSelectionDecision(
-                shouldCloseDetails: true,
-                selectedNodeId: null);
+                ShouldCloseDetails: true,
+                SelectedNodeId: null);
         }
 
         _viewModel.SetSelectedNode(branch, nodeId);
         return new PersistentCraftNodeSelectionDecision(
-            shouldCloseDetails: false,
-            selectedNodeId: nodeId);
+            ShouldCloseDetails: false,
+            SelectedNodeId: nodeId);
     }
 }
 

@@ -623,8 +623,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         {
             PersistentCraftIngredientSelectorKind.Proto => ResolveEntityName(ingredient.Proto!),
             PersistentCraftIngredientSelectorKind.StackType => ingredient.StackType!,
-            PersistentCraftIngredientSelectorKind.Tag => $"#{ingredient.Tag!}",
-            PersistentCraftIngredientSelectorKind.ArtifactTier => $"Артефакт T{ingredient.ArtifactTier ?? 0}",
+            PersistentCraftIngredientSelectorKind.Tag => FormatTagIngredientName(ingredient.Tag!),
             _ => "?",
         };
 
@@ -677,7 +676,19 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private static bool IsLocallyVerifiableIngredient(PersistentCraftIngredient ingredient)
     {
-        return ingredient.GetSelectorKind() != PersistentCraftIngredientSelectorKind.ArtifactTier;
+        return ingredient.GetSelectorKind() != PersistentCraftIngredientSelectorKind.None &&
+               ingredient.GetSelectorKind() != PersistentCraftIngredientSelectorKind.InvalidMultiple;
+    }
+
+    private static string FormatTagIngredientName(string tag)
+    {
+        if (tag.StartsWith("STArtifactTier", StringComparison.Ordinal) &&
+            int.TryParse(tag["STArtifactTier".Length..], out var tier))
+        {
+            return $"Артефакт T{tier}";
+        }
+
+        return $"#{tag}";
     }
 
     private int GetOwnedAmount(PersistentCraftIngredient ingredient)

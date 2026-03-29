@@ -11,6 +11,11 @@
     anomaly: ZoneAnomalyElectra
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -43,6 +48,11 @@
     anomaly: ZoneAnomalyGarland
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -74,6 +84,11 @@
     anomaly: ZoneAnomalyGarland
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -106,6 +121,11 @@
     anomaly: ZoneAnomalyGarland
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -139,6 +159,11 @@
     anomaly: ZoneAnomalyGarland
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -168,6 +193,11 @@
     anomaly: ZoneAnomalySource
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 3
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier3
   - type: PointLight
     radius: 1.5
     energy: 7.5
@@ -208,6 +238,11 @@
     anomaly: ZoneAnomalySource
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PersonalDamage
     staminaDamage: -4
     damage:
@@ -242,6 +277,11 @@
     anomaly: ZoneAnomalySource
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
   - type: PersonalDamage
     staminaDamage: -5
     damage:
@@ -292,3 +332,8 @@
       coefficients:
         Psy: 0.4
         Compression: 0.6
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5

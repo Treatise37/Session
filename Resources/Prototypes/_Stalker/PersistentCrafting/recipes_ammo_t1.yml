@@ -1,0 +1,61 @@
+# Persistent ammo recipes - tier 1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe7mmBuckshotBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 7mmBuckshotBox
+  branch: Weapon
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: STCraftSheetCopperT1
+    amount: 2
+  results:
+  - proto: 7mmBuckshotBox
+    amount: 6
+  category: ammo
+  subCategory: tier-1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe6mmBuckshotBoxCink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: 6mmBuckshotBox
+  branch: Weapon
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: STCraftSheetCopperT1
+    amount: 2
+  results:
+  - proto: 6mmBuckshotBox
+    amount: 6
+  category: ammo
+  subCategory: tier-1
+
+- type: persistentCraftRecipe
+  id: PersistentCraftAmmo_newrecipe1255PS12ACink
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: Ammobox1255PS12A
+  branch: Weapon
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 6
+  pointReward: 0
+  ingredients:
+  - proto: CraftMaterialGunpowder
+    amount: 1
+  - proto: STCraftSheetCopperT1
+    amount: 2
+  results:
+  - proto: Ammobox1255PS12A
+    amount: 4
+  category: ammo
+  subCategory: tier-1
+

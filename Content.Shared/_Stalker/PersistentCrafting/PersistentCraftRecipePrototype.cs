@@ -59,9 +59,6 @@ public sealed partial class PersistentCraftIngredient
     [DataField("tag")]
     public string? Tag;
 
-    [DataField("artifactTier")]
-    public int? ArtifactTier;
-
     [DataField("amount")]
     public int Amount = 1;
 
@@ -70,7 +67,6 @@ public sealed partial class PersistentCraftIngredient
         var hasProto = !string.IsNullOrWhiteSpace(Proto);
         var hasStackType = !string.IsNullOrWhiteSpace(StackType);
         var hasTag = !string.IsNullOrWhiteSpace(Tag);
-        var hasArtifactTier = ArtifactTier.HasValue && ArtifactTier.Value > 0;
 
         var selectorCount = 0;
         if (hasProto)
@@ -78,8 +74,6 @@ public sealed partial class PersistentCraftIngredient
         if (hasStackType)
             selectorCount++;
         if (hasTag)
-            selectorCount++;
-        if (hasArtifactTier)
             selectorCount++;
 
         if (selectorCount == 0)
@@ -94,9 +88,6 @@ public sealed partial class PersistentCraftIngredient
         if (hasStackType)
             return PersistentCraftIngredientSelectorKind.StackType;
 
-        if (hasArtifactTier)
-            return PersistentCraftIngredientSelectorKind.ArtifactTier;
-
         return PersistentCraftIngredientSelectorKind.Tag;
     }
 
@@ -107,7 +98,6 @@ public sealed partial class PersistentCraftIngredient
             PersistentCraftIngredientSelectorKind.Proto => Proto ?? string.Empty,
             PersistentCraftIngredientSelectorKind.StackType => StackType ?? string.Empty,
             PersistentCraftIngredientSelectorKind.Tag => Tag ?? string.Empty,
-            PersistentCraftIngredientSelectorKind.ArtifactTier => ArtifactTier?.ToString() ?? string.Empty,
             _ => string.Empty,
         };
     }
@@ -120,8 +110,7 @@ public enum PersistentCraftIngredientSelectorKind : byte
     Proto = 1,
     StackType = 2,
     Tag = 3,
-    ArtifactTier = 4,
-    InvalidMultiple = 5,
+    InvalidMultiple = 4,
 }
 
 [DataDefinition, Serializable, NetSerializable]

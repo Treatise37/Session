@@ -73,11 +73,11 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
                 if (selectorKind == PersistentCraftIngredientSelectorKind.None)
                 {
-                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} has no selector (proto/stackType/tag/artifactTier).");
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} has no selector (proto/stackType/tag).");
                 }
                 else if (selectorKind == PersistentCraftIngredientSelectorKind.InvalidMultiple)
                 {
-                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} has multiple selectors set. proto='{ingredient.Proto ?? string.Empty}', stackType='{ingredient.StackType ?? string.Empty}', tag='{ingredient.Tag ?? string.Empty}', artifactTier='{ingredient.ArtifactTier?.ToString() ?? string.Empty}'.");
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} has multiple selectors set. proto='{ingredient.Proto ?? string.Empty}', stackType='{ingredient.StackType ?? string.Empty}', tag='{ingredient.Tag ?? string.Empty}'.");
                 }
 
                 if (ingredient.Amount <= 0)

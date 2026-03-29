@@ -21,3 +21,11 @@
   defaultCategory: anomaly
   accentColor: "#83955f"
   useTierSubcategories: true
+
+- type: persistentCraftBranch
+  id: Materials
+  name: persistent-craft-branch-materials
+  order: 3
+  defaultCategory: artifact-breakdown
+  accentColor: "#8a7f73"
+  useTierSubcategories: true

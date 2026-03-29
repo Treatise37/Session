@@ -1,0 +1,16 @@
+- type: entity
+  parent: STBaseIngridient
+  id: STCraftAnomalyDust
+  name: аномальная пыль
+  description: нестабильная аномальная субстанция. Используется в разборе и сборке.
+  suffix: Stalker, крафт, аномальная пыль
+  components:
+    - type: Sprite
+      state: basic_pcb
+      sprite: _Stalker/Objects/Craft/Materials/craft_chips.rsi
+    - type: Stack
+      stackType: STAnomalyDust
+      count: 1
+    - type: Craftable
+    - type: RepositoryItem
+      categoryName: Крафты

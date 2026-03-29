@@ -47,6 +47,7 @@ stack-st-standard-pcb = standard PCB
 stack-st-multilayer-pcb = multilayer PCB
 stack-st-high-performance-chip = high-performance chip
 stack-st-nano-chip = nano chip
+stack-st-anomaly-dust = аномальная пыль
 
 stack-st-plastic-fitting-t1 = plastic fitting T1
 stack-st-plastic-fitting-t2 = plastic fitting T2

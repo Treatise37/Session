@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Content.Shared._Stalker.PersistentCrafting;
-using Content.Server._Stalker.ZoneArtifact.Components.Detector;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Shared.GameObjects;
@@ -134,12 +133,6 @@ public sealed class PersistentCraftIngredientConsumptionPlanner
             case PersistentCraftIngredientSelectorKind.Tag:
                 return _tagSystem.HasTag(entity, ingredient.Tag!) ? IngredientMatchKind.Tag : IngredientMatchKind.None;
 
-            case PersistentCraftIngredientSelectorKind.ArtifactTier:
-                return _entityManager.TryGetComponent(entity, out ZoneArtifactDetectorTargetComponent? target) &&
-                       target.DetectedLevel == ingredient.ArtifactTier
-                    ? IngredientMatchKind.ArtifactTier
-                    : IngredientMatchKind.None;
-
             default:
                 return IngredientMatchKind.None;
         }
@@ -154,8 +147,7 @@ public sealed class PersistentCraftIngredientConsumptionPlanner
     {
         ExactPrototype = 0,
         StackType = 1,
-        ArtifactTier = 2,
-        Tag = 3,
-        None = 4,
+        Tag = 2,
+        None = 3,
     }
 }

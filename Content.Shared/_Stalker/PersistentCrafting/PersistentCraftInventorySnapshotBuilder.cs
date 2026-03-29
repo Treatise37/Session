@@ -58,7 +58,6 @@ public sealed class PersistentCraftInventorySnapshotBuilder
         var amountByProto = new Dictionary<string, int>();
         var amountByStackType = new Dictionary<string, int>();
         var amountByTag = new Dictionary<string, int>();
-        var amountByArtifactTier = new Dictionary<int, int>();
         var signatureBuilder = new StringBuilder();
 
         var accessibleEntities = CollectAccessibleEntities(root);
@@ -101,8 +100,7 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             signatureBuilder.ToString(),
             amountByProto,
             amountByStackType,
-            amountByTag,
-            amountByArtifactTier);
+            amountByTag);
     }
 
     private List<EntityUid> CollectAccessibleEntities(EntityUid root)
@@ -146,11 +144,4 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             dictionary[key] = amount;
     }
 
-    private static void AddAmount(Dictionary<int, int> dictionary, int key, int amount)
-    {
-        if (dictionary.TryGetValue(key, out var existing))
-            dictionary[key] = existing + amount;
-        else
-            dictionary[key] = amount;
-    }
 }

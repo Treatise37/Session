@@ -17,6 +17,11 @@
     anomaly: ZoneAnomalySpringboard
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -48,6 +53,11 @@
     anomaly: ZoneAnomalyPulse
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 3
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier3
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -85,6 +95,11 @@
     anomaly: ZoneAnomalyNoGravity
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -123,6 +138,11 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -155,6 +175,11 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -194,6 +219,11 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -230,6 +260,11 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -269,6 +304,11 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -305,6 +345,11 @@
     anomaly: ZoneAnomalyInversion
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
   - type: PointLight
     radius: 2.5
     energy: 4.5
@@ -340,6 +385,11 @@
     anomaly: ZoneAnomalyInversion
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
   - type: PointLight
     radius: 2.5
     energy: 5.5
@@ -398,3 +448,8 @@
   - type: Reflect
     reflectProb: 0.2
     spread: 300
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5

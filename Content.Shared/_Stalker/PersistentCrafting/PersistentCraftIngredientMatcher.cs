@@ -34,9 +34,6 @@ public sealed class PersistentCraftIngredientMatcher
             case PersistentCraftIngredientSelectorKind.Tag:
                 return _tagSystem.HasTag(entity, ingredient.Tag!);
 
-            case PersistentCraftIngredientSelectorKind.ArtifactTier:
-                return false;
-
             default:
                 return false;
         }
