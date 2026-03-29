@@ -27,6 +27,7 @@ persistent-craft-recipes-short = Рецепты
 persistent-craft-craftable-short = Крафтимо
 persistent-craft-recipe-action = Крафтить
 persistent-craft-recipe-batch-action = Крафтить x{$count}
+persistent-craft-recipe-batch-limit = {$count}/{$max}
 persistent-craft-filter-all = Все
 persistent-craft-filter-craftable = Только крафтимое
 persistent-craft-search-placeholder = Поиск рецептов

@@ -57,6 +57,9 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private const float NodeDetailsWindowMinWidth = 700f;
     private const float NodeDetailsWindowMinHeight = 560f;
     private const float NodeDetailsWindowMargin = 16f;
+    private const float NodeIconScaleLarge = 2.1f;
+    private const float NodeIconScaleSmall = 1.25f;
+    private const int NodeIconLargeThreshold = 100;
 
     private readonly Dictionary<string, BoxContainer> _branchHosts = new();
     private readonly Dictionary<string, PersistentCraftTreeScrollContainer> _branchTreeScrolls = new();

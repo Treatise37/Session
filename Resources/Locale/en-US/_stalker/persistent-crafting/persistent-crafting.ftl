@@ -33,6 +33,7 @@ persistent-craft-node-preview-fallback = Unlocks {$branch} T{$tier} recipes
 persistent-craft-node-status-unlocked = unlocked
 persistent-craft-node-status-available = available
 persistent-craft-node-status-locked = locked
+persistent-craft-node-status-not-enough-points = not enough points
 persistent-craft-node-status-loading = loading
 persistent-craft-node-status-chain = chain
 persistent-craft-node-status-branch-level = branch {$level}

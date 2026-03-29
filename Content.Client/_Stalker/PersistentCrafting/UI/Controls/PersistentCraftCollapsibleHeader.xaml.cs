@@ -28,11 +28,11 @@ public sealed partial class PersistentCraftCollapsibleHeader : Control
             BorderThickness = new Thickness(1),
             ContentMarginLeftOverride = 10,
             ContentMarginRightOverride = 10,
-            ContentMarginTopOverride = verticalPadding + 1,
-            ContentMarginBottomOverride = verticalPadding + 1,
+            ContentMarginTopOverride = verticalPadding,
+            ContentMarginBottomOverride = verticalPadding,
         };
 
-        TitleLabel.Text = $"{(collapsed ? "+" : "-")} {text}";
+        TitleLabel.Text = $"{(collapsed ? "▶" : "▼")} {text}";
         TitleLabel.FontColorOverride = foreground;
         TitleLabel.ClipText = true;
 

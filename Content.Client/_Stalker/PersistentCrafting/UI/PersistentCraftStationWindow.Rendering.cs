@@ -33,7 +33,7 @@ public sealed partial class PersistentCraftStationWindow
         for (var i = 0; i < tiers.Count; i++)
         {
             var tier = tiers[i];
-            row.AddChild(new Control { MinSize = new Vector2(6, 1) });
+            row.AddChild(new Control { MinSize = new Vector2(10, 1) });
             row.AddChild(CreateTierFilterButton(
                 branch,
                 tier,
@@ -153,10 +153,6 @@ public sealed partial class PersistentCraftStationWindow
                 BackgroundColor = WindowBackground,
                 BorderColor = CardMutedBorder,
                 BorderThickness = new Thickness(1),
-                ContentMarginLeftOverride = 18,
-                ContentMarginRightOverride = 18,
-                ContentMarginTopOverride = 18,
-                ContentMarginBottomOverride = 18,
             }
         };
 
@@ -168,12 +164,48 @@ public sealed partial class PersistentCraftStationWindow
                 ? Loc.GetString("persistent-craft-empty-detail")
                 : Loc.GetString("persistent-craft-search-empty-detail");
 
-        panel.AddChild(new Label
+        var body = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalAlignment = HAlignment.Center,
+            VerticalAlignment = VAlignment.Center,
+            HorizontalExpand = true,
+            VerticalExpand = true,
+        };
+
+        var iconBox = new PanelContainer
+        {
+            MinSize = new Vector2(72, 72),
+            HorizontalAlignment = HAlignment.Center,
+            PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = PersistentCraftUiTheme.SurfacePanelAlt,
+                BorderColor = CardMutedBorder,
+                BorderThickness = new Thickness(1),
+                ContentMarginLeftOverride = 8,
+                ContentMarginRightOverride = 8,
+                ContentMarginTopOverride = 8,
+                ContentMarginBottomOverride = 8,
+            }
+        };
+        iconBox.AddChild(new Label
+        {
+            Text = "?",
+            FontColorOverride = MutedText.WithAlpha(0.4f),
+            HorizontalAlignment = HAlignment.Center,
+            VerticalAlignment = VAlignment.Center,
+        });
+
+        body.AddChild(iconBox);
+        body.AddChild(new Control { MinSize = new Vector2(1, 14) });
+        body.AddChild(new Label
         {
             Text = text,
             FontColorOverride = MutedText,
+            HorizontalAlignment = HAlignment.Center,
         });
 
+        panel.AddChild(body);
         return panel;
     }
 
@@ -403,6 +435,18 @@ public sealed partial class PersistentCraftStationWindow
             !canCraft);
         header.ActionButton.OnPressed += _ => OnCraftPressed?.Invoke(recipe.ID);
 
+        header.ActionButton.StyleBoxOverride = new StyleBoxFlat
+        {
+            BackgroundColor = canCraft ? accent.WithAlpha(0.18f) : PersistentCraftUiTheme.SurfacePanelSoft,
+            BorderColor = canCraft ? accent.WithAlpha(0.80f) : PersistentCraftUiTheme.BorderSoft,
+            BorderThickness = new Thickness(1),
+            ContentMarginLeftOverride = 12,
+            ContentMarginRightOverride = 12,
+            ContentMarginTopOverride = 8,
+            ContentMarginBottomOverride = 8,
+        };
+        header.ActionButton.ModulateSelfOverride = canCraft ? accent : PersistentCraftUiTheme.TextMuted;
+
         var maxBatchCount = canCraft ? GetMaxCraftCount(recipe) : 0;
         var showBatch = maxBatchCount >= 2;
         header.BatchControls.Visible = showBatch;
@@ -410,6 +454,7 @@ public sealed partial class PersistentCraftStationWindow
         if (showBatch)
         {
             header.BatchCountInput.IsValid = value => value >= 2 && value <= maxBatchCount;
+            header.BatchLimitText.FontColorOverride = MutedText;
             var fallbackBatchCount = Math.Clamp(Math.Min(maxBatchCount, 5), 2, maxBatchCount);
             var rememberedBatchCount = _viewModel.GetBatchCount(recipe.ID, fallbackBatchCount);
             var initialBatchCount = Math.Clamp(rememberedBatchCount, 2, maxBatchCount);
@@ -420,6 +465,10 @@ public sealed partial class PersistentCraftStationWindow
             {
                 var count = Math.Clamp(header.BatchCountInput.Value, 2, maxBatchCount);
                 _viewModel.SetBatchCount(recipe.ID, count);
+                header.BatchLimitText.Text = Loc.GetString(
+                    "persistent-craft-recipe-batch-limit",
+                    ("count", count),
+                    ("max", maxBatchCount));
                 header.BatchActionButton.Text = Loc.GetString("persistent-craft-recipe-batch-action", ("count", count));
             }
 
@@ -437,7 +486,7 @@ public sealed partial class PersistentCraftStationWindow
         header.IconHost.PanelOverride = new StyleBoxFlat
         {
             BackgroundColor = IconBackground,
-            BorderColor = accent,
+            BorderColor = accent.WithAlpha(0.60f),
             BorderThickness = new Thickness(1),
             ContentMarginLeftOverride = 6,
             ContentMarginRightOverride = 6,
@@ -449,22 +498,26 @@ public sealed partial class PersistentCraftStationWindow
         header.MetaContainer.AddChild(CreateMetaBadge(
             $"{Loc.GetString("persistent-craft-branch-points-label")}: {branchState.AvailablePoints} | {Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints}",
             PersistentCraftUiTheme.SurfacePanelAlt,
-            PersistentCraftUiTheme.TextPrimary));
-        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
+            PersistentCraftUiTheme.TextPrimary,
+            PersistentCraftUiTheme.BorderSoft));
+        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 4) });
         header.MetaContainer.AddChild(CreateMetaBadge(
             $"{Loc.GetString("persistent-craft-level-label")} {PersistentCraftingHelper.GetTierDisplayLabel(recipe.Tier)}",
             PersistentCraftUiTheme.SurfacePanelAlt,
-            accent));
-        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
+            accent,
+            accent.WithAlpha(0.35f)));
+        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 4) });
         header.MetaContainer.AddChild(CreateMetaBadge(
             GetRecipeCategoryPath(recipe),
             PersistentCraftUiTheme.SurfacePanelAlt,
-            PersistentCraftUiTheme.TextMuted));
-        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 6) });
+            PersistentCraftUiTheme.TextMuted,
+            PersistentCraftUiTheme.BorderSoft));
+        header.MetaContainer.AddChild(new Control { MinSize = new Vector2(1, 4) });
         header.MetaContainer.AddChild(CreateMetaBadge(
             $"{Loc.GetString("persistent-craft-recipe-points")}: +{PersistentCraftingHelper.GetPointReward(recipe)}",
             PersistentCraftUiTheme.SurfacePanelAlt,
-            accent));
+            accent,
+            accent.WithAlpha(0.35f)));
 
         return header;
     }
@@ -514,14 +567,14 @@ public sealed partial class PersistentCraftStationWindow
         };
     }
 
-    private PanelContainer CreateMetaBadge(string text, Color background, Color foreground)
+    private PanelContainer CreateMetaBadge(string text, Color background, Color foreground, Color border)
     {
         var badge = new PanelContainer
         {
             PanelOverride = new StyleBoxFlat
             {
                 BackgroundColor = background,
-                BorderColor = PersistentCraftUiTheme.BorderSoft,
+                BorderColor = border,
                 BorderThickness = new Thickness(1),
                 ContentMarginLeftOverride = 10,
                 ContentMarginRightOverride = 10,

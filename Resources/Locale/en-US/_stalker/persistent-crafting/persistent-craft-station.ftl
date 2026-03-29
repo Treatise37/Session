@@ -27,6 +27,7 @@ persistent-craft-recipes-short = Recipes
 persistent-craft-craftable-short = Craftable
 persistent-craft-recipe-action = Craft
 persistent-craft-recipe-batch-action = Craft x{$count}
+persistent-craft-recipe-batch-limit = {$count}/{$max}
 persistent-craft-filter-all = All
 persistent-craft-filter-craftable = Craftable only
 persistent-craft-search-placeholder = Search recipes

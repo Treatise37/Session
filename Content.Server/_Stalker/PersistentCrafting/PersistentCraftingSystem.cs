@@ -209,14 +209,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return;
         }
 
-        if (!_craftExecutionService.TryPlanIngredientConsumption(user, recipe, out _))
-        {
-            PopupUser(user, "persistent-craft-station-popup-missing-items");
-            SendState(args.SenderSession, user);
-            return;
-        }
-
-        var requestedCount = Math.Clamp(ev.Amount, 1, 50);
         var maxCraftCount = _craftExecutionService.GetMaxCraftCount(user, recipe);
         if (maxCraftCount <= 0)
         {
@@ -225,7 +217,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return;
         }
 
-        requestedCount = Math.Min(requestedCount, maxCraftCount);
+        var requestedCount = Math.Clamp(ev.Amount, 1, maxCraftCount);
         if (!TryStartCraftDoAfter(user, recipe, requestedCount, requestedCount))
             return;
 
@@ -375,14 +367,17 @@ public sealed class PersistentCraftingSystem : EntitySystem
         var pointsReward = PersistentCraftingHelper.GetPointReward(recipe);
         if (pointsReward > 0 && (!isBatchCraft || isLastStep))
         {
+            var totalPointsReward = isBatchCraft ? pointsReward * craftedCount : pointsReward;
             _popup.PopupEntity(
-                Loc.GetString("persistent-craft-popup-points-gained", ("points", pointsReward)),
+                Loc.GetString("persistent-craft-popup-points-gained", ("points", totalPointsReward)),
                 args.User,
                 args.User);
         }
 
         _ = SaveProfileAsync(args.User, Comp<PersistentCraftProfileComponent>(args.User));
-        SendStateToAttachedActor(args.User);
+
+        if (!isBatchCraft || isLastStep)
+            SendStateToAttachedActor(args.User);
 
         if (args.RemainingCount > 1 &&
             !TryStartCraftDoAfter(args.User, recipe, args.RemainingCount - 1, args.RequestedCount))
@@ -395,6 +390,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
                     ("requested", args.RequestedCount)),
                 args.User,
                 args.User);
+            SendStateToAttachedActor(args.User);
         }
     }
 
@@ -414,6 +410,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             BreakOnDamage = true,
             NeedHand = false,
             RequireCanInteract = true,
+            BlockDuplicate = true,
         };
 
         return _doAfter.TryStartDoAfter(doAfter);

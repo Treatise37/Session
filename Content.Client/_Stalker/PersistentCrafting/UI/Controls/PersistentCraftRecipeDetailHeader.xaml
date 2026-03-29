@@ -21,6 +21,11 @@
                          HorizontalExpand="True"
                          MinSize="74 0" />
                 <Control MinSize="6 1" />
+                <Label Name="BatchLimitLabel"
+                       MinSize="52 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+                <Control MinSize="6 1" />
                 <Button Name="BatchCraftButton"
                         HorizontalExpand="True"
                         MinSize="0 38"

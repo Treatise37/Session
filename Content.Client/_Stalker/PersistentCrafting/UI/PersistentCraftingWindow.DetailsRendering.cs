@@ -162,7 +162,7 @@ public sealed partial class PersistentCraftingWindow
             PanelOverride = new StyleBoxFlat
             {
                 BackgroundColor = IconBackground,
-                BorderColor = accent,
+                BorderColor = accent.WithAlpha(0.60f),
                 BorderThickness = new Thickness(1),
                 ContentMarginLeftOverride = 6,
                 ContentMarginRightOverride = 6,
@@ -173,10 +173,11 @@ public sealed partial class PersistentCraftingWindow
 
         if (TryGetNodeTexture(node, out var texture))
         {
+            var scale = size.X >= NodeIconLargeThreshold ? NodeIconScaleLarge : NodeIconScaleSmall;
             panel.AddChild(new TextureRect
             {
                 Texture = texture,
-                TextureScale = size.X >= 100 ? new Vector2(2.1f, 2.1f) : new Vector2(1.25f, 1.25f),
+                TextureScale = new Vector2(scale, scale),
                 Stretch = TextureRect.StretchMode.KeepAspectCentered,
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,
@@ -250,10 +251,9 @@ public sealed partial class PersistentCraftingWindow
         if (canUnlock)
             return "persistent-craft-node-status-available";
 
-        if (!prerequisitesMet)
-            return "persistent-craft-node-status-locked";
-
-        return "persistent-craft-node-status-locked";
+        return prerequisitesMet
+            ? "persistent-craft-node-status-not-enough-points"
+            : "persistent-craft-node-status-locked";
     }
 
     private string GetActionText(bool unlocked)

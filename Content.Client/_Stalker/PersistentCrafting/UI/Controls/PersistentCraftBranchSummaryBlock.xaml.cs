@@ -48,8 +48,6 @@ public sealed partial class PersistentCraftBranchSummaryBlock : Control
         ProgressBar.SetAsRatio(Math.Clamp(progressValue, 0f, 1f));
         ProgressBar.BackgroundStyleBoxOverride = PersistentCraftUiTheme.ProgressBackground();
         ProgressBar.ForegroundStyleBoxOverride = PersistentCraftUiTheme.ProgressForeground(accent);
-        ProgressBar.InvalidateMeasure();
-        ProgressBar.InvalidateArrange();
 
         ProgressTextLabel.Text = progressText;
         ProgressTextLabel.FontColorOverride = MutedTextColor;
@@ -61,8 +59,5 @@ public sealed partial class PersistentCraftBranchSummaryBlock : Control
         FooterLabel.Text = footerText ?? string.Empty;
         FooterLabel.FontColorOverride = MutedTextColor;
         FooterLabel.ClipText = false;
-
-        VerticalExpand = false;
-        MinSize = new Vector2(0, hasFooter ? 114 : 96);
     }
 }

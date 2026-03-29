@@ -14,6 +14,7 @@ public sealed partial class PersistentCraftRecipeDetailHeader : Control
     public Button ActionButton => CraftButton;
     public BoxContainer BatchControls => BatchControlsRow;
     public SpinBox BatchCountInput => BatchCountSpin;
+    public Label BatchLimitText => BatchLimitLabel;
     public Button BatchActionButton => BatchCraftButton;
     public BoxContainer MetaContainer => MetaHost;
     public RichTextLabel InfoText => InfoLabel;

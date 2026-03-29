@@ -42,8 +42,6 @@ public sealed partial class PersistentCraftProgressBlock : Control
         ProgressBar.SetAsRatio(Math.Clamp(progressValue, 0f, 1f));
         ProgressBar.BackgroundStyleBoxOverride = PersistentCraftUiTheme.ProgressBackground();
         ProgressBar.ForegroundStyleBoxOverride = PersistentCraftUiTheme.ProgressForeground(accent);
-        ProgressBar.InvalidateMeasure();
-        ProgressBar.InvalidateArrange();
 
         var hasFooter = !string.IsNullOrWhiteSpace(footerText);
         FooterSpacer.Visible = hasFooter;
@@ -51,8 +49,5 @@ public sealed partial class PersistentCraftProgressBlock : Control
         FooterLabel.Text = footerText ?? string.Empty;
         FooterLabel.FontColorOverride = FooterColor;
         FooterLabel.ClipText = true;
-
-        VerticalExpand = false;
-        MinSize = new Vector2(0, hasFooter ? 104 : 86);
     }
 }

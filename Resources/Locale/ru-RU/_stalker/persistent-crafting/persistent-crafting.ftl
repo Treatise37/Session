@@ -33,6 +33,7 @@ persistent-craft-node-preview-fallback = Открывает рецепты ве�
 persistent-craft-node-status-unlocked = открыт
 persistent-craft-node-status-available = доступен
 persistent-craft-node-status-locked = заблокирован
+persistent-craft-node-status-not-enough-points = недостаточно очков
 persistent-craft-node-status-loading = загрузка
 persistent-craft-node-status-chain = цепь
 persistent-craft-node-status-branch-level = ветка {$level}
