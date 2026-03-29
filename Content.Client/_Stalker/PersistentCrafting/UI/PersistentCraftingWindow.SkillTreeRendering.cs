@@ -36,7 +36,6 @@ public sealed partial class PersistentCraftingWindow
             MinSize = new Vector2(
                 padding * 2 + (layoutData.MaxColumn + 1) * nodeWidth + layoutData.MaxColumn * horizontalGap,
                 padding * 2 + (layoutData.MaxRow + 1) * nodeHeight + layoutData.MaxRow * verticalGap + 20f * _treeZoom),
-            HorizontalAlignment = HAlignment.Center,
         };
 
         foreach (var node in subNodes)
@@ -73,7 +72,6 @@ public sealed partial class PersistentCraftingWindow
         var wrapper = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalExpand = true,
             HorizontalAlignment = HAlignment.Center,
         };
         wrapper.AddChild(layout);

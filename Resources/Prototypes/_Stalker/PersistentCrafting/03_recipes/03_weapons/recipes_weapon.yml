@@ -1130,3 +1130,79 @@
   category: weapons
   subCategory: weapon-pistols-revolvers
 
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeApsT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: WeaponPistolStalkerAPS
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponNodeApsT2
+  craftTime: 6
+  pointReward: 2
+  ingredients:
+  - proto: STCraftSheetIronT2
+    amount: 2
+  - proto: STCraftBirchPlankT2
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 15
+  results:
+  - proto: WeaponPistolStalkerAPS
+  category: weapons
+  subCategory: weapon-pistols-revolvers
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeBizonT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponSMGPP19
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponNodeBizonT2
+  craftTime: 6
+  pointReward: 2
+  ingredients:
+  - proto: WeaponPistolStalkerAPS
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  - proto: STCraftBirchPlankT2
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 15
+  results:
+  - proto: STWeaponSMGPP19
+  category: weapons
+  subCategory: weapon-smg-pdw
+
+- type: persistentCraftRecipe
+  id: PersistentCraftWeaponRecipeVz61T2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STWeaponSMGVZ61
+  branch: Weapon
+  tier: 2
+  requiredNode: PersistentCraftWeaponNodeVz61T2
+  craftTime: 6
+  pointReward: 2
+  ingredients:
+  - proto: STWeaponSMGPP19
+    amount: 1
+  - proto: STCraftSheetIronT2
+    amount: 2
+  - proto: STCraftBirchPlankT2
+    amount: 1
+  - proto: STCraftStandardPCBT2
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 15
+  results:
+  - proto: STWeaponSMGVZ61
+  category: weapons
+  subCategory: weapon-smg-pdw
+

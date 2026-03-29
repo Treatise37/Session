@@ -217,7 +217,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return;
         }
 
-        var requestedCount = Math.Clamp(ev.Amount, 1, maxCraftCount);
+        var requestedCount = Math.Clamp(ev.Amount, 1, Math.Min(maxCraftCount, 50));
         if (!TryStartCraftDoAfter(user, recipe, requestedCount, requestedCount))
             return;
 

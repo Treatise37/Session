@@ -514,3 +514,37 @@
   prerequisites:
   - PersistentCraftWeaponNodeChiappaT35
 
+- type: persistentCraftNode
+  id: PersistentCraftWeaponNodeApsT2
+  name: АПС T2
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  cost: 10
+  displayProto: WeaponPistolStalkerAPS
+  treeColumn: 1
+  treeRow: 5
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponNodeBizonT2
+  name: Бизон T2
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  cost: 10
+  displayProto: STWeaponSMGPP19
+  treeColumn: 1
+  treeRow: 6
+  prerequisites:
+  - PersistentCraftWeaponNodeApsT2
+
+- type: persistentCraftNode
+  id: PersistentCraftWeaponNodeVz61T2
+  name: VZ61 T2
+  description: persistent-craft-node-sub-recipe-desc
+  branch: Weapon
+  cost: 10
+  displayProto: STWeaponSMGVZ61
+  treeColumn: 2
+  treeRow: 6
+  prerequisites:
+  - PersistentCraftWeaponNodeBizonT2
+
