@@ -72,7 +72,9 @@ public sealed partial class PersistentCraftingWindow
         var wrapper = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalAlignment = HAlignment.Center,
+            HorizontalAlignment = HAlignment.Left,
+            HorizontalExpand = false,
+            VerticalExpand = false,
         };
         wrapper.AddChild(layout);
         _nodeBoundsByBranch[branch] = nodeBounds;
