@@ -17,11 +17,6 @@
     anomaly: ZoneAnomalySpringboard
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -40,6 +35,11 @@
         Compression: 0.8
   - type: STWeight
     self: -10
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
 
 - type: entity
   parent: BaseArtifact
@@ -53,11 +53,6 @@
     anomaly: ZoneAnomalyPulse
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 3
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier3
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -81,6 +76,11 @@
   - type: Reflect
     reflectProb: 0.15
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier3
 
 - type: entity
   name: Ночная звезда
@@ -95,11 +95,6 @@
     anomaly: ZoneAnomalyNoGravity
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -123,6 +118,11 @@
   - type: Reflect
     reflectProb: 0.2
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
 
 # Пораждаемая эпицентром, каруселью
 - type: entity
@@ -138,11 +138,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 1
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier1
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -162,6 +157,11 @@
         Piercing: 0.95
   - type: STWeight
     self: -10
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
 
 - type: entity
   parent: BaseArtifact
@@ -175,11 +175,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -206,6 +201,11 @@
   - type: Reflect
     reflectProb: 0.03
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifact
@@ -219,11 +219,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 4
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier4
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -247,6 +242,11 @@
         Compression: 0.5
   - type: STWeight
     self: -60
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
 
 - type: entity
   parent: BaseArtifact
@@ -260,11 +260,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier5
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -291,6 +286,11 @@
   - type: Reflect
     reflectProb: 0.05
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -304,11 +304,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier5
   - type: PointLight
     radius: 1.5
     energy: 4.5
@@ -331,6 +326,11 @@
         Slash: 0.5
         Blunt: 0.2
         Compression: 0.1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 # Пораждаемая инверсией
 - type: entity
@@ -345,11 +345,6 @@
     anomaly: ZoneAnomalyInversion
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier5
   - type: PointLight
     radius: 2.5
     energy: 4.5
@@ -372,6 +367,11 @@
         Piercing: 1
       coefficients:
         Piercing: 0.9
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -385,11 +385,6 @@
     anomaly: ZoneAnomalyInversion
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier5
   - type: PointLight
     radius: 2.5
     energy: 5.5
@@ -419,6 +414,11 @@
   - type: Reflect
     reflectProb: 0.1
     spread: 320
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact

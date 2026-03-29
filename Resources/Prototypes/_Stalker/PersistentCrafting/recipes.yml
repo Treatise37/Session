@@ -23,7 +23,7 @@
   displayProto: ZoneAnomalyDetectorUpgradeAD1
   branch: Anomaly
   tier: 1
-  requiredNode: PersistentCraftAnomalyNodeAD1
+  requiredNode: PersistentCraftAnomalyNodeUpgradeAD1
   craftTime: 5
   pointReward: 25
   ingredients:
@@ -166,12 +166,12 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Veles
   branch: Anomaly
-  tier: 4
+  tier: 3
   requiredNode: PersistentCraftAnomalyNodeVeles
-  craftTime: 8
-  pointReward: 100
+  craftTime: 7
+  pointReward: 75
   ingredients:
-  - proto: ZoneArtifactDetectorBarracuda
+  - proto: ZoneArtifactDetectorSpruce
     amount: 1
   - proto: STCraftMultilayerPCBT3
     amount: 1
@@ -184,7 +184,7 @@
   results:
   - proto: Veles
   category: artifact-detectors
-  subCategory: tier-4
+  subCategory: tier-3
 
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT5
@@ -287,7 +287,7 @@
   displayProto: ZoneArtifactDetectorBush
   branch: Anomaly
   tier: 1
-  requiredNode: PersistentCraftAnomalyNodeHunter
+  requiredNode: PersistentCraftAnomalyNodeBush
   craftTime: 4
   pointReward: 20
   ingredients:
@@ -331,7 +331,7 @@
   displayProto: ZoneArtifactDetectorModifiedHunter
   branch: Anomaly
   tier: 2
-  requiredNode: PersistentCraftAnomalyNodeUpgradeAD2
+  requiredNode: PersistentCraftAnomalyNodeModifiedHunter
   craftTime: 5
   pointReward: 30
   ingredients:
@@ -353,7 +353,7 @@
   displayProto: ZoneArtifactDetectorResponseCvoboda
   branch: Anomaly
   tier: 2
-  requiredNode: PersistentCraftAnomalyNodeUpgradeAD2
+  requiredNode: PersistentCraftAnomalyNodeResponseCvoboda
   craftTime: 5
   pointReward: 30
   ingredients:

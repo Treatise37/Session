@@ -2,7 +2,7 @@
   id: PersistentCraftWeaponAmmoNodeT1
   name: Боеприпасы I
   description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
+  branch: Ammo
   cost: 0
   displayProto: 7mmBuckshotBox
   treeColumn: 0
@@ -12,7 +12,7 @@
   id: PersistentCraftWeaponAmmoNodeT2
   name: Боеприпасы II
   description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
+  branch: Ammo
   cost: 0
   displayProto: 545FMJBox
   treeColumn: 1
@@ -24,7 +24,7 @@
   id: PersistentCraftWeaponAmmoNodeT3
   name: Боеприпасы III
   description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
+  branch: Ammo
   cost: 0
   displayProto: 739FMJBox
   treeColumn: 2
@@ -36,7 +36,7 @@
   id: PersistentCraftWeaponAmmoNodeT4
   name: Боеприпасы IV
   description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
+  branch: Ammo
   cost: 0
   displayProto: 751M80Box
   treeColumn: 3
@@ -48,7 +48,7 @@
   id: PersistentCraftWeaponAmmoNodeT5
   name: Боеприпасы V
   description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
+  branch: Ammo
   cost: 0
   displayProto: Ammobox1255PS12A
   treeColumn: 4

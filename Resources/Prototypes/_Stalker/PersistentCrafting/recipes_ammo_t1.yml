@@ -5,7 +5,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 7mmBuckshotBox
-  branch: Weapon
+  branch: Ammo
   tier: 1
   requiredNode: PersistentCraftWeaponAmmoNodeT1
   craftTime: 6
@@ -24,7 +24,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 6mmBuckshotBox
-  branch: Weapon
+  branch: Ammo
   tier: 1
   requiredNode: PersistentCraftWeaponAmmoNodeT1
   craftTime: 6
@@ -43,7 +43,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: Ammobox1255PS12A
-  branch: Weapon
+  branch: Ammo
   tier: 1
   requiredNode: PersistentCraftWeaponAmmoNodeT1
   craftTime: 6

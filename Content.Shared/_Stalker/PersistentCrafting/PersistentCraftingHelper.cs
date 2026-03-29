@@ -21,7 +21,7 @@ public static class PersistentCraftingHelper
 
     public static int GetPointReward(PersistentCraftRecipePrototype recipe)
     {
-        return recipe.PointReward > 0 ? recipe.PointReward : 1;
+        return Math.Max(0, recipe.PointReward);
     }
 
     public static string GetTierDisplayLabel(int tier)

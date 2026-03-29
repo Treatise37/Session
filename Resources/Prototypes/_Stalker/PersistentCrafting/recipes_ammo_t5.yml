@@ -5,7 +5,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 545BSBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 6
@@ -26,7 +26,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 545NCBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 6
@@ -47,7 +47,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 545M995Box
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 7
@@ -68,7 +68,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 556SSAAPBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 7
@@ -89,7 +89,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 739BPBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 8
@@ -110,7 +110,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 751M993Box
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 6
@@ -131,7 +131,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 754BTBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 6
@@ -152,7 +152,7 @@
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
   displayProto: 754SNBBox
-  branch: Weapon
+  branch: Ammo
   tier: 5
   requiredNode: PersistentCraftWeaponAmmoNodeT5
   craftTime: 6

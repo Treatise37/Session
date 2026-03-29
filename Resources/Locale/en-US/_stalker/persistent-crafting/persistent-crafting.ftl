@@ -1,11 +1,12 @@
 persistent-craft-window-title = Craft Progression
-persistent-craft-window-summary = Separate character-bound crafting progression. Branches: weapons, armor, anomalies, materials.
+persistent-craft-window-summary = Separate character-bound crafting progression. Branches: weapons, ammunition, armor, anomalies, materials.
 persistent-craft-window-summary-detailed = Craft level: {$level}. Experience: {$experience}/{$next}. Unlocked nodes: {$unlocked}. Spent points: {$spent}.
 persistent-craft-window-loading = The character crafting profile is loading. Available skills will update automatically.
 persistent-craft-window-loading-points = Skill points are loading...
 persistent-craft-points = Skill points: {$points}
 
 persistent-craft-branch-weapon = Weapons
+persistent-craft-branch-ammo = Ammunition
 persistent-craft-branch-armor = Armor
 persistent-craft-branch-anomaly = Anomalies
 persistent-craft-branch-materials = Materials

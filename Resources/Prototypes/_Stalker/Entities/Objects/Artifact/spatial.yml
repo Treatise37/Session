@@ -10,11 +10,6 @@
       anomaly: ZoneAnomalyRift
     - type: ZoneArtifactDetectorTarget
       detectedLevel: 5
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier5
     - type: PointLight
       radius: 1.5
       energy: 6
@@ -45,6 +40,11 @@
           Heat: 0.5
           Shock: 0.5
           Cold: 0.5
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -58,11 +58,6 @@
       anomaly: ZoneAnomalyLamp
     - type: ZoneArtifactDetectorTarget
       detectedLevel: 1
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier1
     - type: Item
       size: Small
       shape:
@@ -87,6 +82,11 @@
       modifiers:
         flatReductions:
           Psy: 2
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier1
 #
 - type: entity
   parent: BaseArtifactStorage
@@ -100,11 +100,6 @@
       anomaly: ZoneAnomalyRift
     - type: ZoneArtifactDetectorTarget
       detectedLevel: 2
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier2
     - type: PointLight
       radius: 2
       energy: 8
@@ -126,6 +121,11 @@
     - type: Reflect
       reflectProb: 0.05
       spread: 340
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -139,11 +139,6 @@
       anomaly: AnomSEpicentre
     - type: ZoneArtifactDetectorTarget
       detectedLevel: 4
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier4
     - type: PointLight
       radius: 2
       energy: 8
@@ -168,6 +163,11 @@
       modifiers:
         coefficients:
           Piercing: 0.85
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier4
 
 - type: entity
   name: Распятие
@@ -182,11 +182,6 @@
     anomaly: ZoneAnomalyNoGravity
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 5
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier5
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -205,6 +200,11 @@
     modifiers:
       coefficients:
         Piercing: 0.9
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifact
@@ -218,11 +218,6 @@
     anomaly: ZoneAnomalyPulse
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 3
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier3
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -241,6 +236,11 @@
     transferAmount: 5
   - type: ExaminableSolution
     solution: pen
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -254,11 +254,6 @@
       anomaly: ZoneAnomalyRift
     - type: ZoneArtifactDetectorTarget
       detectedLevel: 4
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier4
     - type: PointLight
       radius: 2
       energy: 10
@@ -282,6 +277,11 @@
         - 0,0,8,8
     - type: STWeight
       self: -30
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier4
 
 - type: entity
   parent: BaseArtifact
@@ -295,11 +295,6 @@
     anomaly: AnomSEpicentre
   - type: ZoneArtifactDetectorTarget
     detectedLevel: 2
-  - type: Tag
-    tags:
-    - Khabar
-    - STArtifact
-    - STArtifactTier2
   - type: PointLight
     radius: 1.5
     energy: 5.5
@@ -320,6 +315,11 @@
     modifiers:
       flatReductions:
         Psy: 3
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -353,8 +353,8 @@
     self: 30
   - type: STWeightInsideReduction
     reductionFraction: 0.80
-    - type: Tag
-      tags:
-      - Khabar
-      - STArtifact
-      - STArtifactTier5
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5

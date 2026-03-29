@@ -1,11 +1,12 @@
 persistent-craft-window-title = Прогресс крафта
-persistent-craft-window-summary = Отдельная система развития крафта персонажа. Ветки: оружие, броня, аномалии, материалы.
+persistent-craft-window-summary = Отдельная система развития крафта персонажа. Ветки: оружие, боеприпасы, броня, аномалии, материалы.
 persistent-craft-window-summary-detailed = Уровень крафта: {$level}. Опыт: {$experience}/{$next}. Открыто узлов: {$unlocked}. Потрачено очков: {$spent}.
 persistent-craft-window-loading = Профиль крафта персонажа загружается. Доступные навыки обновятся автоматически.
 persistent-craft-window-loading-points = Очки навыков загружаются...
 persistent-craft-points = Очки навыков: {$points}
 
 persistent-craft-branch-weapon = Оружие
+persistent-craft-branch-ammo = Боеприпасы
 persistent-craft-branch-armor = Броня
 persistent-craft-branch-anomaly = Аномалии
 persistent-craft-branch-materials = Материалы
