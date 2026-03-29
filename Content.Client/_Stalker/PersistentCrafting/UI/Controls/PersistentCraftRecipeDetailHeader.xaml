@@ -12,25 +12,6 @@
             <Button Name="CraftButton"
                     HorizontalExpand="True"
                     MinSize="0 38" />
-            <Control MinSize="1 6" />
-            <BoxContainer Name="BatchControlsRow"
-                          Orientation="Horizontal"
-                          HorizontalExpand="True"
-                          Visible="False">
-                <SpinBox Name="BatchCountSpin"
-                         HorizontalExpand="True"
-                         MinSize="74 0" />
-                <Control MinSize="6 1" />
-                <Label Name="BatchLimitLabel"
-                       MinSize="52 0"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" />
-                <Control MinSize="6 1" />
-                <Button Name="BatchCraftButton"
-                        HorizontalExpand="True"
-                        MinSize="0 38"
-                        Text="xN" />
-            </BoxContainer>
             <Control MinSize="1 10" />
             <RichTextLabel Name="InfoLabel"
                            HorizontalExpand="True"

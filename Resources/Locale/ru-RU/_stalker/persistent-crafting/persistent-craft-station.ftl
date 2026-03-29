@@ -26,8 +26,6 @@ persistent-craft-recipe-status = Статус
 persistent-craft-recipes-short = Рецепты
 persistent-craft-craftable-short = Крафтимо
 persistent-craft-recipe-action = Крафтить
-persistent-craft-recipe-batch-action = Крафтить x{$count}
-persistent-craft-recipe-batch-limit = {$count}/{$max}
 persistent-craft-filter-all = Все
 persistent-craft-filter-craftable = Только крафтимое
 persistent-craft-search-placeholder = Поиск рецептов
@@ -62,14 +60,9 @@ persistent-craft-subcategory-artifact-line = Линия артефактов
 persistent-craft-subcategory-containers-line = Линия контейнеров
 
 persistent-craft-station-popup-started = Начато изготовление: {$recipe}
-persistent-craft-station-popup-batch-started = Начато изготовление: {$recipe} x{$count}
 persistent-craft-station-popup-missing-items = Не хватает материалов для этого рецепта.
 persistent-craft-station-popup-skill-locked = Этот рецепт ещё не открыт в древе навыков.
 persistent-craft-station-popup-crafted = Изготовлено: {$recipe}
-persistent-craft-station-popup-crafted-batch = Изготовлено: {$recipe} ({$crafted}/{$requested})
-persistent-craft-station-popup-batch-stopped = {$recipe}: серия остановлена ({$crafted}/{$requested})
-persistent-craft-station-popup-batch-cancelled = Изготовление отменено: {$recipe}
-persistent-craft-station-popup-batch-cancelled-progress = {$recipe}: изготовление отменено ({$crafted}/{$requested})
 
 persistent-craft-recipe-weapon-t1-name = Патроны 5.56 FMJ
 persistent-craft-recipe-weapon-t1-desc = Базовая оружейная сборка боеприпасов для отдельной оружейной ветки.

@@ -68,7 +68,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private IReadOnlyList<PersistentCraftRecipePrototype> _recipes = Array.Empty<PersistentCraftRecipePrototype>();
 
     public event Action<string>? OnCraftPressed;
-    public event Action<string, int>? OnCraftBatchPressed;
     public event Action? OnOpenSkillsPressed;
 
     public PersistentCraftStationWindow()
@@ -964,29 +963,4 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return Math.Max(1, ingredient.Amount);
     }
 
-    private int GetMaxCraftCount(PersistentCraftRecipePrototype recipe)
-    {
-        var maxCount = int.MaxValue;
-
-        for (var i = 0; i < recipe.Ingredients.Count; i++)
-        {
-            var ingredient = recipe.Ingredients[i];
-            if (!IsLocallyVerifiableIngredient(ingredient))
-                return 1;
-
-            var requiredAmount = GetEffectiveIngredientAmount(recipe, ingredient);
-            if (requiredAmount <= 0)
-                continue;
-
-            var ownedAmount = GetOwnedAmount(ingredient);
-            var craftsByIngredient = ownedAmount / requiredAmount;
-            if (craftsByIngredient < maxCount)
-                maxCount = craftsByIngredient;
-        }
-
-        if (maxCount == int.MaxValue)
-            return 1;
-
-        return Math.Max(0, maxCount);
-    }
 }

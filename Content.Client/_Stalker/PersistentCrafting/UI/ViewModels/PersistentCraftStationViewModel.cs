@@ -6,7 +6,6 @@ namespace Content.Client._Stalker.PersistentCrafting.UI.ViewModels;
 public sealed class PersistentCraftStationViewModel
 {
     public Dictionary<string, string> SelectedRecipes { get; } = new();
-    public Dictionary<string, int> BatchCountByRecipe { get; } = new();
     public Dictionary<string, int> SelectedTierFilters { get; } = new();
     public Dictionary<string, string> SearchTextByBranch { get; } = new();
     public Dictionary<string, bool> CraftableOnlyByBranch { get; } = new();
@@ -34,19 +33,6 @@ public sealed class PersistentCraftStationViewModel
     public void SetSelectedRecipe(string branch, string recipeId)
     {
         SelectedRecipes[branch] = recipeId;
-    }
-
-    public int GetBatchCount(string recipeId, int fallback)
-    {
-        if (BatchCountByRecipe.TryGetValue(recipeId, out var value))
-            return value;
-
-        return fallback;
-    }
-
-    public void SetBatchCount(string recipeId, int value)
-    {
-        BatchCountByRecipe[recipeId] = value;
     }
 
     public bool TryGetSelectedTierFilter(string branch, out int tier)

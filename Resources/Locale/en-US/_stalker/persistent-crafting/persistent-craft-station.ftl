@@ -26,8 +26,6 @@ persistent-craft-recipe-status = Status
 persistent-craft-recipes-short = Recipes
 persistent-craft-craftable-short = Craftable
 persistent-craft-recipe-action = Craft
-persistent-craft-recipe-batch-action = Craft x{$count}
-persistent-craft-recipe-batch-limit = {$count}/{$max}
 persistent-craft-filter-all = All
 persistent-craft-filter-craftable = Craftable only
 persistent-craft-search-placeholder = Search recipes
@@ -62,14 +60,9 @@ persistent-craft-subcategory-artifact-line = Artifact Line
 persistent-craft-subcategory-containers-line = Container Line
 
 persistent-craft-station-popup-started = Started crafting: {$recipe}
-persistent-craft-station-popup-batch-started = Started crafting: {$recipe} x{$count}
 persistent-craft-station-popup-missing-items = Missing materials for this recipe.
 persistent-craft-station-popup-skill-locked = This recipe is not unlocked in the skill tree yet.
 persistent-craft-station-popup-crafted = Crafted: {$recipe}
-persistent-craft-station-popup-crafted-batch = Crafted: {$recipe} ({$crafted}/{$requested})
-persistent-craft-station-popup-batch-stopped = {$recipe}: batch stopped ({$crafted}/{$requested})
-persistent-craft-station-popup-batch-cancelled = Crafting canceled: {$recipe}
-persistent-craft-station-popup-batch-cancelled-progress = {$recipe}: crafting canceled ({$crafted}/{$requested})
 
 persistent-craft-recipe-weapon-t1-name = 5.56 FMJ Rounds
 persistent-craft-recipe-weapon-t1-desc = A basic ammunition assembly for the separate weapon branch.

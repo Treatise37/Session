@@ -447,41 +447,6 @@ public sealed partial class PersistentCraftStationWindow
         };
         header.ActionButton.ModulateSelfOverride = canCraft ? accent : PersistentCraftUiTheme.TextMuted;
 
-        var maxBatchCount = canCraft ? GetMaxCraftCount(recipe) : 0;
-        var showBatch = maxBatchCount >= 2;
-        header.BatchControls.Visible = showBatch;
-
-        if (showBatch)
-        {
-            header.BatchCountInput.IsValid = value => value >= 2 && value <= maxBatchCount;
-            header.BatchLimitText.FontColorOverride = MutedText;
-            var fallbackBatchCount = Math.Clamp(Math.Min(maxBatchCount, 5), 2, maxBatchCount);
-            var rememberedBatchCount = _viewModel.GetBatchCount(recipe.ID, fallbackBatchCount);
-            var initialBatchCount = Math.Clamp(rememberedBatchCount, 2, maxBatchCount);
-            header.BatchCountInput.OverrideValue(initialBatchCount);
-            header.BatchActionButton.Disabled = false;
-
-            void UpdateBatchActionButton()
-            {
-                var count = Math.Clamp(header.BatchCountInput.Value, 2, maxBatchCount);
-                _viewModel.SetBatchCount(recipe.ID, count);
-                header.BatchLimitText.Text = Loc.GetString(
-                    "persistent-craft-recipe-batch-limit",
-                    ("count", count),
-                    ("max", maxBatchCount));
-                header.BatchActionButton.Text = Loc.GetString("persistent-craft-recipe-batch-action", ("count", count));
-            }
-
-            UpdateBatchActionButton();
-            header.BatchCountInput.ValueChanged += _ => UpdateBatchActionButton();
-            header.BatchActionButton.OnPressed += _ =>
-            {
-                var selectedCount = Math.Clamp(header.BatchCountInput.Value, 2, maxBatchCount);
-                header.BatchCountInput.OverrideValue(selectedCount);
-                OnCraftBatchPressed?.Invoke(recipe.ID, selectedCount);
-            };
-        }
-
         header.InfoText.SetMessage(FormattedMessage.FromMarkupPermissive(BuildHeaderInfoMarkup(recipe)));
         header.IconHost.PanelOverride = new StyleBoxFlat
         {
