@@ -13,7 +13,7 @@
   name: ent-ZoneAnomalyDetectorUpgradeAD1
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneAnomalyDetectorUpgradeAD1
   treeColumn: 2
   treeRow: 0
@@ -35,7 +35,7 @@
   name: ent-ZoneArtifactDetectorHunter
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneArtifactDetectorHunter
   treeColumn: 4
   treeRow: 1
@@ -47,7 +47,7 @@
   name: ent-ZoneArtifactDetectorBush
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneArtifactDetectorBush
   treeColumn: 5
   treeRow: 1
@@ -59,7 +59,7 @@
   name: ent-ZoneAnomalyDetectorAD2
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneAnomalyDetectorAD2
   treeColumn: 1
   treeRow: 1
@@ -71,7 +71,7 @@
   name: ent-ZoneAnomalyDetectorBMT12
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 50
   displayProto: ZoneAnomalyDetectorBMT12
   treeColumn: 0
   treeRow: 2
@@ -83,7 +83,7 @@
   name: ent-ZoneAnomalyDetectorUpgradeAD2
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneAnomalyDetectorUpgradeAD2
   treeColumn: 2
   treeRow: 2
@@ -95,7 +95,7 @@
   name: ent-ZoneArtifactDetectorResponse
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneArtifactDetectorResponse
   treeColumn: 4
   treeRow: 2
@@ -107,7 +107,7 @@
   name: ent-ZoneArtifactDetectorModifiedHunter
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneArtifactDetectorModifiedHunter
   treeColumn: 5
   treeRow: 2
@@ -119,7 +119,7 @@
   name: ent-ZoneArtifactDetectorResponseCvoboda
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 10
   displayProto: ZoneArtifactDetectorResponseCvoboda
   treeColumn: 6
   treeRow: 2
@@ -131,7 +131,7 @@
   name: ent-ZoneArtifactDetectorSpruce
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 50
   displayProto: ZoneArtifactDetectorSpruce
   treeColumn: 4
   treeRow: 3
@@ -143,7 +143,7 @@
   name: ent-ZoneArtifactDetectorBarracuda
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 50
   displayProto: ZoneArtifactDetectorBarracuda
   treeColumn: 6
   treeRow: 3
@@ -155,7 +155,7 @@
   name: ent-ZoneAnomalyDetectorAD3
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 300
   displayProto: ZoneAnomalyDetectorAD3
   treeColumn: 1
   treeRow: 3
@@ -167,7 +167,7 @@
   name: ent-ZoneArtifactDetectorBear
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 300
   displayProto: ZoneArtifactDetectorBear
   treeColumn: 4
   treeRow: 4
@@ -179,7 +179,7 @@
   name: ent-ZoneArtifactDetectorSeaDevil
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 300
   displayProto: ZoneArtifactDetectorSeaDevil
   treeColumn: 6
   treeRow: 4
@@ -191,7 +191,7 @@
   name: persistent-craft-node-anomaly-velez-name
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 50
   displayProto: Veles
   treeColumn: 7
   treeRow: 3
@@ -203,7 +203,7 @@
   name: ent-ZoneArtifactDetectorWolfhound
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 600
   displayProto: ZoneArtifactDetectorWolfhound
   treeColumn: 4
   treeRow: 5
@@ -215,7 +215,7 @@
   name: persistent-craft-node-anomaly-svarog-name
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 1
+  cost: 600
   displayProto: Svarog
   treeColumn: 7
   treeRow: 5

@@ -1,0 +1,275 @@
+# Medicine branch persistent recipes
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeAi2T1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitAI2
+  branch: Medicine
+  tier: 1
+  requiredNode: PersistentCraftMedicineNodeAi2T1
+  craftTime: 5
+  pointReward: 1
+  ingredients:
+  - proto: STCraftCottonFabricT1
+    amount: 1
+  - proto: STCraftBasicThreadKitT1
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 10
+  results:
+  - proto: MedkitAI2
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeBandageT1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STGauze
+  branch: Medicine
+  tier: 1
+  requiredNode: PersistentCraftMedicineNodeBandageT1
+  craftTime: 4
+  pointReward: 1
+  ingredients:
+  - proto: STCraftCottonFabricT1
+    amount: 1
+  - proto: STCraftBasicThreadKitT1
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 5
+  results:
+  - proto: STGauze
+  category: medicine
+  subCategory: medicine-basic
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeBruisePackT1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STBrutepack
+  branch: Medicine
+  tier: 1
+  requiredNode: PersistentCraftMedicineNodeBruisePackT1
+  craftTime: 4
+  pointReward: 1
+  ingredients:
+  - proto: STGauze
+    amount: 1
+  - proto: STCraftBasicThreadKitT1
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 5
+  results:
+  - proto: STBrutepack
+  category: medicine
+  subCategory: medicine-basic
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeOintmentT1
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STOintment
+  branch: Medicine
+  tier: 1
+  requiredNode: PersistentCraftMedicineNodeOintmentT1
+  craftTime: 4
+  pointReward: 1
+  ingredients:
+  - proto: STBrutepack
+    amount: 1
+  - proto: STCraftGlassT1
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 5
+  results:
+  - proto: STOintment
+  category: medicine
+  subCategory: medicine-basic
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeArmyMedkitT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitMilitary
+  branch: Medicine
+  tier: 2
+  requiredNode: PersistentCraftMedicineNodeArmyMedkitT2
+  craftTime: 6
+  pointReward: 2
+  ingredients:
+  - proto: MedkitAI2
+    amount: 1
+  - proto: STCraftHideT2
+    amount: 1
+  - proto: STCraftTapeKitT2
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 15
+  results:
+  - proto: MedkitMilitary
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeBloodpackT2
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: Bloodpack
+  branch: Medicine
+  tier: 2
+  requiredNode: PersistentCraftMedicineNodeBloodpackT2
+  craftTime: 6
+  pointReward: 2
+  ingredients:
+  - proto: STGauze
+    amount: 1
+  - proto: STCraftGlassT2
+    amount: 1
+  - proto: STCraftPlasticFittingT2
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 15
+  results:
+  - proto: Bloodpack
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeScienceMedkitT3
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitScience
+  branch: Medicine
+  tier: 3
+  requiredNode: PersistentCraftMedicineNodeScienceMedkitT3
+  craftTime: 7
+  pointReward: 5
+  ingredients:
+  - proto: MedkitMilitary
+    amount: 1
+  - proto: Bloodpack
+    amount: 1
+  - proto: STCraftSturdyHideT3
+    amount: 1
+  - proto: STCraftGlueKitT3
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 25
+  results:
+  - proto: MedkitScience
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeEliteMedkitT4
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitElite
+  branch: Medicine
+  tier: 4
+  requiredNode: PersistentCraftMedicineNodeEliteMedkitT4
+  craftTime: 8
+  pointReward: 10
+  ingredients:
+  - proto: MedkitScience
+    amount: 1
+  - proto: STCraftPolymerFabricT4
+    amount: 1
+  - proto: STCraftIndustrialThreadStaplesKitT4
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 40
+  results:
+  - proto: MedkitElite
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeLarMedkitT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: MedkitLAR
+  branch: Medicine
+  tier: 5
+  requiredNode: PersistentCraftMedicineNodeLarMedkitT5
+  craftTime: 10
+  pointReward: 10
+  ingredients:
+  - proto: MedkitElite
+    amount: 1
+  - proto: STCraftCompositeMaterialT5
+    amount: 1
+  - proto: STCraftHighStrengthKitT5
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: MedkitLAR
+  category: medicine
+  subCategory: medicine-medkits
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeYodarinT15
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STPillboxAntirad
+  branch: Medicine
+  tier: 1
+  requiredNode: PersistentCraftMedicineNodeYodarinT15
+  craftTime: 5
+  pointReward: 1
+  ingredients:
+  - proto: STCraftGlassT1
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 10
+  results:
+  - proto: STPillboxAntirad
+  category: medicine
+  subCategory: medicine-drugs
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeProbudT3
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STPillboxProbud
+  branch: Medicine
+  tier: 3
+  requiredNode: PersistentCraftMedicineNodeProbudT3
+  craftTime: 7
+  pointReward: 5
+  ingredients:
+  - proto: STPillboxAntirad
+    amount: 1
+  - proto: STCraftMultilayerPCBT3
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 25
+  results:
+  - proto: STPillboxProbud
+  category: medicine
+  subCategory: medicine-drugs
+
+- type: persistentCraftRecipe
+  id: PersistentCraftMedicineRecipeFufloT5
+  name: persistent-craft-recipe-generic-name
+  description: persistent-craft-recipe-generic-desc
+  displayProto: STPillboxShiza
+  branch: Medicine
+  tier: 5
+  requiredNode: PersistentCraftMedicineNodeFufloT5
+  craftTime: 10
+  pointReward: 10
+  ingredients:
+  - proto: STPillboxProbud
+    amount: 1
+  - proto: STCraftNanoChipT5
+    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 200
+  results:
+  - proto: STPillboxShiza
+  category: medicine
+  subCategory: medicine-drugs
