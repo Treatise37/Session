@@ -3,7 +3,6 @@ using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Maths;
 
 namespace Content.Client._Stalker.PersistentCrafting.UI.Coordinators;
@@ -11,19 +10,21 @@ namespace Content.Client._Stalker.PersistentCrafting.UI.Coordinators;
 public sealed class PersistentCraftNodeDetailsWindowCoordinator
 {
     private readonly IClyde _clyde;
+    private readonly IUserInterfaceManager _uiManager;
     private readonly float _windowWidth;
     private readonly float _windowHeight;
     private readonly float _windowMinWidth;
     private readonly float _windowMinHeight;
     private readonly float _windowMargin;
-    private DefaultWindow? _window;
+    private Popup? _popup;
 
-    public bool IsOpen => _window != null &&
-                          !_window.Disposed &&
-                          _window.IsOpen;
+    public bool IsOpen => _popup != null &&
+                          !_popup.Disposed &&
+                          _popup.Visible;
 
     public PersistentCraftNodeDetailsWindowCoordinator(
         IClyde clyde,
+        IUserInterfaceManager uiManager,
         float windowWidth,
         float windowHeight,
         float windowMinWidth,
@@ -31,6 +32,7 @@ public sealed class PersistentCraftNodeDetailsWindowCoordinator
         float windowMargin)
     {
         _clyde = clyde;
+        _uiManager = uiManager;
         _windowWidth = windowWidth;
         _windowHeight = windowHeight;
         _windowMinWidth = windowMinWidth;
@@ -40,19 +42,23 @@ public sealed class PersistentCraftNodeDetailsWindowCoordinator
 
     public void Show(string title, Control content)
     {
-        EnsureWindow();
-        var window = _window!;
-
-        window.Title = title;
-        window.RemoveAllChildren();
+        EnsurePopup();
+        var popup = _popup!;
+        popup.RemoveAllChildren();
 
         var root = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
-            Margin = new Thickness(10),
+            Margin = new Thickness(8),
             HorizontalExpand = true,
             VerticalExpand = false,
         };
+        root.AddChild(new Label
+        {
+            Text = title,
+            HorizontalExpand = true,
+        });
+        root.AddChild(new Control { MinSize = new Vector2(1, 6) });
         root.AddChild(content);
 
         var scroll = new ScrollContainer
@@ -63,44 +69,44 @@ public sealed class PersistentCraftNodeDetailsWindowCoordinator
             VScrollEnabled = true,
         };
         scroll.AddChild(root);
+        popup.AddChild(scroll);
 
-        window.AddChild(scroll);
-        if (!window.IsOpen)
-            window.Open();
-
-        PositionWindowTopRight(window);
-        window.MoveToFront();
+        var box = BuildPopupBox();
+        popup.Open(box, new Vector2(box.Left, box.Top), new Vector2(box.Left, box.Bottom));
     }
 
     public void Close()
     {
-        if (_window == null || _window.Disposed)
+        if (_popup == null || _popup.Disposed)
             return;
 
-        _window.Close();
-        _window = null;
+        _popup.Close();
     }
 
-    private void EnsureWindow()
+    private void EnsurePopup()
     {
-        if (_window != null && !_window.Disposed)
+        if (_popup != null && !_popup.Disposed)
             return;
 
-        _window = new DefaultWindow
+        _popup = new Popup
         {
-            SetSize = new Vector2(_windowWidth, _windowHeight),
+            CloseOnClick = true,
+            CloseOnEscape = true,
             MinSize = new Vector2(_windowMinWidth, _windowMinHeight),
-            Resizable = true,
+            HorizontalExpand = false,
+            VerticalExpand = false,
         };
-        _window.OnClose += () => _window = null;
+
+        _uiManager.ModalRoot.AddChild(_popup);
     }
 
-    private void PositionWindowTopRight(DefaultWindow window)
+    private UIBox2 BuildPopupBox()
     {
         var screen = _clyde.ScreenSize;
-        var windowWidth = window.Width > 0 ? window.Width : (int) _windowWidth;
-        var x = Math.Max(_windowMargin, screen.X - windowWidth - _windowMargin);
+        var width = MathF.Max(_windowMinWidth, _windowWidth);
+        var height = MathF.Max(_windowMinHeight, _windowHeight);
+        var x = MathF.Max(_windowMargin, screen.X - width - _windowMargin);
         var y = _windowMargin;
-        LayoutContainer.SetPosition(window, new Vector2(x, y));
+        return UIBox2.FromDimensions(new Vector2(x, y), new Vector2(width, height));
     }
 }

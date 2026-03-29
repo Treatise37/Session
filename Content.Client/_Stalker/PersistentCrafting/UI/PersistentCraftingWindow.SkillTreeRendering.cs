@@ -21,21 +21,28 @@ public sealed partial class PersistentCraftingWindow
         string? selectedNodeId)
     {
         var accent = GetBranchAccent(branch);
+        var nodeWidth = BaseTierTreeNodeWidth * _treeZoom;
+        var nodeHeight = BaseTierTreeNodeHeight * _treeZoom;
+        var horizontalGap = BaseTierTreeHorizontalGap * _treeZoom;
+        var verticalGap = BaseTierTreeVerticalGap * _treeZoom;
+        var padding = BaseTierTreePadding * _treeZoom;
+        var lineThickness = MathF.Max(2f, BaseTierTreeLineThickness * MathF.Sqrt(_treeZoom));
         var layoutData = PersistentCraftNodeTreeLayoutBuilder.Build(subNodes);
         var positions = layoutData.Positions;
+        var nodeBounds = new Dictionary<string, UIBox2>(subNodes.Count);
 
         var layout = new LayoutContainer
         {
             MinSize = new Vector2(
-                TierTreePadding * 2 + (layoutData.MaxColumn + 1) * TierTreeNodeWidth + layoutData.MaxColumn * TierTreeHorizontalGap,
-                TierTreePadding * 2 + (layoutData.MaxRow + 1) * TierTreeNodeHeight + layoutData.MaxRow * TierTreeVerticalGap + 20),
+                padding * 2 + (layoutData.MaxColumn + 1) * nodeWidth + layoutData.MaxColumn * horizontalGap,
+                padding * 2 + (layoutData.MaxRow + 1) * nodeHeight + layoutData.MaxRow * verticalGap + 20f * _treeZoom),
             HorizontalAlignment = HAlignment.Center,
         };
 
         foreach (var node in subNodes)
         {
-            var childPosition = GetNodeCanvasPosition(positions[node.ID]);
-            var childCenter = GetNodeCenter(childPosition);
+            var childPosition = GetNodeCanvasPosition(positions[node.ID], nodeWidth, nodeHeight, horizontalGap, verticalGap, padding);
+            var childCenter = GetNodeCenter(childPosition, nodeWidth, nodeHeight);
 
             foreach (var prerequisiteId in node.Prerequisites)
             {
@@ -45,19 +52,21 @@ public sealed partial class PersistentCraftingWindow
                 if (!positions.TryGetValue(prerequisiteId, out var parentGridPosition))
                     continue;
 
-                var parentPosition = GetNodeCanvasPosition(parentGridPosition);
-                var parentCenter = GetNodeCenter(parentPosition);
-                AddConnector(layout, parentCenter, childCenter, accent);
+                var parentPosition = GetNodeCanvasPosition(parentGridPosition, nodeWidth, nodeHeight, horizontalGap, verticalGap, padding);
+                var parentCenter = GetNodeCenter(parentPosition, nodeWidth, nodeHeight);
+                AddConnector(layout, parentCenter, childCenter, nodeHeight, lineThickness, accent);
             }
         }
 
         foreach (var node in subNodes)
         {
-            var control = CreateSubNodeEntry(branch, node, selectedNodeId == node.ID);
-            control.MinSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight);
-            control.MaxSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight);
-            LayoutContainer.SetPosition(control, GetNodeCanvasPosition(positions[node.ID]));
+            var position = GetNodeCanvasPosition(positions[node.ID], nodeWidth, nodeHeight, horizontalGap, verticalGap, padding);
+            var control = CreateSubNodeEntry(branch, node, selectedNodeId == node.ID, nodeWidth, nodeHeight);
+            control.MinSize = new Vector2(nodeWidth, nodeHeight);
+            control.MaxSize = new Vector2(nodeWidth, nodeHeight);
+            LayoutContainer.SetPosition(control, position);
             layout.AddChild(control);
+            nodeBounds[node.ID] = UIBox2.FromDimensions(position, new Vector2(nodeWidth, nodeHeight));
         }
 
         var wrapper = new BoxContainer
@@ -67,50 +76,70 @@ public sealed partial class PersistentCraftingWindow
             HorizontalAlignment = HAlignment.Center,
         };
         wrapper.AddChild(layout);
+        _nodeBoundsByBranch[branch] = nodeBounds;
         return wrapper;
     }
 
-    private static Vector2 GetNodeCanvasPosition(Vector2i gridPosition)
+    private static Vector2 GetNodeCanvasPosition(
+        Vector2i gridPosition,
+        float nodeWidth,
+        float nodeHeight,
+        float horizontalGap,
+        float verticalGap,
+        float padding)
     {
         return new Vector2(
-            TierTreePadding + gridPosition.X * (TierTreeNodeWidth + TierTreeHorizontalGap),
-            TierTreePadding + gridPosition.Y * (TierTreeNodeHeight + TierTreeVerticalGap));
+            padding + gridPosition.X * (nodeWidth + horizontalGap),
+            padding + gridPosition.Y * (nodeHeight + verticalGap));
     }
 
-    private static Vector2 GetNodeCenter(Vector2 canvasPosition)
+    private static Vector2 GetNodeCenter(Vector2 canvasPosition, float nodeWidth, float nodeHeight)
     {
         return new Vector2(
-            canvasPosition.X + TierTreeNodeWidth / 2f,
-            canvasPosition.Y + TierTreeNodeHeight / 2f);
+            canvasPosition.X + nodeWidth / 2f,
+            canvasPosition.Y + nodeHeight / 2f);
     }
 
-    private static void AddConnector(LayoutContainer layout, Vector2 parentCenter, Vector2 childCenter, Color accent)
+    private static void AddConnector(
+        LayoutContainer layout,
+        Vector2 parentCenter,
+        Vector2 childCenter,
+        float nodeHeight,
+        float lineThickness,
+        Color accent)
     {
         var connectorColor = accent.WithAlpha(0.35f);
-        var parentBottom = parentCenter.Y + TierTreeNodeHeight / 2f;
-        var childTop = childCenter.Y - TierTreeNodeHeight / 2f;
+        var parentBottom = parentCenter.Y + nodeHeight / 2f;
+        var childTop = childCenter.Y - nodeHeight / 2f;
         var midY = parentBottom + (childTop - parentBottom) / 2f;
 
-        AddLine(layout, parentCenter.X, parentBottom, parentCenter.X, midY, connectorColor);
-        AddLine(layout, Math.Min(parentCenter.X, childCenter.X), midY, Math.Max(parentCenter.X, childCenter.X), midY, connectorColor);
-        AddLine(layout, childCenter.X, midY, childCenter.X, childTop, connectorColor);
+        AddLine(layout, parentCenter.X, parentBottom, parentCenter.X, midY, lineThickness, connectorColor);
+        AddLine(layout, Math.Min(parentCenter.X, childCenter.X), midY, Math.Max(parentCenter.X, childCenter.X), midY, lineThickness, connectorColor);
+        AddLine(layout, childCenter.X, midY, childCenter.X, childTop, lineThickness, connectorColor);
     }
 
-    private static void AddLine(LayoutContainer layout, float startX, float startY, float endX, float endY, Color color)
+    private static void AddLine(
+        LayoutContainer layout,
+        float startX,
+        float startY,
+        float endX,
+        float endY,
+        float lineThickness,
+        Color color)
     {
         var isVertical = Math.Abs(startX - endX) < 0.01f;
         var minX = isVertical
-            ? startX - TierTreeLineThickness / 2f
+            ? startX - lineThickness / 2f
             : Math.Min(startX, endX);
         var minY = isVertical
             ? Math.Min(startY, endY)
-            : startY - TierTreeLineThickness / 2f;
+            : startY - lineThickness / 2f;
         var width = isVertical
-            ? TierTreeLineThickness
-            : Math.Max(Math.Abs(endX - startX), TierTreeLineThickness);
+            ? lineThickness
+            : Math.Max(Math.Abs(endX - startX), lineThickness);
         var height = isVertical
-            ? Math.Max(Math.Abs(endY - startY), TierTreeLineThickness)
-            : TierTreeLineThickness;
+            ? Math.Max(Math.Abs(endY - startY), lineThickness)
+            : lineThickness;
 
         var line = new PanelContainer
         {
@@ -125,7 +154,12 @@ public sealed partial class PersistentCraftingWindow
         layout.AddChild(line);
     }
 
-    private ContainerButton CreateSubNodeEntry(string branch, PersistentCraftNodePrototype node, bool selected)
+    private ContainerButton CreateSubNodeEntry(
+        string branch,
+        PersistentCraftNodePrototype node,
+        bool selected,
+        float nodeWidth,
+        float nodeHeight)
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
         var branchState = _branchCoordinator.GetBranchState(branch);
@@ -133,11 +167,14 @@ public sealed partial class PersistentCraftingWindow
         var prerequisitesMet = ArePrerequisitesMet(node);
         var canUnlock = state.Loaded && !unlocked && prerequisitesMet && branchState.AvailablePoints >= node.Cost;
         var accent = GetBranchAccent(branch);
+        var iconSize = Math.Clamp(64f * _treeZoom, 40f, 80f);
+        var textPlateHeight = Math.Clamp(26f * _treeZoom, 20f, 34f);
+        var bodyMargin = Math.Clamp(12f * _treeZoom, 8f, 14f);
 
         var button = new ContainerButton
         {
-            MinSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight),
-            MaxSize = new Vector2(TierTreeNodeWidth, TierTreeNodeHeight),
+            MinSize = new Vector2(nodeWidth, nodeHeight),
+            MaxSize = new Vector2(nodeWidth, nodeHeight),
             HorizontalExpand = false,
             VerticalExpand = false,
             StyleBoxOverride = new StyleBoxFlat
@@ -145,10 +182,10 @@ public sealed partial class PersistentCraftingWindow
                 BackgroundColor = unlocked ? CardUnlockedBackground : canUnlock ? CardAvailableBackground : CardLockedBackground,
                 BorderColor = selected ? SelectedBorder : unlocked ? UnlockedBorder : canUnlock ? accent.WithAlpha(0.6f) : CardBorder,
                 BorderThickness = new Thickness(selected ? 2 : 1),
-                ContentMarginLeftOverride = 12,
-                ContentMarginRightOverride = 12,
-                ContentMarginTopOverride = 12,
-                ContentMarginBottomOverride = 12,
+                ContentMarginLeftOverride = bodyMargin,
+                ContentMarginRightOverride = bodyMargin,
+                ContentMarginTopOverride = bodyMargin,
+                ContentMarginBottomOverride = bodyMargin,
             }
         };
         button.OnPressed += _ => SelectNode(branch, node.ID);
@@ -160,13 +197,13 @@ public sealed partial class PersistentCraftingWindow
             VerticalExpand = true,
         };
 
-        body.AddChild(CreateNodeIcon(node, selected ? SelectedBorder : accent, new Vector2(64, 64)));
+        body.AddChild(CreateNodeIcon(node, selected ? SelectedBorder : accent, new Vector2(iconSize, iconSize)));
         body.AddChild(new Control { MinSize = new Vector2(1, 8) });
 
         var namePlate = new PanelContainer
         {
             HorizontalExpand = true,
-            MinSize = new Vector2(0, 26),
+            MinSize = new Vector2(0, textPlateHeight),
             PanelOverride = new StyleBoxFlat
             {
                 BackgroundColor = IconBackground.WithAlpha(0.45f),

@@ -22,6 +22,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Maths;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client._Stalker.PersistentCrafting.UI;
@@ -54,6 +55,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private readonly Dictionary<string, BoxContainer> _detailContentHostsByBranch = new();
     private readonly Dictionary<string, PersistentCraftBranchState> _visibleBranchStatesByBranch = new();
     private readonly Dictionary<string, bool> _recipeCraftabilityById = new();
+    private readonly HashSet<string> _pendingScrollRestoreBranches = new();
     private readonly PersistentCraftStationViewModel _viewModel = new();
     private readonly PersistentCraftStationBranchCoordinator _branchCoordinator;
 
@@ -146,6 +148,35 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         var branch = GetCurrentBranch();
         PopulateBranch(GetBranchContainer(branch), branch);
         _viewModel.LastVisibleBranch = branch;
+    }
+
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if (_pendingScrollRestoreBranches.Count == 0)
+            return;
+
+        var branches = new string[_pendingScrollRestoreBranches.Count];
+        _pendingScrollRestoreBranches.CopyTo(branches);
+        _pendingScrollRestoreBranches.Clear();
+
+        for (var i = 0; i < branches.Length; i++)
+        {
+            var branch = branches[i];
+
+            if (_activeListScrollByBranch.TryGetValue(branch, out var listScroll) &&
+                _viewModel.ListScrollByBranch.TryGetValue(branch, out var listScrollValue))
+            {
+                listScroll.SetScrollValue(listScrollValue);
+            }
+
+            if (_activeDetailScrollByBranch.TryGetValue(branch, out var detailScroll) &&
+                _viewModel.DetailScrollByBranch.TryGetValue(branch, out var detailScrollValue))
+            {
+                detailScroll.SetScrollValue(detailScrollValue);
+            }
+        }
     }
 
     private void Render()

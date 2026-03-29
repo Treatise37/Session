@@ -13,9 +13,11 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Input;
 using Robust.Shared.IoC;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Stalker.PersistentCrafting.UI;
 
@@ -38,12 +40,18 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private static readonly Color MutedTextColor = PersistentCraftUiTheme.TextSecondary;
     private static readonly Color DescriptionTextColor = PersistentCraftUiTheme.TextPrimary;
     private static readonly Color IconBackground = PersistentCraftUiTheme.SurfaceInset;
-    private const float TierTreeNodeWidth = 176f;
-    private const float TierTreeNodeHeight = 178f;
-    private const float TierTreeHorizontalGap = 56f;
-    private const float TierTreeVerticalGap = 36f;
-    private const float TierTreePadding = 24f;
-    private const float TierTreeLineThickness = 3f;
+    private const float WindowMinWidth = 1620f;
+    private const float WindowMinHeight = 940f;
+    private const float WindowOpenMargin = 56f;
+    private const float BaseTierTreeNodeWidth = 176f;
+    private const float BaseTierTreeNodeHeight = 178f;
+    private const float BaseTierTreeHorizontalGap = 56f;
+    private const float BaseTierTreeVerticalGap = 36f;
+    private const float BaseTierTreePadding = 24f;
+    private const float BaseTierTreeLineThickness = 3f;
+    private const float TreeZoomMin = 0.65f;
+    private const float TreeZoomMax = 1.6f;
+    private const float TreeZoomStep = 0.1f;
     private const float NodeDetailsWindowWidth = 860f;
     private const float NodeDetailsWindowHeight = 720f;
     private const float NodeDetailsWindowMinWidth = 700f;
@@ -51,6 +59,8 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private const float NodeDetailsWindowMargin = 16f;
 
     private readonly Dictionary<string, BoxContainer> _branchHosts = new();
+    private readonly Dictionary<string, PersistentCraftTreeScrollContainer> _branchTreeScrolls = new();
+    private readonly Dictionary<string, Dictionary<string, UIBox2>> _nodeBoundsByBranch = new();
     private readonly PersistentCraftSkillTreeViewModel _viewModel = new();
     private readonly PersistentCraftBranchCoordinator _branchCoordinator;
     private readonly PersistentCraftNodeSelectionCoordinator _selectionCoordinator;
@@ -63,6 +73,12 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private IReadOnlyList<PersistentCraftNodePrototype> _nodes = Array.Empty<PersistentCraftNodePrototype>();
     private IReadOnlyList<PersistentCraftRecipePrototype> _recipes = Array.Empty<PersistentCraftRecipePrototype>();
     private Action<string>? _onUnlock;
+    private string? _detailsNodeId;
+    private int _detailsAvailablePoints = int.MinValue;
+    private int _detailsSpentPoints = int.MinValue;
+    private bool _detailsDirty;
+    private float _treeZoom = 1f;
+    private (string Branch, string NodeId)? _pendingNodeFocus;
 
     public PersistentCraftingWindow()
     {
@@ -70,6 +86,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         _selectionCoordinator = new PersistentCraftNodeSelectionCoordinator(_viewModel);
         _detailsCoordinator = new PersistentCraftNodeDetailsWindowCoordinator(
             _clyde,
+            _uiManager,
             NodeDetailsWindowWidth,
             NodeDetailsWindowHeight,
             NodeDetailsWindowMinWidth,
@@ -80,13 +97,22 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         RobustXamlLoader.Load(this);
 
+        CloseTreeWindowButton.OnPressed += _ => Close();
+        TreeZoomOutButton.OnPressed += _ => ChangeTreeZoom(-TreeZoomStep);
+        TreeZoomInButton.OnPressed += _ => ChangeTreeZoom(TreeZoomStep);
+        TreeZoomResetButton.OnPressed += _ => ResetTreeZoom();
+        TreeFitSelectedButton.OnPressed += _ => FocusSelectedNode(fitZoom: true);
+
         InitializeBranchHosts();
         PersistentCraftUiTheme.ApplyTabTheme(Branches, "persistent-craft-skill-tabs", PersistentCraftUiTheme.Selection, _uiManager);
+        RefreshZoomLabel();
 
         Branches.OnTabChanged += _ =>
         {
             CloseNodeDetailsWindow();
-            RenderBranch(_branchCoordinator.GetCurrentBranch(Branches));
+            var branch = _branchCoordinator.GetCurrentBranch(Branches);
+            RenderBranch(branch);
+            FocusSelectedNode(fitZoom: false);
         };
     }
 
@@ -94,34 +120,48 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     {
         Branches.RemoveAllChildren();
         _branchHosts.Clear();
+        _branchTreeScrolls.Clear();
+        _nodeBoundsByBranch.Clear();
 
         for (var index = 0; index < _branchRegistry.OrderedBranches.Count; index++)
         {
             var definition = _branchRegistry.OrderedBranches[index];
+            var branchId = definition.ID;
             var host = new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
                 Margin = new Thickness(12, 12, 12, 12),
             };
 
-            var scroll = new ScrollContainer
+            var scroll = new PersistentCraftTreeScrollContainer
             {
                 MinSize = new Vector2(980, 0),
                 HorizontalExpand = true,
                 HScrollEnabled = true,
                 VerticalExpand = true,
             };
+            scroll.ZoomRequested += delta => ChangeTreeZoom(delta > 0f ? TreeZoomStep : -TreeZoomStep);
             scroll.AddChild(host);
             Branches.AddChild(scroll);
 
-            _branchHosts[definition.ID] = host;
+            _branchHosts[branchId] = host;
+            _branchTreeScrolls[branchId] = scroll;
             Branches.SetTabTitle(index, ResolveBranchTitle(definition));
         }
+    }
+
+    public void ApplyFullscreenLayout()
+    {
+        var screenSize = new Vector2(_clyde.ScreenSize.X, _clyde.ScreenSize.Y);
+        var targetWidth = MathF.Max(WindowMinWidth, screenSize.X - WindowOpenMargin);
+        var targetHeight = MathF.Max(WindowMinHeight, screenSize.Y - WindowOpenMargin);
+        SetSize = new Vector2(targetWidth, targetHeight);
     }
 
     public override void Close()
     {
         CloseNodeDetailsWindow();
+        _pendingNodeFocus = null;
         base.Close();
     }
 
@@ -144,6 +184,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
         _nodes = prototypeCache.AllNodes;
         _recipes = prototypeCache.AllRecipes;
         _onUnlock = onUnlock;
+        _detailsDirty = true;
 
         if (state.Loaded && _viewModel.SelectPreferredBranchOnNextUpdate)
         {
@@ -179,6 +220,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         if (branchSubNodes.Count == 0)
         {
+            _nodeBoundsByBranch.Remove(branch);
             CloseNodeDetailsWindow();
             return;
         }
@@ -214,7 +256,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         if (_detailsCoordinator.IsOpen)
         {
-            ShowNodeDetailsWindow(branchState, selectedNode);
+            RefreshNodeDetailsIfNeeded(branchState, selectedNode);
         }
     }
 
@@ -250,5 +292,193 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
         var branchState = _branchCoordinator.GetBranchState(branch);
         ShowNodeDetailsWindow(branchState, node);
+        ScheduleNodeFocus(branch, node.ID);
+    }
+
+    private void RefreshNodeDetailsIfNeeded(PersistentCraftBranchState branchState, PersistentCraftNodePrototype node)
+    {
+        if (!_detailsCoordinator.IsOpen)
+            return;
+
+        if (!_detailsDirty &&
+            _detailsNodeId == node.ID &&
+            _detailsAvailablePoints == branchState.AvailablePoints &&
+            _detailsSpentPoints == branchState.SpentPoints)
+        {
+            return;
+        }
+
+        ShowNodeDetailsWindow(branchState, node);
+    }
+
+    protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+    {
+        base.KeyBindDown(args);
+
+        if (args.Handled ||
+            !_detailsCoordinator.IsOpen ||
+            args.Function != EngineKeyFunctions.UIClick)
+        {
+            return;
+        }
+
+        CloseNodeDetailsWindow();
+        args.Handle();
+    }
+
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if (_pendingNodeFocus is not { } pending)
+            return;
+
+        if (TryCenterNode(pending.Branch, pending.NodeId))
+            _pendingNodeFocus = null;
+    }
+
+    private void MarkDetailsShown(PersistentCraftBranchState branchState, PersistentCraftNodePrototype node)
+    {
+        _detailsNodeId = node.ID;
+        _detailsAvailablePoints = branchState.AvailablePoints;
+        _detailsSpentPoints = branchState.SpentPoints;
+        _detailsDirty = false;
+    }
+
+    private void ResetDetailsCache()
+    {
+        _detailsNodeId = null;
+        _detailsAvailablePoints = int.MinValue;
+        _detailsSpentPoints = int.MinValue;
+        _detailsDirty = false;
+    }
+
+    private void ChangeTreeZoom(float delta)
+    {
+        var newZoom = Math.Clamp(_treeZoom + delta, TreeZoomMin, TreeZoomMax);
+        if (Math.Abs(newZoom - _treeZoom) < 0.001f)
+            return;
+
+        _treeZoom = newZoom;
+        RefreshZoomLabel();
+        Render();
+        FocusSelectedNode(fitZoom: false);
+    }
+
+    private void ResetTreeZoom()
+    {
+        _treeZoom = 1f;
+        RefreshZoomLabel();
+        Render();
+        FocusSelectedNode(fitZoom: false);
+    }
+
+    private void RefreshZoomLabel()
+    {
+        TreeZoomResetButton.Text = $"{MathF.Round(_treeZoom * 100f):0}%";
+    }
+
+    private void FocusSelectedNode(bool fitZoom)
+    {
+        var branch = _branchCoordinator.GetCurrentBranch(Branches);
+        if (!_viewModel.TryGetSelectedNode(branch, out var nodeId))
+            return;
+
+        if (fitZoom && Math.Abs(_treeZoom - 1f) > 0.001f)
+        {
+            _treeZoom = 1f;
+            RefreshZoomLabel();
+            Render();
+        }
+
+        ScheduleNodeFocus(branch, nodeId);
+    }
+
+    private void ScheduleNodeFocus(string branch, string nodeId)
+    {
+        _pendingNodeFocus = (branch, nodeId);
+        TryCenterNode(branch, nodeId);
+    }
+
+    private bool TryCenterNode(string branch, string nodeId)
+    {
+        if (!_branchTreeScrolls.TryGetValue(branch, out var scroll) ||
+            !_nodeBoundsByBranch.TryGetValue(branch, out var nodeBoundsById) ||
+            !nodeBoundsById.TryGetValue(nodeId, out var nodeBounds) ||
+            scroll.Size.X <= 1f ||
+            scroll.Size.Y <= 1f)
+        {
+            return false;
+        }
+
+        var target = new Vector2(
+            MathF.Max(0f, ((nodeBounds.Left + nodeBounds.Right) * 0.5f) - scroll.Size.X / 2f),
+            MathF.Max(0f, ((nodeBounds.Top + nodeBounds.Bottom) * 0.5f) - scroll.Size.Y / 2f));
+
+        scroll.SetScrollValue(target);
+        return true;
+    }
+
+    private sealed class PersistentCraftTreeScrollContainer : ScrollContainer
+    {
+        private bool _dragging;
+        private Vector2 _dragStartMouse;
+        private Vector2 _dragStartScroll;
+
+        public event Action<float>? ZoomRequested;
+
+        public PersistentCraftTreeScrollContainer()
+        {
+            MouseFilter = MouseFilterMode.Stop;
+        }
+
+        protected override void KeyBindDown(GUIBoundKeyEventArgs args)
+        {
+            base.KeyBindDown(args);
+
+            if (args.Function != EngineKeyFunctions.UIRightClick)
+                return;
+
+            _dragging = true;
+            _dragStartMouse = (Vector2) args.PointerLocation.Position;
+            _dragStartScroll = GetScrollValue(true);
+            args.Handle();
+        }
+
+        protected override void KeyBindUp(GUIBoundKeyEventArgs args)
+        {
+            base.KeyBindUp(args);
+
+            if (args.Function != EngineKeyFunctions.UIRightClick)
+                return;
+
+            _dragging = false;
+            args.Handle();
+        }
+
+        protected override void MouseMove(GUIMouseMoveEventArgs args)
+        {
+            base.MouseMove(args);
+
+            if (!_dragging)
+                return;
+
+            var mousePosition = (Vector2) args.GlobalPixelPosition.Position;
+            var delta = mousePosition - _dragStartMouse;
+            SetScrollValue(_dragStartScroll - delta);
+            args.Handle();
+        }
+
+        protected override void MouseWheel(GUIMouseWheelEventArgs args)
+        {
+            if (ZoomRequested == null)
+            {
+                base.MouseWheel(args);
+                return;
+            }
+
+            ZoomRequested.Invoke(args.Delta.Y);
+            args.Handle();
+        }
     }
 }

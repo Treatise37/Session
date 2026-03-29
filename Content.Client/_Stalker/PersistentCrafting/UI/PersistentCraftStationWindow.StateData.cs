@@ -122,6 +122,8 @@ public sealed partial class PersistentCraftStationWindow
 
         if (_viewModel.DetailScrollByBranch.TryGetValue(branch, out var detailScrollValue))
             detailScroll.SetScrollValue(detailScrollValue);
+
+        _pendingScrollRestoreBranches.Add(branch);
     }
 
     private void UpdateRecipeDetails(string branch, PersistentCraftRecipePrototype recipe)

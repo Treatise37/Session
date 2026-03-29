@@ -44,6 +44,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         EnsureSkillsWindow();
         _skillsWindow!.ResetInitialTabSelection();
+        _skillsWindow.ApplyFullscreenLayout();
 
         if (!_skillsWindow!.IsOpen)
             _skillsWindow.OpenCentered();
@@ -51,6 +52,19 @@ public sealed class PersistentCraftingSystem : EntitySystem
             _skillsWindow.MoveToFront();
 
         RefreshSkillWindow();
+    }
+
+    private void ToggleSkillsWindowFromCraft()
+    {
+        EnsureSkillsWindow();
+
+        if (_skillsWindow!.IsOpen)
+        {
+            _skillsWindow.Close();
+            return;
+        }
+
+        OpenSkillsWindow();
     }
 
     public override void Update(float frameTime)
@@ -103,8 +117,8 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
         _craftWindow.OnCraftPressed -= RequestCraft;
         _craftWindow.OnCraftPressed += RequestCraft;
-        _craftWindow.OnOpenSkillsPressed -= OpenSkillsWindow;
-        _craftWindow.OnOpenSkillsPressed += OpenSkillsWindow;
+        _craftWindow.OnOpenSkillsPressed -= ToggleSkillsWindowFromCraft;
+        _craftWindow.OnOpenSkillsPressed += ToggleSkillsWindowFromCraft;
     }
 
     private void EnsureSkillsWindow()

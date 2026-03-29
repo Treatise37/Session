@@ -80,7 +80,11 @@ public sealed partial class PersistentCraftingWindow
             MinSize = new Vector2(0, 42),
             HorizontalExpand = true,
         };
-        unlockButton.OnPressed += _ => _onUnlock?.Invoke(node.ID);
+        unlockButton.OnPressed += _ =>
+        {
+            _detailsDirty = true;
+            _onUnlock?.Invoke(node.ID);
+        };
         headerLeft.AddChild(unlockButton);
 
         headerRow.AddChild(headerLeft);
@@ -131,11 +135,13 @@ public sealed partial class PersistentCraftingWindow
         _detailsCoordinator.Show(
             ResolveNodeName(node),
             CreateDetailsPanel(branchState, node));
+        MarkDetailsShown(branchState, node);
     }
 
     private void CloseNodeDetailsWindow()
     {
         _detailsCoordinator.Close();
+        ResetDetailsCache();
     }
 
     private Control CreateDetailSection(string title, string contentMarkup)
