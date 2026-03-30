@@ -132,19 +132,6 @@ public sealed class PersistentCraftInventorySnapshotBuilder
 
     private static void SortStringsOrdinal(string[] values)
     {
-        for (var i = 0; i < values.Length - 1; i++)
-        {
-            var minIndex = i;
-            for (var j = i + 1; j < values.Length; j++)
-            {
-                if (string.CompareOrdinal(values[j], values[minIndex]) < 0)
-                    minIndex = j;
-            }
-
-            if (minIndex == i)
-                continue;
-
-            (values[i], values[minIndex]) = (values[minIndex], values[i]);
-        }
+        Array.Sort(values, StringComparer.Ordinal);
     }
 }

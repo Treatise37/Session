@@ -46,7 +46,7 @@ public sealed class PersistentCraftCraftExecutionService
         return _ingredientPlanner.TryPlan(
             user,
             recipe,
-            ingredient => GetEffectiveIngredientAmount(user, recipe, ingredient),
+            ingredient => GetEffectiveIngredientAmount(recipe, ingredient),
             out plan);
     }
 
@@ -101,7 +101,7 @@ public sealed class PersistentCraftCraftExecutionService
             return;
 
         var branchProfile = _profileService.GetOrCreateBranchProfile(profile, recipe.Branch);
-        var currentTotal = Math.Max(0, branchProfile.TotalEarnedPoints);
+        var currentTotal = branchProfile.TotalEarnedPoints;
         var pointsReward = Math.Max(0, PersistentCraftingHelper.GetPointReward(recipe));
         var totalEarned = (long) currentTotal + pointsReward;
         branchProfile.TotalEarnedPoints = (int) Math.Min(int.MaxValue, totalEarned);
@@ -110,18 +110,15 @@ public sealed class PersistentCraftCraftExecutionService
         _profileService.NormalizeBranchPoints(profile);
     }
 
-    public float GetEffectiveCraftTime(EntityUid user, PersistentCraftRecipePrototype recipe)
+    public float GetEffectiveCraftTime(PersistentCraftRecipePrototype recipe)
     {
-        _ = user;
         return PersistentCraftRecipeRules.GetEffectiveCraftTime(recipe);
     }
 
     public int GetEffectiveIngredientAmount(
-        EntityUid user,
         PersistentCraftRecipePrototype recipe,
         PersistentCraftIngredient ingredient)
     {
-        _ = user;
         return PersistentCraftRecipeRules.GetEffectiveIngredientAmount(recipe, ingredient);
     }
 }

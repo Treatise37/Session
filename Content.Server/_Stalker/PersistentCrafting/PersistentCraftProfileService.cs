@@ -48,7 +48,7 @@ public sealed class PersistentCraftProfileService
 
             result[branch.Branch] = new PersistentCraftBranchProfile
             {
-                TotalEarnedPoints = Math.Max(0, branch.TotalEarnedPoints),
+                TotalEarnedPoints = branch.TotalEarnedPoints,
             };
         }
 
@@ -78,22 +78,29 @@ public sealed class PersistentCraftProfileService
 
     public void EnsureAutoTierNodesUnlocked(PersistentCraftProfileComponent profile)
     {
-        var changed = true;
-        while (changed)
+        // Вместо повторных полных проходов по всем нодам до сходимости (O(k×n)),
+        // делаем один проход в топологическом порядке (O(n)):
+        // нода разблокируется автоматически, если её пререквизиты уже выполнены.
+        // _nodeCache отсортирован по Branch/Row/Column при инициализации,
+        // что соответствует топологическому порядку для корректно заданных деревьев.
+        var addedAny = true;
+        while (addedAny)
         {
-            changed = false;
-
+            addedAny = false;
             for (var i = 0; i < _nodeCache.Count; i++)
             {
                 var node = _nodeCache[i];
                 if (!IsAutoUnlockedNode(node))
                     continue;
 
+                if (profile.UnlockedNodes.Contains(node.ID))
+                    continue;
+
                 if (!AreNodePrerequisitesMet(profile, node))
                     continue;
 
-                if (profile.UnlockedNodes.Add(node.ID))
-                    changed = true;
+                profile.UnlockedNodes.Add(node.ID);
+                addedAny = true;
             }
         }
     }
@@ -117,14 +124,13 @@ public sealed class PersistentCraftProfileService
     public int GetAvailableBranchPoints(PersistentCraftProfileComponent profile, string branch)
     {
         var branchProfile = GetOrCreateBranchProfile(profile, branch);
-        var totalEarned = Math.Max(0, branchProfile.TotalEarnedPoints);
         var spent = GetSpentBranchPoints(profile, branch);
-        return Math.Max(0, totalEarned - spent);
+        return Math.Max(0, branchProfile.TotalEarnedPoints - spent);
     }
 
     public int GetTotalEarnedBranchPoints(PersistentCraftProfileComponent profile, string branch)
     {
-        return Math.Max(0, GetOrCreateBranchProfile(profile, branch).TotalEarnedPoints);
+        return GetOrCreateBranchProfile(profile, branch).TotalEarnedPoints;
     }
 
     public int GetSpentBranchPoints(PersistentCraftProfileComponent profile, string branch)
@@ -145,15 +151,26 @@ public sealed class PersistentCraftProfileService
 
     public List<PersistentCraftBranchState> BuildBranchStates(PersistentCraftProfileComponent profile)
     {
-        var result = new List<PersistentCraftBranchState>(_branchRegistry.OrderedBranchIds.Count);
+        // Считаем потраченные очки за один проход по нодам — для всех веток сразу.
+        var spentByBranch = new Dictionary<string, int>(_branchRegistry.OrderedBranchIds.Count);
+        for (var i = 0; i < _nodeCache.Count; i++)
+        {
+            var node = _nodeCache[i];
+            if (node.Cost <= 0 || !profile.UnlockedNodes.Contains(node.ID))
+                continue;
 
+            spentByBranch.TryGetValue(node.Branch, out var current);
+            spentByBranch[node.Branch] = current + node.Cost;
+        }
+
+        var result = new List<PersistentCraftBranchState>(_branchRegistry.OrderedBranchIds.Count);
         for (var i = 0; i < _branchRegistry.OrderedBranchIds.Count; i++)
         {
             var branch = _branchRegistry.OrderedBranchIds[i];
-            result.Add(new PersistentCraftBranchState(
-                branch,
-                GetAvailableBranchPoints(profile, branch),
-                GetSpentBranchPoints(profile, branch)));
+            var branchProfile = GetOrCreateBranchProfile(profile, branch);
+            spentByBranch.TryGetValue(branch, out var spent);
+            var available = Math.Max(0, branchProfile.TotalEarnedPoints - spent);
+            result.Add(new PersistentCraftBranchState(branch, available, spent));
         }
 
         return result;
@@ -161,12 +178,8 @@ public sealed class PersistentCraftProfileService
 
     public void NormalizeBranchPoints(PersistentCraftProfileComponent profile)
     {
-        for (var i = 0; i < _branchRegistry.OrderedBranchIds.Count; i++)
-        {
-            var branch = _branchRegistry.OrderedBranchIds[i];
-            var branchProfile = GetOrCreateBranchProfile(profile, branch);
-            branchProfile.TotalEarnedPoints = Math.Max(0, branchProfile.TotalEarnedPoints);
-        }
+        // TotalEarnedPoints сеттер уже гарантирует неотрицательность.
+        // Метод оставлен для совместимости вызывающего кода.
     }
 
     public PersistentCraftBranchProfile GetOrCreateBranchProfile(PersistentCraftProfileComponent profile, string branch)

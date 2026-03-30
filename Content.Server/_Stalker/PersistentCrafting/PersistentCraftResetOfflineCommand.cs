@@ -1,23 +1,20 @@
 using System;
 using System.Threading.Tasks;
 using Content.Server.Administration;
-using Content.Server.Database;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
+using Robust.Shared.GameObjects;
 
 namespace Content.Server._Stalker.PersistentCrafting;
 
 [AdminCommand(AdminFlags.Host)]
 public sealed class PersistentCraftResetOfflineCommand : IConsoleCommand
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     public string Command => "st_pcraft_reset_offline";
     public string Description => "Resets persistent crafting progress for a character by userId and characterName.";
     public string Help => "st_pcraft_reset_offline <userId-guid> <characterName>";
-
-    // Keep payload aligned with current save schema (v2) and zero progression.
-    private const string EmptyProfileJson = "{\"Version\":2,\"Branches\":[],\"UnlockedNodes\":[]}";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -47,7 +44,10 @@ public sealed class PersistentCraftResetOfflineCommand : IConsoleCommand
                 return;
             }
 
-            await _db.SetStalkerPersistentCraftProfileAsync(userId, characterName, EmptyProfileJson);
+            var system = _entityManager.System<PersistentCraftingSystem>();
+            var emptyJson = system.SerializeEmptyProfile();
+
+            await system.WriteProfileJsonAsync(userId, characterName, emptyJson);
             shell.WriteLine($"Persistent craft profile reset for '{characterName}' ({userId}).");
         }
         catch (Exception ex)

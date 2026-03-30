@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Content.Client._Stalker.PersistentCrafting.UI.ViewModels;
 using Content.Shared._Stalker.PersistentCrafting;
 
@@ -26,7 +27,7 @@ public static class PersistentCraftStationBranchBuilder
 
         var filteredRecipes = selectedTier > 0
             ? FilterRecipesByTier(unlockedRecipes, selectedTier)
-            : CopyRecipes(unlockedRecipes);
+            : unlockedRecipes.ToList();
 
         filteredRecipes = ApplyRecipeSearch(filteredRecipes, searchText, matchesSearch);
         var craftabilityByRecipeId = IndexRecipeCraftability(filteredRecipes, hasLocalMaterials, out var craftableCount);
@@ -82,7 +83,7 @@ public static class PersistentCraftStationBranchBuilder
     {
         var query = searchText.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(query))
-            return CopyRecipes(recipes);
+            return recipes.ToList();
 
         var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
         for (var i = 0; i < recipes.Count; i++)
@@ -121,7 +122,7 @@ public static class PersistentCraftStationBranchBuilder
         IReadOnlyDictionary<string, bool> craftabilityByRecipeId)
     {
         if (!craftableOnly)
-            return CopyRecipes(recipes);
+            return recipes.ToList();
 
         var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
         for (var i = 0; i < recipes.Count; i++)
@@ -135,17 +136,6 @@ public static class PersistentCraftStationBranchBuilder
         }
 
         return filtered;
-    }
-
-    private static List<PersistentCraftRecipePrototype> CopyRecipes(IReadOnlyList<PersistentCraftRecipePrototype> recipes)
-    {
-        var copied = new List<PersistentCraftRecipePrototype>(recipes.Count);
-        for (var i = 0; i < recipes.Count; i++)
-        {
-            copied.Add(recipes[i]);
-        }
-
-        return copied;
     }
 
     private static PersistentCraftRecipePrototype? ResolveSelectedRecipe(

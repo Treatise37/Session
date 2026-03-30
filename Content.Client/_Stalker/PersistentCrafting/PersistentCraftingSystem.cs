@@ -1,6 +1,5 @@
 using Content.Shared._Stalker.PersistentCrafting;
 using Content.Client._Stalker.PersistentCrafting.UI;
-using Robust.Shared.IoC;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Stalker.PersistentCrafting;
@@ -8,7 +7,7 @@ namespace Content.Client._Stalker.PersistentCrafting;
 public sealed class PersistentCraftingSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    private const float InventoryRefreshInterval = 0.15f;
+    private const float InventoryRefreshInterval = 0.5f;
 
     private PersistentCraftClientPrototypeCache _prototypeCache = default!;
     private PersistentCraftStationWindow? _craftWindow;

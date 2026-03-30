@@ -103,13 +103,6 @@ public sealed class PersistentCraftProfileRepository
         changed = false;
         errorMessage = null;
 
-        if (TryDeserializeLegacySaveData(json, out var legacySaveData))
-        {
-            saveData = NormalizeSaveData(legacySaveData, out _);
-            changed = true;
-            return true;
-        }
-
         PersistentCraftSaveData? data;
 
         try
@@ -128,7 +121,7 @@ public sealed class PersistentCraftProfileRepository
             return false;
         }
 
-        if (!TryMigrateSaveData(data, characterName, out var migrated, out var migratedChanged, out errorMessage))
+        if (!TryValidateAndMigrateSaveData(data, characterName, out var migrated, out var migratedChanged, out errorMessage))
             return false;
 
         saveData = NormalizeSaveData(migrated, out var normalizedChangedAfterMigration);
@@ -136,14 +129,7 @@ public sealed class PersistentCraftProfileRepository
         return true;
     }
 
-    private static bool TryDeserializeLegacySaveData(string json, out PersistentCraftSaveData saveData)
-    {
-        _ = json;
-        saveData = default!;
-        return false;
-    }
-
-    private bool TryMigrateSaveData(
+    private bool TryValidateAndMigrateSaveData(
         PersistentCraftSaveData data,
         string characterName,
         out PersistentCraftSaveData migrated,
@@ -160,13 +146,21 @@ public sealed class PersistentCraftProfileRepository
             return false;
         }
 
-        if (data.Version != CurrentSaveDataVersion)
+        switch (data.Version)
         {
-            errorMessage = $"[PersistentCraft] Save data for '{characterName}' uses unsupported version {data.Version}. Only version {CurrentSaveDataVersion} is supported.";
-            return false;
-        }
+            case CurrentSaveDataVersion:
+                return true;
 
-        return true;
+            // Пример будущей миграции:
+            // case 1:
+            //     migrated = MigrateV1ToV2(data);
+            //     changed = true;
+            //     return true;
+
+            default:
+                errorMessage = $"[PersistentCraft] Save data for '{characterName}' uses unsupported version {data.Version}. Expected {CurrentSaveDataVersion}.";
+                return false;
+        }
     }
 
     private PersistentCraftSaveData NormalizeSaveData(PersistentCraftSaveData data, out bool changed)
@@ -176,8 +170,9 @@ public sealed class PersistentCraftProfileRepository
         var normalized = CreateDefaultSaveData();
         normalized.Version = data.Version;
 
+        // Используем одну переменную, без двойного вычисления
         var sourceUnlockedNodes = data.UnlockedNodes ?? new List<string>();
-        normalized.UnlockedNodes = (data.UnlockedNodes ?? new List<string>())
+        normalized.UnlockedNodes = sourceUnlockedNodes
             .Where(id => !string.IsNullOrWhiteSpace(id))
             .Distinct()
             .OrderBy(id => id)

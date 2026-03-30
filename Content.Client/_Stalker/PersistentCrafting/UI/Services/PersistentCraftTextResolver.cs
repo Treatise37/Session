@@ -262,8 +262,9 @@ public sealed class PersistentCraftTextResolver
         {
             return Loc.GetString(locKey);
         }
-        catch
+        catch (Exception ex)
         {
+            Logger.Warning($"[PersistentCraft] Missing loc key '{locKey}': {ex.Message}");
             return null;
         }
     }

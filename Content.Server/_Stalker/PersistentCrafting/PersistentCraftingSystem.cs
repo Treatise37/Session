@@ -320,6 +320,23 @@ public sealed class PersistentCraftingSystem : EntitySystem
         return Task.FromResult(true);
     }
 
+    public string SerializeEmptyProfile()
+    {
+        var emptySnapshot = new PersistentCraftProfileSnapshot
+        {
+            UserId = Guid.Empty,
+            CharacterName = string.Empty,
+            BranchEarnedPoints = new Dictionary<string, int>(),
+            UnlockedNodes = new List<string>(),
+        };
+        return _profileRepository.SerializeSaveData(emptySnapshot);
+    }
+
+    public Task WriteProfileJsonAsync(Guid userId, string characterName, string json)
+    {
+        return _db.SetStalkerPersistentCraftProfileAsync(userId, characterName, json);
+    }
+
     private void OnAccessStartup(EntityUid uid, PersistentCraftAccessComponent component, ComponentStartup args)
     {
         _actions.AddAction(uid, ref component.ActionEntity, component.Action, uid);
@@ -523,7 +540,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private bool TryStartCraftDoAfter(EntityUid user, PersistentCraftRecipePrototype recipe)
     {
-        var craftTime = _craftExecutionService.GetEffectiveCraftTime(user, recipe);
+        var craftTime = _craftExecutionService.GetEffectiveCraftTime(recipe);
         var doAfter = new DoAfterArgs(
             EntityManager,
             user,
@@ -641,14 +658,31 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private async Task SaveProfileInBackground(EntityUid uid, PersistentCraftProfileSnapshot snapshot)
     {
-        try
+        const int maxAttempts = 3;
+        const int retryDelayMs = 5000;
+
+        Exception? lastException = null;
+
+        for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            await _profileRepository.SaveProfileAsync(snapshot);
+            try
+            {
+                await _profileRepository.SaveProfileAsync(snapshot);
+                return;
+            }
+            catch (Exception ex)
+            {
+                lastException = ex;
+
+                if (attempt < maxAttempts)
+                {
+                    Log.Warning($"[PersistentCraft] Save attempt {attempt}/{maxAttempts} failed for '{snapshot.CharacterName}', retrying in {retryDelayMs}ms: {ex.Message}");
+                    await Task.Delay(retryDelayMs);
+                }
+            }
         }
-        catch (Exception ex)
-        {
-            _saveFailures.Enqueue(new PendingSaveFailure(uid, snapshot.CharacterName, ex));
-        }
+
+        _saveFailures.Enqueue(new PendingSaveFailure(uid, snapshot.CharacterName, lastException!));
     }
 
     private void ProcessSaveFailures()
@@ -680,7 +714,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         var branchEarnedPoints = new Dictionary<string, int>(profile.BranchProgress.Count);
         foreach (var entry in profile.BranchProgress)
         {
-            branchEarnedPoints[entry.Key] = Math.Max(0, entry.Value.TotalEarnedPoints);
+            branchEarnedPoints[entry.Key] = entry.Value.TotalEarnedPoints;
         }
 
         return new PersistentCraftProfileSnapshot
@@ -721,8 +755,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
             {
                 return Loc.GetString(node.Name);
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Warning($"[PersistentCraft] Missing loc key '{node.Name}' for node '{node.ID}': {ex.Message}");
                 return node.Name;
             }
         }

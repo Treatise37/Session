@@ -29,27 +29,27 @@ public static class PersistentCraftingHelper
         return tier > 0 ? ToRoman(tier) : tier.ToString();
     }
 
+    private static readonly (int Value, string Symbol)[] RomanNumerals =
+    {
+        (1000, "M"),
+        (900,  "CM"),
+        (500,  "D"),
+        (400,  "CD"),
+        (100,  "C"),
+        (90,   "XC"),
+        (50,   "L"),
+        (40,   "XL"),
+        (10,   "X"),
+        (9,    "IX"),
+        (5,    "V"),
+        (4,    "IV"),
+        (1,    "I"),
+    };
+
     private static string ToRoman(int number)
     {
-        var map = new (int Value, string Symbol)[]
-        {
-            (1000, "M"),
-            (900, "CM"),
-            (500, "D"),
-            (400, "CD"),
-            (100, "C"),
-            (90, "XC"),
-            (50, "L"),
-            (40, "XL"),
-            (10, "X"),
-            (9, "IX"),
-            (5, "V"),
-            (4, "IV"),
-            (1, "I"),
-        };
-
         var result = new StringBuilder();
-        foreach (var (value, symbol) in map)
+        foreach (var (value, symbol) in RomanNumerals)
         {
             while (number >= value)
             {
