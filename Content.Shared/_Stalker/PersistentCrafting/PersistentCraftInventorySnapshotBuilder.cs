@@ -55,9 +55,9 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             }
         }
 
-        var sortedTrackedTags = trackedTags.Count > 1
-            ? trackedTags.OrderBy(static tag => tag, System.StringComparer.Ordinal).ToArray()
-            : trackedTags.ToArray();
+        var sortedTrackedTags = trackedTags.ToArray();
+        if (sortedTrackedTags.Length > 1)
+            SortStringsOrdinal(sortedTrackedTags);
 
         var amountByProto = new Dictionary<string, int>();
         var amountByStackType = new Dictionary<string, int>();
@@ -128,5 +128,23 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             dictionary[key] = existing + amount;
         else
             dictionary[key] = amount;
+    }
+
+    private static void SortStringsOrdinal(string[] values)
+    {
+        for (var i = 0; i < values.Length - 1; i++)
+        {
+            var minIndex = i;
+            for (var j = i + 1; j < values.Length; j++)
+            {
+                if (string.CompareOrdinal(values[j], values[minIndex]) < 0)
+                    minIndex = j;
+            }
+
+            if (minIndex == i)
+                continue;
+
+            (values[i], values[minIndex]) = (values[minIndex], values[i]);
+        }
     }
 }

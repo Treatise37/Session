@@ -66,63 +66,17 @@ public sealed partial class PersistentCraftingWindow
 
     private string ResolveRecipeName(PersistentCraftRecipePrototype recipe)
     {
-        var displayProto = PersistentCraftingHelper.GetDisplayPrototypeId(recipe);
-        if (!string.IsNullOrWhiteSpace(displayProto) &&
-            _prototype.TryIndex<EntityPrototype>(displayProto, out var prototype))
-        {
-            return prototype.Name;
-        }
-
-        return Loc.GetString(recipe.Name);
+        return _textResolver.ResolveRecipeName(recipe);
     }
 
     private string ResolveNodeName(PersistentCraftNodePrototype node)
     {
-        if (!string.IsNullOrWhiteSpace(node.Name))
-        {
-            if (Loc.TryGetString(node.Name, out var localizedNodeName) &&
-                !string.IsNullOrWhiteSpace(localizedNodeName))
-            {
-                return localizedNodeName;
-            }
-
-            if (!string.IsNullOrWhiteSpace(node.Name))
-                return node.Name;
-        }
-
-        if (!string.IsNullOrWhiteSpace(node.DisplayProto) &&
-            _prototype.TryIndex<EntityPrototype>(node.DisplayProto, out var prototype))
-        {
-            if (!string.IsNullOrWhiteSpace(prototype.Name))
-            {
-                return prototype.Name;
-            }
-
-            if (Loc.TryGetString($"ent-{prototype.ID}", out var localizedPrototypeName) &&
-                !string.IsNullOrWhiteSpace(localizedPrototypeName))
-            {
-                return localizedPrototypeName;
-            }
-
-            return prototype.ID;
-        }
-
-        if (!string.IsNullOrWhiteSpace(node.DisplayProto))
-            return node.DisplayProto;
-
-        return node.ID;
+        return _textResolver.ResolveNodeName(node);
     }
 
     private string ResolveNodeCardCaption(PersistentCraftNodePrototype node)
     {
-        var resolved = ResolveNodeName(node).Trim();
-        if (!string.IsNullOrWhiteSpace(resolved))
-            return resolved;
-
-        if (!string.IsNullOrWhiteSpace(node.DisplayProto))
-            return node.DisplayProto;
-
-        return node.ID;
+        return _textResolver.ResolveNodeCardCaption(node);
     }
 
     private bool HasNodeUnlockedOrAutoAvailable(string nodeId)
@@ -145,9 +99,7 @@ public sealed partial class PersistentCraftingWindow
 
     private string ResolveBranchTitle(string branchId)
     {
-        return _branchRegistry.TryGetBranchDefinition(branchId, out var definition)
-            ? ResolveBranchTitle(definition)
-            : branchId;
+        return _textResolver.ResolveBranchTitle(branchId);
     }
 
     private IReadOnlyList<PersistentCraftNodePrototype> GetNodesForBranch(string branch)
@@ -195,15 +147,5 @@ public sealed partial class PersistentCraftingWindow
             : null;
     }
 
-    private static string ResolveBranchTitle(PersistentCraftBranchPrototype definition)
-    {
-        try
-        {
-            return Loc.GetString(definition.Name);
-        }
-        catch
-        {
-            return definition.Name;
-        }
-    }
+
 }
