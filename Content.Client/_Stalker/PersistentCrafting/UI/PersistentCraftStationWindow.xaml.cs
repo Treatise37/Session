@@ -954,13 +954,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private float GetEffectiveCraftTime(PersistentCraftRecipePrototype recipe)
     {
-        return MathF.Max(0.25f, recipe.CraftTime);
+        return PersistentCraftRecipeRules.GetEffectiveCraftTime(recipe);
     }
 
     private int GetEffectiveIngredientAmount(PersistentCraftRecipePrototype recipe, PersistentCraftIngredient ingredient)
     {
-        _ = recipe;
-        return Math.Max(1, ingredient.Amount);
+        return PersistentCraftRecipeRules.GetEffectiveIngredientAmount(recipe, ingredient);
     }
 
 }

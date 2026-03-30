@@ -12,13 +12,16 @@ public sealed class PersistentCraftIngredientConsumptionPlanner
     private readonly IEntityManager _entityManager;
     private readonly PersistentCraftIngredientMatcher _matcher;
     private readonly TagSystem _tagSystem;
+    private readonly PersistentCraftAccessibleInventoryPolicy _inventoryPolicy;
 
     public PersistentCraftIngredientConsumptionPlanner(
         IEntityManager entityManager,
-        TagSystem tagSystem)
+        TagSystem tagSystem,
+        PersistentCraftAccessibleInventoryPolicy? inventoryPolicy = null)
     {
         _entityManager = entityManager;
         _tagSystem = tagSystem;
+        _inventoryPolicy = inventoryPolicy ?? PersistentCraftAccessibleInventoryPolicy.Default;
         _matcher = new PersistentCraftIngredientMatcher(entityManager, tagSystem);
     }
 
@@ -32,7 +35,7 @@ public sealed class PersistentCraftIngredientConsumptionPlanner
         if (!_entityManager.EntityExists(user))
             return false;
 
-        var availableEntities = PersistentCraftInventoryHelper.CollectAccessibleEntities(_entityManager, user);
+        var availableEntities = PersistentCraftInventoryHelper.CollectAccessibleEntities(_entityManager, user, _inventoryPolicy);
 
         for (var ingredientIndex = 0; ingredientIndex < recipe.Ingredients.Count; ingredientIndex++)
         {

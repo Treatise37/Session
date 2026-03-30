@@ -43,7 +43,7 @@ public sealed class PersistentCraftProfileRepository
         }
     }
 
-    public async Task SaveProfileAsync(PersistentCraftProfileComponent profile)
+    public async Task SaveProfileAsync(PersistentCraftProfileSnapshot profile)
     {
         var lockKey = GetSaveLockKey(profile);
         var saveLock = RentSaveLock(lockKey);
@@ -68,17 +68,17 @@ public sealed class PersistentCraftProfileRepository
         }
     }
 
-    public string SerializeSaveData(PersistentCraftProfileComponent profile)
+    public string SerializeSaveData(PersistentCraftProfileSnapshot profile)
     {
         var saveData = CreateDefaultSaveData();
 
         for (var i = 0; i < saveData.Branches.Count; i++)
         {
             var branchData = saveData.Branches[i];
-            if (!profile.BranchProgress.TryGetValue(branchData.Branch, out var branchProfile))
+            if (!profile.BranchEarnedPoints.TryGetValue(branchData.Branch, out var totalEarnedPoints))
                 continue;
 
-            branchData.TotalEarnedPoints = Math.Max(0, branchProfile.TotalEarnedPoints);
+            branchData.TotalEarnedPoints = Math.Max(0, totalEarnedPoints);
         }
 
         var unlockedNodes = profile.UnlockedNodes
@@ -263,7 +263,7 @@ public sealed class PersistentCraftProfileRepository
         _saveLocks.TryRemove(new KeyValuePair<string, SaveLockHandle>(lockKey, saveLock));
     }
 
-    private static string GetSaveLockKey(PersistentCraftProfileComponent profile)
+    private static string GetSaveLockKey(PersistentCraftProfileSnapshot profile)
     {
         return $"{profile.UserId:N}|{profile.CharacterName}";
     }

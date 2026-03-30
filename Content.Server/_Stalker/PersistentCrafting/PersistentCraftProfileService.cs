@@ -100,18 +100,18 @@ public sealed class PersistentCraftProfileService
 
     public bool HasNodeUnlockedOrAutoAvailable(PersistentCraftProfileComponent profile, string nodeId)
     {
-        return HasNodeUnlockedOrAutoAvailable(profile, nodeId, new HashSet<string>());
+        return PersistentCraftNodeRules.HasNodeUnlockedOrAutoAvailable(
+            nodeId,
+            profile.UnlockedNodes.Contains,
+            ResolveNodePrototypeOrNull);
     }
 
     public bool AreNodePrerequisitesMet(PersistentCraftProfileComponent profile, PersistentCraftNodePrototype node)
     {
-        for (var i = 0; i < node.Prerequisites.Count; i++)
-        {
-            if (!HasNodeUnlockedOrAutoAvailable(profile, node.Prerequisites[i]))
-                return false;
-        }
-
-        return true;
+        return PersistentCraftNodeRules.ArePrerequisitesMet(
+            node,
+            profile.UnlockedNodes.Contains,
+            ResolveNodePrototypeOrNull);
     }
 
     public int GetAvailableBranchPoints(PersistentCraftProfileComponent profile, string branch)
@@ -187,37 +187,11 @@ public sealed class PersistentCraftProfileService
         return profile;
     }
 
-    private bool HasNodeUnlockedOrAutoAvailable(
-        PersistentCraftProfileComponent profile,
-        string nodeId,
-        HashSet<string> path)
+    private PersistentCraftNodePrototype? ResolveNodePrototypeOrNull(string nodeId)
     {
-        if (!_prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node))
-            return false;
-
-        if (profile.UnlockedNodes.Contains(nodeId))
-            return true;
-
-        if (!IsAutoUnlockedNode(node))
-            return false;
-
-        if (!path.Add(nodeId))
-            return false;
-
-        try
-        {
-            for (var i = 0; i < node.Prerequisites.Count; i++)
-            {
-                if (!HasNodeUnlockedOrAutoAvailable(profile, node.Prerequisites[i], path))
-                    return false;
-            }
-
-            return true;
-        }
-        finally
-        {
-            path.Remove(nodeId);
-        }
+        return _prototype.TryIndex<PersistentCraftNodePrototype>(nodeId, out var node)
+            ? node
+            : null;
     }
 
     private static bool IsAutoUnlockedNode(PersistentCraftNodePrototype node)

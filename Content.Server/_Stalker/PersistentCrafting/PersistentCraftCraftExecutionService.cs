@@ -113,7 +113,7 @@ public sealed class PersistentCraftCraftExecutionService
     public float GetEffectiveCraftTime(EntityUid user, PersistentCraftRecipePrototype recipe)
     {
         _ = user;
-        return MathF.Max(0.25f, recipe.CraftTime);
+        return PersistentCraftRecipeRules.GetEffectiveCraftTime(recipe);
     }
 
     public int GetEffectiveIngredientAmount(
@@ -122,7 +122,6 @@ public sealed class PersistentCraftCraftExecutionService
         PersistentCraftIngredient ingredient)
     {
         _ = user;
-        _ = recipe;
-        return Math.Max(1, ingredient.Amount);
+        return PersistentCraftRecipeRules.GetEffectiveIngredientAmount(recipe, ingredient);
     }
 }

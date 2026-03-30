@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +29,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
     [Dependency] private readonly SharedStackSystem _stacks = default!;
     [Dependency] private readonly TagSystem _tag = default!;
 
+    private readonly ConcurrentQueue<PendingProfileLoad> _completedLoads = new();
+    private readonly ConcurrentQueue<PendingSaveFailure> _saveFailures = new();
+
     private PersistentCraftBranchRegistry _branchRegistry = default!;
     private PersistentCraftProfileService _profileService = default!;
     private PersistentCraftProfileRepository _profileRepository = default!;
@@ -49,7 +54,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             _stacks,
             _hands,
             _profileService);
-        ValidateRecipeIngredientDefinitions();
+        ValidatePrototypeConfiguration();
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
         SubscribeLocalEvent<PersistentCraftAccessComponent, ComponentStartup>(OnAccessStartup);
@@ -59,6 +64,182 @@ public sealed class PersistentCraftingSystem : EntitySystem
         SubscribeNetworkEvent<RequestPersistentCraftStateEvent>(OnRequestState);
         SubscribeNetworkEvent<RequestPersistentCraftRecipeEvent>(OnRequestCraftRecipe);
         SubscribeNetworkEvent<RequestPersistentCraftUnlockEvent>(OnRequestUnlock);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        ProcessCompletedLoads();
+        ProcessSaveFailures();
+    }
+
+    private void ValidatePrototypeConfiguration()
+    {
+        ValidateNodeAndRecipeDefinitions();
+        ValidateRecipeIngredientDefinitions();
+    }
+
+    private void ValidateNodeAndRecipeDefinitions()
+    {
+        var branchIds = new HashSet<string>(_proto.EnumeratePrototypes<PersistentCraftBranchPrototype>().Select(branch => branch.ID));
+        var categoryIds = new HashSet<string>(_proto.EnumeratePrototypes<PersistentCraftCategoryPrototype>().Select(category => category.ID));
+        var subCategories = _proto.EnumeratePrototypes<PersistentCraftSubCategoryPrototype>().ToDictionary(subCategory => subCategory.ID);
+        var nodesById = _nodeCache.ToDictionary(node => node.ID);
+        var occupiedTreeSlots = new HashSet<string>();
+
+        foreach (var branch in _proto.EnumeratePrototypes<PersistentCraftBranchPrototype>())
+        {
+            if (!string.IsNullOrWhiteSpace(branch.DefaultCategory) && !categoryIds.Contains(branch.DefaultCategory))
+            {
+                Log.Warning($"[PersistentCraft] Branch '{branch.ID}' references missing defaultCategory '{branch.DefaultCategory}'.");
+            }
+        }
+
+        foreach (var node in _nodeCache)
+        {
+            if (!branchIds.Contains(node.Branch))
+                Log.Warning($"[PersistentCraft] Node '{node.ID}' references missing branch '{node.Branch}'.");
+
+            if (node.Cost < 0)
+                Log.Warning($"[PersistentCraft] Node '{node.ID}' has negative cost '{node.Cost}'.");
+
+            if (!string.IsNullOrWhiteSpace(node.DisplayProto) && !_proto.TryIndex<EntityPrototype>(node.DisplayProto, out _))
+            {
+                Log.Warning($"[PersistentCraft] Node '{node.ID}' references missing displayProto '{node.DisplayProto}'.");
+            }
+
+            if (node.TreeColumn >= 0 && node.TreeRow >= 0)
+            {
+                var slotKey = $"{node.Branch}|{node.TreeColumn}|{node.TreeRow}";
+                if (!occupiedTreeSlots.Add(slotKey))
+                {
+                    Log.Warning($"[PersistentCraft] Duplicate tree position for branch '{node.Branch}' at column={node.TreeColumn}, row={node.TreeRow}. Node='{node.ID}'.");
+                }
+            }
+
+            for (var i = 0; i < node.Prerequisites.Count; i++)
+            {
+                var prerequisiteId = node.Prerequisites[i];
+                if (!nodesById.TryGetValue(prerequisiteId, out var prerequisite))
+                {
+                    Log.Warning($"[PersistentCraft] Node '{node.ID}' references missing prerequisite '{prerequisiteId}'.");
+                    continue;
+                }
+
+                if (!string.Equals(prerequisite.Branch, node.Branch, StringComparison.Ordinal))
+                {
+                    Log.Warning($"[PersistentCraft] Node '{node.ID}' has cross-branch prerequisite '{prerequisiteId}' ('{prerequisite.Branch}' -> '{node.Branch}').");
+                }
+            }
+        }
+
+        ValidateNodeCycles(nodesById);
+
+        foreach (var recipe in _proto.EnumeratePrototypes<PersistentCraftRecipePrototype>())
+        {
+            if (!branchIds.Contains(recipe.Branch))
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' references missing branch '{recipe.Branch}'.");
+
+            if (recipe.CraftTime < 0f)
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' has negative craftTime '{recipe.CraftTime}'.");
+
+            if (recipe.PointReward < 0)
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' has negative pointReward '{recipe.PointReward}'.");
+
+            if (!nodesById.TryGetValue(recipe.RequiredNode, out var requiredNode))
+            {
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' references missing requiredNode '{recipe.RequiredNode}'.");
+            }
+            else if (!string.Equals(requiredNode.Branch, recipe.Branch, StringComparison.Ordinal))
+            {
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' branch '{recipe.Branch}' does not match requiredNode '{recipe.RequiredNode}' branch '{requiredNode.Branch}'.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(recipe.DisplayProto) && !_proto.TryIndex<EntityPrototype>(recipe.DisplayProto, out _))
+            {
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' references missing displayProto '{recipe.DisplayProto}'.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(recipe.Category) && !categoryIds.Contains(recipe.Category))
+            {
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' references missing category '{recipe.Category}'.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(recipe.SubCategory))
+            {
+                if (!subCategories.TryGetValue(recipe.SubCategory, out var subCategory))
+                {
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' references missing subCategory '{recipe.SubCategory}'.");
+                }
+                else if (!string.IsNullOrWhiteSpace(recipe.Category) &&
+                         !string.Equals(subCategory.Category, recipe.Category, StringComparison.Ordinal))
+                {
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' uses category '{recipe.Category}' but subCategory '{recipe.SubCategory}' belongs to '{subCategory.Category ?? string.Empty}'.");
+                }
+            }
+
+            if (recipe.Results.Count == 0)
+                Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' has no results.");
+
+            for (var i = 0; i < recipe.Results.Count; i++)
+            {
+                var result = recipe.Results[i];
+                if (string.IsNullOrWhiteSpace(result.Proto) || !_proto.TryIndex<EntityPrototype>(result.Proto, out _))
+                {
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' result #{i} references missing proto '{result.Proto}'.");
+                }
+
+                if (result.Amount <= 0)
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' result #{i} has non-positive amount '{result.Amount}'.");
+            }
+        }
+    }
+
+    private void ValidateNodeCycles(IReadOnlyDictionary<string, PersistentCraftNodePrototype> nodesById)
+    {
+        var visitState = new Dictionary<string, byte>(nodesById.Count);
+        var path = new Stack<string>();
+
+        foreach (var nodeId in nodesById.Keys)
+        {
+            ValidateNodeCyclesDfs(nodeId, nodesById, visitState, path);
+        }
+    }
+
+    private void ValidateNodeCyclesDfs(
+        string nodeId,
+        IReadOnlyDictionary<string, PersistentCraftNodePrototype> nodesById,
+        Dictionary<string, byte> visitState,
+        Stack<string> path)
+    {
+        if (visitState.TryGetValue(nodeId, out var state))
+        {
+            if (state == 1)
+            {
+                var cycle = string.Join(" -> ", path.Reverse().Append(nodeId));
+                Log.Warning($"[PersistentCraft] Detected prerequisite cycle: {cycle}");
+            }
+
+            return;
+        }
+
+        visitState[nodeId] = 1;
+        path.Push(nodeId);
+
+        if (nodesById.TryGetValue(nodeId, out var node))
+        {
+            for (var i = 0; i < node.Prerequisites.Count; i++)
+            {
+                var prerequisiteId = node.Prerequisites[i];
+                if (!nodesById.ContainsKey(prerequisiteId))
+                    continue;
+
+                ValidateNodeCyclesDfs(prerequisiteId, nodesById, visitState, path);
+            }
+        }
+
+        path.Pop();
+        visitState[nodeId] = 2;
     }
 
     private void ValidateRecipeIngredientDefinitions()
@@ -78,6 +259,12 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 else if (selectorKind == PersistentCraftIngredientSelectorKind.InvalidMultiple)
                 {
                     Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} has multiple selectors set. proto='{ingredient.Proto ?? string.Empty}', stackType='{ingredient.StackType ?? string.Empty}', tag='{ingredient.Tag ?? string.Empty}'.");
+                }
+                else if (selectorKind == PersistentCraftIngredientSelectorKind.Proto &&
+                         !string.IsNullOrWhiteSpace(ingredient.Proto) &&
+                         !_proto.TryIndex<EntityPrototype>(ingredient.Proto, out _))
+                {
+                    Log.Warning($"[PersistentCraft] Recipe '{recipe.ID}' ingredient #{index} references missing proto '{ingredient.Proto}'.");
                 }
 
                 if (ingredient.Amount <= 0)
@@ -114,26 +301,23 @@ public sealed class PersistentCraftingSystem : EntitySystem
         return TryComp(uid, out PersistentCraftProfileComponent? profile) && profile.Loaded;
     }
 
-    public async Task<bool> ResetProfileAsync(EntityUid uid)
+    public Task<bool> ResetProfileAsync(EntityUid uid)
     {
         if (!TryComp(uid, out PersistentCraftProfileComponent? profile))
-            return false;
+            return Task.FromResult(false);
 
         if (profile.UserId == Guid.Empty || string.IsNullOrWhiteSpace(profile.CharacterName))
-            return false;
+            return Task.FromResult(false);
 
         profile.BranchProgress = _profileService.CreateDefaultBranchProfiles();
         profile.UnlockedNodes.Clear();
-        _profileService.EnsureAutoTierNodesUnlocked(profile);
-        _profileService.NormalizeBranchPoints(profile);
         profile.Loaded = true;
         profile.PersistenceDisabled = false;
-
-        await SaveProfileAsync(uid, profile);
+        PrepareProfileForPersistence(profile);
+        QueueSaveProfile(uid, profile);
         SendStateToAttachedActor(uid);
-        return true;
+        return Task.FromResult(true);
     }
-
 
     private void OnAccessStartup(EntityUid uid, PersistentCraftAccessComponent component, ComponentStartup args)
     {
@@ -159,7 +343,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         profile.Loaded = false;
         profile.PersistenceDisabled = false;
 
-        _ = LoadProfileAsync(args.Mob, profile.UserId, profile.CharacterName, profile.LoadGeneration);
+        StartLoadProfile(args.Mob, profile.UserId, profile.CharacterName, profile.LoadGeneration);
     }
 
     private void OnOpenCraftMenu(EntityUid uid, PersistentCraftAccessComponent component, OpenPersistentCraftMenuActionEvent args)
@@ -263,7 +447,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return;
         }
 
-        _ = SaveProfileAsync(user, profile);
+        QueueSaveProfile(user, profile);
 
         _popup.PopupEntity(
             Loc.GetString("persistent-craft-popup-unlocked", ("skill", ResolveNodeName(node))),
@@ -332,7 +516,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 args.User);
         }
 
-        _ = SaveProfileAsync(args.User, Comp<PersistentCraftProfileComponent>(args.User));
+        QueueSaveProfile(args.User, Comp<PersistentCraftProfileComponent>(args.User));
         SendStateToAttachedActor(args.User);
     }
 
@@ -371,100 +555,144 @@ public sealed class PersistentCraftingSystem : EntitySystem
         SendState(actor.PlayerSession, uid);
     }
 
-    private async Task LoadProfileAsync(EntityUid uid, Guid userId, string characterName, int loadGeneration)
+    private void StartLoadProfile(EntityUid uid, Guid userId, string characterName, int loadGeneration)
     {
+        _ = LoadProfileInBackground(uid, userId, characterName, loadGeneration);
+    }
+
+    private async Task LoadProfileInBackground(EntityUid uid, Guid userId, string characterName, int loadGeneration)
+    {
+        PersistentCraftProfileLoadResult loadResult;
+
         try
         {
-            var loadResult = await _profileRepository.LoadProfileAsync(userId, characterName);
-
-            if (Deleted(uid) ||
-                !TryComp(uid, out PersistentCraftProfileComponent? profile) ||
-                profile.LoadGeneration != loadGeneration)
-                return;
-
-            profile.BranchProgress = _profileService.CreateDefaultBranchProfiles();
-            profile.UnlockedNodes.Clear();
-            profile.PersistenceDisabled = false;
-            var shouldResaveProfile = false;
-
-            if (!loadResult.Success)
-            {
-                profile.PersistenceDisabled = true;
-                Log.Error(loadResult.ErrorMessage ?? $"[PersistentCraft] Persistent craft profile for '{characterName}' ({userId}) is unreadable. Using a temporary in-memory profile without persistence.");
-
-                if (TryComp(uid, out ActorComponent? popupActor))
-                {
-                    _popup.PopupEntity(
-                        Loc.GetString("persistent-craft-load-failed"),
-                        uid,
-                        popupActor.PlayerSession,
-                        PopupType.MediumCaution);
-                }
-            }
-            else if (loadResult.HasSavedProfile && loadResult.SaveData != null)
-            {
-                var saveData = loadResult.SaveData;
-                profile.BranchProgress = _profileService.BuildBranchProfiles(saveData.Branches);
-                profile.UnlockedNodes = _profileService.SanitizeUnlockedNodes(saveData.UnlockedNodes, characterName);
-                shouldResaveProfile = loadResult.DataChanged || profile.UnlockedNodes.Count != saveData.UnlockedNodes.Count;
-            }
-
-            _profileService.EnsureAutoTierNodesUnlocked(profile);
-            _profileService.NormalizeBranchPoints(profile);
-            profile.Loaded = true;
-
-            if (shouldResaveProfile && !profile.PersistenceDisabled && profile.LoadGeneration == loadGeneration)
-                await SaveProfileAsync(uid, profile);
-
-            if (TryComp(uid, out ActorComponent? actor))
-                SendState(actor.PlayerSession, uid);
+            loadResult = await _profileRepository.LoadProfileAsync(userId, characterName);
         }
         catch (Exception ex)
         {
-            Log.Error($"Failed to load persistent craft profile for {characterName}: {ex}");
+            loadResult = PersistentCraftProfileLoadResult.Failed($"[PersistentCraft] Failed to load profile for '{characterName}': {ex}");
+        }
 
-            if (Deleted(uid) ||
-                !TryComp(uid, out PersistentCraftProfileComponent? profile) ||
-                profile.LoadGeneration != loadGeneration)
-                return;
+        _completedLoads.Enqueue(new PendingProfileLoad(uid, userId, characterName, loadGeneration, loadResult));
+    }
 
-            profile.BranchProgress = _profileService.CreateDefaultBranchProfiles();
-            profile.UnlockedNodes.Clear();
+    private void ProcessCompletedLoads()
+    {
+        while (_completedLoads.TryDequeue(out var pending))
+        {
+            ApplyLoadedProfile(pending);
+        }
+    }
+
+    private void ApplyLoadedProfile(PendingProfileLoad pending)
+    {
+        if (Deleted(pending.Uid) ||
+            !TryComp(pending.Uid, out PersistentCraftProfileComponent? profile) ||
+            profile.LoadGeneration != pending.LoadGeneration)
+            return;
+
+        profile.BranchProgress = _profileService.CreateDefaultBranchProfiles();
+        profile.UnlockedNodes.Clear();
+        profile.PersistenceDisabled = false;
+        var shouldResaveProfile = false;
+
+        if (!pending.LoadResult.Success)
+        {
             profile.PersistenceDisabled = true;
-            _profileService.EnsureAutoTierNodesUnlocked(profile);
-            _profileService.NormalizeBranchPoints(profile);
-            profile.Loaded = true;
+            Log.Error(pending.LoadResult.ErrorMessage ?? $"[PersistentCraft] Persistent craft profile for '{pending.CharacterName}' ({pending.UserId}) is unreadable. Using a temporary in-memory profile without persistence.");
 
-            if (TryComp(uid, out ActorComponent? actor))
+            if (TryComp(pending.Uid, out ActorComponent? popupActor))
             {
                 _popup.PopupEntity(
                     Loc.GetString("persistent-craft-load-failed"),
-                    uid,
+                    pending.Uid,
+                    popupActor.PlayerSession,
+                    PopupType.MediumCaution);
+            }
+        }
+        else if (pending.LoadResult.HasSavedProfile && pending.LoadResult.SaveData != null)
+        {
+            var saveData = pending.LoadResult.SaveData;
+            profile.BranchProgress = _profileService.BuildBranchProfiles(saveData.Branches);
+            profile.UnlockedNodes = _profileService.SanitizeUnlockedNodes(saveData.UnlockedNodes, pending.CharacterName);
+            shouldResaveProfile = pending.LoadResult.DataChanged || profile.UnlockedNodes.Count != saveData.UnlockedNodes.Count;
+        }
+
+        PrepareProfileForPersistence(profile);
+        profile.Loaded = true;
+
+        if (shouldResaveProfile)
+            QueueSaveProfile(pending.Uid, profile);
+
+        if (TryComp(pending.Uid, out ActorComponent? actor))
+            SendState(actor.PlayerSession, pending.Uid);
+    }
+
+    private void QueueSaveProfile(EntityUid uid, PersistentCraftProfileComponent profile)
+    {
+        if (profile.PersistenceDisabled)
+            return;
+
+        PrepareProfileForPersistence(profile);
+        var snapshot = CreateSnapshot(profile);
+        _ = SaveProfileInBackground(uid, snapshot);
+    }
+
+    private async Task SaveProfileInBackground(EntityUid uid, PersistentCraftProfileSnapshot snapshot)
+    {
+        try
+        {
+            await _profileRepository.SaveProfileAsync(snapshot);
+        }
+        catch (Exception ex)
+        {
+            _saveFailures.Enqueue(new PendingSaveFailure(uid, snapshot.CharacterName, ex));
+        }
+    }
+
+    private void ProcessSaveFailures()
+    {
+        while (_saveFailures.TryDequeue(out var failure))
+        {
+            Log.Error($"Failed to save persistent craft profile for {failure.CharacterName}: {failure.Exception}");
+
+            if (!Deleted(failure.Uid) && TryComp(failure.Uid, out ActorComponent? actor))
+            {
+                _popup.PopupEntity(
+                    Loc.GetString("persistent-craft-save-failed"),
+                    failure.Uid,
                     actor.PlayerSession,
                     PopupType.MediumCaution);
-                SendState(actor.PlayerSession, uid);
             }
         }
     }
 
-    private async Task SaveProfileAsync(EntityUid uid, PersistentCraftProfileComponent profile)
+    private void PrepareProfileForPersistence(PersistentCraftProfileComponent profile)
     {
-        try
-        {
-            if (profile.PersistenceDisabled)
-                return;
+        profile.UnlockedNodes = _profileService.SanitizeUnlockedNodes(profile.UnlockedNodes, profile.CharacterName);
+        _profileService.EnsureAutoTierNodesUnlocked(profile);
+        _profileService.NormalizeBranchPoints(profile);
+    }
 
-            profile.UnlockedNodes = _profileService.SanitizeUnlockedNodes(profile.UnlockedNodes, profile.CharacterName);
-            _profileService.EnsureAutoTierNodesUnlocked(profile);
-            _profileService.NormalizeBranchPoints(profile);
-            await _profileRepository.SaveProfileAsync(profile);
-        }
-        catch (Exception ex)
+    private PersistentCraftProfileSnapshot CreateSnapshot(PersistentCraftProfileComponent profile)
+    {
+        var branchEarnedPoints = new Dictionary<string, int>(profile.BranchProgress.Count);
+        foreach (var entry in profile.BranchProgress)
         {
-            Log.Error($"Failed to save persistent craft profile for {profile.CharacterName}: {ex}");
-            if (!Deleted(uid) && TryComp(uid, out ActorComponent? actor))
-                _popup.PopupEntity(Loc.GetString("persistent-craft-save-failed"), uid, actor.PlayerSession, PopupType.MediumCaution);
+            branchEarnedPoints[entry.Key] = Math.Max(0, entry.Value.TotalEarnedPoints);
         }
+
+        return new PersistentCraftProfileSnapshot
+        {
+            UserId = profile.UserId,
+            CharacterName = profile.CharacterName,
+            BranchEarnedPoints = branchEarnedPoints,
+            UnlockedNodes = profile.UnlockedNodes
+                .Where(id => !string.IsNullOrWhiteSpace(id))
+                .Distinct()
+                .OrderBy(id => id)
+                .ToList(),
+        };
     }
 
     private void PopupUser(EntityUid user, string locKey)
@@ -505,5 +733,37 @@ public sealed class PersistentCraftingSystem : EntitySystem
         }
 
         return node.ID;
+    }
+
+    private sealed class PendingProfileLoad
+    {
+        public readonly EntityUid Uid;
+        public readonly Guid UserId;
+        public readonly string CharacterName;
+        public readonly int LoadGeneration;
+        public readonly PersistentCraftProfileLoadResult LoadResult;
+
+        public PendingProfileLoad(EntityUid uid, Guid userId, string characterName, int loadGeneration, PersistentCraftProfileLoadResult loadResult)
+        {
+            Uid = uid;
+            UserId = userId;
+            CharacterName = characterName;
+            LoadGeneration = loadGeneration;
+            LoadResult = loadResult;
+        }
+    }
+
+    private sealed class PendingSaveFailure
+    {
+        public readonly EntityUid Uid;
+        public readonly string CharacterName;
+        public readonly Exception Exception;
+
+        public PendingSaveFailure(EntityUid uid, string characterName, Exception exception)
+        {
+            Uid = uid;
+            CharacterName = characterName;
+            Exception = exception;
+        }
     }
 }
