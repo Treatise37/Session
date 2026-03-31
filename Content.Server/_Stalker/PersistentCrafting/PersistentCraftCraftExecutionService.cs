@@ -107,7 +107,6 @@ public sealed class PersistentCraftCraftExecutionService
         branchProfile.TotalEarnedPoints = (int) Math.Min(int.MaxValue, totalEarned);
 
         _profileService.EnsureAutoTierNodesUnlocked(profile);
-        _profileService.NormalizeBranchPoints(profile);
     }
 
     public float GetEffectiveCraftTime(PersistentCraftRecipePrototype recipe)

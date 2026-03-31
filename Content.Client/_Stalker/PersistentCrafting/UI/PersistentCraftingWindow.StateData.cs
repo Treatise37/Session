@@ -88,7 +88,8 @@ public sealed partial class PersistentCraftingWindow
         return PersistentCraftNodeAvailabilityResolver.HasNodeUnlockedOrAutoAvailable(
             _state,
             nodeId,
-            ResolveNodePrototypeOrNull);
+            ResolveNodePrototypeOrNull,
+            _reusablePath);
     }
 
     private Color GetBranchAccent(string branch)

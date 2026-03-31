@@ -1,5 +1,3 @@
-# Persistent ammo recipes - tier 3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe8mmBuckshotBoxCink
   name: persistent-craft-recipe-generic-name
@@ -11,14 +9,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 8mmBuckshotBox
     amount: 6
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipeShotgunBulletBoxCink
   name: persistent-craft-recipe-generic-name
@@ -30,14 +27,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: ShotgunBulletBox
     amount: 6
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe545PCBoxCink
   name: persistent-craft-recipe-generic-name
@@ -49,16 +45,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 545PCBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe545HPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -70,16 +63,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 545HPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe918SP7BoxCink
   name: persistent-craft-recipe-generic-name
@@ -91,16 +81,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 918SP7Box
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe918PBMBoxCink
   name: persistent-craft-recipe-generic-name
@@ -112,16 +99,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 918PBMBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe919RIPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -133,16 +117,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 919RIPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe919PBMBoxCink
   name: persistent-craft-recipe-generic-name
@@ -154,16 +135,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 919PBMBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe556M855BoxCink
   name: persistent-craft-recipe-generic-name
@@ -175,16 +153,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 556M855Box
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe556WarmagBoxCink
   name: persistent-craft-recipe-generic-name
@@ -196,16 +171,13 @@
   craftTime: 7
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 556WarmagBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe725LRNPCBoxCink
   name: persistent-craft-recipe-generic-name
@@ -217,16 +189,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 725LRNPCBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe725PSTBoxCink
   name: persistent-craft-recipe-generic-name
@@ -238,16 +207,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 725PSTBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe739FMJBoxCink
   name: persistent-craft-recipe-generic-name
@@ -259,16 +225,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 739FMJBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe739HPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -280,16 +243,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 739HPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe751M80BoxCink
   name: persistent-craft-recipe-generic-name
@@ -301,16 +261,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 751M80Box
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe751UNBoxCink
   name: persistent-craft-recipe-generic-name
@@ -322,16 +279,13 @@
   craftTime: 12
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 751UNBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe45ACPRIPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -343,16 +297,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 45ACPRIPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe45ACPAPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -364,16 +315,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 45ACPAPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe939SP6BoxCink
   name: persistent-craft-recipe-generic-name
@@ -385,16 +333,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: STBox9x39SP6
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe754FMJBoxCink
   name: persistent-craft-recipe-generic-name
@@ -406,16 +351,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 754FMJBox
     amount: 4
   category: ammo
   subCategory: tier-3
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe754HPBoxCink
   name: persistent-craft-recipe-generic-name
@@ -427,13 +369,10 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
-    amount: 1
-  - proto: STCraftSheetBrassT3
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 10
   results:
   - proto: 754HPBox
     amount: 4
   category: ammo
   subCategory: tier-3
-

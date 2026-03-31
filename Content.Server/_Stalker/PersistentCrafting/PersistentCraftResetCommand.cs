@@ -18,9 +18,9 @@ public sealed class PersistentCraftResetCommand : IConsoleCommand
     public string Description => "Resets persistent crafting progress for an in-game player (by account username).";
     public string Help => "st_pcraft_reset <username>";
 
-    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        _ = ExecuteAsync(shell, args);
+        await ExecuteAsync(shell, args);
     }
 
     private async Task ExecuteAsync(IConsoleShell shell, string[] args)

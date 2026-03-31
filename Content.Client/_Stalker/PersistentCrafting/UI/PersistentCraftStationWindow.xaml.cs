@@ -59,6 +59,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private readonly Dictionary<string, PersistentCraftBranchState> _visibleBranchStatesByBranch = new();
     private readonly Dictionary<string, bool> _recipeCraftabilityById = new();
     private readonly HashSet<string> _pendingScrollRestoreBranches = new();
+    private readonly HashSet<string> _reusablePath = new();
     private readonly PersistentCraftStationViewModel _viewModel = new();
     private readonly PersistentCraftStationBranchCoordinator _branchCoordinator;
     private PersistentCraftTextResolver _textResolver = default!;
@@ -210,7 +211,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         {
             container.AddChild(new Label
             {
-                Text = Loc.GetString("persistent-craft-none"),
+                Text = Loc.GetString("persistent-craft-station-no-recipes"),
                 FontColorOverride = MutedText,
             });
             return;
@@ -228,16 +229,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             container.AddChild(new Label
             {
                 Text = Loc.GetString("persistent-craft-window-loading-points"),
-                FontColorOverride = MutedText,
-            });
-            return;
-        }
-
-        if (branchRecipes.Count == 0)
-        {
-            container.AddChild(new Label
-            {
-                Text = Loc.GetString("persistent-craft-station-no-recipes"),
                 FontColorOverride = MutedText,
             });
             return;
@@ -525,7 +516,8 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         return PersistentCraftNodeAvailabilityResolver.HasNodeUnlockedOrAutoAvailable(
             state,
             nodeId,
-            ResolveNodePrototypeOrNull);
+            ResolveNodePrototypeOrNull,
+            _reusablePath);
     }
 
     private string BuildIngredientMarkup(PersistentCraftRecipePrototype recipe)

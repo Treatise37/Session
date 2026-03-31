@@ -12,7 +12,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftSheetBrassT3
     amount: 1
@@ -31,7 +31,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftOakPlankT3
     amount: 1
@@ -50,7 +50,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftMultilayerPCBT3
     amount: 1
@@ -69,7 +69,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftPlasticFittingT3
     amount: 1
@@ -88,7 +88,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftQuartzCrystalT3
     amount: 1
@@ -107,7 +107,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftSturdyHideT3
     amount: 1
@@ -126,7 +126,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 32
   results:
   - proto: STCraftGlueKitT3
     amount: 1

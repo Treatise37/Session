@@ -16,9 +16,9 @@ public sealed class PersistentCraftResetAllCommand : IConsoleCommand
     public string Description => "Deletes ALL persistent crafting profiles for every player. Irreversible.";
     public string Help => "st_pcraft_reset_all confirm";
 
-    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        _ = ExecuteAsync(shell, args);
+        await ExecuteAsync(shell, args);
     }
 
     private async Task ExecuteAsync(IConsoleShell shell, string[] args)

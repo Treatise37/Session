@@ -3,7 +3,7 @@
   name: persistent-craft-node-materials-t1-name
   description: persistent-craft-node-materials-t1-desc
   branch: Materials
-  cost: 0
+  cost: 5
   displayProto: STCraftAnomalyDust
   treeColumn: 1
   treeRow: 0
@@ -13,7 +13,7 @@
   name: persistent-craft-node-materials-t2-name
   description: persistent-craft-node-materials-t2-desc
   branch: Materials
-  cost: 0
+  cost: 15
   displayProto: STCraftSheetIronT2
   treeColumn: 1
   treeRow: 1
@@ -25,7 +25,7 @@
   name: persistent-craft-node-materials-t3-name
   description: persistent-craft-node-materials-t3-desc
   branch: Materials
-  cost: 0
+  cost: 80
   displayProto: STCraftSheetBrassT3
   treeColumn: 1
   treeRow: 2
@@ -37,7 +37,7 @@
   name: persistent-craft-node-materials-t4-name
   description: persistent-craft-node-materials-t4-desc
   branch: Materials
-  cost: 0
+  cost: 160
   displayProto: STCraftSheetAluminumT4
   treeColumn: 1
   treeRow: 3
@@ -49,7 +49,7 @@
   name: persistent-craft-node-materials-t5-name
   description: persistent-craft-node-materials-t5-desc
   branch: Materials
-  cost: 0
+  cost: 320
   displayProto: STCraftSheetSteelT5
   treeColumn: 1
   treeRow: 4

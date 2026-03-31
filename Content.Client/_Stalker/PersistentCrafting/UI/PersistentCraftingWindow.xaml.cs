@@ -67,6 +67,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private readonly Dictionary<string, BoxContainer> _branchHosts = new();
     private readonly Dictionary<string, PersistentCraftTreeScrollContainer> _branchTreeScrolls = new();
     private readonly Dictionary<string, Dictionary<string, UIBox2>> _nodeBoundsByBranch = new();
+    private readonly HashSet<string> _reusablePath = new();
     private readonly PersistentCraftSkillTreeViewModel _viewModel = new();
     private readonly PersistentCraftBranchCoordinator _branchCoordinator;
     private readonly PersistentCraftNodeSelectionCoordinator _selectionCoordinator;

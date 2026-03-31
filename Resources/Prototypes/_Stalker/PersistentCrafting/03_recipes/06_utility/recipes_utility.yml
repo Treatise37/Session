@@ -1,5 +1,3 @@
-# Utility branch persistent recipes
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeArtifactContainerT1
   name: persistent-craft-recipe-generic-name
@@ -12,14 +10,11 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 10
-  - proto: STCraftSheetCopperT1
-    amount: 1
+    amount: 2
   results:
   - proto: BoxArtcont
   category: utility
   subCategory: utility-artifact-containers
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeSafeboxT15
   name: persistent-craft-recipe-generic-name
@@ -31,17 +26,12 @@
   craftTime: 5
   pointReward: 1
   ingredients:
-  - proto: BoxArtcont
-    amount: 1
-  - proto: STCraftSheetCopperT1
-    amount: 2
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 2
   results:
   - proto: BoxSafebox
   category: utility
   subCategory: utility-cases
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeMedkitCMST15
   name: persistent-craft-recipe-generic-name
@@ -53,17 +43,12 @@
   craftTime: 5
   pointReward: 1
   ingredients:
-  - proto: STCraftCottonFabricT1
-    amount: 2
-  - proto: STCraftBasicThreadKitT1
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 2
   results:
   - proto: MedkitCMSStalker
   category: utility
   subCategory: utility-cases
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeMedkitGrizzlyT3
   name: persistent-craft-recipe-generic-name
@@ -73,21 +58,14 @@
   tier: 3
   requiredNode: PersistentCraftUtilityNodeMedkitGrizzlyT3
   craftTime: 7
-  pointReward: 5
+  pointReward: 16
   ingredients:
-  - proto: MedkitCMSStalker
-    amount: 1
-  - proto: STCraftSturdyHideT3
-    amount: 1
-  - proto: STCraftGlueKitT3
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 25
+    amount: 32
   results:
   - proto: MedkitGrizzlyStalker
   category: utility
   subCategory: utility-cases
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeArtifactContainerAdvancedT4
   name: persistent-craft-recipe-generic-name
@@ -97,21 +75,16 @@
   tier: 4
   requiredNode: PersistentCraftUtilityNodeArtifactContainerAdvancedT4
   craftTime: 8
-  pointReward: 10
+  pointReward: 32
   ingredients:
-  - proto: BoxArtcont
-    amount: 1
-  - proto: STCraftSheetAluminumT4
-    amount: 2
-  - proto: STCraftHighPerformanceChipT4
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 40
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: BoxArtcont1
   category: utility
   subCategory: utility-artifact-containers
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackDuffelT1
   name: persistent-craft-recipe-generic-name
@@ -123,17 +96,12 @@
   craftTime: 5
   pointReward: 1
   ingredients:
-  - proto: STCraftCottonFabricT1
-    amount: 3
-  - proto: STCraftBasicThreadKitT1
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 5
+    amount: 2
   results:
   - proto: ClothingBackpackDuffelGreenStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackTacticT2
   name: persistent-craft-recipe-generic-name
@@ -143,21 +111,14 @@
   tier: 2
   requiredNode: PersistentCraftUtilityNodeBackpackTacticT2
   craftTime: 6
-  pointReward: 2
+  pointReward: 3
   ingredients:
-  - proto: ClothingBackpackDuffelGreenStalker
-    amount: 1
-  - proto: STCraftHideT2
-    amount: 2
-  - proto: STCraftTapeKitT2
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 6
   results:
   - proto: ClothingBackpackTacticOliveStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackArmyT3
   name: persistent-craft-recipe-generic-name
@@ -167,21 +128,14 @@
   tier: 3
   requiredNode: PersistentCraftUtilityNodeBackpackArmyT3
   craftTime: 7
-  pointReward: 5
+  pointReward: 16
   ingredients:
-  - proto: ClothingBackpackTacticOliveStalker
-    amount: 1
-  - proto: STCraftSturdyHideT3
-    amount: 2
-  - proto: STCraftGlueKitT3
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 25
+    amount: 32
   results:
   - proto: ClothingBackpackDuffelCommonStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackZaryaT3
   name: persistent-craft-recipe-generic-name
@@ -191,21 +145,14 @@
   tier: 3
   requiredNode: PersistentCraftUtilityNodeBackpackZaryaT3
   craftTime: 7
-  pointReward: 5
+  pointReward: 16
   ingredients:
-  - proto: ClothingBackpackDuffelCommonStalker
-    amount: 1
-  - proto: STCraftSturdyHideT3
-    amount: 2
-  - proto: STCraftGlueKitT3
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 25
+    amount: 32
   results:
   - proto: ClothingBackpackStalkerZaryaGreen
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackHikingT3
   name: persistent-craft-recipe-generic-name
@@ -215,21 +162,14 @@
   tier: 3
   requiredNode: PersistentCraftUtilityNodeBackpackHikingT3
   craftTime: 7
-  pointReward: 5
+  pointReward: 16
   ingredients:
-  - proto: ClothingBackpackDuffelCommonStalker
-    amount: 1
-  - proto: STCraftSturdyHideT3
-    amount: 2
-  - proto: STCraftGlueKitT3
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 25
+    amount: 32
   results:
   - proto: ClothingBackpackMercStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackBlueArmyT4
   name: persistent-craft-recipe-generic-name
@@ -239,21 +179,16 @@
   tier: 4
   requiredNode: PersistentCraftUtilityNodeBackpackBlueArmyT4
   craftTime: 8
-  pointReward: 10
+  pointReward: 32
   ingredients:
-  - proto: ClothingBackpackMercStalker
-    amount: 1
-  - proto: STCraftPolymerFabricT4
-    amount: 2
-  - proto: STCraftIndustrialThreadStaplesKitT4
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 40
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: ClothingBackpackDuffelMilitaryBlue
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackArmyTacticT4
   name: persistent-craft-recipe-generic-name
@@ -263,21 +198,16 @@
   tier: 4
   requiredNode: PersistentCraftUtilityNodeBackpackArmyTacticT4
   craftTime: 8
-  pointReward: 10
+  pointReward: 32
   ingredients:
-  - proto: ClothingBackpackStalkerZaryaGreen
-    amount: 1
-  - proto: STCraftPolymerFabricT4
-    amount: 2
-  - proto: STCraftIndustrialThreadStaplesKitT4
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 40
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: ClothingBackpackDuffelBlackTacticStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackProT4
   name: persistent-craft-recipe-generic-name
@@ -287,21 +217,16 @@
   tier: 4
   requiredNode: PersistentCraftUtilityNodeBackpackProT4
   craftTime: 8
-  pointReward: 10
+  pointReward: 32
   ingredients:
-  - proto: ClothingBackpackMercStalker
-    amount: 1
-  - proto: STCraftPolymerFabricT4
-    amount: 2
-  - proto: STCraftIndustrialThreadStaplesKitT4
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 40
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: ClothingBackpackDuffelSuperStalkerGray
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBackpackCapaciousT5
   name: persistent-craft-recipe-generic-name
@@ -311,21 +236,16 @@
   tier: 5
   requiredNode: PersistentCraftUtilityNodeBackpackCapaciousT5
   craftTime: 10
-  pointReward: 10
+  pointReward: 64
   ingredients:
-  - proto: ClothingBackpackDuffelSuperStalkerGray
-    amount: 1
-  - proto: STCraftCompositeMaterialT5
-    amount: 2
-  - proto: STCraftHighStrengthKitT5
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
+  - tag: STArtifactTier4
+    amount: 1
   results:
   - proto: ClothingBackpackDuffelRareStalker
   category: utility
   subCategory: utility-backpacks
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBeltNoviceT1
   name: persistent-craft-recipe-generic-name
@@ -337,17 +257,12 @@
   craftTime: 5
   pointReward: 1
   ingredients:
-  - proto: STCraftCottonFabricT1
-    amount: 1
-  - proto: STCraftBasicThreadKitT1
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 5
+    amount: 2
   results:
   - proto: ClothingBeltBandolierStalker
   category: utility
   subCategory: utility-belts
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBeltZaryaT2
   name: persistent-craft-recipe-generic-name
@@ -357,21 +272,14 @@
   tier: 2
   requiredNode: PersistentCraftUtilityNodeBeltZaryaT2
   craftTime: 6
-  pointReward: 2
+  pointReward: 3
   ingredients:
-  - proto: ClothingBeltBandolierStalker
-    amount: 1
-  - proto: STCraftHideT2
-    amount: 2
-  - proto: STCraftTapeKitT2
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 6
   results:
   - proto: ClothingBeltWebbingHolsterStalkerZarya
   category: utility
   subCategory: utility-belts
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBeltPszT2
   name: persistent-craft-recipe-generic-name
@@ -381,21 +289,14 @@
   tier: 2
   requiredNode: PersistentCraftUtilityNodeBeltPszT2
   craftTime: 6
-  pointReward: 2
+  pointReward: 3
   ingredients:
-  - proto: ClothingBeltWebbingHolsterStalkerZarya
-    amount: 1
-  - proto: STCraftHideT2
-    amount: 2
-  - proto: STCraftTapeKitT2
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 6
   results:
   - proto: ClothingBeltGreenWebbingStalker
   category: utility
   subCategory: utility-belts
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBeltBerillT3
   name: persistent-craft-recipe-generic-name
@@ -405,21 +306,14 @@
   tier: 3
   requiredNode: PersistentCraftUtilityNodeBeltBerillT3
   craftTime: 7
-  pointReward: 5
+  pointReward: 16
   ingredients:
-  - proto: ClothingBeltGreenWebbingStalker
-    amount: 1
-  - proto: STCraftSturdyHideT3
-    amount: 1
-  - proto: STCraftGlueKitT3
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 25
+    amount: 32
   results:
   - proto: ClothingBeltWebbingBerill
   category: utility
   subCategory: utility-belts
-
 - type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeBeltDoubleZaryaT4
   name: persistent-craft-recipe-generic-name
@@ -429,16 +323,12 @@
   tier: 4
   requiredNode: PersistentCraftUtilityNodeBeltDoubleZaryaT4
   craftTime: 8
-  pointReward: 10
+  pointReward: 32
   ingredients:
-  - proto: ClothingBeltWebbingHolsterStalkerZarya
-    amount: 1
-  - proto: STCraftPolymerFabricT4
-    amount: 1
-  - proto: STCraftIndustrialThreadStaplesKitT4
-    amount: 1
   - proto: STCraftAnomalyDust
-    amount: 40
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: ClothingBeltWebbingDoubleStalkerZaryaSmall
   category: utility

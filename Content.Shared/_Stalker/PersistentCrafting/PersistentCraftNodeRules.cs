@@ -13,21 +13,49 @@ public static class PersistentCraftNodeRules
         return HasNodeUnlockedOrAutoAvailable(nodeId, isUnlocked, resolveNode, new HashSet<string>());
     }
 
+    /// <summary>
+    /// Overload for hot paths: caller provides a reusable HashSet to avoid per-call allocations.
+    /// The HashSet is used as a cycle-detection scratch buffer and is cleared before use.
+    /// </summary>
+    public static bool HasNodeUnlockedOrAutoAvailable(
+        string nodeId,
+        Func<string, bool> isUnlocked,
+        Func<string, PersistentCraftNodePrototype?> resolveNode,
+        HashSet<string> reusablePath)
+    {
+        reusablePath.Clear();
+        return HasNodeUnlockedOrAutoAvailableInternal(nodeId, isUnlocked, resolveNode, reusablePath);
+    }
+
     public static bool ArePrerequisitesMet(
         PersistentCraftNodePrototype node,
         Func<string, bool> isUnlocked,
         Func<string, PersistentCraftNodePrototype?> resolveNode)
     {
+        return ArePrerequisitesMet(node, isUnlocked, resolveNode, new HashSet<string>());
+    }
+
+    /// <summary>
+    /// Overload for hot paths: caller provides a reusable HashSet to avoid per-call allocations.
+    /// The HashSet is used as a cycle-detection scratch buffer and is cleared before each prerequisite check.
+    /// </summary>
+    public static bool ArePrerequisitesMet(
+        PersistentCraftNodePrototype node,
+        Func<string, bool> isUnlocked,
+        Func<string, PersistentCraftNodePrototype?> resolveNode,
+        HashSet<string> reusablePath)
+    {
         for (var i = 0; i < node.Prerequisites.Count; i++)
         {
-            if (!HasNodeUnlockedOrAutoAvailable(node.Prerequisites[i], isUnlocked, resolveNode))
+            reusablePath.Clear();
+            if (!HasNodeUnlockedOrAutoAvailableInternal(node.Prerequisites[i], isUnlocked, resolveNode, reusablePath))
                 return false;
         }
 
         return true;
     }
 
-    private static bool HasNodeUnlockedOrAutoAvailable(
+    private static bool HasNodeUnlockedOrAutoAvailableInternal(
         string nodeId,
         Func<string, bool> isUnlocked,
         Func<string, PersistentCraftNodePrototype?> resolveNode,
@@ -50,7 +78,7 @@ public static class PersistentCraftNodeRules
         {
             for (var i = 0; i < node.Prerequisites.Count; i++)
             {
-                if (!HasNodeUnlockedOrAutoAvailable(node.Prerequisites[i], isUnlocked, resolveNode, path))
+                if (!HasNodeUnlockedOrAutoAvailableInternal(node.Prerequisites[i], isUnlocked, resolveNode, path))
                     return false;
             }
 

@@ -3,7 +3,7 @@
   name: АИ-2 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 0
+  cost: 5
   displayProto: MedkitAI2
   treeColumn: 0
   treeRow: 0
@@ -13,7 +13,7 @@
   name: бинт T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 0
+  cost: 5
   displayProto: STGauze
   treeColumn: 1
   treeRow: 0
@@ -25,7 +25,7 @@
   name: наб. ушибов T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 0
+  cost: 5
   displayProto: STBrutepack
   treeColumn: 2
   treeRow: 0
@@ -37,7 +37,7 @@
   name: мазь T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 0
+  cost: 5
   displayProto: STOintment
   treeColumn: 3
   treeRow: 0
@@ -49,7 +49,7 @@
   name: армейская апт. T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 10
+  cost: 15
   displayProto: MedkitMilitary
   treeColumn: 1
   treeRow: 1
@@ -61,7 +61,7 @@
   name: пакет крови T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 10
+  cost: 15
   displayProto: Bloodpack
   treeColumn: 2
   treeRow: 1
@@ -73,7 +73,7 @@
   name: научная апт. T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 50
+  cost: 80
   displayProto: MedkitScience
   treeColumn: 1
   treeRow: 2
@@ -85,7 +85,7 @@
   name: продв. апт. T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 300
+  cost: 160
   displayProto: MedkitElite
   treeColumn: 1
   treeRow: 3
@@ -97,7 +97,7 @@
   name: LAR T5
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 600
+  cost: 320
   displayProto: MedkitLAR
   treeColumn: 1
   treeRow: 4
@@ -119,7 +119,7 @@
   name: пробудофилин T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 50
+  cost: 80
   displayProto: STPillboxProbud
   treeColumn: 5
   treeRow: 1
@@ -131,7 +131,7 @@
   name: фуфломицин T4.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 600
+  cost: 320
   displayProto: STPillboxShiza
   treeColumn: 5
   treeRow: 2

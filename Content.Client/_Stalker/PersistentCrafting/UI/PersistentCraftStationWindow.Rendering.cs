@@ -388,7 +388,7 @@ public sealed partial class PersistentCraftStationWindow
             VerticalExpand = true,
         };
 
-        body.AddChild(CreateRecipeDetailHeader(recipe, branchState, canCraft, loaded, requirementMet, hasMaterials, accent));
+        body.AddChild(CreateRecipeDetailHeader(recipe, branchState, canCraft, accent));
         body.AddChild(new Control { MinSize = new Vector2(1, 12) });
 
         body.AddChild(CreateSection(
@@ -418,15 +418,8 @@ public sealed partial class PersistentCraftStationWindow
         PersistentCraftRecipePrototype recipe,
         PersistentCraftBranchState branchState,
         bool canCraft,
-        bool loaded,
-        bool requirementMet,
-        bool hasMaterials,
         Color accent)
     {
-        _ = loaded;
-        _ = requirementMet;
-        _ = hasMaterials;
-
         var header = new PersistentCraftRecipeDetailHeader();
         header.SetData(
             ResolveRecipeName(recipe),

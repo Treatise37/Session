@@ -12,6 +12,16 @@ public sealed class PersistentCraftProfileService
     private readonly PersistentCraftBranchRegistry _branchRegistry;
     private readonly IReadOnlyList<PersistentCraftNodePrototype> _nodeCache;
     private readonly ISawmill _sawmill;
+    private readonly HashSet<string> _reusablePath = new();
+
+    /// <summary>
+    /// Auto-unlock ноды (Cost ≤ 0), отсортированные в топологическом порядке.
+    /// Гарантия: если нода A — пререквизит ноды B, то A идёт раньше B в списке.
+    /// Строится один раз в конструкторе алгоритмом Кана, после чего
+    /// <see cref="EnsureAutoTierNodesUnlocked"/> выполняется за один проход O(m),
+    /// где m — количество auto-unlock нод.
+    /// </summary>
+    private readonly List<PersistentCraftNodePrototype> _autoUnlockTopological;
 
     public PersistentCraftProfileService(
         IPrototypeManager prototype,
@@ -22,6 +32,92 @@ public sealed class PersistentCraftProfileService
         _branchRegistry = branchRegistry;
         _nodeCache = nodeCache;
         _sawmill = Logger.GetSawmill("persistent-craft.profile");
+        _autoUnlockTopological = BuildAutoUnlockTopologicalOrder(nodeCache);
+    }
+
+    /// <summary>
+    /// Алгоритм Кана: строит топологический порядок для auto-unlock нод.
+    /// Учитываются только рёбра между auto-unlock нодами; пререквизиты
+    /// с Cost > 0 (ручные ноды) считаются «внешними» — они проверяются
+    /// в рантайме через profile.UnlockedNodes.Contains.
+    /// </summary>
+    private static List<PersistentCraftNodePrototype> BuildAutoUnlockTopologicalOrder(
+        IReadOnlyList<PersistentCraftNodePrototype> allNodes)
+    {
+        // Собираем только auto-unlock ноды в словарь
+        var autoNodes = new Dictionary<string, PersistentCraftNodePrototype>();
+        for (var i = 0; i < allNodes.Count; i++)
+        {
+            var node = allNodes[i];
+            if (PersistentCraftingHelper.IsAutoUnlockedNode(node))
+                autoNodes[node.ID] = node;
+        }
+
+        if (autoNodes.Count == 0)
+            return new List<PersistentCraftNodePrototype>();
+
+        // Считаем in-degree и строим граф зависимых (dependents).
+        // Ребро prerequisiteId → nodeId означает: «когда prerequisiteId обработан,
+        // уменьшить in-degree у nodeId». Учитываем только рёбра между auto-unlock нодами.
+        var inDegree = new Dictionary<string, int>(autoNodes.Count);
+        var dependents = new Dictionary<string, List<string>>(autoNodes.Count);
+
+        foreach (var node in autoNodes.Values)
+        {
+            if (!inDegree.ContainsKey(node.ID))
+                inDegree[node.ID] = 0;
+
+            for (var i = 0; i < node.Prerequisites.Count; i++)
+            {
+                var prereqId = node.Prerequisites[i];
+                if (!autoNodes.ContainsKey(prereqId))
+                    continue;
+
+                // prereqId → node.ID: когда prereq обработан, node.ID получает -1 к in-degree
+                inDegree.TryGetValue(node.ID, out var current);
+                inDegree[node.ID] = current + 1;
+
+                if (!dependents.TryGetValue(prereqId, out var depList))
+                {
+                    depList = new List<string>();
+                    dependents[prereqId] = depList;
+                }
+
+                depList.Add(node.ID);
+            }
+        }
+
+        // BFS (алгоритм Кана): начинаем с нод без auto-unlock пререквизитов
+        var queue = new Queue<string>();
+        foreach (var (nodeId, degree) in inDegree)
+        {
+            if (degree == 0)
+                queue.Enqueue(nodeId);
+        }
+
+        var result = new List<PersistentCraftNodePrototype>(autoNodes.Count);
+        while (queue.Count > 0)
+        {
+            var nodeId = queue.Dequeue();
+            result.Add(autoNodes[nodeId]);
+
+            if (!dependents.TryGetValue(nodeId, out var deps))
+                continue;
+
+            for (var i = 0; i < deps.Count; i++)
+            {
+                var depId = deps[i];
+                inDegree[depId]--;
+                if (inDegree[depId] == 0)
+                    queue.Enqueue(depId);
+            }
+        }
+
+        // Если result.Count < autoNodes.Count — есть цикл среди auto-unlock нод.
+        // ValidateNodeCycles в CraftingSystem уже предупреждает об этом при запуске,
+        // поэтому здесь просто пропускаем циклические ноды (они не попадут в список).
+
+        return result;
     }
 
     public Dictionary<string, PersistentCraftBranchProfile> CreateDefaultBranchProfiles()
@@ -78,30 +174,29 @@ public sealed class PersistentCraftProfileService
 
     public void EnsureAutoTierNodesUnlocked(PersistentCraftProfileComponent profile)
     {
-        // Вместо повторных полных проходов по всем нодам до сходимости (O(k×n)),
-        // делаем один проход в топологическом порядке (O(n)):
-        // нода разблокируется автоматически, если её пререквизиты уже выполнены.
-        // _nodeCache отсортирован по Branch/Row/Column при инициализации,
-        // что соответствует топологическому порядку для корректно заданных деревьев.
-        var addedAny = true;
-        while (addedAny)
+        // Один проход по предвычисленному топологическому порядку auto-unlock нод — O(m).
+        // Благодаря топологической сортировке, к моменту обработки ноды все её
+        // auto-unlock пререквизиты уже были рассмотрены. Пререквизиты с Cost > 0
+        // (ручные ноды) проверяются через profile.UnlockedNodes.Contains.
+        for (var i = 0; i < _autoUnlockTopological.Count; i++)
         {
-            addedAny = false;
-            for (var i = 0; i < _nodeCache.Count; i++)
+            var node = _autoUnlockTopological[i];
+
+            if (profile.UnlockedNodes.Contains(node.ID))
+                continue;
+
+            var allPrerequisitesMet = true;
+            for (var j = 0; j < node.Prerequisites.Count; j++)
             {
-                var node = _nodeCache[i];
-                if (!IsAutoUnlockedNode(node))
-                    continue;
-
-                if (profile.UnlockedNodes.Contains(node.ID))
-                    continue;
-
-                if (!AreNodePrerequisitesMet(profile, node))
-                    continue;
-
-                profile.UnlockedNodes.Add(node.ID);
-                addedAny = true;
+                if (!profile.UnlockedNodes.Contains(node.Prerequisites[j]))
+                {
+                    allPrerequisitesMet = false;
+                    break;
+                }
             }
+
+            if (allPrerequisitesMet)
+                profile.UnlockedNodes.Add(node.ID);
         }
     }
 
@@ -110,7 +205,8 @@ public sealed class PersistentCraftProfileService
         return PersistentCraftNodeRules.HasNodeUnlockedOrAutoAvailable(
             nodeId,
             profile.UnlockedNodes.Contains,
-            ResolveNodePrototypeOrNull);
+            ResolveNodePrototypeOrNull,
+            _reusablePath);
     }
 
     public bool AreNodePrerequisitesMet(PersistentCraftProfileComponent profile, PersistentCraftNodePrototype node)
@@ -118,7 +214,8 @@ public sealed class PersistentCraftProfileService
         return PersistentCraftNodeRules.ArePrerequisitesMet(
             node,
             profile.UnlockedNodes.Contains,
-            ResolveNodePrototypeOrNull);
+            ResolveNodePrototypeOrNull,
+            _reusablePath);
     }
 
     public int GetAvailableBranchPoints(PersistentCraftProfileComponent profile, string branch)
@@ -176,11 +273,6 @@ public sealed class PersistentCraftProfileService
         return result;
     }
 
-    public void NormalizeBranchPoints(PersistentCraftProfileComponent profile)
-    {
-        // TotalEarnedPoints сеттер уже гарантирует неотрицательность.
-        // Метод оставлен для совместимости вызывающего кода.
-    }
 
     public PersistentCraftBranchProfile GetOrCreateBranchProfile(PersistentCraftProfileComponent profile, string branch)
     {
@@ -207,8 +299,4 @@ public sealed class PersistentCraftProfileService
             : null;
     }
 
-    private static bool IsAutoUnlockedNode(PersistentCraftNodePrototype node)
-    {
-        return PersistentCraftingHelper.IsAutoUnlockedNode(node);
-    }
 }

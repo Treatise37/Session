@@ -3,7 +3,7 @@
   name: контейнер артефактов T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 0
+  cost: 5
   displayProto: BoxArtcont
   treeColumn: 0
   treeRow: 0
@@ -37,7 +37,7 @@
   name: аптечка Grizzly T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 50
+  cost: 80
   displayProto: MedkitGrizzlyStalker
   treeColumn: 0
   treeRow: 2
@@ -49,7 +49,7 @@
   name: продв. контейнер артефактов T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 300
+  cost: 160
   displayProto: BoxArtcont1
   treeColumn: 2
   treeRow: 1
@@ -61,7 +61,7 @@
   name: вещмешок T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 0
+  cost: 5
   displayProto: ClothingBackpackDuffelGreenStalker
   treeColumn: 4
   treeRow: 0
@@ -71,7 +71,7 @@
   name: тактический рюкзак T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 10
+  cost: 15
   displayProto: ClothingBackpackTacticOliveStalker
   treeColumn: 4
   treeRow: 1
@@ -83,7 +83,7 @@
   name: армейский рюкзак T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 50
+  cost: 80
   displayProto: ClothingBackpackDuffelCommonStalker
   treeColumn: 4
   treeRow: 2
@@ -95,7 +95,7 @@
   name: рюкзак Заря T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 50
+  cost: 80
   displayProto: ClothingBackpackStalkerZaryaGreen
   treeColumn: 5
   treeRow: 2
@@ -107,7 +107,7 @@
   name: походный рюкзак T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 50
+  cost: 80
   displayProto: ClothingBackpackMercStalker
   treeColumn: 6
   treeRow: 2
@@ -119,7 +119,7 @@
   name: синий армейский рюкзак T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 300
+  cost: 160
   displayProto: ClothingBackpackDuffelMilitaryBlue
   treeColumn: 7
   treeRow: 2
@@ -131,7 +131,7 @@
   name: армейский такт. рюкзак T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 300
+  cost: 160
   displayProto: ClothingBackpackDuffelBlackTacticStalker
   treeColumn: 5
   treeRow: 3
@@ -143,7 +143,7 @@
   name: проф. рюкзак T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 300
+  cost: 160
   displayProto: ClothingBackpackDuffelSuperStalkerGray
   treeColumn: 6
   treeRow: 3
@@ -155,7 +155,7 @@
   name: вместительный рюкзак T5
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 600
+  cost: 320
   displayProto: ClothingBackpackDuffelRareStalker
   treeColumn: 6
   treeRow: 4
@@ -168,7 +168,7 @@
   name: подсумок новичка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 0
+  cost: 5
   displayProto: ClothingBeltBandolierStalker
   treeColumn: 9
   treeRow: 0
@@ -178,7 +178,7 @@
   name: поясная сумка Заря T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 10
+  cost: 15
   displayProto: ClothingBeltWebbingHolsterStalkerZarya
   treeColumn: 9
   treeRow: 1
@@ -190,7 +190,7 @@
   name: поясная сумка ПСЗ T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 10
+  cost: 15
   displayProto: ClothingBeltGreenWebbingStalker
   treeColumn: 10
   treeRow: 1
@@ -202,7 +202,7 @@
   name: поясная сумка Берилл-5М T2.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 50
+  cost: 80
   displayProto: ClothingBeltWebbingBerill
   treeColumn: 10
   treeRow: 2
@@ -214,7 +214,7 @@
   name: двойная поясная сумка Заря T3.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 300
+  cost: 160
   displayProto: ClothingBeltWebbingDoubleStalkerZaryaSmall
   treeColumn: 9
   treeRow: 2

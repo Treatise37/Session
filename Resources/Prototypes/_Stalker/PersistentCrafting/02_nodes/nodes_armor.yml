@@ -5,7 +5,7 @@
   name: Щиток-2 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: STClothingOuterArmorLightPlateVestBaseStalker
   treeColumn: 1
   treeRow: 0
@@ -15,7 +15,7 @@
   name: Кираса T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: STClothingOuterKirasa
   treeColumn: 0
   treeRow: 0
@@ -27,7 +27,7 @@
   name: 6Б2 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmor6B2
   treeColumn: 2
   treeRow: 0
@@ -40,7 +40,7 @@
   name: Степь-4 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: STClothingOuterArmorLightPlateVestBaseANAgreen
   treeColumn: 1
   treeRow: 1
@@ -52,7 +52,7 @@
   name: Корунд T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: STClothingOuterKorynd
   treeColumn: 0
   treeRow: 1
@@ -64,7 +64,7 @@
   name: Слик T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: STClothingOuterSlickHaki
   treeColumn: 2
   treeRow: 1
@@ -76,7 +76,7 @@
   name: 6Б13 T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingOuterArmor6B13
   treeColumn: 2
   treeRow: 2
@@ -88,7 +88,7 @@
   name: Варяг-4 T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: STClothingOuterArmorIOTVGreen
   treeColumn: 1
   treeRow: 2
@@ -100,7 +100,7 @@
   name: IOTV T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: STClothingOuterIOTV
   treeColumn: 0
   treeRow: 2
@@ -112,7 +112,7 @@
   name: Редут T5
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 600
+  cost: 320
   displayProto: STClothingOuterHeavyRedut
   treeColumn: 2
   treeRow: 3
@@ -124,7 +124,7 @@
   name: Ратник T5
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 600
+  cost: 320
   displayProto: STClothingOuterArmorRatnik
   treeColumn: 1
   treeRow: 3
@@ -136,7 +136,7 @@
   name: Кольчужная куртка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 5
   displayProto: ClothingOuterArmourJacketStalker
   treeColumn: 5
   treeRow: 0
@@ -148,7 +148,7 @@
   name: Ул. Куртка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingOuterJacketStalkerUpgrade
   treeColumn: 6
   treeRow: 0
@@ -158,7 +158,7 @@
   name: Аномальная куртка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 5
   displayProto: ClothingOuterAnomalyStalkerJacket
   treeColumn: 7
   treeRow: 0
@@ -170,7 +170,7 @@
   name: РХБЗ T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: STClothingOuterArmorRCBZ
   treeColumn: 6
   treeRow: 1
@@ -182,7 +182,7 @@
   name: УЗК-5 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterArmorUzk5
   treeColumn: 7
   treeRow: 1
@@ -194,7 +194,7 @@
   name: ПСЗ-7 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: STClothingOuterArmorLightPlateVestBasePSZ7
   treeColumn: 8
   treeRow: 1
@@ -206,7 +206,7 @@
   name: К. наём сталкера T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterArmorStalker
   treeColumn: 7
   treeRow: 2
@@ -218,7 +218,7 @@
   name: Сева T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterArmorSevaStalker
   treeColumn: 6
   treeRow: 2
@@ -230,7 +230,7 @@
   name: Хазмат T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingOuterArmorHazmatRf
   treeColumn: 6
   treeRow: 3
@@ -242,7 +242,7 @@
   name: Берилл 5М T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: STClothingOuterArmorBerill5M
   treeColumn: 7
   treeRow: 3
@@ -254,7 +254,7 @@
   name: Пионер T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingOuterArmorStalkerCombat
   treeColumn: 8
   treeRow: 3
@@ -266,7 +266,7 @@
   name: Заря T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorZaryaStalker
   treeColumn: 9
   treeRow: 1
@@ -278,7 +278,7 @@
   name: Заря-3 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorZaryaStalkerModifedType1
   treeColumn: 10
   treeRow: 0
@@ -290,7 +290,7 @@
   name: Заря-7 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorZaryaStalkerModifedType2
   treeColumn: 11
   treeRow: 0
@@ -302,7 +302,7 @@
   name: Турист T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorZaryaTourist
   treeColumn: 12
   treeRow: 0
@@ -314,7 +314,7 @@
   name: Кинолог T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorZaryaHunter
   treeColumn: 10
   treeRow: 1
@@ -326,7 +326,7 @@
   name: Искра T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingOuterArmorSpark
   treeColumn: 11
   treeRow: 1
@@ -338,7 +338,7 @@
   name: Туземец T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterArmorAborigineStalker
   treeColumn: 9
   treeRow: 2
@@ -350,7 +350,7 @@
   name: Егерь T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingOuterArmorYeger
   treeColumn: 9
   treeRow: 3
@@ -362,7 +362,7 @@
   name: КСН-13 T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: STClothingOuterArmorVeryHeavy
   treeColumn: 10
   treeRow: 3
@@ -374,7 +374,7 @@
   name: КСН-13-М T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: STClothingOuterArmorVeryHeavySci
   treeColumn: 11
   treeRow: 3
@@ -386,7 +386,7 @@
   name: СШ-68 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingHeadHelmetSH68
   treeColumn: 0
   treeRow: 6
@@ -396,7 +396,7 @@
   name: Циклоп T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: STClothingHeadHelmetMakeshiftTacticalT3
   treeColumn: 0
   treeRow: 7
@@ -408,7 +408,7 @@
   name: Сфера-08 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingHeadHelmetBerill5MMilitary
   treeColumn: 0
   treeRow: 8
@@ -420,7 +420,7 @@
   name: Сфера-12 T4.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingHeadHelmetBulatMilitary
   treeColumn: 0
   treeRow: 9
@@ -432,7 +432,7 @@
   name: Сито T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingHeadHelmetLight
   treeColumn: 2
   treeRow: 6
@@ -442,7 +442,7 @@
   name: Восток T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 10
+  cost: 15
   displayProto: ClothingHeadHelmetInfantry
   treeColumn: 2
   treeRow: 7
@@ -454,7 +454,7 @@
   name: Витязь T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingHeadHelmetVityaz1C
   treeColumn: 2
   treeRow: 8
@@ -466,7 +466,7 @@
   name: Зенит T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingHeadAssaultHelmet
   treeColumn: 3
   treeRow: 8
@@ -478,7 +478,7 @@
   name: 6Б47 T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingHeadRatnik
   treeColumn: 2
   treeRow: 9
@@ -490,7 +490,7 @@
   name: Улач T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 300
+  cost: 160
   displayProto: ClothingHeadHelmetUlach
   treeColumn: 3
   treeRow: 9
@@ -502,7 +502,7 @@
   name: FAST T5
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 600
+  cost: 320
   displayProto: STClothingHeadHelmetFASTNeutralBlack
   treeColumn: 2
   treeRow: 10
@@ -514,7 +514,7 @@
   name: Дождевик T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingOuterCoatDoshdevik
   treeColumn: 8
   treeRow: 6
@@ -524,7 +524,7 @@
   name: Плащ СЕВА T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: STClothingCapeArmorChainmailSeva
   treeColumn: 8
   treeRow: 7
@@ -536,7 +536,7 @@
   name: Кожанный плащ T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingOuterCoatStalker
   treeColumn: 10
   treeRow: 6
@@ -546,7 +546,7 @@
   name: Плащ исследователя T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 0
+  cost: 5
   displayProto: ClothingOuterCoatPoisk
   treeColumn: 11
   treeRow: 6
@@ -558,7 +558,7 @@
   name: Кевларовый плащ T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterCoatLoyalist
   treeColumn: 10
   treeRow: 7
@@ -570,7 +570,7 @@
   name: Болотный плащ T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 50
+  cost: 80
   displayProto: ClothingOuterCoatBolotniy
   treeColumn: 11
   treeRow: 7

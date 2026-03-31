@@ -1,5 +1,3 @@
-# Persistent anomaly recipes - upgrades
-
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2ModifiedHunter
   name: persistent-craft-recipe-generic-name
@@ -9,20 +7,14 @@
   tier: 2
   requiredNode: PersistentCraftAnomalyNodeModifiedHunter
   craftTime: 5
-  pointReward: 2
+  pointReward: 3
   ingredients:
-  - proto: ZoneArtifactDetectorHunter
-    amount: 1
-  - proto: STCraftStandardPCBT2
-    amount: 1
-  - proto: STCraftGlassT2
-    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 6
   results:
   - proto: ZoneArtifactDetectorModifiedHunter
   category: upgrades
   subCategory: tier-2
-
-
 - type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT2ResponseCvoboda
   name: persistent-craft-recipe-generic-name
@@ -32,16 +24,11 @@
   tier: 2
   requiredNode: PersistentCraftAnomalyNodeResponseCvoboda
   craftTime: 5
-  pointReward: 2
+  pointReward: 3
   ingredients:
-  - proto: ZoneArtifactDetectorResponse
-    amount: 1
-  - proto: STCraftStandardPCBT2
-    amount: 1
-  - proto: STCraftCoil
-    amount: 1
+  - proto: STCraftAnomalyDust
+    amount: 6
   results:
   - proto: ZoneArtifactDetectorResponseCvoboda
   category: upgrades
   subCategory: tier-2
-

@@ -1,5 +1,3 @@
-# Persistent ammo recipes - tier 1
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe7mmBuckshotBoxCink
   name: persistent-craft-recipe-generic-name
@@ -11,14 +9,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: STCraftSheetCopperT1
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 1
   results:
   - proto: 7mmBuckshotBox
     amount: 6
   category: ammo
   subCategory: tier-1
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe6mmBuckshotBoxCink
   name: persistent-craft-recipe-generic-name
@@ -30,14 +27,13 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: STCraftSheetCopperT1
-    amount: 2
+  - proto: STCraftAnomalyDust
+    amount: 1
   results:
   - proto: 6mmBuckshotBox
     amount: 6
   category: ammo
   subCategory: tier-1
-
 - type: persistentCraftRecipe
   id: PersistentCraftAmmo_newrecipe1255PS12ACink
   name: persistent-craft-recipe-generic-name
@@ -49,13 +45,10 @@
   craftTime: 6
   pointReward: 0
   ingredients:
-  - proto: CraftMaterialGunpowder
+  - proto: STCraftAnomalyDust
     amount: 1
-  - proto: STCraftSheetCopperT1
-    amount: 2
   results:
   - proto: Ammobox1255PS12A
     amount: 4
   category: ammo
   subCategory: tier-1
-

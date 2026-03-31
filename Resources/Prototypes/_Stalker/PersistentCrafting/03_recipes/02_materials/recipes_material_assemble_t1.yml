@@ -12,7 +12,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftSheetCopperT1
     amount: 1
@@ -31,7 +31,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftPinePlankT1
     amount: 1
@@ -50,7 +50,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftBasicPCBT1
     amount: 1
@@ -69,7 +69,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftPlasticFittingT1
     amount: 1
@@ -88,7 +88,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftGlassT1
     amount: 1
@@ -107,7 +107,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftCottonFabricT1
     amount: 1
@@ -126,7 +126,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftBasicThreadKitT1
     amount: 1
@@ -145,7 +145,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftBattery
     amount: 1
@@ -164,7 +164,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftCoil
     amount: 1
@@ -183,7 +183,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftCapacitor
     amount: 1
@@ -202,7 +202,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftTransformer
     amount: 1
@@ -221,7 +221,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 1
+    amount: 2
   results:
   - proto: STCraftFurniture
     amount: 1
@@ -240,7 +240,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 4
+    amount: 2
   results:
   - proto: CraftMaterialGunpowder
     amount: 1

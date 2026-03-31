@@ -12,7 +12,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftSheetAluminumT4
     amount: 1
@@ -31,7 +31,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftYewPlankT4
     amount: 1
@@ -50,7 +50,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftHighPerformanceChipT4
     amount: 1
@@ -69,7 +69,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftPlasticFittingT4
     amount: 1
@@ -88,7 +88,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftSapphireCrystalT4
     amount: 1
@@ -107,7 +107,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftPolymerFabricT4
     amount: 1
@@ -126,7 +126,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 64
   results:
   - proto: STCraftIndustrialThreadStaplesKitT4
     amount: 1

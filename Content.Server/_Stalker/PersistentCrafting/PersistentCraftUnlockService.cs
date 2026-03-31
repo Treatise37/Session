@@ -51,7 +51,6 @@ public sealed class PersistentCraftUnlockService
         }
 
         profile.UnlockedNodes.Add(node.ID);
-        _profileService.NormalizeBranchPoints(profile);
 
         failure = PersistentCraftUnlockFailure.None;
         return true;

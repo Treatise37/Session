@@ -12,7 +12,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftSheetSteelT5
     amount: 1
@@ -31,7 +31,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftRedWoodPlankT5
     amount: 1
@@ -50,7 +50,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftNanoChipT5
     amount: 1
@@ -69,7 +69,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftPlasticFittingT5
     amount: 1
@@ -88,7 +88,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftAluminumOxideT5
     amount: 1
@@ -107,7 +107,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftCompositeMaterialT5
     amount: 1
@@ -126,7 +126,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 200
+    amount: 128
   results:
   - proto: STCraftHighStrengthKitT5
     amount: 1

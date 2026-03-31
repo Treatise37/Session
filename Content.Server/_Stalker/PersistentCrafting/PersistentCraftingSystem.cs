@@ -357,7 +357,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
         profile.BranchProgress = _profileService.CreateDefaultBranchProfiles();
         profile.UnlockedNodes.Clear();
         _profileService.EnsureAutoTierNodesUnlocked(profile);
-        _profileService.NormalizeBranchPoints(profile);
         profile.Loaded = false;
         profile.PersistenceDisabled = false;
 
@@ -534,7 +533,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 args.User);
         }
 
-        QueueSaveProfile(args.User, Comp<PersistentCraftProfileComponent>(args.User));
+        if (TryComp(args.User, out PersistentCraftProfileComponent? craftProfile))
+            QueueSaveProfile(args.User, craftProfile);
+
         SendStateToAttachedActor(args.User);
     }
 
@@ -706,7 +707,6 @@ public sealed class PersistentCraftingSystem : EntitySystem
     {
         profile.UnlockedNodes = _profileService.SanitizeUnlockedNodes(profile.UnlockedNodes, profile.CharacterName);
         _profileService.EnsureAutoTierNodesUnlocked(profile);
-        _profileService.NormalizeBranchPoints(profile);
     }
 
     private PersistentCraftProfileSnapshot CreateSnapshot(PersistentCraftProfileComponent profile)

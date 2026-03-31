@@ -235,6 +235,6 @@ public sealed partial class PersistentCraftingWindow
     private bool ArePrerequisitesMet(PersistentCraftNodePrototype node)
     {
         var state = _state ?? throw new InvalidOperationException("Persistent craft state is not initialized.");
-        return PersistentCraftNodeAvailabilityResolver.ArePrerequisitesMet(state, node, ResolveNodePrototypeOrNull);
+        return PersistentCraftNodeAvailabilityResolver.ArePrerequisitesMet(state, node, ResolveNodePrototypeOrNull, _reusablePath);
     }
 }
