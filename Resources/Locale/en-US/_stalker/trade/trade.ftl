@@ -5,3 +5,5 @@ nc-store-contract-turn-in-note = After completion: { $item }
 nc-store-contract-action-can-claim-proof = Ready, proof must be turned in
 nc-store-contract-progress-caption = Progress
 nc-store-contract-progress-value = { $progress } / { $required }
+nc-store-slot-cooldowns-header = Contract refresh
+nc-store-slot-cooldown-title = { $difficulty }
