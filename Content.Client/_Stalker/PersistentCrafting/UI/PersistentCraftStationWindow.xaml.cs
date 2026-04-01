@@ -37,6 +37,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
     private readonly TagSystem _tag;
 
@@ -50,10 +51,12 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private static readonly Color EnoughColor = PersistentCraftUiTheme.Success;
     private static readonly Color MissingColor = PersistentCraftUiTheme.Danger;
     private static readonly ISawmill Sawmill = Logger.GetSawmill("persistent-craft.ui.station");
+    private const float RecipeResultFlashDuration = 0.7f;
 
     private readonly Dictionary<string, BoxContainer> _branchContainers = new();
     private readonly Dictionary<string, ScrollContainer> _activeListScrollByBranch = new();
     private readonly Dictionary<string, ScrollContainer> _activeDetailScrollByBranch = new();
+    private readonly Dictionary<string, LineEdit> _activeSearchInputsByBranch = new();
     private readonly Dictionary<string, Dictionary<string, RecipeEntryControls>> _recipeEntryControlsByBranch = new();
     private readonly Dictionary<string, BoxContainer> _detailContentHostsByBranch = new();
     private readonly Dictionary<string, PersistentCraftBranchState> _visibleBranchStatesByBranch = new();
@@ -71,6 +74,15 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private PersistentCraftClientPrototypeCache? _prototypeCache;
     private PersistentCraftState? _state;
     private IReadOnlyList<PersistentCraftRecipePrototype> _recipes = Array.Empty<PersistentCraftRecipePrototype>();
+    private PersistentCraftRecipeIconProgressOverlay? _activeRecipeIconOverlay;
+    private string? _activeRecipeIconRecipeId;
+    private Color _activeRecipeProgressColor = PersistentCraftUiTheme.Selection;
+    private string? _activeCraftRecipeId;
+    private float _activeCraftDurationSeconds;
+    private TimeSpan _activeCraftStartedAt;
+    private string? _activeCraftResultRecipeId;
+    private Color _activeCraftResultColor = Color.Transparent;
+    private TimeSpan _activeCraftResultAt;
 
     public event Action<string>? OnCraftPressed;
     public event Action? OnOpenSkillsPressed;
@@ -158,33 +170,64 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         _viewModel.LastVisibleBranch = branch;
     }
 
+    public void NotifyCraftStarted(string recipeId, float durationSeconds)
+    {
+        _activeCraftRecipeId = recipeId;
+        _activeCraftDurationSeconds = MathF.Max(0.05f, durationSeconds);
+        _activeCraftStartedAt = _timing.CurTime;
+
+        if (string.Equals(_activeCraftResultRecipeId, recipeId, StringComparison.Ordinal))
+            _activeCraftResultRecipeId = null;
+
+        UpdateActiveRecipeIconCraftVisuals();
+    }
+
+    public void NotifyCraftFinished(string recipeId, PersistentCraftRecipeExecutionResult result)
+    {
+        if (string.Equals(_activeCraftRecipeId, recipeId, StringComparison.Ordinal))
+        {
+            _activeCraftRecipeId = null;
+            _activeCraftDurationSeconds = 0f;
+        }
+
+        _activeCraftResultRecipeId = recipeId;
+        _activeCraftResultColor = result == PersistentCraftRecipeExecutionResult.Completed
+            ? PersistentCraftUiTheme.Success
+            : PersistentCraftUiTheme.Danger;
+        _activeCraftResultAt = _timing.CurTime;
+
+        UpdateActiveRecipeIconCraftVisuals();
+    }
+
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
 
-        if (_pendingScrollRestoreBranches.Count == 0)
-            return;
-
-        var branches = new string[_pendingScrollRestoreBranches.Count];
-        _pendingScrollRestoreBranches.CopyTo(branches);
-        _pendingScrollRestoreBranches.Clear();
-
-        for (var i = 0; i < branches.Length; i++)
+        if (_pendingScrollRestoreBranches.Count > 0)
         {
-            var branch = branches[i];
+            var branches = new string[_pendingScrollRestoreBranches.Count];
+            _pendingScrollRestoreBranches.CopyTo(branches);
+            _pendingScrollRestoreBranches.Clear();
 
-            if (_activeListScrollByBranch.TryGetValue(branch, out var listScroll) &&
-                _viewModel.ListScrollByBranch.TryGetValue(branch, out var listScrollValue))
+            for (var i = 0; i < branches.Length; i++)
             {
-                listScroll.SetScrollValue(listScrollValue);
-            }
+                var branch = branches[i];
 
-            if (_activeDetailScrollByBranch.TryGetValue(branch, out var detailScroll) &&
-                _viewModel.DetailScrollByBranch.TryGetValue(branch, out var detailScrollValue))
-            {
-                detailScroll.SetScrollValue(detailScrollValue);
+                if (_activeListScrollByBranch.TryGetValue(branch, out var listScroll) &&
+                    _viewModel.ListScrollByBranch.TryGetValue(branch, out var listScrollValue))
+                {
+                    listScroll.SetScrollValue(listScrollValue);
+                }
+
+                if (_activeDetailScrollByBranch.TryGetValue(branch, out var detailScroll) &&
+                    _viewModel.DetailScrollByBranch.TryGetValue(branch, out var detailScrollValue))
+                {
+                    detailScroll.SetScrollValue(detailScrollValue);
+                }
             }
         }
+
+        UpdateActiveRecipeIconCraftVisuals();
     }
 
     private void Render()
@@ -199,8 +242,28 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
     private void PopulateBranch(BoxContainer container, string branch)
     {
+        var restoreSearchFocus = false;
+        var restoreSearchCursor = 0;
+        var restoreSearchSelection = 0;
+
+        if (_activeSearchInputsByBranch.TryGetValue(branch, out var previousSearchInput) &&
+            previousSearchInput.HasKeyboardFocus())
+        {
+            restoreSearchFocus = true;
+            restoreSearchCursor = previousSearchInput.CursorPosition;
+            restoreSearchSelection = previousSearchInput.SelectionStart;
+        }
+
         RememberBranchScroll(branch);
         container.RemoveAllChildren();
+        _activeListScrollByBranch.Remove(branch);
+        _activeDetailScrollByBranch.Remove(branch);
+        _activeSearchInputsByBranch.Remove(branch);
+        _detailContentHostsByBranch.Remove(branch);
+        _recipeEntryControlsByBranch.Remove(branch);
+        _activeRecipeIconOverlay = null;
+        _activeRecipeIconRecipeId = null;
+        _activeRecipeProgressColor = PersistentCraftUiTheme.Selection;
 
         if (_state == null)
             return;
@@ -287,6 +350,69 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         _activeDetailScrollByBranch[branch] = workspace.RecipeDetailScroll;
         container.AddChild(workspace);
         RestoreBranchScroll(branch, listScroll, workspace.RecipeDetailScroll);
+        RestoreSearchInputFocus(branch, restoreSearchFocus, restoreSearchCursor, restoreSearchSelection);
+    }
+
+    private void RestoreSearchInputFocus(
+        string branch,
+        bool shouldRestoreFocus,
+        int cursorPosition,
+        int selectionStart)
+    {
+        if (!shouldRestoreFocus ||
+            !_activeSearchInputsByBranch.TryGetValue(branch, out var refreshedInput))
+        {
+            return;
+        }
+
+        refreshedInput.GrabKeyboardFocus();
+        refreshedInput.CursorPosition = Math.Clamp(cursorPosition, 0, refreshedInput.Text.Length);
+        refreshedInput.SelectionStart = Math.Clamp(selectionStart, 0, refreshedInput.Text.Length);
+    }
+
+    private void BindActiveRecipeIconOverlay(
+        string recipeId,
+        Color progressColor,
+        PersistentCraftRecipeIconProgressOverlay overlay)
+    {
+        _activeRecipeIconOverlay = overlay;
+        _activeRecipeIconRecipeId = recipeId;
+        _activeRecipeProgressColor = progressColor;
+        UpdateActiveRecipeIconCraftVisuals();
+    }
+
+    private void UpdateActiveRecipeIconCraftVisuals()
+    {
+        if (_activeRecipeIconOverlay == null || string.IsNullOrWhiteSpace(_activeRecipeIconRecipeId))
+            return;
+
+        float? progressRatio = null;
+        if (string.Equals(_activeCraftRecipeId, _activeRecipeIconRecipeId, StringComparison.Ordinal) &&
+            _activeCraftDurationSeconds > 0f)
+        {
+            var elapsed = (float) (_timing.CurTime - _activeCraftStartedAt).TotalSeconds;
+            progressRatio = Math.Clamp(elapsed / _activeCraftDurationSeconds, 0f, 1f);
+        }
+
+        var flashAlpha = 0f;
+        var flashColor = Color.Transparent;
+        if (string.Equals(_activeCraftResultRecipeId, _activeRecipeIconRecipeId, StringComparison.Ordinal))
+        {
+            var flashElapsed = (float) (_timing.CurTime - _activeCraftResultAt).TotalSeconds;
+            if (flashElapsed <= RecipeResultFlashDuration)
+            {
+                var fade = 1f - flashElapsed / RecipeResultFlashDuration;
+                flashColor = _activeCraftResultColor;
+                flashAlpha = 0.72f * Math.Clamp(fade, 0f, 1f);
+            }
+            else
+            {
+                _activeCraftResultRecipeId = null;
+            }
+        }
+
+        _activeRecipeIconOverlay.SetProgress(progressRatio, _activeRecipeProgressColor);
+        _activeRecipeIconOverlay.SetFlash(flashColor, flashAlpha);
     }
 
     private bool TryGetRecipeTexture(PersistentCraftRecipePrototype recipe, out Texture? texture)
@@ -664,6 +790,7 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     {
         Branches.RemoveAllChildren();
         _branchContainers.Clear();
+        _activeSearchInputsByBranch.Clear();
 
         for (var index = 0; index < _branchRegistry.OrderedBranches.Count; index++)
         {

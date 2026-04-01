@@ -47,9 +47,9 @@ public sealed partial class PersistentCraftStationWindow
         PopulateBranch(GetBranchContainer(branch), branch);
     }
 
-    private void UpdateSearch(string branch, string text)
+    private void UpdateSearch(string branch, LineEdit.LineEditEventArgs args)
     {
-        if (!_viewModel.SetSearchText(branch, text))
+        if (!_viewModel.SetSearchText(branch, args.Text))
             return;
 
         _viewModel.ListScrollByBranch[branch] = Vector2.Zero;

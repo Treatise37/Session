@@ -55,6 +55,39 @@ public sealed class PersistentCraftStateEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
+public enum PersistentCraftRecipeExecutionResult : byte
+{
+    Completed = 0,
+    Cancelled = 1,
+}
+
+[Serializable, NetSerializable]
+public sealed class PersistentCraftRecipeStartedEvent : EntityEventArgs
+{
+    public string RecipeId { get; }
+    public float DurationSeconds { get; }
+
+    public PersistentCraftRecipeStartedEvent(string recipeId, float durationSeconds)
+    {
+        RecipeId = recipeId;
+        DurationSeconds = durationSeconds;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class PersistentCraftRecipeFinishedEvent : EntityEventArgs
+{
+    public string RecipeId { get; }
+    public PersistentCraftRecipeExecutionResult Result { get; }
+
+    public PersistentCraftRecipeFinishedEvent(string recipeId, PersistentCraftRecipeExecutionResult result)
+    {
+        RecipeId = recipeId;
+        Result = result;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class RequestPersistentCraftUnlockEvent : EntityEventArgs
 {
     public string NodeId { get; }

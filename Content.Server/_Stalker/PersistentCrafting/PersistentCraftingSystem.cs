@@ -420,6 +420,12 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!TryStartCraftDoAfter(user, recipe))
             return;
 
+        RaiseNetworkEvent(
+            new PersistentCraftRecipeStartedEvent(
+                recipe.ID,
+                _craftExecutionService.GetEffectiveCraftTime(recipe)),
+            args.SenderSession);
+
         _popup.PopupEntity(
             Loc.GetString("persistent-craft-station-popup-started", ("recipe", ResolveRecipeName(recipe))),
             user,
@@ -488,6 +494,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (args.Cancelled)
         {
             args.Handled = true;
+            SendCraftRecipeExecutionToAttachedActor(args.User, recipe.ID, PersistentCraftRecipeExecutionResult.Cancelled);
             SendStateToAttachedActor(args.User);
             return;
         }
@@ -497,6 +504,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!IsLoaded(args.User))
         {
             PopupUser(args.User, "persistent-craft-popup-loading");
+            SendCraftRecipeExecutionToAttachedActor(args.User, recipe.ID, PersistentCraftRecipeExecutionResult.Cancelled);
             SendStateToAttachedActor(args.User);
             return;
         }
@@ -504,6 +512,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!_craftExecutionService.MeetsRecipeRequirement(args.User, recipe))
         {
             PopupUser(args.User, "persistent-craft-station-popup-skill-locked");
+            SendCraftRecipeExecutionToAttachedActor(args.User, recipe.ID, PersistentCraftRecipeExecutionResult.Cancelled);
             SendStateToAttachedActor(args.User);
             return;
         }
@@ -511,6 +520,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (!_craftExecutionService.TryPlanIngredientConsumption(args.User, recipe, out var plan))
         {
             PopupUser(args.User, "persistent-craft-station-popup-missing-items");
+            SendCraftRecipeExecutionToAttachedActor(args.User, recipe.ID, PersistentCraftRecipeExecutionResult.Cancelled);
             SendStateToAttachedActor(args.User);
             return;
         }
@@ -536,6 +546,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (TryComp(args.User, out PersistentCraftProfileComponent? craftProfile))
             QueueSaveProfile(args.User, craftProfile);
 
+        SendCraftRecipeExecutionToAttachedActor(args.User, recipe.ID, PersistentCraftRecipeExecutionResult.Completed);
         SendStateToAttachedActor(args.User);
     }
 
@@ -572,6 +583,17 @@ public sealed class PersistentCraftingSystem : EntitySystem
             return;
 
         SendState(actor.PlayerSession, uid);
+    }
+
+    private void SendCraftRecipeExecutionToAttachedActor(
+        EntityUid uid,
+        string recipeId,
+        PersistentCraftRecipeExecutionResult result)
+    {
+        if (!TryComp(uid, out ActorComponent? actor))
+            return;
+
+        RaiseNetworkEvent(new PersistentCraftRecipeFinishedEvent(recipeId, result), actor.PlayerSession);
     }
 
     private void StartLoadProfile(EntityUid uid, Guid userId, string characterName, int loadGeneration)

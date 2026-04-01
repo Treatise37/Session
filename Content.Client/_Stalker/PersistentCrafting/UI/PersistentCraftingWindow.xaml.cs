@@ -160,9 +160,14 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
 
     public void ApplyFullscreenLayout()
     {
-        var screenSize = new Vector2(_clyde.ScreenSize.X, _clyde.ScreenSize.Y);
-        var targetWidth = MathF.Max(WindowMinWidth, screenSize.X - WindowOpenMargin);
-        var targetHeight = MathF.Max(WindowMinHeight, screenSize.Y - WindowOpenMargin);
+        var uiScale = MathF.Max(_uiManager.RootControl.UIScale, 0.01f);
+        var screenSize = new Vector2(_clyde.ScreenSize.X, _clyde.ScreenSize.Y) / uiScale;
+        var targetWidth = MathF.Max(360f, screenSize.X - WindowOpenMargin);
+        var targetHeight = MathF.Max(260f, screenSize.Y - WindowOpenMargin);
+
+        MinSize = new Vector2(
+            MathF.Min(WindowMinWidth, targetWidth),
+            MathF.Min(WindowMinHeight, targetHeight));
         SetSize = new Vector2(targetWidth, targetHeight);
     }
 

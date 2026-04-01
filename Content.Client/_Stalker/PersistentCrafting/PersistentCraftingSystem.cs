@@ -22,6 +22,8 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
         SubscribeNetworkEvent<OpenPersistentCraftMenuEvent>(OnOpenMenuEvent);
         SubscribeNetworkEvent<PersistentCraftStateEvent>(OnStateEvent);
+        SubscribeNetworkEvent<PersistentCraftRecipeStartedEvent>(OnRecipeStartedEvent);
+        SubscribeNetworkEvent<PersistentCraftRecipeFinishedEvent>(OnRecipeFinishedEvent);
     }
 
     public void RequestState()
@@ -112,6 +114,16 @@ public sealed class PersistentCraftingSystem : EntitySystem
         _latestState = ev.State;
         RefreshCraftWindow();
         RefreshSkillWindow();
+    }
+
+    private void OnRecipeStartedEvent(PersistentCraftRecipeStartedEvent ev, EntitySessionEventArgs args)
+    {
+        _craftWindow?.NotifyCraftStarted(ev.RecipeId, ev.DurationSeconds);
+    }
+
+    private void OnRecipeFinishedEvent(PersistentCraftRecipeFinishedEvent ev, EntitySessionEventArgs args)
+    {
+        _craftWindow?.NotifyCraftFinished(ev.RecipeId, ev.Result);
     }
 
     private void EnsureCraftWindow()

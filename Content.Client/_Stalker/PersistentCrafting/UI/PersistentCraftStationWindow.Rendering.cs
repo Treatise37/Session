@@ -105,7 +105,8 @@ public sealed partial class PersistentCraftStationWindow
             Loc.GetString("persistent-craft-filter-craftable"),
             craftableOnly,
             accent);
-        toolbar.SearchInput.OnTextChanged += args => UpdateSearch(branch, args.Text);
+        _activeSearchInputsByBranch[branch] = toolbar.SearchInput;
+        toolbar.SearchInput.OnTextChanged += args => UpdateSearch(branch, args);
         toolbar.CraftableToggleButton.OnPressed += _ => ToggleCraftableOnly(branch);
         return toolbar;
     }
@@ -441,6 +442,7 @@ public sealed partial class PersistentCraftStationWindow
         header.ActionButton.ModulateSelfOverride = canCraft ? accent : PersistentCraftUiTheme.TextMuted;
 
         header.InfoText.SetMessage(FormattedMessage.FromMarkupPermissive(BuildHeaderInfoMarkup(recipe)));
+        header.IconHost.RectClipContent = true;
         header.IconHost.PanelOverride = new StyleBoxFlat
         {
             BackgroundColor = IconBackground,
@@ -452,6 +454,13 @@ public sealed partial class PersistentCraftStationWindow
             ContentMarginBottomOverride = 6,
         };
         header.IconHost.AddChild(CreateRecipeIconContent(recipe, new Vector2(116, 116)));
+        var progressOverlay = new PersistentCraftRecipeIconProgressOverlay
+        {
+            HorizontalExpand = true,
+            VerticalExpand = true,
+        };
+        header.IconHost.AddChild(progressOverlay);
+        BindActiveRecipeIconOverlay(recipe.ID, accent, progressOverlay);
 
         header.MetaContainer.AddChild(CreateMetaBadge(
             $"{Loc.GetString("persistent-craft-branch-points-label")}: {branchState.AvailablePoints} | {Loc.GetString("persistent-craft-spent-points-label")}: {branchState.SpentPoints}",
