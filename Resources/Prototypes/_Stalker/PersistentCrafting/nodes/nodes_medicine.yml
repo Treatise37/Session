@@ -3,7 +3,7 @@
   name: АИ-2 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 5
+  cost: 0
   displayProto: MedkitAI2
   treeColumn: 0
   treeRow: 0
@@ -13,7 +13,7 @@
   name: бинт T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 5
+  cost: 0
   displayProto: STGauze
   treeColumn: 1
   treeRow: 0
@@ -25,7 +25,7 @@
   name: наб. ушибов T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 5
+  cost: 0
   displayProto: STBrutepack
   treeColumn: 2
   treeRow: 0
@@ -37,7 +37,7 @@
   name: мазь T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 5
+  cost: 0
   displayProto: STOintment
   treeColumn: 3
   treeRow: 0

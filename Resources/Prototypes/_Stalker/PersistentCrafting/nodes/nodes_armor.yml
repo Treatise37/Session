@@ -148,7 +148,7 @@
   name: Ул. Куртка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 5
+  cost: 0
   displayProto: ClothingOuterJacketStalkerUpgrade
   treeColumn: 6
   treeRow: 0
@@ -386,7 +386,7 @@
   name: СШ-68 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 5
+  cost: 0
   displayProto: ClothingHeadHelmetSH68
   treeColumn: 0
   treeRow: 6
@@ -432,7 +432,7 @@
   name: Сито T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 5
+  cost: 0
   displayProto: ClothingHeadHelmetLight
   treeColumn: 2
   treeRow: 6
@@ -514,7 +514,7 @@
   name: Дождевик T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Armor
-  cost: 5
+  cost: 0
   displayProto: ClothingOuterCoatDoshdevik
   treeColumn: 8
   treeRow: 6

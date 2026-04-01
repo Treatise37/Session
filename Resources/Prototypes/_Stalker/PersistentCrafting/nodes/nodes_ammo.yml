@@ -3,7 +3,7 @@
   name: Боеприпасы I
   description: persistent-craft-node-sub-recipe-desc
   branch: Ammo
-  cost: 5
+  cost: 0
   displayProto: 7mmBuckshotBox
   treeColumn: 0
   treeRow: 0
@@ -13,7 +13,7 @@
   name: Боеприпасы II
   description: persistent-craft-node-sub-recipe-desc
   branch: Ammo
-  cost: 15
+  cost: 0
   displayProto: 545FMJBox
   treeColumn: 1
   treeRow: 0
@@ -25,7 +25,7 @@
   name: Боеприпасы III
   description: persistent-craft-node-sub-recipe-desc
   branch: Ammo
-  cost: 80
+  cost: 0
   displayProto: 739FMJBox
   treeColumn: 2
   treeRow: 0
@@ -37,7 +37,7 @@
   name: Боеприпасы IV
   description: persistent-craft-node-sub-recipe-desc
   branch: Ammo
-  cost: 160
+  cost: 0
   displayProto: 751M80Box
   treeColumn: 3
   treeRow: 0
@@ -49,7 +49,7 @@
   name: Боеприпасы V
   description: persistent-craft-node-sub-recipe-desc
   branch: Ammo
-  cost: 320
+  cost: 0
   displayProto: Ammobox1255PS12A
   treeColumn: 4
   treeRow: 0

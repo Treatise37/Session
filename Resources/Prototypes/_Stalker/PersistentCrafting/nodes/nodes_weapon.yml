@@ -5,7 +5,7 @@
   name: ТОЗ-34 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 5
+  cost: 0
   displayProto: STWeaponShotgunTOZ34
   treeColumn: 0
   treeRow: 0
@@ -111,7 +111,7 @@
   name: АКС-74У T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 5
+  cost: 0
   displayProto: STWeaponRifleAKS74U
   treeColumn: 4
   treeRow: 0
@@ -263,7 +263,7 @@
   name: L85 T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 5
+  cost: 0
   displayProto: STWeaponRifleL85
   treeColumn: 8
   treeRow: 0

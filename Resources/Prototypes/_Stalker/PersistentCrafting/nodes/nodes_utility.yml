@@ -3,7 +3,7 @@
   name: контейнер артефактов T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 5
+  cost: 0
   displayProto: BoxArtcont
   treeColumn: 0
   treeRow: 0
@@ -61,7 +61,7 @@
   name: вещмешок T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 5
+  cost: 0
   displayProto: ClothingBackpackDuffelGreenStalker
   treeColumn: 4
   treeRow: 0
@@ -168,7 +168,7 @@
   name: подсумок новичка T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 5
+  cost: 0
   displayProto: ClothingBeltBandolierStalker
   treeColumn: 9
   treeRow: 0
