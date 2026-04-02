@@ -1,3 +1,18 @@
-
 - type: statusEffect
   id: Dizzy
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: ReagentWeight
+  name: reagent weight modifier
+  components:
+  - type: StatusEffect
+    whitelist:
+      components:
+      - MobState
+      - STWeight
+    requireAll: true
+  - type: STWeightSelfModifier
+  - type: StatusEffectAlert
+    alert: ReagentWeightReduction
+    showDuration: false

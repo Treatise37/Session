@@ -33,3 +33,6 @@ reagent-desc-cossack = It's the Cossack part of Cossack vodka!
 # man i had to call it something
 reagent-name-psiconium = psiconium
 reagent-desc-psiconium = It fixes your brain.
+
+reagent-name-hercules = Геркулес
+reagent-desc-hercules = Лёгкий стимулятор, временно уменьшающий массу тела.
