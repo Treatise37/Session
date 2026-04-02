@@ -9,6 +9,8 @@
   displayProto: STClothingOuterArmorLightPlateVestBaseStalker
   treeColumn: 1
   treeRow: 0
+  prerequisites:
+  - PersistentCraftArmorNodeKirasaT2
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodeKirasaT2
@@ -19,8 +21,6 @@
   displayProto: STClothingOuterKirasa
   treeColumn: 0
   treeRow: 0
-  prerequisites:
-  - PersistentCraftArmorNodeShitok2T2
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNode6B2T2
@@ -45,7 +45,7 @@
   treeColumn: 1
   treeRow: 1
   prerequisites:
-  - PersistentCraftArmorNode6B2T2
+  - PersistentCraftArmorNodeSlickT3
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodeKoryndT3
@@ -187,7 +187,7 @@
   treeColumn: 7
   treeRow: 1
   prerequisites:
-  - PersistentCraftArmorNodeRCBZT2
+  - PersistentCraftArmorNodePSZ7T3
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodePSZ7T3
@@ -199,7 +199,7 @@
   treeColumn: 8
   treeRow: 1
   prerequisites:
-  - PersistentCraftArmorNodeUZK5T3
+  - PersistentCraftArmorNodeTuzemecT3
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodeMercSuitT3
@@ -247,7 +247,7 @@
   treeColumn: 7
   treeRow: 3
   prerequisites:
-  - PersistentCraftArmorNodeHazmatT4
+  - PersistentCraftArmorNodePioneerT4
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodePioneerT4
@@ -259,7 +259,7 @@
   treeColumn: 8
   treeRow: 3
   prerequisites:
-  - PersistentCraftArmorNodeBerill5MT4
+  - PersistentCraftArmorNodeEgerT4
 
 - type: persistentCraftNode
   id: PersistentCraftArmorNodeZaryaT2

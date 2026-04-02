@@ -33,11 +33,13 @@ public sealed class PersistentCraftingSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    // Rate limiting: минимальный интервал между запросами от одного игрока
     private const double CraftRateLimitSeconds = 0.5;
     private const double UnlockRateLimitSeconds = 0.3;
+    private const double RateLimitCleanupIntervalSeconds = 60.0;
+    private const int MaxNetworkStringLength = 128;
     private readonly Dictionary<NetUserId, TimeSpan> _lastCraftRequestTime = new();
     private readonly Dictionary<NetUserId, TimeSpan> _lastUnlockRequestTime = new();
+    private TimeSpan _lastRateLimitCleanup;
 
     private readonly ConcurrentQueue<PendingProfileLoad> _completedLoads = new();
     private readonly ConcurrentQueue<PendingSaveFailure> _saveFailures = new();
@@ -82,6 +84,7 @@ public sealed class PersistentCraftingSystem : EntitySystem
         base.Update(frameTime);
         ProcessCompletedLoads();
         ProcessSaveFailures();
+        CleanupStaleRateLimitEntries();
     }
 
     public override void Shutdown()
@@ -110,6 +113,36 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
         lastRequestTime[userId] = now;
         return false;
+    }
+
+    private void CleanupStaleRateLimitEntries()
+    {
+        var now = _timing.CurTime;
+        if ((now - _lastRateLimitCleanup).TotalSeconds < RateLimitCleanupIntervalSeconds)
+            return;
+
+        _lastRateLimitCleanup = now;
+        CleanupRateLimitDictionary(_lastCraftRequestTime, now, CraftRateLimitSeconds);
+        CleanupRateLimitDictionary(_lastUnlockRequestTime, now, UnlockRateLimitSeconds);
+    }
+
+    private static void CleanupRateLimitDictionary(
+        Dictionary<NetUserId, TimeSpan> dictionary,
+        TimeSpan now,
+        double limitSeconds)
+    {
+        List<NetUserId>? stale = null;
+        foreach (var (userId, lastTime) in dictionary)
+        {
+            if ((now - lastTime).TotalSeconds >= limitSeconds)
+                (stale ??= new List<NetUserId>()).Add(userId);
+        }
+
+        if (stale == null)
+            return;
+
+        for (var i = 0; i < stale.Count; i++)
+            dictionary.Remove(stale[i]);
     }
 
     private void ValidatePrototypeConfiguration()
@@ -429,6 +462,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not { Valid: true } user)
             return;
 
+        if (ev.RecipeId.Length > MaxNetworkStringLength)
+            return;
+
         if (IsRateLimited(args.SenderSession.UserId, _lastCraftRequestTime, CraftRateLimitSeconds))
             return;
 
@@ -477,6 +513,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
     private void OnRequestUnlock(RequestPersistentCraftUnlockEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { Valid: true } user)
+            return;
+
+        if (ev.NodeId.Length > MaxNetworkStringLength)
             return;
 
         if (IsRateLimited(args.SenderSession.UserId, _lastUnlockRequestTime, UnlockRateLimitSeconds))

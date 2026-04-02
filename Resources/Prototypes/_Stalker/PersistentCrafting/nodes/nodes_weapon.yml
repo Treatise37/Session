@@ -7,7 +7,7 @@
   branch: Weapon
   cost: 0
   displayProto: STWeaponShotgunTOZ34
-  treeColumn: 0
+  treeColumn: 1
   treeRow: 0
 
 - type: persistentCraftNode
@@ -17,7 +17,7 @@
   branch: Weapon
   cost: 5
   displayProto: STWeaponShotgunSawedOf
-  treeColumn: 1
+  treeColumn: 2
   treeRow: 0
   prerequisites:
   - PersistentCraftWeaponNodeToz34T1
@@ -29,7 +29,7 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponShotgunMP133
-  treeColumn: 0
+  treeColumn: 1
   treeRow: 1
   prerequisites:
   - PersistentCraftWeaponNodeToz34T1
@@ -41,7 +41,7 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponShotgunMossbergM88
-  treeColumn: 1
+  treeColumn: 2
   treeRow: 1
   prerequisites:
   - PersistentCraftWeaponNodeMP133T2
@@ -53,7 +53,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponShotgunMP153
-  treeColumn: 0
+  treeColumn: 1
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeMP133T2
@@ -65,7 +65,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponShotgunBenelliM4Super90
-  treeColumn: 1
+  treeColumn: 2
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeMP153T3
@@ -77,7 +77,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponShotgunSPAS
-  treeColumn: 2
+  treeColumn: 3
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeBenelliT3
@@ -113,7 +113,7 @@
   branch: Weapon
   cost: 0
   displayProto: STWeaponRifleAKS74U
-  treeColumn: 4
+  treeColumn: 5
   treeRow: 0
 
 - type: persistentCraftNode
@@ -123,7 +123,7 @@
   branch: Weapon
   cost: 15
   displayProto: STMetroWeaponRifleVSV
-  treeColumn: 4
+  treeColumn: 5
   treeRow: 1
   prerequisites:
   - PersistentCraftWeaponNodeAKS74UT1
@@ -135,7 +135,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleAKS74
-  treeColumn: 4
+  treeColumn: 5
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeVsvGlukharT2
@@ -147,7 +147,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleRPK74
-  treeColumn: 5
+  treeColumn: 6
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeAKS74T3
@@ -159,7 +159,7 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponRifleA545
-  treeColumn: 4
+  treeColumn: 5
   treeRow: 3
   prerequisites:
   - PersistentCraftWeaponNodeAKS74T3
@@ -171,7 +171,7 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponRifleAK74M
-  treeColumn: 5
+  treeColumn: 6
   treeRow: 3
   prerequisites:
   - PersistentCraftWeaponNodeA545T4
@@ -183,8 +183,8 @@
   branch: Weapon
   cost: 10
   displayProto: STWeaponRifleSaiga739
-  treeColumn: 3
-  treeRow: 4
+  treeColumn: 5
+  treeRow: 6
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeSKST2
@@ -193,8 +193,8 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponSniperSKS
-  treeColumn: 3
-  treeRow: 5
+  treeColumn: 5
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeSaiga762T15
 
@@ -205,8 +205,8 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleAKMC
-  treeColumn: 3
-  treeRow: 6
+  treeColumn: 5
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeSKST2
 
@@ -217,8 +217,8 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponRifleAK103
-  treeColumn: 3
-  treeRow: 7
+  treeColumn: 5
+  treeRow: 9
   prerequisites:
   - PersistentCraftWeaponNodeAKMCT35
 
@@ -229,8 +229,8 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponSniperMosin
-  treeColumn: 4
-  treeRow: 5
+  treeColumn: 6
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeSKST2
 
@@ -241,8 +241,8 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponSniperSVDS
-  treeColumn: 4
-  treeRow: 7
+  treeColumn: 6
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeMosinT2
 
@@ -265,7 +265,7 @@
   branch: Weapon
   cost: 0
   displayProto: STWeaponRifleL85
-  treeColumn: 8
+  treeColumn: 9
   treeRow: 0
 
 - type: persistentCraftNode
@@ -275,7 +275,7 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponRifleM16
-  treeColumn: 8
+  treeColumn: 9
   treeRow: 1
   prerequisites:
   - PersistentCraftWeaponNodeL85T1
@@ -287,7 +287,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleSIG550
-  treeColumn: 7
+  treeColumn: 8
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeM16T2
@@ -299,7 +299,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleM4
-  treeColumn: 8
+  treeColumn: 9
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeM16T2
@@ -311,7 +311,7 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRifleSCARL
-  treeColumn: 9
+  treeColumn: 10
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeM16T2
@@ -323,7 +323,7 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponRifleLR300v1
-  treeColumn: 8
+  treeColumn: 9
   treeRow: 3
   prerequisites:
   - PersistentCraftWeaponNodeM4T3
@@ -335,7 +335,7 @@
 #   branch: Weapon
 #   cost: 320
 #   displayProto: STWeaponRifleGalil
-#   treeColumn: 8
+#   treeColumn: 9
 #   treeRow: 4
 #   prerequisites:
 #   - PersistentCraftWeaponNodeLr300T4
@@ -348,7 +348,7 @@
   cost: 15
   displayProto: STWeaponRifleFAL
   treeColumn: 0
-  treeRow: 5
+  treeRow: 6
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeGalatzT3
@@ -358,7 +358,7 @@
   cost: 80
   displayProto: STWeaponRifleGalatz
   treeColumn: 0
-  treeRow: 6
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeFnFalT2
 
@@ -370,19 +370,19 @@
   cost: 160
   displayProto: STWeaponRifleSCARH
   treeColumn: 0
-  treeRow: 7
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeGalatzT3
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeScarHCqcT45
-  name: FN SCAR-H CQC T4.5
+  name: FN-FALo T4.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
   cost: 160
-  displayProto: STWeaponRifleSCARHShort
+  displayProto: STWeaponRifleFALo
   treeColumn: 1
-  treeRow: 7
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeScarHT4
 
@@ -394,7 +394,7 @@
   cost: 10
   displayProto: WeaponPistolStalkerGlock
   treeColumn: 11
-  treeRow: 1
+  treeRow: 5
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeKedrT2
@@ -404,7 +404,7 @@
   cost: 15
   displayProto: STWeaponSMGPP91
   treeColumn: 11
-  treeRow: 2
+  treeRow: 6
   prerequisites:
   - PersistentCraftWeaponNodeGlockT15
 
@@ -416,7 +416,7 @@
   cost: 80
   displayProto: STWeaponSMGMP5
   treeColumn: 11
-  treeRow: 3
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeKedrT2
 
@@ -428,7 +428,7 @@
   cost: 80
   displayProto: STWeaponSMGStalkerCP2Veresk
   treeColumn: 12
-  treeRow: 3
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeMp5T3
 
@@ -440,7 +440,7 @@
   cost: 80
   displayProto: STWeaponSMGPP1901
   treeColumn: 11
-  treeRow: 4
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeMp5T3
 
@@ -452,7 +452,7 @@
   cost: 160
   displayProto: STWeaponSMGFNP90
   treeColumn: 11
-  treeRow: 5
+  treeRow: 9
   prerequisites:
   - PersistentCraftWeaponNodeVityazT35
 
@@ -463,8 +463,8 @@
   branch: Weapon
   cost: 5
   displayProto: STWeaponRevolverTaurusJudge
-  treeColumn: 6
-  treeRow: 4
+  treeColumn: 8
+  treeRow: 6
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeSW625T25
@@ -473,8 +473,8 @@
   branch: Weapon
   cost: 10
   displayProto: STWeaponRevolverSWModel625
-  treeColumn: 6
-  treeRow: 5
+  treeColumn: 8
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeTaurusJudgeT1
 
@@ -485,8 +485,8 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRevolverChiappaRhino60DS
-  treeColumn: 6
-  treeRow: 6
+  treeColumn: 8
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeSW625T25
 
@@ -497,8 +497,8 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponRevolverDanWesson715
-  treeColumn: 7
-  treeRow: 6
+  treeColumn: 9
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeChiappaT35
 
@@ -509,8 +509,8 @@
   branch: Weapon
   cost: 160
   displayProto: STWeaponRevolverRH12
-  treeColumn: 6
-  treeRow: 7
+  treeColumn: 8
+  treeRow: 9
   prerequisites:
   - PersistentCraftWeaponNodeChiappaT35
 
@@ -521,8 +521,8 @@
   branch: Weapon
   cost: 15
   displayProto: WeaponPistolStalkerAPS
-  treeColumn: 1
-  treeRow: 5
+  treeColumn: 2
+  treeRow: 6
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeBizonT2
@@ -531,8 +531,8 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponSMGPP19
-  treeColumn: 1
-  treeRow: 6
+  treeColumn: 2
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeApsT2
 
@@ -543,8 +543,8 @@
   branch: Weapon
   cost: 15
   displayProto: STWeaponSMGVZ61
-  treeColumn: 2
-  treeRow: 6
+  treeColumn: 3
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeBizonT2
 
@@ -555,8 +555,8 @@
   branch: Weapon
   cost: 80
   displayProto: STWeaponSMGStalkerCP2Veresk921
-  treeColumn: 12
-  treeRow: 4
+  treeColumn: 13
+  treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeVereskT3
 
@@ -568,6 +568,6 @@
   cost: 80
   displayProto: STWeaponSMGPP19919
   treeColumn: 2
-  treeRow: 7
+  treeRow: 8
   prerequisites:
   - PersistentCraftWeaponNodeBizonT2

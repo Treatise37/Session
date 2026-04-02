@@ -598,7 +598,7 @@
   id: PersistentCraftWeaponRecipeScarHCqcT45
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
-  displayProto: STWeaponRifleSCARHShort
+  displayProto: STWeaponRifleFALo
   branch: Weapon
   tier: 4
   requiredNode: PersistentCraftWeaponNodeScarHCqcT45
@@ -610,7 +610,7 @@
   - tag: STArtifactTier4
     amount: 1
   results:
-  - proto: STWeaponRifleSCARHShort
+  - proto: STWeaponRifleFALo
   category: weapons
   subCategory: weapon-ar-nato
 

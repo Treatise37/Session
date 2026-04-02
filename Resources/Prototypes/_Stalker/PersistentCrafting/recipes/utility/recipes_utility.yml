@@ -338,15 +338,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: ClothingBeltWebbingDoubleStalkerZaryaSmall
   branch: Utility
-  tier: 4
+  tier: 3
   requiredNode: PersistentCraftUtilityNodeBeltDoubleZaryaT4
-  craftTime: 8
-  pointReward: 32
+  craftTime: 7
+  pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
+    amount: 32
   results:
   - proto: ClothingBeltWebbingDoubleStalkerZaryaSmall
   category: utility

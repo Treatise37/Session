@@ -18,7 +18,14 @@ public sealed class PersistentCraftResetAllCommand : IConsoleCommand
 
     public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        await ExecuteAsync(shell, args);
+        try
+        {
+            await ExecuteAsync(shell, args);
+        }
+        catch (Exception ex)
+        {
+            shell.WriteError($"Persistent craft reset-all failed unexpectedly: {ex.Message}");
+        }
     }
 
     private async Task ExecuteAsync(IConsoleShell shell, string[] args)

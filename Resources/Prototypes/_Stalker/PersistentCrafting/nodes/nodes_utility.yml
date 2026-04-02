@@ -27,10 +27,10 @@
   branch: Utility
   cost: 10
   displayProto: MedkitCMSStalker
-  treeColumn: 0
+  treeColumn: 1
   treeRow: 1
   prerequisites:
-  - PersistentCraftUtilityNodeArtifactContainerT1
+  - PersistentCraftUtilityNodeSafeboxT15
 
 - type: persistentCraftNode
   id: PersistentCraftUtilityNodeMedkitGrizzlyT3
@@ -39,7 +39,7 @@
   branch: Utility
   cost: 80
   displayProto: MedkitGrizzlyStalker
-  treeColumn: 0
+  treeColumn: 1
   treeRow: 2
   prerequisites:
   - PersistentCraftUtilityNodeMedkitCMST15
@@ -52,7 +52,7 @@
   cost: 160
   displayProto: BoxArtcont1
   treeColumn: 2
-  treeRow: 1
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeArtifactContainerT1
 
@@ -73,8 +73,8 @@
   branch: Utility
   cost: 15
   displayProto: ClothingBackpackTacticOliveStalker
-  treeColumn: 4
-  treeRow: 1
+  treeColumn: 5
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBackpackDuffelT1
 
@@ -85,8 +85,8 @@
   branch: Utility
   cost: 80
   displayProto: ClothingBackpackDuffelCommonStalker
-  treeColumn: 4
-  treeRow: 2
+  treeColumn: 6
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBackpackTacticT2
 
@@ -97,8 +97,8 @@
   branch: Utility
   cost: 80
   displayProto: ClothingBackpackStalkerZaryaGreen
-  treeColumn: 5
-  treeRow: 2
+  treeColumn: 7
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBackpackArmyT3
 
@@ -109,10 +109,10 @@
   branch: Utility
   cost: 80
   displayProto: ClothingBackpackMercStalker
-  treeColumn: 6
-  treeRow: 2
+  treeColumn: 8
+  treeRow: 0
   prerequisites:
-  - PersistentCraftUtilityNodeBackpackArmyT3
+  - PersistentCraftUtilityNodeBackpackZaryaT3
 
 - type: persistentCraftNode
   id: PersistentCraftUtilityNodeBackpackBlueArmyT4
@@ -121,8 +121,8 @@
   branch: Utility
   cost: 160
   displayProto: ClothingBackpackDuffelMilitaryBlue
-  treeColumn: 7
-  treeRow: 2
+  treeColumn: 9
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBackpackHikingT3
 
@@ -133,10 +133,10 @@
   branch: Utility
   cost: 160
   displayProto: ClothingBackpackDuffelBlackTacticStalker
-  treeColumn: 5
-  treeRow: 3
+  treeColumn: 7
+  treeRow: 1
   prerequisites:
-  - PersistentCraftUtilityNodeBackpackZaryaT3
+  - PersistentCraftUtilityNodeBackpackArmyT3
 
 - type: persistentCraftNode
   id: PersistentCraftUtilityNodeBackpackProT4
@@ -145,10 +145,10 @@
   branch: Utility
   cost: 160
   displayProto: ClothingBackpackDuffelSuperStalkerGray
-  treeColumn: 6
-  treeRow: 3
+  treeColumn: 8
+  treeRow: 1
   prerequisites:
-  - PersistentCraftUtilityNodeBackpackHikingT3
+  - PersistentCraftUtilityNodeBackpackArmyTacticT4
 
 # - type: persistentCraftNode
 #   id: PersistentCraftUtilityNodeBackpackCapaciousT5
@@ -170,7 +170,7 @@
   branch: Utility
   cost: 0
   displayProto: ClothingBeltBandolierStalker
-  treeColumn: 9
+  treeColumn: 10
   treeRow: 0
 
 - type: persistentCraftNode
@@ -180,8 +180,8 @@
   branch: Utility
   cost: 15
   displayProto: ClothingBeltWebbingHolsterStalkerZarya
-  treeColumn: 9
-  treeRow: 1
+  treeColumn: 11
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBeltNoviceT1
 
@@ -192,8 +192,8 @@
   branch: Utility
   cost: 15
   displayProto: ClothingBeltGreenWebbingStalker
-  treeColumn: 10
-  treeRow: 1
+  treeColumn: 12
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBeltZaryaT2
 
@@ -204,8 +204,8 @@
   branch: Utility
   cost: 80
   displayProto: ClothingBeltWebbingBerill
-  treeColumn: 10
-  treeRow: 2
+  treeColumn: 13
+  treeRow: 0
   prerequisites:
   - PersistentCraftUtilityNodeBeltPszT2
 
@@ -214,9 +214,9 @@
   name: двойная поясная сумка Заря T3.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Utility
-  cost: 160
+  cost: 80
   displayProto: ClothingBeltWebbingDoubleStalkerZaryaSmall
-  treeColumn: 9
-  treeRow: 2
+  treeColumn: 11
+  treeRow: 1
   prerequisites:
   - PersistentCraftUtilityNodeBeltZaryaT2
