@@ -128,7 +128,7 @@ internal static class HashSetExtensions
         var arr = new string[set.Count];
         set.CopyTo(arr);
         if (arr.Length > 1)
-            Array.Sort(arr, StringComparer.Ordinal);
+            Array.Sort(arr, static (left, right) => string.CompareOrdinal(left, right));
         return arr;
     }
 }

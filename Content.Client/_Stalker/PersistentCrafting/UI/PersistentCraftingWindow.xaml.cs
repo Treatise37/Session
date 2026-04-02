@@ -88,10 +88,9 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private float _treeZoom = 1f;
     private (string Branch, string NodeId)? _pendingNodeFocus;
 
-    public PersistentCraftingWindow(PersistentCraftClientPrototypeCache prototypeCache)
+    public PersistentCraftingWindow()
     {
         IoCManager.InjectDependencies(this);
-        _prototypeCache = prototypeCache;
         _selectionCoordinator = new PersistentCraftNodeSelectionCoordinator(_viewModel);
         _detailsCoordinator = new PersistentCraftNodeDetailsWindowCoordinator(
             _clyde,
@@ -100,7 +99,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             NodeDetailsWindowMinWidth,
             NodeDetailsWindowMinHeight,
             NodeDetailsWindowMargin);
-        _branchRegistry = prototypeCache.BranchRegistry;
+        _branchRegistry = PersistentCraftBranchRegistry.Create(_prototype);
         _branchCoordinator = new PersistentCraftBranchCoordinator(_branchRegistry, _branchHosts);
         _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
 
@@ -123,6 +122,15 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             RenderBranch(branch);
             FocusSelectedNode(fitZoom: false);
         };
+    }
+
+    public PersistentCraftingWindow(PersistentCraftClientPrototypeCache prototypeCache) : this()
+    {
+        _prototypeCache = prototypeCache;
+        _branchRegistry = prototypeCache.BranchRegistry;
+        _branchCoordinator.SetBranchRegistry(_branchRegistry);
+        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
+        InitializeBranchHosts();
     }
 
     private void InitializeBranchHosts()

@@ -90,24 +90,14 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     public event Action<string>? OnCraftPressed;
     public event Action? OnOpenSkillsPressed;
 
-    public PersistentCraftStationWindow(PersistentCraftClientPrototypeCache prototypeCache)
+    public PersistentCraftStationWindow()
     {
         IoCManager.InjectDependencies(this);
         _tag = _entityManager.EntitySysManager.GetEntitySystem<TagSystem>();
-        _prototypeCache = prototypeCache;
-        _recipeIndex = PersistentCraftRecipeIndex.Create(prototypeCache);
-        _branchRegistry = prototypeCache.BranchRegistry;
+        _branchRegistry = PersistentCraftBranchRegistry.Create(_prototype);
         _branchCoordinator = new PersistentCraftStationBranchCoordinator(_branchRegistry, _branchContainers);
-        var tempResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
-        _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Build(
-            prototypeCache.AllRecipes,
-            recipe => tempResolver.ResolveRecipeName(recipe),
-            recipe => tempResolver.ResolveRecipeDescription(recipe),
-            recipe => tempResolver.ComputeRecipeCategoryId(recipe),
-            recipe => tempResolver.ComputeRecipeSubCategoryId(recipe),
-            (categoryId, subCategoryId) => tempResolver.ResolveCategoryPath(categoryId, subCategoryId),
-            PersistentCraftingHelper.GetTierDisplayLabel);
-        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, _recipeMetadataIndex);
+        _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Empty;
+        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
 
         RobustXamlLoader.Load(this);
 
@@ -125,6 +115,27 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             PopulateBranch(GetBranchContainer(branch), branch);
             _viewModel.LastVisibleBranch = branch;
         };
+    }
+
+    public PersistentCraftStationWindow(PersistentCraftClientPrototypeCache prototypeCache) : this()
+    {
+        _prototypeCache = prototypeCache;
+        _recipeIndex = PersistentCraftRecipeIndex.Create(prototypeCache);
+        _branchRegistry = prototypeCache.BranchRegistry;
+        _branchCoordinator.SetBranchRegistry(_branchRegistry);
+
+        var tempResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
+        _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Build(
+            prototypeCache.AllRecipes,
+            recipe => tempResolver.ResolveRecipeName(recipe),
+            recipe => tempResolver.ResolveRecipeDescription(recipe),
+            recipe => tempResolver.ComputeRecipeCategoryId(recipe),
+            recipe => tempResolver.ComputeRecipeSubCategoryId(recipe),
+            (categoryId, subCategoryId) => tempResolver.ResolveCategoryPath(categoryId, subCategoryId),
+            PersistentCraftingHelper.GetTierDisplayLabel);
+        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, _recipeMetadataIndex);
+
+        InitializeBranchContainers();
     }
 
     public void UpdateState(PersistentCraftState state, PersistentCraftClientPrototypeCache prototypeCache)
