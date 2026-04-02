@@ -2,13 +2,12 @@
   id: STEmissionEventScheduler
   parent: BaseGameRule
   components:
-  - type: BasicStationEventScheduler
-    minimumTimeUntilFirstEvent: 0
+  - type: STEmissionEventSchedulerRule
+    minimumTimeUntilFirstEvent: 7200
     minMaxEventTiming:
-      min: 7200   # 2 hours
-      max: 14400  # 4 hours
-    scheduledGameRules: !type:EntSelector
-      id: STEmissionEvent
+      min: 7200
+      max: 14400
+    scheduledGameRule: STEmissionEvent
 
 - type: entity
   parent: BaseGameRule
@@ -16,51 +15,45 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
-    earliestStart: 60
+    earliestStart: 0
     reoccurrenceDelay: 0
-    duration: 360  # Total event duration (must be >= damageEndDelay + buffer)
+    duration: 360
+    weight: 100
   - type: EmissionEventRule
-    # Timing configuration (all values in seconds)
-    mainAmbientDelay: 30      # Main ambient track (emission.ogg)
-    stage2Delay: 60           # Stage 2 sound + announcement
-    redHueDelay: 100          # Red hue effect starts
-    damageStartDelay: 100     # Damage begins
-    redHueBeforeEndDelay: 290 # Red hue effect begins getting weaker
-    damageEndDelay: 310       # Damage ends, stage 3 plays, red hue totally clears
+    mainAmbientDelay: 30
+    stage2Delay: 60
+    redHueDelay: 100
+    damageStartDelay: 100
+    redHueBeforeEndDelay: 290
+    damageEndDelay: 310
     damageInterval: 3
 
-    # Damage configuration
     damage:
       types:
         Psy: 50
 
-    # Visual effects
     shakeStrength: 50
     primaryEmissionColor: "#FF0000FF"
     secondaryEmissionColor: "#FF5112"
-    #afterEmissionColor: "#64C2ED" # TODO LCDC: after-emission color
 
-    # Announcements
-    announcementSender: "S.T.A.L.K.E.R Network"
-    announcementStage1: "Attention stalkers, an emission is approaching! I repeat, an emission is approaching. Seek cover immediately."
-    announcementStage2: "Attention stalkers, an emission will start any minute now. Find cover if you want to live."
-    announcementStage3: "Stalkers, the emission is finally over. I hope you're all in one piece."
+    announcementSender: "Сеть S.T.A.L.K.E.R."
+    announcementStage1: "Внимание, сталкеры! Приближается выброс. Повторяю: приближается выброс. Немедленно ищите укрытие."
+    announcementStage2: "Внимание, сталкеры! Выброс начнётся с минуты на минуту. Ищите укрытие, если хотите выжить."
+    announcementStage3: "Сталкеры, выброс завершился. Надеюсь, вы все уцелели."
 
-    # Rain configuration (starts 40 seconds before stage 3)
     rainStartBeforeEnd: 40
-    rainDurationMin: 360    # 6-10 minutes random duration
+    rainDurationMin: 360
     rainDurationMax: 600
     rainWeather: STStorm
 
-    # Lightning
-    lightningSpawnRadius: 17.5 # slightly smaller than PVS range which is 25
+    lightningSpawnRadius: 17.5
     lightningIntervalRange: 4, 15
     lightningEffectProtoId: EmissionLightningEffect
   - type: EmissionAnomalyRegen
-    deletionDelay: 30               # 30s after Stage 2 starts
-    deletionStaggerInterval: 5      # 5s between each map's deletion
-    regenerationDelay: 10           # 10s after all deletions complete
-    regenerationStaggerInterval: 15  # 15s between each map's regen start
+    deletionDelay: 30
+    deletionStaggerInterval: 5
+    regenerationDelay: 10
+    regenerationStaggerInterval: 15
 
 - type: entity
   parent: STEmissionEvent
@@ -68,13 +61,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: EmissionEventRule
-    # Timing configuration (all values in seconds)
-    mainAmbientDelay: 4    # Main ambient track (emission.ogg)
-    stage2Delay: 8         # Stage 2 sound + announcement
-    redHueDelay: 15        # Red hue effect starts
-    damageStartDelay: 15   # Damage begins
+    mainAmbientDelay: 4
+    stage2Delay: 8
+    redHueDelay: 15
+    damageStartDelay: 15
     redHueBeforeEndDelay: 30
-    damageEndDelay: 50     # Damage ends, stage 3 plays, red hue clears
+    damageEndDelay: 50
   - type: EmissionAnomalyRegen
     deletionDelay: 5
     deletionStaggerInterval: 1
