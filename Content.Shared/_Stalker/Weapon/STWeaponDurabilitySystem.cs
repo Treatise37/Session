@@ -23,7 +23,6 @@ public sealed class STWeaponDurabilitySystem : EntitySystem
     private void OnShot(EntityUid uid, STWeaponDurabilityComponent comp, ref ShotAttemptedEvent args)
     {
         comp.CurrentDurability -= comp.DurabilityLossPerShot;
-
         if (comp.CurrentDurability < 0f)
             comp.CurrentDurability = 0f;
 
@@ -31,7 +30,6 @@ public sealed class STWeaponDurabilitySystem : EntitySystem
             return;
 
         var jamChance = GetJamChance(comp.Ratio);
-
         if (_random.Prob(jamChance))
         {
             args.Cancel();
@@ -71,6 +69,11 @@ public sealed class STWeaponDurabilitySystem : EntitySystem
             return;
 
         _gun.SetBoltClosed(uid, chamber, false);
+    }
+
+    public void SetDurability(EntityUid uid, STWeaponDurabilityComponent comp, float currentDurability)
+    {
+        comp.CurrentDurability = Math.Clamp(currentDurability, 0f, comp.MaxDurability);
     }
 
     public static int GetDurabilityPercent(STWeaponDurabilityComponent comp)
