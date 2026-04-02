@@ -3,7 +3,10 @@
   branches:
   - tasks:
     - !type:HTNCompoundTask
-      task: STBearMeleeCombatCompound
+      task: STBearMeleeCombatAliveCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: STBearMeleeCombatCritCompound
   - tasks:
     - !type:HTNCompoundTask
       task: STBearRoarRestoreCompound
@@ -11,13 +14,26 @@
       task: IdleCompound
 
 - type: htnCompound
-  id: STBearMeleeCombatCompound
+  id: STBearMeleeCombatAliveCompound
   branches:
   # Move to melee range and hit them
   - tasks:
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
-        proto: NearbyMeleeTargets
+        proto: STMeleeAliveTargets
+    - !type:HTNCompoundTask
+      task: STBearRoarCompound
+    - !type:HTNCompoundTask
+      task: STBearMeleeAttackTargetCompound
+
+- type: htnCompound
+  id: STBearMeleeCombatCritCompound
+  branches:
+  # Move to melee range and hit them
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: STMeleeCritTargets
     - !type:HTNCompoundTask
       task: STBearRoarCompound
     - !type:HTNCompoundTask
