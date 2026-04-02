@@ -12,6 +12,7 @@ namespace Content.Shared._Stalker_EN.Weight.Systems;
 public sealed class STWeightModStatusSystem : EntitySystem
 {
     [Dependency] private readonly StatusEffectsSystem _status = default!;
+    [Dependency] private readonly STWeightSystem _weightSystem = default!;
 
     public override void Initialize()
     {
@@ -25,6 +26,7 @@ public sealed class STWeightModStatusSystem : EntitySystem
         {
             weight.Self -= ent.Comp.Modifier;
             Dirty(args.Target, weight);
+            _weightSystem.TryUpdateWeight(args.Target);
         }
     }
 
@@ -45,6 +47,7 @@ public sealed class STWeightModStatusSystem : EntitySystem
         {
             weight.Self += modifier;
             Dirty(uid, weight);
+            _weightSystem.TryUpdateWeight(uid);
         }
 
         return true;

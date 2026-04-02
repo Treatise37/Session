@@ -17,25 +17,25 @@ public sealed class STWeightAlertSystem : EntitySystem
 
     private void OnStartup(Entity<STWeightComponent> ent, ref ComponentStartup args)
     {
-        RefreshAlert(ent.Owner, ent.Comp.Total, ent.Comp.TotalMaximum);
+        RefreshAlert(ent.Owner, ent.Comp.Total, ent.Comp.TotalOverload, ent.Comp.TotalMaximum);
     }
 
     private void OnWeightChanged(Entity<STWeightComponent> ent, ref STWeightChangedEvent args)
     {
-        RefreshAlert(ent.Owner, args.Total, args.TotalMaximum);
+        RefreshAlert(ent.Owner, args.Total, args.TotalOverload, args.TotalMaximum);
     }
 
-    private void RefreshAlert(EntityUid uid, float total, float max)
+    private void RefreshAlert(EntityUid uid, float total, float overload, float max)
     {
-        if (total >= 100f)
+        if (total >= max)
         {
-            _alerts.ShowAlert(uid, WeightAlert, 2); // красный
+            _alerts.ShowAlert(uid, WeightAlert, 2);
             return;
         }
 
-        if (total >= 50f)
+        if (total >= overload)
         {
-            _alerts.ShowAlert(uid, WeightAlert, 1); // желтый
+            _alerts.ShowAlert(uid, WeightAlert, 1);
             return;
         }
 
