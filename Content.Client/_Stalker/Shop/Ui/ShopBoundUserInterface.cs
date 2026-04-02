@@ -38,18 +38,17 @@ public sealed class ShopBoundUserInterface : BoundUserInterface
             SendMessage(new ShopRequestUpdateInterfaceMessage());
         };
 
-
         _menu.OnListingButtonPressed += (_, listing, sell, balance, count) =>
         {
-
             // stalker-changes-en: route buyback purchases to the dedicated message
-            if (!sell && listing.ID != null && listing.ID.StartsWith("st-buyback-"))
+            if (!sell && listing.ID != null && listing.ID.StartsWith(STBuybackConstants.IdPrefix))
             {
-                var buybackId = listing.ID.Substring("st-buyback-".Length);
-                SendMessage(new STBuybackPurchaseMessage(buybackId, balance));
+                if (uint.TryParse(listing.ID.Substring(STBuybackConstants.IdPrefix.Length), out var buybackId))
+                    SendMessage(new STBuybackPurchaseMessage(buybackId, balance));
+
                 return;
             }
-            
+
             switch (sell)
             {
                 case false:
@@ -67,6 +66,7 @@ public sealed class ShopBoundUserInterface : BoundUserInterface
                     break;
             }
         };
+
         _menu.OnRefreshButtonPressed += () =>
         {
             SendMessage(new ShopRequestUpdateInterfaceMessage());
@@ -80,16 +80,9 @@ public sealed class ShopBoundUserInterface : BoundUserInterface
         if (_menu is not { } menu)
             return;
 
-        // Place for menu updates
         switch (state)
         {
-            // TODO: It makes sense to update either only the balance, or only the category, etc.
-            //
-            // I just looked over the code, and i think its unnecessary,
-            // because of buying/selling requires to update both, balance and listings like
-            // reducing amount of item or removing listing from category at all
             case ShopUpdateState msg:
-                // cringe
                 var categories = new List<CategoryInfo>();
                 categories.AddRange(msg.Categories);
                 if (msg.SponsorCategories != null)

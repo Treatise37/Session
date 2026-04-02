@@ -10,16 +10,16 @@ namespace Content.Shared._Stalker_EN.Shop.Buyback;
 public sealed class STBuybackPurchaseMessage : BoundUserInterfaceMessage
 {
     /// <summary>
-    /// The unique ID of the buyback entry to repurchase.
+    /// The numeric ID of the buyback entry to repurchase.
     /// </summary>
-    public string BuybackEntryId;
+    public uint BuybackEntryId;
 
     /// <summary>
     /// The client's current balance at time of request.
     /// </summary>
     public int Balance;
 
-    public STBuybackPurchaseMessage(string buybackEntryId, int balance)
+    public STBuybackPurchaseMessage(uint buybackEntryId, int balance)
     {
         BuybackEntryId = buybackEntryId;
         Balance = balance;

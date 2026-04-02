@@ -69,6 +69,12 @@ public sealed partial class ShopSystem : SharedShopSystem
         InitializeBulkBuy(); // stalker-14-en
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        ShutdownBuyback(); // stalker-changes-en: unsubscribe player status events
+    }
+
     #region UI updates
     private void OnAfterInsert(StorageAfterInsertItemIntoLocationEvent args)
     {
@@ -213,10 +219,19 @@ public sealed partial class ShopSystem : SharedShopSystem
         _sawmill.Debug($"Sent balance to client: {component.CurrentBalance}");
 
         // stalker-changes-en: inject buyback category into the categories sent to client
-        var allCategories = new List<CategoryInfo>(categories);
         var buybackCategory = GetBuybackCategory(user.Value, component);
+
+        List<CategoryInfo> allCategories;
         if (buybackCategory != null)
+        {
+            allCategories = new List<CategoryInfo>(categories.Count + 1);
+            allCategories.AddRange(categories);
             allCategories.Add(buybackCategory);
+        }
+        else
+        {
+            allCategories = categories;
+        }
 
         var state = new ShopUpdateState(
             money,
