@@ -287,15 +287,11 @@ public sealed class PersistentCraftTextResolver
 
     private static string FormatTagIngredientName(string tag)
     {
+        // Пробуем найти локализацию по ключу persistent-craft-tag-{tag}.
+        // Для добавления красивого имени к любому тегу достаточно добавить ключ в .ftl файл.
         var tagLoc = TryLoc($"persistent-craft-tag-{tag}");
         if (!string.IsNullOrWhiteSpace(tagLoc))
             return tagLoc;
-
-        if (tag.StartsWith("STArtifactTier", StringComparison.Ordinal) &&
-            int.TryParse(tag.Substring("STArtifactTier".Length), out var tier))
-        {
-            return $"Artifact T{tier}";
-        }
 
         return HumanizeIdentifier(tag);
     }

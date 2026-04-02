@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Content.Client._Stalker.PersistentCrafting.UI.ViewModels;
 using Content.Shared._Stalker.PersistentCrafting;
 
@@ -19,15 +18,16 @@ public static class PersistentCraftStationBranchBuilder
     {
         var unlockedRecipes = state.Loaded
             ? FilterUnlockedRecipes(branchRecipes, hasRequirement)
-            : new List<PersistentCraftRecipePrototype>();
+            : (IReadOnlyList<PersistentCraftRecipePrototype>) Array.Empty<PersistentCraftRecipePrototype>();
 
         var selectedTier = GetSelectedTierFilter(branch, unlockedRecipes, viewModel);
         var searchText = viewModel.GetSearchText(branch);
         var craftableOnly = viewModel.GetCraftableOnly(branch);
 
+        // Каждый фильтр возвращает исходный список если фильтрация не нужна — без копирования.
         var filteredRecipes = selectedTier > 0
             ? FilterRecipesByTier(unlockedRecipes, selectedTier)
-            : unlockedRecipes.ToList();
+            : unlockedRecipes;
 
         filteredRecipes = ApplyRecipeSearch(filteredRecipes, searchText, matchesSearch);
         var craftabilityByRecipeId = IndexRecipeCraftability(filteredRecipes, hasLocalMaterials, out var craftableCount);
@@ -46,7 +46,7 @@ public static class PersistentCraftStationBranchBuilder
             craftableOnly);
     }
 
-    private static List<PersistentCraftRecipePrototype> FilterUnlockedRecipes(
+    private static IReadOnlyList<PersistentCraftRecipePrototype> FilterUnlockedRecipes(
         IReadOnlyList<PersistentCraftRecipePrototype> recipes,
         Func<PersistentCraftRecipePrototype, bool> hasRequirement)
     {
@@ -61,7 +61,7 @@ public static class PersistentCraftStationBranchBuilder
         return unlocked;
     }
 
-    private static List<PersistentCraftRecipePrototype> FilterRecipesByTier(
+    private static IReadOnlyList<PersistentCraftRecipePrototype> FilterRecipesByTier(
         IReadOnlyList<PersistentCraftRecipePrototype> recipes,
         int tier)
     {
@@ -76,14 +76,14 @@ public static class PersistentCraftStationBranchBuilder
         return filtered;
     }
 
-    private static List<PersistentCraftRecipePrototype> ApplyRecipeSearch(
+    private static IReadOnlyList<PersistentCraftRecipePrototype> ApplyRecipeSearch(
         IReadOnlyList<PersistentCraftRecipePrototype> recipes,
         string searchText,
         Func<PersistentCraftRecipePrototype, string, bool> matchesSearch)
     {
         var query = searchText.Trim().ToLowerInvariant();
         if (string.IsNullOrWhiteSpace(query))
-            return recipes.ToList();
+            return recipes; // нет запроса — нет копии
 
         var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
         for (var i = 0; i < recipes.Count; i++)
@@ -116,13 +116,13 @@ public static class PersistentCraftStationBranchBuilder
         return craftabilityByRecipeId;
     }
 
-    private static List<PersistentCraftRecipePrototype> ApplyCraftableFilter(
+    private static IReadOnlyList<PersistentCraftRecipePrototype> ApplyCraftableFilter(
         IReadOnlyList<PersistentCraftRecipePrototype> recipes,
         bool craftableOnly,
         IReadOnlyDictionary<string, bool> craftabilityByRecipeId)
     {
         if (!craftableOnly)
-            return recipes.ToList();
+            return recipes; // фильтр выключен — нет копии
 
         var filtered = new List<PersistentCraftRecipePrototype>(recipes.Count);
         for (var i = 0; i < recipes.Count; i++)

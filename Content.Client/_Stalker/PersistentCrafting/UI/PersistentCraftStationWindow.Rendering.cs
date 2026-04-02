@@ -519,7 +519,9 @@ public sealed partial class PersistentCraftStationWindow
             return new TextureRect
             {
                 Texture = texture,
-                TextureScale = size.X >= 90 ? new Vector2(2.1f, 2.1f) : new Vector2(1.15f, 1.15f),
+                TextureScale = size.X >= RecipeIconLargeThreshold
+                    ? new Vector2(RecipeIconScaleLarge, RecipeIconScaleLarge)
+                    : new Vector2(RecipeIconScaleSmall, RecipeIconScaleSmall),
                 Stretch = TextureRect.StretchMode.KeepAspectCentered,
                 HorizontalAlignment = HAlignment.Center,
                 VerticalAlignment = VAlignment.Center,

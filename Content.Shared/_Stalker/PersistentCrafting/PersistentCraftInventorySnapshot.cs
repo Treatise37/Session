@@ -11,15 +11,20 @@ public sealed class PersistentCraftInventorySnapshot
     private readonly Dictionary<string, int> _amountByTag;
 
     public static readonly PersistentCraftInventorySnapshot Empty = new(
-        string.Empty,
+        0,
         new Dictionary<string, int>(),
         new Dictionary<string, int>(),
         new Dictionary<string, int>());
 
-    public string Signature { get; }
+    /// <summary>
+    /// Числовой хеш содержимого инвентаря для быстрого сравнения.
+    /// Используется только для определения "изменился ли инвентарь" в рамках одной сессии.
+    /// Возможны редкие коллизии — они безопасны: приведут лишь к пропуску одного обновления UI.
+    /// </summary>
+    public int Signature { get; }
 
     internal PersistentCraftInventorySnapshot(
-        string signature,
+        int signature,
         Dictionary<string, int> amountByProto,
         Dictionary<string, int> amountByStackType,
         Dictionary<string, int> amountByTag)

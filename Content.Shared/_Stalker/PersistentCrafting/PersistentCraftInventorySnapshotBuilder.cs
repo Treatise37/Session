@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Shared.GameObjects;
@@ -22,7 +20,7 @@ public sealed class PersistentCraftInventorySnapshotBuilder
         _entityManager = entityManager;
         _tagSystem = tagSystem;
         _policy = policy ?? PersistentCraftAccessibleInventoryPolicy.Default;
-        _matcher = new PersistentCraftIngredientMatcher(entityManager, tagSystem);
+        _matcher = new PersistentCraftIngredientMatcher(entityManager);
     }
 
     public PersistentCraftInventorySnapshot Build(
@@ -55,14 +53,12 @@ public sealed class PersistentCraftInventorySnapshotBuilder
             }
         }
 
-        var sortedTrackedTags = trackedTags.ToArray();
-        if (sortedTrackedTags.Length > 1)
-            SortStringsOrdinal(sortedTrackedTags);
+        var sortedTrackedTags = trackedTags.ToSortedArray();
 
         var amountByProto = new Dictionary<string, int>();
         var amountByStackType = new Dictionary<string, int>();
         var amountByTag = new Dictionary<string, int>();
-        var signatureBuilder = new StringBuilder();
+        var hash = new HashCode();
 
         var accessibleEntities = PersistentCraftInventoryHelper.CollectAccessibleEntities(_entityManager, root, _policy);
         accessibleEntities.Sort(static (left, right) => left.Id.CompareTo(right.Id));
@@ -74,10 +70,8 @@ public sealed class PersistentCraftInventorySnapshotBuilder
                 continue;
 
             var amount = _matcher.GetUsableAmount(entity);
-            signatureBuilder.Append(entity.Id);
-            signatureBuilder.Append(':');
-            signatureBuilder.Append(amount);
-            signatureBuilder.Append(':');
+            hash.Add(entity.Id);
+            hash.Add(amount);
 
             string? prototypeId = null;
             if (_entityManager.TryGetComponent(entity, out MetaDataComponent? meta) &&
@@ -88,18 +82,17 @@ public sealed class PersistentCraftInventorySnapshotBuilder
                     AddAmount(amountByProto, prototypeId, amount);
             }
 
-            signatureBuilder.Append(prototypeId ?? string.Empty);
-            signatureBuilder.Append(':');
+            hash.Add(prototypeId);
 
             string? stackTypeId = null;
             if (_entityManager.TryGetComponent(entity, out StackComponent? stack))
             {
                 stackTypeId = stack.StackTypeId;
-                if (trackedStackTypes.Contains(stack.StackTypeId))
-                    AddAmount(amountByStackType, stack.StackTypeId, amount);
+                if (trackedStackTypes.Contains(stackTypeId))
+                    AddAmount(amountByStackType, stackTypeId, amount);
             }
 
-            signatureBuilder.Append(stackTypeId ?? string.Empty);
+            hash.Add(stackTypeId);
 
             for (var tagIndex = 0; tagIndex < sortedTrackedTags.Length; tagIndex++)
             {
@@ -108,15 +101,12 @@ public sealed class PersistentCraftInventorySnapshotBuilder
                     continue;
 
                 AddAmount(amountByTag, tag, amount);
-                signatureBuilder.Append('#');
-                signatureBuilder.Append(tag);
+                hash.Add(tag);
             }
-
-            signatureBuilder.Append(';');
         }
 
         return new PersistentCraftInventorySnapshot(
-            signatureBuilder.ToString(),
+            hash.ToHashCode(),
             amountByProto,
             amountByStackType,
             amountByTag);
@@ -129,9 +119,16 @@ public sealed class PersistentCraftInventorySnapshotBuilder
         else
             dictionary[key] = amount;
     }
+}
 
-    private static void SortStringsOrdinal(string[] values)
+internal static class HashSetExtensions
+{
+    internal static string[] ToSortedArray(this HashSet<string> set)
     {
-        Array.Sort(values, static (left, right) => string.CompareOrdinal(left, right));
+        var arr = new string[set.Count];
+        set.CopyTo(arr);
+        if (arr.Length > 1)
+            Array.Sort(arr, StringComparer.Ordinal);
+        return arr;
     }
 }

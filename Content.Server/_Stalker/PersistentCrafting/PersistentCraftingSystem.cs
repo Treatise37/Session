@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;
 using Content.Shared._Stalker.PersistentCrafting;
@@ -13,8 +14,10 @@ using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Stalker.PersistentCrafting;
 
@@ -28,9 +31,17 @@ public sealed class PersistentCraftingSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStackSystem _stacks = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    // Rate limiting: минимальный интервал между запросами от одного игрока
+    private const double CraftRateLimitSeconds = 0.5;
+    private const double UnlockRateLimitSeconds = 0.3;
+    private readonly Dictionary<NetUserId, TimeSpan> _lastCraftRequestTime = new();
+    private readonly Dictionary<NetUserId, TimeSpan> _lastUnlockRequestTime = new();
 
     private readonly ConcurrentQueue<PendingProfileLoad> _completedLoads = new();
     private readonly ConcurrentQueue<PendingSaveFailure> _saveFailures = new();
+    private readonly CancellationTokenSource _shutdownCts = new();
 
     private PersistentCraftBranchRegistry _branchRegistry = default!;
     private PersistentCraftProfileService _profileService = default!;
@@ -71,6 +82,34 @@ public sealed class PersistentCraftingSystem : EntitySystem
         base.Update(frameTime);
         ProcessCompletedLoads();
         ProcessSaveFailures();
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        // Отменяем retry-циклы сохранений — иначе сервер ждёт до 15 секунд при выключении
+        _shutdownCts.Cancel();
+        _shutdownCts.Dispose();
+    }
+
+    /// <summary>
+    /// Возвращает true если игрок отправляет запросы слишком часто.
+    /// Обновляет время последнего запроса при разрешении.
+    /// </summary>
+    private bool IsRateLimited(
+        NetUserId userId,
+        Dictionary<NetUserId, TimeSpan> lastRequestTime,
+        double limitSeconds)
+    {
+        var now = _timing.CurTime;
+        if (lastRequestTime.TryGetValue(userId, out var last) &&
+            (now - last).TotalSeconds < limitSeconds)
+        {
+            return true;
+        }
+
+        lastRequestTime[userId] = now;
+        return false;
     }
 
     private void ValidatePrototypeConfiguration()
@@ -390,6 +429,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
         if (args.SenderSession.AttachedEntity is not { Valid: true } user)
             return;
 
+        if (IsRateLimited(args.SenderSession.UserId, _lastCraftRequestTime, CraftRateLimitSeconds))
+            return;
+
         if (!HasComp<PersistentCraftAccessComponent>(user))
             return;
 
@@ -435,6 +477,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
     private void OnRequestUnlock(RequestPersistentCraftUnlockEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { Valid: true } user)
+            return;
+
+        if (IsRateLimited(args.SenderSession.UserId, _lastUnlockRequestTime, UnlockRateLimitSeconds))
             return;
 
         if (!HasComp<PersistentCraftAccessComponent>(user))
@@ -693,6 +738,12 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 await _profileRepository.SaveProfileAsync(snapshot);
                 return;
             }
+            catch (OperationCanceledException)
+            {
+                // Сервер выключается — прерываем retry без ошибки
+                Log.Info($"[PersistentCraft] Save for '{snapshot.CharacterName}' cancelled on shutdown (attempt {attempt}/{maxAttempts}).");
+                return;
+            }
             catch (Exception ex)
             {
                 lastException = ex;
@@ -700,7 +751,15 @@ public sealed class PersistentCraftingSystem : EntitySystem
                 if (attempt < maxAttempts)
                 {
                     Log.Warning($"[PersistentCraft] Save attempt {attempt}/{maxAttempts} failed for '{snapshot.CharacterName}', retrying in {retryDelayMs}ms: {ex.Message}");
-                    await Task.Delay(retryDelayMs);
+                    try
+                    {
+                        await Task.Delay(retryDelayMs, _shutdownCts.Token);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Log.Info($"[PersistentCraft] Save retry for '{snapshot.CharacterName}' cancelled on shutdown.");
+                        return;
+                    }
                 }
             }
         }

@@ -148,26 +148,26 @@
   category: materials-tools
   subCategory: materials-trash-detectors
 
-- type: persistentCraftRecipe
-  id: PersistentCraftMaterialsRecipeTrashDetectorTier5
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: TrashDetectorTier5
-  branch: Materials
-  tier: 5
-  requiredNode: PersistentCraftMaterialsNodeT5
-  craftTime: 10
-  pointReward: 0
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 128
-  - tag: STArtifactTier4
-    amount: 1
-  results:
-  - proto: TrashDetectorTier5
-  category: materials-tools
-  subCategory: materials-trash-detectors
-
+# - type: persistentCraftRecipe
+#   id: PersistentCraftMaterialsRecipeTrashDetectorTier5
+#   name: persistent-craft-recipe-generic-name
+#   description: persistent-craft-recipe-generic-desc
+#   displayProto: TrashDetectorTier5
+#   branch: Materials
+#   tier: 5
+#   requiredNode: PersistentCraftMaterialsNodeT5
+#   craftTime: 10
+#   pointReward: 0
+#   ingredients:
+#   - proto: STCraftAnomalyDust
+#     amount: 128
+#   - tag: STArtifactTier4
+#     amount: 1
+#   results:
+#   - proto: TrashDetectorTier5
+#   category: materials-tools
+#   subCategory: materials-trash-detectors
+# 
 - type: persistentCraftRecipe
   id: PersistentCraftMaterialsRecipeAaaaStalkerLopataT1
   name: persistent-craft-recipe-generic-name

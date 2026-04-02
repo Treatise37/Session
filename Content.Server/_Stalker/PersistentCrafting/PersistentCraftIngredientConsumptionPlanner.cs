@@ -22,7 +22,7 @@ public sealed class PersistentCraftIngredientConsumptionPlanner
         _entityManager = entityManager;
         _tagSystem = tagSystem;
         _inventoryPolicy = inventoryPolicy ?? PersistentCraftAccessibleInventoryPolicy.Default;
-        _matcher = new PersistentCraftIngredientMatcher(entityManager, tagSystem);
+        _matcher = new PersistentCraftIngredientMatcher(entityManager);
     }
 
     public bool TryPlan(

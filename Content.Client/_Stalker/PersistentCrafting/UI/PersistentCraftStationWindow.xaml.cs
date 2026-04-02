@@ -52,6 +52,9 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     private static readonly Color MissingColor = PersistentCraftUiTheme.Danger;
     private static readonly ISawmill Sawmill = Logger.GetSawmill("persistent-craft.ui.station");
     private const float RecipeResultFlashDuration = 0.7f;
+    private const float RecipeIconScaleLarge = 2.1f;   // для иконок размером >= 90px
+    private const float RecipeIconScaleSmall = 1.15f;  // для иконок размером < 90px
+    private const float RecipeIconLargeThreshold = 90f;
 
     private readonly Dictionary<string, BoxContainer> _branchContainers = new();
     private readonly Dictionary<string, ScrollContainer> _activeListScrollByBranch = new();
@@ -87,13 +90,24 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
     public event Action<string>? OnCraftPressed;
     public event Action? OnOpenSkillsPressed;
 
-    public PersistentCraftStationWindow()
+    public PersistentCraftStationWindow(PersistentCraftClientPrototypeCache prototypeCache)
     {
         IoCManager.InjectDependencies(this);
         _tag = _entityManager.EntitySysManager.GetEntitySystem<TagSystem>();
-        _branchRegistry = PersistentCraftBranchRegistry.Create(_prototype);
+        _prototypeCache = prototypeCache;
+        _recipeIndex = PersistentCraftRecipeIndex.Create(prototypeCache);
+        _branchRegistry = prototypeCache.BranchRegistry;
         _branchCoordinator = new PersistentCraftStationBranchCoordinator(_branchRegistry, _branchContainers);
-        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
+        var tempResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
+        _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Build(
+            prototypeCache.AllRecipes,
+            recipe => tempResolver.ResolveRecipeName(recipe),
+            recipe => tempResolver.ResolveRecipeDescription(recipe),
+            recipe => tempResolver.ComputeRecipeCategoryId(recipe),
+            recipe => tempResolver.ComputeRecipeSubCategoryId(recipe),
+            (categoryId, subCategoryId) => tempResolver.ResolveCategoryPath(categoryId, subCategoryId),
+            PersistentCraftingHelper.GetTierDisplayLabel);
+        _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, _recipeMetadataIndex);
 
         RobustXamlLoader.Load(this);
 
@@ -121,14 +135,14 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             _recipeIndex = PersistentCraftRecipeIndex.Create(prototypeCache);
             _branchRegistry = prototypeCache.BranchRegistry;
             _branchCoordinator.SetBranchRegistry(_branchRegistry);
-            _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
+            var tempResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
             _recipeMetadataIndex = PersistentCraftRecipeMetadataIndex.Build(
                 prototypeCache.AllRecipes,
-                recipe => _textResolver.ResolveRecipeName(recipe),
-                recipe => _textResolver.ResolveRecipeDescription(recipe),
-                recipe => _textResolver.ComputeRecipeCategoryId(recipe),
-                recipe => _textResolver.ComputeRecipeSubCategoryId(recipe),
-                (categoryId, subCategoryId) => _textResolver.ResolveCategoryPath(categoryId, subCategoryId),
+                recipe => tempResolver.ResolveRecipeName(recipe),
+                recipe => tempResolver.ResolveRecipeDescription(recipe),
+                recipe => tempResolver.ComputeRecipeCategoryId(recipe),
+                recipe => tempResolver.ComputeRecipeSubCategoryId(recipe),
+                (categoryId, subCategoryId) => tempResolver.ResolveCategoryPath(categoryId, subCategoryId),
                 PersistentCraftingHelper.GetTierDisplayLabel);
             _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, _recipeMetadataIndex);
             InitializeBranchContainers();
@@ -205,14 +219,8 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
 
         if (_pendingScrollRestoreBranches.Count > 0)
         {
-            var branches = new string[_pendingScrollRestoreBranches.Count];
-            _pendingScrollRestoreBranches.CopyTo(branches);
-            _pendingScrollRestoreBranches.Clear();
-
-            for (var i = 0; i < branches.Length; i++)
+            foreach (var branch in _pendingScrollRestoreBranches)
             {
-                var branch = branches[i];
-
                 if (_activeListScrollByBranch.TryGetValue(branch, out var listScroll) &&
                     _viewModel.ListScrollByBranch.TryGetValue(branch, out var listScrollValue))
                 {
@@ -225,6 +233,8 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
                     detailScroll.SetScrollValue(detailScrollValue);
                 }
             }
+
+            _pendingScrollRestoreBranches.Clear();
         }
 
         UpdateActiveRecipeIconCraftVisuals();
@@ -284,11 +294,10 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
         _visibleBranchStatesByBranch[branch] = branchState;
         _recipeEntryControlsByBranch[branch] = new Dictionary<string, RecipeEntryControls>();
 
-        container.AddChild(CreateBranchHeader(branch, branchState, 0, branchRecipes.Count));
-        container.AddChild(new Control { MinSize = new Vector2(1, 12) });
-
         if (!_state.Loaded)
         {
+            container.AddChild(CreateBranchHeader(branch, branchState, 0, branchRecipes.Count));
+            container.AddChild(new Control { MinSize = new Vector2(1, 12) });
             container.AddChild(new Label
             {
                 Text = Loc.GetString("persistent-craft-window-loading-points"),
@@ -306,7 +315,6 @@ public sealed partial class PersistentCraftStationWindow : DefaultWindow
             HasLocalMaterials,
             (recipe, query) => _textResolver.MatchesRecipeSearch(recipe, query));
 
-        container.RemoveAllChildren();
         container.AddChild(CreateBranchHeader(branch, branchState, branchData.UnlockedRecipes.Count, branchRecipes.Count));
         container.AddChild(new Control { MinSize = new Vector2(1, 12) });
 

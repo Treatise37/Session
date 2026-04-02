@@ -146,20 +146,33 @@ public sealed class PersistentCraftProfileRepository
             return false;
         }
 
+        if (data.Version > CurrentSaveDataVersion)
+        {
+            errorMessage = $"[PersistentCraft] Save data for '{characterName}' was created by a newer version ({data.Version}). Expected {CurrentSaveDataVersion}. Data cannot be loaded safely.";
+            return false;
+        }
+
+        // Цепочка миграций: каждый case мигрирует до следующей версии и проваливается дальше.
+        // При добавлении версии N: добавь case (N-1) с методом MigrateV{N-1}ToV{N},
+        // поставь changed = true и убери break — goto case N сделает остальное.
         switch (data.Version)
         {
-            case CurrentSaveDataVersion:
+            case 1:
+                // v1 → v2: структура идентична, только обновляем номер версии.
+                data.Version = 2;
+                changed = true;
+                goto case 2;
+
+            case 2: // CurrentSaveDataVersion
+                migrated = data;
                 return true;
 
-            // Пример будущей миграции:
-            // case 1:
-            //     migrated = MigrateV1ToV2(data);
-            //     changed = true;
-            //     return true;
-
             default:
-                errorMessage = $"[PersistentCraft] Save data for '{characterName}' uses unsupported version {data.Version}. Expected {CurrentSaveDataVersion}.";
-                return false;
+                // Версия 0 никогда не существовала в production.
+                // Любая неизвестная старая версия трактуется как чистый профиль.
+                migrated = data;
+                changed = true;
+                return true;
         }
     }
 

@@ -128,9 +128,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private void EnsureCraftWindow()
     {
-        _craftWindow ??= new PersistentCraftStationWindow();
+        _craftWindow ??= new PersistentCraftStationWindow(_prototypeCache);
         if (_craftWindow.Disposed)
-            _craftWindow = new PersistentCraftStationWindow();
+            _craftWindow = new PersistentCraftStationWindow(_prototypeCache);
 
         _craftWindow.OnCraftPressed -= OnCraftRequestedFromWindow;
         _craftWindow.OnCraftPressed += OnCraftRequestedFromWindow;
@@ -145,9 +145,9 @@ public sealed class PersistentCraftingSystem : EntitySystem
 
     private void EnsureSkillsWindow()
     {
-        _skillsWindow ??= new PersistentCraftingWindow();
+        _skillsWindow ??= new PersistentCraftingWindow(_prototypeCache);
         if (_skillsWindow.Disposed)
-            _skillsWindow = new PersistentCraftingWindow();
+            _skillsWindow = new PersistentCraftingWindow(_prototypeCache);
     }
 
     private void RefreshCraftWindow()

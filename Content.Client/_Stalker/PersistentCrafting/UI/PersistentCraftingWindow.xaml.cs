@@ -88,9 +88,10 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
     private float _treeZoom = 1f;
     private (string Branch, string NodeId)? _pendingNodeFocus;
 
-    public PersistentCraftingWindow()
+    public PersistentCraftingWindow(PersistentCraftClientPrototypeCache prototypeCache)
     {
         IoCManager.InjectDependencies(this);
+        _prototypeCache = prototypeCache;
         _selectionCoordinator = new PersistentCraftNodeSelectionCoordinator(_viewModel);
         _detailsCoordinator = new PersistentCraftNodeDetailsWindowCoordinator(
             _clyde,
@@ -99,7 +100,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             NodeDetailsWindowMinWidth,
             NodeDetailsWindowMinHeight,
             NodeDetailsWindowMargin);
-        _branchRegistry = PersistentCraftBranchRegistry.Create(_prototype);
+        _branchRegistry = prototypeCache.BranchRegistry;
         _branchCoordinator = new PersistentCraftBranchCoordinator(_branchRegistry, _branchHosts);
         _textResolver = new PersistentCraftTextResolver(_prototype, _branchRegistry, PersistentCraftRecipeMetadataIndex.Empty);
 
@@ -249,18 +250,7 @@ public sealed partial class PersistentCraftingWindow : DefaultWindow
             FontColorOverride = GetBranchAccent(branch),
         });
         subNodeHost.AddChild(new Control { MinSize = new Vector2(1, 8) });
-        if (branchSubNodes.Count == 0)
-        {
-            subNodeHost.AddChild(new Label
-            {
-                Text = Loc.GetString("persistent-craft-none"),
-                FontColorOverride = MutedTextColor,
-            });
-        }
-        else
-        {
-            subNodeHost.AddChild(CreateSubNodeTree(branch, branchSubNodes, selectedNode?.ID));
-        }
+        subNodeHost.AddChild(CreateSubNodeTree(branch, branchSubNodes, selectedNode?.ID));
 
         if (selectedNode == null)
         {
