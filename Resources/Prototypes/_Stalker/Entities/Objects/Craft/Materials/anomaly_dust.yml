@@ -1,0 +1,18 @@
+- type: entity
+  parent: STBaseIngridient
+  id: STCraftAnomalyDust
+  name: аномальная эссенция
+  description: нестабильная аномальная субстанция. Используется в разборе и сборке.
+  suffix: Stalker, крафт, аномальная эссенция
+  components:
+    - type: Sprite
+      state: core
+      sprite: Structures/Specific/Anomalies/Cores/gravity_core.rsi
+    - type: Item
+      sprite: Structures/Specific/Anomalies/Cores/gravity_core.rsi
+    - type: Stack
+      stackType: STAnomalyDust
+      count: 1
+    - type: Craftable
+    - type: RepositoryItem
+      categoryName: Крафты

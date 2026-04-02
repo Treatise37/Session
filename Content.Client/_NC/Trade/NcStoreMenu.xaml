@@ -73,6 +73,32 @@
                                    StyleClasses="LabelHeading"
                                    Margin="0 0 0 6" />
 
+                            <PanelContainer Name="SlotCooldownsSection"
+                                            Visible="False"
+                                            Margin="0 0 0 8">
+                                <PanelContainer.PanelOverride>
+                                    <graphics:StyleBoxFlat BackgroundColor="#1A1C23"
+                                                           BorderColor="#735E38"
+                                                           BorderThickness="1"
+                                                           Padding="8 6 8 6" />
+                                </PanelContainer.PanelOverride>
+
+                                <BoxContainer Orientation="Vertical"
+                                              HorizontalExpand="True"
+                                              SeparationOverride="4">
+                                    <Label Name="SlotCooldownsHeader"
+                                           Text="{Loc 'nc-store-slot-cooldowns-header'}"
+                                           StyleClasses="LabelSubText"
+                                           HorizontalExpand="True"
+                                           Modulate="#CDB47E" />
+
+                                    <BoxContainer Name="SlotCooldownsHost"
+                                                  Orientation="Vertical"
+                                                  HorizontalExpand="True"
+                                                  SeparationOverride="3" />
+                                </BoxContainer>
+                            </PanelContainer>
+
                             <ScrollContainer VerticalExpand="True"
                                              HorizontalExpand="True">
                                 <BoxContainer Name="ContractList"

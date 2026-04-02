@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseStructure
+  id: PersistentCraftWorkbench
+  name: старый верстак ремесленника
+  description: Декоративный объект. Новое меню крафта теперь открывается активным навыком роли Atom.
+  suffix: Stalker, persistent craft
+  components:
+    - type: Sprite
+      sprite: _Stalker/Objects/Devices/workbench.rsi
+      state: icon
+    - type: Transform
+      noRot: true

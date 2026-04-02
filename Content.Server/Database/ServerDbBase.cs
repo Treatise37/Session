@@ -2318,6 +2318,48 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             }
         }
 
+        public async Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+        }
+
+        public async Task SetStalkerPersistentCraftProfileAsync(
+            Guid userId,
+            string characterName,
+            string profileJson)
+        {
+            await using var db = await GetDb();
+
+            var record = await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+
+            if (record is null)
+            {
+                db.DbContext.StalkerPersistentCraftProfiles.Add(new StalkerPersistentCraftProfile
+                {
+                    UserId = userId,
+                    CharacterName = characterName,
+                    ProfileJson = profileJson,
+                });
+            }
+            else
+            {
+                record.ProfileJson = profileJson;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAllStalkerPersistentCraftProfilesAsync()
+        {
+            await using var db = await GetDb();
+            var all = await db.DbContext.StalkerPersistentCraftProfiles.ToListAsync();
+            db.DbContext.StalkerPersistentCraftProfiles.RemoveRange(all);
+            await db.DbContext.SaveChangesAsync();
+        }
+
         // stalker-en-changes: News articles
         public async Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit)
         {

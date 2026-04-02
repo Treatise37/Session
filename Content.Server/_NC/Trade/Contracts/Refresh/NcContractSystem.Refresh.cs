@@ -72,11 +72,12 @@ public sealed partial class NcContractSystem : EntitySystem
         string difficulty,
         int limit,
         Dictionary<string, int> currentCounts,
-        Dictionary<string, List<(StoreContractPrototype Proto, int Weight)>> poolByDifficulty
+        Dictionary<string, List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>> poolByDifficulty
     )
     {
         var current = currentCounts.GetValueOrDefault(difficulty, 0);
-        var needed = limit - current;
+        var coolingDownSlots = GetActiveResolvedSlotCooldownCount(uid, difficulty);
+        var needed = limit - current - coolingDownSlots;
 
         if (needed <= 0)
             return;
@@ -95,10 +96,10 @@ public sealed partial class NcContractSystem : EntitySystem
         EntityUid uid,
         string difficulty,
         int needed,
-        Dictionary<string, List<(StoreContractPrototype Proto, int Weight)>> poolByDifficulty,
+        Dictionary<string, List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>> poolByDifficulty,
         out CooldownState cooldown,
-        out List<(StoreContractPrototype Proto, int Weight)> fresh,
-        out List<(StoreContractPrototype Proto, int Weight)>? recent)
+        out List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> fresh,
+        out List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>? recent)
     {
         cooldown = default!;
         fresh = default!;
@@ -116,11 +117,11 @@ public sealed partial class NcContractSystem : EntitySystem
     }
 
     private static void SplitDifficultyPoolByCooldown(
-        List<(StoreContractPrototype Proto, int Weight)> pool,
+        List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> pool,
         CooldownState cooldown,
         int cooldownLimit,
-        out List<(StoreContractPrototype Proto, int Weight)> fresh,
-        out List<(StoreContractPrototype Proto, int Weight)>? recent)
+        out List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> fresh,
+        out List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>? recent)
     {
         if (cooldownLimit <= 0)
         {
@@ -144,8 +145,8 @@ public sealed partial class NcContractSystem : EntitySystem
     private bool TryIssueDifficultyContract(
         EntityUid store,
         NcStoreComponent comp,
-        List<(StoreContractPrototype Proto, int Weight)> fresh,
-        List<(StoreContractPrototype Proto, int Weight)>? recent,
+        List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> fresh,
+        List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>? recent,
         CooldownState cooldown)
     {
         var source = fresh.Count > 0 ? fresh : recent;
@@ -160,14 +161,14 @@ public sealed partial class NcContractSystem : EntitySystem
         return true;
     }
 
-    private Dictionary<string, List<(StoreContractPrototype Proto, int Weight)>> BuildCandidatePool(
+    private Dictionary<string, List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>> BuildCandidatePool(
         IReadOnlyList<StoreContractsPresetPrototype> presets,
         NcStoreComponent comp,
         string? ignoredContractId
     )
     {
         var flattened = GetOrBuildFlattenedPool(presets);
-        var result = new Dictionary<string, List<(StoreContractPrototype Proto, int Weight)>>(StringComparer.Ordinal);
+        var result = new Dictionary<string, List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>>(StringComparer.Ordinal);
 
         foreach (var entry in flattened.Values)
         {
@@ -190,13 +191,13 @@ public sealed partial class NcContractSystem : EntitySystem
             if (!exists)
                 list = new();
 
-            list!.Add((proto, weight));
+            list!.Add((proto, weight, entry.CooldownMinutes));
         }
 
         return result;
     }
 
-    private Dictionary<string, (StoreContractPrototype Proto, int Weight)> GetOrBuildFlattenedPool(
+    private Dictionary<string, (StoreContractPrototype Proto, int Weight, int CooldownMinutes)> GetOrBuildFlattenedPool(
         IReadOnlyList<StoreContractsPresetPrototype> presets
     )
     {
@@ -210,10 +211,10 @@ public sealed partial class NcContractSystem : EntitySystem
         return unique;
     }
 
-    private List<(StoreContractPrototype Proto, int Weight)> CollectFlattenedPoolEntries(
+    private List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> CollectFlattenedPoolEntries(
         IReadOnlyList<StoreContractsPresetPrototype> presets)
     {
-        var raw = new List<(StoreContractPrototype Proto, int Weight)>();
+        var raw = new List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)>();
 
         foreach (var preset in presets)
         {
@@ -233,31 +234,33 @@ public sealed partial class NcContractSystem : EntitySystem
         return raw;
     }
 
-    private Dictionary<string, (StoreContractPrototype Proto, int Weight)> MergeFlattenedPoolEntries(
+    private Dictionary<string, (StoreContractPrototype Proto, int Weight, int CooldownMinutes)> MergeFlattenedPoolEntries(
         string cacheKey,
-        IReadOnlyList<(StoreContractPrototype Proto, int Weight)> raw)
+        IReadOnlyList<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> raw)
     {
-        var unique = new Dictionary<string, (StoreContractPrototype Proto, int Weight)>(StringComparer.Ordinal);
+        var unique = new Dictionary<string, (StoreContractPrototype Proto, int Weight, int CooldownMinutes)>(StringComparer.Ordinal);
 
-        foreach (var (proto, weight) in raw)
-            AddFlattenedPoolEntry(unique, cacheKey, proto, weight);
+        foreach (var (proto, weight, cooldownMinutes) in raw)
+            AddFlattenedPoolEntry(unique, cacheKey, proto, weight, cooldownMinutes);
 
         return unique;
     }
 
     private void AddFlattenedPoolEntry(
-        Dictionary<string, (StoreContractPrototype Proto, int Weight)> unique,
+        Dictionary<string, (StoreContractPrototype Proto, int Weight, int CooldownMinutes)> unique,
         string cacheKey,
         StoreContractPrototype proto,
-        int weight)
+        int weight,
+        int cooldownMinutes)
     {
         if (weight <= 0)
             return;
 
+        cooldownMinutes = Math.Max(0, cooldownMinutes);
         ref var slot = ref CollectionsMarshal.GetValueRefOrAddDefault(unique, proto.ID, out var exists);
         if (!exists)
         {
-            slot = (proto, weight);
+            slot = (proto, weight, cooldownMinutes);
             return;
         }
 
@@ -270,6 +273,7 @@ public sealed partial class NcContractSystem : EntitySystem
         }
 
         slot.Weight = merged;
+        slot.CooldownMinutes = Math.Max(slot.CooldownMinutes, cooldownMinutes);
     }
 
     private static string BuildPresetPoolCacheKey(IReadOnlyList<StoreContractsPresetPrototype> presets)
@@ -313,10 +317,207 @@ public sealed partial class NcContractSystem : EntitySystem
         return state!;
     }
 
+    private int GetActiveResolvedSlotCooldownCount(EntityUid store, string difficulty)
+    {
+        if (store == EntityUid.Invalid || string.IsNullOrWhiteSpace(difficulty))
+            return 0;
+
+        var key = (store, difficulty);
+        if (!_contractResolvedSlotCooldowns.TryGetValue(key, out var entries) || entries.Count == 0)
+            return 0;
+
+        var now = _timing.CurTime;
+        for (var i = entries.Count - 1; i >= 0; i--)
+        {
+            if (entries[i].ExpiresAt <= now)
+                entries.RemoveAt(i);
+        }
+
+        if (entries.Count > 0)
+            return entries.Count;
+
+        _contractResolvedSlotCooldowns.Remove(key);
+        return 0;
+    }
+
+    private void ApplyContractResolutionCooldown(
+        EntityUid store,
+        NcStoreComponent comp,
+        string contractId,
+        string difficulty,
+        string contractName)
+    {
+        var cooldownMinutes = ResolveContractCooldownMinutesForStore(store, comp, contractId);
+        if (cooldownMinutes <= 0 || string.IsNullOrWhiteSpace(difficulty))
+            return;
+
+        ref var entries = ref CollectionsMarshal.GetValueRefOrAddDefault(
+            _contractResolvedSlotCooldowns,
+            (store, difficulty),
+            out var exists);
+        if (!exists)
+            entries = new();
+
+        entries!.Add(
+            new ResolvedSlotCooldownEntry
+            {
+                ContractId = contractId,
+                ContractName = string.IsNullOrWhiteSpace(contractName) ? contractId : contractName,
+                ExpiresAt = _timing.CurTime + TimeSpan.FromMinutes(cooldownMinutes)
+            });
+    }
+
+    public bool HasActiveSlotCooldowns(EntityUid store)
+    {
+        if (store == EntityUid.Invalid || _contractResolvedSlotCooldowns.Count == 0)
+            return false;
+
+        foreach (var (key, entries) in _contractResolvedSlotCooldowns)
+        {
+            if (key.Store != store || entries.Count == 0)
+                continue;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void RefreshExpiredSlotCooldowns(EntityUid store, NcStoreComponent comp)
+    {
+        if (store == EntityUid.Invalid || _contractResolvedSlotCooldowns.Count == 0)
+            return;
+
+        var expiredAny = false;
+        var now = _timing.CurTime;
+
+        _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+        foreach (var (key, entries) in _contractResolvedSlotCooldowns)
+        {
+            if (key.Store != store)
+                continue;
+
+            for (var i = entries.Count - 1; i >= 0; i--)
+            {
+                if (entries[i].ExpiresAt <= now)
+                {
+                    entries.RemoveAt(i);
+                    expiredAny = true;
+                }
+            }
+
+            if (entries.Count == 0)
+                _resolvedSlotCooldownKeysToRemoveScratch.Add(key);
+        }
+
+        for (var i = 0; i < _resolvedSlotCooldownKeysToRemoveScratch.Count; i++)
+            _contractResolvedSlotCooldowns.Remove(_resolvedSlotCooldownKeysToRemoveScratch[i]);
+        _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+
+        if (expiredAny)
+            RefillContractsForStore(store, comp);
+    }
+
+    public void GetActiveSlotCooldownsForClient(
+        EntityUid store,
+        List<SlotCooldownClientData> target)
+    {
+        target.Clear();
+        if (store == EntityUid.Invalid || _contractResolvedSlotCooldowns.Count == 0)
+            return;
+
+        var now = _timing.CurTime;
+
+        _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+        foreach (var (key, entries) in _contractResolvedSlotCooldowns)
+        {
+            if (key.Store != store)
+                continue;
+
+            for (var i = entries.Count - 1; i >= 0; i--)
+            {
+                var entry = entries[i];
+                var remaining = entry.ExpiresAt - now;
+                if (remaining <= TimeSpan.Zero)
+                {
+                    entries.RemoveAt(i);
+                    continue;
+                }
+
+                target.Add(
+                    new SlotCooldownClientData(
+                        key.Difficulty,
+                        entry.ContractId,
+                        string.IsNullOrWhiteSpace(entry.ContractName) ? entry.ContractId : entry.ContractName,
+                        Math.Max(1, (int) Math.Ceiling(remaining.TotalSeconds))));
+            }
+
+            if (entries.Count == 0)
+                _resolvedSlotCooldownKeysToRemoveScratch.Add(key);
+        }
+
+        for (var i = 0; i < _resolvedSlotCooldownKeysToRemoveScratch.Count; i++)
+            _contractResolvedSlotCooldowns.Remove(_resolvedSlotCooldownKeysToRemoveScratch[i]);
+        _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+
+        if (target.Count == 0)
+            return;
+
+        target.Sort(
+            static (left, right) =>
+            {
+                var byDifficulty = CompareDifficulty(left.Difficulty, right.Difficulty);
+                if (byDifficulty != 0)
+                    return byDifficulty;
+
+                var byTime = left.RemainingSeconds.CompareTo(right.RemainingSeconds);
+                if (byTime != 0)
+                    return byTime;
+
+                var byName = string.Compare(left.LastContractName, right.LastContractName, StringComparison.CurrentCulture);
+                if (byName != 0)
+                    return byName;
+
+                return string.CompareOrdinal(left.LastContractId, right.LastContractId);
+            });
+    }
+
+    private static int CompareDifficulty(string left, string right)
+    {
+        static int rank(string difficulty)
+        {
+            return difficulty switch
+            {
+                "Easy" => 0,
+                "Medium" => 1,
+                "Hard" => 2,
+                _ => 99
+            };
+        }
+
+        var byRank = rank(left).CompareTo(rank(right));
+        return byRank != 0 ? byRank : string.Compare(left, right, StringComparison.CurrentCulture);
+    }
+
+    private int ResolveContractCooldownMinutesForStore(EntityUid store, NcStoreComponent comp, string contractId)
+    {
+        if (string.IsNullOrWhiteSpace(contractId) || comp.ContractPresets.Count == 0)
+            return 0;
+
+        var presets = ResolveContractPresets(store, comp.ContractPresets);
+        if (presets.Count == 0)
+            return 0;
+
+        var flattened = GetOrBuildFlattenedPool(presets);
+        return flattened.TryGetValue(contractId, out var entry)
+            ? Math.Max(0, entry.CooldownMinutes)
+            : 0;
+    }
+
     private void CollectFromPackRecursive(
         string packId,
         int weightMult,
-        List<(StoreContractPrototype Proto, int FinalWeight)> acc,
+        List<(StoreContractPrototype Proto, int FinalWeight, int CooldownMinutes)> acc,
         HashSet<string> recursionStack
     )
     {
@@ -362,7 +563,7 @@ public sealed partial class NcContractSystem : EntitySystem
         string packId,
         int weightMult,
         StoreContractPackPrototype pack,
-        List<(StoreContractPrototype Proto, int FinalWeight)> acc)
+        List<(StoreContractPrototype Proto, int FinalWeight, int CooldownMinutes)> acc)
     {
         foreach (var entry in pack.Contracts)
         {
@@ -375,7 +576,7 @@ public sealed partial class NcContractSystem : EntitySystem
                 $"pack '{packId}' contract '{entry.Id}'");
 
             if (finalWeight > 0)
-                acc.Add((proto, finalWeight));
+                acc.Add((proto, finalWeight, Math.Max(0, entry.CooldownMinutes)));
         }
     }
 
@@ -383,7 +584,7 @@ public sealed partial class NcContractSystem : EntitySystem
         string packId,
         int weightMult,
         StoreContractPackPrototype pack,
-        List<(StoreContractPrototype Proto, int FinalWeight)> acc,
+        List<(StoreContractPrototype Proto, int FinalWeight, int CooldownMinutes)> acc,
         HashSet<string> recursionStack)
     {
         foreach (var include in pack.Includes)
@@ -440,8 +641,8 @@ public sealed partial class NcContractSystem : EntitySystem
     }
 
     private bool TryPickAndRemoveWeighted(
-        List<(StoreContractPrototype Proto, int Weight)> list,
-        out (StoreContractPrototype Proto, int Weight) picked
+        List<(StoreContractPrototype Proto, int Weight, int CooldownMinutes)> list,
+        out (StoreContractPrototype Proto, int Weight, int CooldownMinutes) picked
     )
     {
         picked = default;

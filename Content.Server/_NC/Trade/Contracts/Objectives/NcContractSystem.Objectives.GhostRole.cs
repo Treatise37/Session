@@ -294,7 +294,7 @@ public sealed partial class NcContractSystem : EntitySystem
             contract,
             Loc.GetString("nc-store-contract-ghost-role-target-lost"));
 
-    public bool HasRealtimeContractState(NcStoreComponent comp)
+    public bool HasRealtimeContractState(EntityUid store, NcStoreComponent comp)
     {
         foreach (var contract in comp.Contracts.Values)
         {
@@ -311,7 +311,7 @@ public sealed partial class NcContractSystem : EntitySystem
                 return true;
         }
 
-        return false;
+        return HasActiveSlotCooldowns(store);
     }
 
     private bool IsGhostRoleTargetAtStore(EntityUid store, EntityUid target)

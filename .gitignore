@@ -307,3 +307,5 @@ Resources/MapImages
 # Direnv stuff
 .direnv/
 .aider*
+.vscode/tasks.json
+.vscode/launch.json

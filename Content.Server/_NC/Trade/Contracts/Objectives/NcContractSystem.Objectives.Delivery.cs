@@ -313,7 +313,7 @@ public sealed partial class NcContractSystem : EntitySystem
             store,
             comp,
             contractId,
-            contract.Repeatable,
+            contract,
             deleteTrackedEntities: !config.PreserveTargetOnComplete);
         return ClaimAttemptResult.Ok();
     }

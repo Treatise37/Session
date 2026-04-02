@@ -400,6 +400,7 @@ public sealed partial class NcStoreMenu : FancyWindow
         bool hasSellTab,
         bool hasContractsTab,
         List<ContractClientData> contracts,
+        List<SlotCooldownClientData> slotCooldowns,
         int contractSkipCost,
         string contractSkipCurrency
     ) =>
@@ -413,6 +414,7 @@ public sealed partial class NcStoreMenu : FancyWindow
             hasSellTab,
             hasContractsTab,
             contracts,
+            slotCooldowns,
             contractSkipCost,
             contractSkipCurrency);
 

@@ -10,6 +10,7 @@ public sealed partial class NcStoreMenu
 
         private bool _hasLastDynamic;
         private int _lastContractsHash;
+        private int _lastCooldownsHash;
         private int _lastCrateMembershipHash;
         private int _lastReadyMembershipHash;
         private int _lastSkipCost;
@@ -121,8 +122,10 @@ public sealed partial class NcStoreMenu
             _m.BuyView.SetSearch(string.Empty);
             _m.SellView.SetSearch(string.Empty);
             _m.RefreshListings();
+            _m.PopulateSlotCooldowns(null);
             _hasLastDynamic = false;
             _lastContractsHash = 0;
+            _lastCooldownsHash = 0;
             _lastReadyMembershipHash = 0;
             _lastCrateMembershipHash = 0;
             _lastSkipCost = 0;
@@ -140,6 +143,7 @@ public sealed partial class NcStoreMenu
             bool hasSellTab,
             bool hasContractsTab,
             List<ContractClientData> contracts,
+            List<SlotCooldownClientData> slotCooldowns,
             int contractSkipCost,
             string contractSkipCurrency
         )
@@ -204,6 +208,7 @@ public sealed partial class NcStoreMenu
             var skipBalanceChanged = trackSkipBalance && (!_hasLastDynamic || currentSkipBalance != _lastSkipBalance);
 
             var contractsHash = ComputeContractsHash(contracts);
+            var cooldownsHash = ComputeSlotCooldownsHash(slotCooldowns);
             if (!_hasLastDynamic || contractsHash != _lastContractsHash || skipChanged || skipBalanceChanged)
             {
                 _lastContractsHash = contractsHash;
@@ -211,6 +216,12 @@ public sealed partial class NcStoreMenu
                 _lastSkipCurrency = contractSkipCurrency;
                 _lastSkipBalance = currentSkipBalance;
                 _m.PopulateContracts(contracts, contractSkipCost, contractSkipCurrency, currentSkipBalance);
+            }
+
+            if (!_hasLastDynamic || cooldownsHash != _lastCooldownsHash)
+            {
+                _lastCooldownsHash = cooldownsHash;
+                _m.PopulateSlotCooldowns(slotCooldowns);
             }
 
             var readyMembershipHash = ComputeReadyMembershipHash(ownedById, remainingById);

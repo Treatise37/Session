@@ -1,0 +1,121 @@
+- type: persistentCraftCategory
+  id: weapons
+  name: Оружие
+  order: 0
+
+- type: persistentCraftCategory
+  id: ammo
+  name: Боеприпасы
+  order: 1
+
+- type: persistentCraftCategory
+  id: armor
+  name: Броня
+  order: 2
+
+- type: persistentCraftCategory
+  id: anomaly
+  name: Аномалии
+  order: 3
+
+- type: persistentCraftCategory
+  id: anomaly-detectors
+  name: Детекторы аномалий
+  order: 0
+
+- type: persistentCraftCategory
+  id: artifact-detectors
+  name: Детекторы артефактов
+  order: 1
+
+- type: persistentCraftCategory
+  id: artifact-breakdown
+  name: Разбор артефактов
+  order: 2
+
+- type: persistentCraftCategory
+  id: anomaly-dust
+  name: Конвертация материалов
+  order: 3
+
+- type: persistentCraftCategory
+  id: materials-tools
+  name: Инструменты
+  order: 4
+
+- type: persistentCraftCategory
+  id: upgrades
+  name: Улучшения
+  order: 4
+
+- type: persistentCraftCategory
+  id: special
+  name: Прочее
+  order: 99
+
+- type: persistentCraftSubCategory
+  id: starter
+  category: weapons
+  name: Базовое
+  order: 0
+
+- type: persistentCraftSubCategory
+  id: upgrades
+  category: anomaly-detectors
+  name: Улучшения
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: material-disassemble
+  category: anomaly-dust
+  name: Разбор
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: materials-fishing-rods
+  category: materials-tools
+  name: Удочки
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: materials-trash-detectors
+  category: materials-tools
+  name: Металлоискатели
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: advanced
+  category: weapons
+  name: Продвинутое
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: elite
+  category: weapons
+  name: Элита
+  order: 3
+
+- type: persistentCraftSubCategory
+  id: tier-1
+  name: Уровень I
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: tier-2
+  name: Уровень II
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: tier-3
+  name: Уровень III
+  order: 3
+
+- type: persistentCraftSubCategory
+  id: tier-4
+  name: Уровень IV
+  order: 4
+
+- type: persistentCraftSubCategory
+  id: tier-5
+  name: Уровень V
+  order: 5

@@ -217,7 +217,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         if (EnsureCrateWatchUpToDate(uid, user))
             MarkDirty(uid);
 
-        if (!_contracts.HasRealtimeContractState(store) || !TryGetDynamicScratchForUpdate(uid, now, out var scratch))
+        if (!_contracts.HasRealtimeContractState(uid, store) || !TryGetDynamicScratchForUpdate(uid, now, out var scratch))
             return;
 
         _dirtyStores.Remove(uid);

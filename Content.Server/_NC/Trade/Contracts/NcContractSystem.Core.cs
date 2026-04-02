@@ -17,8 +17,10 @@ public sealed partial class NcContractSystem : EntitySystem
     private readonly Dictionary<string, List<string>> _ancestorsCache = new(StringComparer.Ordinal);
     private readonly List<(EntityUid Store, string Difficulty)> _cooldownKeysToRemoveScratch = new();
     private readonly Dictionary<(EntityUid Store, string Difficulty), CooldownState> _contractCooldown = new();
+    private readonly List<(EntityUid Store, string Difficulty)> _resolvedSlotCooldownKeysToRemoveScratch = new();
+    private readonly Dictionary<(EntityUid Store, string Difficulty), List<ResolvedSlotCooldownEntry>> _contractResolvedSlotCooldowns = new();
     private readonly Dictionary<string, int> _depthCache = new(StringComparer.Ordinal);
-    private readonly Dictionary<string, Dictionary<string, (StoreContractPrototype Proto, int Weight)>> _flattenedPoolCache = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, Dictionary<string, (StoreContractPrototype Proto, int Weight, int CooldownMinutes)>> _flattenedPoolCache = new(StringComparer.Ordinal);
     [Dependency] private readonly NcStoreInventorySystem _inventory = default!;
     [Dependency] private readonly NcStoreLogicSystem _logic = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
@@ -65,6 +67,8 @@ public sealed partial class NcContractSystem : EntitySystem
 
         _cooldownKeysToRemoveScratch.Clear();
         _contractCooldown.Clear();
+        _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+        _contractResolvedSlotCooldowns.Clear();
         _flattenedPoolCache.Clear();
     }
 
@@ -86,6 +90,21 @@ public sealed partial class NcContractSystem : EntitySystem
                 _contractCooldown.Remove(_cooldownKeysToRemoveScratch[i]);
 
             _cooldownKeysToRemoveScratch.Clear();
+        }
+
+        if (_contractResolvedSlotCooldowns.Count > 0)
+        {
+            _resolvedSlotCooldownKeysToRemoveScratch.Clear();
+            foreach (var key in _contractResolvedSlotCooldowns.Keys)
+            {
+                if (key.Store == store)
+                    _resolvedSlotCooldownKeysToRemoveScratch.Add(key);
+            }
+
+            for (var i = 0; i < _resolvedSlotCooldownKeysToRemoveScratch.Count; i++)
+                _contractResolvedSlotCooldowns.Remove(_resolvedSlotCooldownKeysToRemoveScratch[i]);
+
+            _resolvedSlotCooldownKeysToRemoveScratch.Clear();
         }
 
         ClearStoreObjectiveRuntime(store, deleteTrackedEntities: true);
@@ -187,5 +206,12 @@ public sealed partial class NcContractSystem : EntitySystem
 
             TrimToLimit();
         }
+    }
+
+    private sealed class ResolvedSlotCooldownEntry
+    {
+        public string ContractId = string.Empty;
+        public string ContractName = string.Empty;
+        public TimeSpan ExpiresAt;
     }
 }
