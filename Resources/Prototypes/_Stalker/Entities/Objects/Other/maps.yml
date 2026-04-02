@@ -1,86 +1,4 @@
 - type: entity
-  parent: BaseBoardEntity
-  id: SwampMap
-  name: Карта болота
-  description: Карта небольшого участка зоны, вырванная из какого-то атласа. Чтобы рассмотреть карту, лучше положить её на землю.
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/swampmap.rsi
-    state: swampmap
-  - type: TabletopGame
-    boardName: Карта
-    size: 2479, 2249
-    isMap: true
-    setup:
-      !type:TabletopEmptySetup
-      boardPrototype: SwampMapTabletop
-
-- type: entity
-  id: SwampMapTabletop
-  name: Карта болота
-  parent: BaseBoardTabletop
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/swampmap_tabletop.rsi
-    state: swampmap_tabletop
-
-- type: entity
-  parent: BaseBoardEntity
-  id: KordonSouthMap
-  name: Карта юга кордона
-  description: Карта небольшого участка зоны, вырванная из какого-то атласа. Чтобы рассмотреть карту, лучше положить её на землю.
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/kordonsouthmap.rsi
-    state: kordonsouthmap
-  - type: TabletopGame
-    boardName: Карта
-    size: 2790, 2790
-    isMap: true
-    setup:
-      !type:TabletopEmptySetup
-      boardPrototype: KordonSouthMapTabletop
-
-- type: entity
-  id: KordonSouthMapTabletop
-  name: Карта юга кордона
-  parent: BaseBoardTabletop
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/kordonsouthmap_tabletop.rsi
-    state: kordonsouthmap_tabletop
-
-- type: entity
-  parent: BaseBoardEntity
-  id: KordonNorthMap
-  name: Карта севера кордона
-  description: Карта небольшого участка зоны, вырванная из какого-то атласа. Чтобы рассмотреть карту, лучше положить её на землю.
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/kordonnorthmap.rsi
-    state: kordonnorthmap
-  - type: TabletopGame
-    boardName: Карта
-    size: 2480, 2250
-    isMap: true
-    setup:
-      !type:TabletopEmptySetup
-      boardPrototype: KordonNorthMapTabletop
-
-- type: entity
-  id: KordonNorthMapTabletop
-  name: Карта севера кордона
-  parent: BaseBoardTabletop
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Other/Maps/kordonnorthmap_tabletop.rsi
-    state: kordonnorthmap_tabletop
-
-
-- type: entity
   parent: BaseItem
   id: KordonMapStack
   name: Стопка карт кордона
@@ -95,3 +13,56 @@
       - id: KordonSouthMap
     sound:
       path: /Audio/Effects/unwrap.ogg
+
+
+
+- type: entity
+  parent: BaseItem
+  id: SwampMap
+  name: SwampMap
+  description: SwampMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/swampmap.rsi
+    state: swampmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/swampmap_tabletop.png
+    mapTextureName: swamp-button-name
+
+- type: entity
+  parent: BaseItem
+  id: KordonSouthMap
+  name: KordonSouthMap
+  description: KordonSouthMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/kordonsouthmap.rsi
+    state: kordonsouthmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/kordonsouthmap_tabletop.png
+    mapTextureName: kordonsouth-button-name
+
+- type: entity
+  parent: BaseItem
+  id: KordonNorthMap
+  name: KordonNorthMap
+  description: KordonNorthMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/kordonnorthmap.rsi
+    state: kordonnorthmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/kordonnorthmap_tabletop.png
+    mapTextureName: kordonnorth-button-name

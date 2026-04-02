@@ -33,12 +33,6 @@ namespace Content.Server.Tabletop.Components
         public Vector2 CameraZoom { get; private set; } = Vector2.One;
 
         /// <summary>
-        /// Changes the button to start playng to opening a map.
-        /// </summary>
-        [DataField]
-        public Boolean IsMap { get; private set; } = false;
-
-        /// <summary>
         /// The specific session of this tabletop.
         /// </summary>
         [ViewVariables]
