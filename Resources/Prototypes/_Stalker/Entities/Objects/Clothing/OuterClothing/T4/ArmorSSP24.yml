@@ -109,7 +109,6 @@
         Caustic: 1
         Radiation: 2
         Shock: 1
-        Compression: 2
         Cold: 2
         Psy: 1
       coefficients:
@@ -189,7 +188,6 @@
         Caustic: 1
         Radiation: 3
         Shock: 1
-        Compression: 2
         Cold: 2
         Psy: 1
       coefficients:
@@ -269,7 +267,6 @@
         Caustic: 1
         Radiation: 3
         Shock: 6
-        Compression: 2
         Cold: 2
         Psy: 6
       coefficients:

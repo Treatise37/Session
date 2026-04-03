@@ -546,7 +546,6 @@
         Piercing: 4
         Radiation: 1
         Shock: 2
-        Compression: 1
       coefficients:
         Blunt: 0.8
         Slash: 0.8

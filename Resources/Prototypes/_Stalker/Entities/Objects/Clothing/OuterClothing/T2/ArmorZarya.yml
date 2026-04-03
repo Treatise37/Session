@@ -19,7 +19,6 @@
         Slash: 5
         Piercing: 3
         Radiation: 1
-        Compression: 1
       coefficients:
         Blunt: 0.7
         Slash: 0.8
@@ -485,7 +484,6 @@
         Caustic: 1
         Radiation: 1
         Shock: 2
-        Compression: 1
       coefficients:
         Blunt: 0.85
         Slash: 0.75
