@@ -128,15 +128,13 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
-
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 130
-      currentDurability: 130
-      durabilityLossPerShot: 0.34
-      canJam: true
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleAK74M
