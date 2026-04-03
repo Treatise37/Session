@@ -37,11 +37,3 @@
   id: STWeaponShotgunMP133
   name: MP-133 Pump-action
   description: Reliable Russian pump-action shotgun. Popular among rookie stalkers for its simplicity and low cost. 6-round capacity but slow reload.
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT2
-    - type: STWeaponDurability
-      maxDurability: 115
-      currentDurability: 115
-      durabilityLossPerShot: 0.39
-      canJam: true

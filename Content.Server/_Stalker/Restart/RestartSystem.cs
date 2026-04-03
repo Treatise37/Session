@@ -1,7 +1,5 @@
 using Content.Server.Chat.Managers;
 using Content.Server.Spawners.Components;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Robust.Server;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
@@ -20,6 +18,7 @@ public partial class RestartSystem : EntitySystem
     [Dependency] private readonly ILogManager _logManager = default!;
     private ISawmill _sawmill = default!;
     private readonly HashSet<string> _usedHomeCommand = new();
+
 
     private readonly TimeSpan _updateDelay = TimeSpan.FromSeconds(60f);
     private readonly TimeSpan _teleportDelay = TimeSpan.FromMinutes(5f);
@@ -67,7 +66,7 @@ public partial class RestartSystem : EntitySystem
         _chat.DispatchServerAnnouncement($"Перезапуск сервера через: {Math.Round(delta.TotalMinutes, 1)} минут");
         if (delta < _teleportDelay)
         {
-            _chat.DispatchServerAnnouncement("Вы можете использовать команду home для быстрого возврата в Чистилище");
+            _chat.DispatchServerAnnouncement($"Вы можете использовать команду home для быстрого возврата в Чистилище");
         }
 
         data.Comp.IntervalLast = _timing.CurTime + data.Comp.IntervalDelay;
@@ -91,29 +90,16 @@ public partial class RestartSystem : EntitySystem
         var spawns = _entityManager.EntityQuery<SpawnPointComponent>();
         var spawn = spawns.FirstOrDefault(spawn => spawn?.Job?.Id == "Stalker");
         var session = shell.Player;
-
         if (spawn == null)
         {
             shell.WriteError("Нет спавнера Stalker Job Spawn на картах");
             return;
         }
-
         if (session?.AttachedEntity == null)
         {
             shell.WriteError("Сущность не игрок");
             return;
         }
-
-        var attached = session.AttachedEntity.Value;
-
-        if (!_entityManager.TryGetComponent<MobStateComponent>(attached, out var mobState) ||
-            mobState.CurrentState != MobState.Alive)
-        {
-            shell.WriteError("Команду home можно использовать только будучи живым.");
-            _sawmill.Info($"{attached.Id} {session.Name} пытался использовать home будучи мёртвым");
-            return;
-        }
-
         if (data.Comp.Time == default)
         {
             shell.WriteError("Рестарт не запланирован");
@@ -125,7 +111,7 @@ public partial class RestartSystem : EntitySystem
         {
             var message = $"Телепортация возможно только за {_teleportDelay} до рестарта";
             shell.WriteError(message);
-            _sawmill.Info($"{attached.Id} {session.Name} пытался телепортироваться в чистилище");
+            _sawmill.Info($"{session.AttachedEntity.Value.Id} {session.Name} пытался телепортироваться в чистилище");
             return;
         }
 
@@ -133,18 +119,18 @@ public partial class RestartSystem : EntitySystem
 
         if (_usedHomeCommand.Contains(uid))
         {
-            var message = "Телепортация возможнa только один раз";
+            var message = $"Телепортация возможнa только один раз";
             shell.WriteError(message);
-            _sawmill.Info($"{attached.Id} {session.Name} пытался повторно телепортироваться в чистилище");
+            _sawmill.Info($"{session.AttachedEntity.Value.Id} {session.Name} пытался повторно телепортироваться в чистилище");
             return;
         }
 
         var transformSystem = _entityManager.System<SharedTransformSystem>();
         var targetCoords = new EntityCoordinates(spawn.Owner, Vector2.Zero);
 
-        transformSystem.SetCoordinates(attached, targetCoords);
-        transformSystem.AttachToGridOrMap(attached);
-        _sawmill.Info($"{attached.Id} {session.Name} телепортировался в Чистилище");
+        transformSystem.SetCoordinates(session.AttachedEntity.Value, targetCoords);
+        transformSystem.AttachToGridOrMap(session.AttachedEntity.Value);
+        _sawmill.Info($"{session.AttachedEntity.Value.Id} {session.Name} телепортировался в Чистилище");
         shell.WriteLine("Успешная телепортация");
         _usedHomeCommand.Add(uid);
     }

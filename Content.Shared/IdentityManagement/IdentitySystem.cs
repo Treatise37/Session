@@ -12,7 +12,6 @@ using Robust.Shared.Containers;
 using Robust.Shared.Enums;
 using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Timing;
-using Content.Shared._Stalker_EN.AnonymousAlias;
 
 namespace Content.Shared.IdentityManagement;
 
@@ -29,7 +28,6 @@ public sealed class IdentitySystem : EntitySystem
     [Dependency] private readonly SharedCriminalRecordsConsoleSystem _criminalRecordsConsole = default!;
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
-    [Dependency] private readonly SharedSTAnonymousAliasSystem _anonymousAlias = default!;
 
     // The name of the container holding the identity entity
     private const string SlotName = "identity";
@@ -199,11 +197,7 @@ public sealed class IdentitySystem : EntitySystem
         var ev = new SeeIdentityAttemptEvent();
 
         RaiseLocalEvent(target, ev);
-
-        if (!ev.Cancelled)
-            return representation.ToStringKnown(true);
-
-        return _anonymousAlias.GetAlias(representation.TrueName);
+        return representation.ToStringKnown(!ev.Cancelled);
     }
 
     /// <summary>

@@ -44,14 +44,6 @@
   name: SKS Carbine
   description: The Simonov self-loading carbine chambered in 7.62x39mm with fixed 10-round magazine. Offers powerful caliber at low cost, though with certain limitations in Zone conditions.
 
-  components:
-    - type: STItemUpgrades
-      tree: STSniperUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 120
-      currentDurability: 120
-      durabilityLossPerShot: 0.26
-      canJam: true
 - type: entity
   parent: STBaseWeaponSniperSKS
   id: STWeaponSniperSKSpersecutor
@@ -76,10 +68,3 @@
     angleIncrease: 3
     angleDecay: 15
     projectileSpeed: 70
-  - type: STItemUpgrades
-    tree: STSniperUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 120
-    currentDurability: 120
-    durabilityLossPerShot: 0.26
-    canJam: true

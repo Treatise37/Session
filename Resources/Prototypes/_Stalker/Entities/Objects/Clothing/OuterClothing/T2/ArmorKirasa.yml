@@ -24,14 +24,3 @@
         Piercing: 0.95
   - type: ExplosionResistance
     damageCoefficient: 0.90
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 160
-    currentDurability: 160
-    durabilityLossPerDamage: 0.08
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

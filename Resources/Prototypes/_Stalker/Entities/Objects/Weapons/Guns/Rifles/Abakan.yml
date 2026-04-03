@@ -37,13 +37,6 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT5
-  - type: STWeaponDurability
-    maxDurability: 150
-    currentDurability: 150
-    durabilityLossPerShot: 0.28
-    canJam: true
 - type: entity
   name: AEK-971
   suffix: ST, Кастомка
@@ -82,10 +75,3 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.46
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT5
-  - type: STWeaponDurability
-    maxDurability: 150
-    currentDurability: 150
-    durabilityLossPerShot: 0.28
-    canJam: true

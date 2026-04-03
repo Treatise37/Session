@@ -50,17 +50,6 @@
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: ClothingOuterArmorAborigineStalker
   id: ClothingOuterArmorAborigineFreedom
@@ -72,14 +61,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/aborigine_freedom.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/aborigine_freedom.rsi
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

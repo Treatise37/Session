@@ -89,14 +89,6 @@
   description: The embodiment of new trends in Western-made automatic weapons, the principle of operation of the automatic system is based not on a semi-free bolt, but on a short stroke of the gas piston. It must be said that the changes have clearly been beneficial, this assault rifle is a first-class example of a modern weapon - light, reliable and ergonomic.
 
 
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true
 - type: entity
   parent: STBaseWeaponRifleG36
   id: STWeaponRifleG36Alt
@@ -111,13 +103,6 @@
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/g36-alt.rsi
 
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerShot: 0.31
-    canJam: true
 - type: entity
   parent: STBaseWeaponRifleG36
   id: STWeaponRifleG36Covenant
@@ -132,13 +117,6 @@
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/covenant_g36.rsi
 
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerShot: 0.31
-    canJam: true
 - type: entity
   parent: STBaseWeaponRifleG36
   id: STWeaponRifleAUG
@@ -157,10 +135,3 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerShot: 0.31
-    canJam: true

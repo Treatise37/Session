@@ -37,17 +37,6 @@
     slots:
     - Hair
 
-  - type: STItemUpgrades
-    tree: STHelmetLightUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 92
-    currentDurability: 92
-    durabilityLossPerDamage: 0.082
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT1Base
   id: ClothingHeadHelmetSH68Band
@@ -64,17 +53,6 @@
     slots:
     - Hair
 
-  - type: STItemUpgrades
-    tree: STHelmetLightUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 92
-    currentDurability: 92
-    durabilityLossPerDamage: 0.082
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT1Base
   id: ClothingHeadHelmetSH6Renegate
@@ -89,14 +67,3 @@
     slots:
     - Hair
 
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

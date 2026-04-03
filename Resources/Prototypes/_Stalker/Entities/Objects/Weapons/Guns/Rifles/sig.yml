@@ -73,14 +73,6 @@
   name: SIG SG 550
   description: A representative of a relatively new family of assault rifles. Due to its high reliability, accuracy in combat and ease of use, it is one of the best examples of weapons of this class. It is rarely encountered in the Zone and costs a lot of money. Usually, it is specially ordered for themselves by experienced stalkers.
 
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true
 - type: entity
   parent: STBaseWeaponRifleSIG
   id: STWeaponRifleSIG550Black
@@ -98,13 +90,6 @@
       path: /Audio/_Stalker/Effects/Guns/t_sig550_shot.ogg
 
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerShot: 0.31
-    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSIG
   id: STWeaponRifleSIG739
@@ -163,10 +148,3 @@
     falloffMultiplier: 0.2
   - type: STWeaponAccuracy
     accuracyMultiplier: 3
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT1
-  - type: STWeaponDurability
-    maxDurability: 110
-    currentDurability: 110
-    durabilityLossPerShot: 0.4
-    canJam: true

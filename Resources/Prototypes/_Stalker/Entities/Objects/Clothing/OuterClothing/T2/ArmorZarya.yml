@@ -54,17 +54,6 @@
     clothingPrototype: ClothingHeadHelmetZaryaStalker
     slot: head
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetZaryaStalker
@@ -115,17 +104,6 @@
 
 # Stalker №3
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaHunter
@@ -157,17 +135,6 @@
 
 # Jabs - 2
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaJabs
@@ -182,17 +149,6 @@
 
 # Military - 3 +
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaMilitary
@@ -276,17 +232,6 @@
           Radiation: 0.95
           Caustic: 0.8
 
-    - type: STItemUpgrades
-      tree: STArmorSuitUpgradeTreeT3
-    - type: STArmorDurability
-      maxDurability: 180
-      currentDurability: 180
-      durabilityLossPerDamage: 0.07
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadCapoSera
@@ -333,17 +278,6 @@
 
 # Dolg - 4
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaDolg
@@ -378,17 +312,6 @@
         Heat: 0.85
         Radiation: 0.95
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetZaryaDolg
@@ -416,17 +339,6 @@
 
 # Mods
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaStalkerModifedType1
@@ -452,17 +364,6 @@
         Piercing: 0.85
         Heat: 0.85
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: ClothingOuterArmorZaryaStalkerModifedType2
@@ -498,17 +399,6 @@
 
 # Old groups
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: STClothingOuterArmorProjectZarya
@@ -524,17 +414,6 @@
     clothingPrototype: ClothingHeadCapoProject
     slot: head
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadCapoProject
@@ -566,17 +445,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/deserter_zarya.rsi
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: STClothingOuterArmorBandits
@@ -613,17 +481,6 @@
         Radiation: 0.8
         Caustic: 0.9
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadWandererCap
@@ -651,14 +508,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/zarya_ruined.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSeraRuined
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

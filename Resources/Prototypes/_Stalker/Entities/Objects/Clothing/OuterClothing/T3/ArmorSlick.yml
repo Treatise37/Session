@@ -37,17 +37,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/Slick/Green.rsi
 
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterSlickBlack
   id: STClothingOuterSlickHaki
@@ -59,14 +48,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/Slick/Haki.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/Slick/Haki.rsi
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

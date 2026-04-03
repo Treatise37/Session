@@ -6,12 +6,9 @@ namespace Content.Shared._Stalker.Weight;
 
 public sealed partial class STWeightSystemModifier : EntitySystem
 {
-    [Dependency] private readonly STWeightSystem _weightSystem = default!;
-
     public override void Initialize()
     {
         base.Initialize();
-
         SubscribeLocalEvent<STWeightComponent, UpdatedFloatModifierEvent<STWeightMaximumModifierComponent>>(OnUpdatedMaximum);
         SubscribeLocalEvent<STWeightComponent, UpdatedFloatModifierEvent<STWeightSelfModifierComponent>>(OnUpdatedSelf);
     }
@@ -20,13 +17,11 @@ public sealed partial class STWeightSystemModifier : EntitySystem
     {
         weight.Comp.MaximumModifier = args.Modifier;
         Dirty(weight.Owner, weight.Comp);
-        _weightSystem.TryUpdateWeight(weight.Owner);
     }
 
     private void OnUpdatedSelf(Entity<STWeightComponent> weight, ref UpdatedFloatModifierEvent<STWeightSelfModifierComponent> args)
     {
         weight.Comp.Self += args.Modifier;
         Dirty(weight.Owner, weight.Comp);
-        _weightSystem.TryUpdateWeight(weight.Owner);
     }
 }

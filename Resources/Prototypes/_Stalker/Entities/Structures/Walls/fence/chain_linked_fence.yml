@@ -1,3 +1,4 @@
+
 # КОЛЮЧАЯ ПРОВОЛОКА
 - type: entity
   parent: BaseStructure
@@ -18,17 +19,6 @@
     bodyType: Static
   - type: Transform
     anchored: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.10,-0.5,0.10,0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic

@@ -64,11 +64,3 @@
 - type: entity
   parent: STBaseWeaponSMGViper
   id: STWeaponSMGVZ61
-  components:
-    - type: STItemUpgrades
-      tree: STSmgUpgradeTreeT2
-    - type: STWeaponDurability
-      maxDurability: 105
-      currentDurability: 105
-      durabilityLossPerShot: 0.47
-      canJam: true

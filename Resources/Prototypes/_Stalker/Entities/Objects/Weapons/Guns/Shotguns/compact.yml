@@ -33,11 +33,3 @@
   id: STWeaponShotgunCompact
   name: Zipgun 'Stalker's Friend'
   description: Crudely crafted single-shot shotgun assembled from scrap parts. Primitive but potentially life-saving in skilled hands. Valued in the Zone for its compact size and simplicity.
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT1
-    - type: STWeaponDurability
-      maxDurability: 105
-      currentDurability: 105
-      durabilityLossPerShot: 0.42
-      canJam: true

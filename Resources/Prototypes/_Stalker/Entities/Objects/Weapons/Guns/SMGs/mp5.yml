@@ -66,14 +66,6 @@
   name: H&K MP-5
   description: The legendary Heckler & Koch MP-5 submachine gun chambered in 9x19mm Parabellum. Renowned for its precision and reliability, it remains a favorite among Zone operatives despite newer designs.
 
-  components:
-    - type: STItemUpgrades
-      tree: STSmgUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 115
-      currentDurability: 115
-      durabilityLossPerShot: 0.44
-      canJam: true
 - type: entity
   parent: STBaseWeaponSMGMP5
   id: STWeaponSMGMP5Celebra
@@ -87,13 +79,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Weapons/Guns/SMGs/mp5/mp5Selebra.rsi
 
-  - type: STItemUpgrades
-    tree: STSmgUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 115
-    currentDurability: 115
-    durabilityLossPerShot: 0.44
-    canJam: true
 - type: entity
   abstract: true
   parent: STBaseWeaponSMGMP5 # Kekw
@@ -128,14 +113,6 @@
   name: KRISS Vector 9mm
   description: Next-generation submachine gun with unique delayed blowback system delivering exceptional controllability during high-rate fire. Chambered in 9x19mm Parabellum.
 
-  components:
-    - type: STItemUpgrades
-      tree: STSmgUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 125
-      currentDurability: 125
-      durabilityLossPerShot: 0.41
-      canJam: true
 - type: entity
   parent: STBaseWeaponSMGVector9
   id: STWeaponSMGVector9Black
@@ -150,13 +127,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Weapons/Guns/SMGs/vector_black.rsi
 
-  - type: STItemUpgrades
-    tree: STSmgUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.41
-    canJam: true
 - type: entity
   parent: STBaseWeaponSMGVector9
   id: STWeaponSMGVector9Forest
@@ -170,10 +140,3 @@
     scale: 0.75, 0.75
   - type: Clothing
     sprite: _Stalker/Objects/Weapons/Guns/SMGs/vector_forest.rsi
-  - type: STItemUpgrades
-    tree: STSmgUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.41
-    canJam: true

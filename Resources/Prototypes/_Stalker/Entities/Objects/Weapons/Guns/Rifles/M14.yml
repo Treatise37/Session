@@ -70,11 +70,3 @@
   id: STWeaponRifleM14
   name: M14
   description: Powerful American battle rifle chambered in 7.62x51mm NATO. Appears in the Zone through military shipments and as trophies. Prized for stopping power and range, but heavy and maintenance-heavy.
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true

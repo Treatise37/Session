@@ -32,10 +32,3 @@
     containers:
       gun_module_scope: !type:ContainerSlot {}
       projectiles: !type:ContainerSlot {}
-  - type: STItemUpgrades
-    tree: STSniperUpgradeTreeT2
-  - type: STWeaponDurability
-    maxDurability: 110
-    currentDurability: 110
-    durabilityLossPerShot: 0.29
-    canJam: true

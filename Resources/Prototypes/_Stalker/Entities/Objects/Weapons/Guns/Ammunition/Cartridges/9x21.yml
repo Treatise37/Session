@@ -31,7 +31,6 @@
   - type: Tag
     tags:
       - Cartridge
-      - STCartridge921
       - STCartridge921PGJ
   - type: CartridgeAmmo
     proto: Bullet921PGJ

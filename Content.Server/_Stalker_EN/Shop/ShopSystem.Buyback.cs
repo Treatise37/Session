@@ -4,7 +4,6 @@ using Content.Shared._Stalker_EN.Shop.Buyback;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Store;
-using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -19,34 +18,13 @@ public sealed partial class ShopSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    private const string BuybackIdPrefix = "st-buyback-";
     private const string BuybackCategoryLocId = "st-shop-buyback-category";
 
     private void InitializeBuyback()
     {
         SubscribeLocalEvent<ShopComponent, STBuybackPurchaseMessage>(OnBuybackPurchase);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnBuybackRoundCleanup);
-        _player.PlayerStatusChanged += OnBuybackPlayerStatusChanged;
-    }
-
-    private void ShutdownBuyback()
-    {
-        _player.PlayerStatusChanged -= OnBuybackPlayerStatusChanged;
-    }
-
-    /// <summary>
-    /// Clears a disconnecting player's buyback entries from all shops.
-    /// </summary>
-    private void OnBuybackPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
-    {
-        if (args.NewStatus != SessionStatus.Disconnected)
-            return;
-
-        var userId = args.Session.UserId;
-        var query = EntityQueryEnumerator<ShopComponent>();
-        while (query.MoveNext(out _, out var comp))
-        {
-            comp.BuybackItems.Remove(userId);
-        }
     }
 
     private void AddBuybackEntry(
@@ -70,13 +48,13 @@ public sealed partial class ShopSystem
             component.BuybackItems[userId] = entries;
         }
 
-        var buybackPrice = (int)Math.Ceiling(perItemSellPrice * component.BuybackPriceMultiplier);
+        var buybackPrice = (int) Math.Ceiling(perItemSellPrice * component.BuybackPriceMultiplier);
         var now = _timing.CurTime;
 
         for (var i = 0; i < count; i++)
         {
             var entry = new STBuybackEntry(
-                component.BuybackNextId++,
+                Guid.NewGuid().ToString(),
                 prototypeId,
                 name,
                 description,
@@ -125,7 +103,7 @@ public sealed partial class ShopSystem
                 productEvent: null,
                 raiseProductEventOnUser: false,
                 purchaseAmount: 0,
-                id: STBuybackConstants.IdPrefix + entry.Id,
+                id: BuybackIdPrefix + entry.Id,
                 categories: new HashSet<ProtoId<StoreCategoryPrototype>>(),
                 originalCost: new Dictionary<ProtoId<CurrencyPrototype>, FixedPoint2>
                 {
@@ -191,7 +169,6 @@ public sealed partial class ShopSystem
         while (query.MoveNext(out _, out var component))
         {
             component.BuybackItems.Clear();
-            component.BuybackNextId = 0;
         }
     }
 }

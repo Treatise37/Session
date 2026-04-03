@@ -58,11 +58,3 @@
   id: STWeaponSMGMP40ruust
   name: MP-40 ржавый
   description: ФОМОЧКА, ТЫ ЧЕГО????
-  components:
-    - type: STItemUpgrades
-      tree: STSmgUpgradeTreeT2
-    - type: STWeaponDurability
-      maxDurability: 105
-      currentDurability: 105
-      durabilityLossPerShot: 0.47
-      canJam: true

@@ -109,20 +109,6 @@
 
 # Sci
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaSciRed
@@ -134,20 +120,6 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/outerClothing/seva_red.rsi
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaSciWhite
@@ -200,20 +172,6 @@
     sprite: _Stalker/Objects/Clothing/hats/seva_sci_helm.rsi
 # Military
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaMilitary
@@ -268,20 +226,6 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmMilitary
@@ -297,20 +241,6 @@
 
 # monolith
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaMonolith
@@ -351,20 +281,6 @@
       types:
         Radiation: 18.01
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmMonolith
@@ -379,20 +295,6 @@
 
 # Clear sky
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaCN
@@ -428,20 +330,6 @@
 
 # Merc
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaMerc
@@ -482,20 +370,6 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmMerc
@@ -510,20 +384,6 @@
 
 # Poisk
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaPoisk
@@ -559,20 +419,6 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHardsuitSevaHelmPoisk
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHardsuitSevaHelmPoisk
@@ -589,20 +435,6 @@
 
 # Neutral
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: STClothingOuterArmorSevaNeutral
@@ -638,20 +470,6 @@
 
 # Covenant
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaCovenant
@@ -665,20 +483,6 @@
     - type: ToggleableClothing
       clothingPrototype: ClothingHeadHardsuitSevaHelmCovenant
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmCovenant
@@ -694,20 +498,6 @@
 
 # Seraphim
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevasera
@@ -746,20 +536,6 @@
       clothingPrototype: ClothingHeadHardsuitSevaHelmSera
       slot: head
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmSera
@@ -777,20 +553,6 @@
 
 # Project
 
-    - type: STItemUpgrades
-      tree: STHelmetScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaProjectGROM9
@@ -828,20 +590,6 @@
     clothingPrototype: ClothingHeadHardsuitSevaHelmProjectGROM9
     slot: head
 
-  - type: STItemUpgrades
-    tree: STArmorScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmProjectGROM9
@@ -856,20 +604,6 @@
 
 # Dolg
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaDolgRed
@@ -906,20 +640,6 @@
     - type: ExplosionResistance
       damageCoefficient: 0.7
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmDolgRed
@@ -934,20 +654,6 @@
 
 # Freedom
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaFreedom
@@ -986,20 +692,6 @@
       clothingPrototype: ClothingHeadHardsuitSevaHelmFreedom
       slot: head
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmFreedom
@@ -1015,20 +707,6 @@
 
   # Renegaty
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevarenegat
@@ -1067,20 +745,6 @@
       clothingPrototype: ClothingHeadHardsuitSevaHelmRenegat
       slot: head
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaHelmRenegat
@@ -1095,20 +759,6 @@
     - type: IdentityBlocker
     - type: IngestionBlocker
 
-    - type: STItemUpgrades
-      tree: STHelmetScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevaVano
@@ -1133,20 +783,6 @@
          Slash: 0.6
          Piercing: 0.55
 
-    - type: STItemUpgrades
-      tree: STArmorScientificUpgradeTreeT5
-    - type: STArmorDurability
-      maxDurability: 220
-      currentDurability: 220
-      durabilityLossPerDamage: 0.05
-      minProtectionFactor: 0.45
-      affectedDamageTypes:
-      - Blunt
-      - Piercing
-      - Heat
-      - Radiation
-      - Caustic
-      - Shock
 - type: entity
   parent: STClothingHeadHardsuitSevaHelmBase
   id: ClothingHeadHardsuitSevaVano
@@ -1158,17 +794,3 @@
     sprite: _Stalker/Objects/Clothing/hats/seva_helmet_VANO.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/seva_helmet_VANO.rsi
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock

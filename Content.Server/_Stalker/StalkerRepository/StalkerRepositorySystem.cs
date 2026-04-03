@@ -357,7 +357,6 @@ public sealed class StalkerRepositorySystem : EntitySystem
 
         // generate new item info for clicked entity
         var itemInfo = GenerateItemInfo(args.Used, true);
-
         // check for valid weight
         var sum = component.CurrentWeight + itemInfo.Weight;
         if (Math.Round(sum, 2) > component.MaxWeight)
@@ -365,25 +364,27 @@ public sealed class StalkerRepositorySystem : EntitySystem
             _sawmill.Debug($"Could not insert an item due to its weight. {itemInfo.Identifier} | item weight: {itemInfo.Weight} | repo weight: {component.CurrentWeight}");
             return;
         }
-
         // inserts new item and checks for container, so its recursive
         // this method also returns us a hashset of entities to delete, so we are sure, we are deleting needed entity
         var toDelete = InsertToRepositoryRecursively(args.User, (uid, component), itemInfo);
-        if (toDelete == null)
-            return;
+
+        // logging, saving, event raising
+        _adminLogger.Add(LogType.Action, LogImpact.Low, $"Player {Name(args.User):user} inserted 1 {Name(args.Used)} into repository");
+        _stalkerStorageSystem.SaveStorage(component);
+        RaiseLocalEvent(args.User, new RepositoryItemInjectedEvent(args.Target, itemInfo));
+        _loadoutSystem.SendLoadoutStateUpdate(uid, component, args.User);
 
         // Mark as handled BEFORE deletion - prevents interaction system from continuing with deleted entity
         args.Handled = true;
 
         // removing by hashset we got from above
-        RemoveItems(args.User, toDelete.Value.Item1, toDelete.Value.Item2);
+        // i had to move it here because of references
+        if (toDelete == null)
+            return;
 
-        // logging, saving, event raising, ui updating
-        _adminLogger.Add(LogType.Action, LogImpact.Low, $"Player {Name(args.User):user} inserted 1 {Name(args.Used)} into repository");
-        _stalkerStorageSystem.SaveStorage(component);
-        RaiseLocalEvent(args.User, new RepositoryItemInjectedEvent(args.Target, itemInfo));
-        UpdateUiState(args.User, uid, component);
-        _loadoutSystem.SendLoadoutStateUpdate(uid, component, args.User);
+        // removing items
+        RemoveItems(args.User, toDelete.Value.Item1, toDelete.Value.Item2);
+        args.Handled = true;
     }
 
     #endregion
@@ -396,19 +397,13 @@ public sealed class StalkerRepositorySystem : EntitySystem
     /// <returns>New instance of <see cref="RepositoryItemInfo"/></returns>
     public RepositoryItemInfo GenerateItemInfoByPrototype(string item)
     {
+        // indexing prototype to get its data
         if (!_prototypeMan.TryIndex<EntityPrototype>(item, out var proto))
             return new RepositoryItemInfo();
 
         var spawned = Spawn(item, MapCoordinates.Nullspace);
 
-        try
-        {
-            return GenerateItemInfo(spawned);
-        }
-        finally
-        {
-            QueueDel(spawned);
-        }
+        return GenerateItemInfo(spawned);
     }
     /// <summary>
     /// Generates full item info out of entityUid

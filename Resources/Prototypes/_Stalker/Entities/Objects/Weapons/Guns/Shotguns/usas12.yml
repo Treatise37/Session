@@ -82,14 +82,6 @@
   name: USAS-12 Auto Shotgun
   description: Military-grade automatic shotgun with terrifying firepower. Considered overkill in the Zone - can literally 'erase' targets. Only used by experienced stalkers.
 
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 135
-      currentDurability: 135
-      durabilityLossPerShot: 0.33
-      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunUSAS
   id: STWeaponShotgunUSASCovenant
@@ -102,10 +94,3 @@
       sprite: _Stalker/Objects/Weapons/Guns/Shotguns/usas/covenant_usas.rsi
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Shotguns/usas/covenant_usas.rsi
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 135
-      currentDurability: 135
-      durabilityLossPerShot: 0.33
-      canJam: true
