@@ -1,22 +1,21 @@
 using Robust.Shared.GameObjects;
-using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.Manager.Attributes;
 
 namespace Content.Shared._Stalker.Weapon;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class STWeaponDurabilityComponent : Component
 {
-    [DataField("maxDurability"), AutoNetworkedField]
+    [DataField]
     public float MaxDurability = 100f;
 
-    [DataField("currentDurability"), AutoNetworkedField]
+    [DataField]
     public float CurrentDurability = 100f;
 
-    [DataField("durabilityLossPerShot"), AutoNetworkedField]
+    [DataField]
     public float DurabilityLossPerShot = 0.05f;
 
-    [DataField("canJam"), AutoNetworkedField]
+    [DataField]
     public bool CanJam = true;
 
     public float Ratio => MaxDurability <= 0f ? 1f : CurrentDurability / MaxDurability;
