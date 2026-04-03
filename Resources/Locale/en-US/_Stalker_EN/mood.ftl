@@ -1,0 +1,1 @@
+st-mood-agony-emote-scream = screams in agony!
