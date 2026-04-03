@@ -184,6 +184,9 @@
     - name: shop-category-utilities
       priority: 4
       items:
+        ToolkitTearOne: 35000
+        ToolkitTearTwo: 45000
+        ToolkitTearThree: 65000
         STElasticRubberRed: 15
         STElasticRubberGreen: 15
         STElasticRubberBlue: 15

@@ -54,3 +54,34 @@
   components:
   - type: CartridgeAmmo
     proto: Bullet751M993
+
+- type: entity
+  id: BaseCartridge754R
+  name: cartridge (7,62x54 R)
+  parent: BaseCartridge
+  abstract: true
+  components:
+  - type: STWeight
+    self: 0.02
+  - type: Tag
+    tags:
+    - Cartridge
+    - STCartridge754R
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: "base"
+
+- type: entity
+  id: Cartridge754R
+  name: Патрон (7,62x54 R)M993
+  parent: BaseCartridge754R
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet754R

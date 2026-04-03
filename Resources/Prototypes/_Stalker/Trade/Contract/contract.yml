@@ -5,46 +5,46 @@
   contracts:
   - id: trade_contract_ZoneArtifactVyvert
     weight: 100
-    cooldownMinutes: 1
+    cooldownMinutes: 2
   - id: trade_contract_ArtMedusa
     weight: 100
-    cooldownMinutes: 2
+    cooldownMinutes: 4
   - id: trade_contract_MutantPartFleshEye
     weight: 100
-    cooldownMinutes: 3
+    cooldownMinutes: 6
   - id: trade_contract_MutantPartBlindDogTail
     weight: 100
-    cooldownMinutes: 4
+    cooldownMinutes: 8
   - id: trade_contract_delivery_BoxCrate
     weight: 100
-    cooldownMinutes: 5
+    cooldownMinutes: 8
   - id: trade_contract_recovery_BoxCrate
     weight: 100
-    cooldownMinutes: 6
+    cooldownMinutes: 9
   - id: trade_contract_hunt_old_boar
     weight: 100
-    cooldownMinutes: 7
+    cooldownMinutes: 9
   - id: trade_contract_delivery_TechCardCalibrationDosimeter
     weight: 100
-    cooldownMinutes: 8
+    cooldownMinutes: 10
   - id: trade_contract_delivery_STMobMutantBearPsiUncommon
     weight: 100
-    cooldownMinutes: 9
+    cooldownMinutes: 12
   - id: trade_contract_delivery_STMobMutantBloodsuckerUncommon
     weight: 100
-    cooldownMinutes: 10
+    cooldownMinutes: 13
   - id: trade_contract_delivery_MobMutantPoltergeistIce
     weight: 100
-    cooldownMinutes: 1
+    cooldownMinutes: 2
   - id: trade_contract_delivery_STMobMutantBearT2Common
     weight: 100
-    cooldownMinutes: 2
+    cooldownMinutes: 4
   - id: trade_contract_delivery_STMobMutantPseudodogLegendary
     weight: 100
-    cooldownMinutes: 3
+    cooldownMinutes: 6
   - id: trade_contract_delivery_MobMutantLeshiy
     weight: 100
-    cooldownMinutes: 4
+    cooldownMinutes: 8
 
 - type: storeContractsPreset
   id: TradeContractsCityPreset
@@ -216,7 +216,7 @@
 
 - type: storeContract
   id: trade_contract_hunt_old_boar
-  name: "Кабаан"
+  name: "Кабан"
   description: "Убей кабана"
   difficulty: Medium
   repeatable: true

@@ -274,6 +274,7 @@
       Base939MagVSK: 300
       STBox9x39PAB9: 2300
       STBox9x39SP6: 4300
+      STClothingOuterArmorGonchiy: 8200
 
 - type: personalShop
   id: Personalnikita2282288Shop
@@ -282,9 +283,8 @@
   - name: Персональная категория
     items:
       STWeaponRifleSCARSSR: 4500
-      751M80Box: 2200
-      751M61Box: 3700
-      751Mag30: 500
+      754RBox: 3100
+      Base754RMag30: 500
 
 - type: personalShop
   id: PersonalPearllovekaShop
