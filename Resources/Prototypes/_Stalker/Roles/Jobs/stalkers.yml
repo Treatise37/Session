@@ -57,6 +57,11 @@
         pullingItemTag: PliersStalker
         teethCount: 3
         initialTeeth: 3
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanLoner
+          Female: FemaleHumanLoner
+          Unsexed: MaleHumanLoner # stalker EN change end
 
 - type: job
   id: StalkerVeteran
@@ -116,6 +121,11 @@
         pullingItemTag: PliersStalker
         teethCount: 3
         initialTeeth: 3
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanLoner
+          Female: FemaleHumanLoner
+          Unsexed: MaleHumanLoner # stalker EN change end
 
 - type: startingGear
   id: StalkerGear
@@ -181,6 +191,12 @@
         pullingItemTag: PliersStalker
         teethCount: 3
         initialTeeth: 3
+      - type: PersistentCraftAccess
+      - type: Vocal # stalker EN change start
+        sounds:
+          Male: MaleHumanLoner
+          Female: FemaleHumanLoner
+          Unsexed: MaleHumanLoner # stalker EN change end
 
 - type: stBand
   id: STStalkerBand

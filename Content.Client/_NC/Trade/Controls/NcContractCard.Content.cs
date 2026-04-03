@@ -25,7 +25,7 @@ public sealed partial class NcContractCard
         if (!string.IsNullOrWhiteSpace(tooltip))
             targetRow.ToolTip = tooltip;
 
-        if (!string.IsNullOrWhiteSpace(protoId))
+        if (targetProto != null && !string.IsNullOrWhiteSpace(protoId))
         {
             var view = new EntityPrototypeView
             {
@@ -154,16 +154,19 @@ public sealed partial class NcContractCard
         if (!string.IsNullOrWhiteSpace(tooltip))
             line.ToolTip = tooltip;
 
-        var view = new EntityPrototypeView
+        if (proto != null)
         {
-            MinSize = new(RewardIconPx, RewardIconPx),
-            MaxSize = new(RewardIconPx, RewardIconPx),
-            Margin = new(0, 0, 6, 0),
-            MouseFilter = MouseFilterMode.Ignore
-        };
-        view.SetPrototype(id);
-        NcUiIconFit.Fit(view, _sprites, id, targetPx: RewardIconPx, paddingPx: 0, mul: 1.25f, variant: 1);
-        line.AddChild(view);
+            var view = new EntityPrototypeView
+            {
+                MinSize = new(RewardIconPx, RewardIconPx),
+                MaxSize = new(RewardIconPx, RewardIconPx),
+                Margin = new(0, 0, 6, 0),
+                MouseFilter = MouseFilterMode.Ignore
+            };
+            view.SetPrototype(id);
+            NcUiIconFit.Fit(view, _sprites, id, targetPx: RewardIconPx, paddingPx: 0, mul: 1.25f, variant: 1);
+            line.AddChild(view);
+        }
 
         var name = proto?.Name ?? id;
         var rewardLabel = new Label

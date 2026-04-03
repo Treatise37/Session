@@ -126,7 +126,8 @@
 - type: entity
   parent: STClothingHeadHelmetTacticalT1Base
   id: ClothingHeadHelmetLightProject
-  name: шлем «Сито» сделанный по непонятному проекту
+  name: Модифицированный шлем «Сито»
+  suffix: ST, T1, Tactical, Project
   description: Лёгкий шлем, представляющий из себя тончайший кусок металла, способный защитить вашу черепушку от картечины и излишнего внимания государства.
   components:
   - type: Sprite

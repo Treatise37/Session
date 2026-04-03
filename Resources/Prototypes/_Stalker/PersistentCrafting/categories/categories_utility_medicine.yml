@@ -1,0 +1,51 @@
+- type: persistentCraftCategory
+  id: utility
+  name: Снаряжение
+  order: 5
+
+- type: persistentCraftCategory
+  id: medicine
+  name: Медицина
+  order: 6
+
+- type: persistentCraftSubCategory
+  id: utility-backpacks
+  category: utility
+  name: Рюкзаки
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: utility-belts
+  category: utility
+  name: Подсумки
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: utility-artifact-containers
+  category: utility
+  name: Контейнеры артефактов
+  order: 3
+
+- type: persistentCraftSubCategory
+  id: utility-cases
+  category: utility
+  name: Кейсы
+  order: 4
+
+- type: persistentCraftSubCategory
+  id: medicine-basic
+  category: medicine
+  name: Базовая медицина
+  order: 1
+
+- type: persistentCraftSubCategory
+  id: medicine-medkits
+  category: medicine
+  name: Аптечки
+  order: 2
+
+- type: persistentCraftSubCategory
+  id: medicine-drugs
+  category: medicine
+  name: Препараты
+  order: 3

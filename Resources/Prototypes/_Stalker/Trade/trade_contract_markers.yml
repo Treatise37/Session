@@ -4,98 +4,115 @@
   id: MarkerTradeContractBounty
   parent: MarkerBase
   name: контракт, охота
-  suffix: contracts, bounty
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
     - TradeContractHuntSpawn
 
 - type: entity
-  id: MarkerTradeContractMine
+  id: MarkerContractDeliveryBolotoEasy
   parent: MarkerBase
-  name: контракт, шахта
-  suffix: contracts, mine
+  name: контракт, доставка, болото легкий
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractMineSpawn
+    - TradeContractDeliveryBolotoEasy
 
 - type: entity
-  id: MarkerTradeContractStore
+  id: MarkerContractHuntBoarLair
   parent: MarkerBase
-  name: контракт, магазин
-  suffix: contracts, store
+  name: контракт, охота, логово кабанов, болото средний
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractStoreSpawn
+    - TradeContractHuntBoarLair
 
 - type: entity
-  id: MarkerTradeContractRoad
+  id: MarkerContractHuntPseudodog
   parent: MarkerBase
-  name: контракт, дорога
-  suffix: contracts, road
+  name: контракт, охота, логово псевдособак, болото средний
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractRoadSpawn
+    - TradeContractHuntPseudodog
 
 - type: entity
-  id: MarkerTradeContractWarehouse
+  id: MarkerContractHuntMobMutantLeshiy
   parent: MarkerBase
-  name: контракт, склад
-  suffix: contracts, warehouse
+  name: контракт, охота, Леший, болото средний
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractWarehouseSpawn
+    - TradeContractHuntMobMutantLeshiy
 
 - type: entity
-  id: MarkerTradeContractDelivery
+  id: MarkerContractHuntSTMobMutantBearT2Common
   parent: MarkerBase
-  name: контракт, адресная доставка
-  suffix: contracts, delivery
+  name: контракт, охота, Медвэдь, болото средний
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractDeliverySpawn
+    - TradeContractHuntSTMobMutantBearT2Common
 
 - type: entity
-  id: MarkerTradeContractStructure
+  id: MarkerContractHuntMobMutantPoltergeistIce
   parent: MarkerBase
-  name: контракт, крупный груз
-  suffix: contracts, structure
+  name: контракт, охота, Полтейргест, болото тяжелый
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractStructureSpawn
+    - TradeContractHuntMobMutantPoltergeistIce
 
 - type: entity
-  id: MarkerTradeContractRepair
+  id: MarkerContractHuntSTMobMutantBloodsuckerUncommon
   parent: MarkerBase
-  name: контракт, ремонт
-  suffix: contracts, repair
+  name: контракт, охота, Кровосос, болото тяжелый
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractRepairSpawn
+    - TradeContractHuntSTMobMutantBloodsuckerUncommon
 
 - type: entity
-  id: MarkerTradeContractSpecialTarget
+  id: MarkerContractHuntSTMobMutantBearPsiUncommon
   parent: MarkerBase
-  name: контракт, особая цель
-  suffix: contracts, special-target
+  name: контракт, охота, Медвэдь, болото тяжелый
+  suffix: ST, КВЕСТЫ
   components:
   - type: Tag
     tags:
-    - TradeContractGhostSpawn
+    - TradeContractHuntSTMobMutantBearPsiUncommon
 
-- type: entity
-  id: MarkerTradeContractDropoff
-  parent: MarkerBase
-  name: контракт, точка выгрузки
-  suffix: contracts, dropoff
-  components:
-  - type: Tag
-    tags:
-    - TradeContractStructureDropoff
+- type: Tag
+  id: TradeContractDeliveryBolotoEasy
+
+- type: Tag
+  id: TradeContractHuntBoarLair
+
+- type: Tag
+  id: TradeContractHuntPseudodog
+
+- type: Tag
+  id: TradeContractHuntSpawn
+
+- type: Tag
+  id: TradeContractHuntMobMutantLeshiy
+
+- type: Tag
+  id: TradeContractHuntSTMobMutantBearT2Common
+
+- type: Tag
+  id: TradeContractHuntSTMobMutantBearPsiUncommon
+
+- type: Tag
+  id: TradeContractHuntSTMobMutantBloodsuckerUncommon
+
+- type: Tag
+  id: TradeContractHuntMobMutantPoltergeistIce

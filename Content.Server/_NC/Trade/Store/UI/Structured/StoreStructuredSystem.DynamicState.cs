@@ -28,6 +28,8 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         var crateUid = GetDynamicCrate(user);
         UpdateStoreWatch(uid, user, crateUid);
         var tabs = GetDynamicTabState(comp);
+        if (tabs.HasContractsTab)
+            _contracts.RefreshExpiredSlotCooldowns(uid, comp);
         var contractNeeds = GetDynamicContractNeeds(comp, tabs.HasContractsTab);
         var scanNeeds = GetDynamicScanNeeds(comp, crateUid, tabs.HasSellTab, contractNeeds);
         var userSnap = ScanDynamicUserInventory(user, scanNeeds);
@@ -42,6 +44,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         PopulateDynamicListings(comp, userSnap, scratch, buf);
         PopulateDynamicCratePreview(comp, crateUid, tabs.HasSellTab, scanNeeds.NeedCrateScan, scratch, buf);
         PopulateDynamicContracts(comp, tabs.HasContractsTab, scratch, buf);
+        PopulateDynamicSlotCooldowns(uid, tabs.HasContractsTab, buf);
         PopulateDynamicContractSkip(uid, comp, tabs.HasContractsTab, buf);
         PushDynamicState(uid, comp, tabs, scratch, buf);
     }
@@ -274,6 +277,17 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         buf.Contracts.Sort(static (left, right) => string.CompareOrdinal(left.Id, right.Id));
     }
 
+    private void PopulateDynamicSlotCooldowns(
+        EntityUid store,
+        bool hasContractsTab,
+        DynamicStateBuffer buf)
+    {
+        if (!hasContractsTab)
+            return;
+
+        _contracts.GetActiveSlotCooldownsForClient(store, buf.SlotCooldowns);
+    }
+
     private void PopulateDynamicContractSkip(
         EntityUid store,
         NcStoreComponent comp,
@@ -311,6 +325,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 buf.CrateUnitsById,
                 buf.CrateTotals,
                 buf.Contracts,
+                buf.SlotCooldowns,
                 tabs.HasBuyTab,
                 tabs.HasSellTab,
                 tabs.HasContractsTab,

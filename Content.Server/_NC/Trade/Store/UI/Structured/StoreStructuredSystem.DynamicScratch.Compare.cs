@@ -40,6 +40,31 @@ public sealed partial class StoreStructuredSystem
             return true;
         }
 
+        private static bool SlotCooldownListEquals(List<SlotCooldownClientData> a, List<SlotCooldownClientData> b)
+        {
+            if (ReferenceEquals(a, b))
+                return true;
+
+            if (a.Count != b.Count)
+                return false;
+
+            for (var i = 0; i < a.Count; i++)
+            {
+                var left = a[i];
+                var right = b[i];
+
+                if (!string.Equals(left.Difficulty, right.Difficulty, StringComparison.Ordinal) ||
+                    !string.Equals(left.LastContractId, right.LastContractId, StringComparison.Ordinal) ||
+                    !string.Equals(left.LastContractName, right.LastContractName, StringComparison.Ordinal) ||
+                    left.RemainingSeconds != right.RemainingSeconds)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private static bool ContractEquals(ContractClientData? a, ContractClientData? b)
         {
             if (ReferenceEquals(a, b))

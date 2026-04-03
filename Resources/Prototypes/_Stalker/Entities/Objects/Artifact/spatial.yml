@@ -40,6 +40,11 @@
           Heat: 0.5
           Shock: 0.5
           Cold: 0.5
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -77,6 +82,11 @@
       modifiers:
         flatReductions:
           Psy: 2
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier1
 #
 - type: entity
   parent: BaseArtifactStorage
@@ -109,8 +119,13 @@
       walkModifier: 0.95
       sprintModifier: 0.95
     - type: Reflect
-      reflectProb: 0.1
+      reflectProb: 0.05
       spread: 340
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -148,6 +163,11 @@
       modifiers:
         coefficients:
           Piercing: 0.85
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier4
 
 - type: entity
   name: Распятие
@@ -180,6 +200,11 @@
     modifiers:
       coefficients:
         Piercing: 0.9
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifact
@@ -211,6 +236,11 @@
     transferAmount: 5
   - type: ExaminableSolution
     solution: pen
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -247,6 +277,11 @@
         - 0,0,8,8
     - type: STWeight
       self: -30
+    - type: Tag
+      tags:
+      - Khabar
+      - STArtifact
+      - STArtifactTier4
 
 - type: entity
   parent: BaseArtifact
@@ -280,6 +315,11 @@
     modifiers:
       flatReductions:
         Psy: 3
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifactStorage
@@ -313,3 +353,8 @@
     self: 30
   - type: STWeightInsideReduction
     reductionFraction: 0.80
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5

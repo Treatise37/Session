@@ -201,6 +201,15 @@
       45ACPMFMJBox: 450
       45ACPRIPBox: 300
       45ACPAPBox: 1000
+      # 7.51
+      751UNBox: 300
+      751M80Box: 1600
+      # 7.39
+      739HPBox: 300
+      739FMJBox: 1475
+      # 7.54
+      754FMJBox: 1675
+      754HPBox: 1015
 
   - name: shop-category-armor
     priority: 4
@@ -278,6 +287,7 @@
       ExtendedEmergencyOxygenTankFilledStalker: 50
       Matchbox: 10
       HatchetStalker: 150
+      KordonMapStack: 1200
   - name: shop-category-provisions
     priority: 9
     items:

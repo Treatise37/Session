@@ -414,19 +414,33 @@ public sealed class SharedCraftingSystem : EntitySystem
             if (itemDetails.Catalyzer && !isBlueprint)
                 continue;
 
+            var successCount = 0;
             for (int i = 0; i < itemDetails.Amount; i++)
             {
                 if (_random.NextFloat() <= proto.DisassembleChance)
-                {
-                    var spawnPosition = Transform(user).Coordinates;
-                    var toInsert = Spawn(itemId, spawnPosition);
-                    _sawmill.Debug($"Spawned {itemId} from disassembly");
-                    toInsertList.Add(toInsert);
-                }
+                    successCount++;
                 else
-                {
                     _sawmill.Debug($"Did not spawn {itemId} due to disassemble chance");
-                }
+            }
+
+            if (successCount <= 0)
+                continue;
+
+            var spawnPosition = Transform(user).Coordinates;
+            var firstSpawned = Spawn(itemId, spawnPosition);
+            _sawmill.Debug($"Spawned {itemId} x{successCount} from disassembly");
+
+            if (TryComp<Stacks.StackComponent>(firstSpawned, out var stackComp))
+            {
+                stackComp.Count = successCount;
+                Dirty(firstSpawned, stackComp);
+                toInsertList.Add(firstSpawned);
+            }
+            else
+            {
+                toInsertList.Add(firstSpawned);
+                for (var i = 1; i < successCount; i++)
+                    toInsertList.Add(Spawn(itemId, spawnPosition));
             }
         }
 

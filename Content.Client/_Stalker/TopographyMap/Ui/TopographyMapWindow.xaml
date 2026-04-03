@@ -1,0 +1,33 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="{Loc 'topography-map-window'}"
+>
+    <PanelContainer VerticalExpand="True" Name="MainWindow">
+        <BoxContainer 
+            Orientation="Vertical" 
+            VerticalExpand="True" 
+            MinWidth="100" 
+            HorizontalAlignment="Right">
+            <BoxContainer 
+                Orientation="Vertical" 
+                VerticalExpand="True" 
+                MinWidth="100" 
+                HorizontalAlignment="Right" 
+                Name="ButtonContainer">
+                <!-- Buttons for different maps added here by code -->
+            </BoxContainer>
+        </BoxContainer>
+        <ScrollContainer 
+            HScrollEnabled="True"
+            VScrollEnabled="True"
+            MouseFilter="Ignore"
+            Name="MapContainer"
+            HorizontalAlignment="Left">
+            <TextureRect 
+                Margin="0,0,0,0"
+                Name="MapBackground" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"/>
+        </ScrollContainer>
+    </PanelContainer>
+</controls:FancyWindow>

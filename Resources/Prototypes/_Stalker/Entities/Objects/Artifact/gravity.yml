@@ -35,6 +35,11 @@
         Compression: 0.8
   - type: STWeight
     self: -10
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
 
 - type: entity
   parent: BaseArtifact
@@ -71,6 +76,11 @@
   - type: Reflect
     reflectProb: 0.15
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier3
 
 - type: entity
   name: Ночная звезда
@@ -108,6 +118,11 @@
   - type: Reflect
     reflectProb: 0.2
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
 
 # Пораждаемая эпицентром, каруселью
 - type: entity
@@ -142,6 +157,11 @@
         Piercing: 0.95
   - type: STWeight
     self: -10
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier1
 
 - type: entity
   parent: BaseArtifact
@@ -179,8 +199,13 @@
   - type: STWeight
     self: -15
   - type: Reflect
-    reflectProb: 0.1
+    reflectProb: 0.03
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier2
 
 - type: entity
   parent: BaseArtifact
@@ -217,6 +242,11 @@
         Compression: 0.5
   - type: STWeight
     self: -60
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier4
 
 - type: entity
   parent: BaseArtifact
@@ -256,6 +286,11 @@
   - type: Reflect
     reflectProb: 0.05
     spread: 340
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -291,6 +326,11 @@
         Slash: 0.5
         Blunt: 0.2
         Compression: 0.1
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 # Пораждаемая инверсией
 - type: entity
@@ -327,6 +367,11 @@
         Piercing: 1
       coefficients:
         Piercing: 0.9
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -369,6 +414,11 @@
   - type: Reflect
     reflectProb: 0.1
     spread: 320
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5
 
 - type: entity
   parent: BaseArtifact
@@ -398,3 +448,8 @@
   - type: Reflect
     reflectProb: 0.2
     spread: 300
+  - type: Tag
+    tags:
+    - Khabar
+    - STArtifact
+    - STArtifactTier5

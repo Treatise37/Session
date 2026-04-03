@@ -1,0 +1,92 @@
+﻿- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontBlack
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 2
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/black.rsi
+      state: icon
+      scale: 0.8, 0.8
+
+- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontBlue
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 2
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/blue.rsi
+      state: icon
+      scale: 0.8, 0.8
+
+- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontOrange
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 2
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/orange.rsi
+      state: icon
+      scale: 0.8, 0.8
+
+- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontYellow
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 2
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/yellow.rsi
+      state: icon
+      scale: 0.8, 0.8
+
+- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontDamaged
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 0.3 # this component actually doesnt do anything i think
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/damaged.rsi
+      state: icon
+      scale: 0.8, 0.8
+
+- type: entity
+  parent: BoxArtcont
+  id: BoxArtcontMakeshift
+  components:
+  - type: PersonalDamageBlock
+  - type: RadiationBlockingContainer
+    resistance: 0.5
+  - type: SuppressArtifactContainer
+  - type: Sprite
+    layers:
+    - map: [ base ]
+      sprite: _Stalker_EN/Objects/Misc/ArtCont/makeshift.rsi
+      state: icon
+      scale: 0.8, 0.8
+  - type: STWeight
+    self: 5
+

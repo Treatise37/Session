@@ -16,6 +16,7 @@ public sealed partial class NcContractCard : PanelContainer
     private const int TargetIconPx = 56;
     private const int RewardIconPx = 26;
     private const float ProgressFillMinVisibleWidth = 8f;
+    private const bool HideContractRewards = true;
 
     private ContractClientData _data;
     private readonly IPrototypeManager _proto;
@@ -262,6 +263,10 @@ public sealed partial class NcContractCard : PanelContainer
 
     private void PopulateRewardsSection()
     {
+        RewardsSection.Visible = !HideContractRewards;
+        if (HideContractRewards)
+            return;
+
         RewardsHost.DisposeAllChildren();
         RewardsHost.RemoveAllChildren();
         PopulateRewards(RewardsHost, _data.Rewards);

@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client._NC.Trade.Controls;
 using Content.Shared._NC.Trade;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 
@@ -11,6 +12,7 @@ public sealed partial class NcStoreMenu
 {
     private readonly Dictionary<string, NcContractCard> _contractCardsById = new();
     private readonly List<string> _contractCardOrder = new();
+    private readonly List<SlotCooldownRowRefs> _slotCooldownRows = new();
 
     public void PopulateContracts(List<ContractClientData>? list, int skipCost, string skipCurrency, int skipBalance)
     {
@@ -31,6 +33,128 @@ public sealed partial class NcStoreMenu
 
         ApplyTabsVisibility();
     }
+
+    public void PopulateSlotCooldowns(List<SlotCooldownClientData>? cooldowns)
+    {
+        if (SlotCooldownsSection == null || SlotCooldownsHost == null)
+            return;
+
+        if (cooldowns == null || cooldowns.Count == 0)
+        {
+            HideAllSlotCooldownRows();
+            SlotCooldownsSection.Visible = false;
+            return;
+        }
+
+        EnsureSlotCooldownRows(cooldowns.Count);
+
+        for (var i = 0; i < _slotCooldownRows.Count; i++)
+        {
+            var rowRefs = _slotCooldownRows[i];
+            if (i >= cooldowns.Count)
+            {
+                rowRefs.Row.Visible = false;
+                continue;
+            }
+
+            rowRefs.Row.Visible = true;
+            var cooldown = cooldowns[i];
+            var difficulty = string.IsNullOrWhiteSpace(cooldown.Difficulty) ? "Unknown" : cooldown.Difficulty;
+
+            var title = Loc.GetString(
+                "nc-store-slot-cooldown-title",
+                ("difficulty", DifficultyName(difficulty)));
+            rowRefs.Title.Text = title;
+            rowRefs.Title.ToolTip = title;
+            rowRefs.Timer.Text = FormatCountdown(cooldown.RemainingSeconds);
+        }
+
+        SlotCooldownsSection.Visible = true;
+    }
+
+    private void EnsureSlotCooldownRows(int requiredCount)
+    {
+        if (SlotCooldownsHost == null)
+            return;
+
+        while (_slotCooldownRows.Count < requiredCount)
+        {
+            var row = CreateSlotCooldownRow();
+            _slotCooldownRows.Add(row);
+            SlotCooldownsHost.AddChild(row.Row);
+        }
+    }
+
+    private void HideAllSlotCooldownRows()
+    {
+        for (var i = 0; i < _slotCooldownRows.Count; i++)
+            _slotCooldownRows[i].Row.Visible = false;
+    }
+
+    private static SlotCooldownRowRefs CreateSlotCooldownRow()
+    {
+        var row = new PanelContainer
+        {
+            HorizontalExpand = true,
+            PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = Color.FromHex("#23262F"),
+                BorderColor = Color.FromHex("#6A5A39"),
+                BorderThickness = new(1),
+                ContentMarginLeftOverride = 6,
+                ContentMarginRightOverride = 6,
+                ContentMarginTopOverride = 4,
+                ContentMarginBottomOverride = 4
+            }
+        };
+
+        var rowLine = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+            SeparationOverride = 6
+        };
+
+        var title = new Label
+        {
+            HorizontalExpand = true,
+            ClipText = true
+        };
+
+        var timer = new Label
+        {
+            HorizontalAlignment = HAlignment.Right,
+            Modulate = Color.FromHex("#D7C18E")
+        };
+
+        rowLine.AddChild(title);
+        rowLine.AddChild(timer);
+        row.AddChild(rowLine);
+
+        return new SlotCooldownRowRefs(row, title, timer);
+    }
+
+    private sealed record SlotCooldownRowRefs(
+        PanelContainer Row,
+        Label Title,
+        Label Timer);
+
+    private static string FormatCountdown(int totalSeconds)
+    {
+        var clamped = Math.Max(0, totalSeconds);
+        var span = TimeSpan.FromSeconds(clamped);
+        var minutes = Math.Max(0, (int) span.TotalMinutes);
+        return $"{minutes:00}:{span.Seconds:00}";
+    }
+
+    private static string DifficultyName(string difficulty) =>
+        difficulty switch
+        {
+            "Easy" => Loc.GetString("nc-store-difficulty-easy"),
+            "Medium" => Loc.GetString("nc-store-difficulty-medium"),
+            "Hard" => Loc.GetString("nc-store-difficulty-hard"),
+            _ => difficulty
+        };
 
     private static List<ContractClientData> OrderContracts(List<ContractClientData> contracts)
     {

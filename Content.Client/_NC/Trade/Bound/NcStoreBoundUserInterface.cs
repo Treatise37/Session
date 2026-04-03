@@ -106,6 +106,7 @@ public sealed class NcStoreStructuredBoundUi(EntityUid owner, Enum uiKey) : Boun
             st.HasSellTab,
             st.HasContractsTab,
             st.Contracts,
+            st.SlotCooldowns,
             st.ContractSkipCost,
             st.ContractSkipCurrency);
 

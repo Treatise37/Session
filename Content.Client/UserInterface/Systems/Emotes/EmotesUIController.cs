@@ -33,6 +33,13 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
                 new SpriteSpecifier.Rsi(new ResPath("/Textures/Clothing/Hands/Gloves/latex.rsi"), "icon")),
             [EmoteCategory.Vocal] = ("emote-menu-category-vocal",
                 new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+///stalker
+            [EmoteCategory.TacticalGen] = ("emote-menu-category-tacticalgen",
+                new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/tactical/tachand.png"))),
+            [EmoteCategory.TacticalWarn] = ("emote-menu-category-tacticalwarn",
+                new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/tactical/tachand.png"))),
+            [EmoteCategory.VoiceLine] = ("emote-menu-category-voiceline",
+                new SpriteSpecifier.Texture(new ResPath("Textures/_Stalker_EN/Interface/Emotes/voice/stalker.png"))),
         };
 
     public void OnStateEntered(GameplayState state)

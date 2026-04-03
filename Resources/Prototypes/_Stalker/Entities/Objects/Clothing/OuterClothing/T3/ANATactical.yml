@@ -170,7 +170,8 @@
 - type: entity
   parent: STClothingOuterArmorLightPlateVestBaseANAgreen
   id: STClothingOuterArmorLightPlateVestBaseANAproject
-  name: Бронеразгрузка «Степь-4» сделанная по непонятному проекту
+  name: Модифицированная бронеразгрузка «Степь-4»
+  suffix: ST, T3, PvP, Project
   description: Надёжный бронеразгруз 3 класса брони, вмещающий любого размера магазины.
   components:
   - type: Sprite

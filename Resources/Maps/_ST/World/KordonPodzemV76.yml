@@ -62985,13 +62985,6 @@ entities:
     - type: Transform
       pos: 57.5,170.5
       parent: 1
-- proto: KPodzem-PB1
-  entities:
-  - uid: 2671
-    components:
-    - type: Transform
-      pos: 185.5,5.5
-      parent: 1
 - proto: Lamp
   entities:
   - uid: 2672

@@ -514,8 +514,9 @@
 - type: entity
   parent: STClothingOuterArmorZaryaBase
   id: STClothingOuterArmorProjectZarya
-  name: Заря сделанная по непонятному проекту
-  description: Странная заря сделанная непонятно кем и непонятно зачем
+  name: Модифицированная Заря
+  suffix: ST, T2, PvE, Project
+  description: Странная Заря, сделанная непонятно кем и непонятно зачем.
   components:
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/project_zarya.rsi

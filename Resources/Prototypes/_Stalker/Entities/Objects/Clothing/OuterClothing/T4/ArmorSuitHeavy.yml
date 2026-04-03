@@ -94,7 +94,7 @@
         Compression: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.8
-        
+
 
   - type: STItemUpgrades
     tree: STArmorCombatUpgradeTreeT5
@@ -114,19 +114,6 @@
   description: Костюм Специального Назначения «Бегемот», переделанный группировкой Свобода.
   suffix: ST, T4, PvE
   components:
-  - type: Armor
-    armorClass: 4
-    modifiers:
-      coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.95
-  - type: Reflect
-    reflectProb: 0.06
-    spread: 360
-    reflects:
-      - NonEnergy
-    soundOnReflect: /Audio/_Stalker/Effects/sear.ogg
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/begemot_freedom.rsi
   - type: Clothing

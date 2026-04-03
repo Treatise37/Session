@@ -31,7 +31,7 @@
     state: tire4
 
 - type: decal
-  id: tire5
+  id: road5
   tags: ["stalker", "road5"]
   defaultCleanable: true
   sprite:

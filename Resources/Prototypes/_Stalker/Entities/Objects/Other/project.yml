@@ -99,6 +99,7 @@
   parent: BaseItem
   id: ProjectPDA
   name: "КПК &#@*$!^"
+  suffix: Project
   description: "&#@*$!^ Error Screen, A problem has been detected and &#@*$!^ has been shut down to prevent damage to your device. Technical Information: STOP: 0x0000008E (0xC0000005, 0x804E3B58, 0xBA4C7B28, 0x00000000) KERNEL_STACK_INPAGE_ERROR. Refer to your &#@*$!^ user manual or visit www.&#@*$!^.com/support for more information."
   components:
   - type: Trash
@@ -161,7 +162,8 @@
 - type: entity
   parent: ClothingShoesMilitaryBase
   id: ClothingShoesBootsProject
-  name: подкованные сапоги проекта
+  name: Подкованные сапоги
+  suffix: ST, Project
   description: Алгоритм не умрёт, Алгоритм вечен, Алгоритм ничего не боится!
   components:
   - type: Sprite
@@ -172,7 +174,8 @@
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltHolsterProject
-  name: плечевая кобура проекта
+  name: Плечевая кобура
+  suffix: ST, Project
   description: Кобура для ношения пистолета и боеприпасов.
   components:
   - type: Sprite
@@ -186,7 +189,8 @@
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesHudProject
-  name: визор проекта
+  name: Визор
+  suffix: ST, Project
   description: Смотря в него, вы видите весь алгоритм которому следуете..., но работает лишь если у вас в голове встроен сам-же чип.
   components:
   - type: Sprite

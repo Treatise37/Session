@@ -233,7 +233,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers: 
+    modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -315,7 +315,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers: 
+    modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -385,7 +385,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers: 
+    modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -443,7 +443,7 @@
   description: Не очень свободный, покуда сидит на вашей голове.
   components:
     - type: Armor
-      modifiers: 
+      modifiers:
         coefficients:
           Blunt: 0.85
           Slash: 0.85
@@ -505,7 +505,7 @@
   description: Не очень свободный, покуда сидит на вашей голове.
   components:
     - type: Armor
-      modifiers: 
+      modifiers:
         coefficients:
           Blunt: 0.85
           Slash: 0.85
@@ -885,7 +885,7 @@
   id: STClothingOuterArmorSeraphimStrash
   name: бронекостюм «Страж»
   description: Старый, видавший многое булат из арсенала «Монолита», покрытый следами времени и ожесточённых сражений. Несмотря на свой возраст, он всё ещё остаётся надёжным щитом, защищающим своего владельца от опасностей Зоны. Камуфляж Серафимов придаёт ему уникальный облик, а многочисленные молитвенные знаки и священные обереги, нанесённые заботливой рукой, делают его не просто бронёй, а истинным талисманом веры и силы.
-  suffix: ST, T3, PVP, Skin
+  suffix: ST, T4, PVP, Skin
   components:
   - type: STWeight
     self: 10
@@ -894,7 +894,7 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/strash_seraphim.rsi
   - type: Armor
-    armorClass: 3
+    armorClass: 4
     modifiers:
       flatReductions:
         Blunt: 5
@@ -939,7 +939,7 @@
   parent: STClothingOuterArmorSeraphimStrash
   id: STClothingOuterArmorLimaSeraphimStrash
   name: бронекостюм «Страж»
-  suffix: ST, T3, PvP
+  suffix: ST, T4, PvP
   description: Старый, видавший многое булат из арсенала «Монолита», покрытый следами времени и ожесточённых сражений. Несмотря на свой возраст, он всё ещё остаётся надёжным щитом, защищающим своего владельца от опасностей Зоны. Камуфляж Серафимов придаёт ему уникальный облик, а многочисленные молитвенные знаки и священные обереги, нанесённые заботливой рукой, делают его не просто бронёй, а истинным талисманом веры и силы... Теперь серый!
   components:
   - type: Sprite
@@ -975,3 +975,76 @@
     - Blunt
     - Piercing
     - Heat
+
+- type: entity
+  parent: STClothingOuterArmorSeraphimStrash
+  id: STClothingOuterArmorPeresvet
+  name: бронекостюм «Пересвет»
+  suffix: ST, T4, PvP
+  description: Сделанный каким-то умельцем бронекостюм с спецефичным внешним видом.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+  - type: ToggleableClothing
+    clothingPrototype: STClothingHeadPeresvet
+    slot: head
+  - type: Armor
+    armorClass: 4
+    modifiers:
+      flatReductions:
+        Blunt: 6
+        Slash: 7
+        Piercing: 7
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.6
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.8
+        Caustic: 0.7
+        Shock: 0.7
+        Compression: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: STClothingHeadPeresvet
+  name: шлем ,бронекостюма пересвет
+  description: Довольно прочный.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
+  - type: BreathMask
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: Tag
+    tags:
+      - BlockMask
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: Armor
+    armorClass: 4
+    modifiers:
+      flatReductions:
+        Radiation: 2
+        Psy: 1
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+  - type: Reflect
+    reflectProb: 0.08
+    spread: 360
+    reflects:
+      - NonEnergy

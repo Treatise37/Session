@@ -1,0 +1,29 @@
+- type: persistentCraftSubCategory
+  id: ammo-magazines
+  category: ammo
+  name: Магазины
+  order: 9
+
+- type: persistentCraftSubCategory
+  id: ammo-shotgun
+  category: ammo
+  name: Дробовые
+  order: 10
+
+- type: persistentCraftSubCategory
+  id: ammo-pistol
+  category: ammo
+  name: Пистолетные
+  order: 11
+
+- type: persistentCraftSubCategory
+  id: ammo-rifle
+  category: ammo
+  name: Винтовочные
+  order: 12
+
+- type: persistentCraftSubCategory
+  id: ammo-special
+  category: ammo
+  name: Специальные
+  order: 13

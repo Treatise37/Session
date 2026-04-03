@@ -1,0 +1,75 @@
+- type: entity
+  abstract: true
+  parent: STBaseWeaponSniper
+  id: STBaseWeaponRifleSV98
+  components:
+  - type: STWeight
+    self: 8
+  - type: PullDoAfter
+    pullTime: 10
+  - type: GunWieldBonus
+    minAngle: -50
+    maxAngle: -70
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/inhands/SV98.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/inhands/SV98.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Snipers/SV98.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/sv98.ogg
+    minAngle: 50
+    maxAngle: 120
+    fireRate: 0.5
+    angleIncrease: 30
+    angleDecay: 60
+    projectileSpeed: 75
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.2
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 5
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Stalker/Weapons/Guns/RifleGen/Cock/rifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: 338Mag10
+        insertSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagIn/rifle_magin.ogg
+        ejectSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagOut/rifle_magout.ogg
+        priority: 4
+        whitelist:
+          tags:
+          - Magazine338
+      gun_module_scope:
+        name: Scope
+        priority: 3
+        whitelist:
+          tags:
+          - STWeaponModuleSniperSight
+      gun_module_muzzle:
+        name: Muzzle
+        priority: 2
+        whitelist:
+          tags:
+          - STWeaponModuleSniperSilencer
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - STCartridge338
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_module_muzzle: !type:ContainerSlot
+      gun_module_scope: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+
+- type: entity
+  parent: STBaseWeaponRifleSV98
+  id: STWeaponSniperSV98
+  name: SV 98
+  description: A Russian magazine-fed sniper rifle developed in 1998-2000 by a team of designers led by Vladimir Dmitrievich Stronsky and mass-produced by the Kalashnikov Concern.

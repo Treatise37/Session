@@ -204,6 +204,7 @@ public partial struct ContractWeightEntry
 {
     [DataField("id", required: true)] public string Id = string.Empty;
     [DataField("weight")] public int Weight = 1;
+    [DataField("cooldownMinutes")] public int CooldownMinutes = 0;
 
     public ContractWeightEntry(string id, int weight)
     {

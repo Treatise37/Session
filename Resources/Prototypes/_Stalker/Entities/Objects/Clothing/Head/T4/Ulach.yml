@@ -50,6 +50,17 @@
     - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
+  id: ClothingHeadHelmetUlachFreedom
+  name: улач Свободы
+  description: Это шлем, специально разработанный для защиты от колющих атак.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/hats/ulach_freedom.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/hats/ulach_freedom.rsi
+
+- type: entity
+  parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmetUlachUN
   name: улач ООН
   description: Шлем контингента ООН.
@@ -138,3 +149,4 @@
     - Blunt
     - Piercing
     - Heat
+

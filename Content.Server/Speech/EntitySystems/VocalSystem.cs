@@ -72,7 +72,8 @@ public sealed class VocalSystem : EntitySystem
 
     private void OnEmote(EntityUid uid, VocalComponent component, ref EmoteEvent args)
     {
-        if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Vocal))
+        if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Vocal) &&
+            !args.Emote.Category.HasFlag(EmoteCategory.VoiceLine)) // stalker change
             return;
 
         // snowflake case for wilhelm scream easter egg

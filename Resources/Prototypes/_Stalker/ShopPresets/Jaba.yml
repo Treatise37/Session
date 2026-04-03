@@ -109,6 +109,7 @@
       STWeaponRifleAKS74: 4000
       STWeaponRifleAKS74Green: 4000
       # Other
+
       STWeaponRevolverSWPC325TR: 850
       STWeaponRevolverRugerRedhawk: 400
       WeaponStalkerPistolTec9: 250
@@ -122,6 +123,7 @@
       STWeaponSMGPP91: 2500
       STWeaponRifleFAL: 1600
       STWeaponRifleM16: 2500
+      STWeaponSMGOTS126: 1000
   - name: shop-category-magazines
     priority: 2
     items:
@@ -132,6 +134,7 @@
       545Mag20: 250
       545Mag30: 500
       # Other
+      BaseOTS126Mag: 90
       BaseTEC9Mag: 90
       BasePMMag: 12
       BasePPSHMag: 350
@@ -175,6 +178,7 @@
       725LRNPCBox: 50
       725PTBox: 465
       # 7.51
+      751UNBox: 300
       751M80Box: 1600
       #45
       45ACPRIPBox: 450
@@ -271,6 +275,7 @@
       Matchbox: 10
       HatchetStalker: 150
       HotelCard: 25
+      SwampMap: 800
   - name: shop-category-provisions
     priority: 9
     items:

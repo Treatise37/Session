@@ -46,6 +46,8 @@ nc-store-will-buy = Требуется: { $count }
 nc-store-owned = У вас есть: { $count }
 nc-store-no-access = Ошибка доступа
 nc-store-contracts-empty = Активных контрактов пока нет. Проверьте позже.
+nc-store-slot-cooldowns-header = Обновление заказов
+nc-store-slot-cooldown-title = { $difficulty }
 nc-store-difficulty-easy = Лёгкий
 nc-store-difficulty-medium = Средний
 nc-store-difficulty-hard = Сложный
@@ -140,4 +142,5 @@ nc-store-contract-ghost-role-active-line = Цель вышла в поле. Уб
 
 nc-store-contract-delivery-target-lost = Груз утрачен. Контракт сорван.
 nc-store-contract-proof-generation-failed = Подтверждение выполнения не сформировалось. Контракт сорван.
+nc-store-contract-proof-lost = Доказательство уничтожено. Контракт сорван.
 

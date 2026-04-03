@@ -249,3 +249,67 @@
     currentDurability: 130
     durabilityLossPerShot: 0.23
     canJam: true
+
+- type: entity
+  parent: STBaseWeaponRifleSVDS
+  id: STWeaponSniperPP2000Pearl
+  name: РР-2000
+  description: Пушка созданная либо отчаянным гением, либо шизофреником. Судя по всему ствол был создан путем сварки нескольких таких же стволов... Стоп, почему у него съемный барабан?! На цевье выцарапана неразборчивая подпись создателя.
+  components:
+  - type: STWeight
+    self: 5
+  - type: PullDoAfter
+    pullTime: 5
+  - type: GunWieldBonus
+    minAngle: -50
+    maxAngle: -70
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Revolvers/РР-2000.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Revolvers/РР-2000.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Revolvers/РР-2000.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/revolver.ogg
+    minAngle: 0
+    maxAngle: 20
+    fireRate: 3
+    angleIncrease: 3
+    angleDecay: 10
+    projectileSpeed: 60
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.2
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 5
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Stalker/Weapons/Guns/RifleGen/Cock/rifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: BasePP2000PearlMag
+        insertSound: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
+        priority: 3
+        whitelist:
+          tags:
+          - MagazinePP2000Pearl
+      gun_module_scope:
+        name: Scope
+        priority: 2
+        whitelist:
+          tags:
+          - STWeaponModuleSniperSight
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - Cartridge45ACP
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_module_scope: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
