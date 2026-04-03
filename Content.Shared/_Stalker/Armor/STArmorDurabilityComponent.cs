@@ -1,25 +1,26 @@
 using System.Collections.Generic;
 using Robust.Shared.GameObjects;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.Manager.Attributes;
 
 namespace Content.Shared._Stalker.Armor;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class STArmorDurabilityComponent : Component
 {
-    [DataField("maxDurability")]
+    [DataField("maxDurability"), AutoNetworkedField]
     public float MaxDurability = 100f;
 
-    [DataField("currentDurability")]
+    [DataField("currentDurability"), AutoNetworkedField]
     public float CurrentDurability = 100f;
 
-    [DataField("durabilityLossPerDamage")]
+    [DataField("durabilityLossPerDamage"), AutoNetworkedField]
     public float DurabilityLossPerDamage = 0.08f;
 
-    [DataField("minProtectionFactor")]
+    [DataField("minProtectionFactor"), AutoNetworkedField]
     public float MinProtectionFactor = 0.4f;
 
-    [DataField("affectedDamageTypes")]
+    [DataField("affectedDamageTypes"), AutoNetworkedField]
     public List<string> AffectedDamageTypes = new()
     {
         "Blunt",
