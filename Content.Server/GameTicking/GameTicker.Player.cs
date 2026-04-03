@@ -11,8 +11,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Ghost;
-using Robust.Shared.Map;
 
 namespace Content.Server.GameTicking
 {
@@ -97,24 +95,14 @@ namespace Content.Server.GameTicking
                         break;
                     }
 
-                    // stalker-changes-start: prevent reattaching to entities in nullspace (causes black screen)
-                    // stalker-en-changes-start: also prevent reattaching to ghost entities after body deletion
-                    if (mind.CurrentEntity == null
-                        || Deleted(mind.CurrentEntity)
-                        || Transform(mind.CurrentEntity.Value).MapID == MapId.Nullspace
-                        || (mind.VisitingEntity == null && HasComp<GhostComponent>(mind.CurrentEntity.Value)))
-                    // stalker-en-changes-end
-                    // stalker-changes-end
+                    if (mind.CurrentEntity == null || Deleted(mind.CurrentEntity))
                     {
-                        DebugTools.Assert(mind.CurrentEntity == null
-                            || Transform(mind.CurrentEntity.Value).MapID == MapId.Nullspace
-                            || HasComp<GhostComponent>(mind.CurrentEntity.Value),
-                            "a mind's current entity was deleted without updating the mind"); // stalker-en-changes: allow ghost assert
+                        DebugTools.Assert(mind.CurrentEntity == null, "a mind's current entity was deleted without updating the mind");
 
-                        // This player is joining the game with an existing mind, but the mind has no usable entity.
-                        // Their entity was probably deleted while they were disconnected, or they were left as a ghost.
-                        // stalker-en-changes: Respawn the player instead of creating another observer ghost.
-                        RespawnWaitDb();
+                        // This player is joining the game with an existing mind, but the mind has no entity.
+                        // Their entity was probably deleted sometime while they were disconnected, or they were an observer.
+                        // Instead of allowing them to spawn in, we will dump and their existing mind in an observer ghost.
+                        SpawnObserverWaitDb();
                     }
                     else
                     {
@@ -126,7 +114,7 @@ namespace Content.Server.GameTicking
                         {
                             Log.Error(
                                 $"Failed to attach player {session} with mind {ToPrettyString(mindId)} to its current entity {ToPrettyString(mind.CurrentEntity)}");
-                            RespawnWaitDb(); // stalker-en-changes: respawn instead of observer
+                            SpawnObserverWaitDb();
                         }
                     }
 
@@ -179,23 +167,6 @@ namespace Content.Server.GameTicking
 
                 JoinAsObserver(session);
             }
-
-            // stalker-en-changes-start: respawn player instead of creating observer ghost
-            async void RespawnWaitDb()
-            {
-                try
-                {
-                    await _userDb.WaitLoadComplete(session);
-                }
-                catch (OperationCanceledException)
-                {
-                    Log.Debug($"Database load cancelled while waiting to respawn {session}");
-                    return;
-                }
-
-                Respawn(session);
-            }
-            // stalker-en-changes-end
 
             async void AddPlayerToDb(Guid id)
             {
