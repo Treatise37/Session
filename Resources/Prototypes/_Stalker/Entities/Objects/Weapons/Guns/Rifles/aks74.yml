@@ -128,15 +128,14 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 130
-      currentDurability: 130
-      durabilityLossPerShot: 0.34
-      canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleAK74M
@@ -175,6 +174,7 @@
     currentDurability: 140
     durabilityLossPerShot: 0.31
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleSaiga545
@@ -216,6 +216,7 @@
     currentDurability: 110
     durabilityLossPerShot: 0.4
     canJam: true
+
 - type: entity
   parent: STWeaponRifleSaiga545
   id: STWeaponRifleSaiga545Auto
@@ -243,6 +244,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleA545
@@ -288,6 +290,7 @@
     currentDurability: 140
     durabilityLossPerShot: 0.31
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleAKS74Green
@@ -308,6 +311,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleZastavaM92
@@ -368,6 +372,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   abstract: true
   parent: STBaseWeaponRifleAKS74
@@ -413,6 +418,7 @@
       currentDurability: 110
       durabilityLossPerShot: 0.4
       canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74UWhite
@@ -432,6 +438,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74UBlack
@@ -451,6 +458,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74USERAPH
@@ -471,6 +479,7 @@
     currentDurability: 120
     durabilityLossPerShot: 0.37
     canJam: true
+
 - type: entity
   parent: STWeaponRifleStalkerAK12
   id: STWeaponRifleAM17
@@ -511,6 +520,7 @@
     currentDurability: 140
     durabilityLossPerShot: 0.31
     canJam: true
+
 - type: entity
   name: АК-105 Болотная тварь
   suffix: ST
