@@ -54,6 +54,13 @@
     - type: STWeaponAccuracy
       accuracyMultiplier: 1.43
 
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 115
+      currentDurability: 115
+      durabilityLossPerShot: 0.44
+      canJam: true
 - type: entity
   name: СР-2 «Вереск» серафимов
   parent: STWeaponSMGStalkerCP2Veresk
@@ -89,6 +96,13 @@
 
 # 9x21
 
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 115
+      currentDurability: 115
+      durabilityLossPerShot: 0.44
+      canJam: true
 - type: entity
   name: СР-2М «Вереск» 9х21
   suffix: ST, Скин
@@ -134,6 +148,13 @@
             tags:
               - STCartridge921PGJ
 
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 125
+      currentDurability: 125
+      durabilityLossPerShot: 0.41
+      canJam: true
 - type: entity
   name: СР-2М «Вереск» серафимов 9x21
   parent: STWeaponSMGStalkerCP2Veresk921
@@ -166,3 +187,10 @@
           whitelist:
             tags:
               - STCartridge921PGJ
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 115
+      currentDurability: 115
+      durabilityLossPerShot: 0.44
+      canJam: true

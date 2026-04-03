@@ -41,6 +41,17 @@
 #    slots:
 #    - Hair
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetSeraphimAltin
   id: ClothingHeadAltinHelmetLimaSera
@@ -51,3 +62,14 @@
     sprite: _Stalker/Objects/Clothing/hats/sera_limastrash.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/sera_limastrash.rsi
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

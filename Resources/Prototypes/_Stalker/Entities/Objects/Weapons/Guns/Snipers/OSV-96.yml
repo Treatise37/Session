@@ -67,3 +67,11 @@
   name: OSV-96 Взломщик
   description: российская самозарядная крупнокалиберная снайперская винтовка под калибр 12,7x108мм. Разработана в Туле специалистами КБ приборостроения.
 
+  components:
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT5
+    - type: STWeaponDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerShot: 0.2
+      canJam: true

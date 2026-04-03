@@ -63,3 +63,11 @@
   id: STWeaponSMGThompson
   name: Thompson Submachine Gun
   description: The iconic Thompson submachine gun (nicknamed "Tommy Gun") chambered in .45 ACP. Its distinctive drum magazine and dual grips make it instantly recognizable, though its weight and recoil present challenges in Zone conditions.
+  components:
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT2
+    - type: STWeaponDurability
+      maxDurability: 105
+      currentDurability: 105
+      durabilityLossPerShot: 0.47
+      canJam: true

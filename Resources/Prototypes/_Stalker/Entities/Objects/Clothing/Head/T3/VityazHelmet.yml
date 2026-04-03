@@ -44,6 +44,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1C.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1T
@@ -55,6 +66,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1T.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1L
@@ -66,6 +88,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1L.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1B
@@ -77,6 +110,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1B.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1P
@@ -88,6 +132,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Kapelan.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1M
@@ -99,6 +154,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1M.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityaz1Zavet
@@ -111,6 +177,17 @@
     sprite: _Stalker/Objects/Clothing/hats/Vityaz1Z.rsi
 
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityazSkull1
@@ -123,6 +200,17 @@
     sprite: _Stalker/Objects/Clothing/hats/VityazS1.rsi
 
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityazSkull2
@@ -135,6 +223,17 @@
     sprite: _Stalker/Objects/Clothing/hats/VityazS2.rsi
 
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityazSkull3
@@ -147,6 +246,17 @@
     sprite: _Stalker/Objects/Clothing/hats/VityazS3.rsi
 
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT3Base
   id: ClothingHeadHelmetVityazSkull4
@@ -157,3 +267,14 @@
     sprite: _Stalker/Objects/Clothing/hats/VityazS4.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/VityazS4.rsi
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

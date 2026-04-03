@@ -45,6 +45,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/IOTV/Black.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorIOTVBase
   id: STClothingOuterArmorIOTVGreen
@@ -56,6 +67,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/IOTV/Green.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorIOTVBase
   id: STClothingOuterArmorIOTVFreedom
@@ -67,6 +89,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/IOTV/Svoboda.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: ClothingOuterArmorPSZ9D
   id: STClothingOuterArmorIOTVMerc
@@ -88,3 +121,14 @@
         Blunt: 0.75
         Slash: 0.75
         Piercing: 0.55
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

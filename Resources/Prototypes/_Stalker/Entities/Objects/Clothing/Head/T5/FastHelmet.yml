@@ -34,3 +34,14 @@
     sprite: _Stalker/Objects/Clothing/hats/fast_helm_neutral_black.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/fast_helm_neutral_black.rsi
+  - type: STItemUpgrades
+    tree: STHelmetLightUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 92
+    currentDurability: 92
+    durabilityLossPerDamage: 0.082
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

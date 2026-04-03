@@ -36,6 +36,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/Head/pehhelm_stal.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantryBand
@@ -47,6 +58,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/band_helmet.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadInfantryHelmetRenegate
@@ -58,6 +80,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/renegade_merc_helmet.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadInfantryHelmetDeserter
@@ -69,6 +102,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/pehhelm_deserter.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadInfantryHelmetUN
@@ -80,6 +124,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/pehhelm_un.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantryPilgrim
@@ -93,6 +148,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/inqusitorHelm.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetKeeper
@@ -105,6 +171,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/keeper_helmet.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantryMerc
@@ -117,6 +194,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/merc_bastion.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantrySera
@@ -128,6 +216,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/pehhelm_sera.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantrySerasera
@@ -139,6 +238,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/pehhelm_serasera.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantryDolg
@@ -150,6 +260,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/pehhelm_dolg.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: STClothingHeadHelmetFASTNeutral
@@ -160,3 +281,14 @@
     sprite: _Stalker/Objects/Clothing/hats/fast_helm_neutral.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/fast_helm_neutral.rsi
+  - type: STItemUpgrades
+    tree: STHelmetLightUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 92
+    currentDurability: 92
+    durabilityLossPerDamage: 0.082
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

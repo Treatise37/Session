@@ -40,6 +40,17 @@
 
 # Renegate - 1
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B2Base
   id: ClothingOuterArmorRene6B2
@@ -51,6 +62,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/6B2_brown.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B2Base
   id: ClothingOuterArmorSera6b2
@@ -64,6 +86,17 @@
 
 # Old groups
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B2Base
   id: ClothingOuterArmorDeserter6B2
@@ -78,3 +111,14 @@
     armorLevels:
       nonPvPPhysical: -2
       piercing: 1
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

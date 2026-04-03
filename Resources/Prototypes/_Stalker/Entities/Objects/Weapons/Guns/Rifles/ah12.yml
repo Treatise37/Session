@@ -65,3 +65,11 @@
   id: STWeaponRifleAH12
   name: ASH-12 "Mutant Hunter"
   description: Russian heavy assault rifle chambered in 12.7x55mm. Used in the Zone against heavily armored mutants and protected targets. Distinctive 'pop' sound can be heard hundreds of meters away.
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT5
+    - type: STWeaponDurability
+      maxDurability: 150
+      currentDurability: 150
+      durabilityLossPerShot: 0.28
+      canJam: true

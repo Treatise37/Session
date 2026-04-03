@@ -39,6 +39,13 @@
               - DrumAutoAss
 
 #
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 135
+      currentDurability: 135
+      durabilityLossPerShot: 0.33
+      canJam: true
 - type: entity
   parent: STWeaponShotgunAA
   id: STWeaponShotgunAArchangel
@@ -52,3 +59,10 @@
       sprite: _Stalker/Objects/Weapons/Guns/Shotguns/aa12/aaSera.rsi
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Shotguns/aa12/aaSera.rsi
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 135
+      currentDurability: 135
+      durabilityLossPerShot: 0.33
+      canJam: true

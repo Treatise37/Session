@@ -43,6 +43,14 @@
   name: КС-23
   description: Советский и Российский карабин Калибра 23 мм. Изначально многофункциональное полицейское спецсредство, предназначенное для пресечения массовых беспорядков, избирательного силового, психического и химического воздействия на правонарушителей. В зоне с чёрного рынка, но тут у него цель лишь убивать с умопомрачительной мощью.
 
+  components:
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 135
+      currentDurability: 135
+      durabilityLossPerShot: 0.33
+      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunKS23
   id: STWeaponShotgunKS23M
@@ -61,3 +69,10 @@
     fireRate: 0.7
     angleIncrease: 18 #Slightly bigger kick
     angleDecay: 8 # and Slightly faster recovery
+  - type: STItemUpgrades
+    tree: STShotgunUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 135
+    currentDurability: 135
+    durabilityLossPerShot: 0.33
+    canJam: true

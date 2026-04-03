@@ -130,6 +130,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP24Ruby
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP24Base
   id: ClothingHeadHelmetSSP24Ruby
@@ -144,6 +158,20 @@
 
 # Topaz
 
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingOuterArmorSSP24Base
   id: ClothingOuterArmorSSP24Topaz
@@ -182,6 +210,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP24Topaz
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP24Base
   id: ClothingHeadHelmetSSP24Topaz
@@ -196,6 +238,20 @@
 
 # Sappfire
 
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingOuterArmorSSP24Base
   id: ClothingOuterArmorSSP24Sapfire
@@ -234,6 +290,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP24Sapfire
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP24Base
   id: ClothingHeadHelmetSSP24Sapfire
@@ -245,3 +315,17 @@
       sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/sapfire.rsi
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/sapfire.rsi
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock

@@ -53,6 +53,17 @@
       storagebase: !type:Container
         ents: []
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorVeryHeavy
   id: STClothingOuterArmorVeryHeavySci
@@ -85,6 +96,17 @@
     damageCoefficient: 0.8
         
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorVeryHeavy
   id: STClothingOuterArmorVeryHeavyFreedom
@@ -109,3 +131,14 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/begemot_freedom.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/begemot_freedom.rsi
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

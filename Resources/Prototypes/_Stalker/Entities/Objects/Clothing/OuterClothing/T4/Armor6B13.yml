@@ -33,6 +33,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/6b13.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B13Base
   id: ClothingOuterArmor6B13Sera
@@ -44,6 +55,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/serafim-6b13.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B13Base
   id: ClothingOuterArmor6B13Police
@@ -55,6 +77,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/6b13_police.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmor6B13Base
   id: ClothingOuterArmorUNTAR
@@ -66,6 +99,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/Untar.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: ClothingOuterArmorPSZ9D
   id: STClothingOuterArmorVolchankaFreedom
@@ -93,6 +137,17 @@
     - type: ExplosionResistance
       damageCoefficient: 0.65
 
+    - type: STItemUpgrades
+      tree: STArmorVestUpgradeTreeT2
+    - type: STArmorDurability
+      maxDurability: 160
+      currentDurability: 160
+      durabilityLossPerDamage: 0.08
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingOuterArmor6B13Base
   id: ClothingOuterArmor6B13Zavet
@@ -114,3 +169,14 @@
         Blunt: 0.80
         Slash: 0.80
         Piercing: 0.55
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

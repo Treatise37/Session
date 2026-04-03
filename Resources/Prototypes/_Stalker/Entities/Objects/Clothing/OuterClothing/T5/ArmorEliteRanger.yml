@@ -29,3 +29,14 @@
         Compression: 0.50
   - type: ExplosionResistance
     damageCoefficient: 0.2
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
