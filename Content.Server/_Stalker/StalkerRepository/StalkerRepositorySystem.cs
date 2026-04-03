@@ -396,19 +396,13 @@ public sealed class StalkerRepositorySystem : EntitySystem
     /// <returns>New instance of <see cref="RepositoryItemInfo"/></returns>
     public RepositoryItemInfo GenerateItemInfoByPrototype(string item)
     {
+        // indexing prototype to get its data
         if (!_prototypeMan.TryIndex<EntityPrototype>(item, out var proto))
             return new RepositoryItemInfo();
 
         var spawned = Spawn(item, MapCoordinates.Nullspace);
 
-        try
-        {
-            return GenerateItemInfo(spawned);
-        }
-        finally
-        {
-            QueueDel(spawned);
-        }
+        return GenerateItemInfo(spawned);
     }
     /// <summary>
     /// Generates full item info out of entityUid
