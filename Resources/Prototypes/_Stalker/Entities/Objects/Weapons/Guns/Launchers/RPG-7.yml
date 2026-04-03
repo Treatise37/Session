@@ -39,3 +39,10 @@
   - type: Wieldable
   - type: GunRequiresWield
 
+  - type: STItemUpgrades
+    tree: STLauncherUpgradeTreeT5
+  - type: STWeaponDurability
+    maxDurability: 160
+    currentDurability: 160
+    durabilityLossPerShot: 0.78
+    canJam: false

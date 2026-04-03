@@ -69,6 +69,14 @@
   name: AS-VAL
   description: This weapon was created on the basis of the special sniper rifle VSS "Vintorez" as a silent weapon for special forces. It allows the shooter to effectively fire at an enemy protected by a bulletproof vest, without revealing his position. One of the main features is the use of an integrated silencer and 9 × 39 mm cartridges with a heavy bullet.
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerShot: 0.31
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleASVAL
   id: STWeaponRifleASVALSelebra
@@ -81,3 +89,10 @@
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/val_poisk.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/val_poisk.rsi
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true

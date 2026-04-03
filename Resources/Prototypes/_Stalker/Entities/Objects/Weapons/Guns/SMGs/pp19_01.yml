@@ -70,3 +70,11 @@
   id: STWeaponSMGPP1901
   name: PP-19-01 "Vityaz" submachine gun
   description: A modern Russian submachine gun chambered in 9x19mm Parabellum. Features polymer furniture and folding stock, making it compact yet effective for urban combat scenarios in the Zone.
+  components:
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 115
+      currentDurability: 115
+      durabilityLossPerShot: 0.44
+      canJam: true

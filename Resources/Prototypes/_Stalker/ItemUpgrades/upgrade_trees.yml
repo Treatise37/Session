@@ -1,5 +1,3 @@
-# ОРУЖИЕ
-
 - type: stUpgradeTree # Это для теста.
   id: STAK104UpgradeTree
   upgrades:
@@ -59,9 +57,6 @@
       angleDecayMultiplier: 1.2
       minAngleMultiplier: 0.9
 
-
-# ШЛЕМЫ
-
 - type: stUpgradeTree # Это для теста.
   id: STHelmetUpgradeTree
   upgrades:
@@ -94,9 +89,6 @@
       coefficients:
       - damageType: Piercing
         multiplier: 0.7
-
-
-# БРОНЕЖИЛЕТЫ
 
 - type: stUpgradeTree # Это для теста.
   id: STKorundUpgradeTree
@@ -144,3 +136,4674 @@
       coefficients:
       - damageType: Heat
         multiplier: 0.7
+
+- type: stUpgradeTree
+  id: STLauncherUpgradeTreeT5
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 2
+      STPlasticFittingT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 3
+      STPlasticFittingT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 4
+      STPlasticFittingT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STMachinegunUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STPistolUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STPistolUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+
+- type: stUpgradeTree
+  id: STPistolUpgradeTreeT1
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 2
+      STPlasticFittingT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 3
+      STPlasticFittingT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 4
+      STPlasticFittingT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRevolverUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRevolverUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRevolverUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRifleUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRifleUpgradeTreeT5
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 2
+      STPlasticFittingT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 3
+      STPlasticFittingT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 4
+      STPlasticFittingT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRifleUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRifleUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STRifleUpgradeTreeT1
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 2
+      STPlasticFittingT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 3
+      STPlasticFittingT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 4
+      STPlasticFittingT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSmgUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSmgUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSmgUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSmgUpgradeTreeT1
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 2
+      STPlasticFittingT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 3
+      STPlasticFittingT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 4
+      STPlasticFittingT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STShotgunUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STShotgunUpgradeTreeT1
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 2
+      STPlasticFittingT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 3
+      STPlasticFittingT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT1: 4
+      STPlasticFittingT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STShotgunUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STShotgunUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSniperUpgradeTreeT4
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 2
+      STPlasticFittingT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 3
+      STPlasticFittingT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT4: 4
+      STPlasticFittingT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSniperUpgradeTreeT2
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 2
+      STPlasticFittingT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 3
+      STPlasticFittingT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT2: 4
+      STPlasticFittingT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSniperUpgradeTreeT5
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 2
+      STPlasticFittingT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 3
+      STPlasticFittingT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT5: 4
+      STPlasticFittingT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STSniperUpgradeTreeT3
+  upgrades:
+  - id: handling_1
+    name: Усиленный газоотвод
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      fireRateMultiplier: 1.1
+  - id: handling_2
+    name: Балансировка автоматики
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_1
+    gun:
+      angleIncreaseMultiplier: 0.9
+      maxAngleMultiplier: 0.92
+  - id: handling_3
+    name: Стабилизатор отдачи
+    branchId: handling
+    branchName: Обращение
+    requiredMaterials:
+      STPlasticFittingT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - handling_2
+    gun:
+      angleDecayMultiplier: 1.15
+      maxAngleMultiplier: 0.9
+  - id: precision_1
+    name: Полировка затвора
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 2
+      STPlasticFittingT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    gun:
+      minAngleMultiplier: 0.9
+      maxAngleMultiplier: 0.95
+  - id: precision_2
+    name: Подгонка ствольной группы
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 3
+      STPlasticFittingT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_1
+    gun:
+      angleDecayMultiplier: 1.1
+      minAngleMultiplier: 0.92
+  - id: precision_3
+    name: Тщательная пристрелка
+    branchId: precision
+    branchName: Точность
+    requiredMaterials:
+      STGlassT3: 4
+      STPlasticFittingT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - precision_2
+    gun:
+      minAngleMultiplier: 0.85
+      maxAngleMultiplier: 0.9
+
+- type: stUpgradeTree
+  id: STHelmetScientificUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Защитный пакет
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Герметичный каркас
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Калибровка фильтров
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Radiation
+        multiplier: 0.9
+      - damageType: Caustic
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Cold
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Герметизация контура
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Radiation
+        multiplier: 0.85
+      - damageType: Caustic
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Cold
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Комплексная изоляция
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Radiation
+        multiplier: 0.8
+      - damageType: Caustic
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Cold
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetExoUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление сочленений
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительные пластины
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Балансировка приводов
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Разгрузка узлов
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Точная подгонка рамы
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetCombatUpgradeTreeT2
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetScientificUpgradeTreeT4
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STAluminum: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Защитный пакет
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STAluminum: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Герметичный каркас
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STAluminum: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Калибровка фильтров
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STPolymerFabricT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Radiation
+        multiplier: 0.9
+      - damageType: Caustic
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Cold
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Герметизация контура
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STPolymerFabricT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Radiation
+        multiplier: 0.85
+      - damageType: Caustic
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Cold
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Комплексная изоляция
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STPolymerFabricT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Radiation
+        multiplier: 0.8
+      - damageType: Caustic
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Cold
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetLightUpgradeTreeT1
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetCombatUpgradeTreeT3
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetCombatUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STHelmetLightUpgradeTreeT2
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorVestUpgradeTreeT2
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorVestUpgradeTreeT3
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorVestUpgradeTreeT1
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorCombatUpgradeTreeT3
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorCombatUpgradeTreeT4
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STAluminum: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STAluminum: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STAluminum: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STPolymerFabricT4: 2
+      STIndustrialThreadStaplesKitT4: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STPolymerFabricT4: 3
+      STIndustrialThreadStaplesKitT4: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STPolymerFabricT4: 4
+      STIndustrialThreadStaplesKitT4: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorCombatUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorSuitUpgradeTreeT1
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 2
+      STBasicThreadKitT1: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 3
+      STBasicThreadKitT1: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STCottonFabricT1: 4
+      STBasicThreadKitT1: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorSuitUpgradeTreeT2
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STIron: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 2
+      STTapeKitT2: 1
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 3
+      STTapeKitT2: 2
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STHideT2: 4
+      STTapeKitT2: 3
+    requiredTools:
+    - ToolkitTearOne
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorSuitUpgradeTreeT3
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительная пластина
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Защита
+    requiredMaterials:
+      STBrass: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Пропитка подкладки
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+  - id: environment_2
+    name: Изоляция швов
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+  - id: environment_3
+    name: Защитный контур
+    branchId: environment
+    branchName: Подкладка
+    requiredMaterials:
+      STSturdyHideT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearTwo
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorScientificUpgradeTreeT3
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STBrass: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Защитный пакет
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STBrass: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Герметичный каркас
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STBrass: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Калибровка фильтров
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STSturdyHideT3: 2
+      STGlueKitT3: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Radiation
+        multiplier: 0.9
+      - damageType: Caustic
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Cold
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Герметизация контура
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STSturdyHideT3: 3
+      STGlueKitT3: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Radiation
+        multiplier: 0.85
+      - damageType: Caustic
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Cold
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Комплексная изоляция
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STSturdyHideT3: 4
+      STGlueKitT3: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Radiation
+        multiplier: 0.8
+      - damageType: Caustic
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Cold
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorScientificUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление швов
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Защитный пакет
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Герметичный каркас
+    branchId: protection
+    branchName: Герметизация
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Калибровка фильтров
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Radiation
+        multiplier: 0.9
+      - damageType: Caustic
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Cold
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Герметизация контура
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Radiation
+        multiplier: 0.85
+      - damageType: Caustic
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Cold
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Комплексная изоляция
+    branchId: environment
+    branchName: Среда
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Radiation
+        multiplier: 0.8
+      - damageType: Caustic
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Cold
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8
+
+- type: stUpgradeTree
+  id: STArmorExoUpgradeTreeT5
+  upgrades:
+  - id: protection_1
+    name: Усиление сочленений
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.92
+      - damageType: Slash
+        multiplier: 0.92
+      - damageType: Piercing
+        multiplier: 0.92
+  - id: protection_2
+    name: Дополнительные пластины
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_1
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.86
+      - damageType: Slash
+        multiplier: 0.86
+      - damageType: Piercing
+        multiplier: 0.86
+  - id: protection_3
+    name: Жёсткий каркас
+    branchId: protection
+    branchName: Силовая рама
+    requiredMaterials:
+      STSteel: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - protection_2
+    armor:
+      coefficients:
+      - damageType: Blunt
+        multiplier: 0.8
+      - damageType: Slash
+        multiplier: 0.8
+      - damageType: Piercing
+        multiplier: 0.8
+  - id: environment_1
+    name: Балансировка приводов
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 2
+      STHighStrengthKitT5: 1
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.9
+      - damageType: Shock
+        multiplier: 0.9
+      - damageType: Compression
+        multiplier: 0.9
+  - id: environment_2
+    name: Разгрузка узлов
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 3
+      STHighStrengthKitT5: 2
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_1
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.85
+      - damageType: Shock
+        multiplier: 0.85
+      - damageType: Compression
+        multiplier: 0.85
+  - id: environment_3
+    name: Точная подгонка рамы
+    branchId: environment
+    branchName: Сервоприводы
+    requiredMaterials:
+      STCompositeMaterialT5: 4
+      STHighStrengthKitT5: 3
+    requiredTools:
+    - ToolkitTearTwo
+    - ToolkitTearThree
+    weightMultiplier: 1.0
+    requiredUpgrades:
+    - environment_2
+    armor:
+      coefficients:
+      - damageType: Heat
+        multiplier: 0.8
+      - damageType: Shock
+        multiplier: 0.8
+      - damageType: Compression
+        multiplier: 0.8

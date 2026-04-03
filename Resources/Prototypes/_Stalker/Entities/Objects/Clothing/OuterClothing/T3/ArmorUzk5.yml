@@ -39,6 +39,20 @@
     walkModifier: 1
     sprintModifier: 1
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity  # T3
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHardsuitUzk5Helm

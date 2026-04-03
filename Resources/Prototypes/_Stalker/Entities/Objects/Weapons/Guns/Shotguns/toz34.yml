@@ -38,6 +38,14 @@
   name: TOZ-34
   description: Soviet double-barreled shotgun with vertical barrel arrangement. Prized in the Zone for its reliability and powerful stopping effect against mutants.
 
+  components:
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT1
+    - type: STWeaponDurability
+      maxDurability: 105
+      currentDurability: 105
+      durabilityLossPerShot: 0.42
+      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunTOZ34
   id: STWeaponShotgunTOZ54
@@ -81,6 +89,13 @@
           tags:
           - STWeaponModuleSniperSilencer
 
+  - type: STItemUpgrades
+    tree: STShotgunUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 115
+    currentDurability: 115
+    durabilityLossPerShot: 0.39
+    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunTOZ34
   id: STWeaponShotgunAnomalyToz34
@@ -99,6 +114,13 @@
   - type: BallisticAmmoProvider
     capacity: 4
 
+  - type: STItemUpgrades
+    tree: STShotgunUpgradeTreeT1
+  - type: STWeaponDurability
+    maxDurability: 105
+    currentDurability: 105
+    durabilityLossPerShot: 0.42
+    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunTOZ34
   id: STWeaponShotgunShizoToz34
@@ -120,3 +142,10 @@
   - type: Scope
     zoom: 1.4
     offset: 10
+  - type: STItemUpgrades
+    tree: STShotgunUpgradeTreeT1
+  - type: STWeaponDurability
+    maxDurability: 105
+    currentDurability: 105
+    durabilityLossPerShot: 0.42
+    canJam: true

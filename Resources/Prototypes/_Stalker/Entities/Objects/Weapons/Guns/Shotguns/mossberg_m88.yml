@@ -36,3 +36,11 @@
   id: STWeaponShotgunMossbergM88
   name: Mossberg M88 Cruiser
   description: Compact pump-action shotgun with exceptional ergonomics. Perfect for CQB in Zone conditions, especially in tight spaces. Can be effectively operated one-handed.
+  components:
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT2
+    - type: STWeaponDurability
+      maxDurability: 115
+      currentDurability: 115
+      durabilityLossPerShot: 0.39
+      canJam: true

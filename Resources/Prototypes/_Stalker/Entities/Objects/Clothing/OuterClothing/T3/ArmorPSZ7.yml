@@ -61,6 +61,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/deserter_psz7.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT2
+  - type: STArmorDurability
+    maxDurability: 160
+    currentDurability: 160
+    durabilityLossPerDamage: 0.08
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorLightPlateVestBasePSZ7
   id: STClothingOuterArmorLightPlateVestBasePSZ7Zavet

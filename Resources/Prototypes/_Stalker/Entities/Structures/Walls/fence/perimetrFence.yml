@@ -22,7 +22,7 @@
           bounds: "-0.10,-0.5,0.10,0.5"
         density: 1000
         mask:
-        - FullTileMask
+        - TableMask        
         layer:
         - TableLayer
   - type: InteractionPopup

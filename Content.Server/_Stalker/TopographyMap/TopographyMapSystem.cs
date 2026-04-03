@@ -45,7 +45,7 @@ public sealed partial class TopographyMapSystem : EntitySystem
     {   
         args.Verbs.Add(new()
         {
-            Text = "Развернуть карту",
+            Text = Loc.GetString("open-topograhpy-map"),
             Icon = new SpriteSpecifier.Texture(new ("/Textures/_Stalker/Interface/VerbIcons/openmap.png")),
             Priority = 3,
             Act = () => OpenMap(uid, component, args.User)
@@ -60,7 +60,7 @@ public sealed partial class TopographyMapSystem : EntitySystem
         UpdateTextureLists(componentused,componentused.TextureNames,componentused.TexturePaths);
         UpdateTextureLists(component,componentused.TextureNames,componentused.TexturePaths);
 
-        _popupSystem.PopupEntity("Добавлены новые карты.", uid, args.User);
+        _popupSystem.PopupEntity(Loc.GetString("added-new-topography-maps"), uid, args.User);
     }
 
     #region Helpers

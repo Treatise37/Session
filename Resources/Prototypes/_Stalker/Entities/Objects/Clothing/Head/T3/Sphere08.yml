@@ -90,6 +90,17 @@
     containers:
       cell_slot: !type:ContainerSlot
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetBerill5MMonolith
@@ -105,6 +116,17 @@
       types:
         Radiation: 18.01
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetEnvironmentT3Base
   id: ClothingHeadHelmetBerill5MDolg
@@ -116,6 +138,17 @@
   - type: Clothing
     sprite: _Stalker_EN/Objects/Clothing/hats/berill5m_helm_dolg.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetEnvironmentT3Base
   id: ClothingHeadHelmetAborigine
@@ -126,6 +159,17 @@
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
+  - type: STItemUpgrades
+    tree: STHelmetLightUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 92
+    currentDurability: 92
+    durabilityLossPerDamage: 0.082
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 
 - type: entity
   parent: ClothingHeadHelmetBerill5MMilitary

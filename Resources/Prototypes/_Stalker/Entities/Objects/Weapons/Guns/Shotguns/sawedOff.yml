@@ -38,6 +38,14 @@
   name: Sawed-off Shotgun
   description: Crudely shortened double-barreled shotgun. The weapon of choice for rookie stalkers - cheap, angry and fits under a trenchcoat. Only effective point-blank.
 
+  components:
+    - type: STItemUpgrades
+      tree: STShotgunUpgradeTreeT1
+    - type: STWeaponDurability
+      maxDurability: 105
+      currentDurability: 105
+      durabilityLossPerShot: 0.42
+      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunSawedOf
   id: STWeaponShotgunSawedOfAnomaly
@@ -63,3 +71,10 @@
     angleIncrease: 15
     angleDecay: 75
 
+  - type: STItemUpgrades
+    tree: STShotgunUpgradeTreeT1
+  - type: STWeaponDurability
+    maxDurability: 105
+    currentDurability: 105
+    durabilityLossPerShot: 0.42
+    canJam: true

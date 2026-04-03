@@ -10,9 +10,9 @@ namespace Content.Shared._Stalker_EN.Shop.Buyback;
 public sealed class STBuybackEntry
 {
     /// <summary>
-    /// Unique identifier for this buyback entry (GUID).
+    /// Unique numeric identifier for this buyback entry.
     /// </summary>
-    public string Id;
+    public uint Id;
 
     /// <summary>
     /// The entity prototype ID of the sold item.
@@ -45,7 +45,7 @@ public sealed class STBuybackEntry
     public TimeSpan SoldAt;
 
     public STBuybackEntry(
-        string id,
+        uint id,
         string prototypeId,
         string name,
         string description,

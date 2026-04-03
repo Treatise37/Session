@@ -109,6 +109,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP99
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHelmetSSP99
@@ -123,6 +137,20 @@
 
 # Zavet
 
+  - type: STItemUpgrades
+    tree: STHelmetScientificUpgradeTreeT4
+  - type: STArmorDurability
+    maxDurability: 128
+    currentDurability: 128
+    durabilityLossPerDamage: 0.058
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingOuterArmorSSP99Base
   id: ClothingOuterArmorSSP99Zavet
@@ -136,6 +164,20 @@
     - type: ToggleableClothing
       clothingPrototype: ClothingHeadHelmetSSPZavet
 
+    - type: STItemUpgrades
+      tree: STArmorScientificUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 220
+      currentDurability: 220
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHelmetSSPZavet
@@ -150,6 +192,20 @@
 
 # Amber
 
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingOuterArmorSSP99Base
   id: ClothingOuterArmorSSP99Amber
@@ -163,6 +219,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP99Amber
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHelmetSSP99Amber
@@ -177,6 +247,20 @@
 
 # Diamond
 
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingOuterArmorSSP99Base
   id: ClothingOuterArmorSSP99White
@@ -210,6 +294,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetSSP99White
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHelmetSSP99White
@@ -224,6 +322,20 @@
 
 # Project
 
+    - type: STItemUpgrades
+      tree: STHelmetScientificUpgradeTreeT4
+    - type: STArmorDurability
+      maxDurability: 128
+      currentDurability: 128
+      durabilityLossPerDamage: 0.058
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Radiation
+      - Caustic
+      - Shock
 - type: entity
   parent: STClothingOuterArmorSSP99Base
   id: STClothingOuterArmorSSP99Project
@@ -239,6 +351,20 @@
     clothingPrototype: ClothingHeadHardsuitSevaHelmNJ1
     slot: head
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingHeadHelmetSSP99Base
   id: ClothingHeadHardsuitSevaHelmNJ1
@@ -251,3 +377,17 @@
     sprite: _Stalker/Objects/Clothing/hats/ssp_helm_nj1.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/ssp_helm_nj1.rsi
+  - type: STItemUpgrades
+    tree: STHelmetScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock

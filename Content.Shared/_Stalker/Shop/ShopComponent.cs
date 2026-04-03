@@ -3,6 +3,7 @@ using Content.Shared._Stalker.Sponsors;
 using Content.Shared._Stalker_EN.Shop.Buyback; // stalker-changes-en: buyback system
 using Robust.Shared.Network; // stalker-changes-en: buyback system
 using Robust.Shared.Prototypes;
+using Robust.Shared.ViewVariables;
 
 namespace Content.Shared._Stalker.Shop;
 
@@ -54,4 +55,10 @@ public sealed partial class ShopComponent : Component
     /// The client receives buyback items as a regular shop category.
     /// </summary>
     public Dictionary<NetUserId, List<STBuybackEntry>> BuybackItems = new();
+
+    /// <summary>
+    /// Server-only: monotonically increasing counter for buyback entry IDs.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public uint BuybackNextId;
 }

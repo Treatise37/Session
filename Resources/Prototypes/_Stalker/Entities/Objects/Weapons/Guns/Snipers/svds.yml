@@ -74,6 +74,14 @@
   name: SVDS (Dragunov Sniper Rifle)
   description: A modernized folding version of the legendary SVD sniper rifle, chambered in 7.62x54mmR. Features improved ergonomics and comes equipped with a medium-range scope. A favorite among Zone marksmen for its reliability and stopping power.
 
+  components:
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 130
+      currentDurability: 130
+      durabilityLossPerShot: 0.23
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperSVDSGrass
@@ -88,6 +96,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVDS/srdcGrass.rsi
 
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperSVDSCovenant
@@ -101,6 +116,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVDS/covenant.rsi
 
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperSVU
@@ -115,6 +137,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVU/base.rsi
 
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperSVUSeraphim
@@ -128,6 +157,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVU/seraphim.rsi
 
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponRifleSVDSWood
@@ -186,6 +222,13 @@
     - type: STWeaponAccuracy
       accuracyMultiplier: 5
 
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 130
+      currentDurability: 130
+      durabilityLossPerShot: 0.23
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperSVUTop
@@ -199,6 +242,13 @@
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVU/Top.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/SVU/Top.rsi
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 
 - type: entity
   parent: STBaseWeaponRifleSVDS

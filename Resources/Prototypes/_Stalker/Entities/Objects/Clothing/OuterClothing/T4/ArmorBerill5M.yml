@@ -62,6 +62,17 @@
 
 # Monolith
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBerill5MBase
   id: ClothingOuterArmorBerill5MMonolith
@@ -75,6 +86,17 @@
 
 # Neutral
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBerill5MBase
   id: STClothingOuterArmorLepestokNeutral
@@ -100,6 +122,17 @@
       - 9,2,9,3
       - 10,0,10,0
       - 11,2,12,3
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 
 # Project
 

@@ -58,3 +58,10 @@
     accuracyMultiplier: 1.45
   - type: FarGunshot
     sound: /Audio/_DZ/Effects/FarGunshots/supressed1.ogg
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true

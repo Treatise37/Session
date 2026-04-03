@@ -61,6 +61,14 @@
   name: OC-14 «Groza»
   description: The automatic grenade launcher system is a very successful variant of an assault rifle in the Zone - compact, reliable, and at the same time universal and powerful. Military stalkers really like the «Groza».
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerShot: 0.31
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleOC14
   id: STWeaponRifleOC14Alt
@@ -77,6 +85,13 @@
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/groza_shoot.ogg
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleOC14
   id: STWeaponRifleOC14AltSkin1
@@ -99,6 +114,13 @@
     maxAngle: 55
     angleDecay: 9
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleOC14
   id: STWeaponRifleOC14939
@@ -151,6 +173,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.44
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleOC14
   id: STWeaponRifleOC14Liturgia
@@ -189,3 +218,10 @@
         whitelist:
           tags:
           - STCartridge739
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true

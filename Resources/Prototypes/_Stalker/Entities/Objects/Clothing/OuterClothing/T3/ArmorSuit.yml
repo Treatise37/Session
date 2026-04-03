@@ -98,6 +98,17 @@
       - 8,3,8,4
       - 10,3,10,4
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorRenegate
@@ -129,6 +140,17 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/renegate_il.rsi
 
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorJaba
@@ -140,6 +162,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/medium_armor_jaba.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorBandits
@@ -182,6 +215,17 @@
   - type: ExplosionResistance
     damageCoefficient: 0.65
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMercBandit
@@ -253,6 +297,17 @@
       - 8,3,8,4
       - 10,3,10,4
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT4
+  - type: STArmorDurability
+    maxDurability: 200
+    currentDurability: 200
+    durabilityLossPerDamage: 0.06
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMerc
@@ -312,6 +367,17 @@
     clothingPrototype: ClothingHeadHatHoodMerc2
     slot: head
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT4
+  - type: STArmorDurability
+    maxDurability: 200
+    currentDurability: 200
+    durabilityLossPerDamage: 0.06
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMerc2
@@ -358,6 +424,17 @@
   - type: ExplosionResistance
     damageCoefficient: 0.6
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetDolgPS5M
@@ -409,6 +486,17 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetFreedomDefender
@@ -474,6 +562,17 @@
       storagebase: !type:Container
         ents: []
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetFreedomWind
@@ -535,6 +634,17 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorMonolith
@@ -582,6 +692,17 @@
       types:
         Radiation: 18.01
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT2
+  - type: STArmorDurability
+    maxDurability: 160
+    currentDurability: 160
+    durabilityLossPerDamage: 0.08
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetHatMonolith
@@ -640,6 +761,17 @@
       types:
         Radiation: 18.01
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT1
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.09
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorPilgrim
@@ -652,6 +784,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/inquisitor_armor.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT4
+  - type: STArmorDurability
+    maxDurability: 200
+    currentDurability: 200
+    durabilityLossPerDamage: 0.06
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorStorageBasic
   id: ClothingOuterArmorKeeper
@@ -681,6 +824,17 @@
         Caustic: 0.9
         Compression: 0.75
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT4
+  - type: STArmorDurability
+    maxDurability: 200
+    currentDurability: 200
+    durabilityLossPerDamage: 0.06
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorFirstbornSeraphimes
@@ -704,6 +858,17 @@
     clothingPrototype: ClothingHeadHelmetHatFirstbornSeraphimes
     slot: head
 
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetHatFirstbornSeraphimes
@@ -759,6 +924,17 @@
       - 8,4,8,5
       - 8,0,8,2
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorSeraphimStrash
   id: STClothingOuterArmorLimaSeraphimStrash
@@ -788,6 +964,17 @@
         Compression: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.7
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 
 - type: entity
   parent: STClothingOuterArmorSeraphimStrash

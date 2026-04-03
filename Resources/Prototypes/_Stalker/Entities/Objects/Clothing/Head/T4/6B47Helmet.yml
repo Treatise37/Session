@@ -34,3 +34,14 @@
       sprite: _Stalker/Objects/Clothing/hats/6b47.rsi
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/6b47.rsi
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT2
+    - type: STArmorDurability
+      maxDurability: 104
+      currentDurability: 104
+      durabilityLossPerDamage: 0.074
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat

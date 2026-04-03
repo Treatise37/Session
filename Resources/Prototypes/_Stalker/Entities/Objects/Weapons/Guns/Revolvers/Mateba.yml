@@ -36,6 +36,13 @@
     accuracyMultiplier: 1.46
 
 # REDO-MODULES
+  - type: STItemUpgrades
+    tree: STRevolverUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 100
+    currentDurability: 100
+    durabilityLossPerShot: 0.32
+    canJam: true
 - type: entity
   parent: WeaponGameRevolverMateba
   id: WeaponRevolverJoker
@@ -55,3 +62,10 @@
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
+  - type: STItemUpgrades
+    tree: STRevolverUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.26
+    canJam: true

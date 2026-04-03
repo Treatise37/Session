@@ -129,6 +129,14 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 130
+      currentDurability: 130
+      durabilityLossPerShot: 0.34
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleAK74M
@@ -160,6 +168,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleSaiga545
@@ -194,6 +209,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.43
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT1
+  - type: STWeaponDurability
+    maxDurability: 110
+    currentDurability: 110
+    durabilityLossPerShot: 0.4
+    canJam: true
 - type: entity
   parent: STWeaponRifleSaiga545
   id: STWeaponRifleSaiga545Auto
@@ -214,6 +236,13 @@
     - SemiAuto
     - FullAuto
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleA545
@@ -252,6 +281,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.46
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleAKS74Green
@@ -265,6 +301,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/aks74-green.rsi
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74
   id: STWeaponRifleZastavaM92
@@ -318,6 +361,13 @@
           - STWeaponModuleRifleScopeRu
 
 # AKS 74u
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   abstract: true
   parent: STBaseWeaponRifleAKS74
@@ -355,6 +405,14 @@
   id: STWeaponRifleAKS74U
   name: AKS-74U
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT1
+    - type: STWeaponDurability
+      maxDurability: 110
+      currentDurability: 110
+      durabilityLossPerShot: 0.4
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74UWhite
@@ -367,6 +425,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/aksuWhite.rsi
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74UBlack
@@ -379,6 +444,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/aks74u-black.rsi
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKS74U
   id: STWeaponRifleAKS74USERAPH
@@ -392,6 +464,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/aks74u-seraph.rsi
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 120
+    currentDurability: 120
+    durabilityLossPerShot: 0.37
+    canJam: true
 - type: entity
   parent: STWeaponRifleStalkerAK12
   id: STWeaponRifleAM17
@@ -425,6 +504,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.47
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true
 - type: entity
   name: АК-105 Болотная тварь
   suffix: ST
@@ -485,3 +571,10 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.44
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true

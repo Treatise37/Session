@@ -45,6 +45,17 @@
 
 # Merc
 
+    - type: STItemUpgrades
+      tree: STArmorCombatUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 220
+      currentDurability: 220
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.38
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingOuterArmorBulatBase
   id: ClothingOuterArmorBulatMercenary
@@ -58,6 +69,17 @@
 
 # Monolith
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBulatBase
   id: ClothingOuterArmorBulatMonolith
@@ -71,6 +93,17 @@
 
 # Military
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBulatBase
   id: ClothingOuterArmorBulatMilitary
@@ -84,6 +117,17 @@
 
 # Deserters
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorBulatBase
   id: ClothingOuterArmorLegatDeserter
@@ -94,3 +138,14 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/legat_deserter.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/legat_deserter.rsi
+  - type: STItemUpgrades
+    tree: STArmorSuitUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat

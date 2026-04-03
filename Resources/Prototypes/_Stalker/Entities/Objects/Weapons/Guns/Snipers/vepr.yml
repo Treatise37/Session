@@ -75,6 +75,14 @@
   name: VPO-129 "Vepr" 7.62x54mm
   description: The VPO-129 Vepr-1V is a civilian hunting carbine with rifled barrel, based on the legendary Soviet Army light machine gun design. Chambered in powerful 7.62x54mmR, it's a favorite among Zone marksmen for its reliability.
 
+  components:
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 120
+      currentDurability: 120
+      durabilityLossPerShot: 0.26
+      canJam: true
 - type: entity
   parent: STVBaseWeaponSniperVepr
   id: STWeaponSniperVeprSeraphim
@@ -88,6 +96,13 @@
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Snipers/VEPR/seraphim.rsi
 
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 120
+      currentDurability: 120
+      durabilityLossPerShot: 0.26
+      canJam: true
 - type: entity
   parent: STVBaseWeaponSniperVepr
   id: STWeaponSniperVeprGrass
@@ -101,3 +116,10 @@
       sprite: _Stalker/Objects/Weapons/Guns/Snipers/VEPR/trava.rsi
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Snipers/VEPR/trava.rsi
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 120
+      currentDurability: 120
+      durabilityLossPerShot: 0.26
+      canJam: true

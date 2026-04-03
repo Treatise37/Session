@@ -70,6 +70,14 @@
   name: AKM "Zone Legend"
   description: Improved modernization of Kalashnikov rifle chambered in 7.62x39mm. Found everywhere in the Zone - from rookies to veterans. Symbol of reliability in toughest conditions.
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT3
+    - type: STWeaponDurability
+      maxDurability: 130
+      currentDurability: 130
+      durabilityLossPerShot: 0.34
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleAKM
   id: STWeaponRifleAKMC
@@ -87,6 +95,13 @@
   - type: Gun
     minAngle: 50
     maxAngle: 90
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 
 - type: entity
   parent: STBaseWeaponRifleAKM

@@ -59,3 +59,10 @@
     falloffMultiplier: 1.4
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.4
+  - type: STItemUpgrades
+    tree: STPistolUpgradeTreeT2
+  - type: STWeaponDurability
+    maxDurability: 80
+    currentDurability: 80
+    durabilityLossPerShot: 0.42
+    canJam: true

@@ -74,6 +74,13 @@
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/n_l85_shot.ogg
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleL85
   id: STWeaponRifleL85WhiteStrawberry
@@ -86,3 +93,10 @@
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/l85_straberry.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/l85_straberry.rsi
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerShot: 0.31
+    canJam: true

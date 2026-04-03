@@ -65,3 +65,11 @@
   id: STWeaponSMGFNP90
   name: FN P90 PDW
   description: The FN P90 personal defense weapon, chambered in 5.7x28mm FN. Its compact bullpup design and 50-round top-mounted magazine make it ideal for close-quarters combat in Zone conditions.
+  components:
+    - type: STItemUpgrades
+      tree: STSmgUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 125
+      currentDurability: 125
+      durabilityLossPerShot: 0.41
+      canJam: true

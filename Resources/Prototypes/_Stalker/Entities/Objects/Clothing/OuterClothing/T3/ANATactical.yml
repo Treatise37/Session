@@ -156,6 +156,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/zastupnik.rsi
 
+  - type: STItemUpgrades
+    tree: STArmorVestUpgradeTreeT2
+  - type: STArmorDurability
+    maxDurability: 160
+    currentDurability: 160
+    durabilityLossPerDamage: 0.08
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingOuterArmorLightPlateVestBaseANAgreen
   id: STClothingOuterArmorLightPlateVestBaseANAproject

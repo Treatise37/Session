@@ -2,6 +2,8 @@ using Content.Shared.Alert;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Stalker.Damage.Systems;
@@ -32,9 +34,7 @@ public sealed class STDamageAlertSystem : EntitySystem
 
     private void RefreshAlerts(EntityUid uid, DamageableComponent comp)
     {
-        var total = comp.TotalDamage;
-
-        if (total <= FixedPoint2.Zero)
+        if (comp.TotalDamage <= FixedPoint2.Zero)
         {
             _alerts.ClearAlert(uid, AcidAlert);
             _alerts.ClearAlert(uid, RadAlert);
@@ -46,12 +46,20 @@ public sealed class STDamageAlertSystem : EntitySystem
         comp.Damage.DamageDict.TryGetValue("Radiation", out var rad);
         comp.Damage.DamageDict.TryGetValue("Psy", out var psy);
 
-        UpdateAlert(uid, AcidAlert, acid, total);
-        UpdateAlert(uid, RadAlert, rad, total);
-        UpdateAlert(uid, PsyAlert, psy, total);
+        var critThreshold = GetCriticalThreshold(uid);
+
+        UpdateAlert(uid, AcidAlert, acid, critThreshold, 8f, 28f);
+        UpdateAlert(uid, RadAlert, rad, critThreshold, 12f, 40f);
+        UpdateAlert(uid, PsyAlert, psy, critThreshold, 10f, 35f);
     }
 
-    private void UpdateAlert(EntityUid uid, ProtoId<AlertPrototype> alert, FixedPoint2 value, FixedPoint2 total)
+    private void UpdateAlert(
+        EntityUid uid,
+        ProtoId<AlertPrototype> alert,
+        FixedPoint2 value,
+        FixedPoint2? critThreshold,
+        float fallbackYellow,
+        float fallbackRed)
     {
         if (value <= FixedPoint2.Zero)
         {
@@ -59,18 +67,46 @@ public sealed class STDamageAlertSystem : EntitySystem
             return;
         }
 
-        if (value >= total * 0.75f)
+        FixedPoint2 yellowThreshold;
+        FixedPoint2 redThreshold;
+
+        if (critThreshold is { } crit && crit > FixedPoint2.Zero)
+        {
+            yellowThreshold = crit * 0.20f;
+            redThreshold = crit * 0.55f;
+        }
+        else
+        {
+            yellowThreshold = FixedPoint2.New(fallbackYellow);
+            redThreshold = FixedPoint2.New(fallbackRed);
+        }
+
+        if (value >= redThreshold)
         {
             _alerts.ShowAlert(uid, alert, 2);
             return;
         }
 
-        if (value >= total * 0.5f)
+        if (value >= yellowThreshold)
         {
             _alerts.ShowAlert(uid, alert, 1);
             return;
         }
 
         _alerts.ClearAlert(uid, alert);
+    }
+
+    private FixedPoint2? GetCriticalThreshold(EntityUid uid)
+    {
+        if (!TryComp<MobThresholdsComponent>(uid, out var thresholds))
+            return null;
+
+        foreach (var (threshold, state) in thresholds.Thresholds)
+        {
+            if (state == MobState.Critical)
+                return threshold;
+        }
+
+        return null;
     }
 }

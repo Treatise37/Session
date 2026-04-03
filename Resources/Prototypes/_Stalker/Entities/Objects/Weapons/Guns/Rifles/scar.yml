@@ -73,6 +73,14 @@
   name: FN SCAR-H
   description: Belgian battle rifle chambered in 7.62x51mm NATO. Rare in the Zone, mostly used by western mercenaries. Powerful but maintenance-heavy weapon.
 
+  components:
+    - type: STItemUpgrades
+      tree: STRifleUpgradeTreeT5
+    - type: STWeaponDurability
+      maxDurability: 150
+      currentDurability: 150
+      durabilityLossPerShot: 0.28
+      canJam: true
 - type: entity
   parent: STBaseWeaponRifleSCARH
   id: STWeaponRifleSCARHShort
@@ -92,6 +100,13 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.5
 
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT5
+  - type: STWeaponDurability
+    maxDurability: 150
+    currentDurability: 150
+    durabilityLossPerShot: 0.28
+    canJam: true
 - type: entity
   parent: STBaseWeaponRifleSCARH
   id: STWeaponRifleARX160
@@ -124,6 +139,13 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.57
+  - type: STItemUpgrades
+    tree: STRifleUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.34
+    canJam: true
 
 - type: entity
   parent: STBaseWeaponRifleSCARH

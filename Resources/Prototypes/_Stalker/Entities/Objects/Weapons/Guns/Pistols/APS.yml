@@ -70,6 +70,13 @@
     - type: STWeaponAccuracy
       accuracyMultiplier: 1.4
 
+    - type: STItemUpgrades
+      tree: STPistolUpgradeTreeT2
+    - type: STWeaponDurability
+      maxDurability: 80
+      currentDurability: 80
+      durabilityLossPerShot: 0.42
+      canJam: true
 - type: entity
   parent: WeaponPistolStalkerAPS
   id: WeaponPistolStalkerAPSHugo
@@ -83,3 +90,10 @@
     sprite: _Stalker/Objects/Weapons/Guns/Pistols/_Skins/apshugo.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Pistols/_Skins/apshugo.rsi
+  - type: STItemUpgrades
+    tree: STPistolUpgradeTreeT3
+  - type: STWeaponDurability
+    maxDurability: 90
+    currentDurability: 90
+    durabilityLossPerShot: 0.39
+    canJam: true

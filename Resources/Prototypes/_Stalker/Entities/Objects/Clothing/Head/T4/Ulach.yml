@@ -37,6 +37,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/ulach.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmetUlachFreedom
@@ -59,6 +70,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/ulach-un.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmetUlachZavet
@@ -72,6 +94,17 @@
       sprite: _Stalker/Objects/Clothing/hats/zavet_ulach.rsi
 
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmetHardUlachUN
@@ -83,6 +116,17 @@
     - type: Clothing
       sprite: _Stalker/Objects/Clothing/hats/hard-ulach-un.rsi
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT3
+    - type: STArmorDurability
+      maxDurability: 116
+      currentDurability: 116
+      durabilityLossPerDamage: 0.066
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmetUlachEasy
@@ -94,4 +138,15 @@
     sprite: _Stalker/Objects/Clothing/hats/normal_merc_helm.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/normal_merc_helm.rsi
+  - type: STItemUpgrades
+    tree: STHelmetLightUpgradeTreeT2
+  - type: STArmorDurability
+    maxDurability: 104
+    currentDurability: 104
+    durabilityLossPerDamage: 0.074
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 

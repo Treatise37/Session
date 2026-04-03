@@ -32,6 +32,19 @@
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
 
+  - type: STItemUpgrades
+    tree: STArmorExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression
 - type: entity
   parent: STClothingHeadBase
   id: ClothingHeadHelmetExoskelet
@@ -66,6 +79,19 @@
     slots:
     - Hair
 
+  - type: STItemUpgrades
+    tree: STHelmetExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression
 - type: entity
   parent: ClothingOuterArmorExoskelet
   id: ClothingOuterArmorExoskeletMonolith
@@ -80,6 +106,19 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetExoskeletMonolith
 
+  - type: STItemUpgrades
+    tree: STArmorExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression
 - type: entity
   parent: ClothingOuterArmorExoskelet
   id: ClothingHeadHelmetExoskeletMonolith
@@ -96,6 +135,19 @@
   - type: IngestionBlocker
   - type: IdentityBlocker
 
+  - type: STItemUpgrades
+    tree: STHelmetExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression
 - type: entity
   parent: ClothingOuterArmorExoskelet
   id: ClothingOuterArmorExoskeletonCovenant
@@ -109,6 +161,19 @@
     - type: ToggleableClothing
       clothingPrototype: ClothingHeadHelmetExoskeletonCovenant
 
+    - type: STItemUpgrades
+      tree: STArmorExoUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 220
+      currentDurability: 220
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.38
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Shock
+      - Compression
 - type: entity
   parent: STClothingHeadBase
   id: ClothingHeadHelmetExoskeletonCovenant
@@ -123,6 +188,19 @@
 
 # Project
 
+    - type: STItemUpgrades
+      tree: STHelmetExoUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.45
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
+      - Shock
+      - Compression
 - type: entity
   parent: ClothingOuterArmorExoskelet
   id: ClothingOuterArmorExoSevaProject
@@ -140,6 +218,19 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetExoSevaProject
 
+  - type: STItemUpgrades
+    tree: STArmorExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetExoSevaProject
@@ -160,3 +251,16 @@
   - type: IngestionBlocker
   - type: PointLight
     color: white
+  - type: STItemUpgrades
+    tree: STHelmetExoUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Shock
+    - Compression

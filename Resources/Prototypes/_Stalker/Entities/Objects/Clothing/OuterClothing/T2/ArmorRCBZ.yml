@@ -36,6 +36,20 @@
     containers:
       toggleable-clothing: !type:ContainerSlot {}
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHelmRCBZ
@@ -87,6 +101,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHelmRCBZDolg
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: ClothingHelmRCBZ
   id: ClothingHelmRCBZDolg
@@ -112,6 +140,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHelmRCBZFreedom
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: ClothingHelmRCBZ
   id: ClothingHelmRCBZFreedom
@@ -137,6 +179,20 @@
 
 # Renegates - 4
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingOuterArmorRCBZ
   id: ClothingOuterArmorRCBZRene
@@ -150,6 +206,20 @@
 
 # Serafims - 5
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: STClothingOuterArmorRCBZ
   id: ClothingOuterArmorRCBZSera
@@ -163,6 +233,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHelmRCBZSera
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: ClothingHelmRCBZ
   id: ClothingHelmRCBZSera
@@ -188,6 +272,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHelmRCBZCN
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: ClothingHelmRCBZ
   id: ClothingHelmRCBZCN
@@ -216,6 +314,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHelmRCBZProjectPJ5
 
+  - type: STItemUpgrades
+    tree: STArmorScientificUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 220
+    currentDurability: 220
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.45
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
+    - Radiation
+    - Caustic
+    - Shock
 - type: entity
   parent: ClothingHelmRCBZ
   id: ClothingHelmRCBZProjectPJ5

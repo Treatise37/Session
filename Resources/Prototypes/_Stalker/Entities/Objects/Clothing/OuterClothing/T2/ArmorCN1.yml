@@ -49,6 +49,17 @@
       storagebase: !type:Container
         ents: []
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetZN1
@@ -92,6 +103,17 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetCN1
 
+  - type: STItemUpgrades
+    tree: STArmorCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 180
+    currentDurability: 180
+    durabilityLossPerDamage: 0.07
+    minProtectionFactor: 0.38
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: ClothingHeadHelmetZN1
   id: ClothingHeadHelmetCN1

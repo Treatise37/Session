@@ -1,0 +1,13 @@
+- type: alert
+  id: STMoodState
+  icons:
+    - /Textures/_Stalker/Interface/Mood/agony.png
+    - /Textures/_Stalker/Interface/Mood/pain.png
+    - /Textures/_Stalker/Interface/Mood/bad.png
+    - /Textures/_Stalker/Interface/Mood/discomfort.png
+    - /Textures/_Stalker/Interface/Mood/okay.png
+    - /Textures/_Stalker/Interface/Mood/good.png
+    - /Textures/_Stalker/Interface/Mood/great.png
+  maxSeverity: 7
+  name: st-mood-alert-name
+  description: st-mood-alert-desc

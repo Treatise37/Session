@@ -52,3 +52,11 @@
   id: STWeaponMachineGunRPD
   name: RPD (Light Machine Gun)
   description: Soviet light machine gun (1944). Prized in the Zone for reliability and 7.62x39mm firepower. Heavy but can saturate large areas with lead.
+  components:
+    - type: STItemUpgrades
+      tree: STMachinegunUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 190
+      currentDurability: 190
+      durabilityLossPerShot: 0.56
+      canJam: true

@@ -68,3 +68,10 @@
       zeroVisible: true
     - type: Craftable
 
+    - type: STItemUpgrades
+      tree: STPistolUpgradeTreeT2
+    - type: STWeaponDurability
+      maxDurability: 80
+      currentDurability: 80
+      durabilityLossPerShot: 0.42
+      canJam: true

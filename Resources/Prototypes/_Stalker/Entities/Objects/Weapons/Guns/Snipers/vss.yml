@@ -73,6 +73,14 @@
   name: VSS Vintorez
   description: «Special Sniper Rifle» is designed for silent and flameless sniper shooting during special operations when it is necessary to keep the shooter's position secret. Its ammunition provides high armor-piercing and stopping effects; in addition, this weapon is equipped with an integrated silencer and optics. Despite the small-capacity magazine, it is highly valued by stalkers.
 
+  components:
+    - type: STItemUpgrades
+      tree: STSniperUpgradeTreeT4
+    - type: STWeaponDurability
+      maxDurability: 130
+      currentDurability: 130
+      durabilityLossPerShot: 0.23
+      canJam: true
 - type: entity
   parent: STBaseWeaponSniperVSS
   id: STWeaponSniperVSSOracle
@@ -87,6 +95,13 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Snipers/VSS/swamp.rsi
 
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 - type: entity
   parent: STBaseWeaponSniperVSS
   id: STWeaponSniperHK417
@@ -136,6 +151,13 @@
   - type: Scope
     zoom: 1.65
     offset: 14
+  - type: STItemUpgrades
+    tree: STSniperUpgradeTreeT4
+  - type: STWeaponDurability
+    maxDurability: 130
+    currentDurability: 130
+    durabilityLossPerShot: 0.23
+    canJam: true
 
 - type: entity
   parent: STBaseWeaponSniperVSS

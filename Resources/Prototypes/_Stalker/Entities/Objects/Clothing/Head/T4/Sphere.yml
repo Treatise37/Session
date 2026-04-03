@@ -45,6 +45,17 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/bulat_helm_mercenary.rsi
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetCombatT3Base #Нужны спрайты под шлем с фонариком и без
   id: ClothingHeadHelmetBulatMonolith
@@ -62,6 +73,17 @@
       types:
         Radiation: 18.01
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetEnvironmentT4Base #Нужны спрайты под шлем с фонариком и без
   id: ClothingHeadHelmetBulatMilitary
@@ -75,6 +97,17 @@
   - type: IngestionBlocker
   - type: IdentityBlocker
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT5
+  - type: STArmorDurability
+    maxDurability: 140
+    currentDurability: 140
+    durabilityLossPerDamage: 0.05
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadHelmetEnvironmentT4Base
   id: ClothingHeadHelmetBulatCovenant
@@ -89,6 +122,17 @@
 
 # Clear Sky - 1 +
 
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT5
+    - type: STArmorDurability
+      maxDurability: 140
+      currentDurability: 140
+      durabilityLossPerDamage: 0.05
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat
 - type: entity
   parent: STClothingHeadHelmetEnvironmentT4Base
   id: ClothingHeadHelmetBerill5MCN
@@ -110,6 +154,17 @@
   - type: ExplosionResistance
     damageCoefficient: 0.70
 
+  - type: STItemUpgrades
+    tree: STHelmetCombatUpgradeTreeT3
+  - type: STArmorDurability
+    maxDurability: 116
+    currentDurability: 116
+    durabilityLossPerDamage: 0.066
+    minProtectionFactor: 0.5
+    affectedDamageTypes:
+    - Blunt
+    - Piercing
+    - Heat
 - type: entity
   parent: STClothingHeadBase
   id: ClothingHeadHelmetCN3b
@@ -147,3 +202,14 @@
     - type: HideLayerClothing
       slots:
       - Hair
+    - type: STItemUpgrades
+      tree: STHelmetCombatUpgradeTreeT2
+    - type: STArmorDurability
+      maxDurability: 104
+      currentDurability: 104
+      durabilityLossPerDamage: 0.074
+      minProtectionFactor: 0.5
+      affectedDamageTypes:
+      - Blunt
+      - Piercing
+      - Heat

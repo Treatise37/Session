@@ -3,7 +3,11 @@
   branches:
     - tasks:
       - !type:HTNCompoundTask
-        task: STBlindDogTallMeleeCombatCompound
+        task: STBlindDogTallMeleeCombatAliveCompound
+
+    - tasks:
+      - !type:HTNCompoundTask
+        task: STBlindDogTallMeleeCombatCritCompound
 
     - tasks:
       - !type:HTNCompoundTask
@@ -13,13 +17,28 @@
         task: IdleCompound
 
 - type: htnCompound
-  id: STBlindDogTallMeleeCombatCompound
+  id: STBlindDogTallMeleeCombatAliveCompound
   branches:
     # Move to melee range and hit them
     - tasks:
       - !type:HTNPrimitiveTask
         operator: !type:UtilityOperator
-          proto: NearbyMeleeTargets
+          proto: STMeleeAliveTargets
+
+      - !type:HTNCompoundTask
+        task: STBlindDogTallRoarCompound
+
+      - !type:HTNCompoundTask
+        task: STBlindDogTallMeleeAttackTargetCompound
+
+- type: htnCompound
+  id: STBlindDogTallMeleeCombatCritCompound
+  branches:
+    # Move to melee range and hit them
+    - tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:UtilityOperator
+          proto: STMeleeCritTargets
 
       - !type:HTNCompoundTask
         task: STBlindDogTallRoarCompound
