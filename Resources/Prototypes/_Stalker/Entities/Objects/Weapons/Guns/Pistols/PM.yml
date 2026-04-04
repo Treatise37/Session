@@ -73,13 +73,6 @@
     accuracyMultiplier: 1.4
 
 # REDO-MODULES
-  - type: STItemUpgrades
-    tree: STPistolUpgradeTreeT1
-  - type: STWeaponDurability
-    maxDurability: 70
-    currentDurability: 70
-    durabilityLossPerShot: 0.45
-    canJam: true
 - type: entity
   parent: WeaponPistolStalkerPM
   id: WeaponPistolStalkerPMModifed
@@ -132,10 +125,3 @@
       falloffMultiplier: 1.4
     - type: STWeaponAccuracy
       accuracyMultiplier: 1.4
-    - type: STItemUpgrades
-      tree: STPistolUpgradeTreeT1
-    - type: STWeaponDurability
-      maxDurability: 70
-      currentDurability: 70
-      durabilityLossPerShot: 0.45
-      canJam: true

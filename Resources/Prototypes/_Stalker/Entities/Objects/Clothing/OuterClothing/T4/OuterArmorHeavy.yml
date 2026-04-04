@@ -9,14 +9,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/merc_armor_2.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/merc_armor_2.rsi
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

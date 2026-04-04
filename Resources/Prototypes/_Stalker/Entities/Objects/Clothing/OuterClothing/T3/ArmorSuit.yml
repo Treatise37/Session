@@ -98,17 +98,6 @@
       - 8,3,8,4
       - 10,3,10,4
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorRenegate
@@ -140,17 +129,6 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/renegate_il.rsi
 
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorJaba
@@ -162,17 +140,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/medium_armor_jaba.rsi
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorBandits
@@ -215,17 +182,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.65
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMercBandit
@@ -233,7 +189,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers:
+    modifiers: 
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -297,17 +253,6 @@
       - 8,3,8,4
       - 10,3,10,4
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMerc
@@ -315,7 +260,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers:
+    modifiers: 
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -367,17 +312,6 @@
     clothingPrototype: ClothingHeadHatHoodMerc2
     slot: head
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatHoodBase
   id: ClothingHeadHatHoodMerc2
@@ -385,7 +319,7 @@
   name: капюшон
   components:
   - type: Armor
-    modifiers:
+    modifiers: 
       coefficients:
         Blunt: 0.85
         Slash: 0.85
@@ -424,17 +358,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.6
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetDolgPS5M
@@ -443,7 +366,7 @@
   description: Не очень свободный, покуда сидит на вашей голове.
   components:
     - type: Armor
-      modifiers:
+      modifiers: 
         coefficients:
           Blunt: 0.85
           Slash: 0.85
@@ -486,17 +409,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetFreedomDefender
@@ -505,7 +417,7 @@
   description: Не очень свободный, покуда сидит на вашей голове.
   components:
     - type: Armor
-      modifiers:
+      modifiers: 
         coefficients:
           Blunt: 0.85
           Slash: 0.85
@@ -546,6 +458,7 @@
         Piercing: 4
         Radiation: 1
         Shock: 2
+        Compression: 1
       coefficients:
         Blunt: 0.8
         Slash: 0.8
@@ -561,17 +474,6 @@
       storagebase: !type:Container
         ents: []
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetFreedomWind
@@ -633,17 +535,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorMonolith
@@ -691,17 +582,6 @@
       types:
         Radiation: 18.01
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 160
-    currentDurability: 160
-    durabilityLossPerDamage: 0.08
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetHatMonolith
@@ -760,17 +640,6 @@
       types:
         Radiation: 18.01
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorPilgrim
@@ -783,17 +652,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/inquisitor_armor.rsi
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorStorageBasic
   id: ClothingOuterArmorKeeper
@@ -823,17 +681,6 @@
         Caustic: 0.9
         Compression: 0.75
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorBase
   id: ClothingOuterArmorFirstbornSeraphimes
@@ -857,17 +704,6 @@
     clothingPrototype: ClothingHeadHelmetHatFirstbornSeraphimes
     slot: head
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetHatFirstbornSeraphimes
@@ -884,7 +720,7 @@
   id: STClothingOuterArmorSeraphimStrash
   name: бронекостюм «Страж»
   description: Старый, видавший многое булат из арсенала «Монолита», покрытый следами времени и ожесточённых сражений. Несмотря на свой возраст, он всё ещё остаётся надёжным щитом, защищающим своего владельца от опасностей Зоны. Камуфляж Серафимов придаёт ему уникальный облик, а многочисленные молитвенные знаки и священные обереги, нанесённые заботливой рукой, делают его не просто бронёй, а истинным талисманом веры и силы.
-  suffix: ST, T4, PVP, Skin
+  suffix: ST, T3, PVP, Skin
   components:
   - type: STWeight
     self: 10
@@ -893,7 +729,7 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/strash_seraphim.rsi
   - type: Armor
-    armorClass: 4
+    armorClass: 3
     modifiers:
       flatReductions:
         Blunt: 5
@@ -923,22 +759,11 @@
       - 8,4,8,5
       - 8,0,8,2
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorSeraphimStrash
   id: STClothingOuterArmorLimaSeraphimStrash
   name: бронекостюм «Страж»
-  suffix: ST, T4, PvP
+  suffix: ST, T3, PvP
   description: Старый, видавший многое булат из арсенала «Монолита», покрытый следами времени и ожесточённых сражений. Несмотря на свой возраст, он всё ещё остаётся надёжным щитом, защищающим своего владельца от опасностей Зоны. Камуфляж Серафимов придаёт ему уникальный облик, а многочисленные молитвенные знаки и священные обереги, нанесённые заботливой рукой, делают его не просто бронёй, а истинным талисманом веры и силы... Теперь серый!
   components:
   - type: Sprite
@@ -963,87 +788,3 @@
         Compression: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.7
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT5
-  - type: STArmorDurability
-    maxDurability: 220
-    currentDurability: 220
-    durabilityLossPerDamage: 0.05
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-
-- type: entity
-  parent: STClothingOuterArmorSeraphimStrash
-  id: STClothingOuterArmorPeresvet
-  name: бронекостюм «Пересвет»
-  suffix: ST, T4, PvP
-  description: Сделанный каким-то умельцем бронекостюм с спецефичным внешним видом.
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
-  - type: Clothing
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
-  - type: ToggleableClothing
-    clothingPrototype: STClothingHeadPeresvet
-    slot: head
-  - type: Armor
-    armorClass: 4
-    modifiers:
-      flatReductions:
-        Blunt: 6
-        Slash: 7
-        Piercing: 7
-      coefficients:
-        Blunt: 0.7
-        Slash: 0.6
-        Piercing: 0.7
-        Heat: 0.7
-        Radiation: 0.8
-        Caustic: 0.7
-        Shock: 0.7
-        Compression: 0.8
-  - type: ExplosionResistance
-    damageCoefficient: 0.7
-
-- type: entity
-  parent: ClothingHeadHardsuitBase
-  id: STClothingHeadPeresvet
-  name: шлем ,бронекостюма пересвет
-  description: Довольно прочный.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
-  - type: Clothing
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
-  - type: BreathMask
-  - type: IngestionBlocker
-  - type: IdentityBlocker
-  - type: Tag
-    tags:
-      - BlockMask
-  - type: PressureProtection
-    highPressureMultiplier: 0.1
-    lowPressureMultiplier: 1000
-  - type: Armor
-    armorClass: 4
-    modifiers:
-      flatReductions:
-        Radiation: 2
-        Psy: 1
-      coefficients:
-        Blunt: 0.75
-        Slash: 0.75
-        Piercing: 0.75
-  - type: HideLayerClothing
-    slots:
-    - Hair
-    - Snout
-  - type: Reflect
-    reflectProb: 0.08
-    spread: 360
-    reflects:
-      - NonEnergy

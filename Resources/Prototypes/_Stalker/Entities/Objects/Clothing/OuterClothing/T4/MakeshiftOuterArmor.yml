@@ -32,17 +32,6 @@
 
 # Clear Sky - 1
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: ClothingOuterArmorStalkerCombat
   id: ClothingOuterArmorStalkerCombatCN
@@ -77,17 +66,6 @@
   - type: ExplosionResistance
     damageCoefficient: 0.7
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: ClothingOuterArmorStalkerCombatCN
   id: ClothingOuterArmorCN3b
@@ -132,14 +110,3 @@
         Compression: 0.7
   - type: ExplosionResistance
     damageCoefficient: 1
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

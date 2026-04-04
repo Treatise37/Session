@@ -1,1 +1,0 @@
-st-mood-agony-emote-scream = кричит от боли!

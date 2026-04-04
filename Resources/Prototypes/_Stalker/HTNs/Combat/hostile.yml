@@ -9,13 +9,7 @@
               isPulled: true
     - tasks:
         - !type:HTNCompoundTask
-          task: STSimpleMeleeCombatAliveCompound
-    - tasks:
-        - !type:HTNCompoundTask
-          task: FollowCompound
-    - tasks:
-        - !type:HTNCompoundTask
-          task: STSimpleMeleeCombatCritCompound
+          task: STSimpleMeleeCombatCompound
     - tasks:
         - !type:HTNCompoundTask
           task: FollowCompound
@@ -31,66 +25,6 @@
         - !type:HTNPrimitiveTask
           operator: !type:UtilityOperator
             proto: NearbyMeleeTargets
-        - !type:HTNCompoundTask
-          task: STSimpleMeleeAttackTargetCompound
-
-- type: utilityQuery
-  id: STMeleeAliveTargets
-  query:
-    - !type:NearbyHostilesQuery
-  considerations:
-    - !type:TargetIsAliveCon
-      curve: !type:BoolCurve
-    - !type:TargetIsDeadCon
-      curve: !type:InverseBoolCurve
-    - !type:TargetDistanceCon
-      curve: !type:PresetCurve
-      preset: TargetDistance
-    - !type:TargetHealthCon
-      curve: !type:PresetCurve
-      preset: TargetHealth
-    - !type:TargetAccessibleCon
-      curve: !type:BoolCurve
-    - !type:TargetInLOSOrCurrentCon
-      curve: !type:BoolCurve
-
-- type: utilityQuery
-  id: STMeleeCritTargets
-  query:
-    - !type:NearbyHostilesQuery
-  considerations:
-    - !type:TargetIsCritCon
-      curve: !type:BoolCurve
-    - !type:TargetIsDeadCon
-      curve: !type:InverseBoolCurve
-    - !type:TargetDistanceCon
-      curve: !type:PresetCurve
-      preset: TargetDistance
-    - !type:TargetHealthCon
-      curve: !type:PresetCurve
-      preset: TargetHealth
-    - !type:TargetAccessibleCon
-      curve: !type:BoolCurve
-    - !type:TargetInLOSOrCurrentCon
-      curve: !type:BoolCurve
-
-- type: htnCompound
-  id: STSimpleMeleeCombatAliveCompound
-  branches:
-    - tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:UtilityOperator
-            proto: STMeleeAliveTargets
-        - !type:HTNCompoundTask
-          task: STSimpleMeleeAttackTargetCompound
-
-- type: htnCompound
-  id: STSimpleMeleeCombatCritCompound
-  branches:
-    - tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:UtilityOperator
-            proto: STMeleeCritTargets
         - !type:HTNCompoundTask
           task: STSimpleMeleeAttackTargetCompound
 

@@ -7,7 +7,7 @@
   components:
   - type: HTN
     rootTask:
-      task: STPsiHostileCompound
+      task: SimpleRangedHostileCompound
     blackboard:
       VisionRadius: !type:Single
         20

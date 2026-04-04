@@ -72,11 +72,3 @@
   name: M16
   description: Legendary American rifle from Vietnam era. Appears in the Zone through military depots and black market dealers. Despite its age, remains a formidable weapon in skilled hands.
 
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true

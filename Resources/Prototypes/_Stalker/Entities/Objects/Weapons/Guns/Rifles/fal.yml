@@ -71,11 +71,3 @@
   id: STWeaponRifleFAL
   name: FN FAL
   description:  Legendary Belgian battle rifle chambered in powerful 7.62x51mm NATO. Appears in the Zone via mercenaries and smugglers. Each shot hits like a sledgehammer, but semi-auto only. "A gentleman's weapon", as veterans say.
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true

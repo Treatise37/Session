@@ -137,6 +137,7 @@ public sealed partial class STItemUpgradeSystem : EntitySystem
             return false;
 
         var upgrade = GetUpgrade(ent, upgradeId)!;
+
         ent.Comp.InstalledUpgrades.Add(upgrade.Id);
 
         if (string.IsNullOrWhiteSpace(ent.Comp.SelectedBranch) &&
@@ -153,6 +154,7 @@ public sealed partial class STItemUpgradeSystem : EntitySystem
     {
         ent.Comp.InstalledUpgrades.Clear();
         ent.Comp.SelectedBranch = null;
+
         RefreshUpgrades(ent);
     }
 
@@ -294,6 +296,7 @@ public sealed partial class STItemUpgradeSystem : EntitySystem
 
     private void RefreshGun(Entity<STItemUpgradesComponent> ent)
     {
+        // Ничего не делаем.
     }
 
     private IEnumerable<STItemUpgradeEntry> GetInstalledUpgrades(Entity<STItemUpgradesComponent> ent)
@@ -309,52 +312,5 @@ public sealed partial class STItemUpgradeSystem : EntitySystem
     private static Angle ClampAngleToZero(Angle angle)
     {
         return angle.Degrees < 0f ? Angle.Zero : angle;
-    }
-
-    public void RestoreUpgrades(Entity<STItemUpgradesComponent> ent, IEnumerable<string> installedUpgradeIds, string? selectedBranch)
-    {
-        EnsureTreeLoaded(ent);
-
-        ent.Comp.InstalledUpgrades.Clear();
-        ent.Comp.SelectedBranch = null;
-
-        var pending = installedUpgradeIds
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .Distinct()
-            .ToList();
-
-        var madeProgress = true;
-        while (pending.Count > 0 && madeProgress)
-        {
-            madeProgress = false;
-
-            for (var i = pending.Count - 1; i >= 0; i--)
-            {
-                var upgradeId = pending[i];
-
-                if (!CanInstallUpgrade(ent, upgradeId))
-                    continue;
-
-                var upgrade = GetUpgrade(ent, upgradeId);
-                if (upgrade == null)
-                    continue;
-
-                ent.Comp.InstalledUpgrades.Add(upgrade.Id);
-
-                if (string.IsNullOrWhiteSpace(ent.Comp.SelectedBranch) &&
-                    !string.IsNullOrWhiteSpace(upgrade.BranchId))
-                {
-                    ent.Comp.SelectedBranch = upgrade.BranchId;
-                }
-
-                pending.RemoveAt(i);
-                madeProgress = true;
-            }
-        }
-
-        if (!string.IsNullOrWhiteSpace(selectedBranch))
-            ent.Comp.SelectedBranch = selectedBranch;
-
-        RefreshUpgrades(ent);
     }
 }

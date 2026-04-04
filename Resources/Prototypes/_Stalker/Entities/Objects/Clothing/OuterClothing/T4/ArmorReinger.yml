@@ -62,17 +62,6 @@
         Slash: -0.1
         Piercing: -0.1
 
-  - type: STItemUpgrades
-    tree: STArmorCombatUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 200
-    currentDurability: 200
-    durabilityLossPerDamage: 0.06
-    minProtectionFactor: 0.38
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetReinger
@@ -118,14 +107,3 @@
     slots:
     - Hair
     - Snout
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

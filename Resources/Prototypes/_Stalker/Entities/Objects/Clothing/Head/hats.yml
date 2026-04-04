@@ -63,20 +63,6 @@
       flatReductions:
         Psy: 5
 
-  - type: STItemUpgrades
-    tree: STHelmetScientificUpgradeTreeT4
-  - type: STArmorDurability
-    maxDurability: 128
-    currentDurability: 128
-    durabilityLossPerDamage: 0.058
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
-    - Radiation
-    - Caustic
-    - Shock
 - type: entity
   parent: ClothingHeadBase
   id: STClothingHeadTankHelm
@@ -89,17 +75,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/tank_helmet.rsi
 
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: ClothingHeadBase
   id: STClothingHeadUshanka

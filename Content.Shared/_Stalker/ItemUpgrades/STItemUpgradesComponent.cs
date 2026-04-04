@@ -21,7 +21,6 @@ public sealed partial class STItemUpgradesComponent : Component
     [DataField]
     public string? SelectedBranch;
 
-    [DataField]
     public float? BaseWeight;
 }
 

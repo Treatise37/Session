@@ -58,11 +58,3 @@
   id: STWeaponRifleF2000
   name:  FN-F2000
   description: This futuristic-looking weapon is a serially produced automatic grenade launcher system of modular design. It is equipped with a 40-mm grenade launcher and a computerized sight-fire control module. Despite its external bulkiness, it is highly ergonomic, easy to fire in all modes and highly reliable.
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT5
-    - type: STWeaponDurability
-      maxDurability: 150
-      currentDurability: 150
-      durabilityLossPerShot: 0.28
-      canJam: true

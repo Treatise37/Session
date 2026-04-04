@@ -11,7 +11,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared._Stalker.Mood;
 
 namespace Content.Shared.DoAfter;
 
@@ -210,10 +209,6 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
             id = null;
             return false;
         }
-
-        var moodEvent = new STMoodModifyDoAfterEvent(args.Delay);
-        RaiseLocalEvent(args.User, moodEvent);
-        args.Delay = moodEvent.Delay;
 
         // Duplicate blocking & cancellation.
         if (!ProcessDuplicates(args, comp))

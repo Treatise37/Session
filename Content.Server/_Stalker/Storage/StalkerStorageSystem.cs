@@ -27,8 +27,6 @@ using Content.Shared._Stalker;
 using Content.Shared._Stalker.Storage;
 using Content.Shared.Power.Components;
 using Robust.Shared.Prototypes;
-using Content.Shared._Stalker.ItemUpgrades;
-using Content.Shared._Stalker.Weapon;
 
 namespace Content.Server._Stalker.Storage;
 
@@ -40,8 +38,6 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
     [Dependency] private readonly StalkerRepositorySystem _stalkerRepositorySystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly STItemUpgradeSystem _stItemUpgradeSystem = default!;
-    [Dependency] private readonly STWeaponDurabilitySystem _stWeaponDurabilitySystem = default!;
 
     private delegate List<object> DelegateItemStalkerConverter(EntityUid inputEntityUid);
 
@@ -126,50 +122,25 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
 
     public List<object> ConvertToIItemStalkerStorage(EntityUid InputItem)
     {
-        var returnList = new List<object>(0);
-
-        var hasUpgrades = TryComp(InputItem, out STItemUpgradesComponent? upgrades);
-        var hasDurability = TryComp(InputItem, out STWeaponDurabilityComponent? durability);
-
-        if (hasUpgrades || hasDurability)
-        {
-            var weapon = new WeaponItemStalker(
-                GetPrototypeName(InputItem),
-                hasDurability ? durability!.CurrentDurability : 0f,
-                hasDurability ? durability!.MaxDurability : 0f,
-                hasUpgrades ? upgrades!.SelectedBranch : null,
-                hasUpgrades
-                    ? upgrades!.InstalledUpgrades.OrderBy(x => x, StringComparer.Ordinal).ToList()
-                    : new List<string>(),
-                hasUpgrades ? upgrades!.BaseWeight : null
-            );
-
-            returnList.Add(weapon);
-            return returnList;
-        }
-
+        List<object> ReturnList = new List<object>(0);
         string Components = "";
 
         if (TryComp(InputItem, out MetaDataComponent? _))
         {
             Components += "M";
         }
-
         if (TryComp(InputItem, out BallisticAmmoProviderComponent? _))
         {
             Components += "B";
         }
-
         if (TryComp(InputItem, out StackComponent? _))
         {
             Components += "S";
         }
-
         if (TryComp(InputItem, out PaperComponent? _))
         {
             Components += "P";
         }
-
         if (TryComp(InputItem, out BatteryComponent? _))
         {
             Components += "L";
@@ -183,8 +154,7 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         {
             Components += "E";
         }
-
-        if (TryComp(InputItem, out CartridgeAmmoComponent? _))
+        if (TryComp(InputItem, out CartridgeAmmoComponent? _)) // Cartridges
         {
             Components += "C";
         }
@@ -193,8 +163,11 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         {
             return _convertersItemStalker[Components](InputItem);
         }
-
-        return returnList;
+        else
+        {
+            //Console.WriteLine("ConvertOneItemToIItemStalkerStorage ERROR ProrotypeName="+GetProrotypeName(InputItem));
+        }
+        return ReturnList;
     }
 
     public List<object> ConverterSimpleItemStalker(EntityUid inputItem)
@@ -407,113 +380,74 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                 QueueDel(slot.Value.Item);
                 if (slot.Value.Item == null)
                     continue;
-
                 Logger.Debug($"Deleted {Name(slot.Value.Item.Value)}");
             }
         }
-
         switch (nextSpawnOptions)
         {
             case null:
                 return;
-
-            case StackItemStalker stackOptions:
-            {
-                if (TryComp(inputItemUid, out StackComponent? stackComponent))
+            case StackItemStalker sitOptions:
                 {
-                    stackComponent.Count = (int) stackOptions.StackCount;
-                    Dirty(inputItemUid, stackComponent);
+                    if (TryComp(inputItemUid, out StackComponent? stackComponent))
+                    {
+                        stackComponent.Count = (int)sitOptions.StackCount;
+                        Dirty(inputItemUid, stackComponent);
+                    }
+                    break;
                 }
-
-                break;
-            }
-
-            case BatteryItemStalker batteryOptions:
-            {
+            case BatteryItemStalker options:
                 if (TryComp<BatteryComponent>(inputItemUid, out var batteryComponent))
                 {
-                    _batterySys.SetCharge((inputItemUid, batteryComponent), batteryOptions.CurrentCharge);
+                    _batterySys.SetCharge((inputItemUid, batteryComponent), options.CurrentCharge);
                 }
-
                 break;
-            }
-
-            case AmmoContainerStalker ammoContainerOptions:
-            {
+            case AmmoContainerStalker options:
                 if (TryComp<BallisticAmmoProviderComponent>(inputItemUid, out var ammoProvider))
                 {
-                    ammoProvider.Proto = ammoContainerOptions.AmmoPrototypeName;
-                    ammoProvider.UnspawnedCount = ammoContainerOptions.AmmoCount;
-                    ammoProvider.EntProtos = ammoContainerOptions.EntProtoIds.Select(s => (EntProtoId) s).ToList();
+                    ammoProvider.Proto = options.AmmoPrototypeName;
+                    ammoProvider.UnspawnedCount = options.AmmoCount;
+                    // Convert strings back to EntProtoId for the component
+                    ammoProvider.EntProtos = options.EntProtoIds.Select(s => (EntProtoId)s).ToList();
                     Dirty(inputItemUid, ammoProvider);
                 }
-
                 break;
-            }
-
-            case SolutionItemStalker solutionOptions:
-            {
-                if (TryComp<ContainerManagerComponent>(inputItemUid, out var containerMan))
+            case SolutionItemStalker options:
                 {
-                    foreach (var container in containerMan.Containers)
+                    if (TryComp<ContainerManagerComponent>(inputItemUid, out var containerMan))
                     {
-                        var split = container.Key.Split("@");
-                        if (split[0] != "solution")
-                            continue;
-
-                        foreach (var element in container.Value.ContainedEntities)
+                        foreach (var container in containerMan.Containers)
                         {
-                            if (!TryComp<SolutionComponent>(element, out var solution))
+                            var split = container.Key.Split("@");
+                            if (split[0] != "solution") // If it is not a solution container we don't need to iterate through it
                                 continue;
-
-                            solution.Solution.Contents.Clear();
-
-                            if (!solutionOptions.Contents.TryGetValue(split[1], out var contents))
-                                continue;
-
-                            foreach (var quan in contents)
+                            foreach (var element in container.Value.ContainedEntities)
                             {
-                                solution.Solution.AddReagent(quan);
+                                if (!TryComp<SolutionComponent>(element, out var solution))
+                                    continue;
+                                solution.Solution.Contents.Clear();
+                                if (!options.Contents.TryGetValue(split[1], out var contents))
+                                    continue;
+                                foreach (var quan in contents)
+                                {
+                                    solution.Solution.AddReagent(quan);
+                                }
+                                solution.Solution.Volume = options.Volume;
+                                Dirty(element, solution);
                             }
-
-                            solution.Solution.Volume = solutionOptions.Volume;
-                            Dirty(element, solution);
                         }
                     }
+                    break;
                 }
-
-                break;
-            }
-
-            case AmmoItemStalker ammoOptions:
-            {
-                if (TryComp<CartridgeAmmoComponent>(inputItemUid, out var ammoComp))
+            case AmmoItemStalker options:
                 {
-                    ammoComp.Spent = ammoOptions.Exhausted;
-                    _appearance.SetData(inputItemUid, AmmoVisuals.Spent, ammoOptions.Exhausted);
+                    if (TryComp<CartridgeAmmoComponent>(inputItemUid, out var ammoComp))
+                    {
+                        ammoComp.Spent = options.Exhausted;
+                        _appearance.SetData(inputItemUid, AmmoVisuals.Spent, options.Exhausted);
+                    }
+                    break;
                 }
-
-                break;
-            }
-
-            case WeaponItemStalker weaponOptions:
-            {
-                if (TryComp(inputItemUid, out STWeaponDurabilityComponent? durabilityComp))
-                {
-                    if (weaponOptions.MaxDurability > 0f)
-                        durabilityComp.MaxDurability = weaponOptions.MaxDurability;
-
-                    _stWeaponDurabilitySystem.SetDurability(inputItemUid, durabilityComp, weaponOptions.CurrentDurability);
-                }
-
-                if (TryComp(inputItemUid, out STItemUpgradesComponent? upgradesComp))
-                {
-                    upgradesComp.BaseWeight = weaponOptions.BaseWeight;
-                    _stItemUpgradeSystem.RestoreUpgrades((inputItemUid, upgradesComp), weaponOptions.InstalledUpgrades, weaponOptions.SelectedBranch);
-                }
-
-                break;
-            }
         }
 
         if (nextSpawnOptions is not PaperItemStalker paperItemStalker)
@@ -525,22 +459,17 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         paperComponent.Content = paperItemStalker.Content;
         paperComponent.ContentSize = paperItemStalker.ContentSize;
 
+
         if (paperItemStalker.ListStampStalkerData.Count > 0)
         {
             var newStampedBy = new List<StampDisplayInfo>(0);
-
             foreach (var data in paperItemStalker.ListStampStalkerData)
             {
                 var newStampedByOne = new StampDisplayInfo
                 {
                     StampedName = data.StampedName,
-                    StampedColor = new Color(
-                        data.PaperColorStalkerData.R,
-                        data.PaperColorStalkerData.G,
-                        data.PaperColorStalkerData.B,
-                        data.PaperColorStalkerData.A)
+                    StampedColor = new Color(data.PaperColorStalkerData.R, data.PaperColorStalkerData.G, data.PaperColorStalkerData.B, data.PaperColorStalkerData.A)
                 };
-
                 newStampedBy.Add(newStampedByOne);
             }
 
@@ -817,39 +746,31 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
-
                 case "StackItemStalker":
                     newObject = node.Deserialize<StackItemStalker>();
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
-
                 case "BatteryItemStalker":
                     newObject = node.Deserialize<BatteryItemStalker>();
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
-
                 case "AmmoItemStalker":
                     newObject = node.Deserialize<AmmoItemStalker>();
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
-
                 case "SolutionItemStalker":
                     newObject = node.Deserialize<SolutionItemStalker>();
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
-
-                case "WeaponItemStalker":
-                    newObject = node.Deserialize<WeaponItemStalker>();
-                    if (newObject != null)
-                        playerInventory.AllItems.Add(newObject);
-                    break;
-
                 case "AmmoContainerStalker":
-                {
+                    // Manual parsing required for backward compatibility with existing database entries.
+                    // Old format serialized EntProtoIds as [{"Id":"..."}] (EntProtoId objects).
+                    // New format serializes as ["..."] (plain strings).
+                    // This handles both formats to preserve existing player stash data.
                     var protoName = node["PrototypeName"]?.GetValue<string>() ?? "";
                     var ammoProtoName = node["AmmoPrototypeName"]?.GetValue<string>();
                     var ammoCount = node["AmmoCount"]?.GetValue<int>() ?? 0;
@@ -864,18 +785,23 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                             if (item == null)
                                 continue;
 
+                            // Old format: {"Id": "..."} - extract the Id property
                             if (item is JsonObject obj && obj["Id"] != null)
+                            {
                                 entProtoIds.Add(obj["Id"]!.GetValue<string>());
+                            }
+                            // New format: "..." - use value directly
                             else
+                            {
                                 entProtoIds.Add(item.GetValue<string>());
+                            }
                         }
                     }
 
                     newObject = new AmmoContainerStalker(protoName, ammoProtoName, entProtoIds, ammoCount, countVending);
-                    playerInventory.AllItems.Add(newObject);
+                    if (newObject != null)
+                        playerInventory.AllItems.Add(newObject);
                     break;
-                }
-
                 case "PaperItemStalker":
                     newObject = node.Deserialize<PaperItemStalker>();
                     if (newObject != null)
@@ -883,7 +809,6 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                     break;
             }
         }
-
         return playerInventory;
     }
 

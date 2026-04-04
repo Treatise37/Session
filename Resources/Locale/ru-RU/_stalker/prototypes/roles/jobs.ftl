@@ -88,11 +88,11 @@ job-police = Полицейский
 job-police-desc = Занимаются обеспечением безопасности и следят за соблюдением законов в предбаннике.
 job-police-supervisor = Вы подчиняетесь старшим по званию.
 
-job-project-pawn = Следователь Проекта
-job-project-pawn-desc = То что приказывает им Алгоритм, то они и сделают.
+job-project-pawn = Аноним
+job-project-pawn-desc = Никто не знает, что он тут забыл
 job-project-pawn-supervisor = Вы подчиняетесь всему Алгоритму «Проекта», а также Оркестратору «Проекта»
-job-project-orchestrator = Оркестратор Проекта
-job-project-orchestrator-desc = Тайный X
+job-project-orchestrator = Наблюдатель
+job-project-orchestrator-desc = Местный Г-мэн
 job-project-orchestrator-supervisor = Вы управляете всем Алгоритмом «Проекта», ваша обьязанность - направлять свой «Проект» в нужное место.
 
 job-renegade = Ренегат

@@ -50,10 +50,3 @@
       falloffMultiplier: 0.8
     - type: STWeaponAccuracy
       accuracyMultiplier: 1.43
-    - type: STItemUpgrades
-      tree: STRevolverUpgradeTreeT2
-    - type: STWeaponDurability
-      maxDurability: 100
-      currentDurability: 100
-      durabilityLossPerShot: 0.32
-      canJam: true

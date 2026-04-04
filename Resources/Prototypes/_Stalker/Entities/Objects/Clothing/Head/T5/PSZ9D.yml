@@ -39,17 +39,6 @@
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/psz9d_helm.rsi
 
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHelmetTacticalT4Base
   id: ClothingHeadHelmet1SHBandit
@@ -60,14 +49,3 @@
     sprite: _Stalker/Objects/Clothing/hats/1SHBandit.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/1SHBandit.rsi
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

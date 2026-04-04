@@ -80,17 +80,6 @@
         Piercing: 0.75
 # UNTAR
 
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 160
-    currentDurability: 160
-    durabilityLossPerDamage: 0.08
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorHeavyPlateVestBase
   id: ClothingOuterArmorHeavyUNTAR
@@ -104,17 +93,6 @@
 
 # Dolg
 
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT1
-  - type: STArmorDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerDamage: 0.09
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorHeavyPlateVestBase
   id: ClothingOuterArmorHeavyDebt
@@ -125,14 +103,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/heavy_duty_armor.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/heavy_duty_armor.rsi
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 160
-    currentDurability: 160
-    durabilityLossPerDamage: 0.08
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

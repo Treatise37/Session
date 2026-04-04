@@ -36,14 +36,6 @@
   name: Protecta Revolver Shotgun
   description: South African revolver-type shotgun with 12-round capacity. A rarity in the Zone, likely smuggled via black market. Powerful and unusual choice for eccentric stalkers.
 
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 135
-      currentDurability: 135
-      durabilityLossPerShot: 0.33
-      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunProtecta
   id: STweaponShotgunPRETecta
@@ -60,10 +52,3 @@
     - type: Gun
       soundGunshot:
         path: /Audio/_Stalker/Effects/Guns/saiga_shoot.ogg
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT1
-    - type: STWeaponDurability
-      maxDurability: 105
-      currentDurability: 105
-      durabilityLossPerShot: 0.42
-      canJam: true

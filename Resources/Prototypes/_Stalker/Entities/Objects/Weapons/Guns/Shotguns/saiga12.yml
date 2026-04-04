@@ -91,27 +91,12 @@
     - FullAuto
     - SemiAuto
 
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunSaiga12
   id: STWeaponShotgunSaiga12
   name: Saiga-12
   description: Semi-automatic AK-based shotgun, favored by stalkers for its reliability and firepower. Chambered in 12 gauge, perfect for close-quarters mutant encounters.
 
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 125
-      currentDurability: 125
-      durabilityLossPerShot: 0.36
-      canJam: true
 - type: entity
   parent: STWeaponShotgunSaiga12
   id: STWeaponShotgunSaiga12Seraphim
@@ -124,10 +109,3 @@
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/saiga/saiga-sera.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/saiga/saiga-sera.rsi
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true

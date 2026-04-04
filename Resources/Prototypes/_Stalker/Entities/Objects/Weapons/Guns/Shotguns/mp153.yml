@@ -37,14 +37,6 @@
   name: MP-153
   description: Semi-automatic shotgun - an affordable alternative to expensive imported analogs. Stalkers love it for its reliability in the Zone.
 
-  components:
-    - type: STItemUpgrades
-      tree: STShotgunUpgradeTreeT3
-    - type: STWeaponDurability
-      maxDurability: 125
-      currentDurability: 125
-      durabilityLossPerShot: 0.36
-      canJam: true
 - type: entity
   parent: STBaseWeaponShotgunMP153
   id: STWeaponShotgunMP153Celebra
@@ -58,13 +50,6 @@
   - type: Item
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/mp153/mp-153Selebra.rsi
 
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunMP153
   id: STWeaponShotgunMP153Raven
@@ -78,13 +63,6 @@
   - type: Item
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/mp153/mp-153-black.rsi
 
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunMP153
   id: STWeaponShotgunBenelliM4Super90
@@ -105,13 +83,6 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.2
 
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true
 - type: entity
   parent: STBaseWeaponShotgunMP153
   id: STWeaponShotgunBenelliM4Super90Seraphim
@@ -125,10 +96,3 @@
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/benelisera.rsi
   - type: Item
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/benelisera.rsi
-  - type: STItemUpgrades
-    tree: STShotgunUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 125
-    currentDurability: 125
-    durabilityLossPerShot: 0.36
-    canJam: true

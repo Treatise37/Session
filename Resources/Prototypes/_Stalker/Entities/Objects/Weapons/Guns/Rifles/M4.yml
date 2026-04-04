@@ -86,14 +86,6 @@
   name: Colt M4 "Cobra"
   description: American assault rifle that became an icon of modern warfare. Appears in the Zone with western mercenaries and military expeditions. Lightweight, accurate and reliable in any conditions.
 
-  components:
-    - type: STItemUpgrades
-      tree: STRifleUpgradeTreeT4
-    - type: STWeaponDurability
-      maxDurability: 140
-      currentDurability: 140
-      durabilityLossPerShot: 0.31
-      canJam: true
 - type: entity
   parent: STBaseWeaponRifleM4
   id: STWeaponRifleHK416
@@ -130,13 +122,6 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.46
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT5
-  - type: STWeaponDurability
-    maxDurability: 150
-    currentDurability: 150
-    durabilityLossPerShot: 0.28
-    canJam: true
 - type: entity
   parent: STBaseWeaponRifleM4
   id: STWeaponRifleLR300v1
@@ -174,13 +159,6 @@
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 130
-    currentDurability: 130
-    durabilityLossPerShot: 0.34
-    canJam: true
 - type: entity
   parent: STWeaponRifleLR300v1
   id: STWeaponRifleLR300v2
@@ -197,13 +175,6 @@
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/n_lr300_shot.ogg
 
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT3
-  - type: STWeaponDurability
-    maxDurability: 130
-    currentDurability: 130
-    durabilityLossPerShot: 0.34
-    canJam: true
 - type: entity
   parent: STBaseWeaponRifleM4
   id: STWeaponRifleSCARL
@@ -243,10 +214,3 @@
     falloffMultiplier: 0.7
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
-  - type: STItemUpgrades
-    tree: STRifleUpgradeTreeT4
-  - type: STWeaponDurability
-    maxDurability: 140
-    currentDurability: 140
-    durabilityLossPerShot: 0.31
-    canJam: true

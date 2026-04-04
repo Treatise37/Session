@@ -36,17 +36,6 @@
 
 # Jabs - 1
 
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingHeadHelmetMakeshiftTacticalT3
   id: STClothingHeadHelmetMakeshiftTacticalT3Jabs
@@ -57,14 +46,3 @@
     sprite: _Stalker/Objects/Clothing/hats/makeshift_helmet_jabs.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/makeshift_helmet_jabs.rsi
-  - type: STItemUpgrades
-    tree: STHelmetCombatUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 104
-    currentDurability: 104
-    durabilityLossPerDamage: 0.074
-    minProtectionFactor: 0.5
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat

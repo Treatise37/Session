@@ -111,6 +111,38 @@
     context: "human"
   - type: StationRecordKeyStorage
   - type: PdaVisuals
+  - type: Tag
+    tags:
+    - Flashlight
+  - type: HandheldLight
+    addPrefix: false
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: LightBehaviour
+    behaviours:
+      - !type:FadeBehaviour
+        id: radiating
+        maxDuration: 2.0
+        startValue: 3.0
+        endValue: 2.0
+        isLooped: true
+        reverseWhenFinished: true
+      - !type:PulseBehaviour
+        id: blinking
+        interpolate: Nearest
+        maxDuration: 1.0
+        startValue: 0.1
+        endValue: 2.0
+        isLooped: true
+  - type: ToggleableVisuals
+    spriteLayer: "enum.PdaVisualLayers.Flashlight"
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    radius: 3
+    netsync: false
 
 - type: entity
   parent: BaseStalkerPDA
@@ -347,6 +379,7 @@
   - type: Tag
     tags:
     - GPS
+    - Flashlight
   - type: ItemSlots
     slots:
       cell_slot:

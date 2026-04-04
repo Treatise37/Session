@@ -38,17 +38,6 @@
 
 # Neutral
 
-  - type: STItemUpgrades
-    tree: STArmorSuitUpgradeTreeT3
-  - type: STArmorDurability
-    maxDurability: 180
-    currentDurability: 180
-    durabilityLossPerDamage: 0.07
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
 - type: entity
   parent: STClothingOuterArmorRatnikBase
   id: STClothingOuterArmorRatnikNeutral
@@ -59,14 +48,3 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/ratnik_neutral.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/ratnik_neutral.rsi
-  - type: STItemUpgrades
-    tree: STArmorVestUpgradeTreeT2
-  - type: STArmorDurability
-    maxDurability: 160
-    currentDurability: 160
-    durabilityLossPerDamage: 0.08
-    minProtectionFactor: 0.45
-    affectedDamageTypes:
-    - Blunt
-    - Piercing
-    - Heat
