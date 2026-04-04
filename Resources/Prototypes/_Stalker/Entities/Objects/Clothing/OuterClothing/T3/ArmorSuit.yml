@@ -788,3 +788,36 @@
         Compression: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.7
+
+- type: entity
+  parent: STClothingOuterArmorSeraphimStrash
+  id: STClothingOuterArmorPeresvet
+  name: бронекостюм «Пересвет»
+  suffix: ST, T4, PvP
+  description: Сделанный каким-то умельцем бронекостюм с спецефичным внешним видом.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+  - type: ToggleableClothing
+    clothingPrototype: STClothingHeadPeresvet
+    slot: head
+  - type: Armor
+    armorClass: 4
+    modifiers:
+      flatReductions:
+        Blunt: 6
+        Slash: 7
+        Piercing: 7
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.6
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.8
+        Caustic: 0.7
+        Shock: 0.7
+        Compression: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
