@@ -22,3 +22,270 @@
   - type: Item
     sprite: _Stalker_EN/Objects/Consumable/Drinks/cossackvodka.rsi
   - type: Sealable
+
+- type: entity
+  parent: [DrinkBottleGlassBaseFull, DrinkVisualsAllFilled]
+  id: STDrinkYevishWineBottleFull
+  name: поварское вино
+  description: Этикетка немного неаккуратная и явно напечатана вручную, но само вино превосходное и явно создано человеком, который посвятил себя созданию напитка, достойного внимания.
+  suffix: ST, Food
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Wine
+          Quantity: 90
+  - type: Label
+    currentLabel: reagent-name-wine
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Drinks/yevish_wine.rsi
+    layers:
+    - state: icon_empty
+      map: [ "enum.OpenableVisuals.Layer" ]
+    - state: fill-5
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+    inHandsFillBaseName: null
+  - type: FitsInDispenser
+    solution: drink
+  - type: Tag
+    tags:
+    - Wine
+    - DrinkBottle
+
+- type: entity
+  parent: [ DrinkBaseMaterialGlass, DrinkBase, DrinkBaseOpenable, DrinkVisualsOpenable, DrinkVisualsFillOverlay ]
+  id: STDrinkJar
+  name: банка
+  description: Старая банка.
+  suffix: ST
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Drinks/jar.rsi
+    scale: 0.7,0.7
+    layers:
+    - state: icon
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: fill-1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+    - state: icon-front
+      map: [ "enum.SolutionContainerLayers.Overlay" ]
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+  - type: SolutionContainerVisuals
+    maxFillLevels: 5
+    fillBaseName: fill-
+    inHandsMaxFillLevels: 3
+    inHandsFillBaseName: -fill-
+  - type: ExaminableSolution
+    examinableWhileClosed: true
+    heldOnly: false
+  - type: Openable
+    sound:
+      collection: bottleOpenSounds
+    closeable: true
+    closeSound:
+      collection: bottleCloseSounds
+  - type: Tag
+    tags:
+    - DrinkBottle
+  - type: Craftable
+
+# various filled jars
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarMoonshine
+  suffix: moonshine
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: Moonshine
+          Quantity: 50
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarDirtyWater
+  suffix: dirty water
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: STToxicWater
+          Quantity: 20
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarPiss
+  suffix: piss
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: STPiss
+          Quantity: 20
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarMold
+  suffix: mold
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: Mold
+          Quantity: 6
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarBlood
+  suffix: blood
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: Blood
+          Quantity: 50
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarSap
+  suffix: sap
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: Sap
+          Quantity: 20
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarJuicePotato
+  suffix: potato juice
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: JuicePotato
+          Quantity: 30
+
+- type: entity
+  parent: STDrinkJar
+  id: STDrinkJarMilkSpoiled
+  suffix: spoiled milk
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 50
+        reagents:
+        - ReagentId: MilkSpoiled
+          Quantity: 25
+
+# and lightcraft recipes to clean them
+- type: lightCraftingRecipe
+  id: CleanJarPiss
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarPiss
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarBlood
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarBlood
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarMoonshine
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarMoonshine
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarMilkSpoiled
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarMilkSpoiled
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarJuicePotato
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarJuicePotato
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarSap
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarSap
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarMold
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarMold
+    keepFirst: true
+    exactFirst: false
+    time: 3
+
+- type: lightCraftingRecipe
+  id: CleanJarDirtWater
+  results:
+  - STDrinkJar
+  steps:
+    firstIngredient: STRag
+    secondIngredient: STDrinkJarDirtWater
+    keepFirst: true
+    exactFirst: false
+    time: 3

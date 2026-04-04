@@ -55,6 +55,11 @@
         - MachineMask
         layer:
         - WallLayer
+  - type: Craftable # EN
+  - type: Construction # EN
+    graph: MoonshineStillActive
+    node: start
+    defaultTarget: STStill
 
 - type: entity
   id: STMonitor

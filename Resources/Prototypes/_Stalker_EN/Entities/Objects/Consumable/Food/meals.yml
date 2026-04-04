@@ -1,7 +1,46 @@
 # if adding new craftable recipes, refer to _cooking.txt
 
 # breads
-# oops i didnt do any
+# this sucks and theres probably a better way to do it
+- type: lightCraftingRecipe
+  id: STJellyToastCraft1
+  results:
+  - FoodBreadJellySlice
+  - STFoodJarJamBerry2
+  steps:
+    firstIngredient: STFoodBreadPlainSlice
+    secondIngredient: STFoodJarJamBerry
+    time: 2
+
+- type: lightCraftingRecipe
+  id: STJellyToastCraft2
+  results:
+  - FoodBreadJellySlice
+  - STFoodJarJamBerry3
+  steps:
+    firstIngredient: STFoodBreadPlainSlice
+    secondIngredient: STFoodJarJamBerry2
+    time: 2
+
+- type: lightCraftingRecipe
+  id: STJellyToastCraft3
+  results:
+  - FoodBreadJellySlice
+  - STFoodJarJamBerry4
+  steps:
+    firstIngredient: STFoodBreadPlainSlice
+    secondIngredient: STFoodJarJamBerry3
+    time: 2
+
+- type: lightCraftingRecipe
+  id: STJellyToastCraft4
+  results:
+  - FoodBreadJellySlice
+  - STDrinkJar
+  steps:
+    firstIngredient: STFoodBreadPlainSlice
+    secondIngredient: STFoodJarJamBerry4
+    time: 2
 
 # soups
 - type: entity
@@ -826,3 +865,485 @@
         - ReagentId: THC
           Quantity: 15
   - type: Craftable
+
+# jarred and preserved goods
+- type: entity
+  name: консервированная еда
+  parent: FoodBase
+  id: STFoodJarBase
+  suffix: Stalker, Food
+  description: Банка консервов.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Drinks/jar.rsi
+    state: icon
+    scale: 0.7,0.7
+  - type: Edible
+    trash:
+    - STDrinkJar
+  - type: STWeight
+    self: 2
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,0,1
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -8
+      - !type:SpillBehavior { }
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardGlass:
+            min: 1
+            max: 1
+      - !type:SpillBehavior { }
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Craftable
+
+- type: entity
+  name: консервированная вишня
+  parent: STFoodJarBase
+  id: STFoodJarCherriesFresh
+  description: Вишни свежеочищенные от косточек и упакованные в банки для маринования. Перед маринованием их нужно будет оставить на некоторое время при комнатной температуре.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: cherries
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Vinegar
+          Quantity: 10
+        - ReagentId: JuiceCherry
+          Quantity: 15
+        - ReagentId: Sugar
+          Quantity: 5
+  - type: TimedDespawn
+    lifetime: 900 # 15 min
+  - type: SpawnOnDespawn
+    prototype: STFoodJarCherriesPickled
+
+- type: entity
+  name: маринованная вишня
+  parent: STFoodJarBase
+  id: STFoodJarCherriesPickled
+  description: Кисло-сладкие маринованные вишни, настоянные на травах и специях. Идеально подходят для вареников или просто для перекуса.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: cherries2
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: JuiceCherry
+          Quantity: 15
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: консервированный угорь
+  parent: STFoodJarBase
+  id: STFoodJarWholeEelFresh
+  description: Целый свежий угорь, замаринованный в уксусе и специях. Процесс брожения займет много времени.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: eel1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Vinegar
+          Quantity: 10
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 15
+        - ReagentId: Sugar
+          Quantity: 5
+  - type: TimedDespawn
+    lifetime: 2700 # 45 min
+  - type: SpawnOnDespawn
+    prototype: STFoodJarEelFermented
+
+- type: entity
+  name: ферментированный угорь
+  parent: STFoodJarBase
+  id: STFoodJarWholeEelFermented
+  description: Целый ферментированный угорь, считающийся некоторыми деликатесом.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: eel2
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - sour
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 15
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: кусочки консервированного угря
+  parent: STFoodJarBase
+  id: STFoodJarMeatEel
+  description: Консервированное мясо угря в масле и травах, выдержанное в банке.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: eelmeat
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - savory
+    - oily
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 20
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: маринованные яйца
+  parent: STFoodJarBase
+  id: STFoodJarEggs
+  description: Маринованные яйца, плавающие в сладком уксусе.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: eggs
+  - type: FlavorProfile
+    flavors:
+    - egg
+    - sour
+    - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Nutriment
+          Quantity: 20
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: консервированные рыбные стейки
+  parent: STFoodJarBase
+  id: STFoodJarMeatFishSteak
+  description: Консервированные рыбные стейки в масле с травами.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: fishsteak
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - savory
+    - oily
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 20
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: ягодное варенье
+  parent: STFoodJarBase
+  id: STFoodJarJamBerry
+  description: Сладкое ягодное варенье, приготовленное из ягод, выращенных в этом регионе.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: jamberry1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: StalkerJuiceBrusnika
+          Quantity: 5
+        - ReagentId: StalkerJuiceKlubnika
+          Quantity: 5
+        - ReagentId: StalkerOilMalina
+          Quantity: 10
+        - ReagentId: Sugar
+          Quantity: 10
+
+# this sucks dont look at me
+- type: entity
+  name: ягодное варенье
+  parent: STFoodJarBase
+  id: STFoodJarJamBerry2
+  description: Сладкое ягодное варенье, приготовленное из ягод, выращенных в этом регионе.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: jamberry2
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: StalkerJuiceBrusnika
+          Quantity: 5
+        - ReagentId: StalkerJuiceKlubnika
+          Quantity: 5
+        - ReagentId: StalkerOilMalina
+          Quantity: 5
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: ягодное варенье
+  parent: STFoodJarBase
+  id: STFoodJarJamBerry3
+  description: Сладкое ягодное варенье, приготовленное из ягод, выращенных в этом регионе.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: jamberry3
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: StalkerJuiceBrusnika
+          Quantity: 2
+        - ReagentId: StalkerJuiceKlubnika
+          Quantity: 2
+        - ReagentId: StalkerOilMalina
+          Quantity: 4
+        - ReagentId: Sugar
+          Quantity: 2
+
+- type: entity
+  name: ягодное варенье
+  parent: STFoodJarBase
+  id: STFoodJarJamBerry4
+  description: Сладкое ягодное варенье, приготовленное из ягод, выращенных в этом регионе.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: jamberry4
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: StalkerJuiceBrusnika
+          Quantity: 1
+        - ReagentId: StalkerJuiceKlubnika
+          Quantity: 1
+        - ReagentId: StalkerOilMalina
+          Quantity: 2
+        - ReagentId: Sugar
+          Quantity: 1
+
+- type: entity
+  name: свекольный квас
+  parent: STFoodJarBase
+  id: STFoodJarKvassUnfermented
+  description: Свежая банка свекольного кваса. Процесс брожения может занять некоторое время, поэтому дайте ему время, он бродит целенаправленно.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: kvass1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 40
+        reagents:
+        - ReagentId: Water
+          Quantity: 10
+        - ReagentId: Sugar
+          Quantity: 15
+        - ReagentId: TableSalt
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 10
+  - type: TimedDespawn
+    lifetime: 2700 # 45 min
+  - type: SpawnOnDespawn
+    prototype: STFoodKvass
+
+- type: entity
+  name: квас
+  parent: STFoodJarBase
+  id: STFoodJarKvass
+  description: Квас, готовый к употреблению в любом случае.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: kvass2
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 40
+        reagents:
+        - ReagentId: Vinegar
+          Quantity: 10
+        - ReagentId: Sugar
+          Quantity: 15
+        - ReagentId: TableSalt
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 10
+
+- type: entity
+  name: печоночный тартар
+  parent: STFoodJarBase
+  id: STFoodJarMeatLiver
+  description: Печень, приправленная специями и консервированная... из... чего-то...
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: liver
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Protein
+          Quantity: 15
+        - ReagentId: Fat
+          Quantity: 10
+        - ReagentId: TableSalt
+          Quantity: 5
+
+- type: entity
+  name: топленое сало
+  parent: STFoodJarBase
+  id: STFoodJarSalo
+  description: Отопленная сало, готовая к приготовлению пищи или использованию в качестве жира.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: salo
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fat
+          Quantity: 30
+
+- type: entity
+  name: сосиски
+  parent: STFoodJarBase
+  id: STFoodJarMeatSausageUnpickled
+  description: Нарезанные сосиски в маринаде. Их нужно немного подержать при комнатной температуре.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: sausage1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Protein
+          Quantity: 10
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Sugar
+          Quantity: 10
+  - type: TimedDespawn
+    lifetime: 600 # 10 min
+  - type: SpawnOnDespawn
+    prototype: STFoodJarMeatSausage
+
+- type: entity
+  name: маринованные сосиски
+  parent: STFoodJarBase
+  id: STFoodJarMeatSausage
+  description: Вкусная баночка маринованных колбасок.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: sausage2
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Protein
+          Quantity: 20
+        - ReagentId: TableSalt
+          Quantity: 5
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: entity
+  name: консервированное рыбное филе
+  parent: STFoodJarBase
+  id: STFoodJarMeatFishFillet
+  description: Консервированная рыбная вырезка, маринованная в масле и травах.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/jarred.rsi
+    state: whitefish
+  - type: FlavorProfile
+    flavors:
+    - fishy
+    - savory
+    - oily
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: TableSalt
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 20
+        - ReagentId: Sugar
+          Quantity: 5

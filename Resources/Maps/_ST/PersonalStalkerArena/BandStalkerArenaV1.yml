@@ -344,51 +344,41 @@ entities:
       stampState: paper_stamp-cap
       stampedBy:
       - stampedColor: '#3681BBFF'
-        stampedName: stamp-component-stamped-name-strelok
+        stampedName: SS14
       content: >-
-        ATTENTION STALKER!!
+        УВАГА, СТАЛКЕР!!
 
+        Система хранилища позволяет игрокам безопасно хранить и управлять своими предметами между раундами. Следуйте приведенным ниже инструкциям, чтобы обеспечить правильное использование и избежать потери предметов.
 
-        The Repository system allows players to safely store and manage their items between rounds. Follow the steps below to ensure proper use and avoid losing items.
+        Вы получаете 2 стартовых набора и 3000 рублей!
 
+        --------- Как ориентироваться в интерфейсе ---------
 
-        You get 2 starter kits and 3K roubles!
+        Окно хранилища разделено на вкладки для удобства организации.
 
+        Все: Отображает все предметы, которые в данный момент хранятся.
 
-        How to navigate the UI --------------------
+        Категории: Позволяет просматривать предметы по типу (оружие, броня, медицинское снаряжение и т. д.).
 
+        Используйте эти вкладки, чтобы легко находить и управлять своим хранящимся снаряжением.
 
-        The repository window is divided into tabs for organization.
+        -------------- Как получить свои предметы --------------
 
+        Выберите предмет, который хотите достать.
 
-        All: Displays every item currently stored.
+        Нажмите кнопку «Достать», расположенную непосредственно под предметом.
 
+        Предмет будет помещен в хранилище, просто заберите его!
 
-        Categories: Allows you to browse items by type (Weapons, Armor, Medical, etc.)
+        ----------- Подготовь снарягу к вылазке -----------
 
+        Во вкладке "load-quick-store" ты можешь сохранить надетую на тебя снарягу.
 
-        Use these tabs to easily find and manage your stored equipment.
+        --------- Важно!! ---------
 
+        При выходе из игры дважды проверьте, что вы поместили все свои предметы в хранилище, чтобы они сохранялись между раундами!
 
-        How to get your items --------------------
-
-
-        Select the item you wish to take out.
-
-
-        Press the “Withdraw” button located directly beneath the item.
-
-
-        The item will be placed onto the repository, just pick it up!
-
-
-        --------- Important!! ---------
-
-
-        Double-check when logging off you placed all your items into the repository so it saves between rounds!
-
-
-        Happy Hunting!
+        Удачной охоты!
     missingComponents:
     - Destructible
     - BadFood

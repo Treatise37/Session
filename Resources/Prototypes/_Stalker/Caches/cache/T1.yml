@@ -114,6 +114,12 @@
           prob: 0.05
         - id: STCookingSyrnyky
           prob: 0.05
+        - id: STDrinkJarDirtyWater
+          prob: 0.1
+        - id: STDrinkJarBlood
+          prob: 0.01
+        - id: STDrinkJar
+          prob: 0.03
           
 - type: entity
   parent: [ STCacheStorageFillT1, STBaseCache]

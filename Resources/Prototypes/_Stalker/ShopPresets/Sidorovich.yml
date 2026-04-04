@@ -98,6 +98,23 @@
     Dollar: 60
     Goldcoins: 5670
 
+    # meat
+    FoodMeatSTRatJerked: 10
+    FoodMeatSTDogJerkedSingle: 75
+    FoodMeatSTBoarJerkedSingle: 125
+    FoodMeatSTBearJerkedSingle: 245
+    FoodMeatSTSuckerJerkedSingle: 600
+    STFoodJarCherriesPickled: 1350
+    STFoodJarJamBerry: 1350
+    STFoodJarKvass: 2300
+    STFoodJarSalo: 350
+    STFoodJarEggs: 375
+    STFoodJarMeatSausage: 775
+    STFoodJarMeatFishFillet: 300
+    STFoodJarMeatFishSteak: 850
+    STFoodJarMeatEel: 1250
+    STFoodJarWholeEelFermented: 2100
+
   categories:
   - name: shop-category-weapons
     priority: 1

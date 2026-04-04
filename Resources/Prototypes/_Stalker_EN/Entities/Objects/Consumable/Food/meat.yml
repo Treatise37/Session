@@ -226,93 +226,6 @@
     exactSecond: false
     time: 12
 
-# Eel
-- type: entity
-  name: raw fish eel
-  parent: FoodMeatRawBase
-  id: FoodMeatSTFishEelRaw
-  suffix: Stalker, Food
-  components:
-  - type: STWeight
-    self: 0.25
-  - type: FlavorProfile
-    flavors:
-    - fishy
-  - type: Sprite
-    sprite: _Stalker_EN/Objects/Consumable/Food/fish.rsi
-    state: eel_raw
-  - type: InternalTemperature
-    conductivity: 0.43
-  - type: Construction
-    graph: MeatEelSTFish
-    node: start
-    defaultTarget: eel stfish
-  - type: Tag
-    tags:
-    - Meat
-  - type: Craftable
-  - type: RotInto
-    entity: FoodMeatSTRottenFish
-    stage: 1
-
-- type: entity
-  name: cooked fish eel
-  parent: FoodMeatBase
-  id: FoodMeatSTFishEelCooked
-  suffix: Stalker, Food
-  components:
-  - type: STWeight
-    self: 0.25
-  - type: Craftable
-  - type: Tag
-    tags:
-    - Cooked
-    - Meat
-  - type: FlavorProfile
-    flavors:
-    - fishy
-  - type: Sprite
-    sprite: _Stalker_EN/Objects/Consumable/Food/fish.rsi
-    state: eel_cooked
-  - type: Construction
-    graph: MeatEelSTFish
-    node: eel stfish
-
-- type: constructionGraph
-  id: MeatEelSTFish
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: eel stfish
-      completed:
-      - !type:PlaySound
-        sound: /Audio/Effects/sizzle.ogg
-  - node: eel stfish
-    entity: FoodMeatSTFishEelCooked
-
-- type: lightCraftingRecipe
-  id: MeatEelSTFishCraft
-  results:
-  - FoodMeatSTFishEelCooked
-  steps:
-    firstIngredient: FoodMeatSTFishEelRaw
-    secondIngredient: STBonfire
-    keepSecond: true
-    exactSecond: false
-    time: 12
-
-- type: lightCraftingRecipe
-  id: MeatEelSTFishCraftGas
-  results:
-  - FoodMeatSTFishEelCooked
-  steps:
-    firstIngredient: FoodMeatSTFishEelRaw
-    secondIngredient: GasStoveS1
-    keepSecond: true
-    exactSecond: false
-    time: 12
-
 # steak
 - type: entity
   name: raw fish steak
@@ -716,3 +629,503 @@
     keepSecond: true
     exactSecond: false
     time: 10
+
+# jerky
+
+# bear
+- type: entity
+  name: пряное медвежье мясо
+  parent: FoodMeatSTBear
+  id: FoodMeatSTBearSpiced
+  description: Жирное сырое медвежье мясо. В мясо втерли специи, теперь его нужно оставить просушиваться.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 1.0
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: bearspiced
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 10
+        - ReagentId: Fat
+          Quantity: 10
+        - ReagentId: MToxin
+          Quantity: 5
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: TimedDespawn
+    lifetime: 600 # 10 min
+  - type: SpawnOnDespawn
+    prototype: FoodMeatSTBearJerked
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо медведя
+  parent: FoodMeatBase
+  id: FoodMeatSTBearJerked
+  description: Мясо имеет специфический, жирный вкус, но хорошо хранится в длительных поездках и, похоже, не впитывает радиацию..
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 0.75
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: bearjerkedwhole
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 10
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: SliceableFood
+    slice: FoodMeatSTBearJerkedSingle
+    count: 3
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо медведя
+  parent: FoodBase
+  id: FoodMeatSTBearJerkedSingle
+  suffix: Stalker, Food
+  description: Мясо имеет специфический, жирный вкус, но хорошо хранится в длительных поездках и, похоже, не впитывает радиацию.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: bearjerked
+  - type: STWeight
+    self: 0.25
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: TableSalt
+          Quantity: 2
+  - type: SliceableFood
+    slice: FoodMeatSTBearJerkedSingle
+    count: 1
+  - type: Craftable # i still havent decided if this is redundant
+
+- type: lightCraftingRecipe
+  id: MeatSTBearJerkyCraft
+  results:
+  - FoodMeatSTBearSpiced
+  steps:
+    firstIngredient: FoodMeatSTBear
+    secondIngredient: FoodSTSpice
+    time: 3
+
+# boar
+- type: entity
+  name: мясо кабана со специями
+  parent: FoodMeatBoar
+  id: FoodMeatSTBoarSpiced
+  description: Мясо кабана натирают смесью специй для консервации. Его нужно оставить подсохнуть на открытом воздухе.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 1.0
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: boarspiced
+    scale: 0.9,0.9
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 10
+        - ReagentId: MToxin
+          Quantity: 5
+        - ReagentId: TableSalt
+          Quantity: 10
+  - type: TimedDespawn
+    lifetime: 600 # 10 min
+  - type: SpawnOnDespawn
+    prototype: FoodMeatSTBoarJerked
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо кабана
+  parent: FoodMeatBase
+  id: FoodMeatSTBoarJerked
+  description: Вяленое мясо кабана с насыщенным соленым вкусом. Хорошо хранится в длительных поездках.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 0.75
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: boarjerkedwhole
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 10
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: SliceableFood
+    slice: FoodMeatSTBoarJerkedSingle
+    count: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо кабана
+  parent: FoodBase
+  id: FoodMeatSTBoarJerkedSingle
+  suffix: Stalker, Food
+  description: Вяленое мясо кабана с насыщенным соленым вкусом. Хорошо хранится в длительных поездках.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: boarjerked
+    scale: 0.9,0.9
+  - type: STWeight
+    self: 0.25
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: TableSalt
+          Quantity: 2
+  - type: SliceableFood
+    slice: FoodMeatSTBoarJerkedSingle
+    count: 1
+  - type: Craftable # i still havent decided if this is redundant
+
+- type: lightCraftingRecipe
+  id: MeatSTBoarJerkyCraft
+  results:
+  - FoodMeatSTBoarSpiced
+  steps:
+    firstIngredient: FoodMeatBoar
+    secondIngredient: FoodSTSpice
+    time: 3
+
+# dog
+- type: entity
+  name: пряное собачье мясо
+  parent: FoodMeatDog
+  id: FoodMeatSTDogSpiced
+  description: Мясо слепых собак этого региона, обильно приправленное специями, помогает в процессе засолки. Его нужно оставить подсохнуть на некоторое время.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 1.0
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: dogspiced
+    scale: 0.7,0.7
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 8
+        - ReagentId: MToxin
+          Quantity: 10
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: TimedDespawn
+    lifetime: 300 # 5 min
+  - type: SpawnOnDespawn
+    prototype: FoodMeatSTDogJerked
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо собаки
+  parent: FoodMeatBase
+  id: FoodMeatSTDogJerked
+  description: Это не самая вкусная вяленая говядина в мире, но любителям острых ощущений в этом регионе не приходится быть привередливыми. По крайней мере, она хорошо сохранится в поездках.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 0.75
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: dogjerkedwhole
+    scale: 0.7,0.7
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Nutriment
+          Quantity: 8
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: SliceableFood
+    slice: FoodMeatSTDogJerkedSingle
+    count: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо собаки
+  parent: FoodBase
+  id: FoodMeatSTDogJerkedSingle
+  suffix: Stalker, Food
+  description: Это не самая вкусная вяленая говядина в мире, но любителям острых ощущений в этом регионе не приходится быть привередливыми. По крайней мере, она хорошо сохранится в поездках.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: dogjerked
+  - type: STWeight
+    self: 0.25
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 4
+        - ReagentId: Nutriment
+          Quantity: 4
+        - ReagentId: TableSalt
+          Quantity: 2
+  - type: SliceableFood
+    slice: FoodMeatSTDogJerkedSingle
+    count: 1
+  - type: Craftable # i still havent decided if this is redundant
+
+- type: lightCraftingRecipe
+  id: MeatSTDogJerkyCraft
+  results:
+  - FoodMeatSTDogSpiced
+  steps:
+    firstIngredient: FoodMeatDog
+    secondIngredient: FoodSTSpice
+    time: 3
+
+# rat
+- type: entity
+  name: пряное мясо крысы
+  parent: FoodMeatSTRatRaw
+  id: FoodMeatSTRatSpiced
+  description: В нём больше специй, чем мяса. Высушится он довольно быстро.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 0.1
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: ratspiced
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 1
+        - ReagentId: TableSalt
+          Quantity: 4
+  - type: TimedDespawn
+    lifetime: 20 # 20 seconds
+  - type: SpawnOnDespawn
+    prototype: FoodMeatSTRatJerked
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: крысиное вяленое мясо
+  parent: FoodMeatBase
+  id: FoodMeatSTRatJerked
+  description: Несколько кусочков ароматного крысиного мяса.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 0.1
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: ratjerked
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 1
+        - ReagentId: TableSalt
+          Quantity: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: lightCraftingRecipe
+  id: MeatSTRatJerkyCraft
+  results:
+  - FoodMeatSTRatSpiced
+  steps:
+    firstIngredient: FoodMeatSTRatRaw
+    secondIngredient: FoodSTSpice
+    time: 3
+
+# bloodsucker
+- type: entity
+  name: пряные щупальца кровососа
+  parent: MutantPartBloodsuckerTentacles
+  id: FoodSTSuckerSpiced
+  description: Щупальца кровососа, в которые втерты специи. Если их оставить на открытом воздухе, они высохнут, но это может занять некоторое время.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 2.75
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: suckerspiced
+  - type: TimedDespawn
+    lifetime: 900 # 15 min
+  - type: SpawnOnDespawn
+    prototype: FoodMeatSTSuckerJerked
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо кровососа
+  parent: FoodMeatBase
+  id: FoodMeatSTSuckerJerked
+  description: Щупальца резиноподобные и волокнистые, с едва уловимым запахом железа, но для тех, кто достаточно болен, чтобы их есть, они хорошо сохраняются в длительных поездках. Некоторые охотники считают, что наличие вяленого мяса из этого кровососа приносит удачу.
+  suffix: Stalker, Food
+  components:
+  - type: STWeight
+    self: 1.5
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: suckerjerkedwhole
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 15
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Saline
+          Quantity: 15
+        - ReagentId: TableSalt
+          Quantity: 5
+  - type: SliceableFood
+    slice: FoodMeatSTSuckerJerkedSingle
+    count: 4
+  - type: Tag
+    tags:
+    - Meat
+
+- type: entity
+  name: вяленое мясо кровососа
+  parent: FoodBase
+  id: FoodMeatSTSuckerJerkedSingle
+  suffix: Stalker, Food
+  description: Щупальца резиноподобные и волокнистые, с едва уловимым запахом железа, но для тех, кто достаточно болен, чтобы их есть, они хорошо сохраняются в длительных поездках. Некоторые охотники считают, что наличие вяленого мяса из этого кровососа приносит удачу.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - salty
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Consumable/Food/meat.rsi
+    state: suckerjerked
+  - type: STWeight
+    self: 0.25
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Saline
+          Quantity: 5
+        - ReagentId: TableSalt
+          Quantity: 2
+  - type: SliceableFood
+    slice: FoodMeatSTSuckerJerkedSingle
+    count: 1
+  - type: Craftable # i still havent decided if this is redundant
+
+- type: lightCraftingRecipe
+  id: MeatSTSuckerJerkyCraft
+  results:
+  - FoodSTSuckerSpiced
+  steps:
+    firstIngredient: MutantPartBloodsuckerTentacles
+    secondIngredient: FoodSTSpice
+    time: 3

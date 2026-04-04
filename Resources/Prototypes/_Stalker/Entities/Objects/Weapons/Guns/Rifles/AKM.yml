@@ -99,7 +99,7 @@
     minAngle: 45
     maxAngle: 90
     fireRate: 6
-    angleIncrease: 1.6
+    angleIncrease: 1.3
     angleDecay: 7
     projectileSpeed: 65
     selectedMode: FullAuto

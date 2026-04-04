@@ -2,7 +2,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingFreshCheese
-  name: fresh cheese recipe
+  name: рецепт свежего сыра
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTFreshCheese
@@ -10,7 +10,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingRice
-  name: simple rice recipe
+  name: простой рецепт риса
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTRiceCooked
@@ -18,7 +18,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingPancakes
-  name: pancakes recipe
+  name: рецепт блинов
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTPancakes
@@ -26,7 +26,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingOnionRings
-  name: onion rings recipe
+  name: рецепт луковых колец
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTOnionRings
@@ -34,7 +34,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingFriedEggs
-  name: fried eggs recipe
+  name: рецепт яичницы
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTFriedEggs
@@ -42,7 +42,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingFrogLegs
-  name: frog legs recipe
+  name: рецепт лягушачьих лапок
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTFrogLegs
@@ -51,7 +51,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingBorscht
-  name: borscht recipe
+  name: рецепт борща
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTBorscht
@@ -59,7 +59,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingCabbageSoup
-  name: cabbage soup recipe
+  name: рецепт супа Щи
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTCabbageSoup
@@ -67,7 +67,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingMeatStew
-  name: meat stew recipe
+  name: рецепт мясного рагу
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTMeatStew
@@ -75,7 +75,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingDeruny
-  name: deruny recipe
+  name: рецепт дранников
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTDeruny
@@ -83,7 +83,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingHrechanyky
-  name: hrechanyky recipe
+  name: рецепт гречаников
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTHrechanyky
@@ -91,7 +91,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingSyrnyky
-  name: syrnyky recipe
+  name: рецепт сырников
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTSyrnyky
@@ -99,7 +99,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingFriedFish
-  name: fried fish recipe
+  name: рецепт жареной рыбы
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTFriedFish
@@ -107,7 +107,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingCakePlain
-  name: simple cake recipe
+  name: рецепт простого торта
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTCakePlain
@@ -115,7 +115,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingKebabMeat
-  name: meat kebab recipe
+  name: рецепт кебаба
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTKebabMeat
@@ -123,7 +123,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingKebabVeggie
-  name: veggie kebab recipe
+  name: рецепт веганского кебаба
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTKebabVeggie
@@ -132,7 +132,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingCakeBerry
-  name: berry glazed cake recipe
+  name: рецепт ягодного торта
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTCakeBerry
@@ -141,7 +141,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingSnorkSoup
-  name: snork foot soup recipe
+  name: рецепт супа из снорка
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTSnorkSoup
@@ -149,7 +149,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingIceCream
-  name: ice cream recipe
+  name: рецепт мороженного
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTIceCream
@@ -157,7 +157,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingBraid
-  name: braid recipe
+  name: рецепт пирога "коса"
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTBraid
@@ -165,7 +165,7 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingAmbrosia
-  name: ambrosia recipe
+  name: рецепт амброзии
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTAmbrosia
@@ -173,7 +173,96 @@
 - type: entity
   parent: STCookingRecipe
   id: STCookingOracleGumbo
-  name: oracle gumbo recipe
+  name: рецепт гамбо "Оракул"
   components:
   - type: STBlueprint
     blueprint: recipeFoodSTOracleGumbo
+
+# jarred
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPickledCherries
+  name: рецепт маринованной вишни
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPickledCherries
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingFermentedEel
+  name: рецепт ферментированного угря
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTFermentedEel
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPreservedEel
+  name: рецепт консервированного угря
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPreservedEel
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPickledEggs
+  name: рецепт маринованных яиц
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPickledEggs
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPreservedFishSteak
+  name: рецепт рыбных котлет
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPreservedFishSteaks
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingBerryJam
+  name: рецепт ягодного варенья
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTBerryJam
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingKvass
+  name: рецепт свекольного кваса
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTKvass
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingLiverTartare
+  name: рецепт тартара из печени
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTLiverTartare
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingRenderedSalo
+  name: рецепт топленого сала
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTRenderedSalo
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPickledSausage
+  name: рецепт маринованных сосисок
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPickledSausage
+
+- type: entity
+  parent: STCookingRecipe
+  id: STCookingPreservedFishFillets
+  name: рецепт филе консервированной рыбы
+  components:
+  - type: STBlueprint
+    blueprint: recipeFoodSTPreservedFishFillets

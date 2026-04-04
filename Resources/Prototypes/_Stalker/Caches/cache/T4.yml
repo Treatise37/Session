@@ -119,6 +119,21 @@
           prob: 0.1
         - id: RGD5Grenade
           prob: 0.1
+        # EN additions
+        - id: STDrinkJarDirtyWater
+          prob: 0.08
+        - id: STDrinkJarBlood
+          prob: 0.05
+        - id: STDrinkJar
+          prob: 0.03
+        - id: STDrinkJarMoonshine
+          prob: 0.03
+        - id: STDrinkJarSap
+          prob: 0.01
+        - id: STDrinkJarJuicePotato
+          prob: 0.01
+        - id: STCookingFermentedEel
+          prob: 0.08
 
 - type: entity
   parent: [ STCacheStorageFillT4, STBaseCache]

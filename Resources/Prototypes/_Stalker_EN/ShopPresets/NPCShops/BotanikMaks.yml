@@ -18,6 +18,7 @@
       FoodSTCabbage: 50
       FoodSTOnion: 50
       FoodSTBeet: 45
+      FoodSTCorn: 55
       FoodSTBeans: 100
       FoodSTRice: 100
   - name: shop-category-blueprints

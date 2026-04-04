@@ -1,0 +1,47 @@
+- type: entity
+  parent: BaseItem
+  id: BookCookingStalkerHomemade
+  name: домашняя поварская книга
+  description: Переплетенная вручную кулинарная книга для хранения рецептов.
+  suffix: Stalker, cooking
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Misc/books.rsi
+    layers:
+    - state: cookbookhomemade
+  - type: STWeight
+    self: 1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,5
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+      - STCookingRecipe
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: [ ]
+  - type: RepositoryItem # stalker-en change
+    categoryName: repository-miscellaneous-category
+
+# update this whenever a lightcraft food is added
+- type: entity
+  name: поварская книга
+  parent: BookBase
+  id: BookCookingStalkerGuide
+  suffix: Stalker, cooking
+  description: Поваренная книга с подробным описанием основных техник приготовления и рецептов.
+  components:
+  - type: Sprite
+    sprite: _Stalker_EN/Objects/Misc/books.rsi
+    layers:
+    - state: cookbook
+  - type: Paper
+    content: book-text-guide-cooking-stalker

@@ -130,6 +130,9 @@
             Quantity: 4
           - ReagentId: Ethanol
             Quantity: 1
+    - type: Tag
+      tags:
+      - STYeast
     - type: Craftable
 
 # if people cause problems with egg puddles this is losing its reagent so fast
@@ -204,6 +207,9 @@
           reagents:
           - ReagentId: Sugar
             Quantity: 10
+    - type: Tag
+      tags:
+      - STSugar
     - type: Craftable
 
 - type: entity

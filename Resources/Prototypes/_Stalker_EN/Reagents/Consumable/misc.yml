@@ -1,0 +1,16 @@
+﻿- type: reagent
+  id: STPiss
+  name: моча
+  parent: Toxin
+  desc: Gross.
+  physicalDesc: reagent-physical-desc-acrid
+  flavor: salty
+  color: "#DBCE5A"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.2
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.3

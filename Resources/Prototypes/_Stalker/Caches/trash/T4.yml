@@ -96,6 +96,17 @@
           prob: 0.04
         - id: CraftMaterialGunpowder
           prob: 0.04
+      # EN additions
+        - id: STDrinkJarMold
+          prob: 0.02
+        - id: STDrinkJarPiss
+          prob: 0.02
+        - id: STDrinkJarMilkSpoiled
+          prob: 0.02
+        - id: STDrinkJarSap
+          prob: 0.03
+        - id: STDrinkJar
+          prob: 0.01
 
 - type: entity
   parent: [STBaseTrashCache, STTrashStorageFillT4]

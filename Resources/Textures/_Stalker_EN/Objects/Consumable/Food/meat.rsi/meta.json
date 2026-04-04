@@ -42,6 +42,48 @@
         },
         {
             "name": "ratcooked"
+        },
+        {
+            "name": "boarjerked"
+        },
+        {
+            "name": "boarspiced"
+        },
+        {
+            "name": "bearjerked"
+        },
+        {
+            "name": "bearspiced"
+        },
+        {
+            "name": "dogjerked"
+        },
+        {
+            "name": "dogspiced"
+        },
+        {
+            "name": "ratjerked"
+        },
+        {
+            "name": "ratspiced"
+        },
+        {
+            "name": "suckerjerked"
+        },
+        {
+            "name": "suckerspiced"
+        },
+        {
+            "name": "dogjerkedwhole"
+        },
+        {
+            "name": "bearjerkedwhole"
+        },
+        {
+            "name": "boarjerkedwhole"
+        },
+        {
+            "name": "suckerjerkedwhole"
         }
     ]
 }
