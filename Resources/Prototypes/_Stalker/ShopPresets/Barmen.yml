@@ -98,6 +98,23 @@
     FoodMeatBoarCooked: 80
     FoodMeatDogCooked: 70
 
+    ###meats
+    FoodMeatSTRatJerked: 2 # 2x the profit!!!
+    FoodMeatSTDogJerkedSingle: 65
+    FoodMeatSTBoarJerkedSingle: 100
+    FoodMeatSTBearJerkedSingle: 205 # 615 per bear but thats what youre paying in ammo costs anyway
+    FoodMeatSTSuckerJerkedSingle: 900
+    STFoodJarCherriesPickled: 2000
+    STFoodJarJamBerry: 2000
+    STFoodJarKvass: 3500
+    STFoodJarSalo: 500
+    STFoodJarEggs: 550
+    STFoodJarMeatSausage: 775
+    STFoodJarMeatFishFillet: 350
+    STFoodJarMeatFishSteak: 1000
+    STFoodJarMeatEel: 1450
+    STFoodJarWholeEelFermented: 3100
+
   categories:
     - name: shop-category-weapons
       priority: 0
@@ -212,6 +229,9 @@
         Matchbox: 10
         STHeadLight: 350
         HatchetStalker: 150
+        BookCookingStalkerGuide: 200
+        BookCookingStalkerHomemade: 600
+        STRag: 10
     - name: shop-category-research-equipment
       priority: 5
       items:
@@ -245,6 +265,7 @@
         FoodTinMRE: 100
         DrinkLemonadehBottleFull: 75
         STFoodMeatSalami: 125
+        FoodSTCorn: 65
     - name: shop-category-medicine
       priority: 7
       items:
@@ -362,6 +383,7 @@
         STModuleSilencerSMGT1: 600
         STModuleSniperSightT1: 600
         STModuleSilencerSniperT1: 400
+        STCookingPickledCherries: 2000
     - name: shop-category-raincoats-and-gasmasks
       priority: 12
       items:

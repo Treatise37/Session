@@ -1,4 +1,17 @@
 # EASY
+
+- type: craftRecipe
+  id: recipeFoodSTButerbrod
+  resultProtos:
+  - STFoodMeatButerbrod
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STFoodMeatSalamiSlice:
+      amount: 1
+    STFoodBreadPlainSlice:
+      amount: 1
+
 - type: craftRecipe
   id: recipeFoodSTFreshCheese
   resultProtos:
@@ -433,3 +446,217 @@
       amount: 1
     FoodSTSpice:
       amount: 2
+
+# jarred
+- type: craftRecipe
+  id: recipeFoodSTPickledCherries
+  resultProtos:
+  - STFoodJarCherriesPickled
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPickledCherries:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    StalkerFoodVishna:
+      amount: 3
+    FoodSTSugar:
+      amount: 1
+    DrinkCossackVodkaBottleFull:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTFermentedEel
+  resultProtos:
+  - STFoodJarWholeEelFresh
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingFermentedEel:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    STFishEel:
+      amount: 1
+    FoodSTSugar:
+      amount: 1
+    STDrinkYevishWineBottleFull:
+      amount: 1
+    FoodSTSpice:
+      amount: 2
+
+- type: craftRecipe
+  id: recipeFoodSTPreservedEel
+  resultProtos:
+  - STFoodJarMeatEel
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPreservedEel:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodMeatSTEelRaw:
+      amount: 4
+    FoodSTOil:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTPickledEggs
+  resultProtos:
+  - STFoodJarEggs
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPickledEggs:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodSTEgg:
+      amount: 4
+    DrinkCossackVodkaBottleFull:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTPreservedFishSteak
+  resultProtos:
+  - STFoodJarMeatFishSteak
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPreservedFishSteak:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodMeatSTFishSteakRaw:
+      amount: 4
+    FoodSTOil:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTBerryJam
+  resultProtos:
+  - STFoodJarJamBerry
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingBerryJam:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    StalkerFoodKlubnika:
+      amount: 1
+    StalkerFoodMalina:
+      amount: 1
+    StalkerFoodBrusnika:
+      amount: 1
+    FoodSTSugar:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTKvass
+  resultProtos:
+  - STFoodJarKvassUnfermented
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingKvass:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodSTBeet:
+      amount: 2
+    FoodSTSugar:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTLiverTartare
+  resultProtos:
+  - STFoodJarMeatLiver
+  craftTime: 8
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingLiverTartare:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    OrganHumanLiver:
+      amount: 1
+    FoodSTOnion:
+      amount: 1
+    FoodSTEgg:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTRenderedSalo
+  resultProtos:
+  - STFoodJarSalo
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingRenderedSalo:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodSaloSlice:
+      amount: 12
+
+- type: craftRecipe
+  id: recipeFoodSTPickledSausage
+  resultProtos:
+  - STFoodJarMeatSausageUnpickled
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPickledSausage:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    STFoodMeatSalami:
+      amount: 1
+    FoodCondimentPacketSalt:
+      amount: 1
+    FoodSTSpice:
+      amount: 1
+    DrinkCossackVodkaBottleFull:
+      amount: 1
+
+- type: craftRecipe
+  id: recipeFoodSTPreservedFishFillets
+  resultProtos:
+  - STFoodJarMeatFishFillet
+  craftTime: 5
+  requiredWorkbench: StalkerCookingStation
+  items:
+    STCookingPreservedFishFillets:
+      amount: 1
+      catalyzer: true
+    STDrinkJar:
+      amount: 1
+    FoodMeatSTFishFilletRaw:
+      amount: 4
+    FoodSTOil:
+      amount: 1
+    FoodSTSpice:
+      amount: 1

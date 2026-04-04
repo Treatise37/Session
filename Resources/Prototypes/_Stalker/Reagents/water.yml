@@ -42,6 +42,7 @@
 - type: reagent
   parent: STBaseWater
   id: STToxicWater
+  color: "#B1B588" # EN im sick of this being red
   plantMetabolism:
     - !type:PlantAdjustToxins
       amount: 4

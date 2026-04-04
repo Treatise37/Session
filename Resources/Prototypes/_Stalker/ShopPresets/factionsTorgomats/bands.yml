@@ -412,6 +412,7 @@
       DrinkLemonadehBottleFull: 50
       STFoodMeatSalami: 350
       CigPackSuka: 100
+      STDrinkJar: 300
   - name: shop-category-medicine
     priority: 10
     items:

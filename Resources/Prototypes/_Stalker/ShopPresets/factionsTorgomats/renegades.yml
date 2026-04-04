@@ -309,3 +309,7 @@
         ClothingTorsoTurtlenecksKhakiTurtleneck: 50
         ClothingTorsoTurtlenecksMatrosska: 50
         ClothingEyesGlassesCheapSunglasses: 5
+    - name: shop-category-blueprints
+      priority: 14
+      items:
+        STCookingLiverTartare: 2000

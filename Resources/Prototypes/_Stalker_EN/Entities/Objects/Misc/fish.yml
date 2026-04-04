@@ -144,7 +144,7 @@
           Quantity: 2
   - type: Butcherable
     spawned:
-    - id: FoodMeatSTFishEelRaw
+    - id: FoodMeatSTEelRaw
       maxAmount: 3
       prob: 0.8
 

@@ -179,6 +179,41 @@
     - type: Craftable
 
 - type: entity
+  name: початок кукурузы
+  description: Один целый початок.
+  parent: FoodProduceBase
+  id: FoodSTCorn
+  suffix: Stalker, Food, Ingredient
+  components:
+  - type: STWeight
+    self: 0.1
+  - type: Item
+    size: Tiny
+    shape:
+    - 0,0,0,0
+  - type: FlavorProfile
+    flavors:
+    - corn
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 3
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/corn.rsi
+  #  - type: Produce
+  #    seedId: corn
+  - type: Tag
+    tags:
+    - STCorn
+    - Vegetable
+  - type: Craftable
+
+- type: entity
   name: onion
   description: No use in crying over spilt- wait, this is the other thing that makes you cry.
   parent: FoodProduceBase

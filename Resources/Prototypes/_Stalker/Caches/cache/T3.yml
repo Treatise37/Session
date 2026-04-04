@@ -136,6 +136,22 @@
         # EN additions
         - id: STCookingSnorkSoup
           prob: 0.05
+        - id: STDrinkJarDirtyWater
+          prob: 0.08
+        - id: STDrinkJarBlood
+          prob: 0.02
+        - id: STDrinkJar
+          prob: 0.03
+        - id: STDrinkJarMoonshine
+          prob: 0.01
+        - id: STDrinkJarSap
+          prob: 0.01
+        - id: STDrinkJarJuicePotato
+          prob: 0.01
+        - id: STCookingFermentedEel
+          prob: 0.02
+        - id: STCookingKvass
+          prob: 0.04
         - id: MakeshiftArtContBlueprint
           prob: 0.05
           

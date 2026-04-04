@@ -346,3 +346,8 @@
       ClothingTorsoTurtlenecksGorka6B: 50
       ClothingTorsoTurtlenecksKhakiTurtleneck: 50
       ClothingTorsoTurtlenecksMatrosska: 50
+  - name: shop-category-blueprints
+    priority: 13
+    items:
+      STCookingRenderedSalo: 2000
+      STCookingPickledEggs: 2000

@@ -27,6 +27,10 @@
     STFishCatfish: 4200
     # misc
     Blunt: 35
+    STFoodJarMeatFishFillet: 550 # might be too low considering the long walk out
+    STFoodJarMeatFishSteak: 1250
+    STFoodJarMeatEel: 1750
+    STFoodJarWholeEelFermented: 2250 # he doesnt care that much
     #МАТЕРИАЛЫ###
     STCraftBasicThreadKitT1: 50
     STCraftCottonFabricT1: 50
@@ -43,6 +47,9 @@
         STCombatKnife: 50
         CheapLighter: 10
         FishingRod: 300
+        STCookingPreservedFishFillets: 1000
+        STCookingPreservedFishSteak: 2000
+        STCookingPreservedEel: 3000
     - name: shop-category-entertainment
       priority: 1
       items:
