@@ -3,10 +3,7 @@
   branches:
   - tasks:
     - !type:HTNCompoundTask
-      task: STBearT3MeleeCombatAliveCompound
-  - tasks:
-    - !type:HTNCompoundTask
-      task: STBearT3MeleeCombatCritCompound
+      task: STBearT3MeleeCombatCompound
   - tasks:
     - !type:HTNCompoundTask
       task: STBearT3RoarRestoreCompound
@@ -14,24 +11,12 @@
       task: IdleCompound
 
 - type: htnCompound
-  id: STBearT3MeleeCombatAliveCompound
+  id: STBearT3MeleeCombatCompound
   branches:
   - tasks:
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
-        proto: STMeleeAliveTargets
-    - !type:HTNCompoundTask
-      task: STBearT3RoarCompound
-    - !type:HTNCompoundTask
-      task: STBearT3MeleeAttackTargetCompound
-
-- type: htnCompound
-  id: STBearT3MeleeCombatCritCompound
-  branches:
-  - tasks:
-    - !type:HTNPrimitiveTask
-      operator: !type:UtilityOperator
-        proto: STMeleeCritTargets
+        proto: NearbyMeleeTargets
     - !type:HTNCompoundTask
       task: STBearT3RoarCompound
     - !type:HTNCompoundTask
