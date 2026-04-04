@@ -3,11 +3,7 @@
   branches:
     - tasks:
       - !type:HTNCompoundTask
-        task: STBloodsuckerMeleeCombatAliveCompound
-
-    - tasks:
-      - !type:HTNCompoundTask
-        task: STBloodsuckerMeleeCombatCritCompound
+        task: STBloodsuckerMeleeCombatCompound
 
     - tasks:
       - !type:HTNCompoundTask
@@ -17,26 +13,12 @@
         task: IdleCompound
 
 - type: htnCompound
-  id: STBloodsuckerMeleeCombatAliveCompound
+  id: STBloodsuckerMeleeCombatCompound
   branches:
     - tasks:
       - !type:HTNPrimitiveTask
         operator: !type:UtilityOperator
-          proto: STMeleeAliveTargets
-
-      - !type:HTNCompoundTask
-        task: STBloodsuckerRoarCompound
-
-      - !type:HTNCompoundTask
-        task: STBloodsuckerMeleeAttackTargetCompound
-
-- type: htnCompound
-  id: STBloodsuckerMeleeCombatCritCompound
-  branches:
-    - tasks:
-      - !type:HTNPrimitiveTask
-        operator: !type:UtilityOperator
-          proto: STMeleeCritTargets
+          proto: NearbyMeleeTargets
 
       - !type:HTNCompoundTask
         task: STBloodsuckerRoarCompound

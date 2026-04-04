@@ -3,10 +3,7 @@
   branches:
     - tasks:
       - !type:HTNCompoundTask
-        task: STCatMeleeCombatAliveCompound
-    - tasks:
-      - !type:HTNCompoundTask
-        task: STCatMeleeCombatCritCompound
+        task: STCatMeleeCombatCompound
     - tasks:
       - !type:HTNCompoundTask
         task: STCatRoarRestoreCompound
@@ -14,26 +11,13 @@
         task: IdleSpinCompound
 
 - type: htnCompound
-  id: STCatMeleeCombatAliveCompound
+  id: STCatMeleeCombatCompound
   branches:
   # Move to melee range and hit them
   - tasks:
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
-        proto: STMeleeAliveTargets
-    - !type:HTNCompoundTask
-      task: STCatRoarCompound
-    - !type:HTNCompoundTask
-      task: STCatMeleeAttackTargetCompound
-
-- type: htnCompound
-  id: STCatMeleeCombatCritCompound
-  branches:
-  # Move to melee range and hit them
-  - tasks:
-    - !type:HTNPrimitiveTask
-      operator: !type:UtilityOperator
-        proto: STMeleeCritTargets
+        proto: NearbyMeleeTargets
     - !type:HTNCompoundTask
       task: STCatRoarCompound
     - !type:HTNCompoundTask
@@ -146,6 +130,18 @@
       preconditions:
       - !type:KeyExistsPrecondition
         key: AttackDelay
+
+    # - !type:HTNPrimitiveTask
+      # preconditions:
+      # - !type:KeyBoolEqualsPrecondition
+        # key: Roared
+        # value: false
+      # operator: !type:PlaySoundOperator
+        # sound:
+          # collection: HumanSounds # Stalker-TODO: Uncomment these once "HumanSounds" sound collection exists!
+          # params:
+            # variation: 0.125
+            # maxDistance: 100
 
     - !type:HTNPrimitiveTask
       operator: !type:SetBoolOperator
