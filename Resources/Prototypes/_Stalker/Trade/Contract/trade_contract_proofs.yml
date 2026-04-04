@@ -15,6 +15,20 @@
 - type: entity
   parent: PaperScrap
   id: NcTradeContractProofGhoulTrophy
-  name: "трофейная метка гуля"
+  name: "трофейная метка с мутанта"
   description: "Окровавленная контрактная метка, снятая с подтверждённой цели."
   categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: BaseItem
+  id: NcTradeContractProofBoarHoof
+  name: "копыто старого секача"
+  description: "Огромное, покрытое шрамами копыто, снятое с убитого вожака стаи. Отличный трофей и доказательство выполнения контракта."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/MutantParts/Old_boar_hoof.rsi
+    state: icon
+    scale: 1.2, 1.2
+  - type: Item
+    size: Small

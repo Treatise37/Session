@@ -14,6 +14,7 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         Dictionary<string, int> crateUnitsById,
         Dictionary<string, int> massSellTotals,
         List<ContractClientData> contracts,
+        List<SlotCooldownClientData> slotCooldowns,
         bool hasBuyTab,
         bool hasSellTab,
         bool hasContractsTab,
@@ -28,6 +29,7 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         CrateUnitsById = crateUnitsById;
         MassSellTotals = massSellTotals;
         Contracts = contracts;
+        SlotCooldowns = slotCooldowns;
         HasBuyTab = hasBuyTab;
         HasSellTab = hasSellTab;
         HasContractsTab = hasContractsTab;
@@ -46,6 +48,7 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
     public Dictionary<string, int> MassSellTotals { get; }
 
     public List<ContractClientData> Contracts { get; }
+    public List<SlotCooldownClientData> SlotCooldowns { get; }
 
     public bool HasBuyTab { get; }
     public bool HasSellTab { get; }

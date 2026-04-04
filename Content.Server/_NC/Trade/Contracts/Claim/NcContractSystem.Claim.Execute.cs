@@ -156,13 +156,14 @@ public sealed partial class NcContractSystem : EntitySystem
         EntityUid store,
         NcStoreComponent comp,
         string contractId,
-        bool repeatable,
+        ContractServerData contract,
         bool deleteTrackedEntities = true)
     {
         CleanupObjectiveRuntime(store, contractId, deleteTrackedEntities, deleteGuards: false);
+        ApplyContractResolutionCooldown(store, comp, contractId, contract.Difficulty, contract.Name);
 
         comp.Contracts.Remove(contractId);
-        if (!repeatable)
+        if (!contract.Repeatable)
             comp.CompletedOneTimeContracts.Add(contractId);
 
         RefillContractsForStore(store, comp, contractId);

@@ -199,6 +199,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 DictEquals(prev.CrateUnitsById, next.CrateUnitsById) &&
                 DictEquals(prev.CrateTotals, next.CrateTotals) &&
                 ListEquals(prev.Contracts, next.Contracts) &&
+                SlotCooldownListEquals(prev.SlotCooldowns, next.SlotCooldowns) &&
                 prev.ContractSkipCost == next.ContractSkipCost &&
                 string.Equals(prev.ContractSkipCurrency, next.ContractSkipCurrency, StringComparison.Ordinal);
         }
@@ -218,6 +219,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
     {
         public readonly Dictionary<string, int> BalancesByCurrency = new();
         public readonly List<ContractClientData> Contracts = new();
+        public readonly List<SlotCooldownClientData> SlotCooldowns = new();
         public readonly Dictionary<string, int> CrateTotals = new();
         public readonly Dictionary<string, int> CrateUnitsById = new();
         public readonly Dictionary<string, int> OwnedById = new();
@@ -233,6 +235,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             CrateUnitsById.Clear();
             CrateTotals.Clear();
             Contracts.Clear();
+            SlotCooldowns.Clear();
             ContractSkipCost = 0;
             ContractSkipCurrency = string.Empty;
         }

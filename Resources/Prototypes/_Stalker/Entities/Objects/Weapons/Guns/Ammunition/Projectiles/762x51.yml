@@ -54,3 +54,15 @@
     damage:
       types:
         Piercing: 40
+
+- type: entity
+  id: Bullet754R
+  name: bullet (7.62х54 R rifle)
+  parent: Bullet751M80
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    projectileClass: 4
+    damage:
+      types:
+        Piercing: 41

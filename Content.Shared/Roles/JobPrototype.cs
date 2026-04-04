@@ -44,6 +44,18 @@ namespace Content.Shared.Roles
         [ViewVariables(VVAccess.ReadOnly)]
         public string? LocalizedDescription => Description is null ? null : Loc.GetString(Description);
 
+        // stalker-changes
+        /// <summary>
+        ///     Rules for this job. Shown to the player on role assignment and can be recalled with an action.
+        ///     This should be a localization key.
+        /// </summary>
+        [DataField]
+        public string? Rules { get; private set; }
+
+        [ViewVariables(VVAccess.ReadOnly)]
+        public string? LocalizedRules => Rules is null ? null : Loc.GetString(Rules);
+        // stalker-changes-end
+
         /// <summary>
         ///     Requirements for the job.
         /// </summary>

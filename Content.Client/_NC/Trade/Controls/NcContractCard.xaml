@@ -173,25 +173,30 @@
                             <BoxContainer Orientation="Vertical"
                                           HorizontalExpand="True"
                                           SeparationOverride="3">
-                                <Label Name="RewardsHeaderLabel"
-                                       Text="{Loc 'nc-store-contract-reward-header'}"
-                                       StyleClasses="LabelSubText"
-                                       Modulate="#B9AD90"
-                                       Margin="0 0 0 1" />
-
-                                <BoxContainer Name="RewardsHost"
+                                <BoxContainer Name="RewardsSection"
                                               Orientation="Vertical"
                                               HorizontalExpand="True"
-                                              SeparationOverride="2"
-                                              Margin="0 0 0 2" />
+                                              SeparationOverride="0">
+                                    <Label Name="RewardsHeaderLabel"
+                                           Text="{Loc 'nc-store-contract-reward-header'}"
+                                           StyleClasses="LabelSubText"
+                                           Modulate="#B9AD90"
+                                           Margin="0 0 0 1" />
 
-                                <PanelContainer HorizontalExpand="True"
-                                                MinSize="0 1"
-                                                Margin="0 2 0 3">
-                                    <PanelContainer.PanelOverride>
-                                        <graphics:StyleBoxFlat BackgroundColor="#81683C80" />
-                                    </PanelContainer.PanelOverride>
-                                </PanelContainer>
+                                    <BoxContainer Name="RewardsHost"
+                                                  Orientation="Vertical"
+                                                  HorizontalExpand="True"
+                                                  SeparationOverride="2"
+                                                  Margin="0 0 0 2" />
+
+                                    <PanelContainer HorizontalExpand="True"
+                                                    MinSize="0 1"
+                                                    Margin="0 2 0 3">
+                                        <PanelContainer.PanelOverride>
+                                            <graphics:StyleBoxFlat BackgroundColor="#81683C80" />
+                                        </PanelContainer.PanelOverride>
+                                    </PanelContainer>
+                                </BoxContainer>
 
                                 <BoxContainer Orientation="Vertical"
                                               HorizontalExpand="True"

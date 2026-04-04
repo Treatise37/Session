@@ -1,0 +1,68 @@
+- type: entity
+  parent: BaseItem
+  id: KordonMapStack
+  name: Стопка карт кордона
+  description: Упаковка, содержащая карты севера и юга кордона.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/kordonmapstack.rsi
+    state: kordonmapstack
+  - type: SpawnItemsOnUse
+    items:
+      - id: KordonNorthMap
+      - id: KordonSouthMap
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+
+
+- type: entity
+  parent: BaseItem
+  id: SwampMap
+  name: SwampMap
+  description: SwampMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/swampmap.rsi
+    state: swampmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/swampmap_tabletop.png
+    mapTextureName: swamp-button-name
+
+- type: entity
+  parent: BaseItem
+  id: KordonSouthMap
+  name: KordonSouthMap
+  description: KordonSouthMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/kordonsouthmap.rsi
+    state: kordonsouthmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/kordonsouthmap_tabletop.png
+    mapTextureName: kordonsouth-button-name
+
+- type: entity
+  parent: BaseItem
+  id: KordonNorthMap
+  name: KordonNorthMap
+  description: KordonNorthMap-desc
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Other/Maps/kordonnorthmap.rsi
+    state: kordonnorthmap
+  - type: UserInterface
+    interfaces:
+      enum.TopographyMapUIKey.Key:
+        type: TopographyMapBoundUserInterface
+  - type: TopographyMap
+    mapTexturePath: _Stalker/Objects/Other/Maps/maptextures/kordonnorthmap_tabletop.png
+    mapTextureName: kordonnorth-button-name

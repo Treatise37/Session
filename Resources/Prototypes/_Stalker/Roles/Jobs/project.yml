@@ -17,6 +17,8 @@
   supervisors: job-project-pawn-supervisor
   canBeAntag: false
   special:
+    - !type:AddImplantSpecial
+      implants: [ STProjectRadioImplant ]
     - !type:AddComponentSpecial
       components:
         - type: Access
@@ -38,6 +40,8 @@
           pullingItemTag: PliersStalker
           teethCount: 3
           initialTeeth: 3
+        - type: Damageable
+          damageModifierSet: STProjectDamageModifierSet
 
 - type: startingGear
   id: ProjectPawnGear
@@ -47,7 +51,6 @@
     torso: ClothingTorsoJacketProjectPeshka
     legs: ClothingLegsJeansProjectPeshka
     shoes: ClothingShoesBootsProject
-    ears: ClothingHeadsetProject
     eyes: ClothingEyesGlassesSunglasses
     gloves: ClothingHandsGlovesFingerless
 
@@ -70,6 +73,8 @@
   supervisors: job-project-orchestrator-supervisor
   canBeAntag: false
   special:
+    - !type:AddImplantSpecial
+      implants: [ STProjectRadioImplant ]
     - !type:AddComponentSpecial
       components:
         - type: Psyonics
@@ -99,6 +104,8 @@
         - type: NpcFactionMember
           factions:
             - Mutated
+        - type: Damageable
+          damageModifierSet: STProjectDamageModifierSet
 
 - type: startingGear
   id: ProjectOrchestratorGear
@@ -108,7 +115,6 @@
     torso: ClothingTorsoJacketProjectLeader
     legs: ClothingLegsJeansProjectLeader
     shoes: ClothingShoesBootsProject
-    ears: ClothingHeadsetProject
     eyes: ClothingEyesHudProject
     gloves: ClothingHandsGlovesFingerless
 - type: stBand
@@ -121,3 +127,8 @@
     1: StalkerProjectPawn
     2: StalkerProjectOrchestrator
 
+- type: damageModifierSet
+  id: STProjectDamageModifierSet
+  class: 5
+  flatReductions:
+    Psy: 6

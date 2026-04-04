@@ -137,3 +137,25 @@
           map: ["enum.GunVisualLayers.Base"]
         - state: cink
           map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseAmmoBoxStalker
+  id: 754RBox
+  name: Коробка патронов (7.62x54mm) R
+  description: Обеспечивает пробитие 4 класса брони.
+  suffix: Stalker
+  components:
+    - type: MagazineVisuals
+      magState: 76239ammo
+    - type: BallisticAmmoProvider
+      capacity: 30
+      proto: Cartridge754R
+      whitelist:
+        tags:
+          - STCartridge754R
+    - type: Sprite
+      layers:
+        - state: 76254R
+          map: ["enum.GunVisualLayers.Base"]
+        - state: 76239ammo-1
+          map: ["enum.GunVisualLayers.Mag"]

@@ -7,6 +7,7 @@ public sealed partial class STWeightSystemModifier : EntitySystem
 {
     public override void Initialize()
     {
+        base.Initialize();
         SubscribeLocalEvent<STWeightComponent, UpdatedFloatModifierEvent<STWeightMaximumModifierComponent>>(OnUpdatedMaximum);
     }
 

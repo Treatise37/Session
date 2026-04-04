@@ -18,6 +18,24 @@ public sealed partial class NcStoreMenu
             }
         }
 
+        private static int ComputeSlotCooldownsHash(List<SlotCooldownClientData> cooldowns)
+        {
+            unchecked
+            {
+                var h = 17;
+                for (var i = 0; i < cooldowns.Count; i++)
+                {
+                    var cooldown = cooldowns[i];
+                    h = h * 31 + (cooldown.Difficulty?.GetHashCode() ?? 0);
+                    h = h * 31 + (cooldown.LastContractId?.GetHashCode() ?? 0);
+                    h = h * 31 + (cooldown.LastContractName?.GetHashCode() ?? 0);
+                    h = h * 31 + cooldown.RemainingSeconds;
+                }
+
+                return h;
+            }
+        }
+
         private static int AppendContractHash(int hash, ContractClientData contract)
         {
             unchecked

@@ -478,6 +478,28 @@
     sprite: _Stalker/Objects/Decoration/Flora/flora.rsi
     state: bush06
 
+- type: entity
+  parent: Bush01
+  id: Bush07
+  suffix: ST, Mapping
+  name: большой куст
+  description: Древовидное растение, разветвляющееся от самого основания.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_bush.rsi
+    state: largebush01
+
+- type: entity
+  parent: Bush01
+  id: Bush08
+  suffix: ST, Mapping
+  name: большой куст
+  description: Древовидное растение, разветвляющееся от самого основания.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_bush.rsi
+    state: largebush02
+
 # КУВШИНКИ
 
 - type: entity
@@ -641,6 +663,72 @@
     state: treelarge02
   - type: Craftable
 
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDryLarge
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree_large.rsi
+    state: drylarge01
+  - type: Craftable
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDryLarge2
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree_large.rsi
+    state: drylarge02
+  - type: Craftable
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDryLarge3
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree_large.rsi
+    state: drylarge03
+  - type: Craftable
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDry
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree.rsi
+    state: dry01
+  - type: Craftable
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDry2
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree.rsi
+    state: dry02
+  - type: Craftable
+
+- type: entity
+  parent: FloraTreeLargeRed01
+  id: FloraTreeDry3
+  name: Мёртвое дерево
+  suffix: ST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Decoration/Flora/radar_tree.rsi
+    state: dry03
+  - type: Craftable
 
 - type: entity
   parent: FloraTreeLargeRed01

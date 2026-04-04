@@ -24,7 +24,6 @@
             Radiation: 2
             Caustic: 1
             Shock: 1
-            Compression: 1
             Cold: 1
         coefficients:
             Blunt: 0.85

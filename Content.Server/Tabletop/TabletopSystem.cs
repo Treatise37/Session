@@ -131,14 +131,12 @@ namespace Content.Server.Tabletop
             if (!TryComp(args.User, out ActorComponent? actor))
                 return;
 
-            var playVerb = new ActivationVerb()
+            args.Verbs.Add(new()
             {
                 Text = Loc.GetString("tabletop-verb-play-game"),
                 Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/die.svg.192dpi.png")),
                 Act = () => OpenSessionFor(actor.PlayerSession, uid)
-            };
-
-            args.Verbs.Add(playVerb);
+            });
         }
 
         private void OnTabletopActivate(EntityUid uid, TabletopGameComponent component, ActivateInWorldEvent args)

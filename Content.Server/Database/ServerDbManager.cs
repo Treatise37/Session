@@ -426,6 +426,14 @@ namespace Content.Server.Database
         Task SetStalkerPdaPasswordAsync(string characterName, string password);
         Task RemoveStalkerPdaPasswordAsync(string characterName);
 
+        // stalker-en-changes: separate persistent crafting progression
+        Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName);
+        Task SetStalkerPersistentCraftProfileAsync(
+            Guid userId,
+            string characterName,
+            string profileJson);
+        Task DeleteAllStalkerPersistentCraftProfilesAsync();
+
         // stalker-en-changes: News articles
         Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit);
         Task<int> AddStalkerNewsArticleAsync(StalkerNewsArticle article);
@@ -1288,6 +1296,30 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.RemoveStalkerPdaPasswordAsync(characterName));
+        }
+
+        public Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetStalkerPersistentCraftProfileAsync(userId, characterName));
+        }
+
+        public Task SetStalkerPersistentCraftProfileAsync(
+            Guid userId,
+            string characterName,
+            string profileJson)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetStalkerPersistentCraftProfileAsync(
+                userId,
+                characterName,
+                profileJson));
+        }
+
+        public Task DeleteAllStalkerPersistentCraftProfilesAsync()
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.DeleteAllStalkerPersistentCraftProfilesAsync());
         }
 
         // stalker-en-changes: News articles

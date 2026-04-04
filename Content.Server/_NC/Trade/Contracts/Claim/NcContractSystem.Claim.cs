@@ -42,7 +42,7 @@ public sealed partial class NcContractSystem : EntitySystem
                 if (!TryExecuteClaimTakePlan(ctx, out var execFail))
                     return execFail;
 
-                FinalizeClaim(ctx.Store, ctx.Comp, contractId, ctx.Contract.Repeatable);
+                FinalizeClaim(ctx.Store, ctx.Comp, contractId, ctx.Contract);
                 return ClaimAttemptResult.Ok();
 
             case ContractExecutionKind.TrackedDeliveryObjective:
@@ -78,7 +78,7 @@ public sealed partial class NcContractSystem : EntitySystem
             return proofFail;
 
         GiveContractRewards(user, contract.Rewards);
-        FinalizeClaim(store, comp, contractId, contract.Repeatable);
+        FinalizeClaim(store, comp, contractId, contract);
 
         return ClaimAttemptResult.Ok();
     }

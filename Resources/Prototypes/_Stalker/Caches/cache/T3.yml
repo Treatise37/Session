@@ -90,6 +90,8 @@
         - id: HandheldGPSBasic
           prob: 0.045
         - id: BoxArtcont
+          prob: 0.01
+        - id: BoxArtcontDamaged
           prob: 0.03
         - id: STFlashlightSeclite
           prob: 0.045
@@ -150,6 +152,8 @@
           prob: 0.02
         - id: STCookingKvass
           prob: 0.04
+        - id: MakeshiftArtContBlueprint
+          prob: 0.05
           
 - type: entity
   parent: [ STCacheStorageFillT3, STBaseCache]

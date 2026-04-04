@@ -57,6 +57,7 @@ namespace Content.Server.Database
         public DbSet<StalkerMessengerId> StalkerMessengerIds { get; set; } = null!; // stalker-en-changes
         public DbSet<StalkerMessengerContact> StalkerMessengerContacts { get; set; } = null!; // stalker-en-changes
         public DbSet<StalkerPdaPassword> StalkerPdaPasswords { get; set; } = null!; // stalker-en-changes
+        public DbSet<StalkerPersistentCraftProfile> StalkerPersistentCraftProfiles { get; set; } = null!; // stalker-en-changes
         public DbSet<StalkerNewsArticle> StalkerNewsArticles { get; set; } = null!; // stalker-en-changes
         public DbSet<StalkerNewsComment> StalkerNewsComments { get; set; } = null!; // stalker-en-changes
         public DbSet<StalkerNewsReaction> StalkerNewsReactions { get; set; } = null!; // stalker-en-changes
@@ -391,6 +392,9 @@ namespace Content.Server.Database
 
             modelBuilder.Entity<StalkerPdaPassword>()
                 .HasKey(p => p.CharacterName);
+
+            modelBuilder.Entity<StalkerPersistentCraftProfile>()
+                .HasKey(p => new { p.UserId, p.CharacterName });
 
             modelBuilder.Entity<StalkerNewsArticle>()
                 .HasKey(a => a.Id);
@@ -1643,6 +1647,22 @@ namespace Content.Server.Database
 
         [Required]
         public string Password { get; set; } = default!;
+    }
+
+    /// <summary>
+    /// Stores a persistent, character-bound progression profile for the separate crafting system.
+    /// Composite key: (UserId, CharacterName).
+    /// </summary>
+    public sealed class StalkerPersistentCraftProfile
+    {
+        [Required]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string CharacterName { get; set; } = default!;
+
+        [Required]
+        public string ProfileJson { get; set; } = "{}";
     }
 
     /// <summary>
