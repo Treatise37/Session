@@ -2,43 +2,43 @@
   id: CSShopPreset
   itemsForSale:
     # Thermal group - 1
-    ZoneArtifactFireball: 540
-    ZoneArtifactEye: 810
-    ZoneArtifactFlame: 1620
+    ZoneArtifactFireball: 900
+    ZoneArtifactEye: 1200
+    ZoneArtifactFlame: 2016
     # Thermal group - 2
-    ZoneArtifactCristall: 3240
-    ZoneArtifactLithosphere: 6480
+    ZoneArtifactCristall: 2400
+    ZoneArtifactLithosphere: 4800
     # Electrical group - 1
-    ZoneArtifactSparkler: 540
-    ZoneArtifactBattery: 810
-    ZoneArtifactFlash: 1620
+    ZoneArtifactSparkler: 750
+    ZoneArtifactBattery: 1050
+    ZoneArtifactFlash: 2016
     ArtMoon: 3240
-    ZoneArtifactTesla: 4860
-    ZoneArtifactIce: 6480
+    ZoneArtifactTesla: 3600
+    ZoneArtifactIce: 4800
     # Gravity group - 1
-    ArtMedusa: 540
-    ZoneArtifactFlower: 810
-    ZoneArtifactNightStar: 3240
+    ArtMedusa: 825
+    ZoneArtifactFlower: 1125
+    ZoneArtifactNightStar: 2880
     # Gravity group - 2
-    ZoneArtifactVyvert: 540
-    ZoneArtifactAmoeba: 810
+    ZoneArtifactVyvert: 975
+    ZoneArtifactAmoeba: 1275
     ZoneArtifactFloodlight: 810
-    ZoneArtifactGravi: 1620
-    ZoneArtifactGoldfish: 6480
+    ZoneArtifactGravi: 2016
+    ZoneArtifactGoldfish: 4800
     ZoneArtifactSpring: 3600
-    ZoneArtifactFocus: 4860
-    ZoneArtifactStuntman: 6480
-    ZoneArtifactDistorter: 6480
-    ZoneArtifactSoul: 4860
+    ZoneArtifactFocus: 3600
+    ZoneArtifactStuntman: 4800
+    ZoneArtifactDistorter: 3600
+    ZoneArtifactSoul: 4800
     # Food
     FoodMeatDogCooked: 70
     STFoodMeatSpiderCooked: 35
     FoodMeatBoarCooked: 110
 
     # Acidic group - 1
-    ZoneArtifactBlood: 1600
-    ZoneArtifactMeat: 3200
-    ZoneArtifactKolobok: 4800
+    ZoneArtifactBlood: 2016
+    ZoneArtifactMeat: 2400
+    ZoneArtifactKolobok: 3600
     # Acidic group - 2
     ZoneArtifactPellicle: 535
     ZoneArtifactBaloon: 4800
@@ -46,43 +46,43 @@
     # Mutant parts
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 180 # T1
-    MutantPartSeasonedBoarHoof: 365 # T2
-    MutantPartOldBoarHoof: 545 # T3
+    MutantPartBoarHoof: 330 # T1
+    MutantPartSeasonedBoarHoof: 660 # T2
+    MutantPartOldBoarHoof: 975 # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 120
-    MutantPartFleshEye: 270
-    FoodMeatSpiderLeg: 70
+    MutantPartBlindDogTail: 135
+    MutantPartFleshEye: 248
+    FoodMeatSpiderLeg: 900
 
     #T2 -------- Health * 1.8
-    MutantPartLeshiyRoot: 745
-    MutantPartPseudodogTail: 405
+    MutantPartLeshiyRoot: 1050
+    MutantPartPseudodogTail: 450
     MutantPartSnorkFoot: 675
 
     #T3 -------- Health * 3
     MutantPartPsiDogTail: 705
-    MutantPartBloodsuckerTentacles: 1015
-    MutantPartOraculeEye: 2160
-    MutantPartPseudogiantHeart: 5400
-    MutantPartZombieHand: 810
+    MutantPartBloodsuckerTentacles: 1500
+    MutantPartOraculeEye: 1950
+    MutantPartPseudogiantHeart: 11700
+    MutantPartZombieHand: 825
 
     # New
     
-    ZoneArtifactAccumulator: 840
+    ZoneArtifactAccumulator: 1050
     ZoneArtifactDiamond: 3240
-    ZoneArtifactCharger: 3240
+    ZoneArtifactCharger: 2400
     ZoneArtifactToxic: 840
-    ZoneArtifactCytoplasm: 720
-    ZoneArtifactCompass: 3240
-    ZoneArtifactCrucifix: 6480
-    ZoneArtifactThorn: 1620
-    ZoneArtifactArf: 840
-    ZoneArtifactDarkCube: 6480
-    ZoneArtifactBunch: 1620
+    ZoneArtifactCytoplasm: 900
+    ZoneArtifactCompass: 2400
+    ZoneArtifactCrucifix: 3600
+    ZoneArtifactThorn: 2016
+    ZoneArtifactArf: 1050
+    ZoneArtifactDarkCube: 3600
+    ZoneArtifactBunch: 2016
     ZoneArtifactRock: 1620
-    ZoneArtifactSun: 3240
-    ZoneArtifactRoot: 3240
+    ZoneArtifactSun: 2400
+    ZoneArtifactRoot: 2400
     ZoneArtifactConflagration: 1620
 
     # Mutant parts EN
