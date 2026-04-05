@@ -55,13 +55,13 @@ public sealed partial class EmissionEventRuleComponent : Component
     public SoundSpecifier SoundStage3 = new SoundPathSpecifier("/Audio/_Stalker_EN/Emissions/emission_stage3.ogg");
 
     [DataField]
-    public string AnnouncementStage1 = "Attention stalkers, an emission is approaching! I repeat, an emission is approaching. Seek cover immediately.";
+    public string AnnouncementStage1 = "Внимание, сталкеры! Приближается выброс! Повторяю, приближается выброс. Немедленно ищите укрытие.";
 
     [DataField]
-    public string AnnouncementStage2 = "Attention stalkers, an emission will start any minute now. Find cover if you want to live.";
+    public string AnnouncementStage2 = "Внимание, сталкеры! Излучение начнётся в любую минуту. Ищите укрытие, если хотите выжить.";
 
     [DataField]
-    public string AnnouncementStage3 = "Stalkers, the emission is finally over. I hope you're all in one piece.";
+    public string AnnouncementStage3 = "Сталкеры, выброс наконец-то закончился. Надеюсь, вы все целы и невредимы.";
 
     /// <summary>
     /// Custom sender name for emission announcements.
