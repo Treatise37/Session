@@ -369,6 +369,19 @@
     prefix: Boloto
     maxWeight: 150
 
+- type: entity
+  id: StalkerDublicateAtom
+  parent: StalkerDuplicateTeleportBase
+  name: Подвал в логово
+  description: С помощью этого подвала вы можете попасть в своё логово.
+  suffix: Teleport, Portal, Duplicate, Atom
+  components:
+  - type: DuplicateTeleport
+    prefix: Atom
+    maxWeight: 150
+  - type: AccessReader
+    access: [["Atom"]]
+
 - type: duplicateSymbols
   id: DublicateSymbols
   symbols:
@@ -396,3 +409,5 @@
     - Project
     - Deserter
     - Boloto
+    - Atom
+
