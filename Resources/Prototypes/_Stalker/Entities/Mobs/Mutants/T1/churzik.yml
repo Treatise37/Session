@@ -1,6 +1,9 @@
 - type: entity
   parent: STBaseMobMutant
   id: BaseMobMutantChurzik
+  name: Кикимора
+  suffix: ST, T1
+  description: если и есть наиболее жалкий, трусливый хищник среди фауны Чернобыльской Зоны Отчуждения, то это они. Происхождение их определить проблематично, но тонкий хвост невольно намекает, что их предками возможно были огромные крысы, которые перешли на более обширный рацион.
   components:
     - type: Damageable
       damageModifierSet: STMutantT1DamageModifierSet
