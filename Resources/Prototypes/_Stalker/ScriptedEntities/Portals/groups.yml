@@ -638,3 +638,27 @@
     portalName: Svalka-BarSvalka
   - type: AccessReader
     access: [["Bandit"], ["Freedom"], ["Renegat"]]
+
+###Атом
+
+- type: entity
+  parent: MapTeleportBase
+  id: Lobby-Atom
+  name: Lobby-Atom
+  components:
+    - type: NewMapTeleport
+      allowAll: false
+      portalName: Lobby-Atom
+    - type: AccessReader
+      access: [["Atom"]]
+
+- type: entity
+  parent: MapTeleportBaseUncollide
+  id: Lobby-AtomUncollide
+  name: Lobby-AtomUncollide
+  components:
+    - type: NewMapTeleport
+      allowAll: false
+      portalName: Lobby-Atom
+    - type: AccessReader
+      access: [["Atom"]]

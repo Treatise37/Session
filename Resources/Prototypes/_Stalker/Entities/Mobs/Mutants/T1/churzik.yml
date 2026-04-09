@@ -1,0 +1,69 @@
+- type: entity
+  parent: STBaseMobMutant
+  id: BaseMobMutantChurzik
+  name: Кикимора
+  suffix: ST, T1
+  description: если и есть наиболее жалкий, трусливый хищник среди фауны Чернобыльской Зоны Отчуждения, то это они. Происхождение их определить проблематично, но тонкий хвост невольно намекает, что их предками возможно были огромные крысы, которые перешли на более обширный рацион.
+  components:
+    - type: Damageable
+      damageModifierSet: STMutantT1DamageModifierSet
+    - type: HTN
+      rootTask:
+        task: STBlindDogWhiteCompound
+      blackboard:
+        VisionRadius: !type:Single
+          25
+        AggroVisionRadius: !type:Single
+          15
+    - type: Butcherable
+      spawned:
+        - id: FoodMeatDog
+          maxAmount: 3
+          prob: 1
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: churzik
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 140
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/_Stalker/Mutants/churzik/Churzik_death_1.ogg
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        140: Dead
+    - type: MeleeWeapon
+      attackRate: 2
+      angle: 20
+      range: 1.3
+      soundHit:
+        path: /Audio/_Stalker/Mutants/churzik/Churzik_attack_1.ogg
+      animation: WeaponArcClaw
+      wideAnimation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 15
+    - type: BonusMeleeDamage
+      heavyDamageMultiplier: 1.5
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 1.6
+      baseSprintSpeed: 3.6
+    - type: Sprite
+      sprite: /Textures/_Stalker/Mobs/Mutants/Churzik.rsi
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: churzik
+    - type: SlowOnDamage
+    - type: StaminaDamageOnHit
+      damage: 5
+    - type: STWeight
+      self: 35
