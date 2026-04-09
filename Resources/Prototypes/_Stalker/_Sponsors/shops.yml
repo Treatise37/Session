@@ -306,3 +306,12 @@
       751M80Box: 2200
       751M61Box: 3700
       751Mag30: 500
+
+- type: personalShop
+  id: PersonalgeneralfimozShop
+  username: generalfimoz
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponShotgunOrigin12: 3000
+      Origin1270Drum: 400

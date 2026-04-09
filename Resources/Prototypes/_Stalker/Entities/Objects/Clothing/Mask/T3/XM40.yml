@@ -34,3 +34,16 @@
 #    sprite: _Stalker/Objects/Clothing/mask/xm40military.rsi
 #  - type: Clothing
 #    sprite: _Stalker/Objects/Clothing/mask/xm40military.rsi
+
+- type: entity
+  parent: ClothingMaskGasXM40
+  id: ClothingMaskGasXM40Project
+  name: Модифицированный противогаз XМ40
+  description: Фильтрующее средство индивидуальной защиты органов дыхания, глаз и кожи лица человека.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/mask/gasmask_project.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/mask/gasmask_project.rsi
+  - type: Craftable
+

@@ -11,3 +11,14 @@
       amount: 1
     STCraftTapeKitT2:
       amount: 1
+
+- type: lightCraftingRecipe
+  id: STCraftSkinClothingHeadHelmetInfantryProject
+  results:
+    - ClothingHeadHelmetInfantryProject
+  steps:
+    firstIngredient: STSkinsKitProject
+    secondIngredient: ClothingHeadHelmetInfantry
+    keepFirst: true
+    time: 5
+

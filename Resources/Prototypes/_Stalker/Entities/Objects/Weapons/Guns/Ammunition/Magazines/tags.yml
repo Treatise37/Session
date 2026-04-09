@@ -43,6 +43,9 @@
   id: MagazineSaiga
 
 - type: Tag
+  id: MagazineOrigin12
+
+- type: Tag
   id: MagazineBeretta
 
 - type: Tag
