@@ -1,0 +1,339 @@
+- type: entity
+  parent: BaseMobMutant
+  id: MobStalkerRogueBase
+  description:
+  components:
+    - type: Stamina
+      decay: 7
+      cooldown: 5
+      critThreshold: 700
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.35
+          density: 1000
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Bandit/RogueT3.rsi
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: alive
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: Damageable
+      damageModifierSet: STRogueT3DamageModifierSet
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 110
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                collection: STZombieDeath # stalker EN change
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 1
+      baseSprintSpeed: 1.5
+    - type: Vocalizer
+      minVocalizeInterval: 1m
+      maxVocalizeInterval: 2m
+      hideChat: true
+    - type: Speech
+      speechSounds: BanditCover # stalker EN change
+    - type: Vocal
+      sounds:
+        Male: MaleHuman
+        Female: FemaleHuman
+        Unsexed: MaleHuman
+    - type: HTN
+      rootTask:
+        task: STMonolith
+      blackboard:
+        VisionRadius: !type:Single
+          40
+        AggroVisionRadius: !type:Single
+          30
+    - type: ApproachEmitter
+      range: 0.01
+    - type: STWeight
+      self: 90
+    - type: Tag
+      tags:
+        - DoorBumpOpener
+    - type: Tool
+      speedModifier: 1.5
+      qualities:
+        - Prying
+    - type: Prying
+      pryPowered: !type:Bool
+          true
+      force: !type:Bool
+          true
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.5
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet545PC
+      capacity: 30
+      count: 20
+    - type: Gun
+      fireRate: 6
+      useKey: false
+      selectedMode: FullAuto
+      minAngle: 15
+      maxAngle: 35
+      angleIncrease: 5
+      angleDecay: 30
+      projectileSpeed: 65
+      availableModes:
+        - FullAuto
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        100: Critical
+        110: Dead
+    - type: PassiveDamage
+      allowedStates:
+        - Alive
+        - Critical
+      damageCap: 200
+      damage:
+        groups:
+          Brute: -1
+    - type: Butcherable
+      spawned:
+        - id: Roubles100
+          maxAmount: 1
+          prob: 1
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: BanditAttack
+       params:
+         variation: 0.125
+    - type: NpcFactionMember
+      factions:
+      - MutatedHunter
+
+- type: damageModifierSet
+  id: STRogueT3DamageModifierSet
+  class: 3
+  coefficients:
+    Blunt: 0.6
+    Slash: 0.6
+    Piercing: 0.7
+    Compression: 0.75
+    Radiation: 0.9
+    Heat: 0.8
+    Caustic: 0.75
+    Shock: 0.85
+  flatReductions:
+    Blunt: 5
+    Slash: 5
+    Piercing: 6
+    Heat: 1
+    Radiation: 1
+
+- type: entity
+  parent: MobStalkerRogueBase
+  id: MobStalkerRogueBanditT0
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Bandit/RogueT0.rsi
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.8
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet918PGJ
+      capacity: 7
+      count: 4
+    - type: Gun
+      fireRate: 6
+      useKey: false
+      selectedMode: SemiAuto
+      minAngle: 1
+      maxAngle: 3
+      angleIncrease: 1
+      angleDecay: 3
+      projectileSpeed: 45
+      availableModes:
+        - SemiAuto
+    - type: Damageable
+      damageModifierSet: STRogueT0DamageModifierSet
+    
+- type: damageModifierSet
+  id: STRogueT0DamageModifierSet
+  class: 0
+  coefficients:
+    Blunt: 0.95
+    Slash: 0.95
+    Piercing: 0.90
+    Heat: 0.95
+    Radiation: 0.9
+  flatReductions:
+    Blunt: 1
+    Slash: 1
+    Piercing: 1
+
+- type: entity
+  parent: MobStalkerRogueBase
+  id: MobStalkerRogueFreedom
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Freedom/Rogue.rsi
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.8
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet919PBM
+      capacity: 35
+      count: 31
+    - type: Gun
+      fireRate: 9
+      useKey: false
+      selectedMode: FullAuto
+      minAngle: 15
+      maxAngle: 40
+      angleIncrease: 1
+      angleDecay: 5
+      projectileSpeed: 55
+      availableModes:
+        - FullAuto
+    - type: Damageable
+      damageModifierSet: STRogueT3DamageModifierSet
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: FreedomAttack
+       params:
+         variation: 0.125
+
+- type: entity
+  parent: MobStalkerRogueBase
+  id: MobStalkerRogueDolg
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Duty/Rogue.rsi
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.2
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet545PC
+      capacity: 30
+      count: 23
+    - type: Gun
+      fireRate: 6
+      useKey: false
+      selectedMode: FullAuto
+      minAngle: 9
+      maxAngle: 28
+      angleIncrease: 1.65
+      angleDecay: 9
+      projectileSpeed: 65
+      availableModes:
+        - FullAuto
+    - type: Damageable
+      damageModifierSet: STRogueT3DamageModifierSet
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: DutyAttack
+       params:
+         variation: 0.125
+
+- type: entity
+  parent: MobStalkerRogueBase
+  id: MobStalkerRogueMerc1
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Mercenary/Rogue1.rsi
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet556M856
+      capacity: 30
+      count: 28
+    - type: Gun
+      fireRate: 7.5
+      useKey: false
+      selectedMode: FullAuto
+      minAngle: 3
+      maxAngle: 12
+      angleIncrease: 1
+      angleDecay: 10
+      projectileSpeed: 65
+      availableModes:
+        - FullAuto
+    - type: Damageable
+      damageModifierSet: STRogueT3DamageModifierSet
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: MercAttack
+       params:
+         variation: 0.125
+
+- type: entity
+  parent: MobStalkerRogueMerc1
+  id: MobStalkerRogueMerc2
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Guards/Mercenary/Rogue2.rsi
+
+- type: entity
+  parent: MobStalkerRogueBase
+  id: MobStalkerRogueVoen
+  components:
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: alive
+          sprite: /Textures/_Stalker/Mobs/Military/PSZBandana.rsi
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.2
+      rechargeSound: null
+    - type: BasicEntityAmmoProvider
+      proto: Bullet545BP
+      capacity: 30
+      count: 28
+    - type: Gun
+      fireRate: 6
+      useKey: false
+      selectedMode: FullAuto
+      minAngle: 15
+      maxAngle: 35
+      angleIncrease: 2
+      angleDecay: 9
+      projectileSpeed: 60
+      availableModes:
+        - FullAuto
+    - type: Damageable
+      damageModifierSet: STRogueT3DamageModifierSet
+    - type: EmitSoundOnTrigger
+      sound:
+       collection: MilitaryAttack
+       params:
+         variation: 0.125

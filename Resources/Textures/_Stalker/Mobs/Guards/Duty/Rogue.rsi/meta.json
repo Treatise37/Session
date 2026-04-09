@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": "Stalker 14 license",
+  "copyright": "Stalker14 CLA",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "alive",
+      "directions": 4
+    },
+    {
+      "name": "dead",
+      "directions": 4
+    }
+  ]
+}
