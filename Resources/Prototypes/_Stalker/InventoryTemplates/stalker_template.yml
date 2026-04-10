@@ -105,7 +105,7 @@
       slotFlags: ARTIFACT
       stripTime: 6
       uiWindowPos: 0,5
-      strippingWindowPos: 2,9
+      strippingWindowPos: 3,-1
       displayName: Test
       stripHidden: true
     # Main body (Colum 2)
