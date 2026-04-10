@@ -126,3 +126,15 @@
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/hats/aborigine_stalker.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetBerill5MMilitary
+  id: ClothingHeadHelmetBereza
+  name: Сфера-8 «Листок»
+  suffix: ST, Кастомка
+  description: Защитный шлем «Сфера-8», модифицированный и перешитый в камуфляж «Берёза». Обеспечивает надёжную защиту головы от пуль и осколков при сохранении. Оснащён боковым фонарём для работы в условиях низкой освещённости. По состоянию изношен, но уровень защиты не потерял.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/hats/sphere_bereza.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/hats/sphere_bereza.rsi

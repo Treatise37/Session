@@ -339,6 +339,25 @@
 
 - type: entity
   parent: STClothingBackBase
+  id: ClothingBackpackDuffelBlackMilitaryTacticStalkerKrava
+  name: камуфляжная сумка "Валькирия"
+  description: Вместительная сумка, которая подойдет для переноски вооружения и снаряжения.
+  suffix: ST, кастомка
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/backpacks/krava.rsi
+  - type: Storage #55 клеток 56
+    grid:
+    - 0,0,7,6
+  - type: Tag
+    tags:
+    - STClothingBackpackT4
+    - BlockBack
+  - type: STWeightInsideReduction
+    reductionFraction: 0.55
+
+- type: entity
+  parent: STClothingBackBase
   id: ClothingBackpackDuffelBlackTacticStalker
   name: чёрный армейский тактический рюкзак
   description: Рассчитан на использование в полевых условиях, при этом он многофункционален и подходит для совершенно разных ситуаций.

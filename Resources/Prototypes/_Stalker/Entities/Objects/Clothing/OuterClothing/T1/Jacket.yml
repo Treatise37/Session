@@ -24,6 +24,8 @@
         Piercing: 0.90
         Heat: 0.95
         Radiation: 0.9
+  - type: GrantsArtifactSlots
+    slots: 2 # Stalker-Changes | Number of artifact slots this armor grants
   - type: Storage
     maxItemSize: Normal
     grid:

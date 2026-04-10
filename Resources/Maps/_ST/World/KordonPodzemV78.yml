@@ -71613,13 +71613,6 @@ entities:
     - type: Transform
       pos: 146.5,57.5
       parent: 1
-    - type: ActivatableUI
-      currentSingleUser: invalid
-    - type: UserInterface
-      actors:
-        enum.ShopUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
 - proto: StalkerShopNeutrals
   entities:
   - uid: 4091

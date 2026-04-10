@@ -136,14 +136,6 @@
         MP5Mag50: 500
 
 - type: personalShop
-  id: PersonalOnlyWeedShop
-  username: onlyweed
-  categories:
-    - name: Персональная категория
-      items:
-        STWeaponRifleStalkerAek971: 8000
-
-- type: personalShop
   id: PersonalDesaylerShop
   username: Desayler
   categories:
@@ -215,6 +207,8 @@
     items:
       STWeaponRifleSCARL: 3000
       STWeaponRifleOC14AltSkin1: 5000
+      STClothingOuterArmorBerillBereza: 6500
+      ClothingHeadHelmetBereza: 3500
 
 - type: personalShop
   id: PersonalHLoRka_202Shop
@@ -223,6 +217,7 @@
   - name: Персональная категория
     items:
       STWeaponSniperSVUTop: 12000
+      WeaponPistolGyrzaTactikal: 700
 
 - type: personalShop
   id: Personalclown_228Shop
@@ -240,6 +235,7 @@
     items:
       claymoreBattle: 3500
       STClothingOuterArmorPeresvet: 8500
+
 - type: personalShop
   id: PersonalDasiusWLShop
   username: DasiusWL
@@ -275,7 +271,9 @@
       STBox9x39PAB9: 2300
       STBox9x39SP6: 4300
       STClothingOuterArmorGonchiy: 8200
-
+      STBaseWeaponShotgunVepr12De21: 6200
+      Base1270Mag: 300
+      
 - type: personalShop
   id: Personalnikita2282288Shop
   username: nikita2282288
@@ -306,6 +304,11 @@
       751M80Box: 2200
       751M61Box: 3700
       751Mag30: 500
+      STClothingHandsGlovesKrava: 100
+      ClothingEyesProtectionGlassesKrava: 100
+      ClothingBackpackDuffelBlackMilitaryTacticStalkerKrava: 1000
+      ClothingOuterCoatKrava: 700
+      STClothingOuterArmorKrava: 7000
 
 - type: personalShop
   id: PersonalgeneralfimozShop

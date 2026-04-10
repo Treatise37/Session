@@ -62,3 +62,15 @@
     sprite: _Stalker/Objects/Clothing/gloves/foma.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/gloves/foma.rsi
+
+- type: entity
+  parent: ClothingHandsBaseST
+  id: STClothingHandsGlovesKrava
+  name: беспалые боевые перчатки
+  suffix: ST, Кастомка
+  description: Тактические перчатки изготовленные для удобного ношения военнослужащих.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/gloves/gloves_krava.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/gloves/gloves_krava.rsi

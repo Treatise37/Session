@@ -90,5 +90,9 @@ st-news-reaction-rookies = Новички
 st-news-reaction-journalists = Журналисты
 st-news-reaction-un = UN
 
+# Photos
+st-news-attach-photo-button = Приложить фотографию (держите в руке)
+st-news-remove-photo-button = Убрать фотографию
+
 # Discord
 st-news-discord-footer = by {$author} | Week #{$round} | {$time}

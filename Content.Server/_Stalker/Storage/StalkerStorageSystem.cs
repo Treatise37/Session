@@ -26,6 +26,7 @@ using Content.Server.Botany.Components;
 using Content.Shared._Stalker;
 using Content.Shared._Stalker.Storage;
 using Content.Shared.Power.Components;
+using Content.Shared._Stalker_EN.Camera; // stalker-en-changes: photo persistence
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Stalker.Storage;
@@ -89,6 +90,7 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         _convertersItemStalker.Add("ML", ConverterBatteryItemStalker);
         _convertersItemStalker.Add("ME", ConverterSolutionItemStalker); // Solutions
         _convertersItemStalker.Add("MC", ConverterCartridgeItemStalker);
+        _convertersItemStalker.Add("MF", ConverterPhotoItemStalker); // stalker-en-changes: photo persistence
         // Доделать еще конвентеры для предметов с жидкостями и т.д.
 
         foreach (var migration in _prototype.EnumeratePrototypes<STStashMigrationPrototype>())
@@ -158,6 +160,13 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         {
             Components += "C";
         }
+
+        // stalker-en-changes-start
+        if (HasComp<STPhotoComponent>(InputItem))
+        {
+            Components += "F";
+        }
+        // stalker-en-changes-end
 
         if (_convertersItemStalker.ContainsKey(Components))
         {
@@ -312,6 +321,24 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
         return returnList;
     }
 
+    // stalker-en-changes-start
+    /// <summary>
+    /// Converts a photo entity into a <see cref="PhotoItemStalker"/> for stash persistence,
+    /// capturing the photo's unique ID and base64-encoded image data.
+    /// </summary>
+    private List<object> ConverterPhotoItemStalker(EntityUid item)
+    {
+        var returnList = new List<object>(0);
+        if (!TryComp<STPhotoComponent>(item, out var photo))
+            return returnList;
+
+        returnList.Add(new PhotoItemStalker(
+            GetPrototypeName(item),
+            photo.PhotoId.ToString(),
+            Convert.ToBase64String(photo.ImageData)));
+        return returnList;
+    }
+    // stalker-en-changes-end
 
     #endregion
 
@@ -448,6 +475,31 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                     }
                     break;
                 }
+
+            // stalker-en-changes-start
+            case PhotoItemStalker photoOptions:
+                if (TryComp<STPhotoComponent>(inputItemUid, out var photoComp))
+                {
+                    if (Guid.TryParse(photoOptions.PhotoId, out var parsedPhotoId))
+                        photoComp.PhotoId = parsedPhotoId;
+                    else
+                        Log.Warning($"Invalid photo GUID '{photoOptions.PhotoId}', using default");
+                    if (!string.IsNullOrEmpty(photoOptions.ImageData))
+                    {
+                        try
+                        {
+                            photoComp.ImageData = Convert.FromBase64String(photoOptions.ImageData);
+                        }
+                        catch (FormatException)
+                        {
+                            Log.Warning($"Corrupt base64 image data for photo {photoOptions.PhotoId}, skipping image restore");
+                        }
+                    }
+                    Dirty(inputItemUid, photoComp);
+                }
+                break;
+            // stalker-en-changes-end
+
         }
 
         if (nextSpawnOptions is not PaperItemStalker paperItemStalker)
@@ -807,6 +859,15 @@ public sealed class StalkerStorageSystem : SharedStalkerStorageSystem
                     if (newObject != null)
                         playerInventory.AllItems.Add(newObject);
                     break;
+
+                // stalker-en-changes-start
+                case "PhotoItemStalker":
+                    newObject = node.Deserialize<PhotoItemStalker>();
+                    if (newObject != null)
+                        playerInventory.AllItems.Add(newObject);
+                    break;
+                // stalker-en-changes-end
+
             }
         }
         return playerInventory;

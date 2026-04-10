@@ -23,10 +23,16 @@ public sealed class STMessengerContactInfo
     /// </summary>
     public readonly string? FactionName;
 
-    public STMessengerContactInfo(string characterName, string? messengerId, string? factionName)
+    /// <summary>
+    /// JobIcon prototype ID for the contact's rank icon, or null if unknown/offline.
+    /// </summary>
+    public readonly string? RankIcon;
+
+    public STMessengerContactInfo(string characterName, string? messengerId, string? factionName, string? rankIcon = null)
     {
         CharacterName = characterName;
         MessengerId = messengerId;
         FactionName = factionName;
+        RankIcon = rankIcon;
     }
 }

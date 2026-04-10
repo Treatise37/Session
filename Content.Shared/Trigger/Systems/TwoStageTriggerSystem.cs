@@ -38,10 +38,20 @@ public sealed class TwoStageTriggerSystem : EntitySystem
         base.Update(frameTime);
 
         var curTime = _timing.CurTime;
+        var toTrigger = new List<EntityUid>();
         var enumerator = EntityQueryEnumerator<ActiveTwoStageTriggerComponent, TwoStageTriggerComponent>();
+
         while (enumerator.MoveNext(out var uid, out _, out var component))
         {
             if (curTime < component.NextTriggerTime)
+                continue;
+
+            toTrigger.Add(uid);
+        }
+
+        foreach (var uid in toTrigger)
+        {
+            if (!TryComp<TwoStageTriggerComponent>(uid, out var component))
                 continue;
 
             RemComp<ActiveTwoStageTriggerComponent>(uid);
