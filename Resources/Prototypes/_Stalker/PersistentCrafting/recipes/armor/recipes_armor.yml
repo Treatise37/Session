@@ -107,26 +107,6 @@
   subCategory: armor-body
 
 - type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipe6B13T4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingOuterArmor6B13
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNode6B13T4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: ClothingOuterArmor6B13
-  category: armor
-  subCategory: armor-body
-
-- type: persistentCraftRecipe
   id: PersistentCraftArmorRecipeVaryag4T4
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -279,24 +259,6 @@
   subCategory: armor-special-suits
 
 - type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeUZK5T3
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingOuterArmorUzk5
-  branch: Armor
-  tier: 3
-  requiredNode: PersistentCraftArmorNodeUZK5T3
-  craftTime: 7
-  pointReward: 16
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 32
-  results:
-  - proto: ClothingOuterArmorUzk5
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
   id: PersistentCraftArmorRecipePSZ7T3
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -347,46 +309,6 @@
     amount: 32
   results:
   - proto: ClothingOuterArmorSevaStalker
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeHazmatT4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingOuterArmorHazmatRf
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeHazmatT4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: ClothingOuterArmorHazmatRf
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeBerill5MT4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: STClothingOuterArmorBerill5M
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeBerill5MT4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: STClothingOuterArmorBerill5M
   category: armor
   subCategory: armor-special-suits
 
@@ -537,66 +459,6 @@
   subCategory: armor-special-suits
 
 - type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeEgerT4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingOuterArmorYeger
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeEgerT4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: ClothingOuterArmorYeger
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeKsn13T4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: STClothingOuterArmorVeryHeavy
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeKsn13T4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: STClothingOuterArmorVeryHeavy
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeKsn13MT4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: STClothingOuterArmorVeryHeavySci
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeKsn13MT4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: STClothingOuterArmorVeryHeavySci
-  category: armor
-  subCategory: armor-special-suits
-
-- type: persistentCraftRecipe
   id: PersistentCraftArmorRecipeSh68T1
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -629,44 +491,6 @@
     amount: 6
   results:
   - proto: STClothingHeadHelmetMakeshiftTacticalT3
-  category: armor
-  subCategory: armor-helmets
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeSphere08T3
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingHeadHelmetBerill5MMilitary
-  branch: Armor
-  tier: 3
-  requiredNode: PersistentCraftArmorNodeSphere08T3
-  craftTime: 7
-  pointReward: 16
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 32
-  results:
-  - proto: ClothingHeadHelmetBerill5MMilitary
-  category: armor
-  subCategory: armor-helmets
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeSphere12T45
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingHeadHelmetBulatMilitary
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeSphere12T45
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier4
-    amount: 1
-  results:
-  - proto: ClothingHeadHelmetBulatMilitary
   category: armor
   subCategory: armor-helmets
 
@@ -739,46 +563,6 @@
     amount: 32
   results:
   - proto: ClothingHeadAssaultHelmet
-  category: armor
-  subCategory: armor-helmets
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipe6B47T4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingHeadRatnik
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNode6B47T4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: ClothingHeadRatnik
-  category: armor
-  subCategory: armor-helmets
-
-- type: persistentCraftRecipe
-  id: PersistentCraftArmorRecipeUlachT4
-  name: persistent-craft-recipe-generic-name
-  description: persistent-craft-recipe-generic-desc
-  displayProto: ClothingHeadHelmetUlach
-  branch: Armor
-  tier: 4
-  requiredNode: PersistentCraftArmorNodeUlachT4
-  craftTime: 8
-  pointReward: 32
-  ingredients:
-  - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
-  results:
-  - proto: ClothingHeadHelmetUlach
   category: armor
   subCategory: armor-helmets
 

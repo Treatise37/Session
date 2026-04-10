@@ -37,6 +37,8 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.80
   - type: Craftable
@@ -155,6 +157,26 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/zastupnik.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/_Sera/zastupnik.rsi
+  - type: Armor
+    armorClass: 3
+    modifiers:
+      flatReductions:
+        Blunt: 5
+        Slash: 7
+        Piercing: 7
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.6
+        Piercing: 0.75
+        Heat: 0.75
+        Radiation: 0.8
+        Caustic: 0.75
+        Shock: 0.75
+        Compression: 0.8
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+  - type: ExplosionResistance
+    damageCoefficient: 0.80
 
 - type: entity
   parent: STClothingOuterArmorLightPlateVestBaseANAgreen
@@ -191,3 +213,5 @@
         Blunt: 0.80
         Slash: 0.80
         Piercing: 0.75
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants

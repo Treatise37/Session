@@ -19,6 +19,8 @@
           Slash: 0.85
           Piercing: 0.6
           Heat: 0.9
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.6
     - type: Sprite

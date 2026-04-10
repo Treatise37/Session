@@ -24,6 +24,8 @@
         Heat: 0.85
         Piercing: 0.7
         Compression: 0.85
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
 
 - type: entity
   parent: ClothingOuterArmorPSZ9D

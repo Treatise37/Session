@@ -99,6 +99,15 @@
       strippingWindowPos: 3,0
       displayName: Test
       stripHidden: true
+    - name: artifact5
+      slotTexture: artifact
+      fullTextureName: ArtifactSlotBackground
+      slotFlags: ARTIFACT
+      stripTime: 6
+      uiWindowPos: 0,5
+      strippingWindowPos: 2,9
+      displayName: Test
+      stripHidden: true
     # Main body (Colum 2)
     - name: legs
       slotTexture: legs

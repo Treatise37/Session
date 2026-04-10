@@ -44,6 +44,8 @@
         Psy: 0.80
         Radiation: 0.80
         Compression: 0.80
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.90
   - type: ClothingSpeedModifier
@@ -78,6 +80,8 @@
         Caustic: 0.55
         Shock: 0.55
         Psy: 0.8
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/hats/ssp24_helm.rsi
   - type: Clothing
@@ -121,6 +125,8 @@
         Psy: 0.90
         Radiation: 0.90
         Compression: 0.90
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/ruby.rsi
     state: icon-suit
@@ -223,6 +229,8 @@
         Psy: 0.8
         Radiation: 0.8
         Compression: 0.90
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/outerClothing/Jewelry/sapfire.rsi
     state: icon-suit

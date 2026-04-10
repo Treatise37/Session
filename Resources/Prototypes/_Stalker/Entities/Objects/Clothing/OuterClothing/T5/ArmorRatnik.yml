@@ -23,7 +23,9 @@
         Slash: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.5
-
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+    
 # Stalker
 - type: entity
   parent: STClothingOuterArmorRatnikBase

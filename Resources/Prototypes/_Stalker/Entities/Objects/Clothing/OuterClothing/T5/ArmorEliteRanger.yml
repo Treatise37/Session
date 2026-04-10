@@ -29,3 +29,5 @@
         Compression: 0.50
   - type: ExplosionResistance
     damageCoefficient: 0.2
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants

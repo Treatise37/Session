@@ -46,6 +46,8 @@
         Shock: 0.60
         Compression: 0.65
         Psy: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: Tag
@@ -90,6 +92,8 @@
         Piercing: 0.95
         Compression: 0.95
         Psy: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: HideLayerClothing
     slots:
     - Hair
@@ -149,6 +153,8 @@
           Shock: 0.6
           Compression: 0.7
           Psy: 0.6
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.9
     - type: Sprite
@@ -212,6 +218,8 @@
         Caustic: 0.55
         Shock: 0.65
         Compression: 0.75
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: Sprite
@@ -267,6 +275,8 @@
         Caustic: 0.5
         Shock: 0.6
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: Sprite
@@ -321,6 +331,8 @@
         Caustic: 0.5
         Shock: 0.6
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: Sprite
@@ -356,6 +368,8 @@
         Caustic: 0.5
         Shock: 0.6
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: Sprite
@@ -410,6 +424,8 @@
         Caustic: 0.5
         Shock: 0.6
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: Sprite
@@ -461,6 +477,8 @@
           Caustic: 0.5
           Shock: 0.6
           Compression: 0.7
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.8
     - type: Sprite
@@ -524,6 +542,8 @@
          Caustic: 0.56
          Shock: 0.6
          Compression: 0.7
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       amageCoefficient: 0.8
     - type: STWeight
@@ -580,6 +600,8 @@
         Caustic: 0.5
         Shock: 0.6
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: Sprite
@@ -637,6 +659,8 @@
          Caustic: 0.6
          Shock: 0.7
          Compression: 0.7
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.7
 
@@ -682,6 +706,8 @@
           Caustic: 0.5
           Shock: 0.6
           Compression: 0.7
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.8
     - type: Sprite
@@ -711,7 +737,7 @@
   parent: STClothingOuterArmorSevaBase
   id: ClothingOuterArmorSevarenegat
   name: костюм "СЕВА" 'Ржавчина'
-  description: Эта "СЕВА" видела слишком многое в Зоне. Коричневая резина, баллон цвета хаки, оранжевая мазня и когтистая царапина на шлеме. Ренегаты говорят, что это отметина удачи… или проклятья.
+  description: Эта "СЕВА" видела слишком многое в Зоне. Коричневая резина, баллон цвета хаки, оранжевая мазня и когтистая царапина на шлеме. Ренегаты говорят, что это отметина удачи… или проклятье.
   components:
     - type: STWeight
       self: 12
@@ -735,6 +761,8 @@
           Caustic: 0.55
           Shock: 0.65
           Compression: 0.75
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: ExplosionResistance
       damageCoefficient: 0.7
     - type: Sprite

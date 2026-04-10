@@ -27,6 +27,8 @@
         Caustic: 0.85
         Shock: 0.85
         Compression: 0.85
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.7
 
@@ -63,6 +65,8 @@
         Caustic: 0.7
         Shock: 0.7
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.7
 
@@ -108,5 +112,7 @@
         Caustic: 0.7
         Shock: 0.7
         Compression: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 1

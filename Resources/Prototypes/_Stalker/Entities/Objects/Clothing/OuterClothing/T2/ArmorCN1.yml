@@ -30,6 +30,8 @@
         Shock: 0.75
         Psy: 0.8
         Compression: 0.8
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.8
   # bonus
@@ -53,7 +55,7 @@
   parent: STClothingHeadHatBase
   id: ClothingHeadHelmetZN1
   name: капюшон «ЗН-1»
-  categories: [ HideSpawnMenu ] 
+  categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/hats/zn1_helm.rsi
@@ -67,6 +69,8 @@
           Slash: 0.85
           Heat: 0.95
           Shock: 0.98
+    - type: GrantsArtifactSlots
+      slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
     - type: Reflect
       reflectProb: 0.02
       spread: 360
@@ -97,7 +101,7 @@
   id: ClothingHeadHelmetCN1
   suffix: ST, T2, Universal
   name: капюшон «СН-1»
-  categories: [ HideSpawnMenu ] 
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/hats/cn1_helm.rsi

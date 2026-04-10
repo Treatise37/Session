@@ -21,7 +21,9 @@
   - type: ExplosionResistance
     damageCoefficient: 0.65
   - type: Craftable
-
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+    
 - type: entity
   parent: STClothingOuterArmor6B13Base
   id: ClothingOuterArmor6B13

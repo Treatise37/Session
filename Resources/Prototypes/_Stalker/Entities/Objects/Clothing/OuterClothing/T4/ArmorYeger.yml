@@ -20,18 +20,20 @@
       flatReductions:
         Blunt: 7
         Slash: 7
-        Piercing: 5
+        Piercing: 6
         Radiation: 1
       coefficients:
         Blunt: 0.8
         Slash: 0.7
         Piercing: 0.7
-        Heat: 0.65
-        Radiation: 0.65
-        Caustic: 0.8
-        Shock: 0.75
-        Psy: 0.7
-        Compression: 0.85
+        Heat: 0.6
+        Radiation: 0.6
+        Caustic: 0.75
+        Shock: 0.7
+        Psy: 0.55
+        Compression: 0.65
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.9
 
@@ -51,6 +53,8 @@
         Shock: 0.85
         Radiation: 0.85
         Psy: 0.85
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/hats/yeger_helm.rsi
   - type: Clothing
@@ -105,7 +109,7 @@
   parent: ClothingHeadHelmetYeger
   id: ClothingHeadHelmetYegerFreedom
   name: шлем «Кикиморы»
-  categories: [ HideSpawnMenu ] 
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Stalker/Objects/Clothing/hats/yeger_helm.rsi
@@ -119,3 +123,5 @@
         Shock: 0.7
         Radiation: 0.5
         Psy: 0.65
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants

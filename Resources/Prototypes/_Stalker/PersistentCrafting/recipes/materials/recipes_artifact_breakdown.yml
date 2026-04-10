@@ -15,7 +15,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 14
+    amount: 3
   category: artifact-breakdown
   subCategory: tier-1
 
@@ -34,7 +34,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 24
+    amount: 8
   category: artifact-breakdown
   subCategory: tier-2
 
@@ -53,7 +53,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 34
+    amount: 18
   category: artifact-breakdown
   subCategory: tier-3
 
@@ -72,7 +72,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 68
+    amount: 30
   category: artifact-breakdown
   subCategory: tier-4
 
@@ -91,7 +91,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 132
+    amount: 45
   category: artifact-breakdown
   subCategory: tier-5
 

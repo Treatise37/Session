@@ -29,7 +29,9 @@
         Shock: 0.75
   - type: ExplosionResistance
     damageCoefficient: 0.6
-
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+    
 # Coventant
 
 - type: entity
