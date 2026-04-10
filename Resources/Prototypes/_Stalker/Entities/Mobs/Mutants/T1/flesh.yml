@@ -61,6 +61,12 @@
     - type: MovementSpeedModifier
       baseWalkSpeed: 3.4
       baseSprintSpeed: 4.2
+    - type: FootstepModifier
+      footstepSoundCollection:
+        path: /Audio/_Stalker/Mutants/hoof_hard2.ogg
+        params:
+          volume: 0
+          variation: 0.3
     - type: Sprite
       layers:
         - map: ["enum.DamageStateVisualLayers.Base"]
@@ -82,6 +88,7 @@
     - type: Tag # ST14-EN: Ritual chasm
       tags:
       - STFleshRelated
+      - FootstepSound
     - type: STMobVariantConfig
       variants:
       - chance: 0.08
@@ -184,6 +191,12 @@
     - type: BonusMeleeDamage
       heavyDamageMultiplier: 1.5
     - type: MovementSpeedModifier
+    - type: FootstepModifier
+      footstepSoundCollection:
+        path: /Audio/_Stalker/Mutants/hoof_hard2.ogg
+        params:
+          volume: 0
+          variation: 0.3
       baseWalkSpeed: 3.4
       baseSprintSpeed: 4.2
     - type: HTN
@@ -207,6 +220,7 @@
     - type: Tag # ST14-EN: Ritual chasm
       tags:
       - STFleshRelated
+      - FootstepSound
     - type: STMobVariantConfig
       variants:
       - chance: 0.08

@@ -309,3 +309,12 @@
       ClothingBackpackDuffelBlackMilitaryTacticStalkerKrava: 1000
       ClothingOuterCoatKrava: 700
       STClothingOuterArmorKrava: 7000
+
+- type: personalShop
+  id: PersonalgeneralfimozShop
+  username: generalfimoz
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponShotgunOrigin12: 3000
+      Origin1270Drum: 400

@@ -3,3 +3,4 @@ emote-menu-category-vocal = Vocal
 emote-menu-category-hands = Hands
 emote-menu-category-tacticalgen = Tactical General
 emote-menu-category-tacticalwarn = Tactical Warnings
+emote-menu-category-voiceline = Voice Warnings

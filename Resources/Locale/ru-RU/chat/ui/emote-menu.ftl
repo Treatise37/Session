@@ -3,3 +3,4 @@ emote-menu-category-vocal = Голос
 emote-menu-category-hands = Жесты
 emote-menu-category-tacticalgen = Тактические команды
 emote-menu-category-tacticalwarn = Тактические предупреждения
+emote-menu-category-voiceline = Голосовые предупреждения

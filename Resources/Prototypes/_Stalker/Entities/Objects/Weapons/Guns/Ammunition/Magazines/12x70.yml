@@ -320,3 +320,36 @@
     size: Normal
     shape:
     - 0,0,2,2
+
+- type: entity
+  id: Base1270OriginMag
+  name: магазин Origin-12 12х70 (5)
+  description: Магазин Origin-12 12х70. Вместимость дробей 5. Продают пустым.
+  parent: Base1270Mag
+  suffix: Stalker
+  components:
+  - type: Tag
+    tags:
+      - MagazineOrigin12
+
+- type: entity
+  id: Origin1270Mag10
+  name: магазин Origin-12 12х70 (10)
+  description: Магазин Origin-12 12х70. Вместимость дробей 10. Продают пустым.
+  parent: Saiga1270Mag10
+  suffix: Stalker
+  components:
+  - type: Tag
+    tags:
+      - MagazineOrigin12
+
+- type: entity
+  id: Origin1270Drum
+  name: барабан Origin-12 12х70 (20)
+  description: Барабан Origin-12 12х70. Вместимость дробей 20. Продают пустым.
+  parent: Saiga1270Drum
+  suffix: Stalker
+  components:
+  - type: Tag
+    tags:
+      - MagazineOrigin12

@@ -191,10 +191,10 @@
   name: persistent-craft-node-anomaly-velez-name
   description: persistent-craft-node-sub-recipe-desc
   branch: Anomaly
-  cost: 80
+  cost: 160
   displayProto: Veles
   treeColumn: 6
-  treeRow: 3
+  treeRow: 4
   prerequisites:
   - PersistentCraftAnomalyNodeBarracuda
 
