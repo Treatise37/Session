@@ -38,6 +38,17 @@
 
 - type: entity
   parent: STClothingHeadHelmetCombatT2Base
+  id: ClothingHeadHelmetInfantryProject
+  name: Модифицированный шлем «Восток»
+  description: Пехотный шлем марки «Восток» второго класса защиты, производитель неизвестен.
+  components:
+    - type: Sprite
+      sprite: _Stalker/Objects/Clothing/hats/pehhelm_project.rsi
+    - type: Clothing
+      sprite: _Stalker/Objects/Clothing/hats/pehhelm_project.rsi
+
+- type: entity
+  parent: STClothingHeadHelmetCombatT2Base
   id: ClothingHeadHelmetInfantryBand
   name: бандитский «Восток»
   description: Пехотный шлем «Восток» с нанесенными на него полосками, как буд-то adidas, почитается бандитскими формированиями.

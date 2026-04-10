@@ -8,3 +8,12 @@
     keepFirst: true
     time: 5
 
+- type: lightCraftingRecipe
+  id: STCraftSkinClothingMaskGasXM40Project
+  results:
+    - ClothingMaskGasXM40Project
+  steps:
+    firstIngredient: STSkinsKitProject
+    secondIngredient: ClothingMaskGasXM40
+    keepFirst: true
+    time: 5
