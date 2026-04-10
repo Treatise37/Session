@@ -42,17 +42,19 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Veles
   branch: Anomaly
-  tier: 3
+  tier: 4
   requiredNode: PersistentCraftAnomalyNodeVeles
-  craftTime: 7
-  pointReward: 16
+  craftTime: 8
+  pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 64
+  - tag: STArtifactTier3
+    amount: 1
   results:
   - proto: Veles
   category: artifact-detectors
-  subCategory: tier-3
+  subCategory: tier-4
 
 # - type: persistentCraftRecipe
 #   id: PersistentCraftAnomalyRecipeT5
