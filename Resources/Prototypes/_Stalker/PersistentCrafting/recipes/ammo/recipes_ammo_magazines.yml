@@ -46,7 +46,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Base1270Mag
   category: ammo
@@ -58,9 +58,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Saiga1270Drum
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -82,7 +82,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Saiga1270Mag10
   category: ammo
@@ -100,7 +100,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 338Mag10
   category: ammo
@@ -112,13 +112,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: SpeedLoaderRemingtonMagnum
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: SpeedLoaderRemingtonMagnum
   category: ammo
@@ -130,13 +130,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: SpeedLoaderRemingtonMagnumAP
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: SpeedLoaderRemingtonMagnumAP
   category: ammo
@@ -148,13 +148,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: SpeedLoaderRemingtonMagnumEmpty
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: SpeedLoaderRemingtonMagnumEmpty
   category: ammo
@@ -166,13 +166,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BasePP2000PearlMag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BasePP2000PearlMag
   category: ammo
@@ -202,13 +202,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BaseTommyGunMag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: BaseTommyGunMag
   category: ammo
@@ -256,9 +256,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 545Mag20
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -280,7 +280,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 545Mag30
   category: ammo
@@ -292,13 +292,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 545Mag45
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 545Mag45
   category: ammo
@@ -310,13 +310,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 545Mag60
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 545Mag60
   category: ammo
@@ -328,13 +328,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base545Mag10
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Base545Mag10
   category: ammo
@@ -346,9 +346,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 556Mag20
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -370,7 +370,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 556Mag30
   category: ammo
@@ -382,13 +382,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 556Mag45
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 556Mag45
   category: ammo
@@ -400,13 +400,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 556Mag60
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 556Mag60
   category: ammo
@@ -418,13 +418,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base556Mag10
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Base556Mag10
   category: ammo
@@ -436,13 +436,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BasePPSHMag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: BasePPSHMag
   category: ammo
@@ -454,13 +454,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: PPSHDrum
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: PPSHDrum
   category: ammo
@@ -472,13 +472,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: TTMag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: TTMag
   category: ammo
@@ -496,7 +496,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 739Mag30
   category: ammo
@@ -508,13 +508,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 739Mag45
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 739Mag45
   category: ammo
@@ -526,13 +526,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 739Mag75
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 739Mag75
   category: ammo
@@ -544,13 +544,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base739Mag10
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Base739Mag10
   category: ammo
@@ -562,13 +562,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Magazine762x39RPD
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: Magazine762x39RPD
   category: ammo
@@ -586,7 +586,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 751Mag20
   category: ammo
@@ -604,7 +604,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 751Mag30
   category: ammo
@@ -622,7 +622,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: Base751Mag10
   category: ammo
@@ -640,7 +640,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 754Mag10
   category: ammo
@@ -658,7 +658,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: 754Mag20
   category: ammo
@@ -676,7 +676,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: Base754Mag5
   category: ammo
@@ -688,9 +688,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BaseAPSMag
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -712,7 +712,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BasePMMag
   category: ammo
@@ -724,13 +724,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BizonMag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: BizonMag
   category: ammo
@@ -766,7 +766,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BaseGlockMag10
   category: ammo
@@ -784,7 +784,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BaseGSH-18Mag10
   category: ammo
@@ -796,13 +796,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BaseMP5Mag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: BaseMP5Mag
   category: ammo
@@ -814,13 +814,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BaseOTS126Mag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 1
+  requiredNode: PersistentCraftWeaponAmmoNodeT1
+  craftTime: 4
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BaseOTS126Mag
   category: ammo
@@ -832,9 +832,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BasePP2000Mag
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -868,13 +868,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: BizonMag919
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: BizonMag919
   category: ammo
@@ -892,7 +892,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: GlockMag17
   category: ammo
@@ -904,9 +904,9 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: GlockMag24
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 2
+  requiredNode: PersistentCraftWeaponAmmoNodeT2
+  craftTime: 5
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
@@ -922,13 +922,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: GlockMag33
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: GlockMag33
   category: ammo
@@ -946,7 +946,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: GSH-18Mag18
   category: ammo
@@ -958,13 +958,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: LP08Drum
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: LP08Drum
   category: ammo
@@ -976,13 +976,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: MP40Mag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: MP40Mag
   category: ammo
@@ -994,13 +994,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: MP5Mag50
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: MP5Mag50
   category: ammo
@@ -1012,13 +1012,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: P90Mag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: P90Mag
   category: ammo
@@ -1030,13 +1030,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: PP91Mag
   branch: Ammo
-  tier: 2
-  requiredNode: PersistentCraftWeaponAmmoNodeT2
-  craftTime: 5
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: PP91Mag
   category: ammo
@@ -1048,13 +1048,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: VityazMag
   branch: Ammo
-  tier: 1
-  requiredNode: PersistentCraftWeaponAmmoNodeT1
-  craftTime: 4
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: VityazMag
   category: ammo
@@ -1072,7 +1072,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: SR1Mag
   category: ammo
@@ -1090,7 +1090,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: SR2MMag20
   category: ammo
@@ -1108,7 +1108,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: SR2MMag30
   category: ammo
@@ -1120,13 +1120,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 939Mag20
   branch: Ammo
-  tier: 5
-  requiredNode: PersistentCraftWeaponAmmoNodeT5
-  craftTime: 8
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 939Mag20
   category: ammo
@@ -1138,13 +1138,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 939Mag30
   branch: Ammo
-  tier: 5
-  requiredNode: PersistentCraftWeaponAmmoNodeT5
-  craftTime: 8
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 939Mag30
   category: ammo
@@ -1156,13 +1156,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: 939Mag45
   branch: Ammo
-  tier: 5
-  requiredNode: PersistentCraftWeaponAmmoNodeT5
-  craftTime: 8
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: 939Mag45
   category: ammo
@@ -1174,13 +1174,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base939Mag10
   branch: Ammo
-  tier: 5
-  requiredNode: PersistentCraftWeaponAmmoNodeT5
-  craftTime: 8
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: Base939Mag10
   category: ammo
@@ -1192,13 +1192,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base939MagVSK
   branch: Ammo
-  tier: 5
-  requiredNode: PersistentCraftWeaponAmmoNodeT5
-  craftTime: 8
+  tier: 3
+  requiredNode: PersistentCraftWeaponAmmoNodeT3
+  craftTime: 6
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 6
   results:
   - proto: Base939MagVSK
   category: ammo
@@ -1210,13 +1210,13 @@
   description: persistent-craft-recipe-generic-desc
   displayProto: Base545MagRPK
   branch: Ammo
-  tier: 3
-  requiredNode: PersistentCraftWeaponAmmoNodeT3
-  craftTime: 6
+  tier: 4
+  requiredNode: PersistentCraftWeaponAmmoNodeT4
+  craftTime: 7
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 20
   results:
   - proto: Base545MagRPK
   category: ammo

@@ -34,7 +34,7 @@
     amount: 1
   results:
   - proto: STCraftAnomalyDust
-    amount: 43
+    amount: 1
   category: anomaly-dust
   subCategory: material-disassemble
 
