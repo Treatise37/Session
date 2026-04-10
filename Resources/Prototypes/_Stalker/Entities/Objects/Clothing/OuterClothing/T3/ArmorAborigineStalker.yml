@@ -43,6 +43,8 @@
         Radiation: 0.8
         Caustic: 0.65
         Shock: 0.75
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: Craftable

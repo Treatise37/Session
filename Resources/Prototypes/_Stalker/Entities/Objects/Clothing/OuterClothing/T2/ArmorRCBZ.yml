@@ -27,6 +27,8 @@
         Radiation: 0.6
         Caustic: 0.6
         Shock: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.90
   - type: ClothingSpeedModifier
@@ -63,6 +65,8 @@
       coefficients:
         Radiation: 0.9
         Caustic: 0.8
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: HideLayerClothing
     slots:
     - Hair

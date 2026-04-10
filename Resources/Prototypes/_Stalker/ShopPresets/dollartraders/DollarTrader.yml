@@ -115,7 +115,7 @@
       ClothingHeadHelmetUlach: 75
       ClothingOuterArmorStalkerCombat: 200
       STClothingOuterArmorVeryHeavy: 350
-      ClothingOuterArmorHazmatRf: 250
+      ClothingOuterArmorHazmatRf: 200
   - name: shop-category-research-equipment
     priority: 7
     items:

@@ -31,7 +31,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.1
     lowPressureMultiplier: 1000
-
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+    
 - type: entity
   parent: STClothingHeadBase
   id: ClothingHeadHelmetExoskelet

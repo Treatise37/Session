@@ -48,6 +48,8 @@
         Radiation: 0.5
         Psy: 0.80
         Compression: 0.50
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetReinger
     slot: head
@@ -88,6 +90,8 @@
         Shock: 0.6
         Psy: 0.8
         Compression: 0.75
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.75
   - type: BreathMask

@@ -22,5 +22,7 @@
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.7
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
   - type: ExplosionResistance
     damageCoefficient: 0.80

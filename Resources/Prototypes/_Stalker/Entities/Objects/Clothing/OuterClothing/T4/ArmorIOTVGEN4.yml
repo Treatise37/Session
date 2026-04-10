@@ -24,3 +24,5 @@
         Piercing: 0.55
   - type: ExplosionResistance
     damageCoefficient: 0.65
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants

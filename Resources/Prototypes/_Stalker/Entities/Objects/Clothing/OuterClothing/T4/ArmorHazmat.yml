@@ -33,6 +33,8 @@
           Shock: 0.65
           Compression: 0.65
           Psy: 0.6
+    - type: GrantsArtifactSlots
+      slots: 5 # Stalker-Changes | Number of artifact slots this armor grants
 
 - type: entity
   parent: STClothingHeadHatBase

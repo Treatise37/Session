@@ -29,7 +29,8 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
 # Military
 
 - type: entity

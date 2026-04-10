@@ -9,3 +9,5 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/merc_armor_2.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/merc_armor_2.rsi
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
