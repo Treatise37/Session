@@ -78,7 +78,7 @@ public sealed partial class STMessengerMainPage : BoxContainer
             var chatId = dm?.Id ?? STMessengerChat.DmChatPrefix + (contactInfo.MessengerId ?? contactInfo.CharacterName);
 
             var row = new STMessengerContactRow(
-                contactInfo.CharacterName, unread, contactInfo.MessengerId, contactInfo.FactionName);
+                contactInfo.CharacterName, unread, contactInfo.MessengerId, contactInfo.FactionName, contactInfo.RankIcon);
             row.OnSelected += () => OnContactSelected?.Invoke(chatId);
             row.OnRemove += () =>
             {

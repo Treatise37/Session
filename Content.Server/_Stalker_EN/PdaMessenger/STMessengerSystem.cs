@@ -2,14 +2,17 @@ using Content.Server.Administration.Logs;
 using Content.Server.CartridgeLoader;
 using Content.Server.Database;
 using Content.Server.Discord;
+using Content.Server.Mind;
 using Content.Server.PDA;
 using Content.Server.PDA.Ringer;
 using Content.Shared._Stalker.Bands;
 using Content.Shared._Stalker_EN.CCVar;
+using Content.Shared._Stalker_EN.CharacterRank;
 using Content.Shared._Stalker_EN.FactionRelations;
 using Content.Shared._Stalker_EN.BulletinBoard;
 using Content.Shared._Stalker_EN.News;
 using Content.Shared._Stalker_EN.PdaMessenger;
+using Content.Shared._Stalker.PdaMessenger;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -18,7 +21,9 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -46,6 +51,8 @@ public sealed partial class STMessengerSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly RingerSystem _ringer = default!;
     [Dependency] private readonly SharedSTFactionResolutionSystem _factionResolution = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
 
     private const int MaxChannelMessages = 200;
     private const int MaxDmMessages = 100;
@@ -270,18 +277,32 @@ public sealed partial class STMessengerSystem : EntitySystem
             content = content[..maxLen];
 
         // Resolve sender name from stored owner name (survives entity deletion)
-        var senderName = server.OwnerCharacterName;
-        if (string.IsNullOrEmpty(senderName))
+        if (string.IsNullOrEmpty(server.OwnerCharacterName))
             return;
 
-        var senderKey = (server.OwnerUserId, senderName);
+        ProcessSendMessage(ent, server, send.TargetChatId, content, send.IsAnonymous,
+            send.ReplyToId, args.Actor, GetEntity(args.LoaderUid));
+    }
 
-        var loaderUid = GetEntity(args.LoaderUid);
-        var chatId = send.TargetChatId;
+    /// <summary>
+    /// Core message processing: routing, creation, eviction, logging, notifications, broadcast.
+    /// </summary>
+    private void ProcessSendMessage(
+        Entity<STMessengerComponent> ent,
+        STMessengerServerComponent server,
+        string chatId,
+        string content,
+        bool isAnonymous,
+        uint? replyToId,
+        EntityUid actor,
+        EntityUid loaderUid)
+    {
+        var senderName = server.OwnerCharacterName;
+        var senderKey = (server.OwnerUserId, senderName);
         var isDm = chatId.StartsWith(STMessengerChat.DmChatPrefix, StringComparison.Ordinal);
 
         // Effective anonymous flag: only allowed for non-DM channels that explicitly permit it
-        var isAnonymous = send.IsAnonymous && !isDm;
+        isAnonymous = isAnonymous && !isDm;
 
         // Determine display name: anonymous pseudonym for channels, real name for DMs
         var displayName = isAnonymous
@@ -289,7 +310,7 @@ public sealed partial class STMessengerSystem : EntitySystem
             : senderName;
 
         string? replySnippet = null;
-        if (send.ReplyToId is { } replyId)
+        if (replyToId is { } replyId)
         {
             replySnippet = FindReplySnippet(chatId, isDm, server, replyId);
         }
@@ -328,6 +349,12 @@ public sealed partial class STMessengerSystem : EntitySystem
                 return;
 
             // Re-resolve the holder's band before access check (band may have changed)
+            if (TryComp<TransformComponent>(loaderUid, out var pdaXform))
+            {
+                var holder = pdaXform.ParentUid;
+                if (holder.IsValid())
+                    server.OwnerBand = ResolveMobBand(holder);
+            }
 
             if (!HasChannelAccess(channelProto, server))
                 return;
@@ -351,15 +378,19 @@ public sealed partial class STMessengerSystem : EntitySystem
         string? senderFaction = !isAnonymous
             ? ResolveContactFaction(senderKey)
             : null;
+        string? senderRankIcon = !isAnonymous
+            ? ResolveContactRankIcon(senderKey)
+            : null;
 
         var message = new STMessengerMessage(
             msgId,
             displayName,
             content,
             _timing.CurTime,
-            send.ReplyToId,
+            replyToId,
             replySnippet,
-            senderFaction);
+            senderFaction,
+            senderRankIcon);
 
         chatMessages.Add(message);
 
@@ -367,23 +398,26 @@ public sealed partial class STMessengerSystem : EntitySystem
         server.LastSeenMessageId[chatId] = msgId;
 
         if (chatMessages.Count > maxMessages)
-            chatMessages.RemoveRange(0, chatMessages.Count - maxMessages);
+        {
+            var evictCount = chatMessages.Count - maxMessages;
+            chatMessages.RemoveRange(0, evictCount);
+        }
 
         // Admin log — include anonymous pseudonym so admins can trace abuse
-        var replyInfo = send.ReplyToId is { } rid
+        var replyInfo = replyToId is { } rid
             ? $" (reply to #{rid}: \"{replySnippet}\")"
             : "";
 
         if (isAnonymous)
         {
             _adminLogger.Add(LogType.STMessenger, LogImpact.Medium,
-                $"{ToPrettyString(args.Actor):player} sent anonymous message " +
+                $"{ToPrettyString(actor):player} sent anonymous message " +
                 $"(as \"{displayName}\") to {chatId}{replyInfo}: {content}");
         }
         else
         {
             _adminLogger.Add(LogType.STMessenger, LogImpact.Medium,
-                $"{ToPrettyString(args.Actor):player} sent message to {chatId}{replyInfo}: {content}");
+                $"{ToPrettyString(actor):player} sent message to {chatId}{replyInfo}: {content}");
         }
 
         if (isDm)
@@ -409,6 +443,14 @@ public sealed partial class STMessengerSystem : EntitySystem
                 }
             }
 
+            // Send pop-up notification to DM recipient
+            var bandIcon = GetBandIcon(server);
+            var dmEvent = new PdaDirectMessageEvent(senderName, content, bandIcon);
+            if (_playerManager.TryGetSessionById(new NetUserId(contactKey.UserId), out var recipientSession))
+            {
+                RaiseNetworkEvent(dmEvent, recipientSession);
+            }
+
             NotifyDmRecipient(contactKey, server);
         }
         else
@@ -419,9 +461,106 @@ public sealed partial class STMessengerSystem : EntitySystem
             }
 
             NotifyChannelRecipients(channelProto, server);
+
+            // Send pop-up notification for General channel
+            if (channelProto.ID == "STGeneral")
+            {
+                var bandIcon = GetBandIcon(server);
+                var generalEvent = new PdaGeneralMessageEvent(displayName, content, displayName, bandIcon);
+
+                foreach (var (pdaUid, (cartridgeUid, _)) in _messengerPdas)
+                {
+                    // 1. Skip if the channel is muted
+                    if (!TryComp(cartridgeUid, out STMessengerServerComponent? recipientServer) ||
+                        recipientServer.MutedChannels.Contains(channelProto.ID))
+                        continue;
+
+                    // 2. Check for PDA and its owner (mob)
+                    if (!TryComp(pdaUid, out PdaComponent? pdaComp) || !pdaComp.PdaOwner.HasValue)
+                        continue;
+
+                    var mobUid = pdaComp.PdaOwner.Value;
+
+                    // 3. Find the mob's Mind to get the player's UserId
+                    if (_mind.TryGetMind(mobUid, out var _, out var mindComp))
+                    {
+                        // 4. Find the session by UserId
+                        if (_playerManager.TryGetSessionById(mindComp.UserId, out var session))
+                        {
+                            RaiseNetworkEvent(generalEvent, session!);
+                        }
+                    }
+                }
+            }
         }
 
         BroadcastUiUpdate(chatId);
+    }
+
+    /// <summary>
+    /// Gets the band icon name for a player based on their band/faction.
+    /// Uses the mob holding the PDA (not the PDA entity itself).
+    /// Falls back to OwnerBand if mob is not available.
+    /// Clear Sky is disguised as Stalker for lore consistency.
+    /// </summary>
+    private string? GetBandIcon(STMessengerServerComponent server)
+    {
+        // Try 1: Get bandIcon from the mob holding the PDA
+        if (TryComp<TransformComponent>(server.Owner, out var xform))
+        {
+            var holder = xform.ParentUid;
+            if (holder.IsValid() && TryComp<BandsComponent>(holder, out var bands))
+            {
+                // Clear Sky is disguised as Loners on PDA (lore consistency)
+                if (bands.BandProto == ClearSkyBandId)
+                    return "stalker";
+
+                if (!string.IsNullOrEmpty(bands.BandStatusIcon))
+                    return bands.BandStatusIcon;
+            }
+        }
+
+        // Try 2: Fallback to OwnerBand and map to bandIcon
+        if (server.OwnerBand.HasValue)
+        {
+            // Clear Sky disguise
+            if (server.OwnerBand.Value == ClearSkyBandId)
+                return "stalker";
+
+            return GetBandIconForBandProto(server.OwnerBand.Value);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Maps band prototype ID to bandIcon name.
+    /// </summary>
+    private static string? GetBandIconForBandProto(ProtoId<STBandPrototype> bandProtoId)
+    {
+        return bandProtoId.Id switch
+        {
+            "STFreedomBand" => "freedom",
+            "STDolgBand" => "Dolg",
+            "STBanditsBand" => "band",
+            "STRenegatsBand" => "rene",
+            "STMonolithBand" => "monolith",
+            "STClearSkyBand" => "cn",
+            "STStalkerBand" => "stalker",
+            "STMercenariesBand" => "merc",
+            "STMilitaryBand" => "army",
+            "STSciBand" => "sci",
+            "STMilitiaBand" => "militia",
+            "STAnomalistsBand" => "ecologists",
+            "STSeraphimsBand" => "seraphim",
+            "STCovenantBand" => "zavet",
+            "STGrehBand" => "greh",
+            "STSsuBand" => "sbu",
+            "STUNBand" => "un",
+            "STProjectBand" => "project-1",
+            "STToadsBand" => "jaba",
+            _ => "stalker" // Default
+        };
     }
 
     private string? FindReplySnippet(string chatId, bool isDm, STMessengerServerComponent server, uint replyId)
@@ -475,6 +614,14 @@ public sealed partial class STMessengerSystem : EntitySystem
         {
             if (!TryComp<STMessengerServerComponent>(cartridgeUid, out var server))
                 continue;
+
+            // Re-resolve the holder's band before access check (band may have changed)
+            if (TryComp<TransformComponent>(pdaUid, out var pdaXform))
+            {
+                var holder = pdaXform.ParentUid;
+                if (holder.IsValid())
+                    server.OwnerBand = ResolveMobBand(holder);
+            }
 
             if (!HasChannelAccess(channelProto, server))
                 continue;
@@ -737,10 +884,13 @@ public sealed partial class STMessengerSystem : EntitySystem
                     contactEntry.UserId, contactEntry.CharacterName, currentFaction);
             }
 
+            var rankIcon = ResolveContactRankIcon(contactKey);
+
             contactInfos.Add(new STMessengerContactInfo(
                 contactEntry.CharacterName,
                 contactMessengerId,
-                contactEntry.FactionName));
+                contactEntry.FactionName,
+                rankIcon));
         }
 
         return new STMessengerUiState(
@@ -958,6 +1108,20 @@ public sealed partial class STMessengerSystem : EntitySystem
     /// Resolves the current rank icon of an online contact by looking up their PDA holder's STCharacterRankComponent.
     /// Returns null if the contact is offline, PDA is not equipped, or has no rank.
     /// </summary>
+    private string? ResolveContactRankIcon((Guid UserId, string CharName) contactKey)
+    {
+        if (!_characterToPda.TryGetValue(contactKey, out var pdaUid))
+            return null;
+
+        if (!TryComp<TransformComponent>(pdaUid, out var xform))
+            return null;
+
+        var holder = xform.ParentUid;
+        if (!TryComp<STCharacterRankComponent>(holder, out var rank))
+            return null;
+
+        return rank.RankIconId;
+    }
 
     /// <summary>
     /// Resolves the current faction of an online contact by looking up their PDA holder's BandsComponent.

@@ -38,6 +38,7 @@ public static class STReactionDefinitions
     public const string Rookies = "Rookies";
     public const string Journalists = "Journalists";
     public const string UN = "UN";
+
     public static readonly HashSet<string> Available = new()
     {
         Loners,

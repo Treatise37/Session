@@ -109,3 +109,95 @@
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/saiga/saiga-sera.rsi
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Shotguns/saiga/saiga-sera.rsi
+
+
+- type: entity
+  abstract: true
+  parent: STBaseWeaponShotgunAuto
+  id: STBaseWeaponShotgunVepr12De21Base
+  name: Вепрь-12
+  suffix: ST, Кастомка
+  description: Российское гладкоствольное самозарядное ружьё, разработанное на основе конструкции ручного пулемёта Калашникова.
+  components:
+  - type: STWeight
+    self: 3.6
+  - type: PullDoAfter
+    pullTime: 2.3
+  - type: GunWieldBonus
+    minAngle: -50
+    maxAngle: -50
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr-12.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr-12.rsi
+    shape:
+    - 0,0,6,1
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr-12.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/saiga_shoot.ogg
+    minAngle: 55
+    maxAngle: 60
+    fireRate: 4.5
+    angleIncrease: 10
+    angleDecay: 50
+    projectileSpeed: 55
+    selectedMode: SemiAuto
+    availableModes:
+    - FullAuto
+    - SemiAuto
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Base1270Mag
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 4
+        whitelist:
+          tags:
+          - MagazineSaiga
+      gun_chamber:
+        name: Chamber
+        startingItem:
+        priority: 3
+        whitelist:
+          tags:
+          - ShellShotgun
+      gun_auto_sear:
+        name: Insides
+        priority: 2
+        whitelist:
+          tags:
+          - STModuleAutoSear
+      gun_module_muzzle:
+        name: Muzzle
+        priority: 1
+        whitelist:
+          tags:
+          - STWeaponModuleShotgunChoke
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot {}
+      gun_chamber: !type:ContainerSlot {}
+      gun_auto_sear: !type:ContainerSlot {}
+      gun_module_muzzle: !type:ContainerSlot {}
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.85
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 1.26
+
+- type: entity
+  parent: STBaseWeaponShotgunVepr12De21Base
+  id: STBaseWeaponShotgunVepr12De21
+  name: Вепрь-12
+  description: Российское гладкоствольное самозарядное ружьё, разработанное на основе конструкции ручного пулемёта Калашникова.

@@ -7,6 +7,7 @@
         <!-- Header: faction icon + poster name + offer ID -->
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 2">
             <TextureRect Name="FactionIcon" MinSize="20 20" Stretch="KeepAspectCentered" Margin="0 0 4 0" Visible="False"/>
+            <TextureRect Name="RankIcon" MinSize="14 14" Stretch="KeepAspectCentered" Margin="0 0 4 0" Visible="False"/>
             <Label Name="PosterNameLabel" HorizontalExpand="True"/>
             <Label Name="OfferIdLabel" StyleClasses="LabelSubText" Align="Right"/>
         </BoxContainer>

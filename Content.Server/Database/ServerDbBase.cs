@@ -285,7 +285,10 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                profile.Changeable
+                profile.Changeable,
+                profile.STAliasAdjective, // stalker-en-changes
+                profile.STAliasNoun, // stalker-en-changes
+                profile.STAliasColor // stalker-en-changes
             );
         }
 
@@ -317,6 +320,11 @@ namespace Content.Server.Database
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
             profile.Changeable = humanoid.Changeable; // stalker-changes
+            // stalker-en-changes-start
+            profile.STAliasAdjective = humanoid.STAliasAdjective;
+            profile.STAliasNoun = humanoid.STAliasNoun;
+            profile.STAliasColor = humanoid.STAliasColor;
+            // stalker-en-changes-end
 
             profile.Jobs.Clear();
             profile.Jobs.AddRange(
@@ -2318,48 +2326,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             }
         }
 
-        public async Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName)
-        {
-            await using var db = await GetDb();
-            return await db.DbContext.StalkerPersistentCraftProfiles
-                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
-        }
-
-        public async Task SetStalkerPersistentCraftProfileAsync(
-            Guid userId,
-            string characterName,
-            string profileJson)
-        {
-            await using var db = await GetDb();
-
-            var record = await db.DbContext.StalkerPersistentCraftProfiles
-                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
-
-            if (record is null)
-            {
-                db.DbContext.StalkerPersistentCraftProfiles.Add(new StalkerPersistentCraftProfile
-                {
-                    UserId = userId,
-                    CharacterName = characterName,
-                    ProfileJson = profileJson,
-                });
-            }
-            else
-            {
-                record.ProfileJson = profileJson;
-            }
-
-            await db.DbContext.SaveChangesAsync();
-        }
-
-        public async Task DeleteAllStalkerPersistentCraftProfilesAsync()
-        {
-            await using var db = await GetDb();
-            var all = await db.DbContext.StalkerPersistentCraftProfiles.ToListAsync();
-            db.DbContext.StalkerPersistentCraftProfiles.RemoveRange(all);
-            await db.DbContext.SaveChangesAsync();
-        }
-
         // stalker-en-changes: News articles
         public async Task<List<StalkerNewsArticle>> GetRecentStalkerNewsArticlesAsync(int limit)
         {
@@ -2389,7 +2355,18 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             var article = await db.DbContext.StalkerNewsArticles
                 .FirstOrDefaultAsync(a => a.Id == articleId);
             if (article != null)
+            {
+                // Cascade delete attached photo
+                if (article.PhotoId is { } photoId)
+                {
+                    var photo = await db.DbContext.StalkerNewsArticlePhotos
+                        .FirstOrDefaultAsync(p => p.PhotoId == photoId);
+                    if (photo != null)
+                        db.DbContext.StalkerNewsArticlePhotos.Remove(photo);
+                }
+
                 db.DbContext.StalkerNewsArticles.Remove(article);
+            }
 
             await db.DbContext.SaveChangesAsync();
         }
@@ -2409,6 +2386,56 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             db.DbContext.StalkerNewsComments.Add(comment);
             await db.DbContext.SaveChangesAsync();
             return comment.Id;
+        }
+
+        // stalker-en-changes: News article photos
+
+        /// <summary>
+        /// Stores a news article photo blob in the database.
+        /// </summary>
+        public async Task AddStalkerNewsArticlePhotoAsync(StalkerNewsArticlePhoto photo)
+        {
+            await using var db = await GetDb();
+            db.DbContext.StalkerNewsArticlePhotos.Add(photo);
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Retrieves a news article photo by its unique identifier.
+        /// </summary>
+        public async Task<StalkerNewsArticlePhoto?> GetStalkerNewsArticlePhotoAsync(Guid photoId)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.StalkerNewsArticlePhotos
+                .FirstOrDefaultAsync(p => p.PhotoId == photoId);
+        }
+
+        /// <summary>
+        /// Deletes a news article photo by its unique identifier.
+        /// </summary>
+        public async Task DeleteStalkerNewsArticlePhotoAsync(Guid photoId)
+        {
+            await using var db = await GetDb();
+            var photo = await db.DbContext.StalkerNewsArticlePhotos
+                .FirstOrDefaultAsync(p => p.PhotoId == photoId);
+            if (photo != null)
+            {
+                db.DbContext.StalkerNewsArticlePhotos.Remove(photo);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        /// <summary>
+        /// Saves a news article and its optional photo in a single database transaction.
+        /// </summary>
+        public async Task<int> AddStalkerNewsArticleWithPhotoAsync(StalkerNewsArticle article, StalkerNewsArticlePhoto? photo)
+        {
+            await using var db = await GetDb();
+            db.DbContext.StalkerNewsArticles.Add(article);
+            if (photo != null)
+                db.DbContext.StalkerNewsArticlePhotos.Add(photo);
+            await db.DbContext.SaveChangesAsync();
+            return article.Id;
         }
 
         // stalker-en-changes: News reactions
@@ -2461,6 +2488,85 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .ToListAsync();
             db.DbContext.StalkerNewsReactions.RemoveRange(reactions);
             await db.DbContext.SaveChangesAsync();
+        }
+        // stalker-en-changes-end
+
+        // stalker-en-changes-start: Character rank persistence
+        public async Task<StalkerCharacterRank?> GetStalkerCharacterRankAsync(Guid userId, string characterName)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.StalkerCharacterRanks
+                .FirstOrDefaultAsync(r => r.UserId == userId && r.CharacterName == characterName);
+        }
+
+        public async Task UpdateStalkerCharacterRankTimesAsync(
+            IReadOnlyCollection<(Guid UserId, string CharacterName, TimeSpan Time)> updates)
+        {
+            await using var db = await GetDb();
+
+            // Bulk-load existing records for all users involved.
+            var userIds = updates.Select(u => u.UserId).Distinct().ToArray();
+            var dbRanks = (await db.DbContext.StalkerCharacterRanks
+                    .Where(r => userIds.Contains(r.UserId))
+                    .ToArrayAsync())
+                .ToDictionary(r => (r.UserId, r.CharacterName), r => r);
+
+            foreach (var (userId, characterName, time) in updates)
+            {
+                if (dbRanks.TryGetValue((userId, characterName), out var existing))
+                {
+                    existing.TimeSpent = time;
+                    continue;
+                }
+
+                db.DbContext.StalkerCharacterRanks.Add(new StalkerCharacterRank
+                {
+                    UserId = userId,
+                    CharacterName = characterName,
+                    TimeSpent = time,
+                });
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+        // stalker-en-changes-end
+
+        // stalker-en-changes-start: Persistent craft profile persistence
+        public async Task<StalkerPersistentCraftProfile?> GetStalkerPersistentCraftProfileAsync(Guid userId, string characterName)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+        }
+
+        public async Task SetStalkerPersistentCraftProfileAsync(Guid userId, string characterName, string profileJson)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.StalkerPersistentCraftProfiles
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.CharacterName == characterName);
+
+            if (existing is null)
+            {
+                db.DbContext.StalkerPersistentCraftProfiles.Add(new StalkerPersistentCraftProfile
+                {
+                    UserId = userId,
+                    CharacterName = characterName,
+                    ProfileJson = profileJson,
+                });
+            }
+            else
+            {
+                existing.ProfileJson = profileJson;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAllStalkerPersistentCraftProfilesAsync()
+        {
+            await using var db = await GetDb();
+            await db.DbContext.StalkerPersistentCraftProfiles.ExecuteDeleteAsync();
         }
         // stalker-en-changes-end
 

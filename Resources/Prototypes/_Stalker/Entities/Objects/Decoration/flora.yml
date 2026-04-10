@@ -387,9 +387,6 @@
           bounds: "-0.2,-0.2,0.2,0.2"
         layer:
         - MidImpassable
-  - type: SpeedModifierContacts
-    walkSpeedModifier: 0.8
-    sprintSpeedModifier: 0.5
   - type: Sprite
     sprite: _Stalker/Objects/Decoration/Flora/flora.rsi
     state: bush01

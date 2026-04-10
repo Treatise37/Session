@@ -11,12 +11,37 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared._Stalker.Storage;
 
+// stalker-en-changes - deterministic hash for stable identifiers across process restarts
+internal static class StalkerIdentifierHelper
+{
+    internal static int DeterministicHash(string input)
+    {
+        unchecked
+        {
+            var hash = 5381;
+            foreach (var c in input)
+                hash = (hash << 5) + hash + c;
+            return hash;
+        }
+    }
+}
+
 public interface IItemStalkerStorage
 {
     string ClassType { get; set; }
     string PrototypeName { get; set; }
     string Identifier();
     uint CountVendingMachine { get; set; }
+    /// <summary>
+    /// Engraved message text from <see cref="Content.Shared._CD.Engraving.EngraveableComponent"/>.
+    /// Null when item has no engraving. Backward compatible with existing JSON data.
+    /// </summary>
+    string? EngravedMessage { get; set; }
+    /// <summary>
+    /// Label text from <see cref="Content.Shared.Labels.Components.LabelComponent"/>.
+    /// Null when item has no label. Backward compatible with existing JSON data.
+    /// </summary>
+    string? CurrentLabel { get; set; }
 }
 
 [Serializable, NetSerializable]
@@ -26,6 +51,8 @@ public class SpecialLoadClass : IItemStalkerStorage
     public string PrototypeName { get; set; } = "SpecialLoadClassPrototypeName";
 
     public uint CountVendingMachine { get; set; } = 0u;
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
     public string Identifier()
     {
         return ClassType + "_" + "_" + PrototypeName + "_" + "SpecialLoadClassIdentifier";
@@ -49,6 +76,8 @@ public class EmptyItemStalker : IItemStalkerStorage
     public string PrototypeName { get; set; } = "EmptyItemStalker";
 
     public uint CountVendingMachine { get; set; } = 0u;
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
 
     public string Identifier()
     {
@@ -63,6 +92,8 @@ public class SimpleItemStalker : IItemStalkerStorage
     public string PrototypeName { get; set; } = "";
 
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
 
     public SimpleItemStalker(string prototypeName = "", uint CountVendingMachine = 1)
     {
@@ -72,7 +103,12 @@ public class SimpleItemStalker : IItemStalkerStorage
 
     public string Identifier()
     {
-        return "S_" + PrototypeName;
+        var id = "S_" + PrototypeName;
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 
 }
@@ -84,6 +120,8 @@ public class PaperItemStalker : IItemStalkerStorage
     public string ClassType { get; set; } = "PaperItemStalker";
     public string PrototypeName { get; set; } = "";
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
     public string Content { get; set; } = "";
     public int ContentSize { get; set; } = 0;
     public List<StampStalkerData> ListStampStalkerData { get; set; } = new(0);
@@ -103,7 +141,7 @@ public class PaperItemStalker : IItemStalkerStorage
     {
         if (input == null)
             return "";
-        return "" + input.GetHashCode();
+        return "" + StalkerIdentifierHelper.DeterministicHash(input); // stalker-en-changes
     }
 
     public string Identifier()
@@ -120,7 +158,11 @@ public class PaperItemStalker : IItemStalkerStorage
             StampsDataString += "SN=" + OneStamp.StampedName + "_SC=" + OneStamp.PaperColorStalkerData.R + "_" + OneStamp.PaperColorStalkerData.G + "_" + OneStamp.PaperColorStalkerData.B + "_" + OneStamp.PaperColorStalkerData.A + "#";
         }
 
-        string Return = "P_" + PrototypeName + "_HASHTEXT=" + Hash(Content) + "_CS=" + ContentSize + "_SS=" + StampState + "_STAMPS=" + StampsDataString;
+        var Return = "P_" + PrototypeName + "_HASHTEXT=" + Hash(Content) + "_CS=" + ContentSize + "_SS=" + StampState + "_STAMPS=" + StampsDataString;
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            Return += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            Return += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
 
         SavedIdentifier = Return;
 
@@ -165,11 +207,18 @@ public sealed class BatteryItemStalker : IItemStalkerStorage
     public string ClassType { get; set; } = "BatteryItemStalker";
     public string PrototypeName { get; set; } = "";
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
     public float CurrentCharge { get; set; }
 
     public string Identifier()
     {
-        return PrototypeName + "_" + CurrentCharge;
+        var id = PrototypeName + "_" + CurrentCharge;
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 
     public BatteryItemStalker(float CurrentCharge = 100, string PrototypeName = "", uint CountVendingMachine = 1)
@@ -193,13 +242,20 @@ public sealed class SolutionItemStalker : IItemStalkerStorage
     public string ClassType { get; set; } = "SolutionItemStalker";
     public string PrototypeName { get; set; } = "";
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
     public Dictionary<string, List<ReagentQuantity>> Contents { get; set; } = new();
     public FixedPoint2 Volume { get; set; } // Needed for solution correct consuming
 
     public string Identifier()
     {
         var contentsString = string.Join(", ", Contents.Select(kv => $"{kv.Key}: [{string.Join(", ", kv.Value)}]"));
-        return $"{PrototypeName}_{contentsString}_{Volume}";
+        var id = $"{PrototypeName}_{contentsString}_{Volume}";
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 
 }
@@ -211,6 +267,8 @@ public class StackItemStalker : IItemStalkerStorage
     public string PrototypeName { get; set; } = "";
     public uint StackCount { get; set; } = 0;
     public uint CountVendingMachine { get; set; } = 0u;
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
 
     public StackItemStalker(string prototypeName = "", uint CountVendingMachine = 1, uint stackCount = 1)
     {
@@ -221,7 +279,12 @@ public class StackItemStalker : IItemStalkerStorage
 
     public string Identifier()
     {
-        return PrototypeName + "_" + StackCount;
+        var id = PrototypeName + "_" + StackCount;
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 }
 /// <summary>
@@ -237,6 +300,8 @@ public sealed class AmmoContainerStalker : IItemStalkerStorage
     public string? AmmoPrototypeName { get; set; }
     public int AmmoCount { get; set; }
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
 
     /// <summary>
     /// List of ammo prototype IDs stored as strings for JSON serialization compatibility.
@@ -256,10 +321,16 @@ public sealed class AmmoContainerStalker : IItemStalkerStorage
     public string Identifier()
     {
         // Include hash of EntProtoIds to distinguish magazines with different ammo compositions
+        // stalker-en-changes - use deterministic hash for stable identifiers across process restarts
         var entProtosHash = EntProtoIds.Count > 0
-            ? string.Join(",", EntProtoIds).GetHashCode()
+            ? StalkerIdentifierHelper.DeterministicHash(string.Join(",", EntProtoIds))
             : 0;
-        return $"{PrototypeName}_{AmmoPrototypeName}_{AmmoCount}_{entProtosHash}";
+        var id = $"{PrototypeName}_{AmmoPrototypeName}_{AmmoCount}_{entProtosHash}";
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 }
 [Serializable, NetSerializable]
@@ -269,6 +340,8 @@ public sealed class AmmoItemStalker : IItemStalkerStorage
     public string PrototypeName { get; set; } = "";
     public bool Exhausted { get; set; }
     public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
 
     public AmmoItemStalker(string prototypeName, bool exhausted, uint countVendingMachine = 1)
     {
@@ -279,6 +352,81 @@ public sealed class AmmoItemStalker : IItemStalkerStorage
 
     public string Identifier()
     {
-        return $"{PrototypeName}_{Exhausted}";
+        var id = $"{PrototypeName}_{Exhausted}";
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
     }
 }
+
+[Serializable, NetSerializable]
+public sealed class CrayonItemStalker : IItemStalkerStorage
+{
+    public string ClassType { get; set; } = "CrayonItemStalker";
+    public string PrototypeName { get; set; } = "";
+    public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
+    public int Charges { get; set; }
+
+    public CrayonItemStalker(string prototypeName, int charges, uint countVendingMachine = 1)
+    {
+        PrototypeName = prototypeName;
+        Charges = charges;
+        CountVendingMachine = countVendingMachine;
+    }
+
+    public string Identifier()
+    {
+        var id = $"{PrototypeName}_{Charges}";
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage); // stalker-en-changes
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel); // stalker-en-changes
+        return id;
+    }
+}
+
+// stalker-en-changes-start: photo stash persistence
+/// <summary>
+/// Stash persistence data for a photo entity, storing its unique ID and base64-encoded image data.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class PhotoItemStalker : IItemStalkerStorage
+{
+    public string ClassType { get; set; } = "PhotoItemStalker";
+    public string PrototypeName { get; set; } = "";
+    public uint CountVendingMachine { get; set; }
+    public string? EngravedMessage { get; set; }
+    public string? CurrentLabel { get; set; }
+    /// <summary>
+    /// Unique identifier for the photo, serialized as a string GUID.
+    /// </summary>
+    public string PhotoId { get; set; } = "";
+
+    /// <summary>
+    /// Base64-encoded raw image data captured by the camera.
+    /// </summary>
+    public string ImageData { get; set; } = "";
+
+    public PhotoItemStalker(string prototypeName, string photoId, string imageData, uint countVendingMachine = 1)
+    {
+        PrototypeName = prototypeName;
+        PhotoId = photoId;
+        ImageData = imageData;
+        CountVendingMachine = countVendingMachine;
+    }
+
+    public string Identifier()
+    {
+        var id = "PH_" + PrototypeName + "_" + PhotoId;
+        if (!string.IsNullOrEmpty(EngravedMessage))
+            id += "_ENG=" + StalkerIdentifierHelper.DeterministicHash(EngravedMessage);
+        if (!string.IsNullOrEmpty(CurrentLabel))
+            id += "_LBL=" + StalkerIdentifierHelper.DeterministicHash(CurrentLabel);
+        return id;
+    }
+}
+// stalker-en-changes-end

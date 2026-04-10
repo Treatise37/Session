@@ -41,7 +41,7 @@
         - type: GravityWell
           minRange: 2
           maxRange: 8
-          baseRadialAcceleration: -800000
+          baseRadialAcceleration: -1000
           baseTangentialAcceleration: 0
           gravPulsePeriod: 0.01
         - type: SingularityDistortion
@@ -55,10 +55,12 @@
             params:
               volume: 15
         - type: TwoStageTrigger
+          keysIn:
+            - stageTwo
           triggerDelay: 1
           components:
             - type: TimedDespawn
-              lifetime: 0
+              lifetime: 3
             - type: SpawnOnTrigger
               proto: AnomSEpicentre
     - type: ZoneArtifactSpawner

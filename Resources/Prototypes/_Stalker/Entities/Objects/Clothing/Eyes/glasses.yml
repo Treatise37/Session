@@ -22,3 +22,17 @@
     sprite: _Stalker/Objects/Clothing/eyes/foma.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/eyes/foma.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesProtectionGlassesKrava
+  name: баллистические очки "Валькирия"
+  description: Новейшие баллистические очки, изготовленные из высококлассных материалов и компонентов.
+  suffix: ST, Кастомка
+  components:
+    - type: Sprite
+      sprite: _Stalker/Objects/Clothing/eyes/krava.rsi
+    - type: Clothing
+      sprite: _Stalker/Objects/Clothing/eyes/krava.rsi
+    - type: EyeProtection
+    - type: FlashImmunity

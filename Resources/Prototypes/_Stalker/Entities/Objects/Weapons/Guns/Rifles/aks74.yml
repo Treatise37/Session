@@ -12,7 +12,7 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/aks74.rsi
   - type: GunWieldBonus
-    minAngle: -48
+    minAngle: -50
     maxAngle: -45
   - type: PullDoAfter
     pullTime: 3.5
@@ -21,7 +21,7 @@
       path: /Audio/_Stalker/Effects/Guns/ak.ogg
     minAngle: 50
     maxAngle: 90
-    angleIncrease: 1.65
+    angleIncrease: 1.4
     angleDecay: 4
     projectileSpeed: 55
     fireRate: 6

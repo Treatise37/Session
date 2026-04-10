@@ -95,8 +95,8 @@
   - type: TypingIndicator
   - type: SlowOnDamage
     speedModifierThresholds:
-      50: 0.7 # stalker-changes
-      60: 0.5 # stalker-changes
+      20: 0.7 # stalker-changes
+      35: 0.5 # stalker-changes
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:

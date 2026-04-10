@@ -69,6 +69,12 @@ public partial class StatusIconData : IComparable<StatusIconData>
     public int Offset = 0;
 
     /// <summary>
+    /// Horizontal offset of the status icon, in pixels.
+    /// </summary>
+    [DataField]
+    public int XOffset = 0; // stalker-changes
+
+    /// <summary>
     /// Sets if the icon should be rendered with or without the effect of lighting.
     /// </summary>
     [DataField]
