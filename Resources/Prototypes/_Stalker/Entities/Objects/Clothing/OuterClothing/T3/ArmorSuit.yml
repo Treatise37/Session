@@ -837,9 +837,9 @@
   description: Сделанный каким-то умельцем бронекостюм с спецефичным внешним видом.
   components:
   - type: Sprite
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/peresvet.rsi
   - type: Clothing
-    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/chesplate.rsi
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/peresvet.rsi
   - type: ToggleableClothing
     clothingPrototype: STClothingHeadPeresvet
     slot: head
@@ -861,6 +861,46 @@
         Compression: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.7
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: STClothingHeadPeresvet
+  name: шлем бронекомбеза "Пересвет" #base
+  description: Шлем из комплекта "Пересвет".
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/peresvet/helmet.rsi
+  - type: BreathMask
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: Tag
+    tags:
+      - BlockMask
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: Armor
+    armorClass: 4
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85
+        Compression: 0.95
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+  - type: Reflect
+    reflectProb: 0.1
+    spread: 360
+    reflects:
+      - NonEnergy
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
 
 - type: entity
   parent: STClothingOuterArmorSeraphimStrash
