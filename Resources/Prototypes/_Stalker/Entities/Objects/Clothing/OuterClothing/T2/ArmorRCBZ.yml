@@ -147,6 +147,18 @@
     sprite: _Stalker/Objects/Clothing/outerClothing/rcbz-renegate.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/outerClothing/rcbz-renegate.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHelmRCBZRene
+
+- type: entity
+  parent: ClothingHelmRCBZ
+  id: ClothingHelmRCBZRene
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/mask/rcbz-rene-helmet.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/mask/rcbz-rene-helmet.rsi
 
 # Serafims - 5
 
@@ -197,6 +209,31 @@
     sprite: _Stalker/Objects/Clothing/mask/gasmask_rhbz_cn.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/mask/gasmask_rhbz_cn.rsi
+
+# Journalists - 8 +
+
+- type: entity
+  parent: STClothingOuterArmorRCBZ
+  id: ClothingOuterArmorRCBZJournalists
+  name: костюм «РХБЗ» Журналистов
+  description: Разработанный для работы в условиях радиационной, химической и биологической защиты (РХБЗ). Применяется в экспедициях на опасные химические зоны для обеспечения безопасности носителя. Не предназначен для боевых действий, а специализирован для обеспечения защиты и безопасности в условиях угрозы от радиации, химических и биологических веществ.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/rhbz-journalists.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/rhbz-journalists.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHelmRCBZJournalists
+
+- type: entity
+  parent: ClothingHelmRCBZ
+  id: ClothingHelmRCBZJournalists
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/mask/gasmask_rhbz_journalists.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/mask/gasmask_rhbz_journalists.rsi
 
 # Old groups
 
