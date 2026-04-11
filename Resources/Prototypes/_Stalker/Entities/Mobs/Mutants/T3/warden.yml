@@ -2,14 +2,14 @@
   parent: BaseMobMutant
   id: MobMutantWarden
   name: Гончая
-  suffix: ST, T2
+  suffix: ST, T3
   description: после аварии эти существа стали одним из видов мутировавших собак, которые смогли пережить воздействие радиации и адаптироваться. Более выносливые, стайные и агрессивные, эти существа пытаются загнать свою жертву в ловушку. Когда в глухом лесу сталкеры слышат их вой, можно начать молиться.
   components:
     - type: Butcherable
       spawned:
         - id: STMutantPartLegendaryBlindDogTail
     - type: Damageable
-      damageModifierSet: STMutantT2DamageModifierSet
+      damageModifierSet: STMutantT1DamageModifierSet
     - type: DamageStateVisuals
       states:
         Alive:
@@ -41,11 +41,11 @@
     - type: Jumpscare
       chargeDamage:
         types:
-          Blunt: 10
+          Blunt: 20
           Slash: 20
-      jumpPower: 10
-      jumpDistance: 15
-      updateCooldown: 0.5
+      jumpPower: 6
+      jumpDistance: 10
+      updateCooldown: 1
       #totalSteps: 3 # Stalker-TODO: This field exists in component but is not a datafield!
       #stepInterval: 0.025 # Stalker-TODO: This field exists in component but is not a datafield!
     - type: MobThresholds
@@ -64,12 +64,12 @@
       wideAnimation: WeaponArcClaw
       damage:
         types:
-          Slash: 25
+          Slash: 20
     - type: BonusMeleeDamage
       heavyDamageMultiplier: 1.25
     - type: MovementSpeedModifier
-      baseWalkSpeed: 2
-      baseSprintSpeed: 3.5
+      baseWalkSpeed: 6
+      baseSprintSpeed: 8
     - type: Sprite
       sprite: /Textures/_Stalker/Mobs/Mutants/warden.rsi
       layers:
@@ -77,14 +77,14 @@
           state: warden
     - type: SlowOnDamage
       speedModifierThresholds:
-        200: 0.7
+        200: 0.9
     - type: StaminaDamageOnHit
-      damage: 15
+      damage: 20
     - type: STWeight
       self: 60
     - type: HTN
       rootTask:
-        task: STBlindDogRedCompound
+        task: STWardenCompound
       blackboard:
         VisionRadius: !type:Single
           25
