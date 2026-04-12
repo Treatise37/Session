@@ -132,3 +132,4 @@
   class: 5
   flatReductions:
     Psy: 6
+    Mutant: 300
