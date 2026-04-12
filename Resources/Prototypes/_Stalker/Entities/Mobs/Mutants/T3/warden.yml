@@ -90,3 +90,9 @@
           25
         AggroVisionRadius: !type:Single
           15
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/_Stalker/Mutants/warden/Watchman_start_1.ogg
+        params:
+          volume: 1
+          maxDistance: 20

@@ -5,6 +5,12 @@
   suffix: ST, T1
   description: если и есть наиболее жалкий, трусливый хищник среди фауны Чернобыльской Зоны Отчуждения, то это они. Происхождение их определить проблематично, но тонкий хвост невольно намекает, что их предками возможно были огромные крысы, которые перешли на более обширный рацион.
   components:
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/_Stalker/Mutants/churzik/Churzik_hit_1.ogg
+        params:
+          volume: 1
+          maxDistance: 20
     - type: Damageable
       damageModifierSet: STMutantT1DamageModifierSet
     - type: HTN

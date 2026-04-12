@@ -52,6 +52,25 @@
       muzzleFlash: null
 
 - type: entity
+  id: STBulletBolt
+  name: bolt bullet
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Projectile
+      projectileClass: 3
+      damage:
+        types:
+          Blunt: 75
+    - type: Sprite
+      sprite: _Stalker/Objects/Devices/Utilites.rsi
+      scale: 0.35, 0.35
+      layers:
+        - state: bolt
+    - type: Ammo
+      muzzleFlash: null
+
+- type: entity
   id: STBulletMeteor
   name: meteor
   parent: MeteorLarge

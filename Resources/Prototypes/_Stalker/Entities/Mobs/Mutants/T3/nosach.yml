@@ -5,6 +5,17 @@
   suffix: ST, T3
   description: во многих народных мифах и сказаниях упоминаются вурдалаки — покойники, встающие по ночам из могилы, вредящие людям и скоту. На деле лишь еще один из многих малоизвестных, редких мутантов, которые ведут чаще ночной образ жизни. Однако из-за голода они способны выходить из своих гнезд даже днем.
   components:
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/_Stalker/Mutants/giant_threaten_1.ogg
+        params:
+          volume: 1
+          maxDistance: 20
+    - type: FootstepModifier
+      footstepSoundCollection:
+        path: /Audio/_Stalker/Mutants/nosach/Nosach_movement_0.ogg
+        params:
+          volume: -999999
     - type: Butcherable
       spawned:
         - id: MutantPartZombieHand
