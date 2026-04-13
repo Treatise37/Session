@@ -104,6 +104,18 @@
 
 - type: entity
   parent: STClothingOuterArmorBerill5MBase
+  id: ClothingOuterArmorBerill5MProject
+  suffix: ST, T4, Universal, Project
+  name: Модифицированный бронекостюм «Берилл-5М»
+  description: Необычная модификация бронекостюма «Берилл-5М», зачем-то выкрашенная в тёмно-фиолетовый.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/berill5m_project.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/berill5m_project.rsi
+
+- type: entity
+  parent: STClothingOuterArmorBerill5MBase
   id: STClothingOuterArmorBerillBereza
   name: берилл-5Б «Береза»
   suffix: ST, Кастомка
