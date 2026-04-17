@@ -1,4 +1,4 @@
-﻿- type: persistentCraftRecipe
+- type: persistentCraftRecipe
   id: PersistentCraftAnomalyRecipeT3
   name: persistent-craft-recipe-anomaly-t3-name
   description: persistent-craft-recipe-anomaly-t3-desc
@@ -10,7 +10,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ZoneArtifactDetectorSpruce
   category: artifact-detectors
@@ -28,7 +28,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -48,7 +48,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -108,7 +108,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ZoneArtifactDetectorPulse
   category: artifact-detectors
@@ -126,7 +126,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ZoneArtifactDetectorHunter
   category: artifact-detectors
@@ -144,7 +144,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ZoneArtifactDetectorBush
   category: artifact-detectors
@@ -162,7 +162,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ZoneArtifactDetectorResponse
   category: artifact-detectors
@@ -180,7 +180,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ZoneArtifactDetectorBarracuda
   category: artifact-detectors
@@ -198,7 +198,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:

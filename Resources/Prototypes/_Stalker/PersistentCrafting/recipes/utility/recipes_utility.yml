@@ -1,4 +1,4 @@
-﻿- type: persistentCraftRecipe
+- type: persistentCraftRecipe
   id: PersistentCraftUtilityRecipeArtifactContainerT1
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -10,7 +10,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BoxArtcont
   category: utility
@@ -28,7 +28,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BoxSafebox
   category: utility
@@ -46,7 +46,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: MedkitCMSStalker
   category: utility
@@ -64,7 +64,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 6
   results:
   - proto: MedkitGrizzlyStalker
   category: utility
@@ -82,9 +82,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
-  - tag: STArtifactTier3
-    amount: 1
+    amount: 16
   results:
   - proto: BoxArtcont1
   category: utility
@@ -102,7 +100,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingBackpackDuffelGreenStalker
   category: utility
@@ -120,7 +118,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingBackpackTacticOliveStalker
   category: utility
@@ -138,7 +136,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingBackpackDuffelCommonStalker
   category: utility
@@ -156,7 +154,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingBackpackStalkerZaryaGreen
   category: utility
@@ -174,7 +172,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingBackpackMercStalker
   category: utility
@@ -192,7 +190,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 15
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -212,7 +210,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 15
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -232,7 +230,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 15
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -272,7 +270,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingBeltBandolierStalker
   category: utility
@@ -290,7 +288,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingBeltWebbingHolsterStalkerZarya
   category: utility
@@ -308,7 +306,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingBeltGreenWebbingStalker
   category: utility
@@ -326,7 +324,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 6
   results:
   - proto: ClothingBeltWebbingBerill
   category: utility
@@ -344,7 +342,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 6
   results:
   - proto: ClothingBeltWebbingDoubleStalkerZaryaSmall
   category: utility

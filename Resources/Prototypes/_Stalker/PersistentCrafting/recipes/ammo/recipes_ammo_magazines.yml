@@ -10,7 +10,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 5
   results:
   - proto: 13x108Mag10
   category: ammo
@@ -28,7 +28,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 5
   results:
   - proto: AS12Mag
   category: ammo
@@ -46,7 +46,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: Base1270Mag
   category: ammo
@@ -64,7 +64,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Saiga1270Drum
   category: ammo
@@ -82,7 +82,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: Saiga1270Mag10
   category: ammo
@@ -100,7 +100,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 338Mag10
   category: ammo
@@ -118,7 +118,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: SpeedLoaderRemingtonMagnum
   category: ammo
@@ -136,7 +136,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: SpeedLoaderRemingtonMagnumAP
   category: ammo
@@ -154,7 +154,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: SpeedLoaderRemingtonMagnumEmpty
   category: ammo
@@ -172,7 +172,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BasePP2000PearlMag
   category: ammo
@@ -190,7 +190,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BasePP2000PearlMag20
   category: ammo
@@ -208,7 +208,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: BaseTommyGunMag
   category: ammo
@@ -226,7 +226,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: STSpeedLoader45ACP
   category: ammo
@@ -244,7 +244,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: STSpeedLoader45ACPEmpty
   category: ammo
@@ -262,7 +262,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: 545Mag20
   category: ammo
@@ -280,7 +280,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 545Mag30
   category: ammo
@@ -298,7 +298,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 545Mag45
   category: ammo
@@ -316,7 +316,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 545Mag60
   category: ammo
@@ -334,7 +334,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: Base545Mag10
   category: ammo
@@ -352,7 +352,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: 556Mag20
   category: ammo
@@ -370,7 +370,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 556Mag30
   category: ammo
@@ -388,7 +388,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 556Mag45
   category: ammo
@@ -406,7 +406,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 556Mag60
   category: ammo
@@ -424,7 +424,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: Base556Mag10
   category: ammo
@@ -442,7 +442,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: BasePPSHMag
   category: ammo
@@ -460,7 +460,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: PPSHDrum
   category: ammo
@@ -478,7 +478,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: TTMag
   category: ammo
@@ -496,7 +496,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 739Mag30
   category: ammo
@@ -514,7 +514,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 739Mag45
   category: ammo
@@ -532,7 +532,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 739Mag75
   category: ammo
@@ -550,7 +550,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: Base739Mag10
   category: ammo
@@ -568,7 +568,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: Magazine762x39RPD
   category: ammo
@@ -586,7 +586,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 751Mag20
   category: ammo
@@ -604,7 +604,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 751Mag30
   category: ammo
@@ -622,7 +622,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: Base751Mag10
   category: ammo
@@ -640,7 +640,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 754Mag10
   category: ammo
@@ -658,7 +658,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: 754Mag20
   category: ammo
@@ -676,7 +676,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: Base754Mag5
   category: ammo
@@ -694,7 +694,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BaseAPSMag
   category: ammo
@@ -712,7 +712,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BasePMMag
   category: ammo
@@ -730,7 +730,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: BizonMag
   category: ammo
@@ -748,7 +748,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: Vz61Mag
   category: ammo
@@ -766,7 +766,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BaseGlockMag10
   category: ammo
@@ -784,7 +784,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BaseGSH-18Mag10
   category: ammo
@@ -802,7 +802,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: BaseMP5Mag
   category: ammo
@@ -820,7 +820,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: BaseOTS126Mag
   category: ammo
@@ -838,7 +838,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BasePP2000Mag
   category: ammo
@@ -856,7 +856,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: BaseTEC9Mag
   category: ammo
@@ -874,7 +874,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: BizonMag919
   category: ammo
@@ -892,7 +892,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: GlockMag17
   category: ammo
@@ -910,7 +910,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 3
+    amount: 2
   results:
   - proto: GlockMag24
   category: ammo
@@ -928,7 +928,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: GlockMag33
   category: ammo
@@ -946,7 +946,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: GSH-18Mag18
   category: ammo
@@ -964,7 +964,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: LP08Drum
   category: ammo
@@ -982,7 +982,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: MP40Mag
   category: ammo
@@ -1000,7 +1000,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: MP5Mag50
   category: ammo
@@ -1018,7 +1018,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: P90Mag
   category: ammo
@@ -1036,7 +1036,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: PP91Mag
   category: ammo
@@ -1054,7 +1054,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: VityazMag
   category: ammo
@@ -1072,7 +1072,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: SR1Mag
   category: ammo
@@ -1090,7 +1090,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: SR2MMag20
   category: ammo
@@ -1108,7 +1108,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: SR2MMag30
   category: ammo
@@ -1126,7 +1126,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 939Mag20
   category: ammo
@@ -1144,7 +1144,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 939Mag30
   category: ammo
@@ -1162,7 +1162,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: 939Mag45
   category: ammo
@@ -1180,7 +1180,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: Base939Mag10
   category: ammo
@@ -1198,7 +1198,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: Base939MagVSK
   category: ammo
@@ -1216,7 +1216,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 20
+    amount: 4
   results:
   - proto: Base545MagRPK
   category: ammo

@@ -10,7 +10,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 15
   results:
   - proto: 545BPBox
     amount: 4
@@ -29,7 +29,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 15
   results:
   - proto: 556M856Box
     amount: 4
@@ -48,7 +48,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 15
   results:
   - proto: 739PCBox
     amount: 4
@@ -67,7 +67,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 15
   results:
   - proto: 751M61Box
     amount: 4
@@ -86,7 +86,7 @@
   pointReward: 0
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 15
   results:
   - proto: 754PCBox
     amount: 4

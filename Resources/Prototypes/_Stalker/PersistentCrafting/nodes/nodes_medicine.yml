@@ -49,7 +49,7 @@
   name: армейская апт. T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 15
+  cost: 7
   displayProto: MedkitMilitary
   treeColumn: 1
   treeRow: 1
@@ -61,7 +61,7 @@
   name: пакет крови T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 15
+  cost: 7
   displayProto: Bloodpack
   treeColumn: 2
   treeRow: 1
@@ -73,7 +73,7 @@
   name: научная апт. T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 80
+  cost: 40
   displayProto: MedkitScience
   treeColumn: 1
   treeRow: 2
@@ -85,7 +85,7 @@
   name: продв. апт. T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 160
+  cost: 80
   displayProto: MedkitElite
   treeColumn: 1
   treeRow: 3
@@ -109,7 +109,7 @@
   name: йодрадин T1.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 10
+  cost: 5
   displayProto: STPillboxAntirad
   treeColumn: 5
   treeRow: 0
@@ -119,7 +119,7 @@
   name: пробудофилин T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 80
+  cost: 40
   displayProto: STPillboxProbud
   treeColumn: 5
   treeRow: 1
@@ -131,7 +131,7 @@
   name: фуфломицин T4.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Medicine
-  cost: 320
+  cost: 160
   displayProto: STPillboxShiza
   treeColumn: 5
   treeRow: 2

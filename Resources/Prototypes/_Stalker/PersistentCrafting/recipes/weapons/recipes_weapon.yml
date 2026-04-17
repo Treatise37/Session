@@ -1,4 +1,4 @@
-﻿- type: persistentCraftRecipe
+- type: persistentCraftRecipe
   id: PersistentCraftWeaponRecipeToz34T1
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -10,7 +10,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponShotgunTOZ34
   category: weapons
@@ -28,7 +28,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponShotgunSawedOf
   category: weapons
@@ -46,7 +46,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponShotgunMP133
   category: weapons
@@ -64,7 +64,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponShotgunMossbergM88
   category: weapons
@@ -82,7 +82,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponShotgunMP153
   category: weapons
@@ -101,7 +101,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponShotgunSPAS
   category: weapons
@@ -119,7 +119,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -139,7 +139,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponRifleAKS74U
   category: weapons
@@ -157,7 +157,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STMetroWeaponRifleVSV
   category: weapons
@@ -175,7 +175,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRifleAKS74
   category: weapons
@@ -193,7 +193,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRifleRPK74
   category: weapons
@@ -211,7 +211,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier4
     amount: 1
   results:
@@ -231,7 +231,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponRifleSaiga739
   category: weapons
@@ -249,7 +249,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponSniperSKS
   category: weapons
@@ -267,7 +267,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponSniperMosin
   category: weapons
@@ -305,7 +305,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponRifleL85
   category: weapons
@@ -323,7 +323,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponRifleM16
   category: weapons
@@ -341,7 +341,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRifleSIG550
   category: weapons
@@ -359,7 +359,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRifleM4
   category: weapons
@@ -397,7 +397,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponRifleFAL
   category: weapons
@@ -415,7 +415,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRifleGalatz
   category: weapons
@@ -433,7 +433,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -453,7 +453,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: WeaponPistolStalkerGlock
   category: weapons
@@ -471,7 +471,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponSMGPP91
   category: weapons
@@ -489,7 +489,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponSMGMP5
   category: weapons
@@ -507,7 +507,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponSMGPP1901
   category: weapons
@@ -525,7 +525,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STWeaponRevolverTaurusJudge
   category: weapons
@@ -543,7 +543,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponRevolverSWModel625
   category: weapons
@@ -561,7 +561,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRevolverChiappaRhino60DS
   category: weapons
@@ -579,7 +579,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponRevolverDanWesson715
   category: weapons
@@ -597,7 +597,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: WeaponPistolStalkerAPS
   category: weapons
@@ -615,7 +615,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponSMGPP19
   category: weapons
@@ -633,7 +633,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STWeaponSMGVZ61
   category: weapons
@@ -651,7 +651,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STWeaponSMGPP19919
   category: weapons

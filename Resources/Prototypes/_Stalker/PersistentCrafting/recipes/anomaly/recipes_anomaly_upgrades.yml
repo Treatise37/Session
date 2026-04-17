@@ -10,7 +10,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ZoneArtifactDetectorModifiedHunter
   category: upgrades
@@ -28,7 +28,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ZoneArtifactDetectorResponseCvoboda
   category: upgrades

@@ -10,7 +10,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ZoneAnomalyDetectorAD1
   category: anomaly-detectors
@@ -28,7 +28,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ZoneAnomalyDetectorUpgradeAD1
   category: anomaly-detectors
@@ -46,7 +46,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ZoneAnomalyDetectorAD2
   category: anomaly-detectors
@@ -64,7 +64,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ZoneAnomalyDetectorUpgradeAD2
   category: anomaly-detectors
@@ -82,7 +82,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ZoneAnomalyDetectorBMT12
   category: anomaly-detectors
@@ -100,7 +100,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:

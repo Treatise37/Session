@@ -10,7 +10,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: MedkitAI2
   category: medicine
@@ -28,7 +28,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STGauze
   category: medicine
@@ -46,7 +46,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STBrutepack
   category: medicine
@@ -64,7 +64,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STOintment
   category: medicine
@@ -82,7 +82,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 5
+    amount: 1
   results:
   - proto: MedkitMilitary
   category: medicine
@@ -100,7 +100,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 5
+    amount: 1
   results:
   - proto: Bloodpack
   category: medicine
@@ -118,7 +118,7 @@
   pointReward: 8
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 5
+    amount: 1
   results:
   - proto: MedkitScience
   category: medicine
@@ -136,9 +136,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 10
-  - tag: STArtifactTier3
-    amount: 1
+    amount: 3
   results:
   - proto: MedkitElite
   category: medicine
@@ -174,7 +172,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: STPillboxAntirad
   category: medicine
@@ -192,7 +190,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 10
+    amount: 5
   results:
   - proto: STPillboxProbud
   category: medicine
@@ -210,9 +208,7 @@
   pointReward: 64
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 30
-  - tag: STArtifactTier4
-    amount: 1
+    amount: 9
   results:
   - proto: STPillboxShiza
   category: medicine

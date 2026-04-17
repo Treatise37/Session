@@ -1,4 +1,4 @@
-﻿- type: persistentCraftRecipe
+- type: persistentCraftRecipe
   id: PersistentCraftArmorRecipeShitok2T2
   name: persistent-craft-recipe-generic-name
   description: persistent-craft-recipe-generic-desc
@@ -10,7 +10,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STClothingOuterArmorLightPlateVestBaseStalker
   category: armor
@@ -28,7 +28,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STClothingOuterKirasa
   category: armor
@@ -46,7 +46,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmor6B2
   category: armor
@@ -64,7 +64,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STClothingOuterArmorLightPlateVestBaseANAgreen
   category: armor
@@ -82,7 +82,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STClothingOuterKorynd
   category: armor
@@ -100,7 +100,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STClothingOuterSlickHaki
   category: armor
@@ -118,7 +118,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -138,7 +138,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -198,7 +198,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterArmourJacketStalker
   category: armor
@@ -216,7 +216,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterJacketStalkerUpgrade
   category: armor
@@ -234,7 +234,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterAnomalyStalkerJacket
   category: armor
@@ -252,7 +252,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STClothingOuterArmorRCBZ
   category: armor
@@ -270,7 +270,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STClothingOuterArmorLightPlateVestBasePSZ7
   category: armor
@@ -288,7 +288,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingOuterArmorStalker
   category: armor
@@ -306,7 +306,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingOuterArmorSevaStalker
   category: armor
@@ -324,7 +324,7 @@
   pointReward: 32
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 64
+    amount: 32
   - tag: STArtifactTier3
     amount: 1
   results:
@@ -344,7 +344,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorZaryaStalker
   category: armor
@@ -362,7 +362,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorZaryaStalkerModifedType1
   category: armor
@@ -380,7 +380,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorZaryaStalkerModifedType2
   category: armor
@@ -398,7 +398,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorZaryaTourist
   category: armor
@@ -416,7 +416,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorZaryaHunter
   category: armor
@@ -434,7 +434,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingOuterArmorSpark
   category: armor
@@ -452,7 +452,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingOuterArmorAborigineStalker
   category: armor
@@ -470,7 +470,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingHeadHelmetSH68
   category: armor
@@ -488,7 +488,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: STClothingHeadHelmetMakeshiftTacticalT3
   category: armor
@@ -506,7 +506,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingHeadHelmetLight
   category: armor
@@ -524,7 +524,7 @@
   pointReward: 3
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 6
+    amount: 3
   results:
   - proto: ClothingHeadHelmetInfantry
   category: armor
@@ -542,7 +542,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingHeadHelmetVityaz1C
   category: armor
@@ -560,7 +560,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingHeadAssaultHelmet
   category: armor
@@ -598,7 +598,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterCoatDoshdevik
   category: armor
@@ -616,7 +616,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: STClothingCapeArmorChainmailSeva
   category: armor
@@ -634,7 +634,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterCoatStalker
   category: armor
@@ -652,7 +652,7 @@
   pointReward: 1
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 2
+    amount: 1
   results:
   - proto: ClothingOuterCoatPoisk
   category: armor
@@ -670,7 +670,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingOuterCoatLoyalist
   category: armor
@@ -688,7 +688,7 @@
   pointReward: 16
   ingredients:
   - proto: STCraftAnomalyDust
-    amount: 32
+    amount: 16
   results:
   - proto: ClothingOuterCoatBolotniy
   category: armor

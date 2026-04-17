@@ -15,7 +15,7 @@
   name: Обрез T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 5
+  cost: 2
   displayProto: STWeaponShotgunSawedOf
   treeColumn: 2
   treeRow: 0
@@ -27,7 +27,7 @@
   name: МР-133 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponShotgunMP133
   treeColumn: 1
   treeRow: 1
@@ -39,7 +39,7 @@
   name: Mossberg T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponShotgunMossbergM88
   treeColumn: 2
   treeRow: 1
@@ -51,7 +51,7 @@
   name: МР-153 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponShotgunMP153
   treeColumn: 1
   treeRow: 2
@@ -59,52 +59,28 @@
   - PersistentCraftWeaponNodeMP133T2
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeBenelliT3
-  name: Benelli T3
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 80
-  displayProto: STWeaponShotgunBenelliM4Super90
-  treeColumn: 2
-  treeRow: 2
-  prerequisites:
-  - PersistentCraftWeaponNodeMP153T3
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeSpas12T3
   name: SPAS-12 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponShotgunSPAS
   treeColumn: 3
   treeRow: 2
   prerequisites:
-  - PersistentCraftWeaponNodeBenelliT3
+  - PersistentCraftWeaponNodeMP153T3
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeProtectaT4
   name: Protecta T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 160
+  cost: 80
   displayProto: STWeaponShotgunProtecta
   treeColumn: 1
   treeRow: 3
   prerequisites:
   - PersistentCraftWeaponNodeMP153T3
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeSaiga12T45
-  name: Сайга-12 T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponShotgunSaiga12
-  treeColumn: 0
-  treeRow: 3
-  prerequisites:
-  - PersistentCraftWeaponNodeProtectaT4
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeAKS74UT1
@@ -121,7 +97,7 @@
   name: ВСВ Глухарь T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STMetroWeaponRifleVSV
   treeColumn: 5
   treeRow: 1
@@ -133,7 +109,7 @@
   name: АКС-74 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRifleAKS74
   treeColumn: 5
   treeRow: 2
@@ -145,22 +121,10 @@
   name: РПК-74 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRifleRPK74
   treeColumn: 6
   treeRow: 2
-  prerequisites:
-  - PersistentCraftWeaponNodeAKS74T3
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeA545T4
-  name: А-545 T4
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponRifleA545
-  treeColumn: 5
-  treeRow: 3
   prerequisites:
   - PersistentCraftWeaponNodeAKS74T3
 
@@ -169,19 +133,19 @@
   name: АК-74М T4.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 160
+  cost: 80
   displayProto: STWeaponRifleAK74M
   treeColumn: 6
   treeRow: 3
   prerequisites:
-  - PersistentCraftWeaponNodeA545T4
+  - PersistentCraftWeaponNodeAKS74T3
 
 - type: persistentCraftNode
   id: PersistentCraftWeaponNodeSaiga762T15
   name: Сайга 7.62 T1.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 10
+  cost: 5
   displayProto: STWeaponRifleSaiga739
   treeColumn: 5
   treeRow: 6
@@ -191,7 +155,7 @@
   name: SKS T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponSniperSKS
   treeColumn: 5
   treeRow: 7
@@ -199,52 +163,16 @@
   - PersistentCraftWeaponNodeSaiga762T15
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeAKMCT35
-  name: АКМС T3.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 80
-  displayProto: STWeaponRifleAKMC
-  treeColumn: 5
-  treeRow: 8
-  prerequisites:
-  - PersistentCraftWeaponNodeSKST2
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeAK103T45
-  name: АК-103 T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponRifleAK103
-  treeColumn: 5
-  treeRow: 9
-  prerequisites:
-  - PersistentCraftWeaponNodeAKMCT35
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeMosinT2
   name: Мосина T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponSniperMosin
   treeColumn: 6
   treeRow: 7
   prerequisites:
   - PersistentCraftWeaponNodeSKST2
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeSVDST45
-  name: SVDS T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponSniperSVDS
-  treeColumn: 6
-  treeRow: 8
-  prerequisites:
-  - PersistentCraftWeaponNodeMosinT2
 
 # - type: persistentCraftNode
 #   id: PersistentCraftWeaponNodeVSST5
@@ -273,7 +201,7 @@
   name: M16 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponRifleM16
   treeColumn: 9
   treeRow: 1
@@ -285,7 +213,7 @@
   name: SIG SG 550 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRifleSIG550
   treeColumn: 8
   treeRow: 2
@@ -297,36 +225,12 @@
   name: M4 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRifleM4
   treeColumn: 9
   treeRow: 2
   prerequisites:
   - PersistentCraftWeaponNodeM16T2
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeScarLT35
-  name: SCAR-L T3.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 80
-  displayProto: STWeaponRifleSCARL
-  treeColumn: 10
-  treeRow: 2
-  prerequisites:
-  - PersistentCraftWeaponNodeM16T2
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeLr300T4
-  name: LR-300 T4
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponRifleLR300v1
-  treeColumn: 9
-  treeRow: 3
-  prerequisites:
-  - PersistentCraftWeaponNodeM4T3
 
 # - type: persistentCraftNode
 #   id: PersistentCraftWeaponNodeGalilT5
@@ -345,7 +249,7 @@
   name: FN FAL T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponRifleFAL
   treeColumn: 0
   treeRow: 6
@@ -355,7 +259,7 @@
   name: Galatz T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRifleGalatz
   treeColumn: 0
   treeRow: 7
@@ -367,7 +271,7 @@
   name: FN SCAR-H T4
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 160
+  cost: 80
   displayProto: STWeaponRifleSCARH
   treeColumn: 0
   treeRow: 8
@@ -375,23 +279,11 @@
   - PersistentCraftWeaponNodeGalatzT3
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeScarHCqcT45
-  name: FN-FALo T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponRifleFALo
-  treeColumn: 1
-  treeRow: 8
-  prerequisites:
-  - PersistentCraftWeaponNodeScarHT4
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeGlockT15
   name: Glock-17 T1.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 10
+  cost: 5
   displayProto: WeaponPistolStalkerGlock
   treeColumn: 11
   treeRow: 5
@@ -401,7 +293,7 @@
   name: Кедр T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponSMGPP91
   treeColumn: 11
   treeRow: 6
@@ -413,7 +305,7 @@
   name: MP5 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponSMGMP5
   treeColumn: 11
   treeRow: 7
@@ -421,23 +313,11 @@
   - PersistentCraftWeaponNodeKedrT2
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeVereskT3
-  name: Вереск 9x19 T3
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 80
-  displayProto: STWeaponSMGStalkerCP2Veresk
-  treeColumn: 12
-  treeRow: 7
-  prerequisites:
-  - PersistentCraftWeaponNodeMp5T3
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeVityazT35
   name: Витязь T3.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponSMGPP1901
   treeColumn: 11
   treeRow: 8
@@ -445,23 +325,11 @@
   - PersistentCraftWeaponNodeMp5T3
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeP90T45
-  name: FN P90 T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponSMGFNP90
-  treeColumn: 11
-  treeRow: 9
-  prerequisites:
-  - PersistentCraftWeaponNodeVityazT35
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeTaurusJudgeT1
   name: Taurus Judge T1
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 5
+  cost: 2
   displayProto: STWeaponRevolverTaurusJudge
   treeColumn: 8
   treeRow: 6
@@ -471,7 +339,7 @@
   name: S&W 625 T2.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 10
+  cost: 5
   displayProto: STWeaponRevolverSWModel625
   treeColumn: 8
   treeRow: 7
@@ -483,7 +351,7 @@
   name: Chiappa T3.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRevolverChiappaRhino60DS
   treeColumn: 8
   treeRow: 8
@@ -495,22 +363,10 @@
   name: Dan Wesson 715 T3.5
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponRevolverDanWesson715
   treeColumn: 9
   treeRow: 8
-  prerequisites:
-  - PersistentCraftWeaponNodeChiappaT35
-
-- type: persistentCraftNode
-  id: PersistentCraftWeaponNodeRsh12T45
-  name: РШ-12 T4.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 160
-  displayProto: STWeaponRevolverRH12
-  treeColumn: 8
-  treeRow: 9
   prerequisites:
   - PersistentCraftWeaponNodeChiappaT35
 
@@ -519,7 +375,7 @@
   name: АПС T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: WeaponPistolStalkerAPS
   treeColumn: 2
   treeRow: 6
@@ -529,7 +385,7 @@
   name: Бизон T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponSMGPP19
   treeColumn: 2
   treeRow: 7
@@ -541,7 +397,7 @@
   name: VZ61 T2
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 15
+  cost: 7
   displayProto: STWeaponSMGVZ61
   treeColumn: 3
   treeRow: 7
@@ -549,23 +405,11 @@
   - PersistentCraftWeaponNodeBizonT2
 
 - type: persistentCraftNode
-  id: PersistentCraftWeaponNodeVeresk921T35
-  name: Veresk 9x21 T3.5
-  description: persistent-craft-node-sub-recipe-desc
-  branch: Weapon
-  cost: 80
-  displayProto: STWeaponSMGStalkerCP2Veresk921
-  treeColumn: 13
-  treeRow: 7
-  prerequisites:
-  - PersistentCraftWeaponNodeVereskT3
-
-- type: persistentCraftNode
   id: PersistentCraftWeaponNodeBizon919T3
   name: Bizon 9x19 T3
   description: persistent-craft-node-sub-recipe-desc
   branch: Weapon
-  cost: 80
+  cost: 40
   displayProto: STWeaponSMGPP19919
   treeColumn: 2
   treeRow: 8
