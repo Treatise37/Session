@@ -355,15 +355,3 @@
       545HPBox: 300
       545PCBox: 1800
       545BPBox: 2700
-
-- type: personalShop
-  id: PersonalmonualShop
-  username: monual
-  categories:
-  - name: Персональная категория
-    items:
-      STWeaponSMGPPS43: 1500
-      BasePPSHMag: 200
-      725PBox: 150
-      725LRNPCBox: 100
-      725PTBox: 665
