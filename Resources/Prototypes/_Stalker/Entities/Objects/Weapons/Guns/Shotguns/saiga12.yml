@@ -243,3 +243,23 @@
   id: STBaseWeaponShotgunVepr12De21
   name: Вепрь-12
   description: Российское гладкоствольное самозарядное ружьё, разработанное на основе конструкции ручного пулемёта Калашникова.
+
+- type: entity
+  parent: STBaseWeaponShotgunVepr12De21Base
+  id: STBaseWeaponShotgunVepr12Molot
+  name: Вепрь-12 "Молото"
+  description: Российское гладкоствольное самозарядное ружьё, разработанное на основе конструкции ручного пулемёта Калашникова.
+  components:
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr_molot.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr_molot.rsi
+    shape:
+    - 0,0,6,1
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Shotguns/vepr_molot.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]

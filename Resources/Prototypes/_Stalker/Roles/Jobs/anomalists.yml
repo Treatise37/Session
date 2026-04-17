@@ -17,8 +17,6 @@
     - type: Bands
       band: Stalker
       bandIcon: tec
-      bandProto: STAnomalistsBand
-      bandRankId: 1
     - type: BlockTackingHolyItems
     - type: TeethPull
       teethProto: ToothStalker
@@ -73,14 +71,4 @@
     outerClothing: ClothingOuterCoatIvyAnomalist
     mask: ClothingMaskGasAnomalists
     head: ClothingHeadWildHatAnomalist
-
-- type: stBand
-  id: STAnomalistsBand
-  name: Anomalists
-  factionId: Stalker
-  maxMembers: 10
-  managingRankId: 2
-  hierarchy:
-    1: StalkerAnomalist
-    2: StalkerAnomalistGuardian
 

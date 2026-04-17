@@ -28,8 +28,6 @@
         - type: Bands
           band: Stalker
           bandIcon: greh
-          bandProto: STGrehBand
-          bandRankId: 2
         - type: NpcFactionMember
           factions:
             - Mutated
@@ -64,12 +62,4 @@
     shoes: ClothingShoesSwat
     mask: ClothingMaskGreh
     gloves: ClothingHandsGlovesColorBlack
-- type: stBand
-  id: STGrehBand
-  name: Sin
-  factionId: Sin
-  maxMembers: 10
-  managingRankId: 3
-  hierarchy:
-    1: StalkerGreh
 

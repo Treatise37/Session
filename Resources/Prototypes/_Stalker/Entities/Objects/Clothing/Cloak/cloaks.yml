@@ -371,3 +371,31 @@
     slots:
     - Hair
     - HeadTop
+
+- type: entity
+  parent: ClothingOuterCoatAugust
+  id: ClothingOuterCoatKevlarBlack
+  name: кевларовый плащ
+  description: Перекрашенный кевларовый плащ.
+  suffix: ST, T3
+  components:
+  - type: STWeight
+    self: 5
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/cloak/kevlaroviy_black.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/cloak/kevlaroviy_black.rsi
+
+- type: entity
+  parent: ClothingOuterCoatAugust
+  id: ClothingOuterCoatSevaWhite
+  name: кольчужный плащ Сева
+  description: Перекрашенный кольчужный плащ.
+  suffix: ST, T3
+  components:
+  - type: STWeight
+    self: 5
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/cloak/seva_white.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/cloak/seva_white.rsi

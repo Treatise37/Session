@@ -27,8 +27,6 @@
         - type: Bands
           band: Stalker
           bandIcon: ne
-          bandProto: STNeutralBand
-          bandRankId: 2
         - type: BlockTackingHolyItems
         - type: TeethPull
           teethProto: ToothStalker
@@ -49,12 +47,4 @@
     legs: ClothingLegsJeansNeutral
     shoes: STClothingShoesBootsCombatFilled
     back: ClothingBackpackDuffelBlackStalker
-- type: stBand
-  id: STNeutralBand
-  name: Neutral
-  factionId: Stalker
-  maxMembers: 10
-  managingRankId: 3
-  hierarchy:
-    1: StalkerNeutral
 

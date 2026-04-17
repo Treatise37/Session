@@ -61,7 +61,7 @@
   - type: STWeaponDamageFalloff
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
-    accuracyMultiplier: 1.42
+    accuracyMultiplier: 1.41
 
 - type: entity
   parent: STBaseWeaponSMGMP40

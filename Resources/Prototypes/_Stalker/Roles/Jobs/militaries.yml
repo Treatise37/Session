@@ -237,12 +237,3 @@
     1: Military
     2: MilitaryOfficer
     3: MilitaryHead
-
-- type: stBand
-  id: STMilitaryStalkerBand
-  name: MilitaryStalker
-  factionId: MilitaryStalker
-  maxMembers: 10
-  managingRankId: 1
-  hierarchy:
-    1: MilitaryStalker

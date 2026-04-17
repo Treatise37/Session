@@ -23,8 +23,6 @@
         - type: Bands
           band: Stalker
           bandIcon: militia
-          bandProto: STMilitiaBand
-          bandRankId: 1
         - type: BlockTackingHolyItems
         - type: TeethPull
           teethProto: ToothStalker
@@ -60,8 +58,6 @@
         - type: Bands
           band: Stalker
           bandIcon: militia
-          bandProto: STMilitiaBand
-          bandRankId: 2
         - type: BlockTackingHolyItems
         - type: TeethPull
           teethProto: ToothStalker
@@ -92,14 +88,4 @@
     neck: ClothingBandageStalkerWhite
     head: ClothingHeadHatBeret
     back: ClothingBackpackDuffelBlackStalker
-
-- type: stBand
-  id: STMilitiaBand
-  name: militia
-  factionId: Stalker
-  maxMembers: 10
-  managingRankId: 2
-  hierarchy:
-    1: StalkerMilitia
-    2: StalkerMilitiaCommander
 

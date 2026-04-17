@@ -57,3 +57,19 @@
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
+
+- type: entity
+  parent: STBaseWeaponRifleAKS74
+  id: STWeaponRifleRPK74Vedma
+  name: РПК-74 "Ведьмина метла"
+  description: Лёгкий пулемёт на основе AK-74.
+  components:
+  - type: GunWieldBonus
+    minAngle: -45
+    maxAngle: -60
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/rpk74m_vedma.rsi
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/rpk74m_vedma.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/rpk74m_vedma.rsi

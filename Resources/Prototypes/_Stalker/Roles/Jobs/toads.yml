@@ -22,7 +22,6 @@
       - type: Bands
         band: Stalker
         bandIcon: jaba
-        bandProto: STToadsBand
         bandRankId: 1
       - type: BlockTackingHolyItems
       - type: TeethPull
@@ -58,8 +57,6 @@
       - type: Bands
         band: Stalker
         bandIcon: jaba
-        bandProto: STToadsBand
-        bandRankId: 2
       - type: BlockTackingHolyItems
       - type: TeethPull
         teethProto: ToothStalker
@@ -81,13 +78,4 @@
     mask: ClothingMaskSkull
     pocket1: GoldDiceBag
     back: ClothingBackpackDuffelBlackStalker
-- type: stBand
-  id: STToadsBand
-  name: Toads
-  factionId: Bandit
-  maxMembers: 10
-  managingRankId: 2
-  hierarchy:
-    1: StalkerJaba
-    2: StalkerJabaAce
 

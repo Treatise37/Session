@@ -24,8 +24,6 @@
         - type: Bands
           band: Stalker
           bandIcon: police
-          bandProto: STPoliceBand
-          bandRankId: 2
         - type: BlockTackingHolyItems
 
 - type: startingGear
@@ -35,14 +33,4 @@
     torso: ClothingTorsoJacketPolice
     legs: ClothingLegsJeansPolice
     shoes: STClothingShoesBootsCombatFilled
-
-
-- type: stBand
-  id: STPoliceBand
-  name: Police
-  factionId: Police
-  maxMembers: 10
-  managingRankId: 3
-  hierarchy:
-    1: Police
 

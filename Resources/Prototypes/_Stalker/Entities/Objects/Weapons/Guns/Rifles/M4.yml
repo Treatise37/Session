@@ -176,6 +176,19 @@
       path: /Audio/_Stalker/Effects/Guns/n_lr300_shot.ogg
 
 - type: entity
+  parent: STWeaponRifleLR300v1
+  id: STWeaponRifleLR300White
+  name: LR-300
+  description: Новая ступень в развитии семейства знаменитой М-16. Благодаря исключительно ровному спуску, высокой эргономике и небольшому весу данное оружие отличается высокой точностью боя, хотя высокая чувствительность к загрязнению делает его малопригодным для использования в сложных условиях.
+  components:
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/lr-300-white.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/lr-300-white.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/_Skins/lr-300-white.rsi
+
+- type: entity
   parent: STBaseWeaponRifleM4
   id: STWeaponRifleSCARL
   name: SCAR-L

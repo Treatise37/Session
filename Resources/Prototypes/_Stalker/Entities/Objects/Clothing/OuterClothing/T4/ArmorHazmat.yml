@@ -66,3 +66,69 @@
       slots:
       - Hair
       - Snout
+
+- type: entity
+  parent: STClothingOuterArmorSevaBase
+  id: ClothingOuterArmorHazmatRfWhite
+  name: Бронированный ХАЗМАТ
+  suffix: ST, T4, Env
+  description: Кустарно улучшенный ХАЗМАТ с применением аномальных материалов, обеспечивающий хорошую защиту по всем фронтам. Следует использовать с встроенным шлемом. Было разработано T.D.I.  Inc.
+  components:
+    - type: Sprite
+      sprite: _Stalker/Objects/Clothing/outerClothing/armored_hazmat_white.rsi
+    - type: Clothing
+      sprite: _Stalker/Objects/Clothing/outerClothing/armored_hazmat_white.rsi
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHeadHazmatWhite
+    - type: Armor
+      armorClass: 3
+      modifiers:
+        flatReductions:
+          Blunt: 7
+          Slash: 8
+          Piercing: 6
+          Radiation: 6
+          Caustic: 6
+          Psy: 5
+        coefficients:
+          Blunt: 0.65
+          Slash: 0.65
+          Piercing: 0.65
+          Heat: 0.6
+          Caustic: 0.6
+          Shock: 0.6
+          Compression: 0.6
+          Psy: 0.6
+    - type: GrantsArtifactSlots
+      slots: 5 # Stalker-Changes | Number of artifact slots this armor grants
+
+- type: entity
+  parent: STClothingHeadHatBase
+  id: ClothingHeadHazmatWhite
+  name: шлем ХАЗМАТа
+  description: Капюшончик))
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: _Stalker/Objects/Clothing/hats/hazmat_helm_white.rsi
+    - type: Clothing
+      sprite: _Stalker/Objects/Clothing/hats/hazmat_helm_white.rsi
+    - type: BreathMask
+    - type: IngestionBlocker
+    - type: IdentityBlocker
+    - type: Tag
+      tags:
+        - BlockMask
+    - type: Armor
+      armorClass: 1
+      modifiers:
+        flatReductions:
+          Heat: 2
+          Radiation: 1
+        coefficients:
+          Heat: 0.9
+          Radiation: 0.8
+    - type: HideLayerClothing
+      slots:
+      - Hair
+      - Snout

@@ -273,7 +273,7 @@
       STClothingOuterArmorGonchiy: 8200
       STBaseWeaponShotgunVepr12De21: 6200
       Base1270Mag: 300
-      
+
 - type: personalShop
   id: Personalnikita2282288Shop
   username: nikita2282288
@@ -318,3 +318,52 @@
     items:
       STWeaponShotgunOrigin12: 3000
       Origin1270Drum: 400
+
+- type: personalShop
+  id: PersonalXhedaieShop
+  username: Xhedaie
+  categories:
+  - name: Персональная категория
+    items:
+      STBaseWeaponShotgunVepr12Molot: 6200
+      Base1270Mag: 300
+
+- type: personalShop
+  id: PersonalRUTShop
+  username: RUT
+  categories:
+  - name: Персональная категория
+    items:
+      ClothingOuterArmorHazmatRfWhite: 25000
+      Base1270Mag: 300
+      STWeaponRifleLR300White: 15000
+      556Mag30: 400
+      556WarmagBox: 350
+      556M855Box: 1800
+      556M856Box: 3800
+      ClothingOuterCoatSevaWhite: 1300
+      ClothingOuterCoatKevlarBlack: 1300
+
+- type: personalShop
+  id: PersonalHolicShop
+  username: Holic
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponRifleRPK74Vedma: 5000
+      Base545MagRPK: 300
+      545HPBox: 300
+      545PCBox: 1800
+      545BPBox: 2700
+
+- type: personalShop
+  id: PersonalmonualShop
+  username: monual
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponSMGPPS43: 1500
+      BasePPSHMag: 200
+      725PBox: 150
+      725LRNPCBox: 100
+      725PTBox: 665
