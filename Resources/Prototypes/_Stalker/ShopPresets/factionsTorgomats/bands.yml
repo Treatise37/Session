@@ -208,7 +208,9 @@
     items:
       # Melee
       StalkerBallBat: 50
-        # Guns
+      # Guns
+      #  20gauge
+      STBaseWeaponShotgunTOZ106: 600 # T1
       # 7mm
       STWeaponShotgunTOZ34: 150 # T2
       STWeaponShotgunMP133: 385
@@ -250,6 +252,8 @@
       BasePPSHMag: 250
       BizonMag: 350
       # Other
+      Base2070Mag: 30
+      TOZ106Mag5: 100
       Base556Mag10: 80
       556Mag20: 220
       556Mag30: 330
@@ -262,6 +266,10 @@
   - name: shop-category-ammunition
     priority: 3
     items:
+      # 20gauge
+      62mmBuckshotBox: 30 #T0
+      75mmBuckshotBox: 250 #T1
+      # 7mm
       6mmBuckshotBox: 120
       7mmBuckshotBox: 35
       8mmBuckshotBox: 225
