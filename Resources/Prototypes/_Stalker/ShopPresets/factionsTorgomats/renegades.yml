@@ -77,6 +77,7 @@
       priority: 1
       items:
             # Melee
+         STBaseWeaponShotgunTOZ106: 600 # T1
          WeaponPistolStalkerTT: 50
          WeaponPistolStalkerAPS: 350
          STWeaponShotgunTOZ34: 200
@@ -101,6 +102,8 @@
         739Mag30: 600
         PP91Mag: 350
         MP40Mag: 250
+        Base2070Mag: 30
+        TOZ106Mag5: 100
     - name: shop-category-ammunition
       priority: 3
       items:
@@ -126,6 +129,8 @@
         545PCBox: 1800
         754HPBox: 500
         739HPBox: 400
+        62mmBuckshotBox: 30 #T0
+        75mmBuckshotBox: 250 #T1
     - name: shop-category-armor
       priority: 4
       items:

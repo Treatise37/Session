@@ -130,7 +130,9 @@
         WeaponGameRevolverMateba: 4000
         STWeaponSMGPP2000: 3500
         STWeaponRifleRPK74: 4500
+        STBaseWeaponShotgunTOZ106: 800 # T1
         STWeaponShotgunOrigin12: 5600
+
     - name: shop-category-magazines
       priority: 1
       items:
@@ -154,9 +156,15 @@
         Saiga1270Mag10: 400
         Saiga1270Drum: 800
         Base739Mag10: 200
+        Base2070Mag: 30
+        TOZ106Mag5: 100
     - name: shop-category-ammunition
       priority: 2
       items:
+        # 20gauge
+        62mmBuckshotBox: 30 #T0
+        75mmBuckshotBox: 200 #T1
+        # 7mm
         6mmBuckshotBox: 100
         7mmBuckshotBox: 265
         8mmBuckshotBox: 400

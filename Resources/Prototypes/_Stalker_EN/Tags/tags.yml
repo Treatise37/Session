@@ -54,6 +54,12 @@
 - type: Tag
   id: STFleshRelated
 
+- type: Tag     
+  id: MagazineTOZ106  
+
+- type: Tag
+  id: ShellTOZ106  
+
 - type: Tag
   id: STCookingRecipe
 
@@ -68,3 +74,4 @@
 
 - type: Tag
   id: STCameraFilm
+
