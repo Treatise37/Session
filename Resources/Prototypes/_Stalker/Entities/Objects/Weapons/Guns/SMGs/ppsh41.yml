@@ -51,21 +51,3 @@
   id: STWeaponSMGPPSh41
   name: PPSh-41 Submachine Gun
   description: The iconic Soviet PPSh-41 submachine gun chambered in 7.62x25mm Tokarev. Known for its legendary reliability and high rate of fire, it remains surprisingly effective in Zone conditions despite its age.
-
-- type: entity
-  parent: STBaseWeaponSMGPPSh41
-  id: STWeaponSMGPPS43
-  name: ППС-43
-  description: Варианты пистолета-пулемёта, разработанного советским конструктором Алексеем Ивановичем Судаевым в 1942 году.
-  suffix: ST, Кастомка
-  components:
-  - type: STWeight
-    self: 3.2
-  - type: Item
-    sprite: _Stalker/Objects/Weapons/Guns/SMGs/pss43.rsi
-    shape:
-    - 0,0,6,1
-  - type: Sprite
-    sprite: _Stalker/Objects/Weapons/Guns/SMGs/pss43.rsi
-  - type: Clothing
-    sprite: _Stalker/Objects/Weapons/Guns/SMGs/pss43.rsi
