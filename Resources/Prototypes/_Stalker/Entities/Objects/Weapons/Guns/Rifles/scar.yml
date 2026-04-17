@@ -143,10 +143,9 @@
     minAngle: 45
     maxAngle: 90
     fireRate: 5
-    projectileSpeed: 50
     angleIncrease: 1.1
     angleDecay: 5.5
-    projectileSpeed: 70
+    projectileSpeed: 55
   - type: STWeaponDamageFalloff
     falloffMultiplier: 0.8
   - type: STWeaponAccuracy
