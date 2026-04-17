@@ -7,7 +7,7 @@
     StalkerFoodBarbarisPulb:
       amount: 1
     STGauze:
-      amount: 10
+      amount: 5
 
 - type: craftRecipe
   id: recipeStalkerFoodUniPulb
@@ -33,4 +33,4 @@
     StalkerFoodUniPulb:
       amount: 1
     STGauze:
-      amount: 10
+      amount: 5

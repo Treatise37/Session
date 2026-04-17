@@ -4,7 +4,7 @@
   id: STBaseHealingItem
   components:
   - type: STBulkBuyable # stalker-14-en
-    maxQuantity: 10
+    maxQuantity: 5
   - type: Healing
     selfHealPenaltyMultiplier: 2.5
   - type: Item
@@ -231,14 +231,14 @@
         Slash: -0
         Piercing: -0
     bloodlossModifier: -10
-    delay: 6
+    delay: 2.5
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
   - type: Stack
     stackType: STGauze
-    count: 10
+    count: 5
   - type: Item
     sprite: _Stalker/Objects/medicine.rsi # Stalker-TODO: Need an inhand sprite for this item
   - type: Sprite
@@ -253,7 +253,7 @@
     sprite: _Stalker/Objects/medicine.rsi
     state: gauze
   spawn: STGauze
-  maxCount: 10
+  maxCount: 5
 
 - type: entity
   parent: STGauze
@@ -270,14 +270,14 @@
         Slash: -2
         Piercing: -2
     bloodlossModifier: -17
-    delay: 6
+    delay: 3
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
   - type: Stack
     stackType: STGauzeBarbaris
-    count: 10
+    count: 5
   - type: Item
     sprite: _Stalker/Objects/medicine.rsi
   - type: Sprite
@@ -291,7 +291,7 @@
     sprite: _Stalker/Objects/medicine.rsi
     state: gauzebarbaris
   spawn: STGauzeBarbaris
-  maxCount: 10
+  maxCount: 5
 
 - type: entity
   parent: STGauze
@@ -318,7 +318,7 @@
       path: "/Audio/Items/Medical/brutepack_end.ogg"
   - type: Stack
     stackType: STGauzeUniversal
-    count: 10
+    count: 5
   - type: Item
     sprite: _Stalker/Objects/medicine.rsi
   - type: Sprite
@@ -332,7 +332,7 @@
     sprite: _Stalker/Objects/medicine.rsi
     state: cast
   spawn: STGauzeUniversal
-  maxCount: 10
+  maxCount: 5
 
 - type: entity
   parent: STGauze
@@ -343,7 +343,7 @@
   components:
   - type: Stack
     stackType: STGauzeSera
-    count: 10
+    count: 5
   - type: Item
     sprite: _Stalker/Objects/Counsumable/Medicine/gausesera.rsi # Stalker-TODO: Need an inhand sprite for this item
   - type: Sprite
@@ -357,7 +357,7 @@
     sprite: _Stalker/Objects/Counsumable/Medicine/ointmentsera.rsi
     state: icon
   spawn: STGauzeSera
-  maxCount: 10
+  maxCount: 5
 
 - type: entity
   parent: BaseMedkit
@@ -381,11 +381,11 @@
   - type: Healing
     damage:
       types:
-        Piercing: -10
-        Blunt: -10
-        Slash: -10
+        Piercing: -20
+        Blunt: -15
+        Slash: -20
         Radiation: -10
-        Compression: -10
+        Compression: -15
   - type: Stack
     stackType: MedkitAI2
     count: 4
@@ -448,9 +448,9 @@
   - type: Healing
     damage:
       types:
-        Piercing: -20
-        Blunt: -10
-        Slash: -20
+        Piercing: -30
+        Blunt: -20
+        Slash: -30
   - type: Stack
     stackType: MedkitMilitary
     count: 4
@@ -491,7 +491,7 @@
         Burn: -75
         Airloss: -75
       types:
-        Compression: -30
+        Compression: -55
   - type: Stack
     stackType: MedkitScience
     count: 4
