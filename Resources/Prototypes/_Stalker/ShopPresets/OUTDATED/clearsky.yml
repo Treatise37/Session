@@ -248,9 +248,7 @@
       STBrutepack: 10
       # Expensive
       antiradpill: 50
-      radioprotectpill: 70
       Bloodpack: 90
-      psyblock: 200
       MedkitAI2: 200
       MedkitMilitary: 400
       MedkitScience: 1200

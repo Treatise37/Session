@@ -378,9 +378,7 @@
         STBrutepack: 10
           # Expensive
         antiradpill: 50
-        radioprotectpill: 70
         Bloodpack: 90
-        psyblock: 200
         MedkitMilitary: 210
         Defibrillator: 700
     - name: shop-category-customization
@@ -511,9 +509,7 @@
         STBrutepack: 10
           # Expensive
         antiradpill: 50
-        radioprotectpill: 70
         Bloodpack: 90
-        psyblock: 200
         MedkitMilitary: 210
         Defibrillator: 700
 

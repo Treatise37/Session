@@ -78,7 +78,6 @@ stack-st-craft-capacitor = capacitor
 stack-st-craft-transformer = transformer
 stack-st-craft-furniture = мебель
 
-stack-psyblock = пси-блокада
 stack-ointment-thermo = термогель
 stack-ointment-dressing = мазевая повязка
 stack-st-brutepack-sera = баночка с мазью

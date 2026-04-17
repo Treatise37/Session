@@ -237,10 +237,6 @@
           prob: 0.2
         - id: antiradpill
           prob: 0.2
-        - id: radioprotectpill
-          prob: 0.2
-        - id: psyblock
-          prob: 0.2
         - id: MedkitAI2
           prob: 0.32
         - id: MedkitMilitary

@@ -662,9 +662,6 @@
       items:
         - id: DrinkVodkaBottleFull
         - id: PillCanister
-        - id: radioprotectpill
-        - id: radioprotectpill
-        - id: radioprotectpill
         - id: antiradpill
         - id: antiradpill
         - id: DrinkShotGlass

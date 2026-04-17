@@ -255,9 +255,7 @@
         STBrutepack: 60
           # Expensive
         antiradpill: 100
-        radioprotectpill: 130
         Bloodpack: 120
-        psyblock: 200
         MedkitAI2: 250
         Defibrillator: 700
     - name: shop-category-modules

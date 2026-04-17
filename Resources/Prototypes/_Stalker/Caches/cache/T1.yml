@@ -31,10 +31,6 @@
           prob: 0.03
         - id: antiradpill
           prob: 0.03
-        - id: radioprotectpill
-          prob: 0.03
-        - id: psyblock
-          prob: 0.03
         - id: MedkitAI2
           prob: 0.05
         - id: STClothingOuterJacketStalkerUpgradeBlueprint

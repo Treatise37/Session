@@ -55,8 +55,6 @@
     754FMJBox: 3
     919PBMBox: 10
     PillDexalin: 50
-    radioprotectpill: 5
-    psyblock: 5
     # SelfSteampack: 10
     MedkitAI2: 25
     STBrutepack: 50
@@ -215,8 +213,6 @@
     UNstandartCrateT3: 10
     STWeaponSMGMP5: 10
     PillDexalin: 50
-    radioprotectpill: 5
-    psyblock: 5
     MedkitAI2: 25
     STBrutepack: 50
     STGauze: 50
