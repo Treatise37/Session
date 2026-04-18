@@ -54,6 +54,7 @@
   - StalkerMilitiaCommander
   - StalkerProjectOrchestrator
   - StalkerProjectPawn
+  - StalkerProjectSCI
 
 - type: department
   id: StalkerBrigands

@@ -42,6 +42,7 @@
             StalkerHeadFreedom: [ 0, -1 ]
             #projet
             StalkerProjectPawn: [ 0, -1 ]
+            StalkerProjectSCI: [ 0, -1 ]
             StalkerProjectOrchestrator: [ 0, -1 ]
             #merc
             StalkerMercenary: [ 0, -1 ]

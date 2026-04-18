@@ -50,6 +50,9 @@
   id: JobProjectPawn
 
 - type: playTimeTracker
+  id: JobProjectSci
+
+- type: playTimeTracker
   id: JobProjectOrchestrator
 
 - type: playTimeTracker

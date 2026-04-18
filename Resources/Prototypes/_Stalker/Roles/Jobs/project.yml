@@ -28,9 +28,54 @@
             - Stalker
         - type: Bands
           band: Stalker
-          altBand: project-1
+          altBand: stalker
           canChange: true
           bandIcon: project-2
+          bandProto: STProjectBand
+          bandRankId: 2
+        - type: IdentityBlocker
+        - type: BlockTackingHolyItems
+        - type: TeethPull
+          teethProto: ToothStalker
+          pullingItemTag: PliersStalker
+          teethCount: 3
+          initialTeeth: 3
+        - type: Damageable
+          damageModifierSet: STProjectDamageModifierSet
+
+- type: job
+  id: StalkerProjectSCI
+  name: job-project-sci
+  icon: project-1
+  description: job-project-pawn-desc
+  playTimeTracker: JobProjectSci
+  whitelisted: true
+  requirements:
+    # - !type:RoleTimeRequirement
+    #   role: JobProjectPawn
+    #   time: 1
+    - !type:SpeciesRequirement
+      species:
+      - Human
+      - Dwarf
+  startingGear: ProjectPawnGear
+  supervisors: job-project-pawn-supervisor
+  canBeAntag: false
+  special:
+    - !type:AddImplantSpecial
+      implants: [ STProjectRadioImplant ]
+    - !type:AddComponentSpecial
+      components:
+        - type: Access
+          tags:
+            - ProjectPawn
+            - Project
+            - Stalker
+        - type: Bands
+          band: Stalker
+          altBand: stalker
+          canChange: true
+          bandIcon: project-1
           bandProto: STProjectBand
           bandRankId: 2
         - type: IdentityBlocker
@@ -125,7 +170,8 @@
   managingRankId: 2
   hierarchy:
     1: StalkerProjectPawn
-    2: StalkerProjectOrchestrator
+    2: StalkerProjectSCI
+    3: StalkerProjectOrchestrator
 
 - type: damageModifierSet
   id: STProjectDamageModifierSet
