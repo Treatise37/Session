@@ -35,3 +35,29 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+MIT License
+
+Copyright (c) 2024-2026 Zona-14 Team
+
+The "Zona-14 Contributions" are the software files located in folders named
+"_Zone14" within this repository and any files introduced by the Zona-14 team
+that explicitly carry this copyright notice.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the Zona-14 Contributions, to deal in the Zona-14 Contributions without
+restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of the Zona-14
+Contributions, and to permit persons to whom the Zona-14 Contributions are
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Zona-14 Contributions.
+
+THE ZONA-14 CONTRIBUTIONS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE ZONA-14 CONTRIBUTIONS OR THE
+USE OR OTHER DEALINGS IN THE ZONA-14 CONTRIBUTIONS.
