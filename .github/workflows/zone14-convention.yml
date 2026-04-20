@@ -1,0 +1,26 @@
+name: Zone14 convention check
+
+on:
+  pull_request:
+    paths:
+      - 'Content.**'
+      - 'Resources/**'
+      - 'Tools/_Zone14/check-conventions.sh'
+      - '.github/workflows/zone14-convention.yml'
+
+jobs:
+  check:
+    name: Zone14 convention check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Run Zone14 conventions check
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: bash Tools/_Zone14/check-conventions.sh origin/${{ github.base_ref }} HEAD
