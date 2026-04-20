@@ -1,26 +1,56 @@
+# Zona-14
 
-<p align="center"> <img alt="Space Station 14" width="1320" height="540" src="https://github.com/stalker14-project/stalker14/blob/master/Resources/Textures/Logo/logo-stalker.png" /></p>
+> 🇷🇺 [Русская версия](README.ru.md)
 
-Stalker14 это билд SS14, который работает на движке [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), написанном на C#.
-За основу взят билд [space-syndicate/space-station-14](https://github.com/space-syndicate/space-station-14).
+Zona-14 is an English-direction **S.T.A.L.K.E.R.-themed fork of Space Station 14**, built on the [Robust Toolbox](https://github.com/space-wizards/RobustToolbox) engine (C#).
 
-## Ссылки
+## Lineage
 
-[Наш Discord](https://discord.gg/pu6DEPGjsN) | [Наша Вики](https://wiki.station14.ru) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Клиент без Steam](https://spacestation14.io/about/nightlies/) | [Основной репозиторий](https://github.com/stalker14-project/stalker14) | [Поддержать проект](https://boosty.to/stalkerss14)
+This fork descends from:
 
-## Контрибьют
+- [space-wizards/space-station-14](https://github.com/space-wizards/space-station-14) — upstream SS14.
+- [space-syndicate/space-station-14](https://github.com/space-syndicate/space-station-14) — Russian mainline SS14 fork.
+- [stalker14-project/stalker14](https://github.com/stalker14-project/stalker14) — S.T.A.L.K.E.R.-themed derivative (our direct parent).
 
-Данный билд закрытый, и вносить изменения могут только, члены команды [Stalker](https://github.com/stalker14-project), если вы как то хотите помочь преокту, вы можете вступить в наши ряды, или написать багрепорт/предложение на нашем [Discord](https://discord.gg/pu6DEPGjsN)
+We merge from `stalker14-project` regularly; Zona-14-specific work is isolated under `_Zone14/` folders so upstream syncs stay manageable.
 
-## Лицензия
+## Quickstart
 
-Весь код взятый из следующих репозиториев, лицензирован под [MIT](https://github.com/stalker14-project/stalker14/blob/master/LICENSE.TXT):
-- [space-wizards/space-station-14](https://github.com/space-wizards/space-station-14)
-- [space-syndicate/space-station-14](https://github.com/space-syndicate/space-station-14)
+See the [Space Wizards setup guide](https://docs.spacestation14.com/en/general-development/setup.html) for prerequisites (recent .NET SDK, `git` with LFS, etc.), then:
 
-Весь код написанный или изменнёный командой проекта [Stalker](https://github.com/stalker14-project), принадлежит только самому проекту. И не подлежит использованию, изменению, распространению, сублицензированию,
-или воспроизводению данного исходного кода в любой форме, полностью или частично, без письменного согласия администрации команды проекта [Stalker](https://github.com/stalker14-project), [All rights reserved](https://github.com/stalker14-project/stalker14/blob/master/LICENSE.TXT).
+```bash
+git clone --recursive https://github.com/Zona-14/Zona-14.git
+cd Zona-14
+dotnet run --project Content.Server
+# In a second terminal:
+dotnet run --project Content.Client
+```
 
-Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и авторские права в файле метаданных. [Пример](https://github.com/space-syndicate/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json). Ассеты Stalker14 могут использоваться в любых не-коммерческих опен-сурс проектах.
+## Contributing
 
-Обратите внимание, что некоторые ассеты лицензированы на некоммерческой основе [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или аналогичной некоммерческой лицензией, и их необходимо удалить, если вы хотите использовать этот проект в коммерческих целях.
+All new Zona-14 code lives under `_Zone14/` folders — see [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full rules (namespace conventions, `// Zone14:` markers for upstream edits, sprite `meta.json` license requirements, PR template, CI checks).
+
+Before pushing, run the local validator:
+
+```bash
+bash Tools/_Zone14/check-conventions.sh origin/master HEAD
+```
+
+## Community
+
+Join the [Zona-14 Discord](https://discord.gg/CFVWFfVpJg) for development discussion, playtests, and coordinating contributions. It's also where you upload larger gameplay videos for PR reviews.
+
+## License
+
+The repository has layered licensing. In plain English:
+
+- **Upstream code** (Space Wizards, Corvax) is [MIT-licensed](LICENSE.TXT).
+- **Stalker-team contributions** (authors named in `LICENSE.TXT`) are marked **All rights reserved** — contact the [Stalker14 team](https://discord.gg/GXzurVkWYX) for reuse permission.
+- **Zona-14 team contributions** (everything under `_Zone14/`) are [MIT-licensed](LICENSE.TXT) © 2024-2026 Zona-14 Team.
+- **Assets** (sprites, audio, maps) inherit [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) by default; each asset's `meta.json` records its actual license and attribution.
+
+Full legal text in [`LICENSE.TXT`](LICENSE.TXT).
+
+---
+
+🇷🇺 [Русская версия — README.ru.md](README.ru.md)
