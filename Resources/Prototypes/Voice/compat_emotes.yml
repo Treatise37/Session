@@ -1,0 +1,195 @@
+# _Zona14: compatibility aliases for vanilla emote ids that the fork commented
+# out in speech_emotes.yml. Many EmoteSoundsPrototype and EntityPrototype
+# definitions still reference them, so we re-declare the ids as minimal
+# prototypes to keep prototype validation happy. Gameplay-side chat triggers
+# live on the ST* variants in _Stalker/Emotes/speech.yml.
+
+# --- Vocal ---
+- type: emote
+  id: Scream
+  name: chat-emote-name-scream
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Laugh
+  name: chat-emote-name-laugh
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Sigh
+  name: chat-emote-name-sigh
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Crying
+  name: chat-emote-name-crying
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Whistle
+  name: chat-emote-name-whistle
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Gasp
+  name: chat-emote-name-gasp
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Weh
+  name: chat-emote-name-weh
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Hew
+  name: chat-emote-name-hew
+  category: Vocal
+  available: false
+
+# --- Species / mob ---
+- type: emote
+  id: CatMeow
+  name: chat-emote-name-catmeow
+  category: Vocal
+  available: false
+
+- type: emote
+  id: CatHisses
+  name: chat-emote-name-cathisses
+  category: Vocal
+  available: false
+
+- type: emote
+  id: MonkeyScreeches
+  name: chat-emote-name-monkeyscreeches
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Growl
+  name: chat-emote-name-growl
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Snarl
+  name: chat-emote-name-snarl
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Bark
+  name: chat-emote-name-bark
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Whine
+  name: chat-emote-name-whine
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Howl
+  name: chat-emote-name-howl
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Squish
+  name: chat-emote-name-squish
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Squeak
+  name: chat-emote-name-squeak
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Chitter
+  name: chat-emote-name-chitter
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Click
+  name: chat-emote-name-click
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Thump
+  name: chat-emote-name-thump
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Chirp
+  name: chat-emote-name-chirp
+  category: Vocal
+  available: false
+
+# --- Deathgasps ---
+- type: emote
+  id: DefaultDeathgasp
+  name: chat-emote-name-deathgasp
+  category: Vocal
+  available: false
+
+- type: emote
+  id: MonkeyDeathgasp
+  name: chat-emote-name-deathgasp
+  category: Vocal
+  available: false
+
+- type: emote
+  id: ScurretDeathgasp
+  name: chat-emote-name-deathgasp
+  category: Vocal
+  available: false
+
+# --- Silicon ---
+- type: emote
+  id: RobotBeep
+  name: chat-emote-name-robotbeep
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Beep
+  name: chat-emote-name-beep
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Chime
+  name: chat-emote-name-chime
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Buzz
+  name: chat-emote-name-buzz
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Buzz-Two
+  name: chat-emote-name-buzztwo
+  category: Vocal
+  available: false
+
+- type: emote
+  id: Ping
+  name: chat-emote-name-ping
+  category: Vocal
+  available: false

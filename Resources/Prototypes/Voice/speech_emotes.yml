@@ -63,6 +63,15 @@
   category: Vocal
   icon: Interface/Emotes/honk.png
   whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-honk"]
+  chatTriggers:
+    - honk
+    - honks
+    - honking
+    - honked
+
 # Tacticool emotes general
 - type: emote
   id: TacticalGen-Come
