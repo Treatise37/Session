@@ -898,6 +898,12 @@
   id: MagazinePistolSubMachineGunTopMounted # WeaponSubMachineGunWt550
 
 - type: Tag
+  id: MagazinePP2000 # _Zone14: STWeaponSMGPP2000 magazine whitelist
+
+- type: Tag
+  id: MagazinePP2000Pearl # _Zone14: Pearl-variant PP2000 magazine whitelist
+
+- type: Tag
   id: MagazineRifle # WeaponRifleLecter, WeaponRifleEstoc, WeaponRifleM90GrenadeLauncher
 
 - type: Tag
