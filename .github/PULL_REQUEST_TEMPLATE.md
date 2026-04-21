@@ -61,14 +61,27 @@ List any breaking changes and provide migration notes. Breaking changes include:
 Omit this section if there are no breaking changes.
 -->
 
-<!-- Changelog — placeholder for a future Zona-14 changelog bot.
-Uncomment the block below to include your change in a future changelog. Not
-enforced yet; the structure matches upstream SS14 so it's easy to wire up
-later.
+## Changelog
+
+<!--
+Add a changelog entry for gameplay-visible changes. After the PR is merged, a
+maintainer runs the changelog merger and your entry appears in the in-game
+"Zone 14" tab. Skip this section (delete the :cl: block below) for docs-only,
+CI, or pure-refactor PRs.
+
+Default category is Zone 14 (this repo's own tab). Prefix subsequent lines with
+ADMIN:, MAPS:, or RULES: to route those entries to the respective tabs.
+
+Types: add | remove | tweak | fix | bug (alias for fix). Author defaults to
+your GitHub username — override by putting a name after :cl: on the same line.
+
+Writing tips: complete sentences, start with a capital, end with a period,
+present active voice, no jargon. See
+https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html#writing-an-effective-changelog
+-->
 
 :cl:
-- add: Added <thing>.
-- remove: Removed <thing>.
-- tweak: Changed <thing>.
-- fix: Fixed <thing>.
--->
+- add: 
+- fix: 
+- tweak: 
+- remove: 

@@ -11,6 +11,7 @@
 - **Нестандартная лицензия ассета**: добавьте `[custom-license]` в заголовок PR и обоснуйте в описании.
 - **Стандарты кода**: следуем [соглашениям SS14](https://docs.spacestation14.com/en/general-development/codebase-info.html) — `conventions`, `codebase-organization`, `pull-request-guidelines`, `style-guide`. Единственное исключение — папочная изоляция `_Zone14/` из пункта выше; всё остальное зеркалит апстрим.
 - **Локальная проверка**: `bash Tools/_Zone14/check-conventions.sh origin/master HEAD`.
+- **Чейнджлог**: геймплейно-видимые изменения описывайте блоком `:cl:` в теле PR (опционально для доков/CI/рефакторов). По умолчанию запись попадает во вкладку **Зона-14**; префиксы `ADMIN:` / `MAPS:` / `RULES:` направляют в соответствующие вкладки. Подробности — §12 [CONTRIBUTING.md](CONTRIBUTING.md#12-changelog).
 - **Баг-репорты, обратная связь, предложения**: публичный репозиторий [Zona-14-Feedback](https://github.com/Zona-14/Zona-14-Feedback). Любой может открыть там issue — это каноничный канал для пользовательских репортов. В Discord такие вещи не пишем.
 - **Discord**: [https://discord.gg/57S48NzbZ9](https://discord.gg/57S48NzbZ9) — сообщество, новости, анонсы, плейтесты, загрузка больших видео для PR.
 

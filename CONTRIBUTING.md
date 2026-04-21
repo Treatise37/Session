@@ -208,6 +208,68 @@ bash Tools/_Zone14/check-conventions.sh origin/master HEAD
 
 Requirements: `git`, `grep`, `awk`, `jq`. Install `jq` with `sudo apt install jq` (Ubuntu/Debian) or `brew install jq` (macOS).
 
+## 12. Changelog
+
+Zona-14 ships its own in-game changelog tab — **Zone 14** — alongside the inherited upstream, rules, maps, and admin tabs. It's populated from `:cl:` blocks in PR bodies, merged into `Resources/Changelog/Zone14.yml` by a maintainer after the PR lands.
+
+### PR body syntax
+
+```
+:cl: <optional author override>
+- add: Added a new stalker artifact.
+- fix: Fixed anomaly flicker at low light levels.
+- tweak: Reduced bandage application time.
+- remove: Removed the broken handheld scanner.
+```
+
+- Types: `add` / `remove` / `tweak` / `fix`. `bug` and `bugfix` are aliases for `fix`.
+- Empty entries (`- add:` with no message) are silently dropped by the merger.
+- Author defaults to your GitHub username. Put a display name after `:cl:` on the same line to override.
+
+### Category prefixes
+
+By default entries land in the **Zone 14** tab. Prefix later lines with a category to route them elsewhere:
+
+```
+:cl:
+- add: Added a new stalker artifact.
+
+ADMIN:
+- add: Added an admin verb to force-ghost a player.
+
+MAPS:
+- tweak: On Delta, moved engineering locker closer to power.
+
+RULES:
+- tweak: Clarified rule 4 around IC/OOC boundaries.
+```
+
+Recognised categories: `ADMIN:` → `Admin.yml`, `MAPS:` → `Maps.yml`, `RULES:` → `Rules.yml`. Unknown categories are silently ignored (entries fall back to the previous category), so a typo just sends the entries to Zone 14.
+
+### When to skip the `:cl:` block
+
+Omit it (or leave all entries empty) for:
+- Docs / comment changes.
+- CI / tooling.
+- Pure refactors with no gameplay impact.
+- Upstream ports (the `[upstream-port]` tag in the PR title already tells the validator this is a merge; no changelog needed).
+
+Gameplay-visible changes (new items, balance tweaks, bug fixes that affect play) should have a `:cl:` entry. It's optional but strongly encouraged.
+
+### Writing effective entries
+
+Defer to SS14's [effective-changelog rules](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html#writing-an-effective-changelog):
+
+1. Complete, grammatically correct sentences. Start with a capital, end with a period.
+2. Log only changes with significant in-game impact.
+3. Present, active voice.
+4. Be concise. Avoid IC flavor / RP jargon.
+5. Set the appropriate tone.
+
+### Maintainer merge workflow
+
+After merging a PR, a maintainer runs the manual merger documented in [`Tools/_Zone14/changelog/README.md`](Tools/_Zone14/changelog/README.md). Automation (a dedicated webhook bot) is planned; the manual flow covers the gap until then.
+
 ## 11. Where to discuss
 
 - **Bug reports, player feedback, feature requests**: the public [Zona-14-Feedback](https://github.com/Zona-14/Zona-14-Feedback) repo. Anyone can open an issue there — it's the canonical channel for community-facing reports. Please don't file these on Discord.
