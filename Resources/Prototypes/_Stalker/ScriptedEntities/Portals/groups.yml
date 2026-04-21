@@ -38,7 +38,7 @@
       allowAll: false
       portalName: Bar-BarStalker
     - type: AccessReader
-      access: [["Stalker"], ["Sci"], ["Renegat"], ["Dolg"], ["CN"] ]
+      access: [["Stalker"], ["SciBase"], ["Renegat"], ["Dolg"], ["CN"] ]
 ####################################Монолит
 
 - type: entity
