@@ -22,12 +22,13 @@
 - type: soundCollection
   id: LonerBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_5.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Loners/backup/backup_6.ogg
+  # _Zona14: backup/*.ogg do not exist in the fork; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_5.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Loners/Cover/cover_fire_6.ogg
 
 - type: soundCollection
   id: LonerCover
@@ -117,12 +118,13 @@
 - type: soundCollection
   id: BanditBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_5.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Bandit/backup/backup_6.ogg
+  # _Zona14: backup/*.ogg do not exist in the fork; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_5.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Bandit/Cover/cover_fire_6.ogg
 
 - type: soundCollection
   id: BanditCover
@@ -221,12 +223,13 @@
 - type: soundCollection
   id: DutyBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_5.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Duty/backup/backup_6.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_5.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Duty/Cover/cover_fire_6.ogg
 
 - type: soundCollection
   id: DutyCover
@@ -305,12 +308,13 @@
 - type: soundCollection
   id: EcologistsBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_5.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Ecologists/backup/backup_6.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_5.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Ecologists/Cover/cover_fire_6.ogg
 
 - type: soundCollection
   id: EcologistsCover
@@ -404,11 +408,12 @@
 - type: soundCollection
   id: FreedomBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Freedom/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Freedom/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Freedom/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Freedom/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Freedom/backup/backup_5.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Freedom/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Freedom/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Freedom/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Freedom/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Freedom/Cover/cover_fire_5.ogg
 
 - type: soundCollection
   id: FreedomCover
@@ -494,10 +499,11 @@
 - type: soundCollection
   id: MercBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Merc/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Merc/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Merc/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Merc/backup/backup_4.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Merc/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Merc/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Merc/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Merc/Cover/cover_fire_4.ogg
 
 - type: soundCollection
   id: MercCover
@@ -584,11 +590,12 @@
 - type: soundCollection
   id: MilitaryBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Military/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Military/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Military/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Military/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Military/backup/backup_5.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Military/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Military/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Military/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Military/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Military/Cover/cover_fire_5.ogg
 
 - type: soundCollection
   id: MilitaryCover
@@ -681,12 +688,12 @@
 - type: soundCollection
   id: MonolithBackup
   files:
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_1.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_2.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_3.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_4.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_5.ogg
-  - /Audio/_Stalker_EN/VoiceLines/Monolith/backup/backup_6.ogg
+  # _Zona14: backup/*.ogg do not exist; reuse Cover files.
+  - /Audio/_Stalker_EN/VoiceLines/Monolith/Cover/cover_fire_1.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Monolith/Cover/cover_fire_2.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Monolith/Cover/cover_fire_3.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Monolith/Cover/cover_fire_4.ogg
+  - /Audio/_Stalker_EN/VoiceLines/Monolith/Cover/cover_fire_5.ogg
 
 - type: soundCollection
   id: MonolithCover
