@@ -1,0 +1,14 @@
+loadout-group-st-legs = Штаны
+loadout-group-st-shoes = Обувь
+loadout-group-st-torso = Футболки
+loadout-group-st-outer = Верхняя одежда
+loadout-group-st-mask = Маски
+loadout-group-st-weapon = Оружие
+loadout-group-st-trinkets = Безделушки
+loadout-group-st-backpack-storage = Содержимое рюкзака
+loadout-group-st-ammunition = Патроны
+loadout-group-st-backpack = Рюкзаки
+loadout-group-st-pocket-one = Карман 1
+loadout-group-st-pocket-two = Карман 2
+loadout-group-st-belt = Пояс
+loadout-group-st-glasses = Очки

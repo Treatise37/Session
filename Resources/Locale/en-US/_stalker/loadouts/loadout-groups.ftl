@@ -1,0 +1,14 @@
+loadout-group-st-legs = Pants
+loadout-group-st-shoes = Shoes
+loadout-group-st-torso = Shirts
+loadout-group-st-outer = Outerwear
+loadout-group-st-mask = Masks
+loadout-group-st-weapon = Weapon
+loadout-group-st-trinkets = Trinkets
+loadout-group-st-backpack-storage = Backpack Contents
+loadout-group-st-ammunition = Ammunition
+loadout-group-st-backpack = Backpacks
+loadout-group-st-pocket-one = Pocket 1
+loadout-group-st-pocket-two = Pocket 2
+loadout-group-st-belt = Belt
+loadout-group-st-glasses = Glasses

@@ -1,7 +1,7 @@
 #Сталкеры
 - type: loadoutGroup
   id: STlegsGroup
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -30,7 +30,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupVeteran
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -60,7 +60,7 @@
 
 - type: loadoutGroup
   id: STShoesGroup
-  name: Обувь
+  name: loadout-group-st-shoes
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -71,7 +71,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupVeteran
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -105,7 +105,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroup
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -138,7 +138,7 @@
 
 - type: loadoutGroup
   id: STOuterClothingStalkerGroup
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -146,7 +146,7 @@
 
 - type: loadoutGroup
   id: STOuterClothingStalkerGroupVeteran
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -154,7 +154,7 @@
 
 - type: loadoutGroup
   id: STMaskStalkerGroup
-  name: Маски
+  name: loadout-group-st-mask
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -171,7 +171,7 @@
 #Общее
 - type: loadoutGroup
   id: STSuitstorageGroup
-  name: Оружие
+  name: loadout-group-st-weapon
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -181,7 +181,7 @@
 
 - type: loadoutGroup
   id: STStorageTrinkets
-  name: Безделушки
+  name: loadout-group-st-trinkets
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -191,7 +191,7 @@
 
 - type: loadoutGroup
   id: STStorage
-  name: Содержимое рюкзака
+  name: loadout-group-st-backpack-storage
   minLimit: 0
   maxLimit: 3
   loadouts:
@@ -205,7 +205,7 @@
 
 - type: loadoutGroup
   id: STStorageAmmunition
-  name: Патроны
+  name: loadout-group-st-ammunition
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -220,7 +220,7 @@
 
 - type: loadoutGroup
   id: STBackpackGroup
-  name: Рюкзаки
+  name: loadout-group-st-backpack
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -230,7 +230,7 @@
 
 - type: loadoutGroup
   id: STTrinketsGroupOne
-  name: Карман 1
+  name: loadout-group-st-pocket-one
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -241,7 +241,7 @@
 
 - type: loadoutGroup
   id: STTrinketsGroupTwo
-  name: Карман 2
+  name: loadout-group-st-pocket-two
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -249,7 +249,7 @@
 
 - type: loadoutGroup
   id: STBeltStalkerGroup
-  name: Пояс
+  name: loadout-group-st-belt
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -257,7 +257,7 @@
 
 - type: loadoutGroup
   id: STGlasses
-  name: Очки
+  name: loadout-group-st-glasses
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -269,7 +269,7 @@
 
 - type: loadoutGroup
   id: STOuterClothingVeteran
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -278,7 +278,7 @@
 #Бандиты
 - type: loadoutGroup
   id: STOuterClothingBandit
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -286,7 +286,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupBandit
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -323,7 +323,7 @@
 #Долг
 - type: loadoutGroup
   id: STOuterClothingDolg
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -331,7 +331,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupDolg
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -367,7 +367,7 @@
 #Свобода
 - type: loadoutGroup
   id: STOuterClothingFreedom
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -375,7 +375,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupFreedom
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -409,7 +409,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupFreedom
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -440,7 +440,7 @@
 #Учёные
 - type: loadoutGroup
   id: STOuterClothingSci
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -448,7 +448,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupSci
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -483,7 +483,7 @@
 #Серафимы
 - type: loadoutGroup
   id: STOuterClothingSeraphims
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -491,7 +491,7 @@
 
 - type: loadoutGroup
   id: STShoesGroupSera
-  name: Обувь
+  name: loadout-group-st-shoes
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -504,7 +504,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupSeraphimsCher
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -538,7 +538,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupSera
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -568,7 +568,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupSeraCher
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -600,7 +600,7 @@
 #Чистое небо
 - type: loadoutGroup
   id: STOuterClothingStalkerClearSky
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -608,7 +608,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupClear
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -638,7 +638,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupClear
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -675,7 +675,7 @@
 
 - type: loadoutGroup
   id: STOuterClothingStalkerRene
-  name: Верхняя одежда
+  name: loadout-group-st-outer
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -683,7 +683,7 @@
 
 - type: loadoutGroup
   id: STTorsoGroupRene
-  name: Футболки
+  name: loadout-group-st-torso
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -716,7 +716,7 @@
 
 - type: loadoutGroup
   id: STlegsGroupRene
-  name: Штаны
+  name: loadout-group-st-legs
   minLimit: 1
   maxLimit: 1
   loadouts:
