@@ -20,6 +20,9 @@
         whitelist:
           tags:
           - STCameraFilm
+  - type: ContainerContainer
+    containers:
+      film_slot: !type:ContainerSlot { }
   - type: STCamera
   - type: STWeight
     self: 0.5
