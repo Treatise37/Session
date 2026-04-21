@@ -1,8 +1,5 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Report a bug or submit feedback
-    url: https://github.com/Zona-14/Zona-14-Feedback/issues/new/choose
-    about: Canonical place for bug reports, feedback, and feature requests. Open to the public.
   - name: Community, news & updates
     url: https://discord.gg/57S48NzbZ9
-    about: Join the Zona-14 Discord for news, updates, playtests, and community chat. Not the place for bug reports — use Zona-14-Feedback for those.
+    about: Join the Zona-14 Discord for news, updates, playtests, and community chat. For bug reports, use this repo's Issues tab.

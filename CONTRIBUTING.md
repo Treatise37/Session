@@ -272,7 +272,6 @@ After merging a PR, a maintainer runs the manual merger documented in [`Tools/_Z
 
 ## 11. Where to discuss
 
-- **Bug reports, player feedback, feature requests**: the public [Zona-14-Feedback](https://github.com/Zona-14/Zona-14-Feedback) repo. Anyone can open an issue there — it's the canonical channel for community-facing reports. Please don't file these on Discord.
+- **Bug reports, player feedback, feature requests**: this repo's [Issues tab](https://github.com/Zona-14/Zona-14/issues) or the [Zona-14 Discord](https://discord.gg/57S48NzbZ9). Anyone can open an issue — it's the canonical channel for community-facing reports.
 - **Community, news, updates, playtests, media uploads for large PR videos**: [Zona-14 Discord](https://discord.gg/57S48NzbZ9).
 - **Code changes**: GitHub Pull Requests on this repo.
-- **Internal dev-tracking issues**: this repo's Issues tab is reserved for maintainer-tracked work items (refactor todos, ported-PR tracking, CI tasks). User-facing reports still belong in Zona-14-Feedback.

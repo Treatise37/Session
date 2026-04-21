@@ -38,11 +38,11 @@ bash Tools/_Zona14/check-conventions.sh origin/master HEAD
 
 ## Bug reports & feedback
 
-Bug reports, player feedback, and feature requests go to the public [**Zona-14-Feedback**](https://github.com/Zona-14/Zona-14-Feedback) repo — not to Discord. Anyone can open an issue there; it's the canonical channel for community-facing reports.
+Bug reports, player feedback, and feature requests go to this repo's [**Issues tab**](https://github.com/Zona-14/Zona-14/issues) or the [Zona-14 Discord](https://discord.gg/57S48NzbZ9). Anyone can open an issue — it's the canonical channel for community-facing reports.
 
 ## Community
 
-Join the [Zona-14 Discord](https://discord.gg/57S48NzbZ9) for news, updates, playtests, development discussion, and coordinating contributions. It's also where you upload larger gameplay videos for PR reviews. For bug reports, use [Zona-14-Feedback](https://github.com/Zona-14/Zona-14-Feedback) instead.
+Join the [Zona-14 Discord](https://discord.gg/57S48NzbZ9) for news, updates, playtests, development discussion, and coordinating contributions. It's also where you upload larger gameplay videos for PR reviews. For bug reports, use this repo's [Issues tab](https://github.com/Zona-14/Zona-14/issues).
 
 ## License
 
