@@ -50,7 +50,7 @@
       maxVocalizeInterval: 2m
       hideChat: true
     - type: Speech
-      speechSounds: BanditCover # stalker EN change
+      speechSounds: Alto # _Zona14: BanditCover is a SoundCollection, not a SpeechSoundsPrototype; use the stalker default
     - type: Vocal
       sounds:
         Male: MaleHuman
