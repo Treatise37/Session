@@ -1,5 +1,5 @@
-action-name-toggle-visor = Открыть/Закрыть забрало
-action-description-toggle-visor = Toggles the helmet visor position.
+ent-ActionToggleHelmetVisor = Открыть/Закрыть забрало
+    .desc = Toggles the helmet visor position.
 action-helmet-visor-up-popup-message = Вы подняли забрало.
 action-helmet-visor-down-popup-message = Вы опустили забрало.
 action-helmet-visor-cooldown = Wait { $time } seconds before toggling again.

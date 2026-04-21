@@ -3,8 +3,6 @@
 - type: entity
   parent: BaseAction
   id: ActionShowJobRules
-  name: action-show-job-rules-name
-  description: action-show-job-rules-desc
   components:
   - type: Action
     icon: Interface/Actions/eyeopen.png
