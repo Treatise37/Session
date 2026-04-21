@@ -1,0 +1,61 @@
+# _Zona14: compatibility stBand prototypes for ids that are still referenced
+# by jobs, mob spawners and PDA messenger channels but were never added as
+# proper band definitions. Each is a minimal entry with a single hierarchy
+# rank so the validator can resolve the ProtoId.
+
+- type: stBand
+  id: STAnomalistsBand
+  name: Anomalists
+  factionId: Stalker
+  maxMembers: 5
+  hierarchy:
+    1: StalkerAnomalist
+    2: StalkerAnomalistGuardian
+
+- type: stBand
+  id: STPilgrimsBand
+  name: Pilgrims
+  factionId: Pilgrims
+  maxMembers: 5
+  hierarchy:
+    1: StalkerPilgrim
+
+- type: stBand
+  id: STMilitiaBand
+  name: Militia
+  factionId: Bandit
+  maxMembers: 10
+  hierarchy:
+    1: StalkerBandit
+
+- type: stBand
+  id: STToadsBand
+  name: Toads
+  factionId: Bandit
+  maxMembers: 10
+  hierarchy:
+    1: StalkerBandit
+
+- type: stBand
+  id: STNeutralBand
+  name: Neutrals
+  factionId: Stalker
+  maxMembers: 99
+  hierarchy:
+    1: StalkerLoner
+
+- type: stBand
+  id: STMilitaryStalkerBand
+  name: Military Stalkers
+  factionId: MilitaryStalker
+  maxMembers: 10
+  hierarchy:
+    1: StalkerMilitary
+
+- type: stBand
+  id: STUNBand
+  name: UN
+  factionId: MilitaryStalker
+  maxMembers: 10
+  hierarchy:
+    1: StalkerMilitary
