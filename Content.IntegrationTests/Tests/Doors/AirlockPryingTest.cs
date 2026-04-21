@@ -7,6 +7,7 @@ namespace Content.IntegrationTests.Tests.Doors;
 public sealed class AirlockPryingTest : InteractionTest
 {
     [Test]
+    [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
     public async Task PoweredClosedAirlock_Pry_DoesNotOpen()
     {
         await SpawnTarget(Airlock);
@@ -26,6 +27,7 @@ public sealed class AirlockPryingTest : InteractionTest
     }
 
     [Test]
+    [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
     public async Task PoweredOpenAirlock_Pry_DoesNotClose()
     {
         await SpawnTarget(Airlock);

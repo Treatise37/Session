@@ -96,6 +96,7 @@ public sealed class StationPowerTests
         await pair.CleanReturnAsync();
     }
 
+    [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
     [Test, TestCaseSource(nameof(GameMaps))]
     public async Task TestApcLoad(string mapProtoId)
     {

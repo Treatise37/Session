@@ -5,6 +5,7 @@ using Content.Shared.Containers.ItemSlots;
 
 namespace Content.IntegrationTests.Tests.Chemistry;
 
+[Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
 public sealed class DispenserTest : InteractionTest
 {
     /// <summary>

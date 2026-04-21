@@ -36,6 +36,7 @@ namespace Content.IntegrationTests.Tests.Gravity
   - type: UserInterface
 ";
         [Test]
+        [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
         public async Task WeightlessStatusTest()
         {
             await using var pair = await PoolManager.GetServerClient();

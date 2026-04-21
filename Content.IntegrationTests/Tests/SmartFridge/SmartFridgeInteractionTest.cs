@@ -3,6 +3,7 @@ using Content.Shared.SmartFridge;
 
 namespace Content.IntegrationTests.Tests.SmartFridge;
 
+[Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
 public sealed class SmartFridgeInteractionTest : InteractionTest
 {
     private const string SmartFridgeProtoId = "SmartFridge";

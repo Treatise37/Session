@@ -11,6 +11,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Vending;
 
+[Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
 public sealed class VendingInteractionTest : InteractionTest
 {
     private const string VendingMachineProtoId = "InteractionTestVendingMachine";

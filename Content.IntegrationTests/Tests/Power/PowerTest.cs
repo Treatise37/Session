@@ -14,6 +14,7 @@ using Robust.Shared.Timing;
 namespace Content.IntegrationTests.Tests.Power
 {
     [TestFixture]
+    [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
     public sealed class PowerTest
     {
         [TestPrototypes]

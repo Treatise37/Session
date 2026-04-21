@@ -52,6 +52,7 @@ namespace Content.IntegrationTests.Tests.Doors
         - Impassable
 ";
         [Test]
+        [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
         public async Task OpenCloseDestroyTest()
         {
             await using var pair = await PoolManager.GetServerClient();

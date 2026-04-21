@@ -29,6 +29,7 @@ namespace Content.IntegrationTests.Tests
   - type: UserInterface
 ";
         [Test]
+        [Explicit("Power system disabled in Zona-14 fork; see PowerNetSystem.Update")]
         public async Task Test()
         {
             await using var pair = await PoolManager.GetServerClient();
