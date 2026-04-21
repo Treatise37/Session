@@ -1,8 +1,8 @@
 ﻿- type: reagent
   id: STPiss
-  name: моча
+  name: reagent-name-st-piss
   parent: Toxin
-  desc: Gross.
+  desc: reagent-desc-st-piss
   physicalDesc: reagent-physical-desc-acrid
   flavor: salty
   color: "#DBCE5A"

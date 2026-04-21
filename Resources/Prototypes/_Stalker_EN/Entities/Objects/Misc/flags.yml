@@ -149,7 +149,7 @@
         - to: flagbandend
           steps:
             - tag: FoldedFlagBand
-              name: STFoldedFlagBand
+              name: construction-step-st-foldedflag-band
               icon:
                 sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
                 state: band
@@ -178,7 +178,7 @@
     - to: flagdutyend
       steps:
       - tag: FoldedFlagDuty
-        name: STFoldedFlagDuty
+        name: construction-step-st-foldedflag-duty
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: duty
@@ -207,7 +207,7 @@
     - to: flagfreeend
       steps:
       - tag: FoldedFlagFree
-        name: STFoldedFlagFree
+        name: construction-step-st-foldedflag-freedom
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: free
@@ -236,7 +236,7 @@
     - to: flagmercend
       steps:
       - tag: FoldedFlagMerc
-        name: STFoldedFlagMerc
+        name: construction-step-st-foldedflag-merc
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: merc
@@ -265,7 +265,7 @@
     - to: flaghelperend
       steps:
       - tag: FoldedFlagHelper
-        name: STFoldedFlagHelper
+        name: construction-step-st-foldedflag-helper
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: helper
@@ -294,7 +294,7 @@
     - to: flagreneend
       steps:
       - tag: FoldedFlagRene
-        name: STFoldedFlagRene
+        name: construction-step-st-foldedflag-rene
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: rene
@@ -323,7 +323,7 @@
     - to: flagcsend
       steps:
       - tag: FoldedFlagCS
-        name: STFoldedFlagCS
+        name: construction-step-st-foldedflag-cs
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: cs
@@ -352,7 +352,7 @@
     - to: flagmiliend
       steps:
       - tag: FoldedFlagMili
-        name: STFoldedFlagMili
+        name: construction-step-st-foldedflag-mili
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: military
@@ -381,7 +381,7 @@
     - to: flagmonoend
       steps:
       - tag: FoldedFlagMono
-        name: STFoldedFlagMono
+        name: construction-step-st-foldedflag-mono
         icon:
           sprite: _Stalker_EN/Objects/Fun/flags_folded.rsi
           state: mono
