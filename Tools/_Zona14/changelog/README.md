@@ -2,13 +2,13 @@
 
 Until the webhook bot is wired up, **a maintainer runs the changelog merger by hand after each PR merge**. This directory documents the procedure.
 
-The runtime side (the in-game **Zone 14** tab) is already live: `Content.Client/Changelog/ChangelogManager.cs` auto-discovers every `.yml` under `Resources/Changelog/` and renders one tab per file, sorted by the `Order` field. Nothing there needs ongoing maintenance.
+The runtime side (the in-game **Zona 14** tab) is already live: `Content.Client/Changelog/ChangelogManager.cs` auto-discovers every `.yml` under `Resources/Changelog/` and renders one tab per file, sorted by the `Order` field. Nothing there needs ongoing maintenance.
 
 ## Feeds
 
 | YAML file | In-game tab | Category prefix in `:cl:` | Notes |
 |---|---|---|---|
-| `Resources/Changelog/Zone14.yml` | **Zone 14** | *(default — no prefix)* | This repo's own feed. `Order: 0` — first tab. |
+| `Resources/Changelog/Zona14.yml` | **Zona 14** | *(default — no prefix)* | This repo's own feed. `Order: 0` — first tab. |
 | `Resources/Changelog/Admin.yml` | Admin | `ADMIN:` | Admin-only (hidden from non-admins). |
 | `Resources/Changelog/Maps.yml` | Maps | `MAPS:` | |
 | `Resources/Changelog/Rules.yml` | Rules | `RULES:` | |
@@ -63,8 +63,8 @@ Types accepted by the merger: `Add` / `Remove` / `Tweak` / `Fix` (capitalised �
 From the repo root:
 
 ```bash
-# Zone 14 (default category — grabs parts with no 'category:' field)
-python3 Tools/update_changelog.py Resources/Changelog/Zone14.yml Resources/Changelog/Parts/
+# Zona 14 (default category — grabs parts with no 'category:' field)
+python3 Tools/update_changelog.py Resources/Changelog/Zona14.yml Resources/Changelog/Parts/
 
 # Extra-category feeds (only needed if the PR included those prefixes)
 python3 Tools/update_changelog.py Resources/Changelog/Admin.yml Resources/Changelog/Parts/ --category Admin
@@ -81,7 +81,7 @@ Each run:
 ### 4. Commit
 
 ```bash
-git add Resources/Changelog/Zone14.yml Resources/Changelog/Parts/
+git add Resources/Changelog/Zona14.yml Resources/Changelog/Parts/
 git commit -m "chore: changelog for PR #1337"
 ```
 
@@ -104,7 +104,7 @@ The upstream automation lives at [`space-wizards/SS14.Changelog`](https://github
    Changelog:
      GitHubSecret: "<webhook HMAC shared secret>"
      ChangelogBranchName: master
-     ChangelogFilename: Zone14.yml
+     ChangelogFilename: Zona14.yml
      ChangelogRepo: /var/lib/changelog/zona-14   # local clone of Zona-14/Zona-14
      SshKey: /var/lib/changelog/deploy_key       # deploy key with push to master
      DelaySeconds: 60

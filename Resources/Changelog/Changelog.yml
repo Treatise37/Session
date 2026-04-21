@@ -1,4 +1,4 @@
-﻿Order: 5 # Zone14: upstream-history tab; demoted so "Zone 14" reads first
+﻿Order: 5 # Zona14: upstream-history tab; demoted so "Zona 14" reads first
 Entries:
 - author: beck-thompson
   changes:

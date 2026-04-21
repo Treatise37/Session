@@ -12,7 +12,7 @@ This fork descends from:
 - [space-syndicate/space-station-14](https://github.com/space-syndicate/space-station-14) — Russian mainline SS14 fork.
 - [stalker14-project/stalker14](https://github.com/stalker14-project/stalker14) — S.T.A.L.K.E.R.-themed derivative (our direct parent).
 
-We merge from `stalker14-project` regularly; Zona-14-specific work is isolated under `_Zone14/` folders so upstream syncs stay manageable.
+We merge from `stalker14-project` regularly; Zona-14-specific work is isolated under `_Zona14/` folders so upstream syncs stay manageable.
 
 ## Quickstart
 
@@ -28,12 +28,12 @@ dotnet run --project Content.Client
 
 ## Contributing
 
-All new Zona-14 code lives under `_Zone14/` folders — see [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full rules (namespace conventions, `// Zone14:` markers for upstream edits, sprite `meta.json` license requirements, PR template, CI checks).
+All new Zona-14 code lives under `_Zona14/` folders — see [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full rules (namespace conventions, `// Zona14:` markers for upstream edits, sprite `meta.json` license requirements, PR template, CI checks).
 
 Before pushing, run the local validator:
 
 ```bash
-bash Tools/_Zone14/check-conventions.sh origin/master HEAD
+bash Tools/_Zona14/check-conventions.sh origin/master HEAD
 ```
 
 ## Bug reports & feedback
@@ -50,7 +50,7 @@ The repository has layered licensing. In plain English:
 
 - **Upstream code** (Space Wizards, Corvax) is [MIT-licensed](LICENSE.TXT).
 - **Stalker-team contributions** (authors named in `LICENSE.TXT`) are marked **All rights reserved** — contact the [Stalker14 team](https://discord.gg/GXzurVkWYX) for reuse permission.
-- **Zona-14 team contributions** (everything under `_Zone14/`) are [MIT-licensed](LICENSE.TXT) © 2024-2026 Zona-14 Team.
+- **Zona-14 team contributions** (everything under `_Zona14/`) are [MIT-licensed](LICENSE.TXT) © 2024-2026 Zona-14 Team.
 - **Assets** (sprites, audio, maps) inherit [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) by default; each asset's `meta.json` records its actual license and attribution.
 
 Full legal text in [`LICENSE.TXT`](LICENSE.TXT).

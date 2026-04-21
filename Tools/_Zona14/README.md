@@ -1,4 +1,4 @@
-# `Tools/_Zone14`
+# `Tools/_Zona14`
 
 Scripts that enforce the Zona-14 coding conventions documented in the root-level [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
 
@@ -7,25 +7,25 @@ Scripts that enforce the Zona-14 coding conventions documented in the root-level
 PR-diff validator. Runs the six checks described in `CONTRIBUTING.md §10`:
 
 1. Namespace–folder alignment (fatal)
-2. Upstream-edit `// Zone14:` / `# Zone14:` marker enforcement (fatal; skipped on `[upstream-port]` PRs)
-3. Misfiled `_Zone14` namespace guard (fatal)
-4. Greenfield-outside-`_Zone14/` warning (non-fatal; skipped on `[upstream-port]` PRs)
+2. Upstream-edit `// Zona14:` / `# Zona14:` marker enforcement (fatal; skipped on `[upstream-port]` PRs)
+3. Misfiled `_Zona14` namespace guard (fatal)
+4. Greenfield-outside-`_Zona14/` warning (non-fatal; skipped on `[upstream-port]` PRs)
 5. Key-file delete guard (fatal)
 6. Asset `meta.json` `license` / `copyright` enforcement (fatal; allowlist override via `[custom-license]`)
 
 ### Usage
 
 ```bash
-bash Tools/_Zone14/check-conventions.sh <base-ref> <head-ref>
+bash Tools/_Zona14/check-conventions.sh <base-ref> <head-ref>
 ```
 
 Typical local invocation (before pushing):
 
 ```bash
-bash Tools/_Zone14/check-conventions.sh origin/master HEAD
+bash Tools/_Zona14/check-conventions.sh origin/master HEAD
 ```
 
-The workflow [`.github/workflows/zone14-convention.yml`](../../.github/workflows/zone14-convention.yml) runs the same script on every PR against `master`.
+The workflow [`.github/workflows/zona14-convention.yml`](../../.github/workflows/zona14-convention.yml) runs the same script on every PR against `master`.
 
 ### Environment variables
 

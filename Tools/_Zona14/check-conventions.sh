@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # check-conventions.sh — Zona-14 convention validator.
-# See CONTRIBUTING.md §10 and Tools/_Zone14/README.md for detail.
+# See CONTRIBUTING.md §10 and Tools/_Zona14/README.md for detail.
 #
 # Usage: check-conventions.sh <base-ref> <head-ref>
 # Exit 0 on pass (with or without warnings), 1 on any fatal failure, 2 on usage error.
@@ -46,27 +46,27 @@ warn() {
 }
 
 # ============================================================
-# Check 1: Namespace-folder alignment for files under _Zone14/
+# Check 1: Namespace-folder alignment for files under _Zona14/
 # ============================================================
 check_namespace_alignment() {
     while IFS=$'\t' read -r status path; do
         [[ -z "${status:-}" ]] && continue
         [[ "$status" == A || "$status" == M ]] || continue
         [[ "$path" == *.cs ]] || continue
-        [[ "$path" == *"/_Zone14/"* ]] || continue
+        [[ "$path" == *"/_Zona14/"* ]] || continue
         [[ -f "$path" ]] || continue
 
         case "$path" in
-            Content.Server/_Zone14/*)                     expected="Content.Server._Zone14" ;;
-            Content.Client/_Zone14/*)                     expected="Content.Client._Zone14" ;;
-            Content.Shared/_Zone14/*)                     expected="Content.Shared._Zone14" ;;
-            Content.IntegrationTests/Tests/_Zone14/*)     expected="Content.IntegrationTests.Tests._Zone14" ;;
+            Content.Server/_Zona14/*)                     expected="Content.Server._Zona14" ;;
+            Content.Client/_Zona14/*)                     expected="Content.Client._Zona14" ;;
+            Content.Shared/_Zona14/*)                     expected="Content.Shared._Zona14" ;;
+            Content.IntegrationTests/Tests/_Zona14/*)     expected="Content.IntegrationTests.Tests._Zona14" ;;
             *)                                             continue ;;
         esac
 
         ns_line=$(grep -m1 -E '^namespace ' "$path" 2>/dev/null || true)
         if [[ -z "$ns_line" ]]; then
-            fail "$path: no 'namespace' declaration found (files under _Zone14/ must declare a namespace starting with $expected)"
+            fail "$path: no 'namespace' declaration found (files under _Zona14/ must declare a namespace starting with $expected)"
             continue
         fi
 
@@ -87,7 +87,7 @@ check_upstream_edit_marker() {
     while IFS=$'\t' read -r status path; do
         [[ -z "${status:-}" ]] && continue
         [[ "$status" == A || "$status" == M ]] || continue
-        [[ "$path" == *"/_Zone14/"* ]] && continue
+        [[ "$path" == *"/_Zona14/"* ]] && continue
 
         case "$path" in
             Content.Server/*|Content.Client/*|Content.Shared/*|Content.IntegrationTests/*|Resources/Prototypes/*|Resources/Locale/*) ;;
@@ -95,8 +95,8 @@ check_upstream_edit_marker() {
         esac
 
         case "$path" in
-            *.cs|*.xaml|*.xaml.cs) marker='// Zone14' ;;
-            *.yml|*.yaml|*.ftl)    marker='# Zone14' ;;
+            *.cs|*.xaml|*.xaml.cs) marker='// Zona14' ;;
+            *.yml|*.yaml|*.ftl)    marker='# Zona14' ;;
             *)                      continue ;;
         esac
 
@@ -108,7 +108,7 @@ check_upstream_edit_marker() {
         [[ -z "$added" ]] && continue
 
         if ! grep -qF "$marker" <<<"$added"; then
-            fail "$path: added lines outside _Zone14/ without a '$marker' marker (see CONTRIBUTING.md §3; tag PR with [upstream-port] for pure merges)"
+            fail "$path: added lines outside _Zona14/ without a '$marker' marker (see CONTRIBUTING.md §3; tag PR with [upstream-port] for pure merges)"
         fi
     done <<<"$CHANGED_FILES"
 }
@@ -121,17 +121,17 @@ check_misfiled_namespace() {
         [[ -z "${status:-}" ]] && continue
         [[ "$status" == A || "$status" == M ]] || continue
         [[ "$path" == *.cs ]] || continue
-        [[ "$path" == *"/_Zone14/"* ]] && continue
+        [[ "$path" == *"/_Zona14/"* ]] && continue
         [[ -f "$path" ]] || continue
 
-        if grep -qE '^namespace [A-Za-z0-9.]*\._Zone14(\.|;| *$)' "$path" 2>/dev/null; then
-            fail "$path: outside _Zone14/ but declares a _Zone14 namespace (move the file under _Zone14/ or fix the namespace)"
+        if grep -qE '^namespace [A-Za-z0-9.]*\._Zona14(\.|;| *$)' "$path" 2>/dev/null; then
+            fail "$path: outside _Zona14/ but declares a _Zona14 namespace (move the file under _Zona14/ or fix the namespace)"
         fi
     done <<<"$CHANGED_FILES"
 }
 
 # ============================================================
-# Check 4: Greenfield outside _Zone14/ (warn only; skipped if [upstream-port])
+# Check 4: Greenfield outside _Zona14/ (warn only; skipped if [upstream-port])
 # ============================================================
 check_greenfield() {
     is_upstream_port && return 0
@@ -139,7 +139,7 @@ check_greenfield() {
     while IFS=$'\t' read -r status path; do
         [[ -z "${status:-}" ]] && continue
         [[ "$status" == A ]] || continue
-        [[ "$path" == *"/_Zone14/"* ]] && continue
+        [[ "$path" == *"/_Zona14/"* ]] && continue
 
         case "$path" in
             Corvax/*|RobustToolbox/*|Pow3r/*) continue ;;
@@ -151,7 +151,7 @@ check_greenfield() {
             *) continue ;;
         esac
 
-        warn "$path: newly added outside _Zone14/ — consider moving under a _Zone14/ folder (reviewer discretion)"
+        warn "$path: newly added outside _Zona14/ — consider moving under a _Zona14/ folder (reviewer discretion)"
     done <<<"$CHANGED_FILES"
 }
 
