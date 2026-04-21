@@ -32,7 +32,7 @@ public sealed partial class RDWatcherSystem
 
         foreach (var ent in entities)
         {
-            if (!ent.Valid)
+            if (!ent.Valid || !Exists(ent) || !HasComp<TransformComponent>(ent))
                 continue;
 
             var pos = _transform.GetWorldPosition(ent);
