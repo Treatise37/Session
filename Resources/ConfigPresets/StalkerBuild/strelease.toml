@@ -22,7 +22,7 @@ rules_file = "STRuleset"
 time = 10.0
 
 [whitelist]
-enabled = true
+enabled = false
 prototype_list = "basicWhitelist"
 
 [shuttle]
