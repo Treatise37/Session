@@ -26,7 +26,6 @@ public sealed partial class STItemUpgradeSystem : EntitySystem
 
     private void OnStartup(Entity<STItemUpgradesComponent> ent, ref ComponentStartup args)
     {
-        EnsureTreeLoaded(ent);
         RefreshUpgrades(ent);
     }
 
