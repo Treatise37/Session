@@ -25,7 +25,10 @@ namespace Content.Server.Inventory
 
         public void TransferEntityInventories(Entity<InventoryComponent?> source, Entity<InventoryComponent?> target)
         {
-            if (!Resolve(source.Owner, ref source.Comp) || !Resolve(target.Owner, ref target.Comp))
+            // Zona14: polymorph targets (e.g. MobMutantApparitionBoar) legitimately lack InventoryComponent; the
+            // noisy Resolve log trips integration tests as a server error.
+            if (!Resolve(source.Owner, ref source.Comp, logMissing: false)
+                || !Resolve(target.Owner, ref target.Comp, logMissing: false))
                 return;
 
             var enumerator = new InventorySlotEnumerator(source.Comp);
