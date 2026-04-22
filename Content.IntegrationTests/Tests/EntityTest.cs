@@ -359,7 +359,15 @@ namespace Content.IntegrationTests.Tests
                 sb.AppendLine("Listing new entities:");
             foreach (var addedEnt in addedEnts)
             {
-                sb.AppendLine(entMan.ToPrettyString(addedEnt));
+                var pretty = entMan.ToPrettyString(addedEnt);
+                var parent = entMan.TryGetComponent(addedEnt, out TransformComponent xform)
+                    ? entMan.ToPrettyString(xform.ParentUid)
+                    : "<no-xform>";
+                var comps = string.Join(", ",
+                    entMan.GetComponents(addedEnt)
+                          .Select(c => c.GetType().Name)
+                          .OrderBy(n => n));
+                sb.AppendLine($"{pretty} parent={parent} comps=[{comps}]");
             }
             if (removedEnts.Any())
                 sb.AppendLine("Listing removed entities:");
