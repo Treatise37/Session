@@ -20,16 +20,25 @@ public sealed partial class RDWatcherSystem
 
     private void OnTargetRemove(EntityUid uid, RDWatcherTargetComponent component, ComponentRemove args)
     {
+        if (_net.IsClient)
+            return;
+
         if (component.Watcher is not { } watcherUid)
             return;
 
         if (!TryComp<RDWatcherComponent>(watcherUid, out var watcher))
             return;
 
-        watcher.Entities.Remove(uid);
+        if (!watcher.Entities.Remove(uid))
+            return;
 
         if (watcher.Entities.Count == 0)
+        {
             QueueDel(watcherUid);
+            return;
+        }
+
+        DirtyField(watcherUid, watcher, nameof(RDWatcherComponent.Entities));
     }
 
     private void UpdateWatchers()
