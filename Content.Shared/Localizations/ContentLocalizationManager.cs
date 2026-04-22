@@ -10,8 +10,10 @@ namespace Content.Shared.Localizations
         [Dependency] private readonly ILocalizationManager _loc = default!;
 
         // If you want to change your codebase's language, do it here.
-        private const string Culture = "ru-RU"; // Corvax-Localization
-        private const string FallbackCulture = "en-US"; // Corvax-Localization
+        private const string Culture = "en-US";
+        // Zona-14-Localization-Start
+        // private const string FallbackCulture = "en-US"; // Corvax-Localization
+        // Zona-14-Localization-End
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -27,11 +29,15 @@ namespace Content.Shared.Localizations
         public void Initialize()
         {
             var culture = new CultureInfo(Culture);
-            var fallbackCulture = new CultureInfo(FallbackCulture); // Corvax-Localization
+            // Zona-14-Localization-Start
+            // var fallbackCulture = new CultureInfo(FallbackCulture); // Corvax-Localization
+            // Zona-14-Localization-End
 
             _loc.LoadCulture(culture);
-            _loc.LoadCulture(fallbackCulture); // Corvax-Localization
-            _loc.SetFallbackCluture(fallbackCulture); // Corvax-Localization
+            // Zona-14-Localization-Start
+            // _loc.LoadCulture(fallbackCulture); // Corvax-Localization
+            // _loc.SetFallbackCluture(fallbackCulture); // Corvax-Localization
+            // Zona-14-Localization-End
             _loc.AddFunction(culture, "PRESSURE", FormatPressure);
             _loc.AddFunction(culture, "POWERWATTS", FormatPowerWatts);
             _loc.AddFunction(culture, "POWERJOULES", FormatPowerJoules);
