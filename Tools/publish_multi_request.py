@@ -15,7 +15,7 @@ RELEASE_DIR = "release"
 # CONFIGURATION PARAMETERS
 # Forks should change these to publish to their own infrastructure.
 #
-ROBUST_CDN_URL = "https://cdn.corvaxforge.ru/" # TODO: Point stalkers14.xyz to the same IP
+ROBUST_CDN_URL = os.environ.get("ROBUST_CDN_URL", "https://cdn.corvaxforge.ru/")
 
 def main():
     parser = argparse.ArgumentParser()
