@@ -11,9 +11,7 @@ namespace Content.Shared.Localizations
 
         // If you want to change your codebase's language, do it here.
         private const string Culture = "en-US";
-        // Zona-14-Localization-Start
-        // private const string FallbackCulture = "en-US"; // Corvax-Localization
-        // Zona-14-Localization-End
+        private const string FallbackCulture = "ru-RU"; // Zona14: fall back to Russian when en-US key is missing
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -29,15 +27,11 @@ namespace Content.Shared.Localizations
         public void Initialize()
         {
             var culture = new CultureInfo(Culture);
-            // Zona-14-Localization-Start
-            // var fallbackCulture = new CultureInfo(FallbackCulture); // Corvax-Localization
-            // Zona-14-Localization-End
+            var fallbackCulture = new CultureInfo(FallbackCulture);
 
             _loc.LoadCulture(culture);
-            // Zona-14-Localization-Start
-            // _loc.LoadCulture(fallbackCulture); // Corvax-Localization
-            // _loc.SetFallbackCluture(fallbackCulture); // Corvax-Localization
-            // Zona-14-Localization-End
+            _loc.LoadCulture(fallbackCulture);
+            _loc.SetFallbackCluture(fallbackCulture);
             _loc.AddFunction(culture, "PRESSURE", FormatPressure);
             _loc.AddFunction(culture, "POWERWATTS", FormatPowerWatts);
             _loc.AddFunction(culture, "POWERJOULES", FormatPowerJoules);
