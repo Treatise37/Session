@@ -1,0 +1,131 @@
+# Mid-rank clones for the Criminal, Freedom, and Duty factions. Same gear,
+# access, band, and faction as their parents (StalkerBandit / StalkerFreedom /
+# StalkerDolg) — they exist as separate selectable slots in the character
+# creation menu.
+
+- type: job
+  id: StalkerCutthroat
+  name: job-cutthroat
+  icon: band
+  description: job-cutthroat-desc
+  playTimeTracker: JobCutthroat
+  whitelisted: true
+  requirements:
+    - !type:SpeciesRequirement
+      species:
+      - Human
+      - Dwarf
+  startingGear: BandGear
+  supervisors: job-cutthroat-supervisor
+  canBeAntag: false
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: Access
+          tags:
+            - Bandit
+            - BanditHead
+        - type: Bands
+          band: Stalker
+          bandIcon: band
+          bandProto: STBanditsBand
+          bandRankId: 2
+        - type: BlockTackingHolyItems
+        - type: TeethPull
+          teethProto: ToothStalker
+          pullingItemTag: PliersStalker
+          teethCount: 3
+          initialTeeth: 3
+        - type: NpcFactionMember
+          factions:
+          - BandsUnion
+          - Bandit
+        - type: Vocal
+          sounds:
+            Male: MaleHumanBandit
+            Female: FemaleHumanBandit
+            Unsexed: MaleHumanBandit
+        - type: CheekiBreeki
+
+- type: job
+  id: StalkerScout
+  name: job-scout
+  icon: freedom
+  description: job-scout-desc
+  playTimeTracker: JobScout
+  whitelisted: true
+  requirements:
+    - !type:SpeciesRequirement
+      species:
+      - Human
+      - Dwarf
+  startingGear: FreedomGear
+  supervisors: job-scout-supervisor
+  canBeAntag: false
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: NpcFactionMember
+          factions:
+          - BandsUnion
+          - Freedom
+        - type: Access
+          tags:
+            - Freedom
+        - type: Bands
+          band: Stalker
+          bandIcon: freedom
+          bandProto: STFreedomBand
+          bandRankId: 2
+        - type: BlockTackingHolyItems
+        - type: TeethPull
+          teethProto: ToothStalker
+          pullingItemTag: PliersStalker
+          teethCount: 3
+          initialTeeth: 3
+        - type: Vocal
+          sounds:
+            Male: MaleHumanFreedom
+            Female: FemaleHumanFreedom
+            Unsexed: MaleHumanFreedom
+
+- type: job
+  id: StalkerDutyNCO
+  name: job-duty-nco
+  icon: Dolg
+  description: job-duty-nco-desc
+  playTimeTracker: JobDutyNCO
+  whitelisted: true
+  requirements:
+    - !type:SpeciesRequirement
+      species:
+      - Human
+      - Dwarf
+  startingGear: DolgGear
+  supervisors: job-duty-nco-supervisor
+  canBeAntag: false
+  special:
+    - !type:AddComponentSpecial
+      components:
+        - type: NpcFactionMember
+          factions:
+          - Duty
+        - type: Access
+          tags:
+            - Dolg
+        - type: Bands
+          band: Stalker
+          bandIcon: Dolg
+          bandProto: STDolgBand
+          bandRankId: 2
+        - type: BlockTackingHolyItems
+        - type: TeethPull
+          teethProto: ToothStalker
+          pullingItemTag: PliersStalker
+          teethCount: 3
+          initialTeeth: 3
+        - type: Vocal
+          sounds:
+            Male: MaleHumanDuty
+            Female: FemaleHumanDuty
+            Unsexed: MaleHumanDuty

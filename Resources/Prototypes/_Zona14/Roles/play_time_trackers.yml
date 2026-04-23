@@ -1,0 +1,8 @@
+- type: playTimeTracker
+  id: JobCutthroat
+
+- type: playTimeTracker
+  id: JobScout
+
+- type: playTimeTracker
+  id: JobDutyNCO

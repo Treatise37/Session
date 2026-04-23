@@ -1,7 +1,9 @@
 department-Stalker = Общедоступные
-department-StalkerAdvanced = Продвинутые
+# Zona14: Продвинутые<Кланы сталкеров
+department-StalkerAdvanced = Кланы сталкеров
 department-StalkerBrigands = Разбойники
-department-StalkerOfficials = Оффициалы
+# Zona14: Оффициалы<Пограничники
+department-StalkerOfficials = Пограничники
 department-StalkerReligius = Фанатики
 department-Evolver = Разумные мутанты
 department-StalkerAnomalists = Техники

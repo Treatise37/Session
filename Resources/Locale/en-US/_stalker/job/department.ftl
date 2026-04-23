@@ -1,10 +1,12 @@
 department-Stalker = Stalker
 department-Stalker-description = TODO
-department-StalkerAdvanced = Allied Stalker
+# Zona14: Allied Stalker<Stalker Clans
+department-StalkerAdvanced = Stalker Clans
 department-StalkerAdvanced-description = TODO
 department-StalkerBrigands = Brigand
 department-StalkerBrigands-description = TODO
-department-StalkerOfficials = Government
+# Zona14: Government<Border Guards
+department-StalkerOfficials = Border Guards
 department-StalkerOfficials-description = TODO
 department-StalkerReligius = Zealot
 department-StalkerReligius-description = TODO

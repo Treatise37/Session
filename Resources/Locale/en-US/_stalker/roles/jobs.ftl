@@ -4,7 +4,8 @@ job-anomalist-guardian = Guardian
 job-anomalist-guardian-desc = Explore and save the zone. Active use of anomalies and artifacts. Creation of new anomalies and artifacts. Create hardware based on anomalies/artifacts or to work with anomalies.
 job-anomalist-supervisor = yourself
 
-job-bandit = Bandit
+# Zona14: Bandit<Thug
+job-bandit = Thug
 job-bandit-desc = Raiders and marauders of the Zone, ranging from petty thugs and gangsters to organized crime syndicates.
 job-head-bandit = Pahan
 job-head-bandit-desc = Raiders and marauders of the Zone, ranging from petty thugs and gangsters to organized crime syndicates.
@@ -27,17 +28,21 @@ job-deserter-desc = Deserter from government structures. Disobey dictators' orde
 job-deserter-supervisor = yourself
 job-deserter-head = Deserter Leader
 
-job-dolg = Duty Fighter
+# Zona14: Duty Fighter<Duty Militia
+job-dolg = Duty Militia
 job-dolg-desc = Defender of humanity.
 job-dolg-supervisor = your superiors
-job-head-dolg = Leader of Duty
+# Zona14: Leader of Duty<Duty CO
+job-head-dolg = Duty CO
 job-head-dolg-desc = Defender of humanity.
 job-head-dolg-supervisor = yourself
 
-job-freedom = Freedom Fighter
+# Zona14: Freedom Fighter<Freedom Wardog
+job-freedom = Freedom Wardog
 job-freedom-desc = Zone Defender.
 job-freedom-supervisor = Kuri, protect the Zone and ignore authority
-job-head-freedom = Ataman
+# Zona14: Ataman<Ace
+job-head-freedom = Ace
 job-head-freedom-desc = Zone Defender.
 job-head-freedom-supervisor = no one. Commanders? With the anarchists?
 
@@ -57,11 +62,14 @@ job-military-stalker-desc = Soldiers who have undergone special training after t
 job-military-stalker-supervisor = your superiors!
 job-military-stalker-commander = Military Stalker Commander
 job-military-stalker-commander-supervisor = you
-job-military = Military
+# Zona14: Military<Conscript
+job-military = Conscript
 job-military-desc = Hold the Zone to prevent the looting of hazardous radioactive materials and to prevent unauthorized entry by any persons.
-job-military-head = Chief of the Garrison
+# Zona14: Chief of the Garrison<Nachalnyk
+job-military-head = Nachalnyk
 job-military-head-desc = Hold the Zone to prevent the looting of hazardous radioactive materials and to prevent unauthorized entry by any persons.
-job-military-officer = Military Commander
+# Zona14: Military Commander<Serzhant
+job-military-officer = Serzhant
 job-military-officer-desc = Hold the Zone to prevent the looting of hazardous radioactive materials and to prevent unauthorized entry by any person.
 job-military-supervisor = your superiors
 
@@ -107,11 +115,14 @@ job-head-renegade-supervisor = you're the boss.
 
 job-scientist = Scientist
 job-scientist-desc = The main goal is to study all aspects of the Site, using scientific methods to further explain what the Site is and its purpose.
-job-sci = Scientist
+# Zona14: Scientist<Ecologist Intern
+job-sci = Ecologist Intern
 job-sci-desc = The main goal is to study all aspects of the Zone, using scientific methods to further explain what the Zone is and its purpose.
-job-sci_decan = Research Institute Dean
+# Zona14: Research Institute Dean<Professor
+job-sci_decan = Professor
 job-sci_decan-desc = The main goal is to study all aspects of the Zone, using scientific methods to further explain what the Zone is and its purpose.
-job-sci_rector = Research Institute Rector
+# Zona14: Research Institute Rector<Research Director
+job-sci_rector = Research Director
 job-sci_rector-desc = The main goal is to study all aspects of the Zone, using scientific methods to further explain what the Zone is and its purpose.
 job-issg = SSGI Operative
 job-issg-desc = Following the orders of the institute is your everything.
@@ -143,7 +154,8 @@ job-sbu-supervisor = your superiors
 job-stalker = Loner
 job-stalker-desc = This is a nomadic semi-united faction that simply lives off the Zone to earn some coins for their daily life.
 job-stalker-supervisor = yourself
-job-stalker-veteran = Veteran
+# Zona14: Veteran<Guide
+job-stalker-veteran = Guide
 job-guide = Guide
 
 job-jaba = Toad

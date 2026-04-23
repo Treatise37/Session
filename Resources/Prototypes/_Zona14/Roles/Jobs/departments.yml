@@ -1,0 +1,13 @@
+# New Science department — moved out of StalkerOfficials so Science and
+# Border Guards appear as separate groups in character creation.
+
+- type: department
+  id: StalkerScience
+  name: department-StalkerScience
+  description: department-StalkerScience-description
+  color: "#4A90E2"
+  weight: 7
+  roles:
+  - sci
+  - sci_decan
+  - sci_rector

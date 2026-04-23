@@ -41,8 +41,10 @@
   weight: 9
   roles:
   - StalkerDolg
+  - StalkerDutyNCO # Zona14: new NCO clone for the Duty rank structure
   - StalkerHeadDolg
   - StalkerFreedom
+  - StalkerScout # Zona14: new Scout clone for the Freedom rank structure
   - StalkerHeadFreedom
   - StalkerClearSkyHead
   - StalkerClearSky
@@ -64,6 +66,7 @@
   weight: 8
   roles:
   - StalkerBandit
+  - StalkerCutthroat # Zona14: new Cutthroat clone for the Criminal rank structure
   - StalkerHeadBandit
   - StalkerMercenary
   - StalkerHeadMercenary
@@ -83,9 +86,7 @@
   - Military
   - MilitaryOfficer
   - MilitaryHead
-  - sci
-  - sci_decan
-  - sci_rector
+  # Zona14: sci / sci_decan / sci_rector moved to the new StalkerScience department
   - MilitaryStalker
   - StalkerUN
   - StalkerClown
