@@ -310,9 +310,15 @@ public sealed partial class STMessengerSystem : EntitySystem
             : senderName;
 
         string? replySnippet = null;
+        uint? effectiveReplyToId = null;
         if (replyToId is { } replyId)
         {
             replySnippet = FindReplySnippet(chatId, isDm, server, replyId);
+            // Drop the reply attribution if the referenced message doesn't exist in the target chat.
+            // This prevents a stale client-side replyToId (from a different chat, where message IDs
+            // can collide) from landing on an unrelated post.
+            if (replySnippet is not null)
+                effectiveReplyToId = replyId;
         }
 
         List<STMessengerMessage> chatMessages;
@@ -387,7 +393,7 @@ public sealed partial class STMessengerSystem : EntitySystem
             displayName,
             content,
             _timing.CurTime,
-            replyToId,
+            effectiveReplyToId,
             replySnippet,
             senderFaction,
             senderRankIcon);
