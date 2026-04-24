@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Stalker_EN.Portraits;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -124,6 +125,19 @@ namespace Content.Shared.Preferences
         // stalker-en-changes-end
 
         /// <summary>
+        /// Player-selected character portrait texture path for PDA notifications and other UI elements.
+        /// Validated server-side against available portraits for the character's faction/job.
+        /// </summary>
+        [DataField]
+        public string SelectedPortraitId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Selected portrait for disguise (e.g., Clear Sky masquerading as Stalker).
+        /// </summary>
+        [DataField]
+        public string DisguisePortraitId { get; set; } = string.Empty;
+
+        /// <summary>
         /// When spawning into a round what's the preferred spot to spawn.
         /// </summary>
         [DataField]
@@ -168,7 +182,9 @@ namespace Content.Shared.Preferences
             bool changeable, // stalker-changes
             string stAliasAdjective = "", // stalker-en-changes
             string stAliasNoun = "", // stalker-en-changes
-            string stAliasColor = "") // stalker-en-changes
+            string stAliasColor = "", // stalker-en-changes
+            string selectedPortraitId = "", // stalker-en-changes: portrait
+            string disguisePortraitId = "") // stalker-en-changes: disguise
         {
             Name = name;
             FlavorText = flavortext;
@@ -187,6 +203,8 @@ namespace Content.Shared.Preferences
             STAliasAdjective = stAliasAdjective; // stalker-en-changes
             STAliasNoun = stAliasNoun; // stalker-en-changes
             STAliasColor = stAliasColor; // stalker-en-changes
+            SelectedPortraitId = selectedPortraitId; // stalker-en-changes: portrait
+            DisguisePortraitId = disguisePortraitId; // stalker-en-changes: disguise
             var hasHighPrority = false;
             foreach (var (key, value) in _jobPriorities)
             {
@@ -220,7 +238,9 @@ namespace Content.Shared.Preferences
                 other.Changeable, // stalker-changes
                 other.STAliasAdjective, // stalker-en-changes
                 other.STAliasNoun, // stalker-en-changes
-                other.STAliasColor) // stalker-en-changes
+                other.STAliasColor, // stalker-en-changes
+                other.SelectedPortraitId, // stalker-en-changes: portrait
+                other.DisguisePortraitId) // stalker-en-changes: disguise
         {
         }
 
@@ -373,6 +393,22 @@ namespace Content.Shared.Preferences
             return new(this) { STAliasColor = color };
         }
         // stalker-en-changes-end
+
+        /// <summary>
+        /// Returns a copy of this profile with the specified character portrait.
+        /// </summary>
+        public HumanoidCharacterProfile WithSelectedPortrait(string portraitId)
+        {
+            return new(this) { SelectedPortraitId = portraitId };
+        }
+
+        /// <summary>
+        /// Returns a copy of this profile with the specified Clear Sky disguise portrait.
+        /// </summary>
+        public HumanoidCharacterProfile WithDisguisePortrait(string portraitId)
+        {
+            return new(this) { DisguisePortraitId = portraitId };
+        }
 
         public HumanoidCharacterProfile WithSpawnPriorityPreference(SpawnPriorityPreference spawnPriority)
         {
@@ -549,6 +585,8 @@ namespace Content.Shared.Preferences
             if (STAliasAdjective != other.STAliasAdjective) return false;
             if (STAliasNoun != other.STAliasNoun) return false;
             if (STAliasColor != other.STAliasColor) return false;
+            if (SelectedPortraitId != other.SelectedPortraitId) return false;
+            if (DisguisePortraitId != other.DisguisePortraitId) return false;
             // stalker-en-changes-end
             return Appearance.MemberwiseEquals(other.Appearance);
         }
@@ -709,6 +747,29 @@ namespace Content.Shared.Preferences
                 STAliasColor = STAliasColor[..16];
             // stalker-en-changes-end
 
+            // stalker-en-changes: portrait validation
+            // Validate main portrait texture path
+            if (!string.IsNullOrEmpty(SelectedPortraitId))
+            {
+                var textureExists = prototypeManager.EnumeratePrototypes<CharacterPortraitPrototype>()
+                    .Any(p => p.Textures.Any(t => t is SpriteSpecifier.Texture tex && tex.TexturePath.ToString() == SelectedPortraitId));
+                if (!textureExists)
+                {
+                    SelectedPortraitId = string.Empty;
+                }
+            }
+
+            // Validate disguise portrait texture path
+            if (!string.IsNullOrEmpty(DisguisePortraitId))
+            {
+                var textureExists = prototypeManager.EnumeratePrototypes<CharacterPortraitPrototype>()
+                    .Any(p => p.Textures.Any(t => t is SpriteSpecifier.Texture tex && tex.TexturePath.ToString() == DisguisePortraitId));
+                if (!textureExists)
+                {
+                    DisguisePortraitId = string.Empty;
+                }
+            }
+
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();
 
@@ -818,6 +879,8 @@ namespace Content.Shared.Preferences
             hashCode.Add(STAliasAdjective);
             hashCode.Add(STAliasNoun);
             hashCode.Add(STAliasColor);
+            hashCode.Add(SelectedPortraitId);
+            hashCode.Add(DisguisePortraitId);
             // stalker-en-changes-end
             return hashCode.ToHashCode();
         }

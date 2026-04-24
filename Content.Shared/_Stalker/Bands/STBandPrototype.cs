@@ -45,4 +45,10 @@ public sealed class STBandPrototype : IPrototype
     [DataField]
     public int? ManagingRankId { get; set; } = null;
 
+    /// <summary>
+    /// Target job ID for disguise portraits. Used to select which portrait set to use when disguised.
+    /// For example, Clear Sky uses "Stalker" to use Stalker portraits when disguised.
+    /// </summary>
+    [DataField]
+    public ProtoId<JobPrototype>? DisguiseTargetJobId { get; set; }
 }

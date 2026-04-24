@@ -2,6 +2,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Client._Stalker.Sponsors;
+using Content.Client._Stalker_EN.Portraits; // stalker-en-changes
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
@@ -16,6 +17,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Guidebook;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared._Stalker_EN.Portraits; // stalker-en-changes
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
@@ -95,6 +97,14 @@ namespace Content.Client.Lobby.UI
         /// </summary>
         public HumanoidCharacterProfile? Profile;
 
+        // stalker-en-changes: portrait picker
+        private string? _currentJobId;
+        private Action<string>? _portraitSelectedHandler;
+        private Action<string>? _disguisePortraitSelectedHandler;
+
+        // Cache for portrait prototypes by jobId to avoid re-filtering
+        private Dictionary<string, List<CharacterPortraitPrototype>> _portraitCache = new();
+
         private List<SpeciesPrototype> _species = new();
 
         private List<(string, RequirementsSelector)> _jobPriorities = new();
@@ -148,6 +158,9 @@ namespace Content.Client.Lobby.UI
             _sponsors = sponsors; // Stalker-Changes-Sponsors
             _sponsors.SponsorSpeciesUpdated += RefreshSpecies; // Stalker-Changes-Sponsors
             _sprite = _entManager.System<SpriteSystem>();
+
+            // Invalidate portrait cache when prototypes are reloaded
+            _prototypeManager.PrototypesReloaded += OnPrototypesReloaded;
 
             _maxNameLength = _cfgManager.GetCVar(CCVars.MaxNameLength);
             _allowFlavorText = _cfgManager.GetCVar(CCVars.FlavorText);
@@ -511,6 +524,146 @@ namespace Content.Client.Lobby.UI
         }
 
         /// <summary>
+        /// Refreshes the portrait picker based on the current highest priority job.
+        /// </summary>
+        public void RefreshPortraits()
+        {
+            // Unsubscribe from old events to prevent memory leak
+            if (_portraitSelectedHandler != null)
+            {
+                PortraitSelector.OnPortraitSelected -= _portraitSelectedHandler;
+                _portraitSelectedHandler = null;
+            }
+            if (_disguisePortraitSelectedHandler != null)
+            {
+                DisguisePortraitSelector.OnPortraitSelected -= _disguisePortraitSelectedHandler;
+                _disguisePortraitSelectedHandler = null;
+            }
+
+            _currentJobId = GetHighestPriorityJobId();
+
+            List<CharacterPortraitPrototype> portraits = new();
+
+            // Use cache for portraits by jobId
+            if (!string.IsNullOrEmpty(_currentJobId))
+            {
+                if (_portraitCache.TryGetValue(_currentJobId, out var cachedPortraits))
+                {
+                    portraits = cachedPortraits;
+                }
+                else
+                {
+                    portraits = new List<CharacterPortraitPrototype>();
+                    foreach (var portrait in _prototypeManager.EnumeratePrototypes<CharacterPortraitPrototype>())
+                    {
+                        // Filter only by jobId - portraits with empty jobId are for NPC fallback only
+                        if (portrait.JobId == _currentJobId)
+                            portraits.Add(portrait);
+                    }
+                    _portraitCache[_currentJobId] = portraits;
+                }
+            }
+
+            PortraitSelector.Setup(portraits, Profile?.SelectedPortraitId, _prototypeManager);
+            _portraitSelectedHandler = id =>
+            {
+                Profile = Profile?.WithSelectedPortrait(id);
+                SetDirty();
+            };
+            PortraitSelector.OnPortraitSelected += _portraitSelectedHandler;
+
+            // Validate current SelectedPortraitId - if it doesn't exist in available portraits, clear it
+            if (!string.IsNullOrEmpty(Profile?.SelectedPortraitId))
+            {
+                var textureExists = portraits.Any(p => p.Textures.Any(t => t is SpriteSpecifier.Texture tex && tex.TexturePath.ToString() == Profile.SelectedPortraitId));
+                if (!textureExists)
+                {
+                    Profile = Profile.WithSelectedPortrait(string.Empty);
+                    SetDirty();
+                }
+            }
+
+            // stalker-en-start
+            // Check if current job can disguise by finding STBandPrototype through Hierarchy
+            string? disguiseJobId = null;
+
+            if (!string.IsNullOrEmpty(_currentJobId))
+            {
+                foreach (var bandProto in _prototypeManager.EnumeratePrototypes<Content.Shared._Stalker.Bands.STBandPrototype>())
+                {
+                    // Check if current job is in this band's hierarchy
+                    if (bandProto.Hierarchy.Values.Any(jobId => jobId.ToString() == _currentJobId))
+                    {
+                        // This band has the current job, check for disguise capability
+                        if (bandProto.DisguiseTargetJobId != null)
+                        {
+                            disguiseJobId = bandProto.DisguiseTargetJobId.ToString();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(disguiseJobId))
+            {
+                DisguisePortraitBox.Visible = true;
+
+                // Use cache for disguise portraits
+                if (!_portraitCache.TryGetValue(disguiseJobId, out var disguisePortraits))
+                {
+                    disguisePortraits = new List<CharacterPortraitPrototype>();
+                    foreach (var portrait in _prototypeManager.EnumeratePrototypes<CharacterPortraitPrototype>())
+                    {
+                        if (portrait.JobId == disguiseJobId)
+                            disguisePortraits.Add(portrait);
+                    }
+                    _portraitCache[disguiseJobId] = disguisePortraits;
+                }
+
+                DisguisePortraitSelector.Setup(disguisePortraits, Profile?.DisguisePortraitId, _prototypeManager);
+                _disguisePortraitSelectedHandler = id =>
+                {
+                    Profile = Profile?.WithDisguisePortrait(id);
+                    SetDirty();
+                };
+                DisguisePortraitSelector.OnPortraitSelected += _disguisePortraitSelectedHandler;
+
+                // Validate current DisguisePortraitId - if it doesn't exist in available portraits, clear it
+                if (!string.IsNullOrEmpty(Profile?.DisguisePortraitId))
+                {
+                    var textureExists = disguisePortraits.Any(p => p.Textures.Any(t => t is SpriteSpecifier.Texture tex && tex.TexturePath.ToString() == Profile.DisguisePortraitId));
+                    if (!textureExists)
+                    {
+                        Profile = Profile.WithDisguisePortrait(string.Empty);
+                        SetDirty();
+                    }
+                }
+            }
+            else
+            {
+                DisguisePortraitBox.Visible = false;
+            }
+            // stalker-en-end
+        }
+
+        private string? GetHighestPriorityJobId()
+        {
+            if (Profile == null || Profile.JobPriorities.Count == 0)
+                return null;
+
+            return Profile.JobPriorities
+                .OrderByDescending(x => x.Value)
+                .ThenByDescending(x => _prototypeManager.TryIndex(x.Key, out var j) ? j.Weight : 0)
+                .FirstOrDefault().Key;
+        }
+
+        private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)
+        {
+            // Invalidate portrait cache when prototypes are reloaded
+            _portraitCache.Clear();
+        }
+
+        /// <summary>
         /// Refreshes traits selector
         /// </summary>
         public void RefreshTraits()
@@ -812,6 +965,7 @@ namespace Content.Client.Lobby.UI
             RefreshTraits();
             RefreshFlavorText();
             UpdateAliasControls(); // stalker-en-changes
+            RefreshPortraits(); // stalker-en-changes
             ReloadPreview();
 
             if (Profile != null)
@@ -1297,6 +1451,22 @@ namespace Content.Client.Lobby.UI
                 var priority = Profile?.JobPriorities.GetValueOrDefault(jobId, JobPriority.Never) ?? JobPriority.Never;
                 prioritySelector.Select((int) priority);
             }
+
+            // Refresh portraits when job priority changes
+            RefreshPortraits();
+
+            // stalker-en-start: Apply job-specific appearance for Zombified
+            var currentJobId = GetHighestPriorityJobId();
+            if (currentJobId == "StalkerZombified" && Profile != null)
+            {
+                Profile = Profile.WithCharacterAppearance(Profile.Appearance
+                    .WithEyeColor(Color.FromHex("#EBEBEB"))
+                    .WithSkinColor(Color.FromHex("#9C9794FF")));
+                UpdateSkinColor();
+                UpdateEyePickers();
+                SetDirty();
+            }
+            // stalker-en-end
         }
 
         private void UpdateSexControls()

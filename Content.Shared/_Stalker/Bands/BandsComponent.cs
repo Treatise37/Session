@@ -32,4 +32,7 @@ public sealed partial class BandsComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public int BandRankId = 1;
+
+    [DataField, AutoNetworkedField]
+    public bool IsDisguised; // stalker-en: tracks whether using alternative patch
 }

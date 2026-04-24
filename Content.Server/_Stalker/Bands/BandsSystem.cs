@@ -17,6 +17,7 @@ using Content.Shared._Stalker.Bands.Components;
 using Content.Server._Stalker.WarZone;
 using Content.Server._Stalker_EN.FactionRelations; // stalker-en-changes
 using Content.Shared._Stalker_EN.FactionRelations; // stalker-en-changes
+using Content.Shared._Stalker_EN.Portraits; // stalker-en-changes
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Player;
 
@@ -196,7 +197,7 @@ namespace Content.Server._Stalker.Bands
             var relationsState = _factionRelations.BuildUiState();
             // stalker-en-changes end
 
-            var hideRelationsTab = !string.IsNullOrEmpty(playerFaction) && _factionRelations.IsFactionRestricted(playerFaction);
+            var hideRelationsTab = !string.IsNullOrEmpty(playerFaction) && _factionRelations.HidesRelationsUi(playerFaction);
 
             var allFactions = new List<string>();
             foreach (var f in relationsState.FactionIds)
@@ -371,8 +372,25 @@ namespace Content.Server._Stalker.Bands
         {
             EnsureComp<StatusIconComponent>(uid);
 
+            // stalker-en start:
+            // Automatically apply patch swap on spawn for any faction with AltBand
+            // This makes them spawn with the alternative patch instead of the original
             if (component is { AltBand: not null, CanChange: true })
+            {
                 _actions.AddAction(uid, ref component.ActionChangeEntity, component.ActionChange, uid);
+
+                (component.BandStatusIcon, component.AltBand) = (component.AltBand, component.BandStatusIcon);
+                component.IsDisguised = true;
+
+                if (TryComp<CharacterPortraitComponent>(uid, out var portraitComp))
+                {
+                    portraitComp.IsDisguised = true;
+                    Dirty(uid, portraitComp);
+                }
+
+                Dirty(uid, component);
+            }
+            // stalker-en end
         }
 
         private void OnChange(Entity<BandsComponent> entity, ref ChangeBandEvent args)
@@ -385,7 +403,17 @@ namespace Content.Server._Stalker.Bands
                 return;
 
             // Swap the band status icon and alt band name
+            // stalker-en-start
             (comp.BandStatusIcon, comp.AltBand) = (comp.AltBand, comp.BandStatusIcon);
+            comp.IsDisguised = !comp.IsDisguised;
+
+            // Also update CharacterPortraitComponent for portrait disguise
+            if (TryComp<CharacterPortraitComponent>(entity, out var portraitComp))
+            {
+                portraitComp.IsDisguised = comp.IsDisguised;
+                Dirty(entity, portraitComp);
+            }
+            // stalker-en-end
             Dirty(entity);
             args.Handled = true;
         }
