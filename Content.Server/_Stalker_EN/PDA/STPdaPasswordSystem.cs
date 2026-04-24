@@ -7,6 +7,7 @@ using Content.Shared.PDA;
 using Content.Shared.Popups;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Stalker_EN.PDA;
@@ -26,15 +27,12 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
     /// <summary>Maximum password length to prevent abuse.</summary>
     private const int MaxPasswordLength = 16;
 
-    private readonly HashSet<(EntityUid Pda, EntityUid User)> _opening = new();
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ActivatableUIComponent, ActivatableUIOpenAttemptEvent>(OnOpenAttempt);
+        SubscribeLocalEvent<STPdaPasswordComponent, ActivatableUIOpenAttemptEvent>(OnOpenAttempt);
         SubscribeLocalEvent<STPdaPasswordComponent, BoundUIOpenedEvent>(OnBuiOpened);
-        SubscribeLocalEvent<STPdaPasswordComponent, BoundUIClosedEvent>(OnBuiClosed);
         SubscribeLocalEvent<STPdaPasswordComponent, STPdaPasswordSubmitMessage>(OnPasswordSubmit);
         SubscribeLocalEvent<STPdaPasswordComponent, STPdaPasswordSetMessage>(OnPasswordSet);
         SubscribeLocalEvent<STPdaPasswordComponent, STPdaPasswordOpenSettingsMessage>(OnOpenSettings);
@@ -51,11 +49,12 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
         if (!args.SlotFlags.HasFlag(SlotFlags.IDCARD))
             return;
 
-        if (ent.Comp.Password != null)
+        // Already has a password loaded — don't overwrite
+        if (ent.Comp.Password is not null)
             return;
 
         var charName = MetaData(args.Equipee).EntityName;
-        LoadPasswordAsync(ent.Owner, charName);
+        LoadPasswordAsync(ent.Owner, ent.Comp, charName);
     }
 
     /// <summary>
@@ -64,66 +63,84 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
     /// </summary>
     private void OnPdaPasswordPickedUp(Entity<STPdaPasswordComponent> ent, ref GotEquippedHandEvent args)
     {
-        if (ent.Comp.Password != null)
+        // Already has a password loaded — don't overwrite
+        if (ent.Comp.Password is not null)
             return;
 
         var charName = MetaData(args.User).EntityName;
-        LoadPasswordAsync(ent.Owner, charName);
+        LoadPasswordAsync(ent.Owner, ent.Comp, charName);
     }
 
-    private async void LoadPasswordAsync(EntityUid uid, string charName)
+    /// <summary>
+    /// Asynchronously loads a password from the database and applies it to the component.
+    /// </summary>
+    private async void LoadPasswordAsync(EntityUid uid, STPdaPasswordComponent comp, string charName)
     {
         try
         {
             var record = await _db.GetStalkerPdaPasswordAsync(charName);
 
-            if (Deleted(uid))
+            if (Deleted(uid) || !TryComp<STPdaPasswordComponent>(uid, out var currentComp))
                 return;
 
-            if (!TryComp<STPdaPasswordComponent>(uid, out var current))
+            // Component may have been replaced or password set manually while we awaited
+            if (currentComp.Password is not null)
                 return;
 
-            if (current.Password != null || record == null)
+            if (record is null)
                 return;
 
-            current.Password = record.Password;
-            current.IsLocked = true;
-            Dirty(uid, current);
+            currentComp.Password = record.Password;
+            currentComp.IsLocked = true;
+            Dirty(uid, currentComp);
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Error($"Failed to load PDA password for {charName}: {ex}");
         }
     }
 
-    private void OnOpenAttempt(EntityUid uid, ActivatableUIComponent _, ref ActivatableUIOpenAttemptEvent args)
+    /// <summary>
+    /// Returns true if the actor is the PDA owner, has unlocked it, or the PDA has no password set.
+    /// </summary>
+    private bool IsAuthorized(Entity<STPdaPasswordComponent> ent, EntityUid actor)
     {
-        if (!TryComp<STPdaPasswordComponent>(uid, out var comp))
+        if (TryComp<PdaComponent>(ent, out var pda) && pda.PdaOwner == actor)
+            return true;
+
+        if (!ent.Comp.IsLocked)
+            return true;
+
+        if (TryComp<ActorComponent>(actor, out var actorComp)
+            && ent.Comp.UnlockedBy.Contains(actorComp.PlayerSession.UserId))
+            return true;
+
+        return false;
+    }
+
+    private void OnOpenAttempt(Entity<STPdaPasswordComponent> ent, ref ActivatableUIOpenAttemptEvent args)
+    {
+        if (args.Cancelled || !ent.Comp.IsLocked)
             return;
 
-        if (args.Cancelled || !comp.IsLocked)
+        if (TryComp<PdaComponent>(ent, out var pda) && pda.PdaOwner == args.User)
             return;
 
-        if (TryComp<PdaComponent>(uid, out var pda) && pda.PdaOwner == args.User)
+        if (TryComp<ActorComponent>(args.User, out var actor) &&
+            ent.Comp.UnlockedBy.Contains(actor.PlayerSession.UserId))
             return;
-
-        var key = (uid, args.User);
-
-        if (_opening.Contains(key))
-        {
-            args.Cancel();
-            return;
-        }
 
         args.Cancel();
 
         if (args.Silent)
             return;
 
-        _opening.Add(key);
-
-        _ui.CloseUi(uid, PdaUiKey.Key, args.User);
-        _ui.SetUiState(uid, STPdaPasswordUiKey.Key, new STPdaPasswordUiState(false, false, true));
-        _ui.TryOpenUi(uid, STPdaPasswordUiKey.Key, args.User);
+        if (actor != null)
+        {
+            _ui.SetUiState(ent.Owner, STPdaPasswordUiKey.Key,
+                new STPdaPasswordUiState(false, false, true));
+            _ui.TryOpenUi(ent.Owner, STPdaPasswordUiKey.Key, args.User);
+        }
     }
 
     private void OnBuiOpened(Entity<STPdaPasswordComponent> ent, ref BoundUIOpenedEvent args)
@@ -131,18 +148,9 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
         if (args.UiKey is not STPdaPasswordUiKey)
             return;
 
-        var isOwner = TryComp<PdaComponent>(ent.Owner, out var pda) && pda.PdaOwner == args.Actor;
-
+        var isOwner = IsAuthorized(ent, args.Actor);
         _ui.SetUiState(ent.Owner, STPdaPasswordUiKey.Key,
             new STPdaPasswordUiState(false, isOwner, ent.Comp.IsLocked));
-    }
-
-    private void OnBuiClosed(Entity<STPdaPasswordComponent> ent, ref BoundUIClosedEvent args)
-    {
-        if (args.UiKey is not STPdaPasswordUiKey)
-            return;
-
-        _opening.Remove((ent.Owner, args.Actor));
     }
 
     private void OnPasswordSubmit(Entity<STPdaPasswordComponent> ent, ref STPdaPasswordSubmitMessage args)
@@ -156,11 +164,16 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
 
         ent.Comp.NextAttemptTime = _timing.CurTime + ent.Comp.AttemptCooldown;
 
+        var actor = args.Actor;
+        if (!TryComp<ActorComponent>(actor, out var actorComp))
+            return;
+
         if (args.Password == ent.Comp.Password)
         {
-            _opening.Remove((ent.Owner, args.Actor));
-            _ui.CloseUi(ent.Owner, STPdaPasswordUiKey.Key, args.Actor);
-            _ui.TryOpenUi(ent.Owner, PdaUiKey.Key, args.Actor);
+            ent.Comp.UnlockedBy.Add(actorComp.PlayerSession.UserId);
+
+            _ui.CloseUi(ent.Owner, STPdaPasswordUiKey.Key, actor);
+            _ui.TryOpenUi(ent.Owner, PdaUiKey.Key, actor);
         }
         else
         {
@@ -173,9 +186,9 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
     {
         var actor = args.Actor;
 
-        if (!TryComp<PdaComponent>(ent.Owner, out var pda) || pda.PdaOwner != actor)
+        if (!IsAuthorized(ent, actor))
         {
-            _popup.PopupEntity(Loc.GetString("st-pda-password-not-owner"), ent.Owner, actor);
+            _popup.PopupEntity(Loc.GetString("st-pda-password-not-owner"), ent, actor);
             return;
         }
 
@@ -187,22 +200,24 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
             ent.Comp.Password = null;
             ent.Comp.IsLocked = false;
             ent.Comp.UnlockedBy.Clear();
-            Dirty(ent.Owner, ent.Comp);
+            Dirty(ent);
+            _popup.PopupEntity(Loc.GetString("st-pda-password-removed"), ent, actor);
 
             RemovePasswordAsync(charName);
         }
         else
         {
-            var pass = args.NewPassword.Trim();
-            if (pass.Length > MaxPasswordLength)
-                pass = pass[..MaxPasswordLength];
+            var password = args.NewPassword.Trim();
+            if (password.Length > MaxPasswordLength)
+                password = password[..MaxPasswordLength];
 
-            ent.Comp.Password = pass;
+            ent.Comp.Password = password;
             ent.Comp.IsLocked = true;
             ent.Comp.UnlockedBy.Clear();
-            Dirty(ent.Owner, ent.Comp);
+            Dirty(ent);
+            _popup.PopupEntity(Loc.GetString("st-pda-password-set"), ent, actor);
 
-            SavePasswordAsync(charName, pass);
+            SavePasswordAsync(charName, password);
         }
 
         _ui.SetUiState(ent.Owner, STPdaPasswordUiKey.Key,
@@ -213,7 +228,7 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
     {
         var actor = args.Actor;
 
-        if (!TryComp<PdaComponent>(ent.Owner, out var pda) || pda.PdaOwner != actor)
+        if (!IsAuthorized(ent, actor))
             return;
 
         _ui.SetUiState(ent.Owner, STPdaPasswordUiKey.Key,
@@ -230,8 +245,9 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
         {
             await _db.SetStalkerPdaPasswordAsync(charName, password);
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Error($"Failed to save PDA password for {charName}: {ex}");
         }
     }
 
@@ -244,8 +260,9 @@ public sealed class STPdaPasswordSystem : SharedSTPdaPasswordSystem
         {
             await _db.RemoveStalkerPdaPasswordAsync(charName);
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Error($"Failed to remove PDA password for {charName}: {ex}");
         }
     }
 }

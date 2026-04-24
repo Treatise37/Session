@@ -93,6 +93,10 @@ public sealed class EmissionEventRuleSystem : StationEventSystem<EmissionEventRu
             PlayGlobalSound(component.SoundStage2);
             SendAnnouncement(component.AnnouncementStage2, component.AnnouncementSender);
             component.SoundsPlayed |= EmissionSoundsPlayed.Stage2;
+
+            // Send notification about connection loss (same time as Stage2 announcement)
+            var ev = new EmissionStateChangedEvent(true);
+            RaiseLocalEvent(ref ev);
         }
 
         if (component.Stage == EmissionStage.Stage1 && elapsed >= component.DamageStartDelay)
@@ -149,6 +153,10 @@ public sealed class EmissionEventRuleSystem : StationEventSystem<EmissionEventRu
                 PlayGlobalSound(component.SoundStage3);
                 SendAnnouncement(component.AnnouncementStage3, component.AnnouncementSender);
                 component.SoundsPlayed |= EmissionSoundsPlayed.Stage3;
+
+                // Send notification about connection restored (same time as Stage3 announcement)
+                var ev = new EmissionStateChangedEvent(false);
+                RaiseLocalEvent(ref ev);
             }
         }
 
