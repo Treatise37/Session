@@ -14,6 +14,30 @@ jobs:
     - uses: actions/checkout@v3.6.0
       with:
         submodules: 'recursive'
+        fetch-depth: 0
+
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.CHANGELOG_BOT_DEPLOY_KEY }}
+
+    - name: Roll up changelog parts
+      run: |
+        set -euo pipefail
+        git remote set-url origin git@github.com:Zona-14/Zona-14.git
+        git config user.name 'Zona14 Publish Bot'
+        git config user.email 'changelog-bot@users.noreply.github.com'
+        python -m pip install --quiet pyyaml
+        git fetch origin master
+        git rebase origin/master
+        python Tools/update_changelog.py Resources/Changelog/Zona14.yml Resources/Changelog/Parts --category Main
+        python Tools/update_changelog.py Resources/Changelog/Admin.yml  Resources/Changelog/Parts --category Admin
+        python Tools/update_changelog.py Resources/Changelog/Maps.yml   Resources/Changelog/Parts --category Maps
+        python Tools/update_changelog.py Resources/Changelog/Rules.yml  Resources/Changelog/Parts --category Rules
+        if ! git diff --quiet -- Resources/Changelog/; then
+          git add Resources/Changelog/
+          git commit -m "chore(changelog): roll up parts before publish [skip ci]"
+          git push origin master
+        fi
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3.2.0
