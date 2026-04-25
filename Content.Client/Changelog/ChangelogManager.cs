@@ -19,7 +19,7 @@ namespace Content.Client.Changelog
         [Dependency] private readonly IConfigurationManager _configManager = default!;
 
         private const string SawmillName = "changelog";
-        public const string MainChangelogName = "Changelog";
+        public const string MainChangelogName = "Zona14"; // Zona14: Changelog<Zona14
 
         private ISawmill _sawmill = default!;
 
