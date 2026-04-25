@@ -7,3 +7,24 @@ nc-store-contract-progress-caption = Progress
 nc-store-contract-progress-value = { $progress } / { $required }
 nc-store-slot-cooldowns-header = Contract refresh
 nc-store-slot-cooldown-title = { $difficulty }
+
+# Zona14: added in this fork
+ent-PrizeTicket1 = { ent-PrizeTicket }
+   .suffix = 1
+   .desc = { ent-PrizeTicket.desc }
+
+ent-PrizeTicket = caravan voucher
+   .desc = A voucher used to barter at the special "trade machine". Lets you get fairly powerful weapons — if you've saved up enough vouchers, of course.
+
+ent-PrizeTicket10 = { ent-PrizeTicket }
+   .suffix = 10
+   .desc = { ent-PrizeTicket.desc }
+
+ent-PrizeTicket30 = { ent-PrizeTicket }
+   .suffix = 30
+   .desc = { ent-PrizeTicket.desc }
+
+ent-PrizeTicket60 = { ent-PrizeTicket }
+   .suffix = 60
+   .desc = { ent-PrizeTicket.desc }
+# End Zona14
