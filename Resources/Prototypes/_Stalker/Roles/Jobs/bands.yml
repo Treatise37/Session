@@ -25,7 +25,7 @@
             - BanditHead
         - type: Bands
           band: Stalker
-          bandIcon: band
+          bandIcon: Sband
           bandProto: STBanditsBand
           bandRankId: 2
         - type: BlockTackingHolyItems
@@ -44,7 +44,7 @@
             Female: FemaleHumanBandit
             Unsexed: MaleHumanBandit
         - type: CheekiBreeki # stalker EN change end
-          
+
 
 - type: job
   id: StalkerHeadBandit
