@@ -27,7 +27,7 @@
             - Dolg
         - type: Bands
           band: Stalker
-          bandIcon: Dolg
+          bandIcon: Sdolg
           bandProto: STDolgBand
           bandRankId: 2
         - type: BlockTackingHolyItems

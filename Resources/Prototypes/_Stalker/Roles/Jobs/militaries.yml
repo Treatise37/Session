@@ -26,7 +26,7 @@
         altBand: stalker
         canChange: true
         band: Stalker
-        bandIcon: army
+        bandIcon: Sarmy
       - type: BlockTackingHolyItems
       - type: TeethPull
         teethProto: ToothStalker
