@@ -18,7 +18,6 @@
           # be spawned by events, ghost roles, or admin tools.
           availableJobs:
             # Stalkers
-            StalkerRookie: [ 0, -1 ]
             Stalker: [ 0, -1 ]
             StalkerVeteran: [ 0, -1 ]
             # Criminals
