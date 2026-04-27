@@ -73,7 +73,7 @@
             - Stalker
         - type: Bands
           band: Stalker
-          bandIcon: ldolg
+          bandIcon: Sdolg
           bandProto: STDolgBand
           bandRankId: 2
         - type: BlockTackingHolyItems

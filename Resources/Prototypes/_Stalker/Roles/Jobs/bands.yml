@@ -73,7 +73,7 @@
           - BanditHead
         - type: Bands
           band: Stalker
-          bandIcon: lband
+          bandIcon: Sband
           bandProto: STBanditsBand
           bandRankId: 2
         - type: BlockTackingHolyItems

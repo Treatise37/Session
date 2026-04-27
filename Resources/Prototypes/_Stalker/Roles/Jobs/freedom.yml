@@ -75,7 +75,7 @@
             - FreedomHead
         - type: Bands
           band: Stalker
-          bandIcon: lfreedom
+          bandIcon: Sfreedom
           bandProto: STFreedomBand
           bandRankId: 2
         - type: BlockTackingHolyItems

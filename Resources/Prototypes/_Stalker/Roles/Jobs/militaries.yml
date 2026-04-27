@@ -73,7 +73,7 @@
           - Military
       - type: Bands
         band: Stalker
-        bandIcon: army
+        bandIcon: Sarmy
         bandProto: STMilitaryBand
         bandRankId: 1
       - type: BlockTackingHolyItems
@@ -119,7 +119,7 @@
             - MilitaryHead
         - type: Bands
           band: Stalker
-          bandIcon: army
+          bandIcon: Sarmy
           bandProto: STMilitaryBand
           bandRankId: 3
         - type: BlockTackingHolyItems
@@ -163,7 +163,7 @@
             - MilitaryOfficer
         - type: Bands
           band: Stalker
-          bandIcon: army
+          bandIcon: Sarmy
           bandProto: STMilitaryBand
           bandRankId: 2
         - type: BlockTackingHolyItems
