@@ -1,7 +1,7 @@
 - type: gameMap
   id: STWorld
   mapName: 'StalkerMap'
-  mapPath: "/Maps/_ST/World/KordonV188.yml"
+  mapPath: "/Maps/_ST/World/KordonV1488.yml"
   minPlayers: 0
   stations:
     Stalker:
@@ -23,22 +23,17 @@
             StalkerVeteran: [ 0, -1 ]
             # Criminals
             StalkerBandit: [ 0, -1 ]
-            StalkerCutthroat: [ 0, -1 ]
             StalkerHeadBandit: [ 0, -1 ]
             # Stalker Clans — Freedom
             StalkerFreedom: [ 0, -1 ]
-            StalkerScout: [ 0, -1 ]
             StalkerHeadFreedom: [ 0, -1 ]
             # Stalker Clans — Duty
             StalkerDolg: [ 0, -1 ]
-            StalkerDutyNCO: [ 0, -1 ]
             StalkerHeadDolg: [ 0, -1 ]
             # Science
             sci: [ 0, -1 ]
-            sci_decan: [ 0, -1 ]
             sci_rector: [ 0, -1 ]
             # Border Guards
-            Military: [ 0, 5 ]
-            MilitaryOfficer: [ 0, 3 ]
-            MilitaryHead: [ 0, 2 ]
-          # End Zona14
+            Military: [ 0, -1 ]
+            MilitaryOfficer: [ 0, -1 ]
+            MilitaryHead: [ 0, -1 ]

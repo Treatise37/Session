@@ -64,12 +64,12 @@
     # Mutant parts
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 220 # T1
-    MutantPartSeasonedBoarHoof: 440 # T2
-    MutantPartOldBoarHoof: 650 # T3
+    MutantPartBoarHoof: 3235 # T1
+    MutantPartSeasonedBoarHoof: 5242 # T2
+    MutantPartOldBoarHoof: 7750 # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 90
+    MutantPartBlindDogTail: 1700
     MutantPartFleshEye: 165
     FoodMeatSpiderLeg: 60
 
