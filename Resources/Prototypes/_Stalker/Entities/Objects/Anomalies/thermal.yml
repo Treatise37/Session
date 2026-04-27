@@ -58,7 +58,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 450
+          ratio: 50
         - id: ZoneArtifactFireball
           tier: 1
           ratio: 15
@@ -94,7 +94,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 400
+          ratio: 50
         - id: ZoneArtifactFireball
           tier: 1
           ratio: 20
@@ -173,7 +173,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 450
+          ratio: 50
         - id: ZoneArtifactFireball
           tier: 1
           ratio: 15
@@ -223,7 +223,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 600
+          ratio: 120
         - id: ZoneArtifactFireball
           tier: 1
           ratio: 40
@@ -299,7 +299,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 300
+          ratio: 10
         - id: ZoneArtifactFlame
           tier: 3
           ratio: 15
@@ -344,7 +344,7 @@
   - type: ZoneArtifactSpawner
     artifacts:
       - id: null
-        ratio: 400
+        ratio: 20
       - id: ZoneArtifactFireball
         tier: 1
         ratio: 25
@@ -406,7 +406,7 @@
   - type: ZoneArtifactSpawner
     artifacts:
       - id: null
-        ratio: 400
+        ratio: 40
       - id: ZoneArtifactFireball
         tier: 1
         ratio: 25
