@@ -45,7 +45,7 @@
 - type: job
   id: StalkerHeadDolg
   name: job-head-dolg
-  icon: ldolg
+  icon: Sdolg
   description: job-head-dolg-desc
   playTimeTracker: JobHeadDolg
   whitelisted: true

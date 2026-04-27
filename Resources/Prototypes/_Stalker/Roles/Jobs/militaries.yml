@@ -1,7 +1,7 @@
 - type: job
   id: MilitaryStalker
   name: job-military-stalker
-  icon: army
+  icon: Sarmy
   description: job-military-stalker-desc
   playTimeTracker: JobMilitaryStalker
   whitelisted: true
@@ -46,7 +46,7 @@
 - type: job
   id: Military
   name: job-military
-  icon: army
+  icon: Sarmy
   description: job-military-desc
   rules: job-military-rules
   playTimeTracker: JobMilitary
@@ -95,7 +95,7 @@
 - type: job
   id: MilitaryHead
   name: job-military-head
-  icon: army
+  icon: Sarmy
   description: job-military-head-desc
   playTimeTracker: JobHeadMilitary
   rules: job-military-rules
@@ -137,7 +137,7 @@
 - type: job
   id: MilitaryOfficer
   name: job-military-officer
-  icon: army
+  icon: Sarmy
   description: job-military-officer-desc
   playTimeTracker: JobOfficerMilitary
   whitelisted: false
