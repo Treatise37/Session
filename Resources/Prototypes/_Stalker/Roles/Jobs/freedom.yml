@@ -28,7 +28,7 @@
             - Freedom
         - type: Bands
           band: Stalker
-          bandIcon: freedom
+          bandIcon: Sfreedom
           bandProto: STFreedomBand
           bandRankId: 2
         - type: BlockTackingHolyItems
