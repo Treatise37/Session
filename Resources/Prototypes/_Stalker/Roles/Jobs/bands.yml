@@ -4,7 +4,7 @@
   icon: band
   description: job-bandit-desc
   playTimeTracker: JobBandit
-  whitelisted: false
+  whitelisted: true
   requirements:
     # - !type:RoleTimeRequirement
     #   role: JobBandit
