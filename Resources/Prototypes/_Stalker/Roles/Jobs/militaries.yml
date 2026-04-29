@@ -55,9 +55,6 @@
     # - !type:RoleTimeRequirement
     #   role: JobMilitary
     #   time: 1
-    - !type:DepartmentTimeRequirement
-      department: Stalker
-      time: 15h
     - !type:SpeciesRequirement
       species:
       - Human
