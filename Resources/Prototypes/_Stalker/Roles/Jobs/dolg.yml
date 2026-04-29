@@ -4,7 +4,7 @@
   icon: Dolg
   description: job-dolg-desc
   playTimeTracker: JobDolg
-  whitelisted: true
+  whitelisted: false
   requirements:
     # - !type:RoleTimeRequirement
     #   role: JobDolg
