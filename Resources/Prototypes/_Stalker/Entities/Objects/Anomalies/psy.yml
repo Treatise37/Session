@@ -36,7 +36,7 @@
   - type: ZoneArtifactSpawner
     artifacts:
       - id: null
-        ratio: 140
+        ratio: 50
       - id: ZoneArtifactFloodlight
         tier: 1
         ratio: 25
@@ -86,7 +86,7 @@
   - type: ZoneArtifactSpawner
     artifacts:
       - id: null
-        ratio: 140
+        ratio: 50
       - id: ZoneArtifactSoul
         tier: 5
         ratio: 10
