@@ -2,41 +2,41 @@
   id: FreedomShopPreset
   itemsForSale:
     # Thermal group - 1
-    ZoneArtifactFireball: 1188
-    ZoneArtifactEye: 1584
-    ZoneArtifactFlame: 2376
+    ZoneArtifactFireball: 2080
+    ZoneArtifactEye: 2539
+    ZoneArtifactFlame: 3452
     # Thermal group - 2
-    ZoneArtifactCristall: 4752
-    ZoneArtifactLithosphere: 9504
+    ZoneArtifactCristall: 10948
+    ZoneArtifactLithosphere: 34902
     # Electrical group - 1
-    ZoneArtifactSparkler: 990
-    ZoneArtifactBattery: 1386
-    ZoneArtifactFlash: 2376
-    ArtMoon: 4752
-    ZoneArtifactTesla: 7128
-    ZoneArtifactIce: 9504
+    ZoneArtifactSparkler: 2510
+    ZoneArtifactBattery: 3215
+    ZoneArtifactFlash: 5224
+    ArtMoon: 5448
+    ZoneArtifactTesla: 13672
+    ZoneArtifactIce: 24896
     # Gravity group - 1
-    ArtMedusa: 1089
-    ZoneArtifactFlower: 1485
-    ZoneArtifactNightStar: 4752
+    ArtMedusa: 1562
+    ZoneArtifactFlower: 2766
+    ZoneArtifactNightStar: 5448
     # Gravity group - 2
-    ZoneArtifactVyvert: 1287
-    ZoneArtifactAmoeba: 1683
-    ZoneArtifactFloodlight: 1070
-    ZoneArtifactGravi: 2376
-    ZoneArtifactGoldfish: 9504
-    ZoneArtifactSpring: 7128
-    ZoneArtifactFocus: 7128
-    ZoneArtifactStuntman: 9504
-    ZoneArtifactDistorter: 9504
-    ZoneArtifactSoul: 7128
+    ZoneArtifactVyvert: 1664
+    ZoneArtifactAmoeba: 2868
+    ZoneArtifactFloodlight: 1400
+    ZoneArtifactGravi: 11224
+    ZoneArtifactGoldfish: 24896
+    ZoneArtifactSpring: 36720
+    ZoneArtifactFocus: 33600
+    ZoneArtifactStuntman: 44896
+    ZoneArtifactDistorter: 44896
+    ZoneArtifactSoul: 33672
     # Acidic group - 1
-    ZoneArtifactBlood: 2376
-    ZoneArtifactMeat: 4752
-    ZoneArtifactKolobok: 7128
+    ZoneArtifactBlood: 3224
+    ZoneArtifactMeat: 6448
+    ZoneArtifactKolobok: 9672
     # Acidic group - 2
-    ZoneArtifactPellicle: 1089
-    ZoneArtifactBaloon: 7128
+    ZoneArtifactPellicle: 2562
+    ZoneArtifactBaloon: 10672
     # New
     ZoneArtifactAccumulator: 1386
     ZoneArtifactDiamond: 4752
@@ -62,34 +62,36 @@
     FoodMeatBoarCooked: 132
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 3235 # T1
-    MutantPartSeasonedBoarHoof: 5242 # T2
-    MutantPartOldBoarHoof: 7750 # T3
+    MutantPartBoarHoof: 1535  # T1
+    MutantPartSeasonedBoarHoof: 2542  # T2
+    MutantPartOldBoarHoof: 3750  # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 1700
-    MutantPartFleshEye: 228
-    FoodMeatSpiderLeg: 83
+    MutantPartBlindDogTail: 739
+    MutantPartFleshEye: 1123
+    FoodMeatSpiderLeg: 720
 
     #T2 -------- Health * 1.8
-    MutantPartLeshiyRoot: 966
-    MutantPartPseudodogTail: 414
-    MutantPartSnorkFoot: 622
+    MutantPartLeshiyRoot: 2260
+    MutantPartPseudodogTail: 2540
+    MutantPartSnorkFoot: 2810
 
     #T3 -------- Health * 3
-    MutantPartPsiDogTail: 564
-    MutantPartBloodsuckerTentacles: 1380
-    MutantPartOraculeEye: 1794
-    MutantPartPseudogiantHeart: 9360
-    MutantPartZombieHand: 760
-        # Mutant parts EN
-    MutantPartCatGland: 115
-    MutantPartBearClaw: 345
-    MutantPartBearPaw: 663
-    MutantPartBearEye: 1140
-    MutantPartFrogLeg: 552
-    MutantPartIzlomArm: 2520
-    MutantPartChimeraTooth: 3600
+    MutantPartPsiDogTail: 2846
+    MutantPartBloodsuckerTentacles: 6800
+    MutantPartOraculeEye: 4340
+    MutantPartPseudogiantHeart: 41484
+    MutantPartZombieHand: 2990
+
+    # Mutant parts EN
+    MutantPartCatGland: 750
+    MutantPartBearClaw: 2123
+    MutantPartBearPaw: 1864
+    MutantPartBearEye: 2402
+    MutantPartFrogLeg: 1720
+    MutantPartIzlomArm: 19200
+    MutantPartChimeraTooth: 30600
+
   categories:
   - name: shop-category-weapons
     priority: 1
