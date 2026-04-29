@@ -2,46 +2,46 @@
   id: NpcSidor # 0.7x
   itemsForSale:
     # Thermal group - 1
-    ZoneArtifactFireball: 720
-    ZoneArtifactEye: 960
-    ZoneArtifactFlame: 1440
+    ZoneArtifactFireball: 2080
+    ZoneArtifactEye: 2539
+    ZoneArtifactFlame: 3452
     # Thermal group - 2
-    ZoneArtifactCristall: 2880
-    ZoneArtifactLithosphere: 5760
+    ZoneArtifactCristall: 10948
+    ZoneArtifactLithosphere: 34902
     # Electrical group - 1
-    ZoneArtifactSparkler: 660
-    ZoneArtifactBattery: 840
-    ZoneArtifactFlash: 1440
-    ArtMoon: 2880
-    ZoneArtifactTesla: 4320
-    ZoneArtifactIce: 5760
+    ZoneArtifactSparkler: 2510
+    ZoneArtifactBattery: 3215
+    ZoneArtifactFlash: 5224
+    ArtMoon: 5448
+    ZoneArtifactTesla: 13672
+    ZoneArtifactIce: 24896
     # Gravity group - 1
-    ArtMedusa: 660
-    ZoneArtifactFlower: 900
-    ZoneArtifactNightStar: 2880
+    ArtMedusa: 1562
+    ZoneArtifactFlower: 2766
+    ZoneArtifactNightStar: 5448
     # Gravity group - 2
-    ZoneArtifactVyvert: 780
-    ZoneArtifactAmoeba: 1020
-    ZoneArtifactFloodlight: 972
-    ZoneArtifactGravi: 1440
-    ZoneArtifactGoldfish: 5760
-    ZoneArtifactSpring: 4320
-    ZoneArtifactFocus: 4320
-    ZoneArtifactStuntman: 5760
-    ZoneArtifactDistorter: 5760
-    ZoneArtifactSoul: 4320
+    ZoneArtifactVyvert: 1664
+    ZoneArtifactAmoeba: 2868
+    ZoneArtifactFloodlight: 1400
+    ZoneArtifactGravi: 11224
+    ZoneArtifactGoldfish: 24896
+    ZoneArtifactSpring: 36720
+    ZoneArtifactFocus: 33600
+    ZoneArtifactStuntman: 44896
+    ZoneArtifactDistorter: 44896
+    ZoneArtifactSoul: 33672
     # Food
-    FoodMeatDogCooked: 84
-    STFoodMeatSpiderCooked: 42
-    FoodMeatBoarCooked: 132
+    FoodMeatDogCooked: 420
+    STFoodMeatSpiderCooked: 420
+    FoodMeatBoarCooked: 640
 
     # Acidic group - 1
-    ZoneArtifactBlood: 1440
-    ZoneArtifactMeat: 2880
-    ZoneArtifactKolobok: 4320
+    ZoneArtifactBlood: 3224
+    ZoneArtifactMeat: 6448
+    ZoneArtifactKolobok: 9672
     # Acidic group - 2
-    ZoneArtifactPellicle: 660
-    ZoneArtifactBaloon: 4320
+    ZoneArtifactPellicle: 2562
+    ZoneArtifactBaloon: 10672
 
     # New
 
@@ -63,36 +63,36 @@
     # Mutant parts
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 3235 # T1
-    MutantPartSeasonedBoarHoof: 5242 # T2
-    MutantPartOldBoarHoof: 7750 # T3
+    MutantPartBoarHoof: 1535  # T1
+    MutantPartSeasonedBoarHoof: 2542  # T2
+    MutantPartOldBoarHoof: 3750  # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 1700
-    MutantPartFleshEye: 198
-    FoodMeatSpiderLeg: 72
+    MutantPartBlindDogTail: 739
+    MutantPartFleshEye: 1123
+    FoodMeatSpiderLeg: 720
 
     #T2 -------- Health * 1.8
-    MutantPartLeshiyRoot: 840
-    MutantPartPseudodogTail: 360
-    MutantPartSnorkFoot: 540
+    MutantPartLeshiyRoot: 2260
+    MutantPartPseudodogTail: 2540
+    MutantPartSnorkFoot: 2810
 
     #T3 -------- Health * 3
-    MutantPartPsiDogTail: 564
-    MutantPartBloodsuckerTentacles: 1200
-    MutantPartOraculeEye: 1560
-    MutantPartPseudogiantHeart: 9360
-    MutantPartZombieHand: 660
+    MutantPartPsiDogTail: 2846
+    MutantPartBloodsuckerTentacles: 6800
+    MutantPartOraculeEye: 4340
+    MutantPartPseudogiantHeart: 41484
+    MutantPartZombieHand: 2990
 
     # Mutant parts EN
 
-    MutantPartCatGland: 100
-    MutantPartBearClaw: 300
-    MutantPartBearPaw: 576
-    MutantPartBearEye: 1140
-    MutantPartFrogLeg: 480
-    MutantPartIzlomArm: 2520
-    MutantPartChimeraTooth: 3600
+    MutantPartCatGland: 750
+    MutantPartBearClaw: 2123
+    MutantPartBearPaw: 1864
+    MutantPartBearEye: 2402
+    MutantPartFrogLeg: 1720
+    MutantPartIzlomArm: 19200
+    MutantPartChimeraTooth: 30600
 
     # Values
     Dollar: 60
