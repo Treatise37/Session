@@ -1,5 +1,7 @@
 - type: mapLoader
   id: StalkerBaseMaps
   mapPaths:
+    KordonUnerground: /Maps/_ST/World/KordonPodzemV78.yml
     Jupiter: /Maps/_ST/World/JupiterV2.yml
+    Kordon: /Maps/_ST/World/KordonV1488.yml
 
