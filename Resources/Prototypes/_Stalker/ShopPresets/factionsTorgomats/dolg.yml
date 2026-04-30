@@ -219,8 +219,13 @@
     items:
       STBoltBagFilled: 50
       BoxArtcont: 750
-      ZoneAnomalyDetectorAD1: 450 # T1
-      ZoneAnomalyDetectorAD2: 1000 # T2
+      ZoneArtifactDetectorResponse: 4560
+      ZoneArtifactDetectorSpruce: 22000
+      ZoneArtifactDetectorBarracuda: 34000
+      Veles: 47800
+      ZoneArtifactDetectorBear: 78000
+      Svarog: 112000
+      ZoneArtifactDetectorWolfhound: 178000
       STPsyHelm1: 2500
   - name: shop-category-utilities
     priority: 8

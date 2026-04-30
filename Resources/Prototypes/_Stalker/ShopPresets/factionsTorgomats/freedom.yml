@@ -206,12 +206,13 @@
       ZoneAnomalyDetectorAD1: 250 # T1
       ZoneAnomalyDetectorAD2: 650 # T2
       # Detectors
-      ZoneArtifactDetectorPulse: 50 # T1
-      ZoneArtifactDetectorResponseCvoboda: 100 # T2
-      STPsyHelm1: 2500
-      ZoneArtifactDetectorResponse: 1000 # T2
-      ZoneArtifactDetectorSpruce: 4500
-      Blunt: 100
+      ZoneArtifactDetectorResponse: 4560
+      ZoneArtifactDetectorSpruce: 22000
+      ZoneArtifactDetectorBarracuda: 34000
+      Veles: 47800
+      ZoneArtifactDetectorBear: 78000
+      Svarog: 112000
+      ZoneArtifactDetectorWolfhound: 178000
   - name: shop-category-utilities
     priority: 8
     items:
