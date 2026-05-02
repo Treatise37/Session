@@ -282,6 +282,13 @@
       TrashDetectorTier1: 200
       TrashDetectorTier2: 1600
       TrashDetectorTier3: 4000
+      ZoneArtifactDetectorResponse: 4560
+      ZoneArtifactDetectorSpruce: 22000
+      ZoneArtifactDetectorBarracuda: 34000
+      Veles: 47800
+      ZoneArtifactDetectorBear: 78000
+      Svarog: 112000
+      ZoneArtifactDetectorWolfhound: 178000
   - name: shop-category-utilities
     priority: 8
     items:
