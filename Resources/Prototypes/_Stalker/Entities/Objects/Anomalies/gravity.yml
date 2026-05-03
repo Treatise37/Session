@@ -55,7 +55,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
       - id: null
-        ratio: 500
+        ratio: 30
       - id: ZoneArtifactVyvert
         tier: 1
         ratio: 15
@@ -123,7 +123,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
       - id: null
-        ratio: 400
+        ratio: 40
       - id: ZoneArtifactGravi
         tier: 4
         ratio: 10
@@ -181,7 +181,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 525
+          ratio: 43
         - id: ArtMedusa
           tier: 1
           ratio: 25
@@ -232,7 +232,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 525
+          ratio: 45
         - id: ZoneArtifactFlower
           tier: 2
           ratio: 12
@@ -289,7 +289,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 400
+          ratio: 20
         - id: ZoneArtifactFocus
           tier: 5
           ratio: 5
@@ -323,7 +323,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
       - id: null
-        ratio: 140
+        ratio: 10
       - id: ZoneArtifactGoldfish
         tier: 5
         ratio: 5
@@ -364,7 +364,7 @@
     - type: ZoneArtifactSpawner
       artifacts:
         - id: null
-          ratio: 290
+          ratio: 30
         - id: ArtMedusa
           tier: 1
           ratio: 10

@@ -46,14 +46,14 @@
     # Mutant parts
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 1535  # T1
-    MutantPartSeasonedBoarHoof: 2542  # T2
-    MutantPartOldBoarHoof: 3750  # T3
+    MutantPartBoarHoof: 6470 # T1
+    MutantPartSeasonedBoarHoof: 10484 # T2
+    MutantPartOldBoarHoof: 15500 # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 739
-    MutantPartFleshEye: 1123
-    FoodMeatSpiderLeg: 720
+    MutantPartBlindDogTail: 3400
+    MutantPartFleshEye: 198
+    FoodMeatSpiderLeg: 72
 
     #T2 -------- Health * 1.8
     MutantPartLeshiyRoot: 2260

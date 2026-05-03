@@ -1,7 +1,7 @@
 - type: job
   id: MilitaryStalker
   name: job-military-stalker
-  icon: army
+  icon: Sarmy
   description: job-military-stalker-desc
   playTimeTracker: JobMilitaryStalker
   whitelisted: true
@@ -46,7 +46,7 @@
 - type: job
   id: Military
   name: job-military
-  icon: army
+  icon: Sarmy
   description: job-military-desc
   rules: job-military-rules
   playTimeTracker: JobMilitary
@@ -55,9 +55,6 @@
     # - !type:RoleTimeRequirement
     #   role: JobMilitary
     #   time: 1
-    - !type:DepartmentTimeRequirement
-      department: Stalker
-      time: 15h
     - !type:SpeciesRequirement
       species:
       - Human
@@ -73,7 +70,7 @@
           - Military
       - type: Bands
         band: Stalker
-        bandIcon: army
+        bandIcon: Sarmy
         bandProto: STMilitaryBand
         bandRankId: 1
       - type: BlockTackingHolyItems
@@ -95,7 +92,7 @@
 - type: job
   id: MilitaryHead
   name: job-military-head
-  icon: army
+  icon: Sarmy
   description: job-military-head-desc
   playTimeTracker: JobHeadMilitary
   rules: job-military-rules
@@ -119,7 +116,7 @@
             - MilitaryHead
         - type: Bands
           band: Stalker
-          bandIcon: army
+          bandIcon: Sarmy
           bandProto: STMilitaryBand
           bandRankId: 3
         - type: BlockTackingHolyItems
@@ -137,7 +134,7 @@
 - type: job
   id: MilitaryOfficer
   name: job-military-officer
-  icon: army
+  icon: Sarmy
   description: job-military-officer-desc
   playTimeTracker: JobOfficerMilitary
   whitelisted: false
@@ -163,7 +160,7 @@
             - MilitaryOfficer
         - type: Bands
           band: Stalker
-          bandIcon: army
+          bandIcon: Sarmy
           bandProto: STMilitaryBand
           bandRankId: 2
         - type: BlockTackingHolyItems

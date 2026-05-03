@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "CC-BY-SA-3.0 Made for Stalker 14 with love",
+  "size": {
+    "x": 182,
+    "y": 72
+  },
+  "states": [
+    {
+      "name": "base"
+    }
+  ]
+}

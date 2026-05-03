@@ -4,7 +4,7 @@
   icon: freedom
   description: job-freedom-desc
   playTimeTracker: JobFreedom
-  whitelisted: true
+  whitelisted: false
   requirements:
     # - !type:RoleTimeRequirement
     #   role: JobFreedom
@@ -46,7 +46,7 @@
 - type: job
   id: StalkerHeadFreedom
   name: job-head-freedom
-  icon: lfreedom
+  icon: Sfreedom
   description: job-head-freedom-desc
   playTimeTracker: JobHeadFreedom
   whitelisted: true
@@ -75,7 +75,7 @@
             - FreedomHead
         - type: Bands
           band: Stalker
-          bandIcon: lfreedom
+          bandIcon: Sfreedom
           bandProto: STFreedomBand
           bandRankId: 2
         - type: BlockTackingHolyItems

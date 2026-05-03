@@ -581,22 +581,40 @@
     state: lcn
 
 - type: jobIcon
-  id: ldolg
+  id: Sdolg
   locationPreference: Right
   isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
-    state: ldolg
+    state: Sdolg
 
 - type: jobIcon
-  id: lfreedom
+  id: Sfreedom
   locationPreference: Right
   isShaded: true
   icon:
     sprite: /Textures/_Stalker/Icons/Patches/band.rsi
     hideOnStealth: true
-    state: lfreedom
+    state: Sfreedom
+
+- type: jobIcon
+  id: Sarmy
+  locationPreference: Right
+  isShaded: true
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: Sarmy
+
+- type: jobIcon
+  id: Sband
+  locationPreference: Right
+  isShaded: true
+  icon:
+    sprite: /Textures/_Stalker/Icons/Patches/band.rsi
+    hideOnStealth: true
+    state: Sband
 
 - type: jobIcon
   id: lastday
