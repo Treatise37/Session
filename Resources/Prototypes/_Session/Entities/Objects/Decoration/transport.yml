@@ -1,0 +1,10 @@
+- type: entity
+  id: BTR70
+  parent: UAZStructure
+  name: БТР-70
+  suffix: SST, Mapping
+  components:
+  - type: Sprite
+    sprite: _Session/Objects/Decoration/Transport/btr70.rsi
+    scale: 0.8, 0.8
+    state: base
