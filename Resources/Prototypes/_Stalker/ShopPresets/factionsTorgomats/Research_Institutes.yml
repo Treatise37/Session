@@ -2,92 +2,98 @@
   id: NpcResearchInstitut # 0x
   itemsForSale:
     # Thermal group - 1
-    ZoneArtifactFireball: 1008
-    ZoneArtifactEye: 1344
-    ZoneArtifactFlame: 2016
+    ZoneArtifactFireball: 2080
+    ZoneArtifactEye: 2539
+    ZoneArtifactFlame: 3452
     # Thermal group - 2
-    ZoneArtifactCristall: 4032
-    ZoneArtifactLithosphere: 8064
+    ZoneArtifactCristall: 10948
+    ZoneArtifactLithosphere: 34902
     # Electrical group - 1
-    ZoneArtifactSparkler: 840
-    ZoneArtifactBattery: 1176
-    ZoneArtifactFlash: 2016
-    ArtMoon: 4032
-    ZoneArtifactTesla: 6048
-    ZoneArtifactIce: 8064
+    ZoneArtifactSparkler: 2510
+    ZoneArtifactBattery: 3215
+    ZoneArtifactFlash: 5224
+    ArtMoon: 5448
+    ZoneArtifactTesla: 13672
+    ZoneArtifactIce: 24896
     # Gravity group - 1
-    ArtMedusa: 924
-    ZoneArtifactFlower: 1260
-    ZoneArtifactNightStar: 4032
+    ArtMedusa: 1562
+    ZoneArtifactFlower: 2766
+    ZoneArtifactNightStar: 5448
     # Gravity group - 2
-    ZoneArtifactVyvert: 1092
-    ZoneArtifactAmoeba: 1428
-    ZoneArtifactFloodlight: 972
-    ZoneArtifactGravi: 2016
-    ZoneArtifactGoldfish: 8064
-    ZoneArtifactSpring: 6048
-    ZoneArtifactFocus: 6048
-    ZoneArtifactStuntman: 8064
-    ZoneArtifactDistorter: 8064
-    ZoneArtifactSoul: 6048
+    ZoneArtifactVyvert: 1664
+    ZoneArtifactAmoeba: 2868
+    ZoneArtifactFloodlight: 1400
+    ZoneArtifactGravi: 11224
+    ZoneArtifactGoldfish: 24896
+    ZoneArtifactSpring: 36720
+    ZoneArtifactFocus: 33600
+    ZoneArtifactStuntman: 44896
+    ZoneArtifactDistorter: 44896
+    ZoneArtifactSoul: 33672
+    # Food
+    FoodMeatDogCooked: 420
+    STFoodMeatSpiderCooked: 420
+    FoodMeatBoarCooked: 640
 
     # Acidic group - 1
-    ZoneArtifactBlood: 2016
-    ZoneArtifactMeat: 4032
-    ZoneArtifactKolobok: 6048
+    ZoneArtifactBlood: 3224
+    ZoneArtifactMeat: 6448
+    ZoneArtifactKolobok: 9672
     # Acidic group - 2
-    ZoneArtifactPellicle: 924
-    ZoneArtifactBaloon: 6048
+    ZoneArtifactPellicle: 2562
+    ZoneArtifactBaloon: 10672
 
     # Mutant parts
 
     #Boars -------- Health * T * 0.45
-    MutantPartBoarHoof: 264 # T1
-    MutantPartSeasonedBoarHoof: 528 # T2
-    MutantPartOldBoarHoof: 780 # T3
+    MutantPartBoarHoof: 1535  # T1
+    MutantPartSeasonedBoarHoof: 2542  # T2
+    MutantPartOldBoarHoof: 3750  # T3
 
     #T1 -------- Health * 1
-    MutantPartBlindDogTail: 108
-    MutantPartFleshEye: 198
-    FoodMeatSpiderLeg: 72
+    MutantPartBlindDogTail: 739
+    MutantPartFleshEye: 1123
+    FoodMeatSpiderLeg: 720
 
     #T2 -------- Health * 1.8
-    MutantPartLeshiyRoot: 840
-    MutantPartPseudodogTail: 360
-    MutantPartSnorkFoot: 540
+    MutantPartLeshiyRoot: 2260
+    MutantPartPseudodogTail: 2540
+    MutantPartSnorkFoot: 2810
 
     #T3 -------- Health * 3
-    MutantPartPsiDogTail: 564
-    MutantPartBloodsuckerTentacles: 1800
-    MutantPartOraculeEye: 2340
-    MutantPartPseudogiantHeart: 14040
-    MutantPartZombieHand: 660
+    MutantPartPsiDogTail: 2846
+    MutantPartBloodsuckerTentacles: 6800
+    MutantPartOraculeEye: 4340
+    MutantPartPseudogiantHeart: 41484
+    MutantPartZombieHand: 2990
 
-    ZoneArtifactAccumulator: 1176
-    ZoneArtifactDiamond: 4032
-    ZoneArtifactCharger: 4032
-    ZoneArtifactToxic: 1176
-    ZoneArtifactCytoplasm: 1008
-    ZoneArtifactCompass: 4032
-    ZoneArtifactCrucifix: 8064
-    ZoneArtifactThorn: 1596
-    ZoneArtifactArf: 1176
-    ZoneArtifactDarkCube: 8064
-    ZoneArtifactBunch: 1596
-    ZoneArtifactRock: 1596
-    ZoneArtifactSun: 4032
-    ZoneArtifactRoot: 4032
-    ZoneArtifactConflagration: 1596
+    # New
+
+    ZoneArtifactAccumulator: 816
+    ZoneArtifactDiamond: 2448
+    ZoneArtifactCharger: 2448
+    ZoneArtifactToxic: 816
+    ZoneArtifactCytoplasm: 612
+    ZoneArtifactCompass: 2448
+    ZoneArtifactCrucifix: 4896
+    ZoneArtifactThorn: 1224
+    ZoneArtifactArf: 816
+    ZoneArtifactDarkCube: 4896
+    ZoneArtifactBunch: 1224
+    ZoneArtifactRock: 1224
+    ZoneArtifactSun: 2448
+    ZoneArtifactRoot: 2448
+    ZoneArtifactConflagration: 1224
 
     # Mutant parts EN
 
-    MutantPartCatGland: 100
-    MutantPartBearClaw: 300
-    MutantPartBearPaw: 576
-    MutantPartBearEye: 1710
-    MutantPartFrogLeg: 480
-    MutantPartIzlomArm: 3780
-    MutantPartChimeraTooth: 5400
+    MutantPartCatGland: 750
+    MutantPartBearClaw: 2123
+    MutantPartBearPaw: 1864
+    MutantPartBearEye: 2402
+    MutantPartFrogLeg: 1720
+    MutantPartIzlomArm: 19200
+    MutantPartChimeraTooth: 30600
   categories:
   - name: shop-category-weapons
     priority: 1
@@ -195,13 +201,13 @@
       ZoneAnomalyDetectorAD2: 1000 # T2
       ZoneAnomalyDetectorAD3: 2400 # Т3
       # Detectors
-      ZoneArtifactDetectorPulse: 50 # T1
-      ZoneArtifactDetectorHunter: 100 # T2
-      ZoneArtifactDetectorResponse: 700 # T2
-      ZoneArtifactDetectorSpruce: 3200 # T2
-      Veles: 6200 # T3
-      ZoneArtifactDetectorBarracuda: 5500 # T3
-      DetectorSvarogBlueprint: 5500
+      ZoneArtifactDetectorResponse: 2280
+      ZoneArtifactDetectorSpruce: 11000
+      ZoneArtifactDetectorBarracuda: 17000
+      Veles: 23900
+      ZoneArtifactDetectorBear: 39000
+      Svarog: 56000
+      ZoneArtifactDetectorWolfhound: 89000
       #RP Shit
       BaseMachineAnomalyDestructorFolded: 500
       BaseMachineAnomalyDestructorFolded1: 500

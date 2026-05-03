@@ -254,6 +254,7 @@
       ClothingHeadHelmetAborigine: 3500
       ClothingOuterArmorAborigineStalker: 6000
       ClothingOuterArmorStalker: 7500
+      STClothingOuterArmorIOTVGreen: 15000
   - name: shop-category-storage-and-containers
     priority: 5
     items:
