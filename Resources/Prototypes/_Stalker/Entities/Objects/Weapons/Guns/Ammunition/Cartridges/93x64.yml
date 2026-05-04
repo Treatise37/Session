@@ -1,0 +1,30 @@
+- type: entity
+  id: BaseSTCartridge9364
+  name: cartridge (9364)
+  parent: BaseCartridge
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - STCartridge9364R
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: "base"
+  - type: STWeight
+    self: 0.02
+
+- type: entity
+  id: STCartridge9364R
+  name: Патрон 9,3x64 7н33
+  parent: BaseSTCartridge9364
+  components:
+    - type: CartridgeAmmo
+      proto: STBullet9364R

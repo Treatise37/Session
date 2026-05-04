@@ -1,0 +1,29 @@
+- type: entity
+  id: Bullet366EKO
+  name: bullet (.366)
+  parent: STBaseMRBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Projectile
+    projectileClass: 3
+    damage:
+      types:
+        Piercing:  32
+  - type: StaminaDamageOnCollide
+    damage: 4
+
+- type: entity
+  id: Bullet366GEKSA
+  name: bullet (.366)
+  parent: Bullet366EKO
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    projectileClass: 0
+    damage:
+      types:
+        Mutant: 120
+        Blunt: 10
+        Slash: 10

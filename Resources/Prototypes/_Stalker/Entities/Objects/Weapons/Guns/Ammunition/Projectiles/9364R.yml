@@ -1,0 +1,14 @@
+- type: entity
+  parent: STBaseHRBullet
+  id: STBullet9364R
+  name: bullet (93x64)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    projectileClass: 5
+    damage:
+      types:
+        Mutant: 250
+        Piercing: 78
+  - type: StaminaDamageOnCollide
+    damage: 10

@@ -98,3 +98,9 @@
 
 - type: Tag
   id: MagazineVSK
+
+- type: Tag
+  id: MagazineTKPD
+
+- type: Tag
+  id: MagazineVPO209

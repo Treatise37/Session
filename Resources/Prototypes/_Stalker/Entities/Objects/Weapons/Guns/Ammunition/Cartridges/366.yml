@@ -1,0 +1,38 @@
+- type: entity
+  id: BaseSTCartridge366
+  name: cartridge (.366)
+  parent: BaseCartridge
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - STCartridge366
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: "base"
+  - type: STWeight
+    self: 0.02
+
+- type: entity
+  id: STCartridge366EKO
+  name: Патрон (.366) GEKSA EKO
+  parent: BaseSTCartridge366
+  components:
+    - type: CartridgeAmmo
+      proto: Bullet366EKO
+
+- type: entity
+  id: STCartridge366GEKSA
+  name: Патрон (.366) GEKSA
+  parent: BaseSTCartridge366
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet366GEKSA

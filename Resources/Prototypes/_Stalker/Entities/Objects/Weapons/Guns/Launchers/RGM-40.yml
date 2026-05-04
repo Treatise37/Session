@@ -1,0 +1,47 @@
+- type: entity
+  parent: BaseWeaponLauncher
+  id: STWeaponLauncherRGM40
+  name: РГM-40
+  suffix: ST
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Launchers/rgm40.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Launchers/rgm40.rsi
+    slots:
+    - Belt
+  - type: PullDoAfter
+    pullTime: 2.0
+  - type: Gun
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/grenade_launcher.ogg
+  - type: ItemSlots
+    slots:
+      gun_chamber:
+        name: Chamber
+        startingItem: null
+        priority: 1
+        whitelist:
+          tags: 
+            - Vog25grenade
+  - type: ContainerContainer
+    containers:
+      gun_chamber: !type:ContainerSlot
+  - type: ChamberMagazineAmmoProvider
+    autoCycle: false
+    boltClosed: false
+    canRack: false
+    soundBoltClosed: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+    soundBoltOpened: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+    soundRack: /Audio/Weapons/Guns/Cock/revolver_cock.ogg
+  - type: RepositoryItem
+    categoryName: Оружие
+  - type: STWeight
+    self: 5.6 

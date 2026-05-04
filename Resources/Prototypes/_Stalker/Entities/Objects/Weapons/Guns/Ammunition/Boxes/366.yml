@@ -1,0 +1,43 @@
+- type: entity
+  parent: BaseAmmoBoxStalker
+  id: 366EKOBox
+  name: Коробка патронов .366 EKO
+  description: .366 EKO, в коробке 30 штук. Пробивает 3 класс брони.
+  suffix: Stalker
+  components:
+  - type: MagazineVisuals
+    magState: 545ammo
+  - type: BallisticAmmoProvider
+    capacity: 30
+    proto: STCartridge366EKO
+    whitelist:
+      tags:
+        - STCartridge366
+  - type: Sprite
+    layers:
+    - state: 366EKO
+      map: ["enum.GunVisualLayers.Base"]
+    - state: 366ammo-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseAmmoBoxStalker
+  id: 366GEKSABox
+  name: Коробка патронов .366 GEKSA
+  description: .366 GEKSA, в коробке 30 штук. Экспансивные
+  suffix: Stalker
+  components:
+  - type: MagazineVisuals
+    magState: 545ammo
+  - type: BallisticAmmoProvider
+    capacity: 30
+    proto: STCartridge366GEKSA
+    whitelist:
+      tags:
+        - STCartridge366
+  - type: Sprite
+    layers:
+    - state: 366GEKSA
+      map: ["enum.GunVisualLayers.Base"]
+    - state: 366ammo-1
+      map: ["enum.GunVisualLayers.Mag"]

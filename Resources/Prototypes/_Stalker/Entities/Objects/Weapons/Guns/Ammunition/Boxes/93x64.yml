@@ -1,0 +1,21 @@
+- type: entity
+  parent: BaseAmmoBoxStalker
+  id: 9364RBox
+  name: Коробка патронов 7н33 9.3х64мм 
+  description: Для ТКПД, в коробке 30 штук. Пробивает 5 класс брони.
+  suffix: Stalker
+  components:
+  - type: MagazineVisuals
+    magState: 545ammo
+  - type: BallisticAmmoProvider
+    capacity: 30
+    proto: STCartridge9364R
+    whitelist:
+      tags:
+        - STCartridge9364R
+  - type: Sprite
+    layers:
+    - state: 9364R
+      map: ["enum.GunVisualLayers.Base"]
+    - state: 9364ammo-1
+      map: ["enum.GunVisualLayers.Mag"]
