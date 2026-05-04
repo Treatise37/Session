@@ -2,6 +2,7 @@
   parent: BaseWeaponLauncher
   id: STWeaponLauncherRGM40
   name: РГM-40
+  description: РГ-6 для бедных
   suffix: ST
   components:
   - type: Sprite

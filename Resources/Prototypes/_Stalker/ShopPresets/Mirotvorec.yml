@@ -1,0 +1,73 @@
+- type: shopPreset
+  id: STNPCMirotvorecPreset
+  categories:
+    - name: shop-category-weapons
+      priority: 0
+      items:
+        STWeaponRifleStalkerAek971: 300000
+        STWeaponRifleStalkerAK15: 260000
+        STWeaponSniperTKPD: 250000
+        STWeaponRifleAK203: 240000
+        STWeaponRifleLR300v1: 220000
+        STWeaponRifleHK416: 230000
+        STWeaponRifleA545: 220000
+        STWeaponSniperSVDS: 210000
+        STWeaponLauncherRGM40: 200000
+        STWeaponRifleAM17: 180000
+        STWeaponRifleARX160: 180000
+        STWeaponRifleAK103: 170000
+        STWeaponSniperVSK94: 140000
+        STWeaponRifleVPO209: 35000 
+    - name: shop-category-magazines
+      priority: 1
+      items:
+        BaseVPO209Mag30: 1000
+        BaseTKPDMag10: 2000
+        Base939MagVSK: 1500
+        739Mag30: 1500
+        545Mag30: 1500
+        556Mag30: 1500
+        751Mag30: 1500
+        754Mag10: 1000
+    - name: shop-category-ammunition
+      priority: 2
+      items:
+        545BPBox: 3000
+        556M856Box: 3000
+        739PCBox: 3000
+        751M61Box: 3000
+        9364RBox: 10000
+        754PCBox: 2500
+        STBox9x39SP6: 6000
+        366GEKSABox: 1500
+        366EKOBox: 2000
+        GrenadeVOG25: 7500
+        GrenadeVOG25P: 5000
+    - name: shop-category-modules
+      priority: 2
+      items:
+        STModuleScopeRiflesT2Ru: 40000
+        STModuleScopeRiflesT2Nato: 40000
+        STModuleSilencerRiflesT2Ru: 40000
+        STModuleSilencerRiflesT2Nato: 40000
+        STModuleShotgunChokeT2: 40000
+        STModuleSMGGripT2: 40000
+        STModuleSilencerSMGT2: 40000
+        STModuleSniperSightT2: 40000
+        STModuleSilencerSniperT2: 40000
+
+  sponsorCategories:
+          SponsorBacker:
+            - name: sponsor
+              items:
+                STWeaponRifleAKS74UWhite: 650
+                STWeaponRifleAKMC: 5000
+          SponsorOMind:
+            - name: О-сознание
+              items:
+                STWeaponRifleSVDSWood: 800
+  contributorCategories:
+            - name: contributor
+              items:
+                STWeaponShotgunMP153Raven: 550
+                WeaponPistolStalkerAPSHugo: 250

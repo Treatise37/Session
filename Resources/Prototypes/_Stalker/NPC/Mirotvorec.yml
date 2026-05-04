@@ -1,0 +1,25 @@
+- type: entity
+  parent: NPCDoll
+  id: NPCMirotvorec
+  name: Миротворец [→   ←]
+  description: Приносит мир, убивая всех вокруг.
+  components:
+  - type: Sprite
+    sprite: _Stalker/NPC/Mirotvorec.rsi
+    state: mirotvorec
+  - type: Physics
+    bodyType: Static
+  - type: ActivatableUI
+    key: enum.ShopUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ShopUiKey.Key:
+        type: ShopBoundUserInterface
+  - type: Shop
+    moneyId: Roubles
+    shopPresetId: STNPCMirotvorecPreset
+  - type: TimedDespawn
+    lifetime: 1800
+  - type: EmissionLightningSpawnBlocker # ST14-EN: added emission lightning blocker
+    radius: 5
