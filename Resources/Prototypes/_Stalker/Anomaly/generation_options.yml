@@ -295,3 +295,30 @@
     - protoId: ZoneAnomalyRift
     - protoId: ZoneAnomalyGlassShards
       weight: 0.8
+
+- type: stAnomalyGenerationOptions
+  id: STJupiterGenerationOptions
+  options:
+    totalCount: 350
+    anomalyEntries:
+    # Electrical
+    - protoId: ZoneAnomalySource
+      weight: 4
+    - protoId: ZoneAnomalyElectra
+      weight: 5
+    - protoId: ZoneAnomalyGarland
+      weight: 7
+    # Chemical
+    - protoId: ZoneAnomalySmoke
+      weight: 2
+    - protoId: ZoneAnomalyGazirovka
+      weight: 5
+    - protoId: ZoneAnomalyKissel
+      weight: 2
+    # Gravity
+    - protoId: ZoneAnomalyGravi
+    # Thermal
+    - protoId: ZoneAnomalyJarkaStrong
+    - protoId: ZoneAnomalyJarka
+    - protoId: ZoneAnomalySteam
+

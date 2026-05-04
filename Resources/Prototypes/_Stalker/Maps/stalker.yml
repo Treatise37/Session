@@ -1,14 +1,14 @@
 - type: gameMap
   id: STWorld
   mapName: 'StalkerMap'
-  mapPath: "/Maps/_ST/World/KordonV1488.yml"
+  mapPath: "/Maps/_Session/World/jupiterV11.yml"
   minPlayers: 0
   stations:
     Stalker:
       stationProto: StandardStalkerStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: "Кордон"
+          mapNameTemplate: "Юпитер"
         - type: StationJobs
           # Zona14: roster curated to 18 selectable jobs across 5 faction groups
           # (Stalkers / Criminals / Stalker Clans / Science / Border Guards).
