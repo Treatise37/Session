@@ -1,8 +1,8 @@
 - type: personalShop
-  id: PersonalLordVladimerShop
+  id: PersonalonlyweedShop
   username: onlyweed
   categories:
-    - name: Лулрд
+    - name: пеньес
       items:
         STWeaponRifleAKS74UWhite: 50
         STWeaponRifleASVAL: 800
