@@ -325,7 +325,8 @@
         ClothingOuterArmor6B2: 1000 # T2 - PvP
         ClothingOuterArmorMilitarySpark: 1350 # T2 - ENV
         ClothingOuterArmorZaryaMilitary: 1350 # T2 - universal
-        STClothingOuterArmorLightPlateVestBasePSZ7: 7000
+        STClothingOuterArmorLightPlateVestBasePSZ7v3: 6000
+        ClothingOuterArmor6B13: 11000
     - name: shop-category-storage-and-containers
       priority: 5
       items:
