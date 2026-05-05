@@ -325,6 +325,8 @@
         ClothingOuterArmor6B2: 1000 # T2 - PvP
         ClothingOuterArmorMilitarySpark: 1350 # T2 - ENV
         ClothingOuterArmorZaryaMilitary: 1350 # T2 - universal
+        STClothingOuterArmorLightPlateVestBasePSZ7v3: 6000
+        ClothingOuterArmor6B13: 11000
     - name: shop-category-storage-and-containers
       priority: 5
       items:
@@ -358,8 +360,13 @@
         STBoltBagFilled: 50
         ZoneAnomalyDetectorAD1: 450 # T1
         ZoneAnomalyDetectorAD2: 1000 # T2
-          # Detectors
-          # Пусто
+        ZoneArtifactDetectorResponse: 4560
+        ZoneArtifactDetectorSpruce: 22000
+        ZoneArtifactDetectorBarracuda: 34000
+        Veles: 47800
+        ZoneArtifactDetectorBear: 78000
+        Svarog: 112000
+        ZoneArtifactDetectorWolfhound: 178000
     - name: shop-category-utilities
       priority: 8
       items:
