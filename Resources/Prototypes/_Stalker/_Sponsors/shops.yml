@@ -1,6 +1,6 @@
 - type: personalShop
   id: PersonalLordVladimerShop
-  username: LordVladimer
+  username: onlyweed
   categories:
     - name: Лулрд
       items:
@@ -45,16 +45,16 @@
   categories:
     - name: Персональная категория
       items:
-        STWeaponSniperOSV96: 150000
-        13x108Mag10: 390000
-        13x108FMJBox: 250000
-        13x108HPBox: 120000
-        13x108PCBox: 50000
-        STBaseWeaponRifleAKMPSO1M: 45000
-        739FMJBox: 220000
-        739PCBox: 370000
-        739HPBox: 15000
-        739Mag30: 500000
+        STWeaponSniperOSV96: 289000
+        13x108Mag10: 3900
+        13x108FMJBox: 2500
+        13x108HPBox: 1200
+        13x108PCBox: 5000
+        STBaseWeaponRifleAKMPSO1M: 145000
+        739FMJBox: 2200
+        739PCBox: 3700
+        739HPBox: 150
+        739Mag30: 500
 
 
 - type: personalShop
@@ -63,12 +63,12 @@
   categories:
     - name: Персональная категория
       items:
-        STClothingOuterCoatNovember: 500000
-        STWeaponRifleHK416: 3500000
-        ClothingOuterArmorKeeper: 250000
-        STWeaponRifleA545: 3500000
-        STWeaponRifleARX160: 7000000
-        ClothingHeadHelmetKeeper: 200000
+        STClothingOuterCoatNovember: 500
+        STWeaponRifleHK416: 150000
+        ClothingOuterArmorKeeper: 25000
+        STWeaponRifleA545: 205000
+        STWeaponRifleARX160: 1770000
+        ClothingHeadHelmetKeeper: 2000
 
 - type: personalShop
   id: PersonalDelikoShop
@@ -99,9 +99,9 @@
   categories:
     - name: Персональная категория
       items:
-        STWeaponSniperVeprGrass: 800000
-        STWeaponShotgunShizoToz34: 80000
-        754Mag10: 2000000
+        STWeaponSniperVeprGrass: 80000
+        STWeaponShotgunShizoToz34: 8000
+        754Mag10: 2000
         ClothingShoesPVHCastom: 400
 
 - type: personalShop
@@ -130,10 +130,10 @@
   categories:
     - name: Персональная категория
       items:
-        STWeaponSMGVector9Black: 40000
-        STWeaponSMGVector9: 40000
-        STWeaponSMGVector9Forest: 400000
-        MP5Mag50: 50000
+        STWeaponSMGVector9Black: 12000
+        STWeaponSMGVector9: 120000
+        STWeaponSMGVector9Forest: 120000
+        MP5Mag50: 5000
 
 - type: personalShop
   id: PersonalDesaylerShop
@@ -162,7 +162,7 @@
   categories:
     - name: Персональная категория
       items:
-        STWeaponRifleAUG: 400000
+        STWeaponRifleAUG: 40000
 
 - type: personalShop
   id: PersonalLeopard2a7Shop
@@ -170,7 +170,7 @@
   categories:
     - name: Персональная категория
       items:
-        WeaponPistolStalkerLP08: 900000
+        WeaponPistolStalkerLP08: 90000
         LP08Drum : 30000
 
 - type: personalShop
@@ -179,9 +179,9 @@
   categories:
   - name: Персональная категория
     items:
-      CasseteFiftyEightRadio: 250000
-      STWeaponSniperHK417: 1500000
-      STWeaponRifleStalkerAK15: 1500000
+      CasseteFiftyEightRadio: 250
+      STWeaponSniperHK417: 250000
+      STWeaponRifleStalkerAK15: 250000
 
 - type: personalShop
   id: PersonalSkywalkerShop
@@ -189,7 +189,7 @@
   categories:
   - name: Персональная категория
     items:
-      STClothingOuterArmorSkyWalker: 850000
+      STClothingOuterArmorSkyWalker: 8500
 
 - type: personalShop
   id: PersonalkenkonShop
@@ -197,7 +197,7 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponRifleAM17: 100000
+      STWeaponRifleAM17: 23000
 
 - type: personalShop
   id: PersonalDanILDO655Shop
@@ -205,10 +205,10 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponRifleSCARL: 300000
-      STWeaponRifleOC14AltSkin1: 500000
-      STClothingOuterArmorBerillBereza: 650000
-      ClothingHeadHelmetBereza: 350000
+      STWeaponRifleSCARL: 7000
+      STWeaponRifleOC14AltSkin1: 23000
+      STClothingOuterArmorBerillBereza: 6500
+      ClothingHeadHelmetBereza: 3000
 
 - type: personalShop
   id: PersonalHLoRka_202Shop
@@ -258,7 +258,7 @@
   categories:
   - name: Персональная категория
     items:
-      CasseteSixtyTwoDonateRadioAnimaciya: 50000
+      CasseteSixtyTwoDonateRadioAnimaciya: 500
 
 - type: personalShop
   id: Personalde21_Shop
@@ -267,12 +267,12 @@
   - name: Персональная категория
     items:
       STWeaponSniperVSK94: 45000
-      Base939MagVSK: 30000
-      STBox9x39PAB9: 23000
-      STBox9x39SP6: 43000
-      STClothingOuterArmorGonchiy: 82000
+      Base939MagVSK: 3000
+      STBox9x39PAB9: 2300
+      STBox9x39SP6: 4300
+      STClothingOuterArmorGonchiy: 43000
       STBaseWeaponShotgunVepr12De21: 62000
-      Base1270Mag: 30000
+      Base1270Mag: 300
 
 - type: personalShop
   id: Personalnikita2282288Shop
@@ -280,16 +280,16 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponRifleSCARSSR: 450000
-      754RBox: 310000
-      Base754RMag30: 5000
+      STWeaponRifleSCARSSR: 210500
+      754RBox: 3100
+      Base754RMag30: 2000
 - type: personalShop
   id: PersonalPearllovekaShop
   username: Pearlloveka
   categories:
   - name: Персональная категория
     items:
-      STWeaponSniperPP2000Pearl: 450000
+      STWeaponSniperPP2000Pearl: 85000
       BasePP2000PearlMag: 2000
       BasePP2000PearlMag20: 4000
 
@@ -299,15 +299,15 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponRifleAK308: 45000
-      751M80Box: 22000
-      751M61Box: 370000
-      751Mag30: 5000
-      STClothingHandsGlovesKrava: 10000
+      STWeaponRifleAK308: 155000
+      751M80Box: 2200
+      751M61Box: 3700
+      751Mag30: 500
+      STClothingHandsGlovesKrava: 1000
       ClothingEyesProtectionGlassesKrava: 1000
       ClothingBackpackDuffelBlackMilitaryTacticStalkerKrava: 10000
-      ClothingOuterCoatKrava: 70000
-      STClothingOuterArmorKrava: 70000
+      ClothingOuterCoatKrava: 17000
+      STClothingOuterArmorKrava: 47000
 
 - type: personalShop
   id: PersonalgeneralfimozShop
@@ -315,8 +315,8 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponShotgunOrigin12: 30000
-      Origin1270Drum: 40000
+      STWeaponShotgunOrigin12: 3000
+      Origin1270Drum: 400
 
 - type: personalShop
   id: PersonalXhedaieShop
@@ -324,8 +324,8 @@
   categories:
   - name: Персональная категория
     items:
-      STBaseWeaponShotgunVepr12Molot: 620000
-      Base1270Mag: 3000
+      STBaseWeaponShotgunVepr12Molot: 62000
+      Base1270Mag: 300
 
 - type: personalShop
   id: PersonalRUTShop
@@ -333,15 +333,15 @@
   categories:
   - name: Персональная категория
     items:
-      ClothingOuterArmorHazmatRfWhite: 25000
-      Base1270Mag: 3000
-      STWeaponRifleLR300White: 1500000
-      556Mag30: 40000
-      556WarmagBox: 3500
-      556M855Box: 180000
-      556M856Box: 38000
-      ClothingOuterCoatSevaWhite: 13000
-      ClothingOuterCoatKevlarBlack: 13000
+      ClothingOuterArmorHazmatRfWhite: 250000
+      Base1270Mag: 300
+      STWeaponRifleLR300White: 150000
+      556Mag30: 400
+      556WarmagBox: 350
+      556M855Box: 1800
+      556M856Box: 3800
+      ClothingOuterCoatSevaWhite: 1300
+      ClothingOuterCoatKevlarBlack: 1300
 
 - type: personalShop
   id: PersonalHolicShop
@@ -349,8 +349,8 @@
   categories:
   - name: Персональная категория
     items:
-      STWeaponRifleRPK74Vedma: 50000
-      Base545MagRPK: 3000
-      545HPBox: 300000
-      545PCBox: 180000
-      545BPBox: 270000
+      STWeaponRifleRPK74Vedma: 5000
+      Base545MagRPK: 300
+      545HPBox: 300
+      545PCBox: 1800
+      545BPBox: 2700
