@@ -69,22 +69,21 @@
 
     # New
 
-    ZoneArtifactAccumulator: 816
-    ZoneArtifactDiamond: 2448
-    ZoneArtifactCharger: 2448
-    ZoneArtifactToxic: 816
-    ZoneArtifactCytoplasm: 612
-    ZoneArtifactCompass: 2448
-    ZoneArtifactCrucifix: 4896
-    ZoneArtifactThorn: 1224
-    ZoneArtifactArf: 816
-    ZoneArtifactDarkCube: 4896
-    ZoneArtifactBunch: 1224
-    ZoneArtifactRock: 1224
-    ZoneArtifactSun: 2448
-    ZoneArtifactRoot: 2448
-    ZoneArtifactConflagration: 1224
-
+    ZoneArtifactAccumulator: 2510
+    ZoneArtifactDiamond: 11224
+    ZoneArtifactCharger: 11224
+    ZoneArtifactToxic: 2510
+    ZoneArtifactCytoplasm: 2510
+    ZoneArtifactCompass: 11224
+    ZoneArtifactCrucifix: 36720
+    ZoneArtifactThorn: 4302
+    ZoneArtifactArf: 2510
+    ZoneArtifactDarkCube: 36720
+    ZoneArtifactBunch: 4302
+    ZoneArtifactRock: 3224
+    ZoneArtifactSun: 11224
+    ZoneArtifactRoot: 11224
+    ZoneArtifactConflagration: 3224
     # Mutant parts EN
 
     MutantPartCatGland: 750
@@ -121,6 +120,7 @@
       STWeaponRifleAKM: 5000
       DG05SmokeGrenade: 200
       RGD5Grenade: 300
+      STWeaponRifleA545: 100000
   - name: shop-category-magazines
     priority: 2
     items:
