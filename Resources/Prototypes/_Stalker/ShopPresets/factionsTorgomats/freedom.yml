@@ -38,21 +38,21 @@
     ZoneArtifactPellicle: 2562
     ZoneArtifactBaloon: 10672
     # New
-    ZoneArtifactAccumulator: 1386
-    ZoneArtifactDiamond: 4752
-    ZoneArtifactCharger: 4752
-    ZoneArtifactToxic: 1386
-    ZoneArtifactCytoplasm: 1188
-    ZoneArtifactCompass: 4752
-    ZoneArtifactCrucifix: 9504
-    ZoneArtifactThorn: 1881
-    ZoneArtifactArf: 1386
-    ZoneArtifactDarkCube: 9504
-    ZoneArtifactBunch: 1881
-    ZoneArtifactRock: 1881
-    ZoneArtifactSun: 4752
-    ZoneArtifactRoot: 4752
-    ZoneArtifactConflagration: 1881
+    ZoneArtifactAccumulator: 2510
+    ZoneArtifactDiamond: 11224
+    ZoneArtifactCharger: 11224
+    ZoneArtifactToxic: 2510
+    ZoneArtifactCytoplasm: 2510
+    ZoneArtifactCompass: 11224
+    ZoneArtifactCrucifix: 36720
+    ZoneArtifactThorn: 4302
+    ZoneArtifactArf: 2510
+    ZoneArtifactDarkCube: 36720
+    ZoneArtifactBunch: 4302
+    ZoneArtifactRock: 3224
+    ZoneArtifactSun: 11224
+    ZoneArtifactRoot: 11224
+    ZoneArtifactConflagration: 3224
 
     # Mutant parts
 
@@ -108,6 +108,7 @@
       STWeaponRifleM4: 3500
       STWeaponRifleG36: 5500
       STWeaponRifleSCARL: 5000
+      STWeaponRifleLR300v1: 100000
       # Smg
       STWeaponSMGMP5: 2300
       # Other
