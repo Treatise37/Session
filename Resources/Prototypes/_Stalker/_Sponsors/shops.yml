@@ -1,8 +1,8 @@
 - type: personalShop
-  id: PersonalOnlyweedShop
-  username: onlyweed
+  id: PersonalLordVladimerShop
+  username: LordVladimer
   categories:
-    - name: пеньес
+    - name: автомат дешево
       items:
         STWeaponRifleAKS74UWhite: 50
         STWeaponRifleASVAL: 800
