@@ -254,6 +254,97 @@
     color: Cyan
     energy: 1
 
+#SESSION-STALKER START
+- type: stWarZone
+  id: DutyBase
+  captureTime: 300
+  captureCooldownHours: 0
+  requirements:
+  - !type:ZoneOwnershipRequirenment
+    requiredZones: []
+
+- type: entity
+  id: WarZoneEntity_DutyBase
+  parent: BaseStructure
+  name: Флагшток Долга
+  components:
+  - type: Transform
+    anchored: true
+  - type: WarZone
+    proto: DutyBase
+    portalName: DutyBase
+  - type: WarZoneFlag
+  - type: Sprite
+    sprite: _Session/Objects/Decoration/Flags/duty.rsi
+    layers:
+    - state: flag3
+  - type: Appearance
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      trigger:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2
+        hard: false
+        mask:
+        - MobMask
+        layer:
+        - MidImpassable
+  - type: PointLight
+    enabled: true
+    radius: 15
+    color: Cyan
+    energy: 1
+
+
+- type: stWarZone
+  id: FreedomBase
+  captureCooldownHours: 0
+  captureTime: 300
+  requirements:
+  - !type:ZoneOwnershipRequirenment
+    requiredZones: []
+
+- type: entity
+  id: WarZoneEntity_FreedomBase
+  parent: BaseStructure
+  name: Флагшток Свободы
+  components:
+  - type: Transform
+    anchored: true
+  - type: WarZone
+    proto: FreedomBase
+    portalName: FreedomBase
+  - type: WarZoneFlag
+  - type: Sprite
+    sprite: _Session/Objects/Decoration/Flags/freedom.rsi
+    layers:
+    - state: flag3
+  - type: Appearance
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      trigger:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2
+        hard: false
+        mask:
+        - MobMask
+        layer:
+        - MidImpassable
+  - type: PointLight
+    enabled: true
+    radius: 15
+    color: Cyan
+    energy: 1
+
+#SESSION-STALKER END
 
 - type: stBandShopListings
   id: STBandShopListings
