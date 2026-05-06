@@ -1,6 +1,6 @@
 - type: personalShop
   id: PersonalLordVladimerShop
-  username: LordVIadimer
+  username: LordVladimer
   categories:
     - name: автомат дешево
       items:
