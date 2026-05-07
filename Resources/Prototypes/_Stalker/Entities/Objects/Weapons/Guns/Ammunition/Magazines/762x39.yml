@@ -257,3 +257,21 @@
       sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/rpd_100.rsi
     - type: Sprite
       sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/rpd_100.rsi
+
+- type: entity
+  parent: BaseMagazine762x39RPD
+  id: Magazine762x54PKM
+  name: магазин 7,62x54 ПКМ (100)
+  components:
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/pkm_100.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Ammunition/Magazines/pkm_100.rsi
+  - type: Tag
+    tags:
+    - Magazine762x54PKM
+  - type: BallisticAmmoProvider
+    capacity: 100
+    whitelist:
+      tags:
+      - STCartridge754
