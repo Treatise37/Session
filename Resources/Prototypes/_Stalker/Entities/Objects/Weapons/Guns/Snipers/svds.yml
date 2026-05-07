@@ -268,7 +268,7 @@
   parent: STBaseWeaponRifleSVDS
   id: STWeaponSniperTKPD
   name: ТКПД
-  description: СВД на стеройдах под патрон 9.3х64мм
+  description: Модернизированная версия СВДК калибра 9.3x64, оружие отличается высокой точностью, эффективно подавляя цели на средних дистанциях.
   components:
   - type: STWeight
     self: 5
@@ -291,7 +291,7 @@
     fireRate: 0.9
     angleIncrease: 3
     angleDecay: 60
-    projectileSpeed: 75
+    projectileSpeed: 70
   - type: STWeaponDamageFalloff
     falloffMultiplier: 0.1
   - type: STWeaponAccuracy
