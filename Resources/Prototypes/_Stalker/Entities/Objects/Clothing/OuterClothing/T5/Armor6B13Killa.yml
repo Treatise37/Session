@@ -1,0 +1,34 @@
+- type: entity
+  parent: STClothingOuterArmor6B13Base
+  id: STClothingOuterArmor6B13Killa
+  name: Killa6Б13 #base
+  suffix: ST, T5, PvP
+  abstract: true
+  components:
+  - type: STWeight
+    self: 12
+  - type: Armor
+    armorClass: 5
+    modifiers:
+      flatReductions:
+        Blunt: 3
+        Slash: 3
+        Piercing: 11
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.70
+  - type: Craftable
+  - type: GrantsArtifactSlots
+    slots: 4 # Stalker-Changes | Number of artifact slots this armor grants
+
+- type: entity
+  parent: STClothingOuterArmor6B13Killa
+  id: ClothingOuterArmor6B13Killa
+  name: 6Б13 Киллы
+  description: Модифицированный неизвестным сталкером бронежилет V типа, обеспечивающий достойную защиту от большинства видов повреждений
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/outerClothing/6b13Killa.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/outerClothing/6b13Killa.rsi
