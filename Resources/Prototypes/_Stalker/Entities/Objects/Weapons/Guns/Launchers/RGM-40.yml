@@ -2,7 +2,7 @@
   parent: BaseWeaponLauncher
   id: STWeaponLauncherRGM40
   name: РГM-40
-  description: РГ-6 для бедных
+  description: 40-мм ручной однозарядный гранатомет, созданный на базе подствольного гранатомета ГП-30 Обувка
   suffix: ST
   components:
   - type: Sprite
