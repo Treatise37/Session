@@ -1,0 +1,39 @@
+- type: entity
+  abstract: true
+  parent: STClothingHeadHelmetTacticalT4Base
+  id: WeldingMaskUbey
+  name: База сварочной маски т4
+  suffix: ST, T4, Tactical
+  components:
+  - type: STWeight
+    self: 1.5
+  - type: Armor
+    armorClass: 4
+    modifiers:
+      coefficients:
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.90
+  - type: Reflect
+    reflectProb: 0.2
+    spread: 360
+    reflects:
+      - NonEnergy
+    soundOnReflect: /Audio/_Stalker/Effects/sear.ogg
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+
+- type: entity
+  parent:  WeldingMaskUbey
+  id: ClothingHeadWeldingMaskUbey
+  name: Сварочная маска Убей
+  description: Сварочная маска, модифицированная неизвестным сталкером. На удивление обеспечивает отличную защиту от пуль.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/head/WeldingMaskUbey.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/head/WeldingMaskUbey.rsi
