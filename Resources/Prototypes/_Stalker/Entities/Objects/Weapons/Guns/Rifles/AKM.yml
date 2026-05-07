@@ -73,7 +73,7 @@
 - type: entity
   parent: STBaseWeaponRifleAKM
   id: STWeaponRifleVPO209
-  name: Вепрь 209
+  name: ВПО-209
   description: Гражданский вариант АКМ под калибр .366
   components:
   - type: Clothing
