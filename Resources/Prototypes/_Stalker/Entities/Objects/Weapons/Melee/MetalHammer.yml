@@ -1,7 +1,7 @@
 - type: entity
   parent: StalkerBaseBallBat
   id: MetalHammer
-  name: Молот
+  name: Superfors DB 2020 Dead Blow Hammer
   description: Увесистый тяжелый молот, который может нанести серьезный урон. Не слишком удобен в использовании, но может стать отличным инструментом для ближнего боя.
   suffix: ST
   components:
