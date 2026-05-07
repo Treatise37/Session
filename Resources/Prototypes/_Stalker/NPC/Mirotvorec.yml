@@ -20,6 +20,6 @@
     moneyId: Roubles
     shopPresetId: STNPCMirotvorecPreset
   - type: TimedDespawn
-    lifetime: 1800
+    lifetime: 18000
   - type: EmissionLightningSpawnBlocker # ST14-EN: added emission lightning blocker
     radius: 5
