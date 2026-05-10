@@ -1,18 +1,17 @@
 {
-    "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "size": {
-      "x": 48,
-      "y": 48
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "equipped-HELMET",
+      "directions": 4
     },
-    "states": [
-      {
-        "name": "equipped-HELMET",
-        "directions": 4
-      },
-      {
-        "name": "icon"
-      }
-
-    ]
-  }
+    {
+      "name": "icon"
+    }
+  ]
+}

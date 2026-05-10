@@ -34,6 +34,6 @@
   description: Сварочная маска, модифицированная неизвестным сталкером. На удивление обеспечивает отличную защиту от пуль.
   components:
   - type: Sprite
-    sprite: _Stalker/Objects/Clothing/head/WeldingMaskUbey.rsi
+    sprite: _Stalker/Objects/Clothing/Head/WeldingMaskUbey.rsi
   - type: Clothing
-    sprite: _Stalker/Objects/Clothing/head/WeldingMaskUbey.rsi
+    sprite: _Stalker/Objects/Clothing/Head/WeldingMaskUbey.rsi
