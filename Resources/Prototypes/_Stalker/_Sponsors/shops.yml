@@ -354,3 +354,15 @@
       545HPBox: 300
       545PCBox: 1800
       545BPBox: 2700
+
+- type: personalShop STWeaponRifleAR15
+  id: PersonalTuhardShop
+  username: Tuhard
+  categories:
+  - name: Персональная категория
+    items:
+      STWeaponRifleAR15: 5000
+      556M856Box: 3500
+      556M855Box: 1500
+      556Mag30: 500
+      556Mag45: 1500

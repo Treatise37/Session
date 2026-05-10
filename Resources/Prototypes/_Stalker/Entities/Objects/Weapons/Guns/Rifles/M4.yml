@@ -227,3 +227,78 @@
     falloffMultiplier: 0.7
   - type: STWeaponAccuracy
     accuracyMultiplier: 1.45
+
+
+- type: entity
+  parent: STBaseWeaponRifleAKS74
+  id: STWeaponRifleAR15
+  name: AR15
+  suffix: ST, Кастомка
+  description:
+  components:
+  - type: Item
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ar15.rsi
+  - type: Sprite
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ar15.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Weapons/Guns/Rifles/ar15.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Stalker/Effects/Guns/ak.ogg
+    minAngle: 50
+    maxAngle: 90
+    angleIncrease: 1.4
+    angleDecay: 4
+    projectileSpeed: 55
+    fireRate: 8
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot { }
+      gun_auto_sear: !type:ContainerSlot { }
+      gun_module_muzzle: !type:ContainerSlot { }
+      gun_module_scope: !type:ContainerSlot { }
+      gun_chamber: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: Base556Mag10
+        insertSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagIn/rifle_magin.ogg
+        ejectSound: /Audio/_Stalker/Weapons/Guns/RifleGen/MagOut/rifle_magout.ogg
+        priority: 5
+        whitelist:
+          tags:
+          - Magazine556
+      gun_auto_sear:
+        name: Insides
+        priority: 4
+        whitelist:
+          tags:
+          - STModuleAutoSear
+      gun_module_muzzle:
+        name: Muzzle
+        priority: 3
+        whitelist:
+          tags:
+          - STWeaponModuleRifleSilencerNato
+      gun_module_scope:
+        name: Scope
+        priority: 2
+        whitelist:
+          tags:
+          - STWeaponModuleRifleScopeNato
+      gun_chamber:
+        name: Chamber
+        startingItem:
+        priority: 1
+        whitelist:
+          tags:
+          - STCartridge556
+  - type: STWeaponDamageFalloff
+    falloffMultiplier: 0.8
+  - type: STWeaponAccuracy
+    accuracyMultiplier: 1.46
