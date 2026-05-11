@@ -261,6 +261,9 @@
       # BackPacks
       ClothingBackpackTownBlackStalker: 50 # T1
       ClothingBackpackTownWhiteStalker: 50 # T1
+      ClothingBackpackDuffelOliveTacticStalker: 1200
+      ClothingBackpackDuffelSuperStalkerGray: 1600
+      ClothingBackpackDuffelSuperStalker: 1600
         ##-------------------------------------------
       # Belts
       ClothingBeltBandolierStalker: 20 # T1 - PVE
