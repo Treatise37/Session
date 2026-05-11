@@ -1,7 +1,7 @@
 - type: job
   id: StalkerDolg
   name: job-dolg
-  icon: sdolg
+  icon: Sdolg
   description: job-dolg-desc
   playTimeTracker: JobDolg
   whitelisted: false
