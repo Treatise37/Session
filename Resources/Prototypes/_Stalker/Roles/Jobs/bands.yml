@@ -1,7 +1,7 @@
 - type: job
   id: StalkerBandit
   name: job-bandit
-  icon: band
+  icon: Sband
   description: job-bandit-desc
   playTimeTracker: JobBandit
   whitelisted: false
