@@ -46,7 +46,7 @@
 - type: job
   id: StalkerHeadFreedom
   name: job-head-freedom
-  icon: Sfreedom
+  icon: freedom
   description: job-head-freedom-desc
   playTimeTracker: JobHeadFreedom
   whitelisted: true

@@ -17,7 +17,8 @@
         STWeaponRifleARX160: 180000
         STWeaponRifleAK103: 170000
         STWeaponSniperVSK94: 140000
-        STWeaponRifleVPO209: 35000 
+        STWeaponRifleVPO209: 35000
+        STWeaponMachineGunPKM: 500000
     - name: shop-category-magazines
       priority: 1
       items:
@@ -29,6 +30,7 @@
         556Mag30: 1500
         751Mag30: 1500
         754Mag10: 1000
+        Magazine762x54PKM: 25000
     - name: shop-category-ammunition
       priority: 2
       items:
