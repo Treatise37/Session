@@ -267,6 +267,7 @@
         ##-------------------------------------------
       # Belts
       ClothingBeltBandolierStalker: 20 # T1 - PVE
+      ClothingBeltWebbingHolsterMercBandit: 700
       # Containers
       MedkitCMSStalker: 1000 # T1
       MedkitGrizzlyStalker: 2000 # T2
