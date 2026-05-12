@@ -18,11 +18,11 @@
           # be spawned by events, ghost roles, or admin tools.
           availableJobs:
             # Stalkers
-            Stalker: [ 0, -1 ]
-            StalkerVeteran: [ 0, -1 ]
+            # Stalker: [ 0, -1 ]
+            # StalkerVeteran: [ 0, -1 ]
             # Criminals
-            StalkerBandit: [ 0, -1 ]
-            StalkerHeadBandit: [ 0, -1 ]
+            # StalkerBandit: [ 0, -1 ]
+            # StalkerHeadBandit: [ 0, -1 ]
             # Stalker Clans — Freedom
             StalkerFreedom: [ 0, -1 ]
             StalkerHeadFreedom: [ 0, -1 ]
@@ -30,5 +30,5 @@
             StalkerDolg: [ 0, -1 ]
             StalkerHeadDolg: [ 0, -1 ]
             # Science
-            sci: [ 0, -1 ]
-            sci_rector: [ 0, -1 ]
+            # sci: [ 0, -1 ]
+            # sci_rector: [ 0, -1 ]
