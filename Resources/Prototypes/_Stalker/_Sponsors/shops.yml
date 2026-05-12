@@ -355,7 +355,7 @@
       545PCBox: 1800
       545BPBox: 2700
 
-- type: personalShop STWeaponRifleAR15
+- type: personalShop
   id: PersonalTuhardShop
   username: Tuhard
   categories:
