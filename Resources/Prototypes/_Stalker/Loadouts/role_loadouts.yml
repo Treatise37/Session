@@ -191,13 +191,13 @@
   - STShoesGroup
   - STMaskStalkerGroup
   - STBeltStalkerGroup
-  - STlegsGroup
   - STTorsoGroupDolg
   - STSuitstorageGroup
   - STStorage
   - STStorageAmmunition
   - STGlasses
   - STOuterClothingDolg
+  - STlegsGroupDolg
 
 - type: roleLoadout
   id: JobStalkerNoviceDolg
@@ -209,13 +209,13 @@
   - STShoesGroup
   - STMaskStalkerGroup
   - STBeltStalkerGroup
-  - STlegsGroup
   - STTorsoGroupDolg
   - STSuitstorageGroup
   - STStorage
   - STStorageAmmunition
   - STGlasses
   - STOuterClothingDolg
+  - STlegsGroupDolg
 
 - type: roleLoadout
   id: JobStalkerHeadDolg
@@ -227,13 +227,13 @@
   - STShoesGroup
   - STMaskStalkerGroup
   - STBeltStalkerGroup
-  - STlegsGroup
   - STTorsoGroupDolg
   - STSuitstorageGroup
   - STStorage
   - STStorageAmmunition
   - STGlasses
   - STOuterClothingDolg
+  - STlegsGroupDolg
 
 # Свобода
 - type: roleLoadout
