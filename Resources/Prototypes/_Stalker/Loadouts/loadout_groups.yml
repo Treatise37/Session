@@ -364,6 +364,36 @@
   - STTorsoSTClothingTosroTurtlenecksPol
   - STTorsoSTClothingTosroTurtlenecksRu
 
+- type: loadoutGroup
+  id: STlegsGroupDolg
+  name: loadout-group-st-legs
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - 
+  - STlegsClothingLegsJeansBlue
+  - STlegsClothingLegsJeansStalker
+  - STlegsClothingLegsJeansRussianPixel
+  - STlegsClothingLegsJeansBlackNew
+  - STlegsClothingLegsJeansGorka
+  - STlegsClothingLegsJeansGorka6
+  - STlegsClothingLegsJeansBereza
+  - STlegsClothingLegsJeansGreenCargo
+  - STlegsClothingLegsJeansGreyCargo
+  - STlegsClothingLegsJeansBlackCargo
+  - STlegsClothingLegsJeansBrownCargo
+  - STlegsClothingLegsJeansSandCargo
+  - STlegsClothingLegsJeansUa
+  - STlegsClothingLegsJeansUa2
+  - STlegsSTClothingLegsPantsGray
+  - STlegsClothingLegsBattlePantsBlack
+  - STlegsClothingLegsVeryBlueJenas
+  - STlegsClothingLegsCombatForest
+  - STlegsClothingLegsGorka5
+  - STlegsClothingLegsGorka6b
+  - STlegsClothingLegsNavyPants
+  - STlegsClothingLegsRussianNumber
+  
 #Свобода
 - type: loadoutGroup
   id: STOuterClothingFreedom
