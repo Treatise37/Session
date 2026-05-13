@@ -33,6 +33,11 @@
     legs: STClothingLegsSerafimCherubimPants
 
 - type: loadout
+  id: ClothingLegsJeansDolgCamouflage
+  equipment:
+    legs: ClothingLegsJeansDolgCamouflage
+
+- type: loadout
   id: STlegsClothingLegsJeansBlue
   equipment:
     legs: ClothingLegsJeansBlue
