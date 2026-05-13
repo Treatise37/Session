@@ -1,7 +1,7 @@
 - type: soundCollection
   id: STLobbyMusic
   files:
-    - /Audio/_Stalker/Lobby/Kessoku-Band-Guitar_-Loneliness-and-Blue-Planet.ogg
-    - /Audio/_Stalker/Lobby/Kessoku-Band-Never-Forget.ogg
-    - /Audio/_Stalker/Lobby/Kessoku-Band-Seishun-Complex.ogg
-    - /Audio/_Stalker/Lobby/Kessoku-Band-That-Band.ogg
+    - /Audio/_Stalker/Lobby/tarkov1.ogg
+    - /Audio/_Stalker/Lobby/tarkov3.ogg
+    - /Audio/_Stalker/Lobby/tarkov4.ogg
+
