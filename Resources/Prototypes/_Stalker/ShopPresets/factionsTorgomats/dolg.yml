@@ -104,11 +104,8 @@
       STWeaponShotgunMP133: 385
       STWeaponShotgunMP153: 550
       STWeaponShotgunSPAS: 1100
-      STWeaponShotgunSaiga12: 5000
       # 5,45x39
       STWeaponRifleAKS74U: 1000
-      STWeaponRifleAKS74: 3000
-      STWeaponRifleAK74M: 5500
       # Smg
       STWeaponSMGPP19: 1800
       # Other
@@ -117,10 +114,8 @@
       WeaponPistolStalkerTT: 150
       STWeaponSniperMosin: 1000
       STWeaponSniperSKS: 1200
-      STWeaponRifleAKM: 5000
       DG05SmokeGrenade: 200
       RGD5Grenade: 300
-      STWeaponRifleA545: 100000
   - name: shop-category-magazines
     priority: 2
     items:
@@ -180,16 +175,12 @@
       # Helmets #
       ClothingHeadHelmetDolg: 200 # T1 - PVE
       ClothingHeadHelmetInfantryDolg: 600 # T2 - PVP
-      ClothingHeadHelmetVityaz1M: 2000
-      ClothingHeadAssaultHelmetDolg: 3000
       # OuterClothing #
       ClothingOuterJacketDolg: 70 # T1 - PVE
       STClothingOuterArmorLightPlateVestBaseDolg: 900 # T2 - PvP
       ClothingOuterArmorRCBZDolg: 1600 # T2 - ENV
       ClothingOuterArmorZaryaDolg: 1600 # T2 - universal
-      SetPS5MDolgBuyableCrate: 5500
       ClothingOuterArmorSevaDolgRed: 5500 # T3 - ENV
-      ClothingOuterArmorPSZ9D: 10000
   - name: shop-category-storage-and-containers
     priority: 5
     items:
@@ -362,3 +353,22 @@
       ClothingTorsoTurtlenecksKhakiTurtleneck: 50
       ClothingTorsoTurtlenecksMatrosska: 50
       STClothingHeadBeretDolg: 52
+
+- type: shopPreset
+  id: DolgT4ShopPreset
+  categories:
+  - name: shop-category-weapons
+    priority: 1
+    items:
+      STWeaponShotgunSaiga12: 5000
+      STWeaponRifleAKS74: 3000
+      STWeaponRifleAK74M: 5500
+      STWeaponRifleAKM: 5000
+      STWeaponRifleA545: 100000
+  - name: shop-category-armor
+    priority: 2
+    items:
+      ClothingHeadHelmetVityaz1M: 2000
+      ClothingHeadAssaultHelmetDolg: 3000
+      SetPS5MDolgBuyableCrate: 5500
+      ClothingOuterArmorPSZ9D: 10000

@@ -3,7 +3,7 @@
 - type: entity
   parent: NPCDoll
   id: NPCDolg
-  name: Сержант Прокопьенко[→   ←]
+  name: Прапорщик Гельвер[→   ←]
   suffix: ST, Gruppirovki
   description: Продает хорошее снаряжение для охоты и припасы очень важные для выживания в зоне.
   components:
@@ -24,6 +24,46 @@
   - type: Shop
     moneyId: Roubles
     shopPresetId: DolgShopPreset
+  - type: TypingIndicator
+    proto: robot
+  - type: TTS # Corvax-TTS
+    voice: TrainingRobot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Alto
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+
+- type: entity
+  parent: NPCDoll
+  id: NPCDolgT4
+  name: Капитан Говняк[→   ←]
+  suffix: ST, Gruppirovki
+  description: Продает хорошее снаряжение для охоты и припасы очень важные для выживания в зоне.
+  components:
+  - type: Sprite
+    sprite: _Stalker/NPC/Groups/Dolg.rsi
+    state: icon
+  - type: Physics
+    bodyType: Static
+  - type: DatasetVocalizer
+    dataset: NPCStalkerTraderAds
+  - type: ActivatableUI
+    key: enum.ShopUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ShopUiKey.Key:
+        type: ShopBoundUserInterface
+  - type: Shop
+    moneyId: Roubles
+    shopPresetId: DolgT4ShopPreset
   - type: TypingIndicator
     proto: robot
   - type: TTS # Corvax-TTS
@@ -231,6 +271,46 @@
   - type: Shop
     moneyId: Roubles
     shopPresetId: FreedomShopPreset
+  - type: TypingIndicator
+    proto: robot
+  - type: TTS # Corvax-TTS
+    voice: TrainingRobot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Alto
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+
+- type: entity
+  parent: NPCDoll
+  id: NPCFreedomT4
+  name: Туман[→   ←]
+  suffix: ST, Gruppirovki
+  description: Продает хорошее снаряжение для охоты и припасы очень важные для выживания в зоне.
+  components:
+  - type: Sprite
+    sprite: _Stalker/NPC/Groups/freedom.rsi
+    state: icon
+  - type: Physics
+    bodyType: Static
+  - type: DatasetVocalizer
+    dataset: NPCStalkerTraderAds
+  - type: ActivatableUI
+    key: enum.ShopUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.ShopUiKey.Key:
+        type: ShopBoundUserInterface
+  - type: Shop
+    moneyId: Roubles
+    shopPresetId: FreedomT4ShopPreset
   - type: TypingIndicator
     proto: robot
   - type: TTS # Corvax-TTS

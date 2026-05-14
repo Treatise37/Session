@@ -167,3 +167,91 @@
       lifetime: 180
     - type: SpawnOnDespawn
       prototype: FitnessBypassDeactivated
+
+# Т4 торгомат долга
+- type: entity
+  parent: BypassCard
+  id: DolgT4BypassCard
+  name: карточка доступа Долга
+  description: Карточка доступа, открывает дверь
+  suffix: ST, card
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: contacts_gold
+    - state: label_green
+
+- type: lightCraftingRecipe
+  id: lightCraftActiveBypassDolgT4
+  results:
+  - DolgT4BypassActivated
+  steps:
+    firstIngredient: DolgT4BypassDeactivated
+    secondIngredient: DolgT4BypassCard
+    time: 2
+
+- type: entity
+  parent: BypassDeactivated
+  id: DolgT4BypassDeactivated
+  name: гермошлюз Долга
+  description: Для разблокировки этого шлюза нужна карточка.
+  components:
+  - type: Craftable
+
+- type: entity
+  parent: BypassActivated
+  id: DolgT4BypassActivated
+  name: гермошлюз Долга
+  description: для разблокировки этого шлюза нужна карточка фитнес-центра. Разблокирован.
+  suffix: Stalker
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 9999
+  - type: SpawnOnDespawn
+    prototype: DolgT4BypassDeactivated
+
+# Т4 торгомат свободы
+- type: entity
+  parent: BypassCard
+  id: FreedomT4BypassCard
+  name: карточка доступа Свободы
+  description: Карточка доступа, открывает дверь
+  suffix: ST, card
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: contacts_gold
+    - state: label_green
+
+- type: lightCraftingRecipe
+  id: lightCraftActiveBypassFreedomT4
+  results:
+  - FreedomT4BypassActivated
+  steps:
+    firstIngredient: FreedomT4BypassDeactivated
+    secondIngredient: FreedomT4BypassCard
+    time: 2
+
+- type: entity
+  parent: BypassDeactivated
+  id: FreedomT4BypassDeactivated
+  name: гермошлюз Свободы
+  description: Для разблокировки этого шлюза нужна карточка.
+  components:
+  - type: Craftable
+
+- type: entity
+  parent: BypassActivated
+  id: FreedomT4BypassActivated
+  name: гермошлюз Свободы
+  description: для разблокировки этого шлюза нужна карточка фитнес-центра. Разблокирован.
+  suffix: Stalker
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 9999
+  - type: SpawnOnDespawn
+    prototype: FreedomT4BypassDeactivated

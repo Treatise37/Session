@@ -104,11 +104,6 @@
       # Nato
       STWeaponRifleL85: 1300
       STWeaponRifleM16: 2300
-      STWeaponRifleSCARH: 5000
-      STWeaponRifleM4: 3500
-      STWeaponRifleG36: 5500
-      STWeaponRifleSCARL: 5000
-      STWeaponRifleLR300v1: 100000
       # Smg
       STWeaponSMGMP5: 2300
       # Other
@@ -165,16 +160,12 @@
       # Helmets #
       ClothingHeadHelmetLight: 200
       ClothingHeadHelmetInfantry: 600 # T2 - PVP
-      ClothingHeadHelmetVityaz1C: 2000 # T2 - PVE
-      ClothingHeadAssaultHelmetFreedom: 3000
       # OuterClothing #
       ClothingOuterJacketFreedom: 70 # T1 - PVE
       STClothingOuterArmorLightPlateVestBaseFreedom: 900 # T2 - PvP
       ClothingOuterArmorRCBZFreedom: 1200 # T2 - ENV
       ClothingOuterArmorFreedomWind: 1400
-      ClothingOuterArmorFreedomDefender: 4500
       ClothingOuterArmorSevaFreedom: 4500
-      STClothingOuterArmorVolchankaFreedom: 9500
   - name: shop-category-storage-and-containers
     priority: 5
     items:
@@ -220,6 +211,7 @@
   - name: shop-category-utilities
     priority: 8
     items:
+      FreedomT4BypassCard: 50000
       STElasticRubberRed: 15
       STElasticRubberGreen: 15
       STElasticRubberBlue: 15
@@ -358,3 +350,22 @@
     items:
       STCookingRenderedSalo: 2000
       STCookingPickledEggs: 2000
+
+- type: shopPreset
+  id: FreedomT4ShopPreset
+  categories:
+  - name: shop-category-weapons
+    priority: 1
+    items:
+      STWeaponRifleSCARH: 5000
+      STWeaponRifleM4: 3500
+      STWeaponRifleG36: 5500
+      STWeaponRifleSCARL: 5000
+      STWeaponRifleLR300v1: 100000
+  - name: shop-category-armor
+    priority: 2
+    items:
+      ClothingHeadHelmetVityaz1C: 2000 # T2 - PVE
+      ClothingHeadAssaultHelmetFreedom: 3000
+      ClothingOuterArmorFreedomDefender: 4500
+      STClothingOuterArmorVolchankaFreedom: 9500
