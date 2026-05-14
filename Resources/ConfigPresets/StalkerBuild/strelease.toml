@@ -1,7 +1,7 @@
 [game]
 hostname = "☢️ S.T.A.L.K.E.R. Release."
 desc = "Server at S.T.A.L.K.E.R. setting.\nIn devlopment."
-#map = "STSession" # st-changes-dev-map
+#map = "STWorld" # st-changes-dev-map
 map_pool = "STDefaultMapPool"  # st-changes-map-pool
 defaultpreset = "STGamePreset"
 maxplayers = 80
